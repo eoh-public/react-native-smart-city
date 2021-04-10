@@ -1,5 +1,5 @@
 {
-  "name": "react-native-smart-home",
+  "name": "@eohjsc/react-native-smart-city",
   "title": "React Native Smart Home",
   "version": "1.0.0",
   "description": "TODO",
@@ -9,26 +9,22 @@
     "android",
     "index.js",
     "ios",
-    "react-native-smart-home.podspec"
+    "react-native-smart-city.podspec"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-smart-home.git",
-    "baseUrl": "https://github.com/github_account/react-native-smart-home"
+    "url": "git+https://github.com/github_account/react-native-smart-city.git",
+    "baseUrl": "https://github.com/github_account/react-native-smart-city"
   },
   "keywords": [
     "react-native"
   ],
-  "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
-  },
+  "author": "Your Name <yourname@email.com>",
   "license": "MIT",
   "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
@@ -155,5 +151,9 @@
     "react-test-renderer": "16.13.1",
     "reactotron-react-native": "^3.6.4",
     "typescript": "^4.1.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/github_account/react-native-smart-city/issues"
+  },
+  "homepage": "https://github.com/github_account/react-native-smart-city#readme"
 }
