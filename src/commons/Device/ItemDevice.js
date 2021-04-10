@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -23,77 +23,75 @@ const marginHorizontal = 16;
 const widthItem = (Constants.width - marginHorizontal * 2 - marginItem) / 2;
 const heightItem = (widthItem / 166) * 106;
 
-const ItemDevice = memo(
-  ({ svgMain, description, title, sensor, unit, station }) => {
-    const navigation = useNavigation();
+const ItemDevice = ({ svgMain, description, title, sensor, unit, station }) => {
+  const navigation = useNavigation();
 
-    const goToSensorDisplay = useCallback(() => {
-      navigation.navigate(Routes.DeviceDetail, {
-        unit,
-        station,
-        sensor,
-        title,
-      });
-    }, [navigation, sensor, station, title, unit]);
+  const goToSensorDisplay = useCallback(() => {
+    navigation.navigate(Routes.DeviceDetail, {
+      unit,
+      station,
+      sensor,
+      title,
+    });
+  }, [navigation, sensor, station, title, unit]);
 
-    const displayIconSensor = () => {
-      switch (svgMain) {
-        case 'door':
-          return <SvgDoor />;
-        case 'sensor':
-          return <SensorIcon />;
-        case 'barrier':
-          return <BarrierIcon />;
-        case 'emergency':
-          return <SvgEmergency />;
+  const displayIconSensor = () => {
+    switch (svgMain) {
+      case 'door':
+        return <SvgDoor />;
+      case 'sensor':
+        return <SensorIcon />;
+      case 'barrier':
+        return <BarrierIcon />;
+      case 'emergency':
+        return <SvgEmergency />;
 
-        // TODO temporarily, will update w backend
-        case 'alert-connected':
-          return <IconFill name="alert" size={32} color={Colors.Red6} />;
-        case 'alert-disconnected':
-          return <IconFill name="alert" size={32} color={Colors.Gray6} />;
-        default:
-          return <SensorIcon />;
-      }
-    };
+      // TODO temporarily, will update w backend
+      case 'alert-connected':
+        return <IconFill name="alert" size={32} color={Colors.Red6} />;
+      case 'alert-disconnected':
+        return <IconFill name="alert" size={32} color={Colors.Gray6} />;
+      default:
+        return <SensorIcon />;
+    }
+  };
 
-    return (
-      <TouchableWithoutFeedback onPress={goToSensorDisplay}>
-        <View style={styles.container} testID={TESTID.SUB_UNIT_DEVICES}>
-          <View style={styles.boxIcon}>
-            <TouchableOpacity onPress={goToSensorDisplay}>
-              {displayIconSensor()}
-            </TouchableOpacity>
-            <ItemQuickAction sensor={sensor} />
-          </View>
+  return (
+    <TouchableWithoutFeedback onPress={goToSensorDisplay}>
+      <View style={styles.container} testID={TESTID.SUB_UNIT_DEVICES}>
+        <View style={styles.boxIcon}>
           <TouchableOpacity onPress={goToSensorDisplay}>
+            {displayIconSensor()}
+          </TouchableOpacity>
+          <ItemQuickAction sensor={sensor} />
+        </View>
+        <TouchableOpacity onPress={goToSensorDisplay}>
+          <Text
+            numberOfLines={1}
+            semibold
+            size={14}
+            color={Colors.Gray9}
+            style={styles.lineHeight22}
+          >
+            {title}
+          </Text>
+          <View style={styles.descriptionContainer}>
             <Text
               numberOfLines={1}
               semibold
-              size={14}
-              color={Colors.Gray9}
-              style={styles.lineHeight22}
+              size={12}
+              color={Colors.Gray8}
+              style={styles.lineHeight20}
             >
-              {title}
+              {description}
             </Text>
-            <View style={styles.descriptionContainer}>
-              <Text
-                numberOfLines={1}
-                semibold
-                size={12}
-                color={Colors.Gray8}
-                style={styles.lineHeight20}
-              >
-                {description}
-              </Text>
-              <IconOutline name="right" size={12} />
-            </View>
-          </TouchableOpacity>
-        </View>
-      </TouchableWithoutFeedback>
-    );
-  }
-);
+            <IconOutline name="right" size={12} />
+          </View>
+        </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
+  );
+};
 
 export default ItemDevice;
 

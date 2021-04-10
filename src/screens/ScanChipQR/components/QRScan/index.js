@@ -40,7 +40,7 @@ const VerifingQRCode = memo(() => {
   );
 });
 
-const QRScan = memo(({ onScan, loading, setLoading }) => {
+const QRScan = ({ onScan, loading, setLoading }) => {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
   const onBarCodeRead = useCallback(
@@ -104,7 +104,7 @@ const QRScan = memo(({ onScan, loading, setLoading }) => {
       }}
     </RNCamera>
   );
-});
+};
 
 export default QRScan;
 

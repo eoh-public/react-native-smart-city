@@ -1,10 +1,10 @@
-import React, { memo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 import QualityIndicatorItem from './QualityIndicatorsItem';
 
 //using for Water quality sensor , power meter SENSOR, INdoor air sensor
-const ListQualityIndicator = memo(({ data, style }) => {
+const ListQualityIndicator = ({ data, style }) => {
   const renderItem = useCallback(
     ({ item }) => (
       <QualityIndicatorItem
@@ -29,7 +29,7 @@ const ListQualityIndicator = memo(({ data, style }) => {
       />
     </View>
   );
-});
+};
 
 export default ListQualityIndicator;
 
