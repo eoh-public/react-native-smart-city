@@ -1,0 +1,3375 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test WaterQualityGuide render WaterQualityGuide default turbidityGuide 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "marginBottom": 28,
+          }
+        }
+      >
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Độ đục của nước là gì?
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Độ đục của nước là thước đo độ trong tương đối của nước. Độ đục là một đặc tính quang học của nước và là một biểu hiện của lượng ánh sáng được phân tán bởi vật liệu trong nước khi ánh sáng được chiếu xuyên qua mẫu nước. Cường độ ánh sáng càng cao thì độ đục càng cao. Độ đục có thể đến từ các hạt vật chất lơ lửng như bùn, đất sét, vật liêu vô cơ hoặc các chất hữu cơ như tảo, sinh vật phù du, vật liệu phân rã.
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Hướng dẫn về độ đục cho nước uống
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Độ đục của nước là chỉ số cảnh báo đầu tiên về chất lượng nước có thể ảnh hưởng đến sức khoẻ con người.
+Đối với nguồn cung cấp nước uống, độ đục được khuyến nghị phải tuân theo những yêu cầu sau để đảm bảo các an toàn về sức khoẻ:
+- Nước uống phải có độ đục từ 5 NTU / JTU trở xuống. Độ đục của nước lớn hơn 5 NTU / JTU sẽ được người dùng nhận thấy và bị từ chối cung cấp.
+- Khi nước được khử trùng bằng clo, độ đục phải nhỏ hơn 5 NTU / JTU và tốt hơn là nhỏ hơn 1 NTU / JTU.
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#52C41A",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#52C41A",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Rất tốt
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              0 - 1.1 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FADB14",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FADB14",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Tốt
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              1.2 - 2.4 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FA8C16",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FA8C16",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Trung bình
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              2.5 - 3.7 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#F5222D",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#F5222D",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Kém
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              3.8 - 5 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#722ED1",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#722ED1",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Rất kém
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              &gt; 5 NTU
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;
+
+exports[`Test WaterQualityGuide render WaterQualityGuide with cloGuide 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "marginBottom": 28,
+          }
+        }
+      >
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Clo dư là gì?
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Clo dư là lượng clo ở mức thấp vẫn còn trong nước sau một thời gian nhất định hoặc tiếp xúc thời gian sau khi ứng dụng ban đầu của nó. Nó tạo nên một lớp bảo vệ chống lại nguy cơ vi sinh vật tiếp theo gây ô nhiễm sau khi xử lý - một lợi ích độc đáo cho sức khỏe cộng đồng.
+Thử nghiệm clo dư là một trong những thử nghiệm phổ biến nhất được các nhà máy xử lý nước sử dụng. Qua thử nghiệm clo dư, lượng clo còn lại được xác định trong nước đã kết thúc thử nghiệm và sẵn sàng đưa ra hệ thống phân phối.
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Mức độ Clo dư khuyến nghị
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Nồng độ clo dư trong nguồn nước cung cấp càng cao thì các hóa chất sẽ có thể bảo vệ hệ thống khỏi bị nhiễm bẩn lâu và tốt hơn. Tuy nhiên, hàm lượng clo cao sẽ làm cho nước có mùi và có mùi vị khó chịu cho mọi người khi uống nó.
+Đối với mục đích sử dụng bình thường trong gia đình, mức độ clo dư trong nước sinh hoạt ăn uống đạt ngưỡng từ 0,3 – 0,5 mg/L mới đảm bảo độ an toàn.
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FADB14",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FADB14",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Thấp
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              &lt; 0.2 mg/l
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#52C41A",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#52C41A",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Trung bình
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              &lt; 0.2 - 0.5 mg/l
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#F5222D",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#F5222D",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Cao
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              &gt; 0.5 mg/l
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;
+
+exports[`Test WaterQualityGuide render WaterQualityGuide with phGuide 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "marginBottom": 28,
+          }
+        }
+      >
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Độ pH là gì?
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            pH là một chỉ số xác định tính chất hoá học của nước. Nó cho biết chất đó có tính axit hoặc kiềm (bazơ) như thế nào.
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Hướng dẫn về độ pH cho nước uống
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Đối với nguồn cung cấp nước uống, độ pH được khuyến nghị nằm trong mức 6.5-8.5 để đảm bảo các an toàn về sức khoẻ.
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#52C41A",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#52C41A",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Rất tốt
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              pH 6.5 - 6.9
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FADB14",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FADB14",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Tốt
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              pH 7.0 - 7.4
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FA8C16",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FA8C16",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Trung bình
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              pH 7.5 - 7.9
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#F5222D",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#F5222D",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Kém
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              pH 8.0 - 8.5
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#722ED1",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#722ED1",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Rất kém
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              pH &gt; 8.5
+pH &lt; 6.5
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "marginBottom": 14,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE1"
+          >
+            Thang đo pH
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION1"
+          >
+            Thang đo pH nằm trong khoảng từ 0 đến 14:
+- Nước có tính axit có độ pH thấp hơn 7. Các chất có tính axit nhất có pH bằng 0. Axit acquy thuộc loại này.
+- Nước kiềm có độ pH từ 8 trở lên. Các chất kiềm nhất, chẳng hạn như dung dịch kiềm, có độ pH là 14.
+- Nước tinh khiết có độ pH là 7 và được coi là “trung tính” vì nó không có tính axit cũng như tính bazơ.
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Pin Acid
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#F5222D",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                1
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Dạ dày Acid
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#FF4D4F",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                2
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Hydrochloric Acid
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#FF7875",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                3
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#F5222D",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              >
+                AXÍT
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Mưa Acid
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#FFA39E",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                4
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Cà phê đen
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#FFCCC7",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                5
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Nước tiểu / nước bọt
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#FFF1F0",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                6
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Nước tinh khiết
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#FAFAFA",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                7
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#BFBFBF",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              >
+                TRUNG TÍNH
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Nước biển
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#F0F5FF",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                8
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Baking Soda
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#D6E4FF",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                9
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Sữa Magnesia
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#ADC6FF",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                10
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              A-mô-ni-ắc
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#85A5FF",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                11
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Nước xà phòng
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#597EF7",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                12
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#2F54EB",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              >
+                KIỀM
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Chất tẩy trắng
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#2F54EB",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                13
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 2,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 5,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": undefined,
+                    "lineHeight": undefined,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {
+                    "fontSize": 16,
+                    "height": 40,
+                    "marginRight": 24,
+                    "textAlign": "right",
+                    "textAlignVertical": "center",
+                  },
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL1"
+            >
+              Chất làm sạch cống
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 5,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#1D39C4",
+                  "borderRadius": 1,
+                  "height": 40,
+                  "width": 127,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "fontSize": 16,
+                      "height": 40,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                    },
+                  ]
+                }
+              >
+                14
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#000",
+                      "fontFamily": "SFProDisplay-Regular",
+                      "fontSize": undefined,
+                      "lineHeight": undefined,
+                      "textAlign": "left",
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "bottom": 8,
+                      "color": "#000000",
+                      "fontSize": 20,
+                      "height": 28,
+                      "left": -28,
+                      "position": "absolute",
+                      "textAlign": "center",
+                      "transform": Array [
+                        Object {
+                          "rotate": "90deg",
+                        },
+                      ],
+                      "width": 115,
+                    },
+                  ]
+                }
+                testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL1"
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;
+
+exports[`Test WaterQualityGuide render WaterQualityGuide with turbidityGuide 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "marginBottom": 28,
+          }
+        }
+      >
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Độ đục của nước là gì?
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Độ đục của nước là thước đo độ trong tương đối của nước. Độ đục là một đặc tính quang học của nước và là một biểu hiện của lượng ánh sáng được phân tán bởi vật liệu trong nước khi ánh sáng được chiếu xuyên qua mẫu nước. Cường độ ánh sáng càng cao thì độ đục càng cao. Độ đục có thể đến từ các hạt vật chất lơ lửng như bùn, đất sét, vật liêu vô cơ hoặc các chất hữu cơ như tảo, sinh vật phù du, vật liệu phân rã.
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#262626",
+                  "fontFamily": "SFProDisplay-Semibold",
+                  "fontSize": 20,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginBottom": 8,
+                  "marginHorizontal": 16,
+                  "marginTop": 24,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_TITLE"
+          >
+            Hướng dẫn về độ đục cho nước uống
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#595959",
+                  "fontFamily": "SFProDisplay-Regular",
+                  "fontSize": 14,
+                  "lineHeight": 14,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {
+                  "lineHeight": 28,
+                  "marginHorizontal": 16,
+                },
+              ]
+            }
+            testID="WATER_QUALITY_GUIDE_DESCRIPTION"
+          >
+            Độ đục của nước là chỉ số cảnh báo đầu tiên về chất lượng nước có thể ảnh hưởng đến sức khoẻ con người.
+Đối với nguồn cung cấp nước uống, độ đục được khuyến nghị phải tuân theo những yêu cầu sau để đảm bảo các an toàn về sức khoẻ:
+- Nước uống phải có độ đục từ 5 NTU / JTU trở xuống. Độ đục của nước lớn hơn 5 NTU / JTU sẽ được người dùng nhận thấy và bị từ chối cung cấp.
+- Khi nước được khử trùng bằng clo, độ đục phải nhỏ hơn 5 NTU / JTU và tốt hơn là nhỏ hơn 1 NTU / JTU.
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#52C41A",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#52C41A",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Rất tốt
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              0 - 1.1 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FADB14",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FADB14",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Tốt
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              1.2 - 2.4 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#FA8C16",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#FA8C16",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Trung bình
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              2.5 - 3.7 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#F5222D",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#F5222D",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Kém
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              3.8 - 5 NTU
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginHorizontal": 16,
+              "marginTop": 16,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#722ED1",
+                "borderRadius": 5,
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginLeft": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#722ED1",
+                    "fontFamily": "SFProDisplay-Semibold",
+                    "fontSize": 16,
+                    "lineHeight": 16,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_TITLE_LEVEL"
+            >
+              Rất kém
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#595959",
+                    "fontFamily": "SFProDisplay-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 14,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                  Object {},
+                ]
+              }
+              testID="WATER_QUALITY_GUIDE_DESCRIPTION_LEVEL"
+            >
+              &gt; 5 NTU
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;

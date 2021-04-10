@@ -1,0 +1,1100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test OtpInputList create OtpInputList 0 onfinishInputCode is func 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
+
+exports[`Test OtpInputList create OtpInputList 1 onfinishInputCode is func 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
+
+exports[`Test OtpInputList create OtpInputList 2 onfinishInputCode is func 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
+
+exports[`Test OtpInputList create OtpInputList 3 onfinishInputCode is func 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
+
+exports[`Test OtpInputList create OtpInputList 4 onfinishInputCode is func 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
+
+exports[`Test OtpInputList create OtpInputList 5 onfinishInputCode is func 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
+
+exports[`Test OtpInputList create OtpInputList not parameter 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 10,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    name="firstInput"
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="number-pad"
+    maxLength={1}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    style={
+      Object {
+        "backgroundColor": "#FAFAFA",
+        "borderColor": "#E8E8E8",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "color": "#262626",
+        "height": 36,
+        "marginEnd": 5,
+        "marginStart": 5,
+        "textAlign": "center",
+        "width": 36,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
