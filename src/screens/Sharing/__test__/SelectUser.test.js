@@ -1,14 +1,14 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import axios from 'axios';
-import { TESTID } from 'configs/Constants';
+import { TESTID } from '../../../configs/Constants';
 
 import SelectUser from '../SelectUser';
 import { t } from 'i18n-js';
-import { Button, ViewButtonBottom } from 'components/Common';
-import _TextInput from 'components/Form/TextInput';
-import API from 'configs/API';
-import AccountList from 'components/Auth/AccountList';
+import { Button, ViewButtonBottom } from '../../../commons';
+import _TextInput from '../../../commons/Form/TextInput';
+import API from '../../../configs/API';
+import AccountList from '../../../commons/Auth/AccountList';
 
 const mockedNavigate = jest.fn();
 const mockedGoBack = jest.fn();

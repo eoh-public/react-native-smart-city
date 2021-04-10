@@ -2,11 +2,11 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { API } from 'configs/';
+import { API } from '../../../configs';
 import ConnectingDevices from '../ConnectingDevices';
-import Text from 'components/Text';
+import Text from '../../../commons/Text';
 import { t } from 'i18n-js';
-import Routes from 'utils/Route';
+import Routes from '../../../utils/Route';
 
 jest.mock('axios');
 

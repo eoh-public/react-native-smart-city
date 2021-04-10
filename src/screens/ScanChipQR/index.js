@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
-import QRScan from 'components/QRScan';
+import QRScan from '../../commons/QRScan';
 import { useChipScan } from './hooks';
 
 const ScanChipQR = memo(({ route }) => {

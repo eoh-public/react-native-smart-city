@@ -43,7 +43,7 @@ exports[`Test WaterQualityGuide render WaterQuality without showBoxHistory 1`] =
         ]
       }
     >
-      Hôm nay, 24th January
+      Hôm nay, 24 tháng 1
     </Text>
   </View>
   <Text
@@ -670,7 +670,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24th January
+        Hôm nay, 24 tháng 1
       </Text>
     </View>
     <Text

@@ -7,7 +7,6 @@ import { API } from '../../../configs';
 import { useSelector } from 'react-redux';
 import { act, create } from 'react-test-renderer';
 import Toast from 'react-native-toast-message';
-import { useIsFocused } from '@react-navigation/native';
 
 import Routes from '../../../utils/Route';
 import ManageSubUnit from '../ManageSubUnit';
@@ -59,7 +58,7 @@ describe('Test ManageSubUnit', () => {
           id: 2,
           name: 'Station name',
           background: '',
-          emergency_group: {
+          group: {
             id: 1,
           },
         },
@@ -111,12 +110,10 @@ describe('Test ManageSubUnit', () => {
         { name: 'route 3' },
       ],
     }));
-    useIsFocused.mockImplementation(() => true);
 
     act(() => {
       tree = create(<ManageSubUnit route={route} />);
     });
-    expect(axios.get).toHaveBeenCalled();
 
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);

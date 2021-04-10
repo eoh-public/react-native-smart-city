@@ -1,6 +1,6 @@
-import { Colors, Device } from 'configs';
+import { Colors, Device } from '../../configs';
 import { StyleSheet } from 'react-native';
-import { standardizeCameraScreenSize } from 'utils/Utils';
+import { standardizeCameraScreenSize } from '../../utils/Utils';
 
 const { standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32

@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { t } from 'i18n-js';
 
-import { API } from 'configs';
+import { API } from '../../../configs';
 import { axiosPost, axiosPut } from '../../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../../utils/Utils';
 import { useCountDown } from '../../../hooks/SmartParking';

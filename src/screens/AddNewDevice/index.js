@@ -3,13 +3,13 @@ import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 
-import { API, Colors } from 'configs';
-import { Section, ViewButtonBottom } from 'components/Common';
-import Text from 'components/Text';
-import GroupCheckBox from 'components/GroupCheckBox';
-import { axiosGet } from 'utils/Apis/axios';
-import Routes from 'utils/Route';
-import { TESTID } from 'configs/Constants';
+import { API, Colors } from '../../configs';
+import { Section, ViewButtonBottom } from '../../commons'; //components/Common
+import Text from '../../commons/Text';
+import GroupCheckBox from '../../commons/GroupCheckBox';
+import { axiosGet } from '../../utils/Apis/axios';
+import Routes from '../../utils/Route';
+import { TESTID } from '../../configs/Constants';
 
 const AddNewDevice = memo(({ route }) => {
   const { unit_id } = route.params;

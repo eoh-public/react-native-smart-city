@@ -275,7 +275,7 @@ describe('Test ItemQuickAction', () => {
   });
 
   test('listen to config value for update action', () => {
-    const globalStates = require('iot/states');
+    const globalStates = require('../../../iot/states');
     globalStates.useConfigGlobalState = () => [{ 51: true }, null];
 
     const mockSetStatus = jest.fn();
