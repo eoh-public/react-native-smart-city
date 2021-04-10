@@ -20,7 +20,6 @@ import TDSGuide from '../screens/TDSGuide';
 import WaterQualityGuide from '../screens/WaterQualityGuide';
 
 import _ from 'lodash';
-import Routes from '../utils/Route';
 
 const Stack = createStackNavigator();
 

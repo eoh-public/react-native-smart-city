@@ -54,6 +54,7 @@ const UnitDetail = ({ account, route }) => {
 
   const onExitApp = useCallback(() => {
     dispatch(exitApp(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchUnitSummary = useCallback(async () => {

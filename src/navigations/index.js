@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './utils';
@@ -93,6 +93,7 @@ const App = (props) => {
   useEffect(() => {
     dispatch(initAuth(props.auth?.account));
     setLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -102,6 +103,7 @@ const App = (props) => {
 
       dispatch(resetExitApp());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exitApp]);
 
   if (loading) {
