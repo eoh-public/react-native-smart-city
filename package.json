@@ -9,6 +9,8 @@
     "android",
     "index.js",
     "ios",
+    "src",
+    "assets",
     "react-native-smart-city.podspec"
   ],
   "scripts": {
