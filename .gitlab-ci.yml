@@ -57,7 +57,7 @@ release-patch:
   before_script:
     - git config --global user.email "bang@eoh.io"
     - git config --global user.name "Bang Dao"
-    - git remote add repo https://react-native-smart-city:$PROJECT_ACCESS_TOKEN@gitlab.com/eohio/react-native-smart-city.git
+    - git remote add repo https://react-native-smart-city:$PROJECT_ACCESS_TOKEN@gitlab.com/eohio/react-native-smart-city.git || echo "Good"
 
 
 release-minor:
@@ -87,7 +87,7 @@ publish-npm:
     - chmod 600 $GITHUB_DEPLOY_KEY
     - ssh-add $GITHUB_DEPLOY_KEY
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
-    - git remote add github git@github.com:eohjsc/react-native-smart-city.git
+    - git remote add github git@github.com:eohjsc/react-native-smart-city.git || echo "Good"
     - ssh -o StrictHostKeyChecking=no git@github.com || echo "Good"
     - git push -f github origin/master:master
     - npm publish
