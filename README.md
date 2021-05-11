@@ -2,16 +2,26 @@
 
 ## Getting started
 
-`$ npm install react-native-smart-city --save`
+`$ npm install @eohjsc/react-native-smart-city --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-smart-city`
+`$ react-native link @eohjsc/react-native-smart-city`
 
 ## Usage
 
 ```javascript
-import SmartHome from 'react-native-smart-city';
+import SmartHome, {
+  AddSubUnitStack,
+  EmergencyContactsStack,
+  AddMemberStack,
+  AddGatewayStack,
+  AddDeviceStack,
+  UnitStack,
+  AddUnitStack,
+  SharedStack,
+  Explore,
+} from '@eohjsc/react-native-smart-city';
 
 // TODO: What to do with the module?
 SmartHome;
