@@ -7,10 +7,10 @@ module.exports = {
   collectCoverage: true,
   coverageThreshold: {
     global: {
-      statements: 70.54,
+      statements: 70.21,
       branches: 63.6,
-      functions: 61.51,
-      lines: 71.28,
+      functions: 61.18,
+      lines: 70.94,
     },
   },
   modulePathIgnorePatterns: ['SampleProject'],
