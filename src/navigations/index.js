@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { navigationRef } from './utils';
 import { Alert } from '../commons';
 import Toast from 'react-native-toast-message';
 import { Colors } from '../configs';
-import Routes from '../utils/Route';
-import { UnitStack } from './UnitStack';
-import { AddGatewayStack } from './AddGatewayStack';
-import { AddDeviceStack } from './AddDeviceStack';
-import { AddMemberStack } from './AddMemberStack';
-import { AddSubUnitStack } from './AddSubUnitStack';
-import { EmergencyContactsStack } from './EmergencyContactsStack';
-import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { initAuth } from '../redux/Actions/auth';
 import { exitApp as resetExitApp } from '../redux/Actions/ui';
 import _ from 'lodash';
-
-const Stack = createStackNavigator();
 
 const toastConfig = {
   // only for error for now
