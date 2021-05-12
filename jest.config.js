@@ -10,7 +10,7 @@ module.exports = {
       statements: 70.36,
       branches: 63.58,
       functions: 61.58,
-      lines: 70.09,
+      lines: 71.09,
     },
   },
   modulePathIgnorePatterns: ['SampleProject'],
