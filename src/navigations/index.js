@@ -29,66 +29,11 @@ const toastConfig = {
   ),
 };
 
-const NavStack = ({ params }) => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: '#000',
-        headerBackTitle: true,
-        headerStyle: {
-          elevation: 0,
-          shadowRadius: 0,
-          shadowOffset: {
-            height: 0,
-          },
-          backgroundColor: Colors.Gray2,
-        },
-        headerLeftContainerStyle: {
-          marginLeft: 12,
-        },
-      }}
-    >
-      <Stack.Screen
-        name={Routes.UnitStack}
-        component={UnitStack}
-        initialParams={params}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={Routes.AddGatewayStack}
-        component={AddGatewayStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={Routes.AddDeviceStack}
-        component={AddDeviceStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={Routes.AddMemberStack}
-        component={AddMemberStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={Routes.AddSubUnitStack}
-        component={AddSubUnitStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={Routes.EmergencyContactsStack}
-        component={EmergencyContactsStack}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
-};
-
 const App = (props) => {
   const exitApp = useSelector((state) => state.ui.exitApp);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const params = _.get(props, 'params', null);
 
   useEffect(() => {
     dispatch(initAuth(props.auth?.account));
@@ -113,9 +58,9 @@ const App = (props) => {
   return (
     <>
       <StatusBar barStyle={'dark-content'} />
-      <NavigationContainer ref={navigationRef} independent={true}>
-        <NavStack params={_.get(props, 'params', null)} />
-      </NavigationContainer>
+      {React.isValidElement(props.children)
+        ? React.cloneElement(props.children, { params: params })
+        : props.children}
       <Alert ref={(ref) => Alert.setRef(ref)} />
       <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} />
     </>

@@ -26,7 +26,6 @@ module.exports = {
     'dotenv/config',
     './jest/setup.js',
     './jest/react-native-reanimated.setup.js',
-    './jest/react-native-stripe.setup.js',
     './node_modules/react-native-gesture-handler/jestSetup.js',
   ],
   setupFilesAfterEnv: ['./jest/test-setup.js'],

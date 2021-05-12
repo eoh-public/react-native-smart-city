@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@agaweb/react-native-stripe@^0.5.1":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@agaweb/react-native-stripe/-/react-native-stripe-0.5.2.tgz#74c7f733f0f3334c98dcad7af5a92fcb5a4bc28d"
-  integrity sha512-fjeXfw28Kxpwx9dbMvUKiTFCewSXwc7bzj5J2ymApb8duw5w0TxNr7SQHSTKtvztQpPPiDMGW0TP739MW9z1Kw==
-
 "@ant-design/icons-react-native@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@ant-design/icons-react-native/-/icons-react-native-2.2.1.tgz#0d21226fefa90471129dba864efb6c437627fb37"

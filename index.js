@@ -13,7 +13,7 @@ import { AddUnitStack } from './src/navigations/AddUnitStack';
 import SharedStack from './src/navigations/SharedStack';
 import Explore from './src/screens/Explore';
 
-const SmartHome = (props) => {
+const SmartCity = (props) => {
   return (
     <Provider store={store}>
       <App {...props} />
@@ -23,7 +23,7 @@ const SmartHome = (props) => {
 
 sagaMiddleware.run(sagas);
 
-export default SmartHome;
+export default SmartCity;
 
 export {
   AddSubUnitStack,

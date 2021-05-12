@@ -77,7 +77,6 @@ const Routes = {
   VehicleManagement: 'VehicleManagement',
   AddVehicle: 'AddVehicle',
   ProcessPayment: 'ProcessPayment',
-  StripeAddCard: 'StripeAddCard',
   ParkingInputManually: 'ParkingInputManually',
   SmartParkingNotificationCentre: 'SmartParkingNotificationCentre',
   SmartParkingNotificationDetail: 'SmartParkingNotificationDetail',
