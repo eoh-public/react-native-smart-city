@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import MapView, { Marker, Circle, PROVIDER_GOOGLE } from 'react-native-maps';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { useNavigation } from '@react-navigation/native';
-import t from 'i18n';
+import { t } from 'i18n-js';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';

@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@ant-design/react-native';
-import t from 'i18n';
+import { t } from 'i18n-js';
 
 import Shared from '../screens/SharedUnit';
 import { Colors } from '../configs';

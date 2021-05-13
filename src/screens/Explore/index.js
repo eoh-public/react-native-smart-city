@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
-import t from 'i18n';
+import { t } from 'i18n-js';
 
 import { API, Colors } from '../../configs';
 import { axiosGet } from '../../utils/Apis/axios';
