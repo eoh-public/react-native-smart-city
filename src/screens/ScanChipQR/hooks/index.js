@@ -5,7 +5,14 @@ import { axiosPost } from '../../../utils/Apis/axios';
 import Routes from '../../../utils/Route';
 
 const useChipScan = (route) => {
-  const { station_id, phoneNumber, chipName } = route.params;
+  const {
+    station_id,
+    phoneNumber,
+    chipName,
+    wifiName,
+    wifiPass,
+    imei,
+  } = route.params;
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
@@ -16,9 +23,13 @@ const useChipScan = (route) => {
       const { success, data: new_chip } = await axiosPost(
         API.SUB_UNIT.CHIP_SCAN(station_id),
         {
-          ...body,
+          imei: imei,
+          qr_code: body.imei,
           phone: phoneNumber,
           name: chipName,
+          wifi_ssid: wifiName,
+          wifi_pass: wifiPass,
+
         }
       );
       if (success) {
@@ -30,7 +41,16 @@ const useChipScan = (route) => {
         navigation.goBack();
       }
     },
-    [chipName, navigation, phoneNumber, route.params, station_id]
+    [
+      chipName,
+      imei,
+      navigation,
+      phoneNumber,
+      route.params,
+      station_id,
+      wifiName,
+      wifiPass,
+]
   );
 
   return {

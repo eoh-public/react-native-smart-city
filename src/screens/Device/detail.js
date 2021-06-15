@@ -6,16 +6,16 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
 import { t } from 'i18n-js';
 import moment from 'moment';
 
+import { useSCContextSelector } from '../../context';
 import { API, Colors, Device } from '../../configs';
 import { axiosGet } from '../../utils/Apis/axios';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
 import useTitleHeader from '../../hooks/Common/useTitleHeader';
-import { sendRemoteCommand } from '../../iot/RemoteControl';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
+import { sendRemoteCommand } from '../../iot/RemoteControl';
 
 import ActionGroup from '../../commons/ActionGroup';
 import { ConnectedViewHeader, DisconnectedView } from '../../commons/Device';
@@ -34,11 +34,11 @@ import {
   useAlertResolveEmergency,
   useEmergencyButton,
 } from './hooks/useEmergencyButton';
+import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
 import EmergencyDetail from '../../commons/Device/Emergency/EmergencyDetail';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import { get } from 'lodash';
-import { useSelector } from 'react-redux';
 
 import { transformDatetime } from '../../utils/Converter/time';
 import { IconFill } from '@ant-design/icons-react-native';
@@ -57,7 +57,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
 );
 
-const DeviceDetail = ({ account, route }) => {
+const DeviceDetail = ({ route }) => {
   const [display, setDisplay] = useState({ items: [] });
   const [displayValues, setDisplayValues] = useState([]);
   const [controlOptions, setControlOptions] = useState({
@@ -72,8 +72,8 @@ const DeviceDetail = ({ account, route }) => {
   const [maxValue, setMaxValue] = useState(60);
 
   const { unit, station, sensor, title } = route.params;
-
-  const currentUserId = useSelector((state) =>
+  const account = useSCContextSelector((state) => state.auth.account);
+  const currentUserId = useSCContextSelector((state) =>
     get(state, 'auth.account.user.id', 0)
   );
 
@@ -151,11 +151,14 @@ const DeviceDetail = ({ account, route }) => {
   const { countUpStr } = useCountUp(lastEvent.reportedAt);
 
   useEffect(() => {
+    if (unit.remote_control_options.googlehome) {
+      googleHomeConnect(unit.remote_control_options.googlehome);
+    }
     if (controlOptions.bluetooth) {
       const bluetooth = controlOptions.bluetooth;
       scanBluetoothDevices([bluetooth.address]);
     }
-  }, [controlOptions]);
+  }, [controlOptions, unit]);
 
   useEffect(() => {
     fetchDataDeviceDetail();
@@ -413,7 +416,6 @@ const SensorDisplayItem = ({ item, sensor, emergency, getData, maxValue }) => {
         <View style={styles.mediaContainer}>
           <MediaPlayer
             uri={item.configuration.uri}
-            previewUri={item.configuration.preview_uri}
             style={{ height: standardizeHeight }}
           />
         </View>
@@ -539,9 +541,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({
-  account: state.auth.account,
-});
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeviceDetail);
+export default DeviceDetail;

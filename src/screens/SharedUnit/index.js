@@ -2,7 +2,6 @@ import React, { useEffect, useCallback, useState, useMemo } from 'react';
 import { View, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
-import { useSelector } from 'react-redux';
 import { axiosGet } from '../../utils/Apis/axios';
 import { t } from 'i18n-js';
 
@@ -17,6 +16,7 @@ import {
 
 import styles from './styles';
 import TabHeader from './TabHeader';
+import { useSCContextSelector } from '../../context';
 
 const Shared = () => {
   useBlockBackAndroid();
@@ -63,7 +63,7 @@ const Shared = () => {
     [filterSharedUnits, setHideModal]
   );
 
-  const language = useSelector((state) => state.language);
+  const language = useSCContextSelector((state) => state.language);
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
 

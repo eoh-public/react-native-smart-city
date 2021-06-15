@@ -11,6 +11,10 @@ function booleanType(value) {
   return value === 'on';
 }
 
+function keepValue(value) {
+  return value;
+}
+
 const valueTypes = {
   boolean: booleanType,
 };
@@ -21,7 +25,7 @@ async function stateChangeCallback(event) {
   }
 
   const [configId, type] = configMaps[event.data.entity_id];
-  const typeConverter = valueTypes[type];
+  const typeConverter = valueTypes[type] || keepValue;;
 
   let configValues = getConfigGlobalState('configValues');
   configValues[configId] = typeConverter(event.data.new_state.state);
@@ -41,7 +45,7 @@ async function fetchConnectionEntities(connection) {
     }
 
     const [configId, type] = configMaps[entityId];
-    const typeConverter = valueTypes[type];
+    const typeConverter = valueTypes[type] || keepValue;;
 
     configValues[configId] = typeConverter(entity.state);
   }
@@ -57,6 +61,8 @@ export const googleHomeConnect = async (options) => {
       // skip connected
       return;
     }
+
+    connections[option.chip_id] = 0; // connecting
 
     option.config_maps.forEach((configMap) => {
       configMaps[configMap.entity_id] = [
@@ -80,7 +86,6 @@ export const googleHomeConnect = async (options) => {
 
     connections[option.chip_id] = connection;
     await fetchConnectionEntities(connection);
-    ToastBottomHelper.success(t('command_googlehome_ready'));
   }
 };
 

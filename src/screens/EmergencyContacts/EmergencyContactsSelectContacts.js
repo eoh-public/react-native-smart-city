@@ -9,7 +9,6 @@ import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { Colors, Theme } from '../../configs';
 import { TESTID } from '../../configs/Constants';
 // import { useDataMember } from 'containers/Sharing/hooks';
-// import { useSelector } from 'react-redux';
 
 const dataContact = [
   {

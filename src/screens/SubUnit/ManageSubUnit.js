@@ -1,12 +1,12 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Modal from 'react-native-modal';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { t } from 'i18n-js';
 
-import { Colors, API, Device, AppRNConfig } from '../../configs';
+import { Colors, API, Device } from '../../configs';
 import { ToastBottomHelper } from '../../utils/Utils';
 import {
   axiosPatch,
@@ -15,7 +15,6 @@ import {
 } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 import useBoolean from '../../hooks/Common/useBoolean';
-import { removeSubUnit, manageSubUnit } from '../../redux/Actions/unit';
 
 import { ImagePicker, Section } from '../../commons';
 import AlertAction from '../../commons/AlertAction';
@@ -28,8 +27,9 @@ import { useEmeragencyContacts } from './hooks/useEmergencyContacts';
 
 const ManageSubUnit = (props) => {
   const { station } = props.route.params;
-  const unit = useSelector((state) => state.unit.unitDetail);
-  const dispatch = useDispatch();
+  //TODO remove redux
+  // const unit = useSelector((state) => state.unit.unitDetail);
+  const unit = useMemo(() => {}, []);
   const navigation = useNavigation();
   const isFocused = useIsFocused();
   const [resourcePath, setResourcePath] = useState({ uri: station.background });
@@ -77,12 +77,12 @@ const ManageSubUnit = (props) => {
       );
 
       if (success) {
-        dispatch(manageSubUnit(station.id, data));
+        // dispatch(manageSubUnit(station.id, data));
         setNewName(data.name);
         ToastBottomHelper.success(t('text_rename_sub_unit_success'));
       }
     },
-    [unit, station, dispatch]
+    [unit, station]
   );
   const updateBackground = useCallback(
     async (headers) => {
@@ -93,11 +93,11 @@ const ManageSubUnit = (props) => {
         headers
       );
       if (success) {
-        dispatch(manageSubUnit(station.id, data));
+        //dispatch(manageSubUnit(station.id, data));
         ToastBottomHelper.success(t('text_change_background_sub_unit_success'));
       }
     },
-    [unit, station, dispatch, imageUrl]
+    [unit, station, imageUrl]
   );
 
   const onPressRemove = useCallback(() => {
@@ -114,13 +114,13 @@ const ManageSubUnit = (props) => {
       API.SUB_UNIT.REMOVE_SUB_UNIT(unit.id, station.id)
     );
     if (success) {
-      dispatch(removeSubUnit(station.id));
+      //dispatch(removeSubUnit(station.id));
       ToastBottomHelper.success(t('text_remove_sub_unit_success'));
       onBack();
     } else {
       ToastBottomHelper.error(t('text_remove_sub_unit_fail'));
     }
-  }, [unit, station, dispatch, onBack, setHideModalRemoveSubUnit]);
+  }, [unit, station, onBack, setHideModalRemoveSubUnit]);
 
   const goRename = useCallback(() => {
     updateSubUnit({ name: inputName }, {});
@@ -191,7 +191,7 @@ const ManageSubUnit = (props) => {
               />
             </TouchableOpacity>
           </View>
-          {AppRNConfig.EMERGENCY_BUTTON === '1' && group && (
+          {group && (
             <Section type={'border'}>
               <TouchableOpacity
                 style={styles.buttonContacts}

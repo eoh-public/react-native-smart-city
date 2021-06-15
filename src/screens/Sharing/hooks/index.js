@@ -1,17 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 
 import { API } from '../../../configs';
-import { removeSelfSuccess } from '../../../redux/Actions/dashboard';
 import Routes from '../../../utils/Route';
 import { axiosDelete, axiosGet } from '../../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../../utils/Utils';
 
 const useDataMember = (unitId) => {
   const { navigate, addListener } = useNavigation();
-  const dispatch = useDispatch();
   const [dataMembers, setDataMembers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isRefresh, setRefresh] = useState(false);
@@ -38,12 +35,11 @@ const useDataMember = (unitId) => {
   const leaveUnit = useCallback(
     (unitName) => async () => {
       await axiosDelete(API.SHARE.UNITS_MEMBER_DETAIL(unitId, 'me'));
-      dispatch(removeSelfSuccess(unitId));
       ToastBottomHelper.success(t('sharing_you_left', { name: unitName }));
       setDataMembers([]);
       navigate(Routes.Dashboard);
     },
-    [dispatch, navigate, unitId]
+    [navigate, unitId]
   );
 
   const onRefresh = useCallback(async () => {

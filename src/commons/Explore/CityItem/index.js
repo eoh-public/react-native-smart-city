@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { t } from 'i18n-js';
 
 import { Colors } from '../../../configs';
@@ -9,31 +8,27 @@ import { API } from '../../../configs';
 import Pin from '../../../../assets/images/Explore/Pin.svg';
 import Follower from '../../../../assets/images/Explore/Follower.svg';
 import PinOutline from '../../../../assets/images/Explore/PinOutline.svg';
-import {
-  pinPublicUnitSuccess,
-  unpinPublicUnitSuccess,
-} from '../../../redux/Actions/unit';
 import { formatNumberCompact } from '../../../utils/Utils';
 import { axiosPost } from '../../../utils/Apis/axios';
 
 const CityItem = memo(({ item, onSelect }) => {
   const { id, name, icon, is_pin, count_pin } = item;
 
-  const dispatch = useDispatch();
-
   const onPressPinPublicUnit = useCallback(async () => {
     const { success } = await axiosPost(API.UNIT.PIN_UNIT(id));
     if (success) {
-      dispatch(pinPublicUnitSuccess(id));
+      //TODO remove redux
+      //dispatch(pinPublicUnitSuccess(id));
     }
-  }, [dispatch, id]);
+  }, [id]);
 
   const onPressUnPinPublicUnit = useCallback(async () => {
     const { success } = await axiosPost(API.UNIT.UNPIN_UNIT(id));
     if (success) {
-      dispatch(unpinPublicUnitSuccess(id));
+      //TODO remove redux
+      //dispatch(unpinPublicUnitSuccess(id));
     }
-  }, [dispatch, id]);
+  }, [id]);
 
   return (
     <TouchableOpacity

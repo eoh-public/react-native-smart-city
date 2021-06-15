@@ -1,3 +1,5 @@
+/* eslint-disable promise/prefer-await-to-then */
+/* eslint-disable promise/prefer-await-to-callbacks */
 import { BLE } from '../../configs';
 import { t } from 'i18n-js';
 import base64 from 'react-native-base64';
@@ -43,7 +45,6 @@ const realScanBluetoothDevices = () => {
     return;
   }
 
-  // eslint-disable-next-line promise/prefer-await-to-callbacks
   bleManager.startDeviceScan(null, null, (error, device) => {
     if (error) {
       return;
@@ -93,27 +94,66 @@ export const sendCommandOverBluetooth = async (sensor, action) => {
   const bluetooth = sensor.remote_control_options.bluetooth;
   let device = null;
   if (bluetooth) {
-    device = bluetoothDevices[bluetooth.address];
+    device = getDeviceByName(bluetooth.address);
   }
 
+  await sendDataOverBluetooth(device, {
+    type: 'command',
+    command: action.key,
+    password: bluetooth ? bluetooth.password : '',
+  });
+};
+
+export const getDeviceByName = (name) => {
+  return bluetoothDevices[name];
+};
+
+export const subcribeCharacteristicNotify = async (device, onListener) => {
+  return await device.monitorCharacteristicForService(
+    BLE.BLE_REMOTE_SERVICE_UUID,
+    BLE.BLE_REMOTE_CHARACTERISTIC_UUID_TX,
+    onListener
+  );
+};
+
+export const readCharacteristic = async (device) => {
+  return await device.readCharacteristicForService(
+    BLE.BLE_REMOTE_SERVICE_UUID,
+    BLE.BLE_REMOTE_CHARACTERISTIC_UUID_RX
+  );
+};
+
+export const sendDataOverBluetooth = async (
+  device = null,
+  data,
+  keepConnect = false
+) => {
   if (!device) {
     throw SEND_COMMAND_OVER_BLUETOOTH_FAIL;
   }
 
   ToastBottomHelper.error(t('Sending command via bluetooth'));
 
+  let connectedDevice = null;
+  let fullDataDevice = null;
+
   try {
-    const connectedDevice = await device.connect();
-    const fullDataDevice = await connectedDevice.discoverAllServicesAndCharacteristics();
+    connectedDevice = await device.connect();
+    fullDataDevice = await connectedDevice.discoverAllServicesAndCharacteristics();
     await fullDataDevice.writeCharacteristicWithResponseForService(
       BLE.BLE_REMOTE_SERVICE_UUID,
       BLE.BLE_REMOTE_CHARACTERISTIC_UUID,
-      base64.encode(`${bluetooth.password}${action.key}`)
+      base64.encode(JSON.stringify(data))
     );
-    await device.cancelConnection();
     ToastBottomHelper.success(t('Command is sent to device via bluetooth'));
   } catch (e) {
     ToastBottomHelper.error(t('Command is fail to send via bluetooth'));
     throw SEND_COMMAND_OVER_BLUETOOTH_FAIL;
   }
+
+  if (keepConnect) {
+    return;
+  }
+
+  await device.cancelConnection();
 };

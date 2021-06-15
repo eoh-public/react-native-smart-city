@@ -41,7 +41,35 @@ const parseErrorResponse = (error) => {
   };
 };
 
+export async function axiosCache(URL) {
+  const cacheKey = `@CACHE_REQUEST_${URL}`;
+  const cachedData = await getData(cacheKey);
+  if (!cachedData) {
+    return null;
+  }
+
+  return {
+    success: true,
+    data: JSON.parse(cachedData),
+    cache: true,
+  };
+}
+
+export async function fetchWithCache(url, config = {}, updateMethod) {
+  const cacheResponse = await axiosCache(url);
+  try {
+    if (cacheResponse) {
+      updateMethod(cacheResponse);
+    }
+  } catch {}
+  const response = await axiosGet(url, config, true);
+  if (!response.cache) {
+    updateMethod(response);
+  }
+}
+
 export async function axiosGet(URL, config = {}, cache = false) {
+  const cacheKey = `@CACHE_REQUEST_${URL}`;
   let response;
   try {
     response = await axios.get(URL, config);
@@ -49,12 +77,9 @@ export async function axiosGet(URL, config = {}, cache = false) {
     if (cache) {
       // only network error or server error
       if (!error.response || error.response.status >= 500) {
-        return {
-          success: true,
-          data: JSON.parse(await getData(`@CACHE_REQUEST_${URL}`)),
-        };
+        return (await axiosCache(URL)) || parseErrorResponse(error);
       } else {
-        await deleteData(`@CACHE_REQUEST_${URL}`);
+        await deleteData(cacheKey);
       }
     }
     return parseErrorResponse(error);

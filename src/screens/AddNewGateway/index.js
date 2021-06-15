@@ -12,7 +12,7 @@ import Routes from '../../utils/Route';
 import { TESTID } from '../../configs/Constants';
 
 const AddNewGateway = memo(({ route }) => {
-  const { unit_id } = route.params;
+  const { unit_id, wifiName, wifiPass, imei } = route.params;
   const { navigate, goBack } = useNavigation();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [chipName, setChipName] = useState('');
@@ -42,8 +42,21 @@ const AddNewGateway = memo(({ route }) => {
         unit_name: unit.name,
         phoneNumber,
         chipName,
+        wifiName,
+        wifiPass,
+        imei,
       });
-  }, [chipName, navigate, phoneNumber, stationId, unit.id, unit.name]);
+  }, [
+    chipName,
+    imei,
+    navigate,
+    phoneNumber,
+    stationId,
+    unit.id,
+    unit.name,
+    wifiName,
+    wifiPass,
+]);
 
   const stations = unit.stations.map((item) => ({ ...item, title: item.name }));
 
@@ -104,6 +117,12 @@ const AddNewGateway = memo(({ route }) => {
             keyboardType={'num-pad'}
             onChangeText={onChangeChipName}
           />
+        </Section>
+        <Section type={'border'}>
+          <Text color={Colors.Primary}>{t('wifi_name')}</Text>
+          <Text>{wifiName}</Text>
+          <Text color={Colors.Primary}>{t('imei')}</Text>
+          <Text>{imei}</Text>
         </Section>
       </ScrollView>
       <ViewButtonBottom

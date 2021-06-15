@@ -1,5 +1,4 @@
-import { Platform, PixelRatio, Linking } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
+import { PixelRatio, Linking } from 'react-native';
 import Toast from 'react-native-toast-message';
 import validator from 'validator';
 import axios from 'axios';
@@ -23,18 +22,6 @@ export const deleteDefaultAuthToken = () => {
 
 export const validateEmail = (text) => {
   return validator.isEmail(text);
-};
-
-const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
-
-export const getCountryCodeForRegion = (regionCode) => {
-  return phoneUtil.getCountryCodeForRegion(regionCode); //ex: input: "VN" -> output: "84"
-};
-
-export const getDeviceId = () => {
-  return Platform.OS === 'ios'
-    ? DeviceInfo.getUniqueId()
-    : getUuid(DeviceInfo.getUniqueId());
 };
 
 export const isObjectEmpty = (obj) => {

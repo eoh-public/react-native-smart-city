@@ -1,16 +1,16 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { View, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
-import { useSelector } from 'react-redux';
 import { t } from 'i18n-js';
 
 import Text from '../../commons/Text';
 import { Colors, Theme } from '../../configs';
 import useTitleHeader from '../../hooks/Common/useTitleHeader';
 import { TESTID } from '../../configs/Constants';
+import { useSCContextSelector } from '../../context';
 
 const WaterQualityGuide = memo(({ route }) => {
   const { waterType } = route.params;
-  const language = useSelector((state) => state.language);
+  const language = useSCContextSelector((state) => state.language);
 
   const cloGuide = useMemo(
     () => ({

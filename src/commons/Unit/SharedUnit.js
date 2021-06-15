@@ -3,7 +3,7 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import { t } from 'i18n-js';
 import { IconOutline, IconFill } from '@ant-design/icons-react-native';
 
-import { API, Colors, Images } from 'configs';
+import { API, Colors, Images } from '../../configs';
 import Text from '../../commons/Text';
 import Routes from '../../utils/Route';
 import { axiosPost } from '../../utils/Apis/axios';

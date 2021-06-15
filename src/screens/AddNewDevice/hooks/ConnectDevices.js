@@ -38,7 +38,7 @@ const useConnectDevices = (new_sensor, station_id, unit_id) => {
     // eslint-disable-next-line no-unused-vars
     const { fetchSuccess, unit, station } = await fetchDetails();
 
-    if (!updateSuccess && !fetchSuccess) {
+    if (!updateSuccess || !fetchSuccess) {
       return;
     }
     navigation.dangerouslyGetParent().pop();

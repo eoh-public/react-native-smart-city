@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import {
   View,
   SafeAreaView,
@@ -7,23 +7,18 @@ import {
   FlatList,
 } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'i18n-js';
 
 import { API, Colors } from '../../configs';
 import { axiosGet } from '../../utils/Apis/axios';
 import { useBlockBackAndroid } from '../../hooks/Common';
 import useKeyboard from '../../hooks/Explore/useKeyboardAnimated';
-import {
-  fetchUnitsNearMe,
-  fetchUnitsPublicSuccess,
-  fetchUnitsPublicFail,
-} from '../../redux/Actions/unit';
 
 import HeaderExplore from '../../commons/Explore/HeaderExplore';
 import HeaderLabel from '../../commons/Explore/HeaderLabel';
 import LocationItem from '../../commons/Explore/LocationItem';
 import CityItem from '../../commons/Explore/CityItem';
+import { useSCContextSelector } from '../../context';
 
 navigator.geolocation = require('@react-native-community/geolocation');
 
@@ -37,49 +32,43 @@ const Explore = ({ navigation }) => {
     marginBottom: transY,
   };
 
-  const dispatch = useDispatch();
+  useSCContextSelector((state) => state.language);
 
-  useSelector((state) => state.language.currentLanguage);
-  const unitsNearMe = useSelector((state) => state.unit.unitsNearMe);
-  const unitsPublic = useSelector(
-    (state) =>
-      state.unit.unitsPublic.sort(
-        (a, b) => b.is_pin - a.is_pin || b.count_pin - a.count_pin
-      ) || []
-  );
+  //TODO remove redux
+  const unitsNearMe = useMemo(() => [], []);
+  const unitsPublic = [];
   const [onEndReached, setOnEndReached] = useState(true);
-  const maxPageUnitPublic = useSelector(
-    (state) => state.unit.maxPageUnitPublic
-  );
+  const maxPageUnitPublic = 1;
+  // const maxPageUnitPublic = useSelector(
+  //   (state) => state.unit.maxPageUnitPublic
+  // );
   const [coords, setCoords] = useState({ lat: null, lon: null });
 
-  const fetchUnitsPublic = useCallback(
-    async (pageId) => {
-      const { success, data } = await axiosGet(API.UNIT.UNITS_PUBLIC, {
-        params: { page: pageId },
-      });
-      if (success) {
-        dispatch(fetchUnitsPublicSuccess(data));
-      } else {
-        dispatch(fetchUnitsPublicFail());
-      }
-    },
-    [dispatch]
-  );
+  const fetchUnitsPublic = useCallback(async (pageId) => {
+    const { success, data } = await axiosGet(API.UNIT.UNITS_PUBLIC, {
+      params: { page: pageId },
+    });
+    if (success) {
+      //dispatch(fetchUnitsPublicSuccess(data));
+    } else {
+      //dispatch(fetchUnitsPublicFail());
+    }
+  }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const currentLongitude = position.coords.longitude;
         const currentLatitude = position.coords.latitude;
-        dispatch(fetchUnitsNearMe(currentLatitude, currentLongitude, 1));
+        //TODO fetch unit near me
+        // dispatch(fetchUnitsNearMe(currentLatitude, currentLongitude, 1));
         setCoords({ lat: currentLatitude, lon: currentLongitude });
       },
       // eslint-disable-next-line promise/prefer-await-to-callbacks
       (error) => {}
     );
     fetchUnitsPublic(1);
-  }, [dispatch, fetchUnitsPublic]);
+  }, [fetchUnitsPublic]);
 
   const listHeader = useCallback(() => {
     return (

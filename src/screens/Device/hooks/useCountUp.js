@@ -17,9 +17,9 @@ export const useCountUp = (eventTime) => {
   }, [eventTime]);
 
   const diffSeconds = currentTime.diff(eventTime, 'seconds');
-  const seconds = diffSeconds % 60;
+  const seconds = diffSeconds > 0 ? diffSeconds % 60 : 0;
   const minutes = parseInt(diffSeconds / 60, 10) % 60;
-  const hours = parseInt(diffSeconds / (60 * 60), 10);
+  const hours = parseInt(diffSeconds / 3600, 10);
 
   const countUpStr = `${hours > 9 ? hours : `0${hours}`} : ${
     minutes > 9 ? minutes : `0${minutes}`

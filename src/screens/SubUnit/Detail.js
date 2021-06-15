@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { get } from 'lodash';
-import { useSelector } from 'react-redux';
 import { t } from 'i18n-js';
 
 import { Device, Colors, Theme } from '../../configs';
@@ -14,6 +13,7 @@ import ItemDevice from '../../commons/Device/ItemDevice';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 import MediaPlayer from '../../commons/MediaPlayer';
 import MenuActionMore from '../../commons/MenuActionMore';
+import { useSCContextSelector } from '../../context';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
@@ -21,7 +21,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 
 const SubUnitDetail = ({ route }) => {
   const { unit, station } = route.params;
-  const language = useSelector((state) => state.language);
+  const language = useSCContextSelector((state) => state.language);
   const navigation = useNavigation();
   const {
     childRef,
@@ -30,7 +30,7 @@ const SubUnitDetail = ({ route }) => {
     hidePopover,
   } = usePopover();
 
-  const currentUserId = useSelector((state) =>
+  const currentUserId = useSCContextSelector((state) =>
     get(state, 'auth.account.user.id', 0)
   );
 
@@ -40,17 +40,19 @@ const SubUnitDetail = ({ route }) => {
 
   useAndroidTranslucentStatusBar();
 
-  const arrStation = useSelector((state) => state.unit.unitDetail.stations);
+  // TODO remove redux
+  // const arrStation = useSelector((state) => state.unit.unitDetail.stations);
 
-  const checkID = useCallback(() => {
-    const result = arrStation.find((x) => x.id === station.id)
-      ? 'true'
-      : 'false';
-    return result;
-  }, [arrStation, station]);
-  const idExists = checkID();
-  const stationState =
-    idExists === 'true' ? arrStation.find((x) => x.id === station.id) : station;
+  // const checkID = useCallback(() => {
+  //   const result = arrStation.find((x) => x.id === station.id)
+  //     ? 'true'
+  //     : 'false';
+  //   return result;
+  // }, [arrStation, station]);
+  // const idExists = checkID();
+  // const stationState =
+  //   idExists === 'true' ? arrStation.find((x) => x.id === station.id) : station;
+  const stationState = station;
 
   const devices = stationState.sensors;
 
@@ -122,7 +124,6 @@ const SubUnitDetail = ({ route }) => {
               <MediaPlayer
                 uri={stationState.camera.uri}
                 key={`camera-${stationState.camera.id}`}
-                previewUri={stationState.camera.preview_uri}
               />
             </View>
           </>

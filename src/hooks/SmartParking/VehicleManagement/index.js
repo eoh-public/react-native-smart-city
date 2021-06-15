@@ -1,1 +1,0 @@
-export { useStateAlertRemove } from './useStateAlertRemove';

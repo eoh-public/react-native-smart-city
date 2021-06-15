@@ -5,8 +5,9 @@ import { IconFill } from '@ant-design/icons-react-native';
 import { watchMultiConfigs } from '../../iot/Monitor';
 import { sendRemoteCommand } from '../../iot/RemoteControl';
 import { useConfigGlobalState } from '../../iot/states';
+import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
 
-const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus }) => {
+const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus, unit }) => {
   const [isSendingCommand, setIsSendingCommand] = useState(false);
   const [action, setAction] = useState(sensor.action);
   // eslint-disable-next-line no-unused-vars
@@ -40,7 +41,10 @@ const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus }) => {
   );
 
   useEffect(() => {
-    sensor.quick_action && watchMultiConfigs([sensor.quick_action.config_id]);
+    if (unit.remote_control_options.googlehome) {
+      googleHomeConnect(unit.remote_control_options.googlehome);
+    }
+    sensor.quick_action && sensor.quick_action.config_id && watchMultiConfigs([sensor.quick_action.config_id]);
   }, [sensor.quick_action]);
 
   useEffect(() => {

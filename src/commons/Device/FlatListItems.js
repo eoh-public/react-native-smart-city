@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import QualityIndicatorItem from './WaterQualitySensor/QualityIndicatorsItem';
 import AlertStatusMachine from './WaterPurifierStatus/AlertStatusMachine';
@@ -6,7 +6,7 @@ import Modal from 'react-native-modal';
 import { useBoolean } from '../../hooks/Common';
 import Text from '../Text';
 import Routes from '../../utils/Route';
-import { IconOutline } from '@ant-design/icons-react-native';
+import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Colors, Constants } from '../../configs';
 import { t } from 'i18n-js';
 import { TESTID } from '../../configs/Constants';
@@ -18,7 +18,39 @@ const FlatListItems = memo(({ data, style, title, styleTitle }) => {
   const [showInfo, setShowInfo, setHideInfo] = useBoolean(false);
   const filtersNeedReplace = data.filter((item) => item.value <= 10);
 
+  const [viewFull, setViewFull] = useState(false);
   const isFilters = title === 'filters';
+
+  const getNElementData = useCallback(
+    (n) => {
+      return data ? data.slice(0, n) : data;
+    },
+    [data]
+  );
+
+  const renderFlatList = useCallback(() => {
+    let items = [];
+    if (data) {
+      if (isFilters) {
+        items = viewFull ? data : getNElementData(4);
+      } else {
+        items = data;
+      }
+    }
+    return items.map((item, index) => (
+      <QualityIndicatorItem
+        key={index.toString()}
+        standard={item.standard}
+        value={item.value}
+        measure={item.measure}
+        evaluate={item.evaluate}
+        style={styles.boxStatus}
+        descriptionScreen={Routes.TDSGuide}
+        type={title}
+      />
+    ));
+  }, [data, getNElementData, isFilters, title, viewFull]);
+
 
   return (
     <View style={style}>
@@ -46,21 +78,17 @@ const FlatListItems = memo(({ data, style, title, styleTitle }) => {
           icon={'warning'}
         />
       )}
-      <View style={styles.listBox}>
-        {data &&
-          data.map((item, index) => (
-            <QualityIndicatorItem
-              key={index.toString()}
-              standard={item.standard}
-              value={item.value}
-              measure={item.measure}
-              evaluate={item.evaluate}
-              style={styles.boxStatus}
-              descriptionScreen={Routes.TDSGuide}
-              type={title}
-            />
-          ))}
-      </View>
+      <View style={styles.listBox}>{renderFlatList()}</View>
+
+      {isFilters && !viewFull && (
+        <TouchableOpacity
+          style={styles.viewMore}
+          onPress={() => setViewFull(true)}
+        >
+          <Text style={styles.textSeeMore}>{t('see_more')}</Text>
+          <IconFill name={'caret-down'} color={Colors.Gray8} size={16} />
+        </TouchableOpacity>
+      )}
 
       <Modal
         isVisible={showInfo}
@@ -136,5 +164,18 @@ const styles = StyleSheet.create({
   },
   iconInfo: {
     paddingHorizontal: 10,
+  },
+  viewMore: {
+    top: 20,
+    paddingVertical: 5,
+    borderColor: Colors.Gray5,
+    borderWidth: 1,
+    marginRight: 15,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textSeeMore: {
+    paddingRight: 5,
   },
 });

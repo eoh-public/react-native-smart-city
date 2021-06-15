@@ -35,7 +35,6 @@ const EmergencyDetail = memo(({ item }) => {
         <Text type="H4">{t('camera')}</Text>
         <MediaPlayer
           uri={_.get(item, 'configuration.uri', '')}
-          previewUri={_.get(item, 'configuration.preview_uri', '')}
           style={styles.camera}
         />
       </View>

@@ -31,71 +31,71 @@ const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
   const volt1Item = {
     color: Colors.Red6,
     standard: 'Voltage 1',
-    value: volt1Value !== undefined ? volt1Value : t('loading'),
+    value: volt1Value,
     measure: '',
   };
   const volt2Item = {
     color: Colors.Red6,
     standard: 'Voltage 2',
-    value: volt2Value !== undefined ? volt2Value : t('loading'),
+    value: volt2Value,
     measure: '',
   };
   const volt3Item = {
     color: Colors.Red6,
     standard: 'Voltage 3',
-    value: volt2Value !== undefined ? volt2Value : t('loading'),
+    value: volt2Value,
     measure: '',
   };
 
   const current1Item = {
     color: Colors.Blue10,
     standard: 'Current 1',
-    value: current1Value !== undefined ? current1Value : t('loading'),
+    value: current1Value,
     measure: '',
   };
   const current2Item = {
     color: Colors.Blue10,
     standard: 'Current 2',
-    value: current2Value !== undefined ? current2Value : t('loading'),
+    value: current2Value,
     measure: '',
   };
   const current3Item = {
     color: Colors.Blue10,
     standard: 'Current 3',
-    value: current3Value !== undefined ? current3Value : t('loading'),
+    value: current3Value,
     measure: '',
   };
 
   const activeItem = {
     color: Colors.Orange,
     standard: 'Active Power',
-    value: activePowerValue !== undefined ? activePowerValue : t('loading'),
+    value: activePowerValue,
     measure: '',
   };
 
   const powerFactor1Item = {
     color: Colors.Green6,
     standard: 'Power Factor 1',
-    value: powerFactor1Value !== undefined ? powerFactor1Value : t('loading'),
+    value: powerFactor1Value,
     measure: '',
   };
   const powerFactor2Item = {
     color: Colors.Green6,
     standard: 'Power Factor 2',
-    value: powerFactor2Value !== undefined ? powerFactor2Value : t('loading'),
+    value: powerFactor2Value,
     measure: '',
   };
   const powerFactor3Item = {
     color: Colors.Green6,
     standard: 'Power Factor 3',
-    value: powerFactor3Value !== undefined ? powerFactor3Value : t('loading'),
+    value: powerFactor3Value,
     measure: '',
   };
 
   const totalPower = {
     color: Colors.Green7,
     standard: 'Total Power Consumption',
-    value: totalPowerValue !== undefined ? totalPowerValue : t('loading'),
+    value: totalPowerValue,
     measure: '',
   };
 
