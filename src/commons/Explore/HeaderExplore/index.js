@@ -1,14 +1,14 @@
 import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
 import { t } from 'i18n-js';
 import Theme from '../../../configs/Theme';
 
 import { Colors } from '../../../configs';
 import Text from '../../../commons/Text';
+import { useSCContextSelector } from '../../../context';
 
 const HeaderExplore = memo(() => {
-  useSelector((state) => state.language.currentLanguage);
+  useSCContextSelector((state) => state.language);
   return (
     <View style={styles.container}>
       <Text size={20} semibold={true} style={styles.textTitle}>

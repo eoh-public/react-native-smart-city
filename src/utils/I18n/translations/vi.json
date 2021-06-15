@@ -651,5 +651,12 @@
   "add_new_gateway": "Thêm gateway",
   "chip_name": "Tên chip",
   "connecting_your_gateway": "Đang kết nối gateway...",
+  "please_select_a_wifi_network": "Vui lòng chọn mạng Wi-Fi và nhập mật khẩu",
+  "wifi_name": "Tên Wi-Fi",
+  "password": "Mật khẩu",
+  "wifi": "Wifi",
+  "could_not_connect_to_network": "Không thể kết nối với mạng. Vui lòng thử lại.",
+  "imei": "Imei",
+  "push_and_wait_chip_response": "Đã gửi và đợi phản hồi của chip",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

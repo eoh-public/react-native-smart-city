@@ -1,6 +1,4 @@
-import Config from 'react-native-config';
-
-const API_ROOT = Config.API_ROOT;
+const API_ROOT = 'https://backend.eoh.io/api';
 
 const API = {
   AUTH: {

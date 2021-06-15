@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  Image,
 } from 'react-native';
 import Routes from '../../utils/Route';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
@@ -13,10 +14,6 @@ import Text from '../../commons/Text';
 
 import { Colors, Constants } from '../../configs';
 import { TESTID } from '../../configs/Constants';
-import BarrierIcon from '../../../assets/images/Device/barrier.svg';
-import SvgDoor from '../../../assets/images/Device/door.svg';
-import SvgEmergency from '../../../assets/images/Device/emergency.svg';
-import SensorIcon from '../../../assets/images/Device/sensor.svg';
 
 const marginItem = 12;
 const marginHorizontal = 16;
@@ -36,24 +33,12 @@ const ItemDevice = ({ svgMain, description, title, sensor, unit, station }) => {
   }, [navigation, sensor, station, title, unit]);
 
   const displayIconSensor = () => {
-    switch (svgMain) {
-      case 'door':
-        return <SvgDoor />;
-      case 'sensor':
-        return <SensorIcon />;
-      case 'barrier':
-        return <BarrierIcon />;
-      case 'emergency':
-        return <SvgEmergency />;
-
-      // TODO temporarily, will update w backend
-      case 'alert-connected':
-        return <IconFill name="alert" size={32} color={Colors.Red6} />;
-      case 'alert-disconnected':
-        return <IconFill name="alert" size={32} color={Colors.Gray6} />;
-      default:
-        return <SensorIcon />;
-    }
+    const iconKit = sensor.icon_kit;
+      return iconKit ? (
+        <Image source={{ uri: iconKit }} style={styles.iconSensor} />
+      ) : (
+        <IconFill name={svgMain} size={32} color={Colors.Red6} />
+      );
   };
 
   return (
@@ -63,7 +48,7 @@ const ItemDevice = ({ svgMain, description, title, sensor, unit, station }) => {
           <TouchableOpacity onPress={goToSensorDisplay}>
             {displayIconSensor()}
           </TouchableOpacity>
-          <ItemQuickAction sensor={sensor} />
+          <ItemQuickAction sensor={sensor} unit={unit} />
         </View>
         <TouchableOpacity onPress={goToSensorDisplay}>
           <Text
@@ -116,7 +101,6 @@ const styles = StyleSheet.create({
   boxIcon: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
   },
   descriptionContainer: {
     flexDirection: 'row',
@@ -128,5 +112,10 @@ const styles = StyleSheet.create({
   },
   lineHeight20: {
     lineHeight: 20,
+  },
+  iconSensor: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
   },
 });

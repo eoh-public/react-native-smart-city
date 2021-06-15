@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { useNavigation } from '@react-navigation/native';
-import { connect } from 'react-redux';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -19,9 +18,11 @@ import { useIsOwnerOfUnit } from '../../hooks/Common';
 
 import { useDataMember, useStateAlertAction } from './hooks';
 import { TESTID } from '../../configs/Constants';
+import { useSCContextSelector } from '../../context';
 
-const MemberList = ({ route, account }) => {
+const MemberList = ({ route }) => {
   const { navigate } = useNavigation();
+  const account = useSCContextSelector((state) => state.auth.account);
   const { unitId, unit } = route.params;
   const {
     dataMembers,
@@ -114,10 +115,7 @@ const MemberList = ({ route, account }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  account: state.auth.account,
-});
-export default connect(mapStateToProps, {})(MemberList);
+export default MemberList;
 
 const styles = StyleSheet.create({
   container: {

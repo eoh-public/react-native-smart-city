@@ -36,8 +36,10 @@ const ShortDetailSubUnit = ({ unit, station }) => {
         >
           <MediaPlayer
             uri={station.camera.uri}
+            thumbnail={{
+              uri: station.background,
+            }}
             key={`camera-${station.camera.id}`}
-            previewUri={station.camera.preview_uri}
           />
         </View>
       );

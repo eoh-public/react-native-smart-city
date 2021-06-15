@@ -6,16 +6,11 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
 import Modal from 'react-native-modal';
 import Animated from 'react-native-reanimated';
 import { t } from 'i18n-js';
 
 import { Colors, API, Device } from '../../../configs';
-import {
-  deleteUnitSuccess,
-  manageUnitSuccess,
-} from '../../../redux/Actions/dashboard';
 import Routes from '../../../utils/Route';
 import { ToastBottomHelper } from '../../../utils/Utils';
 import {
@@ -46,7 +41,6 @@ const ManageUnit = ({ route }) => {
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
   const [showEdit, setshowEdit, setHideEdit] = useBoolean();
   const [unitName, setUnitName] = useState(unit.name);
-  const dispatch = useDispatch();
   const [imageUrl, setImageUrl] = useState('');
   const [showImagePicker, setShowImagePicker] = useState(false);
 
@@ -54,17 +48,16 @@ const ManageUnit = ({ route }) => {
     async (headers) => {
       const formData = createFormData(imageUrl, ['background']);
 
-      const { success, data } = await axiosPatch(
+      const { success } = await axiosPatch(
         API.UNIT.MANAGE_UNIT(unit.id),
         formData,
         headers
       );
       if (success) {
-        dispatch(manageUnitSuccess(unit.id, data));
         ToastBottomHelper.success(t('unit_updated_successfully'));
       }
     },
-    [unit.id, dispatch, imageUrl]
+    [unit.id, imageUrl]
   );
 
   const goRename = useCallback(async () => {
@@ -88,12 +81,11 @@ const ManageUnit = ({ route }) => {
   const goRemove = useCallback(async () => {
     const { success } = await axiosDelete(API.UNIT.MANAGE_UNIT(unit.id));
     if (success) {
-      dispatch(deleteUnitSuccess(unit.id));
       setHideEdit(true);
       ToastBottomHelper.success(t('unit_deleted_successfully'));
       navigate(Routes.Dashboard);
     }
-  }, [unit.id, dispatch, setHideEdit]);
+  }, [unit.id, setHideEdit]);
 
   const [transY] = useKeyboardAnimated(-16);
   const animatedStyle = Platform.select({
@@ -203,18 +195,8 @@ const ManageUnit = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.Gray2,
-  },
   wraper: {
     flex: 1,
-  },
-  title: {
-    paddingLeft: 22,
-    fontSize: 24,
-    lineHeight: 32,
-    marginBottom: 16,
   },
   textWraper: {
     paddingTop: 16,
@@ -297,13 +279,6 @@ const styles = StyleSheet.create({
   },
   textInputWrapStyle: {
     marginTop: 0,
-  },
-  buttonContacts: {
-    marginTop: 8,
-    flexDirection: 'row',
-    paddingBottom: 20,
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 });
 

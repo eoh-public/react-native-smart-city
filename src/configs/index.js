@@ -1,4 +1,3 @@
-import AppRNConfig from 'react-native-config';
 import API from './API';
 import { Colors } from './Colors';
 import { Constants } from './Constants';
@@ -18,5 +17,4 @@ export {
   Images,
   Device,
   Fonts,
-  AppRNConfig,
 };

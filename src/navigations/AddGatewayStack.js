@@ -6,6 +6,7 @@ import ScanChipQR from '../screens/ScanChipQR';
 import Route from '../utils/Route';
 import ConnectedGateway from '../screens/AddNewGateway/ConnectedGateway';
 import ConnectingGateway from '../screens/AddNewGateway/ConnectingGateway';
+import SetupGatewayWifi from '../screens/AddNewGateway/SetupGatewayWifi';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,10 @@ export const AddGatewayStack = memo(() => {
         headerShown: false,
       }}
     >
+      <Stack.Screen
+        name={Route.SetupGatewayWifi}
+        component={SetupGatewayWifi}
+      />
       <Stack.Screen name={Route.AddNewGateway} component={AddNewGateway} />
       <Stack.Screen name={Route.ScanChipQR} component={ScanChipQR} />
       <Stack.Screen

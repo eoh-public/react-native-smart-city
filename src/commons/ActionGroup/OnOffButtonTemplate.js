@@ -13,17 +13,16 @@ const OnOffButtonTemplate = ({ actionGroup, doAction }) => {
   const [isOn, setIsOn] = useState(true);
   // eslint-disable-next-line no-unused-vars
   const [configValues, _] = useConfigGlobalState('configValues');
-  const triggerAction = useCallback(
-    (value) => {
-      if (isOn) {
-        doAction(configuration.action_off_data);
-      } else {
-        doAction(configuration.action_on_data);
-      }
-      configuration.config && watchMultiConfigs([configuration.config]);
-    },
-    [configuration, doAction, isOn]
-  );
+
+  const triggerAction = useCallback(() => {
+    if (isOn) {
+      doAction(configuration.action_off_data);
+    } else {
+      doAction(configuration.action_on_data);
+    }
+    configuration.config && watchMultiConfigs([configuration.config]);
+  }, [configuration, doAction, isOn]);
+
 
   useEffect(() => {
     const configValue = configValues[configuration.config];

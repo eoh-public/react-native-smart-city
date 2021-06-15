@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import { useSelector } from 'react-redux';
 import { t } from 'i18n-js';
 
 import { Colors, Theme } from '../../configs';
@@ -19,10 +18,11 @@ import SvgMeh from '../../../assets/images/Feeling/meh.svg';
 import SvgFrown from '../../../assets/images/Feeling/frown.svg';
 import SvgTired from '../../../assets/images/Feeling/tired.svg';
 import SvgVeryTired from '../../../assets/images/Feeling/very-tired.svg';
+import { useSCContextSelector } from '../../context';
 
 const AQIGuide = memo(() => {
   useTitleHeader(t('AQI Guide'));
-  const language = useSelector((state) => state.language);
+  const language = useSCContextSelector((state) => state.language);
 
   const data = useMemo(
     () => ({

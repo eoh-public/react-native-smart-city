@@ -8,7 +8,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
 import { t } from 'i18n-js';
 
 import { API, Colors, Theme } from '../../configs';
@@ -18,12 +17,10 @@ import _TextInput from '../../commons/Form/TextInput';
 import Routes from '../../utils/Route';
 import { axiosPost, createFormData } from '../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../utils/Utils';
-import { createSubUnit } from '../../redux/Actions/unit';
 import { TESTID } from '../../configs/Constants';
 
 const AddSubUnit = ({ route }) => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
   const { unit } = route.params;
   const [roomName, setRoomName] = useState('');
   const [wallpaper, setWallpaper] = useState('');
@@ -41,7 +38,8 @@ const AddSubUnit = ({ route }) => {
       }
     );
     if (success) {
-      dispatch(createSubUnit(data));
+      //TODO remove redux
+      //dispatch(createSubUnit(data));
       navigation.navigate(Routes.UnitStack, {
         screen: Routes.SubUnitDetail,
         params: {

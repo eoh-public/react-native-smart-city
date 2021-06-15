@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import HighchartsReactNative from '@highcharts/highcharts-react-native/src/HighchartsReactNative';
+// import HighchartsReactNative from '@highcharts/highcharts-react-native/src/HighchartsReactNative';
 
 import { Colors } from '../../configs';
 import { getMaxValueIndex } from '../../utils/chartHelper/getMaxValueIndex';
@@ -95,10 +95,10 @@ const HorizontalBarChart = memo(({ datas, unit }) => {
 
   return (
     <View style={[styles.container, { height: heightChart }]}>
-      <HighchartsReactNative
+      {/* <HighchartsReactNative
         styles={styles.chartStyle}
         options={chartOptions}
-      />
+      /> */}
     </View>
   );
 });

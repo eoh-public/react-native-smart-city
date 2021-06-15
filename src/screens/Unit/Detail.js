@@ -1,43 +1,36 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { setLoading, exitApp } from '../../redux/Actions/ui';
-import MenuActionAddnew from '../../commons/MenuActionAddnew';
-import MenuActionMore from '../../commons/MenuActionMore';
-import ShortDetailSubUnit from '../../commons/SubUnit/ShortDetail';
-
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import Text from '../../commons/Text';
-import UnitSummary from '../UnitSummary/components';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 
 import { API } from '../../configs';
-import { TESTID } from '../../configs/Constants';
 import {
   useAndroidTranslucentStatusBar,
   useBoolean,
   useIsOwnerOfUnit,
   usePopover,
+  useStatusBar,
 } from '../../hooks/Common';
 import { t } from 'i18n-js';
-import AddDeviceIcon from '../../../assets/images/Popover/Dashboard/AddDevice.svg';
-import AddMemberIcon from '../../../assets/images/Popover/Dashboard/AddMember.svg';
-import AddSubUnitIcon from '../../../assets/images/Popover/Dashboard/AddSubUnit.svg';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { AppState, RefreshControl, View } from 'react-native';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { axiosGet } from '../../utils/Apis/axios';
-import Routes from '../../utils/Route';
+import React, { useCallback, useEffect, useState } from 'react';
+import { AppState, RefreshControl, View, StatusBar } from 'react-native';
+import { fetchWithCache } from '../../utils/Apis/axios';
+import { useSCContextSelector } from '../../context';
 import styles from './styles';
+import AddMenu from './AddMenu';
+import MoreMenu from './MoreMenu';
+import Summaries from './Summaries';
+import Stations from './Stations';
 
-const UnitDetail = ({ account, route }) => {
+const UnitDetail = ({ route }) => {
   const { unitId, unitData } = route.params;
   const isFocused = useIsFocused();
-  const dispatch = useDispatch();
-  const [unitSummaries, setUnitSummaries] = useState([]);
-  const navigation = useNavigation();
-  const [unit, setUnit] = useState(unitData || {});
-  const [showAdd, setShowAdd, setHideAdd] = useBoolean();
+  const [unit, setUnit] = useState(unitData || { id: unitId });
   const [appState, setAppState] = useState(AppState.currentState);
+  const [showAdd, setShowAdd, setHideAdd] = useBoolean();
+  const { goBack } = useNavigation();
+
   const {
     childRef,
     showingPopover,
@@ -45,76 +38,34 @@ const UnitDetail = ({ account, route }) => {
     hidePopover,
   } = usePopover();
 
-  const language = useSelector((state) => state.language);
-
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
+  const { statusBar } = useStatusBar();
 
-  useAndroidTranslucentStatusBar();
-
-  const onExitApp = () => {
-    dispatch(exitApp(true));
-  };
-
-  const fetchUnitSummary = useCallback(async () => {
-    const { success, data } = await axiosGet(API.UNIT.UNIT_SUMMARY(unitId));
-    if (success && data.length) {
-      setUnitSummaries(data);
-    }
-    return success && data.length;
-  }, [setUnitSummaries, unitId]);
+  useAndroidTranslucentStatusBar(statusBar);
 
   const fetchDetails = useCallback(async () => {
-    const { success, data } = await axiosGet(
-      API.UNIT.UNIT_DETAIL(unitId),
-      {},
-      true
-    );
-    if (success) {
-      setUnit(data);
-    }
-    dispatch(setLoading(false));
-    return success;
-  }, [dispatch, setUnit, unitId]);
-
-  const hideAddModal = useCallback(() => {
-    setHideAdd(false);
-  }, [setHideAdd]);
+    await fetchWithCache(API.UNIT.UNIT_DETAIL(unitId), {}, (response) => {
+      const { success, data } = response;
+      if (success) {
+        setUnit(data);
+      }
+    });
+  }, [setUnit, unitId]);
 
   const onRefresh = useCallback(() => {
     fetchDetails();
-    fetchUnitSummary();
-  }, [fetchDetails, fetchUnitSummary]);
-
-  const onItemClick = useCallback(
-    ({ route: routeName, data }) => {
-      setHideAdd(true);
-      hidePopover();
-      routeName && navigation.navigate(routeName, data);
-    },
-    [setHideAdd, hidePopover, navigation]
-  );
-
-  const goToSummary = useCallback(
-    (summary) => {
-      navigation.navigate(Routes.UnitSummary, {
-        summary,
-        unit,
-      });
-    },
-    [navigation, unit]
-  );
+  }, [fetchDetails]);
 
   const handleAppStateChange = useCallback(
     (nextAppState) => {
       if (appState.match(/inactive|background/) && nextAppState === 'active') {
         fetchDetails();
-        fetchUnitSummary();
       }
       setAppState(nextAppState);
     },
-    [appState, fetchDetails, fetchUnitSummary]
+    [appState, fetchDetails]
   );
-
+  
   useEffect(() => {
     AppState.addEventListener('change', handleAppStateChange);
 
@@ -135,129 +86,10 @@ const UnitDetail = ({ account, route }) => {
   }, [unit]);
 
   useEffect(() => {
-    dispatch(setLoading(true));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (!isFocused) {
-      return;
+    if (isFocused) {
+      fetchDetails();
     }
-    let autoUpdate = setInterval(() => {
-      (async () => {
-        const success = await fetchUnitSummary();
-        if (!success) {
-          clearInterval(autoUpdate);
-        }
-      })();
-    }, 5000); // fetch each 5 second;
-
-    (async () => {
-      const success = await fetchUnitSummary();
-      if (!success) {
-        clearInterval(autoUpdate);
-      }
-    })();
-
-    if (!isFocused) {
-      clearInterval(autoUpdate);
-    }
-
-    return () => {
-      clearInterval(autoUpdate);
-    };
-  }, [fetchUnitSummary, unitId, isFocused]);
-
-  useEffect(() => {
-    fetchDetails();
-  }, [fetchDetails]);
-
-  const generateSummaries = () => {
-    const summaries = [];
-    for (let i = 0; i < unitSummaries.length / 2; i++) {
-      summaries.push(
-        <View style={styles.containerUnit} key={`${unit.id}-summary-${i}`}>
-          <UnitSummary
-            index={2 * i}
-            len={unitSummaries.length}
-            summary={unitSummaries[2 * i]}
-            goToSummary={goToSummary}
-          />
-          {unitSummaries[2 * i + 1] ? (
-            <UnitSummary
-              index={2 * i + 1}
-              len={unitSummaries.length}
-              summary={unitSummaries[2 * i + 1]}
-              goToSummary={goToSummary}
-            />
-          ) : (
-            <View style={styles.boxUnitEmpty} />
-          )}
-        </View>
-      );
-    }
-    return summaries;
-  };
-
-  const listItem = useMemo(() => {
-    return [
-      {
-        id: 1,
-        route: Routes.AddSubUnitStack,
-        text: t('sub_unit'),
-        image: <AddSubUnitIcon width={43} height={43} />,
-        data: { screen: Routes.AddSubUnit, params: { unit } },
-      },
-      {
-        id: 2,
-        route: Routes.AddDeviceStack,
-        text: t('device'),
-        image: <AddDeviceIcon width={43} height={43} />,
-        data: { screen: Routes.AddNewDevice, params: { unit_id: unit.id } },
-      },
-      {
-        id: 3,
-        route: Routes.AddMemberStack,
-        text: t('member'),
-        image: <AddMemberIcon width={43} height={43} />,
-        data: { screen: Routes.SharingSelectPermission, params: { unit } },
-      },
-      {
-        id: 4,
-        route: Routes.AddGatewayStack,
-        text: t('gateway'),
-        image: <AddDeviceIcon width={43} height={43} />, // TODO change icon
-        data: { screen: Routes.AddNewGateway, params: { unit_id: unit.id } },
-      },
-    ];
-  }, [unit]);
-
-  const listMenuItem = useMemo(() => {
-    const RouteManageUnit = {
-      route: Routes.ManageUnit,
-      text: t('manage_unit'),
-      data: { unitId: unit.id, unit },
-    };
-    const RouteUnitMemberList = {
-      route: Routes.UnitMemberList,
-      text: t('members'),
-      data: { unitId: unit.id, unit },
-    };
-    return isOwner
-      ? [RouteManageUnit, RouteUnitMemberList]
-      : [RouteUnitMemberList];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [unit, language, isOwner]);
-
-  const renderShortDetailSubUnit = (station) => {
-    return (
-      <ShortDetailSubUnit
-        unit={unit}
-        station={station}
-        key={`station-${station.id}`}
-      />
-    );
-  };
+  }, [fetchDetails, isFocused]);
 
   return (
     <WrapParallaxScrollView
@@ -271,25 +103,13 @@ const UnitDetail = ({ account, route }) => {
       onAdd={setShowAdd}
       onMore={showPopoverWithRef}
       hideRightPlus={!isOwner}
-      onBack={onExitApp}
     >
       <View style={styles.container}>
-        {!unitSummaries || !unitSummaries.length ? null : (
-          <View
-            style={styles.unitSummary}
-            testID={TESTID.UNIT_DETAIL_UNIT_SUMMARY_VIEW}
-          >
-            {generateSummaries()}
-          </View>
-        )}
+        <Summaries unit={unit} />
         <View style={styles.subUnitsHeading}>
           <Text style={styles.subUnitTitle}>{t('sub_unit')}</Text>
         </View>
-        {!!unit.stations && unit.stations.length > 0 && (
-          <View testID={TESTID.UNIT_DETAIL_STATION_LIST}>
-            {unit.stations.map((station) => renderShortDetailSubUnit(station))}
-          </View>
-        )}
+        <Stations unit={unit} />
 
         {!!unit.can_add && unit.stations.length === 0 && (
           <View style={styles.canAdd}>
@@ -298,27 +118,21 @@ const UnitDetail = ({ account, route }) => {
         )}
       </View>
 
-      <MenuActionAddnew
-        visible={showAdd}
-        hideModal={hideAddModal}
-        dataActions={listItem}
-        onItemClick={onItemClick}
+      <AddMenu
+        unit={unit}
+        afterItemClick={hidePopover}
+        showAdd={showAdd}
+        setHideAdd={setHideAdd}
       />
-
-      <MenuActionMore
-        isVisible={showingPopover}
-        hideMore={hidePopover}
-        listMenuItem={listMenuItem}
+      <MoreMenu
+        unit={unit}
+        hidePopover={hidePopover}
+        isOwner={isOwner}
         childRef={childRef}
-        onItemClick={onItemClick}
+        showingPopover={showingPopover}
       />
     </WrapParallaxScrollView>
   );
 };
 
-const mapStateToProps = (state) => ({
-  account: state.auth.account,
-});
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UnitDetail);
+export default UnitDetail;

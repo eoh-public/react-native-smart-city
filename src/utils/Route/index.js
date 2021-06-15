@@ -34,6 +34,7 @@ const Routes = {
   AQIGuide: 'AQIGuide',
   AddNewDevice: 'AddNewDevice',
   AddNewGateway: 'AddNewGateway',
+  SetupGatewayWifi: 'SetupGatewayWifi',
   ConnectingDevices: 'ConnectingDevices',
   ConnectingGateway: 'ConnectingGateway',
   ManageUnit: 'ManageUnit',

@@ -3,14 +3,14 @@ import { StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Colors, Device } from '../../configs';
 
-const useAndroidTranslucentStatusBar = () => {
+const useAndroidTranslucentStatusBar = (statusBar) => {
   const navigation = useNavigation();
 
   useEffect(() => {
     if (!Device.isIOS) {
       const unsubscribe = navigation.addListener('blur', () => {
         StatusBar.setTranslucent(false);
-        StatusBar.setBackgroundColor(Colors.White);
+        StatusBar.setBackgroundColor(statusBar.background);
       });
 
       return unsubscribe;

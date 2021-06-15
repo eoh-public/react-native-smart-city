@@ -5,7 +5,7 @@ import { axiosPost } from '../../utils/Apis/axios';
 import { API } from '../../configs';
 
 export const sendCommandOverInternet = async (sensor, action, source) => {
-  ToastBottomHelper.error(t('Sending command via internet'));
+  ToastBottomHelper.success(t('Sending command via internet'));
   const { success } = await axiosPost(API.SENSOR.QUICK_ACTION(sensor.id), {
     key: action.key,
     source,

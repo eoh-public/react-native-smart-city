@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-j';
+import { t } from 'i18n-js';
 
 import Text from '../../commons/Text';
 

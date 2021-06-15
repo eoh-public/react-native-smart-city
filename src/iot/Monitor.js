@@ -2,7 +2,6 @@ import { API } from '../configs';
 import { getConfigGlobalState, setConfigGlobalState } from './states';
 import _ from 'lodash';
 import Pusher from 'pusher-js/react-native';
-import Config from 'react-native-config';
 import { axiosPost } from '../utils/Apis/axios';
 
 Pusher.logToConsole = true;
@@ -10,8 +9,8 @@ let pusher = null;
 
 const getPusher = () => {
   if (!pusher) {
-    pusher = new Pusher(Config.PUSHER_APP_KEY, {
-      cluster: Config.PUSHER_APP_CLUSTER,
+    pusher = new Pusher('8557fcc63959f564f1aa', {
+      cluster: 'ap1',
       authorizer: function (channel, option) {
         return {
           // eslint-disable-next-line promise/prefer-await-to-callbacks
@@ -73,14 +72,28 @@ const unwatchConfig = (configId) => {
   }
 };
 
+let waitWatchConfigTimerId = null;
+let waitWatchConfigIds = [];
+
 export const watchMultiConfigs = async (configIds) => {
+  waitWatchConfigIds = waitWatchConfigIds.concat(configIds);
+  if (!waitWatchConfigTimerId) {
+    waitWatchConfigTimerId = setTimeout(async () => {
+      await realWatchMultiConfigs(waitWatchConfigIds);
+      waitWatchConfigIds = [];
+      clearTimeout(waitWatchConfigTimerId);
+      waitWatchConfigTimerId = 0;
+    }, 100);
+  }
+};
+
+export const realWatchMultiConfigs = async (configIds) => {
   const { success, data } = await axiosPost(
     API.IOT.CHIP_MANAGER.WATCH_CONFIGS,
     {
       configs: configIds,
     }
   );
-
   if (success) {
     const configValues = getConfigGlobalState('configValues');
     const newConfigValues = { ...configValues, ...data };

@@ -4,7 +4,7 @@ import { t } from 'i18n-js';
 import { API } from '../../../configs';
 import { axiosPost, axiosPut } from '../../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../../utils/Utils';
-import { useCountDown } from '../../../hooks/SmartParking';
+import { useCountDown } from '../../../hooks/EmergencyButton';
 
 const initTimeCountDown = 5;
 
@@ -26,7 +26,9 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
     });
     if (success) {
       setShowAlertConfirm(false);
-      setShowAlertSent(true);
+      setTimeout(() => {
+        setShowAlertSent(true);
+      }, 300);
       await fetchDataDeviceDetail();
     } else {
       setShowAlertConfirm(false);
@@ -111,8 +113,10 @@ export const useAlertResolveEmergency = (lastEvent, fetchDataDeviceDetail) => {
       API.EMERGENCY_BUTTON.RESOLVE(lastEvent.id)
     );
     if (success) {
-      setShowPopupResolveSuccess(true);
       hideAlertResolve();
+      setTimeout(() => {
+        setShowPopupResolveSuccess(true);
+      }, 300);
       fetchDataDeviceDetail();
     } else {
       hideAlertResolve();
