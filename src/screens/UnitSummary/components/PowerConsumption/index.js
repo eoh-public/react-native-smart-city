@@ -32,30 +32,35 @@ const PowerConsumption = memo(({ summaryDetail }) => {
   }, [listConfigs]);
 
   const voltItem = {
+    id: 1,
     color: Colors.Red6,
     standard: 'Voltage',
     value: voltValue !== undefined ? voltValue : t('loading'),
     measure: '',
   };
   const currentItem = {
+    id: 2,
     color: Colors.Blue10,
     standard: 'Current',
     value: currentValue !== undefined ? currentValue : t('loading'),
     measure: '',
   };
   const activeItem = {
+    id: 3,
     color: Colors.Orange,
     standard: 'Active Power',
     value: activePowerValue !== undefined ? activePowerValue : t('loading'),
     measure: '',
   };
   const powFactorItem = {
+    id: 4,
     color: Colors.Green6,
     standard: 'Power Factor',
     value: powerFactorValue !== undefined ? powerFactorValue : t('loading'),
     measure: '',
   };
   const totalPower = {
+    id: 5,
     color: Colors.Green7,
     standard: 'Total Power Consumption',
     value: totalPowerValue !== undefined ? totalPowerValue : t('loading'),

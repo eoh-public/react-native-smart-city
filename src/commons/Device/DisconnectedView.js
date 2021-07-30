@@ -28,7 +28,20 @@ const DeviceIcon = memo(({ sensor }) => {
   return <DoorIcon height={38} width={38} />;
 });
 
-const DisconnectedView = memo(({ sensor }) => (
+const DisplayTextDisconnected = memo(({ type }) => {
+  let text = '';
+  switch (type) {
+    case 'GoogleHome':
+      text = t('ggHomeDisconnected');
+      break;
+    default:
+      text = t('disconnected');
+      break;
+  }
+  return <Text style={styles.redStatus}>{text}</Text>;
+});
+
+const DisconnectedView = memo(({ sensor, type }) => (
   <View style={styles.statusContainer}>
     <CircleView size={80} backgroundColor={Colors.Gray3} style={styles.center}>
       <CircleView size={64} backgroundColor={Colors.BG} style={styles.center}>
@@ -37,7 +50,7 @@ const DisconnectedView = memo(({ sensor }) => (
     </CircleView>
     <View style={styles.connectStatus}>
       <WifiOffIcon width={16} height={16} />
-      <Text style={styles.redStatus}>{t('disconnected')}</Text>
+      <DisplayTextDisconnected type={type} />
     </View>
     <View style={styles.disconnectSuggestionContainer}>
       <View style={styles.row}>

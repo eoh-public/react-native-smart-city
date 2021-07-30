@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { act, create } from 'react-test-renderer';
-import OnOffButtonTemplate from '../OnOffButtonTemplate';
+import Index from '../OnOffTemplate';
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -52,7 +52,7 @@ describe('Test OneBigButtonTemplate', () => {
     const mockDoAction = jest.fn();
     act(() => {
       wrapper = create(
-        <OnOffButtonTemplate
+        <Index
           actionGroup={actionGroup}
           doAction={mockDoAction}
         />
@@ -79,7 +79,7 @@ describe('Test OneBigButtonTemplate', () => {
     const mockDoAction = jest.fn();
     act(() => {
       wrapper = create(
-        <OnOffButtonTemplate
+        <Index
           actionGroup={actionGroup}
           doAction={mockDoAction}
         />

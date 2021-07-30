@@ -40,15 +40,17 @@ export const EmergencyContactsList = ({ route }) => {
   }, [getListContacts, group, isFocused]);
 
   const handleRemove = useCallback(async () => {
-    const { success } = await axiosDelete(
+    const { success, message } = await axiosDelete(
       API.EMERGENCY_BUTTON.REMOVE_CONTACTS(stateAlertRemoveContact.member.id)
     );
     if (success) {
+      ToastBottomHelper.success(t('removed_successfully'));
       getListContacts(group.id);
-      hideAlertRemoveContact();
     } else {
       ToastBottomHelper.error(t('error_please_try_later'));
+      ToastBottomHelper.error(message);
     }
+    hideAlertRemoveContact();
   }, [stateAlertRemoveContact, getListContacts, group, hideAlertRemoveContact]);
 
   const onAddNew = useCallback(() => {
@@ -60,6 +62,11 @@ export const EmergencyContactsList = ({ route }) => {
     },
     [navigate]
   );
+
+  const onRefresh = useCallback(() => {
+    getListContacts(group.id);
+  }, [getListContacts, group]);
+
   const dataAddNewModal = [
     {
       id: 1,
@@ -81,7 +88,7 @@ export const EmergencyContactsList = ({ route }) => {
         title={t('emergency_contacts')}
         subTitle={t('emergency_contacts_hint')}
         loading={false}
-        //onRefresh={onRefresh}
+        onRefresh={onRefresh}
       >
         <Section type={'border'}>
           <RowUser

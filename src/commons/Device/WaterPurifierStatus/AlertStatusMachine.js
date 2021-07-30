@@ -12,7 +12,9 @@ const AlertStatusMachine = memo(({ message, style, icon }) => {
         color={style.borderColor}
         style={styles.iconAlert}
       />
-      <Text size={14}>{message}</Text>
+      <Text type="Body" size={14}>
+        {message}
+      </Text>
     </View>
   );
 });

@@ -5,8 +5,10 @@ import {
   Animated,
   View,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import { ActivityIndicator } from '@ant-design/react-native';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { Colors, Theme } from '../../configs';
 import HeaderAni, { heightHeader } from '../../commons/HeaderAni';
@@ -34,12 +36,6 @@ const WrapHeaderScrollable = memo(
       }
     }, [onLoadMore]);
 
-    const transformY = animatedScrollYValue.interpolate({
-      inputRange: [0, 44],
-      outputRange: [0, -44],
-      extrapolate: 'clamp',
-    });
-
     return (
       <SafeAreaView style={[styles.container, headerAniStyle]}>
         <HeaderAni
@@ -53,23 +49,27 @@ const WrapHeaderScrollable = memo(
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { y: animatedScrollYValue } } }],
             {
-              useNativeDriver: true,
+              useNativeDriver: false,
             }
           )}
-          style={[
-            styles.scrollView,
-            styleScrollView,
-            {
-              transform: [{ translateY: transformY }],
-            },
-          ]}
+          style={[styles.scrollView, styleScrollView]}
           contentContainerStyle={[
             styles.contentContainerStyle,
             contentContainerStyle && contentContainerStyle,
           ]}
           refreshControl={
-            <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+            <RefreshControl
+              refreshing={loading}
+              onRefresh={onRefresh}
+              progressViewOffset={heightHeader}
+            />
           }
+          contentInset={{
+            top: heightHeader - (isIphoneX() ? 32 : 0),
+          }}
+          contentOffset={{
+            y: -heightHeader,
+          }}
           showsVerticalScrollIndicator={false}
           onMomentumScrollEnd={loadMore}
         >
@@ -96,8 +96,10 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    paddingTop: 16,
-    marginBottom: -heightHeader,
+    paddingTop: Platform.select({
+      ios: 0,
+      android: heightHeader + 16,
+    }),
   },
   contentContainerStyle: {
     paddingBottom: heightHeader,

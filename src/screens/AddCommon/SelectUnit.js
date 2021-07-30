@@ -7,6 +7,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  StatusBar,
+  Platform,
 } from 'react-native';
 
 import { API, Colors } from '../../configs';
@@ -122,6 +124,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.Gray2,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   contentContainer: {
     flex: 1,

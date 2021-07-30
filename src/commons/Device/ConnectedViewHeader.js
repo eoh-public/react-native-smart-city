@@ -7,7 +7,20 @@ import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 import { timeDifference } from '../../utils/Converter/time';
 
-const ConnectedViewHeader = memo(({ lastUpdated }) => {
+const DisplayTextConnected = memo(({ type }) => {
+  let text = '';
+  switch (type) {
+    case 'GoogleHome':
+      text = t('ggHomeConnected');
+      break;
+    default:
+      text = t('connected');
+      break;
+  }
+  return <Text style={styles.greenStatus}>{text}</Text>;
+});
+
+const ConnectedViewHeader = memo(({ lastUpdated, type, isDisplayTime }) => {
   const lastUpdatedStr = lastUpdated
     ? timeDifference(new Date(), lastUpdated)
     : null;
@@ -15,9 +28,9 @@ const ConnectedViewHeader = memo(({ lastUpdated }) => {
     <View style={styles.statusContainer}>
       <View style={styles.connectStatus}>
         <IconOutline name={'wifi'} color={Colors.Green6} size={16} />
-        <Text style={styles.greenStatus}>{t('connected')}</Text>
+        <DisplayTextConnected type={type} />
       </View>
-      {lastUpdatedStr && (
+      {lastUpdatedStr && isDisplayTime && (
         <View>
           <Text color={Colors.Gray7} size={12} style={styles.txtLastUpdate}>
             {`${t('last_updated')} ${lastUpdatedStr}`}

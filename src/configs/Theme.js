@@ -15,15 +15,13 @@ export default StyleSheet.create({
   },
   shadow: Platform.select({
     ios: {
-      backgroundColor: 'white',
-      shadowColor: '#aaa',
-      shadowOffset: { width: 0, height: 0 },
-      shadowOpacity: 0.5,
-      shadowRadius: 5,
+      borderWidth: 1,
+      borderColor: Colors.Gray14,
+      elevation: 1,
     },
     android: {
       borderWidth: 1,
-      borderColor: '#eee',
+      borderColor: Colors.Gray14,
       elevation: 1,
     },
   }),

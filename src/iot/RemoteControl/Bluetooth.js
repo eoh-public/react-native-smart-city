@@ -90,7 +90,7 @@ const realScanBluetoothDevices = () => {
   }, 15000);
 };
 
-export const sendCommandOverBluetooth = async (sensor, action) => {
+export const sendCommandOverBluetooth = async (sensor, action, data) => {
   const bluetooth = sensor.remote_control_options.bluetooth;
   let device = null;
   if (bluetooth) {
@@ -101,6 +101,7 @@ export const sendCommandOverBluetooth = async (sensor, action) => {
     type: 'command',
     command: action.key,
     password: bluetooth ? bluetooth.password : '',
+    data,
   });
 };
 

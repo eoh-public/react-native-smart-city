@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Text from '../Text';
 import { Colors } from '../../configs';
 import { t } from 'i18n-js';
+import FImage from '../FImage';
 
 const FooterInfo = memo(({ data }) => {
   return (
@@ -11,7 +12,7 @@ const FooterInfo = memo(({ data }) => {
         <Text type="Label" color={Colors.Gray8}>
           {t('powered_by')}
         </Text>
-        <Image
+        <FImage
           source={{ uri: data.icon_powered_by }}
           style={styles.iconPoweredBy}
         />
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
   iconPoweredBy: {
     width: 120,
-    height: 48,
+    height: 65,
   },
   containerPoweredBy: {
     flexDirection: 'column',

@@ -1,22 +1,17 @@
-import { useNavigation, useIsFocused } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 import Text from '../../commons/Text';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 
 import { API } from '../../configs';
-import {
-  useAndroidTranslucentStatusBar,
-  useBoolean,
-  useIsOwnerOfUnit,
-  usePopover,
-  useStatusBar,
-} from '../../hooks/Common';
+import { useBoolean, useIsOwnerOfUnit, usePopover } from '../../hooks/Common';
 import { t } from 'i18n-js';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AppState, RefreshControl, View, StatusBar } from 'react-native';
+import { AppState, RefreshControl, View } from 'react-native';
 import { fetchWithCache } from '../../utils/Apis/axios';
 import { useSCContextSelector } from '../../context';
+import { mqttConnect } from '../../iot/RemoteControl/Mqtt';
 import styles from './styles';
 import AddMenu from './AddMenu';
 import MoreMenu from './MoreMenu';
@@ -29,7 +24,7 @@ const UnitDetail = ({ route }) => {
   const [unit, setUnit] = useState(unitData || { id: unitId });
   const [appState, setAppState] = useState(AppState.currentState);
   const [showAdd, setShowAdd, setHideAdd] = useBoolean();
-  const { goBack } = useNavigation();
+  const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
 
   const {
     childRef,
@@ -39,9 +34,6 @@ const UnitDetail = ({ route }) => {
   } = usePopover();
 
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
-  const { statusBar } = useStatusBar();
-
-  useAndroidTranslucentStatusBar(statusBar);
 
   const fetchDetails = useCallback(async () => {
     await fetchWithCache(API.UNIT.UNIT_DETAIL(unitId), {}, (response) => {
@@ -65,7 +57,7 @@ const UnitDetail = ({ route }) => {
     },
     [appState, fetchDetails]
   );
-  
+
   useEffect(() => {
     AppState.addEventListener('change', handleAppStateChange);
 
@@ -74,16 +66,24 @@ const UnitDetail = ({ route }) => {
     };
   }, [handleAppStateChange]);
 
+  const handleGoogleHomeConnect = useCallback(async (options) => {
+    let isConnected = await googleHomeConnect(options); // this may wrong if have multiple connection
+    setIsGGHomeConnected(isConnected);
+  }, []);
+
   useEffect(() => {
     if (unit.remote_control_options) {
       if (unit.remote_control_options.bluetooth) {
         scanBluetoothDevices(unit.remote_control_options.bluetooth);
       }
       if (unit.remote_control_options.googlehome) {
-        googleHomeConnect(unit.remote_control_options.googlehome);
+        handleGoogleHomeConnect(unit.remote_control_options.googlehome);
+      }
+      if (unit.remote_control_options.mqtt) {
+        mqttConnect(unit.remote_control_options.mqtt);
       }
     }
-  }, [unit]);
+  }, [handleGoogleHomeConnect, unit]);
 
   useEffect(() => {
     if (isFocused) {
@@ -109,7 +109,7 @@ const UnitDetail = ({ route }) => {
         <View style={styles.subUnitsHeading}>
           <Text style={styles.subUnitTitle}>{t('sub_unit')}</Text>
         </View>
-        <Stations unit={unit} />
+        <Stations unit={unit} isGGHomeConnected={isGGHomeConnected} />
 
         {!!unit.can_add && unit.stations.length === 0 && (
           <View style={styles.canAdd}>

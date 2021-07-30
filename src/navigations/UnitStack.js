@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { t } from 'i18n-js';
 import { Colors, Device } from '../configs';
 import Route from '../utils/Route';
+import ActivityLogScreen from '../screens/ActivityLog';
 
 import AQIGuide from '../screens/AQIGuide';
 import DeviceDetail from '../screens/Device/detail';
@@ -84,7 +85,11 @@ export const UnitStack = memo((props) => {
         name={Route.ManageSubUnit}
         component={ManageSubUnit}
       />
-      <Stack.Screen name={Route.DeviceDetail} component={DeviceDetail} />
+      <Stack.Screen
+        name={Route.DeviceDetail}
+        component={DeviceDetail}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name={Route.UVIndexGuide}
         component={UVIndexGuide}
@@ -111,6 +116,13 @@ export const UnitStack = memo((props) => {
         component={WaterQualityGuide}
         options={{
           title: t('water_quality_guide'),
+        }}
+      />
+      <Stack.Screen
+        name={Route.ActivityLog}
+        component={ActivityLogScreen}
+        options={{
+          headerShown: false,
         }}
       />
       <Stack.Screen

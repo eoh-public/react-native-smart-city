@@ -14,12 +14,18 @@ import { TESTID } from '../../configs/Constants';
 const marginHorizontal = 20;
 const widthItem = (Constants.width - marginHorizontal * 2) / 2;
 
-const FlatListItems = memo(({ data, style, title, styleTitle }) => {
+const FlatListItems = memo(({ data, style, title, offsetTitle }) => {
   const [showInfo, setShowInfo, setHideInfo] = useBoolean(false);
   const filtersNeedReplace = data.filter((item) => item.value <= 10);
 
   const [viewFull, setViewFull] = useState(false);
   const isFilters = title === 'filters';
+
+  const stylesOffset = StyleSheet.create({
+    moveUpOffset: {
+      bottom: offsetTitle * 50,
+    },
+  });
 
   const getNElementData = useCallback(
     (n) => {
@@ -39,7 +45,7 @@ const FlatListItems = memo(({ data, style, title, styleTitle }) => {
     }
     return items.map((item, index) => (
       <QualityIndicatorItem
-        key={index.toString()}
+        key={item.id.toString()}
         standard={item.standard}
         value={item.value}
         measure={item.measure}
@@ -51,10 +57,14 @@ const FlatListItems = memo(({ data, style, title, styleTitle }) => {
     ));
   }, [data, getNElementData, isFilters, title, viewFull]);
 
-
   return (
     <View style={style}>
-      <View style={[styles.titleFilter, !isFilters ? styleTitle : '']}>
+      <View
+        style={[
+          styles.titleFilter,
+          !isFilters ? stylesOffset.moveUpOffset : '',
+        ]}
+      >
         <Text size={20} semibold>
           {t(title)}
         </Text>

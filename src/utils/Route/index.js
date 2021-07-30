@@ -8,6 +8,7 @@ const Routes = {
   ForgotPassword: 'ForgotPassword',
   ResetPassword: 'ResetPassword',
   UnitStack: 'UnitStack',
+  ActivityLog: 'ActivityLog',
   AddSubUnitStack: 'AddSubUnitStack',
   AddDeviceStack: 'AddDeviceStack',
   AddMemberStack: 'AddMemberStack',

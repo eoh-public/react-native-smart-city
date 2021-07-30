@@ -1,10 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-  Image,
 } from 'react-native';
 import Routes from '../../utils/Route';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
@@ -14,69 +13,81 @@ import Text from '../../commons/Text';
 
 import { Colors, Constants } from '../../configs';
 import { TESTID } from '../../configs/Constants';
+import FImage from '../../commons/FImage';
 
 const marginItem = 12;
 const marginHorizontal = 16;
 const widthItem = (Constants.width - marginHorizontal * 2 - marginItem) / 2;
 const heightItem = (widthItem / 166) * 106;
 
-const ItemDevice = ({ svgMain, description, title, sensor, unit, station }) => {
-  const navigation = useNavigation();
+const ItemDevice = memo(
+  ({
+    svgMain,
+    description,
+    title,
+    sensor,
+    unit,
+    station,
+    isGGHomeConnected,
+  }) => {
+    const navigation = useNavigation();
 
-  const goToSensorDisplay = useCallback(() => {
-    navigation.navigate(Routes.DeviceDetail, {
-      unit,
-      station,
-      sensor,
-      title,
-    });
-  }, [navigation, sensor, station, title, unit]);
+    const goToSensorDisplay = useCallback(() => {
+      navigation.navigate(Routes.DeviceDetail, {
+        unit,
+        station,
+        sensor,
+        title,
+        isGGHomeConnected,
+      });
+    }, [navigation, sensor, station, title, unit, isGGHomeConnected]);
 
-  const displayIconSensor = () => {
-    const iconKit = sensor.icon_kit;
+    const displayIconSensor = () => {
+      const iconKit = sensor.icon_kit;
       return iconKit ? (
-        <Image source={{ uri: iconKit }} style={styles.iconSensor} />
+        <FImage source={{ uri: iconKit }} style={styles.iconSensor} />
       ) : (
         <IconFill name={svgMain} size={32} color={Colors.Red6} />
       );
-  };
+    };
 
-  return (
-    <TouchableWithoutFeedback onPress={goToSensorDisplay}>
-      <View style={styles.container} testID={TESTID.SUB_UNIT_DEVICES}>
-        <View style={styles.boxIcon}>
+    return (
+      <TouchableWithoutFeedback onPress={goToSensorDisplay}>
+        <View style={styles.container} testID={TESTID.SUB_UNIT_DEVICES}>
+          <View style={styles.boxIcon}>
+            <TouchableOpacity onPress={goToSensorDisplay}>
+              {displayIconSensor()}
+            </TouchableOpacity>
+            <ItemQuickAction sensor={sensor} unit={unit} />
+          </View>
           <TouchableOpacity onPress={goToSensorDisplay}>
-            {displayIconSensor()}
-          </TouchableOpacity>
-          <ItemQuickAction sensor={sensor} unit={unit} />
-        </View>
-        <TouchableOpacity onPress={goToSensorDisplay}>
-          <Text
-            numberOfLines={1}
-            semibold
-            size={14}
-            color={Colors.Gray9}
-            style={styles.lineHeight22}
-          >
-            {title}
-          </Text>
-          <View style={styles.descriptionContainer}>
             <Text
               numberOfLines={1}
               semibold
-              size={12}
-              color={Colors.Gray8}
-              style={styles.lineHeight20}
+              size={14}
+              color={Colors.Gray9}
+              style={styles.lineHeight22}
             >
-              {description}
+              {title}
             </Text>
-            <IconOutline name="right" size={12} />
-          </View>
-        </TouchableOpacity>
-      </View>
-    </TouchableWithoutFeedback>
-  );
-};
+            <View style={styles.descriptionContainer}>
+              <Text
+                numberOfLines={1}
+                semibold
+                size={12}
+                color={Colors.Gray8}
+                style={styles.lineHeight20}
+              >
+                {description}
+              </Text>
+              <IconOutline name="right" size={12} />
+            </View>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+);
 
 export default ItemDevice;
 

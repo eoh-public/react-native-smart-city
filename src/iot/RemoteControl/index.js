@@ -7,7 +7,7 @@ import { sendCommandOverGoogleHome } from './GoogleHome';
 import { ToastBottomHelper } from '../../utils/Utils';
 import { t } from 'i18n-js';
 
-export const sendRemoteCommand = async (sensor, action) => {
+export const sendRemoteCommand = async (sensor, action, data) => {
   // No action, raise not authorized
   if (!action) {
     ToastBottomHelper.error(
@@ -18,10 +18,10 @@ export const sendRemoteCommand = async (sensor, action) => {
 
   if (action.command_prefer_over_bluetooth) {
     try {
-      await sendCommandOverBluetooth(sensor, action);
+      await sendCommandOverBluetooth(sensor, action, data);
     } catch (err) {
       if (err === SEND_COMMAND_OVER_BLUETOOTH_FAIL) {
-        await sendCommandOverInternet(sensor, action, 'bluetooth');
+        await sendCommandOverInternet(sensor, action, data, 'bluetooth');
       } else {
         throw err;
       }
@@ -29,10 +29,10 @@ export const sendRemoteCommand = async (sensor, action) => {
   }
 
   if (action.command_prefer_over_internet) {
-    await sendCommandOverInternet(sensor, action, 'internet');
+    await sendCommandOverInternet(sensor, action, data, 'internet');
   }
 
   if (action.command_prefer_over_googlehome) {
-    await sendCommandOverGoogleHome(sensor, action);
+    await sendCommandOverGoogleHome(sensor, action, data);
   }
 };

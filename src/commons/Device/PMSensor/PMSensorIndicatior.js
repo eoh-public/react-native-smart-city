@@ -9,6 +9,7 @@ const PMSensorIndicatior = memo(({ data, style }) => {
     <View style={styles.standard}>
       {data.map((item) => (
         <QualityIndicatorItem
+          key={item.id.toString()}
           color={item.color}
           standard={item.standard}
           value={item.value}

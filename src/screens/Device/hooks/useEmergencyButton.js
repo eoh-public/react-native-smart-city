@@ -21,9 +21,12 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
   );
 
   const sendAlertNow = useCallback(async () => {
-    const { success } = await axiosPost(API.EMERGENCY_BUTTON.SEND_ALERT, {
-      device: deviceId,
-    });
+    const { success, message } = await axiosPost(
+      API.EMERGENCY_BUTTON.SEND_ALERT,
+      {
+        device: deviceId,
+      }
+    );
     if (success) {
       setShowAlertConfirm(false);
       setTimeout(() => {
@@ -32,7 +35,7 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
       await fetchDataDeviceDetail();
     } else {
       setShowAlertConfirm(false);
-      ToastBottomHelper.error(t('alert_send_error'));
+      ToastBottomHelper.error(message);
     }
     clearTimeout(timeoutEmergencyId);
   }, [deviceId, fetchDataDeviceDetail, timeoutEmergencyId]);

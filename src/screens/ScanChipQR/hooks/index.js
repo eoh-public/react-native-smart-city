@@ -6,7 +6,8 @@ import Routes from '../../../utils/Route';
 
 const useChipScan = (route) => {
   const {
-    station_id,
+    unit_id,
+    stationName,
     phoneNumber,
     chipName,
     wifiName,
@@ -21,15 +22,15 @@ const useChipScan = (route) => {
       setLoading(true);
       const body = JSON.parse(data);
       const { success, data: new_chip } = await axiosPost(
-        API.SUB_UNIT.CHIP_SCAN(station_id),
+        API.UNIT.CHIP_SCAN(unit_id),
         {
           imei: imei,
           qr_code: body.imei,
           phone: phoneNumber,
           name: chipName,
+          station_name: stationName,
           wifi_ssid: wifiName,
           wifi_pass: wifiPass,
-
         }
       );
       if (success) {
@@ -47,10 +48,11 @@ const useChipScan = (route) => {
       navigation,
       phoneNumber,
       route.params,
-      station_id,
+      stationName,
+      unit_id,
       wifiName,
       wifiPass,
-]
+    ]
   );
 
   return {
