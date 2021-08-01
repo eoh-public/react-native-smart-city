@@ -1,9 +1,27 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ItemDevice from '../../../../commons/Device/ItemDevice';
+import { scanBluetoothDevices } from '../../../../iot/RemoteControl/Bluetooth';
+import { googleHomeConnect } from '../../../../iot/RemoteControl/GoogleHome';
 
-const RunningDevices = memo(({ unit, summary, summaryDetail }) => {
+const RunningDevices = memo(({ unit, summaryDetail }) => {
+  const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
   const { devices } = summaryDetail;
+  const handleGoogleHomeConnect = useCallback(async (options) => {
+    let isConnected = await googleHomeConnect(options);
+    setIsGGHomeConnected(isConnected);
+  }, []);
+
+  useEffect(() => {
+    if (unit.remote_control_options) {
+      if (unit.remote_control_options.bluetooth) {
+        scanBluetoothDevices(unit.remote_control_options.bluetooth);
+      }
+      if (unit.remote_control_options.googlehome) {
+        handleGoogleHomeConnect(unit.remote_control_options.googlehome);
+      }
+    }
+  }, [handleGoogleHomeConnect, unit]);
   return (
     <View style={styles.container}>
       {!!devices &&
@@ -21,6 +39,7 @@ const RunningDevices = memo(({ unit, summary, summaryDetail }) => {
               sensor={item}
               unit={unit}
               station={item.station}
+              isGGHomeConnected={isGGHomeConnected}
             />
           );
         })}

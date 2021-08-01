@@ -1,11 +1,6 @@
 import { t } from 'i18n-js';
 import moment from 'moment';
 
-export const calcTime = (time, inputFormat, outputFormat) => {
-  let datetime = moment(time, inputFormat);
-  return datetime.format(outputFormat);
-};
-
 export const transformDatetime = (data = {}, listFieldName = []) => {
   listFieldName.forEach((name) => {
     const value = data[name];
@@ -34,7 +29,11 @@ export const timeDifference = (current, previous) => {
   let elapsed = current - previous;
 
   if (elapsed < msPerMinute) {
-    return `${Math.round(elapsed / 1000)} ${t('seconds_ago')}`;
+    let second = Math.round(elapsed / 1000);
+    if (second < 0) {
+      second = 0;
+    }
+    return `${second} ${t('seconds_ago')}`;
   } else if (elapsed < msPerHour) {
     return `${Math.round(elapsed / msPerMinute)} ${t('minutes_ago')}`;
   } else if (elapsed < msPerDay) {
@@ -45,5 +44,18 @@ export const timeDifference = (current, previous) => {
     return `${Math.round(elapsed / msPerMonth)} ${t('months_ago')}`;
   } else {
     return `${Math.round(elapsed / msPerYear)} ${t('years_ago')}`;
+  }
+};
+
+export const getTitleFromTime = (time, current) => {
+  const durationTime = moment.duration(moment(time).diff(moment(current)));
+  const day = Math.floor(durationTime.asDays());
+
+  if (day === 0) {
+    return t('today');
+  } else if (day === -1) {
+    return t('yesterday');
+  } else {
+    return moment(time).format('DD/MM/YYYY');
   }
 };

@@ -44,7 +44,7 @@ const QualityIndicatorItem = memo(
           )}
         </View>
         <Text size={24} color={Colors.Gray9} style={styles.txtValue}>
-          {`${value} ${measure}`}
+          {measure && measure.length ? `${value} ${measure}` : `${value}`}
         </Text>
         {!!evaluate && (
           <Text size={12} color={evaluate.color} style={styles.txtEvaluate}>

@@ -48,28 +48,15 @@ const chartOptions = {
     },
     labels: {
       formatter: function (value) {
-        const time = new Date(this.value);
-        let date = time.getDate();
-        let month = time.getMonth();
-        let hours = time.getHours();
-        let minutes = time.getMinutes();
-        if (hours < 10) {
-          hours = '0' + hours;
-        }
-        if (minutes < 10) {
-          minutes = '0' + minutes;
-        }
+        const time = new Date(this.value || value);
+        let date = ('0' + time.getDate()).slice(-2);
+        let month = ('0' + (time.getMonth() + 1)).slice(-2);
+        let hours = ('0' + time.getHours()).slice(-2);
+        let minutes = ('0' + time.getMinutes()).slice(-2);
         if (hours === '00' && minutes === '00') {
-          if (date < 10) {
-            date = '0' + date;
-          }
-          if (month < 10) {
-            month = '0' + month;
-          }
-          return `${date}.${month} ${hours}:${minutes}`;
-        } else {
-          return `${hours}:${minutes}`;
+          return `${date}.${month}`;
         }
+        return `${hours}:${minutes}`;
       },
     },
     minRange: 3600 * 1000,
@@ -109,7 +96,8 @@ const chartOptions = {
     },
   },
 };
-const LinearChart = memo(({ datas }) => {
+
+function LinearChart({ datas }) {
   const [options, setOption] = useState(chartOptions);
   const getSeries = useCallback(() => {
     let series = [];
@@ -139,12 +127,12 @@ const LinearChart = memo(({ datas }) => {
 
   return (
     <View style={styles.container}>
-      {/* <HighchartsReactNative styles={styles.chartStyle} options={options} /> */}
+      <HighchartsReactNative styles={styles.chartStyle} options={options} />
     </View>
   );
-});
+}
 
-export default LinearChart;
+export default memo(LinearChart);
 
 const styles = StyleSheet.create({
   container: {

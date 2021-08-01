@@ -1,11 +1,10 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { TESTID } from '../../configs/Constants';
-import { IconFill } from '@ant-design/icons-react-native';
 import { watchMultiConfigs } from '../../iot/Monitor';
 import { sendRemoteCommand } from '../../iot/RemoteControl';
 import { useConfigGlobalState } from '../../iot/states';
-import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
+import IconComponent from '../IconComponent';
 
 const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus, unit }) => {
   const [isSendingCommand, setIsSendingCommand] = useState(false);
@@ -41,9 +40,6 @@ const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus, unit }) => {
   );
 
   useEffect(() => {
-    if (unit.remote_control_options.googlehome) {
-      googleHomeConnect(unit.remote_control_options.googlehome);
-    }
     sensor.quick_action && sensor.quick_action.config_id && watchMultiConfigs([sensor.quick_action.config_id]);
   }, [sensor.quick_action]);
 
@@ -91,10 +87,10 @@ const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus, unit }) => {
       onPress={onActionPress}
     >
       <View style={wrapperStyle}>
-        <IconFill
-          name={action.icon}
-          color={isSendingCommand ? 'gray' : '#00979d'}
-          size={24}
+        <IconComponent
+          icon={action.icon}
+          iconKit={action.icon_kit}
+          isSendingCommand={isSendingCommand}
         />
       </View>
     </TouchableOpacity>

@@ -1,14 +1,22 @@
 import React, { memo, useCallback } from 'react';
-import { TouchableOpacity, StyleSheet, Animated, View } from 'react-native';
 import { Icon } from '@ant-design/react-native';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Animated,
+  View,
+  Platform,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import Text from '../../commons/Text';
 import { Colors } from '../../configs';
 
 const default_height = 44;
+const paddingIos = Platform.OS === 'ios' ? getStatusBarHeight() : 0;
 export const title_height = 44;
-export const heightHeader = default_height + title_height;
+export const heightHeader = default_height + title_height + paddingIos;
 
 const HeaderAni = memo(
   ({ scrollY, onLeft, title, rightComponent, headerStyle }) => {
@@ -21,42 +29,30 @@ const HeaderAni = memo(
       }
     }, [goBack, onLeft]);
     const titleTransformY = scrollY.interpolate({
-      inputRange: [0, title_height],
+      inputRange: [0, 2 * title_height],
       outputRange: [0, -title_height],
       extrapolate: 'clamp',
     });
     const titleTransformX = scrollY.interpolate({
-      inputRange: [0, title_height],
+      inputRange: [0, 2 * title_height],
       outputRange: [0, 16],
       extrapolate: 'clamp',
     });
     const titleScale = scrollY.interpolate({
-      inputRange: [0, title_height],
+      inputRange: [0, 2 * title_height],
       outputRange: [1, 0.9],
       extrapolate: 'clamp',
     });
-    const translateY = scrollY.interpolate({
-      inputRange: [0, title_height],
-      outputRange: [0, -title_height],
-      extrapolate: 'clamp',
-    });
-    const opacity = scrollY.interpolate({
-      inputRange: [0, title_height],
-      outputRange: [0, 1],
+    const headerHeightAnim = scrollY.interpolate({
+      inputRange: [0, 2 * title_height],
+      outputRange: [heightHeader, default_height + paddingIos],
       extrapolate: 'clamp',
     });
 
     const titleMarginRight = rightComponent ? 80 : 0;
 
     return (
-      <View style={styles.container}>
-        <Animated.View
-          style={{
-            transform: [{ translateY }],
-            opacity,
-            ...styles.content,
-          }}
-        />
+      <Animated.View style={[styles.container, { height: headerHeightAnim }]}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.btnBack} onPress={onPressLeft}>
             <Icon name={'left'} size={27} color={Colors.Gray9} />
@@ -84,7 +80,7 @@ const HeaderAni = memo(
             {title}
           </Text>
         </Animated.View>
-      </View>
+      </Animated.View>
     );
   }
 );
@@ -113,9 +109,17 @@ const styles = StyleSheet.create({
     width: default_height,
   },
   container: {
-    backgroundColor: Colors.TextTransparent,
+    backgroundColor: Colors.White,
     width: '100%',
-    zIndex: 2,
+    borderBottomWidth: 0.3,
+    borderColor: Colors.Border,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 100,
+    zIndex: 3,
+    paddingTop: paddingIos,
   },
   content: {
     position: 'absolute',
@@ -124,6 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Gray2,
     borderWidth: 0.5,
     borderColor: Colors.Border,
+    zIndex: -1,
   },
   boxText: {
     height: title_height,

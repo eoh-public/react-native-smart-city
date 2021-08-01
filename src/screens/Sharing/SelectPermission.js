@@ -1,23 +1,203 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  SafeAreaView,
+  View,
+  FlatList,
+  Alert,
+  ActivityIndicator,
+  Platform,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { isEmpty } from 'lodash';
 import { t } from 'i18n-js';
 
 import { API, Colors } from '../../configs';
 import ViewButtonBottom from '../../commons/ViewButtonBottom';
-import StationDevicePermissions from '../../commons/Sharing/StationDevicePermissions';
 import Text from '../../commons/Text';
 import { axiosGet } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
+import { SensorItem, TitleCheckBox } from './Components';
+import styles from './Styles/SelectPermissionStyles';
+
 import { TESTID } from '../../configs/Constants';
 
-const SelectPermission = memo(({ route }) => {
+let dataStationTemp = [];
+
+const SelectPermission = ({ route }) => {
   const { unit } = route.params;
   const navigation = useNavigation();
   const [dataStations, setDataStations] = useState([]);
-  const [readPermissions, setReadPermissions] = useState([]);
-  const [controlPermissions, setControlPermissions] = useState([]);
+  const [isTickAllDevices, setIsTickAllDevices] = useState(false);
+  const [activeItemId, setActiveItemId] = useState(-1);
+  const [loading, setLoading] = useState(true);
+
+  const onTickTitle = (idGroup, isChecked, id) => {
+    if (!idGroup) {
+      setIsTickAllDevices(isChecked);
+      const data = dataStations.map((i) => ({
+        ...i,
+        isChecked,
+      }));
+      for (let sensor in data) {
+        for (let item in data[sensor].sensors) {
+          const itemTemp = data[sensor].sensors[item];
+          data[sensor].sensors[item] = {
+            ...itemTemp,
+            actions: itemTemp.actions.map((i) => ({
+              ...i,
+              isChecked,
+            })),
+            read_configs: itemTemp.read_configs.map((i) => ({
+              ...i,
+              isChecked,
+            })),
+          };
+        }
+      }
+      setDataStations(data);
+    } else {
+      const data = [...dataStationTemp];
+      const index = data.findIndex((item) => item.id === idGroup);
+      data[index] = {
+        ...data[index],
+        isChecked,
+        sensors: data[index]?.sensors.map((i) => ({
+          ...i,
+          actions: i.actions.map((j) => ({ ...j, isChecked })),
+          read_configs: i.read_configs.map((j) => ({ ...j, isChecked })),
+        })),
+      };
+      setDataStations(data);
+      setIsTickAllDevices(!data.some((item) => !item.isChecked));
+    }
+  };
+
+  const onTickedChild = (
+    idGroup,
+    sensorId,
+    childId,
+    isChecked,
+    isReadConfig
+  ) => {
+    let data = [...dataStationTemp];
+    const indexGroup = data.findIndex((item) => item.id === idGroup);
+    const indexSensor = (data[indexGroup]?.sensors || []).findIndex(
+      (item) => item.id === sensorId
+    );
+    const indexChild = (data[indexGroup]?.sensors || [])[indexSensor][
+      `${isReadConfig ? 'read_configs' : 'actions'}`
+    ].findIndex((item) => item.id === childId);
+    (data[indexGroup]?.sensors || [])[indexSensor][
+      `${isReadConfig ? 'read_configs' : 'actions'}`
+    ][indexChild] = {
+      ...(data[indexGroup]?.sensors || [])[indexSensor][
+        `${isReadConfig ? 'read_configs' : 'actions'}`
+      ][indexChild],
+      isChecked,
+    };
+    for (let i of data) {
+      if (i.sensors.length) {
+        let isChecked;
+        let arrChecked = [];
+        for (let j of i.sensors) {
+          isChecked = !(
+            j.actions.some((k) => !k.isChecked) ||
+            j.read_configs.some((k) => !k.isChecked)
+          );
+          arrChecked.push(isChecked);
+        }
+        i.isChecked = !arrChecked.some((i) => !i);
+      }
+    }
+    setIsTickAllDevices(!dataStationTemp.some((i) => !i.isChecked));
+    dataStationTemp = data;
+    setDataStations(data);
+  };
+
+  const GroupSenSorItem = ({ item = {}, index }) => {
+    const { name = '', sensors = [], isChecked, id = '' } = item;
+    return (
+      <View style={styles.viewGroup}>
+        <TitleCheckBox
+          title={name}
+          wrapCheckBoxStyle={styles.checkBoxTile}
+          onPress={onTickTitle}
+          isChecked={isChecked}
+          idGroup={id}
+        />
+        <View style={styles.wrapSensor}>
+          {sensors.map((i, index) => (
+            <SensorItem
+              item={i}
+              key={i.id}
+              isRenderSeparated={index !== sensors.length - 1}
+              onTickedChild={onTickedChild}
+              titleGroup={name}
+              activeItemId={activeItemId}
+              setActiveItemId={setActiveItemId}
+              idGroup={id}
+            />
+          ))}
+        </View>
+      </View>
+    );
+  };
+
+  const onPressNext = () => {
+    let read_permissions = [],
+      control_permissions = [];
+    for (let sensor of dataStationTemp) {
+      for (let item of sensor.sensors) {
+        let arrIdControlTemp = [],
+          arrIdReadTemp = [];
+        for (let i of item.actions) {
+          i.isChecked && arrIdControlTemp.push(i.id);
+        }
+        for (let i of item.read_configs) {
+          i.isChecked && arrIdReadTemp.push(i.id);
+        }
+        arrIdControlTemp.length &&
+          control_permissions.push({ id: item.id, values: arrIdControlTemp });
+        arrIdReadTemp.length &&
+          read_permissions.push({ id: item.id, values: arrIdReadTemp });
+      }
+    }
+    if (!read_permissions.length && !control_permissions.length) {
+      Alert.alert('', t('choose_at_least_one'));
+      return;
+    }
+    navigation.navigate(Routes.SharingInviteMembers, {
+      unit,
+      permissions: { read_permissions, control_permissions },
+    });
+  };
+
+  const renderGroupItem = ({ item }) => (
+    <GroupSenSorItem key={item.id} item={item} />
+  );
+
+  const renderFlatList = useMemo(() => {
+    return (
+      Boolean(dataStations.length) && (
+        <FlatList
+          keyExtractor={(item) => item.id}
+          extraData={dataStations}
+          data={dataStations}
+          renderItem={renderGroupItem}
+          ListHeaderComponent={
+            Boolean(dataStations.length) && (
+              <TitleCheckBox
+                title={t('text_all_devices')}
+                wrapStyle={styles.wrapAllDevices}
+                onPress={onTickTitle}
+                isChecked={isTickAllDevices}
+              />
+            )
+          }
+        />
+      )
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataStations, isTickAllDevices, activeItemId]);
 
   useEffect(() => {
     (async () => {
@@ -29,77 +209,33 @@ const SelectPermission = memo(({ route }) => {
         API.SHARE.UNIT_PERMISSIONS(unit.id)
       );
       if (success) {
-        const stations = data.map((station) => ({
-          name: station.name,
-          sensors: station.sensors,
-        }));
-        setDataStations(stations);
-      } else {
-        setDataStations([]);
+        setDataStations(data);
       }
+      setLoading(false);
     })();
   }, [unit]);
 
-  const addReadConfigs = useCallback(
-    (sensorId, values) => {
-      const newPermission = { ...readPermissions };
-      if (!values.length) {
-        delete newPermission[sensorId];
-      } else {
-        newPermission[sensorId] = values;
-      }
-      setReadPermissions(newPermission);
-    },
-    [readPermissions]
-  );
+  useEffect(() => {
+    dataStationTemp = dataStations;
+  }, [dataStations]);
 
-  const addActions = useCallback(
-    (sensorId, values) => {
-      const newPermission = { ...controlPermissions };
-      if (!values.length) {
-        delete newPermission[sensorId];
-      } else {
-        newPermission[sensorId] = values;
-      }
-      setControlPermissions(newPermission);
-    },
-    [controlPermissions]
-  );
-
-  const onSelectDevice = useCallback(
-    (sensorId, readPermission, controlPermission) => {
-      addReadConfigs(sensorId, readPermission);
-      addActions(sensorId, controlPermission);
-    },
-    [addActions, addReadConfigs]
-  );
-
-  const onPressNext = useCallback(() => {
-    navigation.navigate(Routes.SharingInviteMembers, {
-      unit,
-      permissions: { readPermissions, controlPermissions },
-    });
-  }, [navigation, readPermissions, controlPermissions, unit]);
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={
+        Platform.OS === 'android'
+          ? styles.containerAndroid
+          : styles.containerIOS
+      }
+    >
       <Text semibold style={styles.title}>
         {t('select_devices')}
       </Text>
       <Text style={styles.subtitle}>{t('sharing_select_devices_hint')}</Text>
       <View style={styles.contentContainer}>
-        {dataStations.length > 0 ? (
-          <ScrollView
-            style={styles.scrollContainer}
-            showsVerticalScrollIndicator={false}
-          >
-            {dataStations.map((station) => (
-              <StationDevicePermissions
-                dataStation={station}
-                onselectSensor={onSelectDevice}
-                testID={TESTID.STATION_DEVICE_PERMISSIONS}
-              />
-            ))}
-          </ScrollView>
+        {loading ? (
+          <ActivityIndicator color={Colors.Primary} />
+        ) : dataStations.length > 0 ? (
+          renderFlatList
         ) : (
           <Text style={styles.textNodata} testID={TESTID.TEXT_NO_DATA_STATIONS}>
             {t('no_data')}
@@ -109,67 +245,13 @@ const SelectPermission = memo(({ route }) => {
           testIDPrefix={TESTID.PREFIX.SHARING_SELECT_PERMISSION}
           leftTitle={t('cancel')}
           onLeftClick={() => navigation.goBack()}
-          rightTitle={t('next')}
-          rightDisabled={
-            isEmpty(readPermissions) && isEmpty(controlPermissions)
-          }
+          rightTitle={t('done')}
+          rightDisabled={false}
           onRightClick={onPressNext}
         />
       </View>
     </SafeAreaView>
   );
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.Gray2,
-  },
-  contentContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  scrollContainer: {
-    width: '100%',
-    flex: 1,
-  },
-  title: {
-    color: Colors.Gray9,
-    fontSize: 20,
-    lineHeight: 28,
-    marginTop: 8,
-    marginBottom: 4,
-    marginLeft: 16,
-  },
-  subtitle: {
-    color: Colors.Gray8,
-    fontSize: 14,
-    lineHeight: 22,
-    marginLeft: 16,
-    marginBottom: 16,
-  },
-  box: {
-    paddingBottom: 16,
-    borderRadius: 20,
-    backgroundColor: Colors.White,
-    borderWidth: 1,
-    borderColor: Colors.Gray4,
-  },
-  row: {
-    flex: 1,
-    paddingVertical: 16,
-    borderBottomColor: Colors.Gray4,
-    borderBottomWidth: 1,
-    marginRight: 24,
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: Colors.Gray9,
-  },
-  textNodata: {
-    alignSelf: 'center',
-  },
-});
+};
 
 export default SelectPermission;

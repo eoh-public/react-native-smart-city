@@ -25,36 +25,22 @@ const SelectUser = ({ route }) => {
   const [phone, setPhone] = useState('');
   const [users, setUsers] = useState([]);
 
-  const dictToArray = (dict) => {
-    const result = [];
-    for (let [key, value] of Object.entries(dict)) {
-      result.push({
-        id: key,
-        values: value,
-      });
-    }
-    return result;
-  };
-
-  const translatePermissions = useCallback((data) => {
-    const { readPermissions, controlPermissions } = data;
-
-    return {
-      read_permissions: dictToArray(readPermissions),
-      control_permissions: dictToArray(controlPermissions),
-    };
-  }, []);
-
   const sharePermissions = useCallback(async () => {
+    let userSharedPermission = users.filter(
+      (user) => user.phone_number === phone
+    );
+    if (userSharedPermission.length) {
+      return false;
+    }
     const { success, data } = await axiosPost(API.SHARE.SHARE, {
       phone,
       unit: unit.id,
-      permissions: translatePermissions(permissions),
+      permissions,
     });
     if (success) {
       setUsers([...users, data.user]);
     }
-  }, [phone, unit, permissions, users, translatePermissions]);
+  }, [phone, unit, permissions, users]);
 
   const validate = useCallback(() => {
     if (!isValidPhoneNumber(phone)) {

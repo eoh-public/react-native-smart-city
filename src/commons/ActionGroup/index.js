@@ -1,24 +1,53 @@
-import React from 'react';
+import Text from '../Text';
+import React, { memo, useMemo } from 'react';
 
 import OneBigButtonTemplate from './OneBigButtonTemplate';
-import OnOffButtonTemplate from './OnOffButtonTemplate';
 import ThreeButtonTemplate from './ThreeButtonTemplate';
+import StatesGridActionTemplate from './StatesGridActionTemplate';
+import NumberUpDownActionTemplate from './NumberUpDownActionTemplate';
+import OptionsDropdownActionTemplate from './OptionsDropdownActionTemplate';
+import OnOffTemplate from './OnOffTemplate';
 
-const ActionGroup = ({ actionGroup, doAction }) => {
-  switch (actionGroup.template) {
-    case 'three_button_action_template':
-      return (
-        <ThreeButtonTemplate actionGroup={actionGroup} doAction={doAction} />
-      );
-    case 'on_off_button_action_template':
-      return (
-        <OnOffButtonTemplate actionGroup={actionGroup} doAction={doAction} />
-      );
-    case 'one_button_action_template':
-      return (
-        <OneBigButtonTemplate actionGroup={actionGroup} doAction={doAction} />
-      );
+export const getActionComponent = (template) => {
+  switch (template) {
+    case 'three_button_action_template': // todo refactor later with backend
+    case 'ThreeButtonActionTemplate':
+      return ThreeButtonTemplate;
+    case 'on_off_button_action_template': // todo refactor later with backend
+    case 'OnOffButtonActionTemplate':
+    case 'OnOffSimpleActionTemplate':
+      return OnOffTemplate;
+    case 'one_button_action_template': // todo refactor later with backend
+    case 'OneBigButtonActionTemplate':
+      return OneBigButtonTemplate;
+    case 'NumberUpDownActionTemplate':
+      return NumberUpDownActionTemplate;
+    case 'StatesGridActionTemplate':
+      return StatesGridActionTemplate;
+    case 'OptionsDropdownActionTemplate':
+      return OptionsDropdownActionTemplate;
+    default:
+      return null;
   }
 };
+
+const ActionGroup = memo((params) => {
+  const { actionGroup } = params;
+  const ButtonGroupComponent = useMemo(() => {
+    return getActionComponent(actionGroup.template);
+  }, [actionGroup]);
+
+  return (
+    <>
+      {ButtonGroupComponent ? (
+        <ButtonGroupComponent {...params} />
+      ) : (
+        <Text
+          center
+        >{`Invalid action template '${actionGroup.template}'`}</Text>
+      )}
+    </>
+  );
+});
 
 export default ActionGroup;

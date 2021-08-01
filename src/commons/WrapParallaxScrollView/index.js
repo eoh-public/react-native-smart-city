@@ -77,7 +77,7 @@ const WrapParallaxScrollView = ({
     <ParallaxScrollView
       renderForeground={renderForeground}
       renderBackground={renderBackground}
-      parallaxHeaderHeight={160}
+      parallaxHeaderHeight={Device.screenHeight * 0.24}
       stickyHeaderHeight={stickyHeaderHeight}
       renderStickyHeader={renderStickyHeader}
       backgroundColor={Colors.White}
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 160,
+    height: '100%',
   },
   nameUnit: {
     left: 16,

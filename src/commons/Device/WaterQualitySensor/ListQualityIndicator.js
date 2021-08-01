@@ -8,6 +8,7 @@ const ListQualityIndicator = ({ data, style }) => {
   const renderItem = useCallback(
     ({ item }) => (
       <QualityIndicatorItem
+        key={item.id.toString()}
         color={item.color}
         standard={item.standard}
         value={item.value}

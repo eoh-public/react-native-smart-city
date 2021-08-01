@@ -1,4 +1,5 @@
 import { Platform, Dimensions, StatusBar } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -31,6 +32,8 @@ export function getStatusBarHeight() {
     android: StatusBar.currentHeight,
   });
 }
+
+export const normalize = (size) => RFValue(size);
 
 export const SOCIAL_PROVIDER = {
   EMAIL: 'email',

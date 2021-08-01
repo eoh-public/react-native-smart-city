@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, SafeAreaView, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
@@ -6,7 +6,6 @@ import { t } from 'i18n-js';
 import { API, Colors } from '../../configs';
 import { Section, ViewButtonBottom } from '../../commons';
 import Text from '../../commons/Text';
-import GroupCheckBox from '../../commons/GroupCheckBox';
 import { axiosGet } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 import { TESTID } from '../../configs/Constants';
@@ -17,7 +16,7 @@ const AddNewGateway = memo(({ route }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [chipName, setChipName] = useState('');
   const [unit, setUnit] = useState({ stations: [] });
-  const [stationId, setStationId] = useState(0);
+  const [stationName, setStationName] = useState('');
 
   const fetchDetails = useCallback(async () => {
     const { success, data } = await axiosGet(
@@ -35,9 +34,9 @@ const AddNewGateway = memo(({ route }) => {
   }, [fetchDetails]);
 
   const onRight = useCallback(() => {
-    !!stationId &&
+    !!imei &&
       navigate(Routes.ScanChipQR, {
-        station_id: stationId,
+        stationName,
         unit_id: unit.id,
         unit_name: unit.name,
         phoneNumber,
@@ -51,14 +50,12 @@ const AddNewGateway = memo(({ route }) => {
     imei,
     navigate,
     phoneNumber,
-    stationId,
+    stationName,
     unit.id,
     unit.name,
     wifiName,
     wifiPass,
-]);
-
-  const stations = unit.stations.map((item) => ({ ...item, title: item.name }));
+  ]);
 
   const onChangePhoneNumber = useCallback((text) => {
     setPhoneNumber(text);
@@ -67,6 +64,32 @@ const AddNewGateway = memo(({ route }) => {
   const onChangeChipName = useCallback((text) => {
     setChipName(text);
   }, []);
+
+  const onChangeStationName = useCallback((text) => {
+    setStationName(text);
+  }, []);
+
+  const isValid = useMemo(() => {
+    if (!stationName) {
+      return false;
+    }
+    if (!phoneNumber) {
+      return false;
+    }
+    if (!chipName) {
+      return false;
+    }
+    if (!wifiName) {
+      return false;
+    }
+    if (!wifiPass) {
+      return false;
+    }
+    if (!imei) {
+      return false;
+    }
+    return true;
+  }, [chipName, imei, phoneNumber, stationName, wifiName, wifiPass]);
 
   return (
     <SafeAreaView style={styles.wrap}>
@@ -93,11 +116,12 @@ const AddNewGateway = memo(({ route }) => {
         showsVerticalScrollIndicator={false}
       >
         <Section type={'border'}>
-          <GroupCheckBox
-            data={stations}
-            onSelect={(itemSelect) => {
-              setStationId(itemSelect.id);
-            }}
+          <TextInput
+            value={stationName}
+            style={styles.textInput}
+            placeholder={t('station_name')}
+            underlineColorAndroid={null}
+            onChangeText={onChangeStationName}
           />
         </Section>
         <Section type={'border'}>
@@ -122,14 +146,14 @@ const AddNewGateway = memo(({ route }) => {
           <Text color={Colors.Primary}>{t('wifi_name')}</Text>
           <Text>{wifiName}</Text>
           <Text color={Colors.Primary}>{t('imei')}</Text>
-          <Text>{imei}</Text>
+          <Text testID={TESTID.ADD_NEW_GATEWAY_TEXT_IMEI}>{imei}</Text>
         </Section>
       </ScrollView>
       <ViewButtonBottom
         leftTitle={t('text_back')}
         onLeftClick={goBack}
         rightTitle={t('text_next')}
-        rightDisabled={!stationId}
+        rightDisabled={!isValid}
         onRightClick={onRight}
       />
     </SafeAreaView>

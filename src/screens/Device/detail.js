@@ -1,23 +1,17 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  RefreshControl,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { t } from 'i18n-js';
 import moment from 'moment';
+import _ from 'lodash';
+import { connect, useSelector } from 'react-redux';
 
-import { useSCContextSelector } from '../../context';
 import { API, Colors, Device } from '../../configs';
 import { axiosGet } from '../../utils/Apis/axios';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
-import useTitleHeader from '../../hooks/Common/useTitleHeader';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import { sendRemoteCommand } from '../../iot/RemoteControl';
 
-import ActionGroup from '../../commons/ActionGroup';
+import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
 import { ConnectedViewHeader, DisconnectedView } from '../../commons/Device';
 import HistoryChart from '../../commons/Device/HistoryChart';
 import PMSensorIndicatior from '../../commons/Device/PMSensor/PMSensorIndicatior';
@@ -34,7 +28,6 @@ import {
   useAlertResolveEmergency,
   useEmergencyButton,
 } from './hooks/useEmergencyButton';
-import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
 import EmergencyDetail from '../../commons/Device/Emergency/EmergencyDetail';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
@@ -50,14 +43,18 @@ import FooterInfo from '../../commons/Device/FooterInfo';
 import { useCountUp } from './hooks/useCountUp';
 import { navigate } from '../../navigations/utils';
 import Routes from '../../utils/Route';
-
-const offsetTitle = 50;
+import { getData as getLocalData } from '../../utils/Storage';
+import { HeaderCustom } from '../../commons/Header';
+import MenuActionMore from '../../commons/MenuActionMore';
+import { usePopover } from '../../hooks/Common';
+import { useConfigGlobalState } from '../../iot/states';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
 );
 
-const DeviceDetail = ({ route }) => {
+const DeviceDetail = ({ account, route }) => {
+  const [offsetTitle, setOffsetTitle] = useState(1);
   const [display, setDisplay] = useState({ items: [] });
   const [displayValues, setDisplayValues] = useState([]);
   const [controlOptions, setControlOptions] = useState({
@@ -68,12 +65,40 @@ const DeviceDetail = ({ route }) => {
   const [isConnected, setConnected] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [lastEvent, setLastEvent] = useState({ id: 0, reportedAt: 0 });
-
   const [maxValue, setMaxValue] = useState(60);
+  // eslint-disable-next-line no-unused-vars
+  const [configValues, setConfigValues] = useConfigGlobalState('configValues');
 
-  const { unit, station, sensor, title } = route.params;
-  const account = useSCContextSelector((state) => state.auth.account);
-  const currentUserId = useSCContextSelector((state) =>
+  const { unit, station, sensor, title, isGGHomeConnected } = route.params;
+
+  const listMenuItemDefault = useMemo(
+    () => [
+      {
+        text: t('edit'),
+      },
+      {
+        text: t('remove_device'),
+      },
+    ],
+    []
+  );
+
+  const listMenuItem = useMemo(() => {
+    if (
+      display.items.some((i) => getActionComponent(i.configuration.template))
+    ) {
+      return [
+        ...listMenuItemDefault,
+        {
+          route: Routes.ActivityLog,
+          text: t('activity_log'),
+        },
+      ];
+    }
+    return listMenuItemDefault;
+  }, [display, listMenuItemDefault]);
+
+  const currentUserId = useSelector((state) =>
     get(state, 'auth.account.user.id', 0)
   );
 
@@ -81,7 +106,6 @@ const DeviceDetail = ({ route }) => {
     return currentUserId === unit.user_id;
   }, [currentUserId, unit]);
 
-  useTitleHeader(title);
   const fetchDataDeviceDetail = useCallback(async () => {
     if (!account.token) {
       return;
@@ -98,7 +122,6 @@ const DeviceDetail = ({ route }) => {
 
     if (displayResult.success) {
       setDisplay(displayResult.data);
-
       if (displayResult.data.items.length) {
         const config = displayResult.data.items[0].configuration;
         if (config.hasOwnProperty('max_value')) {
@@ -122,6 +145,7 @@ const DeviceDetail = ({ route }) => {
       {},
       true
     );
+
     if (controlResult.success) {
       setControlOptions(controlResult.data);
     }
@@ -151,9 +175,6 @@ const DeviceDetail = ({ route }) => {
   const { countUpStr } = useCountUp(lastEvent.reportedAt);
 
   useEffect(() => {
-    if (unit.remote_control_options.googlehome) {
-      googleHomeConnect(unit.remote_control_options.googlehome);
-    }
     if (controlOptions.bluetooth) {
       const bluetooth = controlOptions.bluetooth;
       scanBluetoothDevices([bluetooth.address]);
@@ -189,6 +210,7 @@ const DeviceDetail = ({ route }) => {
   useEffect(() => {
     let params = new URLSearchParams();
     const configIds = [];
+
     display.items.map((item) => {
       if (item.type !== 'value') {
         return;
@@ -222,12 +244,31 @@ const DeviceDetail = ({ route }) => {
         setLastUpdated(data.last_updated);
       }
     };
-    if (configIds.length) {
+    if (sensor.is_managed_by_backend) {
       const updateInterval = setInterval(() => fetchValues(), 5000);
       fetchValues();
       return () => clearInterval(updateInterval);
     }
   }, [sensor, display]);
+
+  useEffect(() => {
+    setDisplayValues((currentDisplayValues) => {
+      for (const [configId, value] of Object.entries(configValues)) {
+        const intId = parseInt(configId);
+        const index = _.findIndex(currentDisplayValues, (o) => o.id === intId);
+        if (index !== -1) {
+          currentDisplayValues[index].value = value;
+          currentDisplayValues[index].evaluate = null;
+        } else {
+          currentDisplayValues.push({
+            id: intId,
+            value: value,
+          });
+        }
+      }
+      return currentDisplayValues;
+    });
+  }, [configValues, setDisplayValues]);
 
   const isShowEmergencyResolve =
     display.items.filter(
@@ -241,35 +282,116 @@ const DeviceDetail = ({ route }) => {
         item.type === 'emergency' && item.configuration.type === 'button'
     ).length > 0;
 
-  const onSetupContacts = useCallback(() => {
-    navigate(Routes.ManageSubUnit, { station });
-  }, [station]);
+  const isDisplayTime =
+    display.items.filter(
+      (item) => item.type !== 'action' && item.type !== 'camera'
+    ).length > 0;
 
-  return (
-    <SafeAreaView style={styles.wrap}>
-      <ScrollView
-        style={styles.wrap}
-        refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={onRefresh} />
-        }
-      >
-        {isConnected ? (
+  const onSetupContacts = useCallback(() => {
+    navigate(Routes.ManageUnit, { unit });
+  }, [unit]);
+
+  // replace isConnected=True to see template
+  const renderSensorConnected = () => {
+    if (!!sensor && !sensor.is_other_device) {
+      if (isConnected) {
+        return (
           <>
-            <ConnectedViewHeader lastUpdated={lastUpdated} />
+            <ConnectedViewHeader
+              lastUpdated={lastUpdated}
+              isDisplayTime={isDisplayTime}
+            />
             {display.items.map((item) => (
               <SensorDisplayItem
+                testID={TESTID.SENSOR_DISPLAY_ITEM}
                 key={item.id.toString()}
                 item={item}
                 emergency={onEmergencyButtonPress}
                 sensor={sensor}
                 getData={getData}
                 maxValue={maxValue}
+                offsetTitle={offsetTitle}
+                setOffsetTitle={setOffsetTitle}
               />
             ))}
           </>
-        ) : (
-          <DisconnectedView sensor={sensor} />
-        )}
+        );
+      } else {
+        return <DisconnectedView sensor={sensor} />;
+      }
+    } else {
+      if (isGGHomeConnected) {
+        return (
+          <>
+            <ConnectedViewHeader
+              lastUpdated={lastUpdated}
+              type={'GoogleHome'}
+            />
+            {display.items.map((item) => (
+              <SensorDisplayItem
+                testID={TESTID.SENSOR_DISPLAY_ITEM}
+                key={item.id.toString()}
+                item={item}
+                emergency={onEmergencyButtonPress}
+                sensor={sensor}
+                getData={getData}
+                maxValue={maxValue}
+                offsetTitle={offsetTitle}
+                setOffsetTitle={setOffsetTitle}
+              />
+            ))}
+          </>
+        );
+      } else {
+        return <DisconnectedView sensor={sensor} type={'GoogleHome'} />;
+      }
+    }
+  };
+
+  const getDataFromLocal = async () => {
+    const displayData = await getLocalData(
+      `@CACHE_REQUEST_${API.SENSOR.DISPLAY(sensor.id)}`
+    );
+    displayData && setDisplay(JSON.parse(displayData));
+
+    const controlOptionData = await getLocalData(
+      `@CACHE_REQUEST_${API.SENSOR.REMOTE_CONTROL_OPTIONS(sensor.id)}`
+    );
+    controlOptionData && setControlOptions(JSON.parse(controlOptionData));
+  };
+
+  const onItemMenuClicked = (item) =>
+    item.route ? navigate(item.route, { sensor }) : alert('Coming soon !');
+
+  useEffect(() => {
+    getDataFromLocal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+  } = usePopover();
+
+  return (
+    <View style={styles.wrap}>
+      <HeaderCustom
+        onRefresh={onRefresh}
+        showPopoverWithRef={showPopoverWithRef}
+        isShowRight
+      />
+      <ScrollView
+        style={styles.wrap}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+        }
+      >
+        <Text bold type="H2" style={styles.title}>
+          {title}
+        </Text>
+        {renderSensorConnected()}
         <AlertSendConfirm
           showAlertConfirm={showAlertConfirm}
           countDown={countDown}
@@ -339,7 +461,12 @@ const DeviceDetail = ({ route }) => {
             size={42}
             color={Colors.Green6}
           />
-          <Text semibold style={styles.textResolved} color={Colors.Green6}>
+          <Text
+            semibold
+            style={styles.textResolved}
+            color={Colors.Green6}
+            uppercase
+          >
             {t('resolved')}
           </Text>
           <Text type="H4" style={styles.textYourEmergencySituation}>
@@ -347,7 +474,15 @@ const DeviceDetail = ({ route }) => {
           </Text>
         </View>
       </ButtonPopup>
-    </SafeAreaView>
+      <MenuActionMore
+        isVisible={showingPopover}
+        hideMore={hidePopover}
+        listMenuItem={listMenuItem}
+        childRef={childRef}
+        onItemClick={onItemMenuClicked}
+        wrapStyle={styles.menuAction}
+      />
+    </View>
   );
 };
 
@@ -402,10 +537,18 @@ const DetailHistoryChart = ({ item, sensor }) => {
   );
 };
 
-const SensorDisplayItem = ({ item, sensor, emergency, getData, maxValue }) => {
+const SensorDisplayItem = ({
+  item,
+  sensor,
+  emergency,
+  getData,
+  maxValue,
+  offsetTitle,
+  setOffsetTitle,
+}) => {
   const doAction = useCallback(
-    (action) => {
-      sendRemoteCommand(sensor, action);
+    (action, data) => {
+      sendRemoteCommand(sensor, action, data);
     },
     [sensor]
   );
@@ -413,16 +556,25 @@ const SensorDisplayItem = ({ item, sensor, emergency, getData, maxValue }) => {
   switch (item.type) {
     case 'camera':
       return (
-        <View style={styles.mediaContainer}>
-          <MediaPlayer
-            uri={item.configuration.uri}
-            style={{ height: standardizeHeight }}
-          />
+        <View style={styles.CameraContainer}>
+          <Text style={styles.headerCamera}>{t('camera')}</Text>
+          <View style={styles.mediaContainer}>
+            <MediaPlayer
+              testID={TESTID.DEVICE_DETAIL_MEDIA_PLAYER}
+              uri={item.configuration.uri}
+              style={{ height: standardizeHeight }}
+            />
+          </View>
         </View>
       );
     case 'action':
       return (
-        <ActionGroup actionGroup={item.configuration} doAction={doAction} />
+        <ActionGroup
+          testID={TESTID.DEVICE_DETAIL_ACTION_GROUP}
+          actionGroup={item.configuration}
+          doAction={doAction}
+          sensor={sensor}
+        />
       );
     case 'history':
       return <DetailHistoryChart item={item} sensor={sensor} />;
@@ -440,7 +592,9 @@ const SensorDisplayItem = ({ item, sensor, emergency, getData, maxValue }) => {
           return (
             <DeviceAlertStatus
               data={getData(item)}
-              style={[styles.marginLeft, styles.moveDownOffset]}
+              style={styles.marginLeft}
+              offsetTitle={offsetTitle}
+              setOffsetTitle={setOffsetTitle}
             />
           );
         case 'flat_list':
@@ -449,7 +603,7 @@ const SensorDisplayItem = ({ item, sensor, emergency, getData, maxValue }) => {
               title={item.configuration.title}
               data={getData(item)}
               style={[styles.marginLeft, styles.marginVertical]}
-              styleTitle={styles.moveUpOffset}
+              offsetTitle={offsetTitle}
             />
           );
         default:
@@ -486,10 +640,39 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.White,
   },
+  title: {
+    marginHorizontal: 16,
+  },
+  headerCamera: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    color: Colors.Gray8,
+    fontSize: 16,
+    lineHeight: 24,
+    marginTop: 18,
+    marginLeft: 20,
+    marginBottom: 16,
+  },
+  CameraContainer: {
+    paddingBottom: 16,
+    marginHorizontal: 16,
+    flexDirection: 'column',
+    backgroundColor: Colors.White,
+    borderRadius: 10,
+    shadowColor: Colors.Shadow,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 6,
+  },
   mediaContainer: {
     alignSelf: 'center',
     width: standardizeWidth,
     height: standardizeHeight,
+    paddingHorizontal: 16,
   },
   chartStyle: {
     paddingHorizontal: 16,
@@ -533,12 +716,16 @@ const styles = StyleSheet.create({
   marginVertical: {
     marginVertical: 10,
   },
-  moveUpOffset: {
-    bottom: offsetTitle,
-  },
-  moveDownOffset: {
-    top: offsetTitle - 10,
+  menuAction: {
+    borderRadius: 10,
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
   },
 });
 
-export default DeviceDetail;
+const mapStateToProps = (state) => ({
+  account: state.auth.account,
+});
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeviceDetail);

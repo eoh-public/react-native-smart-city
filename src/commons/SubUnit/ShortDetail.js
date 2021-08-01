@@ -17,11 +17,15 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
 );
 
-const ShortDetailSubUnit = ({ unit, station }) => {
+const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
   const navigation = useNavigation();
 
   const goToDetail = () => {
-    navigation.navigate(Routes.SubUnitDetail, { unit, station });
+    navigation.navigate(Routes.SubUnitDetail, {
+      unit,
+      station,
+      isGGHomeConnected,
+    });
   };
 
   const renderCamera = () => {
@@ -69,12 +73,17 @@ const ShortDetailSubUnit = ({ unit, station }) => {
         testID={TESTID.SUB_UNIT_GO_TO_DETAIL}
       >
         <View style={styles.boxTitle}>
-          <Text type="H4" semibold style={styles.nameSubUnit}>
-            {station.name}&nbsp;&nbsp;
-            <Text regular style={styles.numberDevices}>
-              {station.sensors ? station.sensors.length : 0} {t('devices')}
+          <View>
+            <Text type="H4" semibold style={styles.nameSubUnit}>
+              {`${station.name}  `}
+              <Text regular style={styles.numberDevices}>
+                {/* &nbsp; mean numberDevices and devices always come together */}
+                {station.sensors ? station.sensors.length : 0}
+                &nbsp;
+                {t('devices')}
+              </Text>
             </Text>
-          </Text>
+          </View>
           <Icon name={'right'} color={Colors.Black} size={16} />
         </View>
       </TouchableOpacity>
@@ -96,6 +105,7 @@ const ShortDetailSubUnit = ({ unit, station }) => {
               sensor={sensor}
               unit={unit}
               station={station}
+              isGGHomeConnected={isGGHomeConnected}
             />
           ))}
       </View>
@@ -108,14 +118,12 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: 20,
-    lineHeight: 30,
-    padding: 5,
+    lineHeight: 28,
   },
   numberDevices: {
     fontStyle: 'normal',
-    fontWeight: 'normal',
+    fontWeight: '400',
     fontSize: 12,
-    lineHeight: 20,
     color: Colors.Gray8,
   },
   boxTitle: {

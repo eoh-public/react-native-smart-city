@@ -29,18 +29,21 @@ const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
   } = summaryDetail;
 
   const volt1Item = {
+    id: 1,
     color: Colors.Red6,
     standard: 'Voltage 1',
     value: volt1Value,
     measure: '',
   };
   const volt2Item = {
+    id: 2,
     color: Colors.Red6,
     standard: 'Voltage 2',
     value: volt2Value,
     measure: '',
   };
   const volt3Item = {
+    id: 3,
     color: Colors.Red6,
     standard: 'Voltage 3',
     value: volt2Value,
@@ -48,18 +51,21 @@ const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
   };
 
   const current1Item = {
+    id: 4,
     color: Colors.Blue10,
     standard: 'Current 1',
     value: current1Value,
     measure: '',
   };
   const current2Item = {
+    id: 5,
     color: Colors.Blue10,
     standard: 'Current 2',
     value: current2Value,
     measure: '',
   };
   const current3Item = {
+    id: 6,
     color: Colors.Blue10,
     standard: 'Current 3',
     value: current3Value,
@@ -67,6 +73,7 @@ const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
   };
 
   const activeItem = {
+    id: 7,
     color: Colors.Orange,
     standard: 'Active Power',
     value: activePowerValue,
@@ -74,18 +81,21 @@ const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
   };
 
   const powerFactor1Item = {
+    id: 8,
     color: Colors.Green6,
     standard: 'Power Factor 1',
     value: powerFactor1Value,
     measure: '',
   };
   const powerFactor2Item = {
+    id: 9,
     color: Colors.Green6,
     standard: 'Power Factor 2',
     value: powerFactor2Value,
     measure: '',
   };
   const powerFactor3Item = {
+    id: 10,
     color: Colors.Green6,
     standard: 'Power Factor 3',
     value: powerFactor3Value,
@@ -93,6 +103,7 @@ const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
   };
 
   const totalPower = {
+    id: 11,
     color: Colors.Green7,
     standard: 'Total Power Consumption',
     value: totalPowerValue,

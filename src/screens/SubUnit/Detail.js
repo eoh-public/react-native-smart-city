@@ -20,7 +20,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const SubUnitDetail = ({ route }) => {
-  const { unit, station } = route.params;
+  const { unit, station, isGGHomeConnected } = route.params;
   const language = useSCContextSelector((state) => state.language);
   const navigation = useNavigation();
   const {
@@ -148,6 +148,7 @@ const SubUnitDetail = ({ route }) => {
                     sensor={item}
                     unit={unit}
                     station={station}
+                    isGGHomeConnected={isGGHomeConnected}
                   />
                 );
               })}

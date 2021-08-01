@@ -12,6 +12,7 @@ const MenuActionMoreComponent = ({
   listMenuItem,
   childRef,
   onItemClick,
+  wrapStyle,
 }) => {
   const onPress = useCallback(
     (item) => {
@@ -22,7 +23,7 @@ const MenuActionMoreComponent = ({
   );
   return (
     <Popover
-      popoverStyle={styles.menuStyle}
+      popoverStyle={[styles.menuStyle, wrapStyle]}
       placement="bottom"
       from={childRef}
       onRequestClose={hideMore}

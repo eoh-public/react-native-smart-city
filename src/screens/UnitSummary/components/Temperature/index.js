@@ -4,21 +4,20 @@ import { t } from 'i18n-js';
 
 import { Colors } from '../../../../configs';
 import { Section, Today } from '../../../../commons';
-import HistoryChart from '../../../../commons/Device/HistoryChart';
 import ItemTemperature from './ItemTemperature';
-import convertDatas from '../../../../utils/chartHelper/convertDatas';
+import ConfigHistoryChart from '../../../../commons/UnitSummary/ConfigHistoryChart';
 import SvgHumidity from '../../../../../assets/images/Device/humidity.svg';
 import SvgRain from '../../../../../assets/images/Device/rain-outline.svg';
 import SvgTemperature from '../../../../../assets/images/Device/temperature.svg';
 import SvgWind from '../../../../../assets/images/Device/wind.svg';
 
-const getDataTemperature = (summary, summaryDetail) => {
+const getDataTemperature = (summaryDetail) => {
   return [
     {
       id: '0',
       svgMain: <SvgTemperature />,
       title: `${t('text_temperature')}`,
-      value: `${summaryDetail.temperature || t('loading')}`,
+      value: `${summaryDetail.tempValue || t('loading')}`,
     },
     {
       id: '1',
@@ -44,25 +43,17 @@ const getDataTemperature = (summary, summaryDetail) => {
   ];
 };
 
-const Temperature = memo(({ unit, summary, summaryDetail }) => {
-  const dataTemperature = useMemo(
-    () => getDataTemperature(summary, summaryDetail),
-    [summary, summaryDetail]
-  );
+const Temperature = memo(({ summaryDetail }) => {
+  const { listConfigs } = summaryDetail;
 
-  const { tempData, humiData, labels, labels_humi } = summaryDetail;
-  const datas = [
-    {
-      title: t('text_temperature'),
-      data: convertDatas(tempData || [], labels),
-      color: Colors.Red6,
-    },
-    {
-      title: t('text_humidity'),
-      data: convertDatas(humiData, labels_humi),
-      color: Colors.Blue6,
-    },
-  ];
+  const showBoxHistory = useMemo(() => {
+    return !!listConfigs;
+  }, [listConfigs]);
+
+  const dataTemperature = useMemo(
+    () => getDataTemperature(summaryDetail),
+    [summaryDetail]
+  );
 
   return (
     <>
@@ -84,9 +75,24 @@ const Temperature = memo(({ unit, summary, summaryDetail }) => {
           })}
         </View>
       </Section>
-      <Section type={'border'}>
-        <HistoryChart datas={datas} configuration={{ type: 'line_chart' }} />
-      </Section>
+      {showBoxHistory && (
+        <Section type={'border'}>
+          <ConfigHistoryChart
+            configs={[
+              {
+                id: listConfigs.temp,
+                title: t('text_temperature'),
+                color: Colors.Blue10,
+              },
+              {
+                id: listConfigs.humi,
+                title: t('text_humidity'),
+                color: Colors.Red6,
+              },
+            ]}
+          />
+        </Section>
+      )}
     </>
   );
 });

@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { axiosGet } from '../../../utils/Apis/axios';
 import { API } from '../../../configs';
 
-const useConnectGateway = (station_id, unit_id) => {
+const useConnectGateway = (unit_id) => {
   const navigation = useNavigation();
 
   const fetchDetails = useCallback(async () => {
@@ -12,13 +12,11 @@ const useConnectGateway = (station_id, unit_id) => {
       {},
       true
     );
-    const station = unit.stations.find((item) => item.id === station_id);
-    return { fetchSuccess, unit, station };
-  }, [station_id, unit_id]);
+    return { fetchSuccess, unit };
+  }, [unit_id]);
 
   const onPressDone = useCallback(async () => {
-    // eslint-disable-next-line no-unused-vars
-    const { fetchSuccess, unit, station } = await fetchDetails();
+    const { fetchSuccess } = await fetchDetails();
     if (!fetchSuccess) {
       return;
     }

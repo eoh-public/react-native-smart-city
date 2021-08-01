@@ -1,18 +1,14 @@
-import { Colors, Device } from '../../configs';
 import { StyleSheet } from 'react-native';
-import { standardizeCameraScreenSize } from '../../utils/Utils';
+import { Colors } from '../../configs';
 
-const { standardizeHeight } = standardizeCameraScreenSize(
-  Device.screenWidth - 32
-);
-
-export const bigButtonStyles = StyleSheet.create({
+export default StyleSheet.create({
   barrierControlContainer: {
-    marginTop: standardizeHeight / 3,
-    width: '100%',
+    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
+    marginHorizontal: 20,
+    marginTop: 20,
   },
   bigCircle: {
     backgroundColor: Colors.Gray2,

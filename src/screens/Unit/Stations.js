@@ -4,7 +4,7 @@ import React, { memo } from 'react';
 import { TESTID } from '../../configs/Constants';
 import ShortDetailSubUnit from '../../commons/SubUnit/ShortDetail';
 
-const Stations = memo(({ unit }) => {
+const Stations = memo(({ unit, isGGHomeConnected }) => {
   return (
     <>
       {!!unit.stations && unit.stations.length > 0 && (
@@ -14,6 +14,7 @@ const Stations = memo(({ unit }) => {
               unit={unit}
               station={station}
               key={`station-${station.id}`}
+              isGGHomeConnected={isGGHomeConnected}
             />
           ))}
         </View>

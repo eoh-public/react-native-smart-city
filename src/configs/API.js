@@ -15,7 +15,15 @@ const API = {
       API_ROOT + '/accounts/forgot_password/verify_otp/',
     RESET_PASSWORD: API_ROOT + '/accounts/forgot_password/set_password/',
   },
-
+  ACCOUNTS: {
+    FEATURES: API_ROOT + '/accounts/features/',
+    ADD_CARD: API_ROOT + '/billing/payments/stripe/add_card/',
+    REMOVE_CARD: (id) =>
+      API_ROOT + `/billing/payments/stripe/remove_cards/${id}/`,
+    CHANGE_DEFAULT_CARD: API_ROOT + '/billing/payments/stripe/set_default/',
+    LIST_PAYMENT_METHODS: API_ROOT + '/billing/list_payment_methods/',
+    CREATE_CARD_TOKEN: 'https://api.stripe.com/v1/tokens',
+  },
   UNIT: {
     ADD_USER: API_ROOT + '/property_manager/shared_units/add_by_phone_number/',
     MY_UNITS: API_ROOT + '/property_manager/units/mine/',
@@ -34,6 +42,7 @@ const API = {
     PIN_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/pin/`,
     UNPIN_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/unpin/`,
     MANAGE_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/`,
+    CHIP_SCAN: (id) => API_ROOT + `/property_manager/units/${id}/chip_scan/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>
@@ -44,7 +53,6 @@ const API = {
       API_ROOT + `/property_manager/${unitId}/sub_units/${id}/`,
     SENSOR_SCAN: (id) =>
       API_ROOT + `/property_manager/stations/${id}/sensor_scan/`,
-    CHIP_SCAN: (id) => API_ROOT + `/property_manager/stations/${id}/chip_scan/`,
   },
   CHIP: {
     CHECK_FINALIZED:
@@ -69,6 +77,7 @@ const API = {
     UPDATE_SENSOR: (unit_id, station_id, id) =>
       API_ROOT +
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/`,
+    GET_ACTIVITY_LOG: API_ROOT + '/chip_manager/action_log',
   },
   CONFIG: {
     DISPLAY_HISTORY: API_ROOT + '/property_manager/configs/display_history/',
@@ -142,6 +151,22 @@ const API = {
   },
   EMERGENCY: {
     CONTACTS: API_ROOT + '/emergency_button/contacts/',
+  },
+  BILLING: {
+    LIST_PAYMENT_METHODS_BY_COUNTRY: (code) =>
+      API_ROOT + `/billing/list-methods/${code}/`,
+    PAYMENT: {
+      STRIPE: {
+        PROCESS: (id) => API_ROOT + `/billing/payments/stripe/process/${id}/`,
+        ADD_CARD: API_ROOT + '/billing/payments/stripe/add_card/',
+        CREATE_PAYMENT_INTENT: (id) =>
+          API_ROOT + `/billing/payments/stripe/sca/create-payment/${id}/`,
+        PAYMENT_INTENT_SUCCESS: (intent_id) =>
+          API_ROOT +
+          `/billing/payments/stripe/sca/payment_success/${intent_id}/`,
+      },
+    },
+    DEFAULT_PAYMENT_METHODS: API_ROOT + '/billing/default_payment_method/',
   },
   NOTIFICATION: {
     REGISTER_SIGNAL_ID: API_ROOT + '/accounts/register-signal-id/',
