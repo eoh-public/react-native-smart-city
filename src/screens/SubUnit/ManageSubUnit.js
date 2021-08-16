@@ -87,7 +87,7 @@ const ManageSubUnit = (props) => {
   const updateBackground = useCallback(
     async (headers) => {
       const formData = createFormData(imageUrl, ['background']);
-      const { success, data } = await axiosPatch(
+      const { success } = await axiosPatch(
         API.SUB_UNIT.MANAGE_SUB_UNIT(unit.id, station.id),
         formData,
         headers

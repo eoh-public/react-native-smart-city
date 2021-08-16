@@ -40,7 +40,9 @@ const ItemQuickAction = memo(({ sensor, wrapperStyle, setStatus, unit }) => {
   );
 
   useEffect(() => {
-    sensor.quick_action && sensor.quick_action.config_id && watchMultiConfigs([sensor.quick_action.config_id]);
+    sensor.quick_action &&
+      sensor.quick_action.config_id &&
+      watchMultiConfigs([sensor.quick_action.config_id]);
   }, [sensor.quick_action]);
 
   useEffect(() => {

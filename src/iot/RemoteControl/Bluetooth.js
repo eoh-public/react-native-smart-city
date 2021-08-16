@@ -140,7 +140,8 @@ export const sendDataOverBluetooth = async (
 
   try {
     connectedDevice = await device.connect();
-    fullDataDevice = await connectedDevice.discoverAllServicesAndCharacteristics();
+    fullDataDevice =
+      await connectedDevice.discoverAllServicesAndCharacteristics();
     await fullDataDevice.writeCharacteristicWithResponseForService(
       BLE.BLE_REMOTE_SERVICE_UUID,
       BLE.BLE_REMOTE_CHARACTERISTIC_UUID,

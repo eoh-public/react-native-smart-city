@@ -51,7 +51,7 @@ const AddSubUnit = ({ route }) => {
     } else {
       ToastBottomHelper.error(t('text_create_sub_unit_fail'));
     }
-  }, [dispatch, navigation, roomName, unit, wallpaper]);
+  }, [navigation, roomName, unit, wallpaper]);
 
   const onChoosePhoto = useCallback(() => {
     setShowImagePicker(true);

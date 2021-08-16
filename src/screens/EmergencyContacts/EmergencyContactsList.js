@@ -20,11 +20,8 @@ export const EmergencyContactsList = ({ route }) => {
   const { unitId, group } = route.params;
   const { navigate } = useNavigation();
   const isFocused = useIsFocused();
-  const [
-    showingAddnewModal,
-    setShowAddnewModal,
-    setHideAddnewModal,
-  ] = useBoolean(false);
+  const [showingAddnewModal, setShowAddnewModal, setHideAddnewModal] =
+    useBoolean(false);
   const {
     stateAlertRemoveContact,
     onPressRemoveContact,

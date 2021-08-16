@@ -44,9 +44,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
       <>
         <View style={styles.lockDoor}>
           <Icon name={icon} size={15} color={color} style={styles.iconLock} />
-          <Text
-            style={styles.textLockDoor}
-          >
+          <Text style={styles.textLockDoor}>
             {configuration.text_door_lock}{' '}
           </Text>
         </View>

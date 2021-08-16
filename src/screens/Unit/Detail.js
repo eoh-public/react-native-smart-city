@@ -10,7 +10,6 @@ import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AppState, RefreshControl, View } from 'react-native';
 import { fetchWithCache } from '../../utils/Apis/axios';
-import { useSCContextSelector } from '../../context';
 import { mqttConnect } from '../../iot/RemoteControl/Mqtt';
 import styles from './styles';
 import AddMenu from './AddMenu';
@@ -26,12 +25,8 @@ const UnitDetail = ({ route }) => {
   const [showAdd, setShowAdd, setHideAdd] = useBoolean();
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
 
-  const {
-    childRef,
-    showingPopover,
-    showPopoverWithRef,
-    hidePopover,
-  } = usePopover();
+  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
+    usePopover();
 
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 

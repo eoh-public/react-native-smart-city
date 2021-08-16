@@ -35,27 +35,28 @@ const DevicePermissionsCheckbox = ({
   const [selectIndexes, setSelectIndexes] = useState(selectedIndexes); // [-1] all , [1, 2 ,3] some , [] no
 
   const onSelectIndex = useCallback(
-    (index, isRead = false) => () => {
-      const indexOfItem = selectIndexes.indexOf(index);
-      let newListIndexes = [...selectIndexes];
+    (index, isRead = false) =>
+      () => {
+        const indexOfItem = selectIndexes.indexOf(index);
+        let newListIndexes = [...selectIndexes];
 
-      if (indexOfItem > -1) {
-        // off permission
-        newListIndexes.splice(indexOfItem, 1);
-      } else {
-        //onPermission
-        if (index === -1) {
-          newListIndexes = [-1]; // All permission
+        if (indexOfItem > -1) {
+          // off permission
+          newListIndexes.splice(indexOfItem, 1);
         } else {
-          newListIndexes.push(index);
-          if (newListIndexes.indexOf(-1) > -1) {
-            newListIndexes.splice(newListIndexes.indexOf(-1), 1);
+          //onPermission
+          if (index === -1) {
+            newListIndexes = [-1]; // All permission
+          } else {
+            newListIndexes.push(index);
+            if (newListIndexes.indexOf(-1) > -1) {
+              newListIndexes.splice(newListIndexes.indexOf(-1), 1);
+            }
           }
         }
-      }
-      setSelectIndexes(newListIndexes);
-      onSelectIndexes(sensor, newListIndexes);
-    },
+        setSelectIndexes(newListIndexes);
+        onSelectIndexes(sensor, newListIndexes);
+      },
     [selectIndexes, setSelectIndexes, onSelectIndexes, sensor]
   );
 

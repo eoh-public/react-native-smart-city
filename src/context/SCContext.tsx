@@ -5,7 +5,13 @@ import Toast from 'react-native-toast-message';
 import { Alert } from '../commons';
 import { Colors } from '../configs';
 import { initI18n, i18nSetLocale } from '../utils/I18n';
-import { ActionDataMap, ActionType, AuthData, Language, StatusBar } from './actionType';
+import {
+  ActionDataMap,
+  ActionType,
+  AuthData,
+  Language,
+  StatusBar,
+} from './actionType';
 import { initialState, Action, ContextData, reducer } from './reducer';
 
 const toastConfig = {
@@ -66,7 +72,13 @@ export const SCProvider = ({ children }) => {
     dispatch({ type: action, payload: payload });
   };
 
-  const providerValue = { stateData, setAuth, setLocale, setAction, setStatusBar };
+  const providerValue = {
+    stateData,
+    setAuth,
+    setLocale,
+    setAction,
+    setStatusBar,
+  };
 
   return (
     <SCContext.Provider value={providerValue}>

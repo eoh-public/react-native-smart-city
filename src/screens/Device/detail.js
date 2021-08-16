@@ -368,12 +368,8 @@ const DeviceDetail = ({ account, route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const {
-    childRef,
-    showingPopover,
-    showPopoverWithRef,
-    hidePopover,
-  } = usePopover();
+  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
+    usePopover();
 
   return (
     <View style={styles.wrap}>
