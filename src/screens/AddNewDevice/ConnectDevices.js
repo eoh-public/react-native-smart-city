@@ -22,11 +22,8 @@ const ConnectDevices = memo(({ route }) => {
     deviceName,
     setDeviceName,
   } = useConnectDevices(new_sensor, station_id, unit_id);
-  const {
-    stateAlertRename,
-    onShowRenameAlert,
-    hideAlertAction,
-  } = useStateAlertRename();
+  const { stateAlertRename, onShowRenameAlert, hideAlertAction } =
+    useStateAlertRename();
 
   const onPressRename = useCallback(() => {
     setDeviceName(temporaryDeviceName);

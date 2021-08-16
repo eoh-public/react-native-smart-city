@@ -5,7 +5,7 @@ import { t } from 'i18n-js';
 
 import { Colors } from '../../configs';
 import { AlertAction, Section, ViewButtonBottom } from '../../commons';
-import { BLE_INIT_NAME, BLE_NOTIFY_WIFI_OK, TESTID } from '../../configs/Constants';
+import { BLE_INIT_NAME, BLE_NOTIFY_WIFI_OK } from '../../configs/Constants';
 import base64 from 'react-native-base64';
 import Text from '../../commons/Text';
 import Routes from '../../utils/Route';
@@ -111,19 +111,10 @@ const SetupGatewayWifi = memo(({ route }) => {
 
   return (
     <SafeAreaView style={styles.wrap}>
-      <Text
-        semibold
-        size={20}
-        color={Colors.Black}
-        style={styles.txtHeader}
-      >
+      <Text semibold size={20} color={Colors.Black} style={styles.txtHeader}>
         {t('add_new_gateway')}
       </Text>
-      <Text
-        size={14}
-        color={Colors.Gray8}
-        style={styles.txtNote}
-      >
+      <Text size={14} color={Colors.Gray8} style={styles.txtNote}>
         {t('please_select_a_wifi_network')}
       </Text>
 
@@ -132,11 +123,7 @@ const SetupGatewayWifi = memo(({ route }) => {
         showsVerticalScrollIndicator={false}
       >
         <Section type={'border'}>
-          <Text
-            style={styles.textWifi}
-            bold
-            color={Colors.Primary}
-          >
+          <Text style={styles.textWifi} bold color={Colors.Primary}>
             {t('wifi_name')}
           </Text>
           <_TextInput
@@ -146,11 +133,7 @@ const SetupGatewayWifi = memo(({ route }) => {
             textInputStyle={styles.wifiInput}
             selectionColor={Colors.Primary}
           />
-          <Text
-            style={styles.textWifi}
-            bold
-            color={Colors.Primary}
-          >
+          <Text style={styles.textWifi} bold color={Colors.Primary}>
             {t('password')}
           </Text>
           <_TextInputPassword

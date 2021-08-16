@@ -52,10 +52,7 @@ describe('Test OneBigButtonTemplate', () => {
     const mockDoAction = jest.fn();
     act(() => {
       wrapper = create(
-        <Index
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-        />
+        <Index actionGroup={actionGroup} doAction={mockDoAction} />
       );
     });
 
@@ -79,10 +76,7 @@ describe('Test OneBigButtonTemplate', () => {
     const mockDoAction = jest.fn();
     act(() => {
       wrapper = create(
-        <Index
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-        />
+        <Index actionGroup={actionGroup} doAction={mockDoAction} />
       );
     });
 

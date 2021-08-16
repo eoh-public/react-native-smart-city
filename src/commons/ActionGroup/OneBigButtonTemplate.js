@@ -32,4 +32,3 @@ const OneBigButtonTemplate = memo(({ actionGroup, doAction }) => {
 });
 
 export default OneBigButtonTemplate;
-

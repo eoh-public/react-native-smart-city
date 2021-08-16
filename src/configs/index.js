@@ -7,14 +7,4 @@ import Styles from './Styles';
 import BLE from './BLE';
 import Device from './Device';
 import { Fonts } from './Fonts';
-export {
-  API,
-  BLE,
-  Colors,
-  Constants,
-  Theme,
-  Styles,
-  Images,
-  Device,
-  Fonts,
-};
+export { API, BLE, Colors, Constants, Theme, Styles, Images, Device, Fonts };

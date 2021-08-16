@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
-// import HighchartsReactNative from '@highcharts/highcharts-react-native';
+import HighchartsReactNative from '@highcharts/highcharts-react-native';
 import moment from 'moment';
 import { Colors } from '../../configs';
 

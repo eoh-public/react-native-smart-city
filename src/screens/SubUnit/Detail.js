@@ -23,12 +23,8 @@ const SubUnitDetail = ({ route }) => {
   const { unit, station, isGGHomeConnected } = route.params;
   const language = useSCContextSelector((state) => state.language);
   const navigation = useNavigation();
-  const {
-    childRef,
-    showingPopover,
-    showPopoverWithRef,
-    hidePopover,
-  } = usePopover();
+  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
+    usePopover();
 
   const currentUserId = useSCContextSelector((state) =>
     get(state, 'auth.account.user.id', 0)

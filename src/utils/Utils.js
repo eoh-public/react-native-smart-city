@@ -4,8 +4,6 @@ import validator from 'validator';
 import axios from 'axios';
 import { Constants } from '../configs';
 
-const getUuid = require('uuid-by-string');
-
 export const setAxiosDefaultAuthToken = (token) => {
   axios.defaults.headers.common.Accept = 'application/json';
   axios.defaults.headers.common.Authorization = `Token ${token}`;

@@ -18,6 +18,7 @@ const HorizontalBarChart = memo(({ datas, unit }) => {
   }, [dataX]);
   const maxY = getMaxValueIndex(dataY);
   dataY.splice(maxY._index, 1, { ...maxY.max, color: Colors.Primary });
+  // eslint-disable-next-line no-unused-vars
   const chartOptions = {
     chart: {
       type: 'bar',

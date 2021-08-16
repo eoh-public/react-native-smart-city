@@ -15,13 +15,8 @@ const keyExtractor = (item) => item.id;
 const ActivityLogScreen = () => {
   const { params = {} } = useRoute();
   const { sensor } = params;
-  const {
-    data,
-    isLoading,
-    isRefreshing,
-    onLoadMore,
-    onRefresh,
-  } = useActivityLog(sensor);
+  const { data, isLoading, isRefreshing, onLoadMore, onRefresh } =
+    useActivityLog(sensor);
 
   const Item = ({ item, length, index }) => {
     return (
