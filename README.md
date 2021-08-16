@@ -81,7 +81,6 @@ const YourStack = () => {
     </SmartCity>
   );
 };
-
 const MainTab = () => {
   return (
     <Tab.Navigator>
