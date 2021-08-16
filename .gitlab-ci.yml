@@ -1,6 +1,7 @@
 image: node:14.16.0
 
 stages:
+  - test
   - release
   - publish
 
@@ -9,6 +10,11 @@ cache:
   paths:
     - node_modules/
     - vendor/
+
+test_mr:
+  stage: test
+  script:
+    - echo "Test Passed"
 
 release-patch:
   stage: release
