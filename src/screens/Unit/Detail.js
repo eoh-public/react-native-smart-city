@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AppState, RefreshControl, View } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import WrapParallaxScrollView from 'components/WrapParallaxScrollView';
-import t from 'i18n-js';
+import { t } from 'i18n-js';
 
 import styles from './styles';
 import AddMenu from './AddMenu';
@@ -18,6 +17,7 @@ import { fetchWithCache } from '../../utils/Apis/axios';
 import { lgThinqConnect } from '../../iot/RemoteControl/LG';
 import ShortDetailSubUnit from '../../commons/SubUnit/ShortDetail';
 import NavBar from '../../commons/NavBar';
+import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 
 const UnitDetail = ({ route }) => {
   const { unitId, unitData } = route.params;

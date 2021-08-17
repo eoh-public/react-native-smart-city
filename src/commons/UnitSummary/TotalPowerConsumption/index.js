@@ -2,10 +2,10 @@ import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { t } from 'i18n-js';
 
-import { Colors } from 'configs/Colors';
-import Text from 'components/Text';
-import TotalPowerBox from 'components/UnitSummary/TotalPowerBox';
-import { TESTID } from 'configs/Constants';
+import { Colors } from '../../../configs';
+import TotalPowerBox from '../TotalPowerBox';
+import Text from '../../Text';
+import { TESTID } from '../../../configs/Constants';
 
 const TotalPowerConsumption = memo(({ time, total }) => {
   return (

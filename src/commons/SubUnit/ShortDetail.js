@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import t from 'i18n';
+import { t } from 'i18n-js';
 
 import { Images, Device } from '../../configs';
 import { TESTID } from '../../configs/Constants';

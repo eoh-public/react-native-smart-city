@@ -3,7 +3,7 @@ import { create, act } from 'react-test-renderer';
 import axios from 'axios';
 
 import SelectUser from '../SelectUser';
-import t from 'i18n-js';
+import { t } from 'i18n-js';
 import { TESTID } from '../../../configs/Constants';
 import { ViewButtonBottom, Button } from '../../../commons';
 import _TextInput from '../../../commons/Form/TextInput';

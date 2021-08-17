@@ -19,7 +19,7 @@ jest.mock('../GoogleHome', () => ({
   sendCommandOverGoogleHome: mockSendCommandOverGoogleHome,
 }));
 
-jest.mock('iot/RemoteControl/LG', () => ({
+jest.mock('../../../iot/RemoteControl/LG', () => ({
   ...jest.requireActual('../LG'),
   sendCommandOverLGThinq: mockSendCommandOverLGThinq,
 }));
