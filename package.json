@@ -1,7 +1,7 @@
 {
   "name": "@eohjsc/react-native-smart-city",
   "title": "React Native Smart Home",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "TODO",
   "main": "index.js",
   "files": [
