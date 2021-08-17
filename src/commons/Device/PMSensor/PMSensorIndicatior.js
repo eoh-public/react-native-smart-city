@@ -1,13 +1,14 @@
-import React, { memo } from 'react';
-import { View, StyleSheet } from 'react-native';
-
+import React, { memo, useCallback } from 'react';
+import { FlatList } from 'react-native';
 import QualityIndicatorItem from '../WaterQualitySensor/QualityIndicatorsItem';
+import styles from './PMSensorIndicatorStyles';
 
 //using for PM2.5-10, CO, UV, Rainflow Sensor
+const keyExtractor = (item) => item.id.toString();
 const PMSensorIndicatior = memo(({ data, style }) => {
-  return (
-    <View style={styles.standard}>
-      {data.map((item) => (
+  const renderItem = useCallback(
+    ({ item }) => {
+      return (
         <QualityIndicatorItem
           key={item.id.toString()}
           color={item.color}
@@ -17,20 +18,22 @@ const PMSensorIndicatior = memo(({ data, style }) => {
           measure={item.measure}
           style={style}
         />
-      ))}
-    </View>
+      );
+    },
+    [style]
+  );
+
+  return (
+    <FlatList
+      bounces={false}
+      numColumns={1}
+      horizontal={true}
+      contentContainerStyle={styles.standard}
+      data={data}
+      keyExtractor={keyExtractor}
+      renderItem={renderItem}
+    />
   );
 });
 
 export default PMSensorIndicatior;
-
-const styles = StyleSheet.create({
-  standard: {
-    flexDirection: 'row',
-    marginTop: 16,
-    justifyContent: 'center',
-  },
-  flatlistContent: {
-    paddingHorizontal: 16,
-  },
-});

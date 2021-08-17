@@ -1,18 +1,28 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { RefreshControl, ScrollView, View } from 'react-native';
+import { connect } from 'react-redux';
 import { t } from 'i18n-js';
 import moment from 'moment';
 import _ from 'lodash';
-import { connect, useSelector } from 'react-redux';
+import { get } from 'lodash';
+import { useSelector } from 'react-redux';
+import { IconFill } from '@ant-design/icons-react-native';
+import { Icon } from '@ant-design/react-native';
 
+import { useCountUp } from './hooks/useCountUp';
+import { getData as getLocalData } from '../../utils/Storage';
+import styles from './styles';
 import { API, Colors, Device } from '../../configs';
+const { standardizeHeight } = standardizeCameraScreenSize(
+  Device.screenWidth - 32
+);
 import { axiosGet } from '../../utils/Apis/axios';
-import { standardizeCameraScreenSize } from '../../utils/Utils';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
-import { sendRemoteCommand } from '../../iot/RemoteControl';
-
 import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
-import { ConnectedViewHeader, DisconnectedView } from '../../commons/Device';
+import {
+  ConnectedViewHeader,
+  DisconnectedView,
+} from '../../commons/Device/ConnectedViewHeader';
 import HistoryChart from '../../commons/Device/HistoryChart';
 import PMSensorIndicatior from '../../commons/Device/PMSensor/PMSensorIndicatior';
 import CurrentRainSensor from '../../commons/Device/RainningSensor/CurrentRainSensor';
@@ -31,27 +41,18 @@ import {
 import EmergencyDetail from '../../commons/Device/Emergency/EmergencyDetail';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
-import { get } from 'lodash';
-
 import { transformDatetime } from '../../utils/Converter/time';
-import { IconFill } from '@ant-design/icons-react-native';
-import { AlertAction, ButtonPopup } from '../../commons';
-import { Icon } from '@ant-design/react-native';
+import { AlertAction, ButtonPopup, MenuActionMore } from '../../commons';
 import EmergencyButton from '../../commons/Device/Emergency/EmergencyButton';
 import { TESTID } from '../../configs/Constants';
 import FooterInfo from '../../commons/Device/FooterInfo';
-import { useCountUp } from './hooks/useCountUp';
 import { navigate } from '../../navigations/utils';
 import Routes from '../../utils/Route';
-import { getData as getLocalData } from '../../utils/Storage';
-import { HeaderCustom } from '../../commons/Header';
-import MenuActionMore from '../../commons/MenuActionMore';
+import { sendRemoteCommand } from '../../iot/RemoteControl';
+import HeaderCustom from '../../commons/Header/HeaderCustom';
 import { usePopover } from '../../hooks/Common';
 import { useConfigGlobalState } from '../../iot/states';
-
-const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
-  Device.screenWidth - 32
-);
+import { standardizeCameraScreenSize } from '../../utils/Utils';
 
 const DeviceDetail = ({ account, route }) => {
   const [offsetTitle, setOffsetTitle] = useState(1);
@@ -387,7 +388,7 @@ const DeviceDetail = ({ account, route }) => {
         <Text bold type="H2" style={styles.title}>
           {title}
         </Text>
-        {renderSensorConnected()}
+        <View style={styles.wrapTemplate}>{renderSensorConnected()}</View>
         <AlertSendConfirm
           showAlertConfirm={showAlertConfirm}
           countDown={countDown}
@@ -630,94 +631,6 @@ const EmergencyCountdown = memo(({ countUpStr }) => (
     </Text>
   </View>
 ));
-
-const styles = StyleSheet.create({
-  wrap: {
-    flex: 1,
-    backgroundColor: Colors.White,
-  },
-  title: {
-    marginHorizontal: 16,
-  },
-  headerCamera: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    color: Colors.Gray8,
-    fontSize: 16,
-    lineHeight: 24,
-    marginTop: 18,
-    marginLeft: 20,
-    marginBottom: 16,
-  },
-  CameraContainer: {
-    paddingBottom: 16,
-    marginHorizontal: 16,
-    flexDirection: 'column',
-    backgroundColor: Colors.White,
-    borderRadius: 10,
-    shadowColor: Colors.Shadow,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 6,
-  },
-  mediaContainer: {
-    alignSelf: 'center',
-    width: standardizeWidth,
-    height: standardizeHeight,
-    paddingHorizontal: 16,
-  },
-  chartStyle: {
-    paddingHorizontal: 16,
-  },
-  bottomButtonEmergencyResolve: {
-    borderTopWidth: 1,
-    borderColor: Colors.Gray4,
-    backgroundColor: Colors.White,
-    height: 158,
-  },
-  bottomButtonEmergencyContact: {
-    marginHorizontal: 16,
-    marginBottom: 32,
-  },
-  countDown: {
-    marginBottom: 16,
-    marginTop: 8,
-  },
-  messageCountDown: {
-    marginBottom: 8,
-  },
-  locationName: {
-    flex: 1,
-    alignItems: 'center',
-    paddingHorizontal: 16,
-  },
-  textName: {
-    marginBottom: 19,
-  },
-  textResolved: {
-    fontSize: 30,
-    marginTop: 19,
-    marginBottom: 24,
-  },
-  textYourEmergencySituation: {
-    textAlign: 'center',
-  },
-  marginLeft: {
-    marginLeft: 16,
-  },
-  marginVertical: {
-    marginVertical: 10,
-  },
-  menuAction: {
-    borderRadius: 10,
-    borderBottomRightRadius: 10,
-    borderBottomLeftRadius: 10,
-  },
-});
 
 const mapStateToProps = (state) => ({
   account: state.auth.account,

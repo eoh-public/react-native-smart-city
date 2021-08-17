@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
-import CheckBox from '../GroupCheckBox/CheckBox';
 import { TESTID } from '../../configs/Constants';
+import CheckBox from './CheckBox';
 
 const GroupCheckBox = memo(({ data, onSelect, multiple }) => {
   const [selectIndexes, setSelectIndexes] = useState([]);

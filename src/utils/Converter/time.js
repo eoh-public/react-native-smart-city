@@ -48,6 +48,9 @@ export const timeDifference = (current, previous) => {
 };
 
 export const getTitleFromTime = (time, current) => {
+  time = moment(time).format('YYYY-MM-DD');
+  current = moment(current).format('YYYY-MM-DD');
+
   const durationTime = moment.duration(moment(time).diff(moment(current)));
   const day = Math.floor(durationTime.asDays());
 

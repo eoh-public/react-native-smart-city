@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import t from 'i18n-js';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   SafeAreaView,
@@ -13,9 +13,10 @@ import {
 
 import { API, Colors } from '../../configs';
 import { Section, RadioCircle, ViewButtonBottom } from '../../commons';
-import Text from '../../commons/Text';
 import { axiosGet } from '../../utils/Apis/axios';
+import Text from '../../commons/Text';
 import Routes from '../../utils/Route';
+import { TESTID } from '../../configs/Constants';
 
 const AddCommonSelectUnit = ({ route }) => {
   const navigation = useNavigation();
@@ -38,6 +39,10 @@ const AddCommonSelectUnit = ({ route }) => {
       case 'AddMember':
         setTitle(t('text_select_a_unit'));
         setSubTitle(t('text_select_a_unit_desc'));
+        break;
+      case 'AddLGDevice': // TODO mr make options from AddDevice
+        setTitle(t('text_select_a_unit'));
+        setSubTitle(t('first_select_a_unit'));
         break;
       default:
         setTitle(t('add_new_sub_unit'));
@@ -76,10 +81,19 @@ const AddCommonSelectUnit = ({ route }) => {
           unit: units[selectedIndex],
         });
         break;
+      case 'AddLGDevice':
+        navigation.navigate(Routes.AddLGDevice, {
+          code: route.params.code,
+          backend_url: route.params.backend_url
+            .replace(/%2F/g, '/')
+            .replace(/%3A/g, ':'),
+          unit_id: units[selectedIndex].id,
+        });
+        break;
       default:
         break;
     }
-  }, [addType, units, selectedIndex, navigation]);
+  }, [addType, navigation, units, selectedIndex, route.params]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -94,15 +108,21 @@ const AddCommonSelectUnit = ({ route }) => {
         >
           <Section type={'border'}>
             {units.map((item, index) => (
-              <View style={styles.rowContainer}>
-                <RadioCircle active={selectedIndex === index} />
+              <View key={index} style={styles.rowContainer}>
+                <RadioCircle
+                  active={selectedIndex === index}
+                  testID={TESTID.SELECT_UNIT_RADIO_BUTTON}
+                />
                 <TouchableOpacity
                   style={styles.row}
                   onPress={() => {
                     setSelectedIndex(index);
                   }}
+                  testID={TESTID.SELECT_UNIT_SELECT}
                 >
-                  <Text style={styles.text}>{item.name}</Text>
+                  <Text style={styles.text} testID={TESTID.SELECT_UNIT_NAME}>
+                    {item.name}
+                  </Text>
                 </TouchableOpacity>
               </View>
             ))}
@@ -114,6 +134,7 @@ const AddCommonSelectUnit = ({ route }) => {
           rightTitle={t('next')}
           rightDisabled={selectedIndex === -1}
           onRightClick={onPressNext}
+          testIDPrefix={TESTID.PREFIX.SELECT_UNIT}
         />
       </View>
     </SafeAreaView>

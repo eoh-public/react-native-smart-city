@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import { CheckBoxCustom } from './CheckBoxCustom';
+import { CheckBoxCustom } from '.';
 import styles from './Styles/TitleCheckBoxStyles';
 
 const TitleCheckBox = ({

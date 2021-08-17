@@ -2,10 +2,10 @@ import React, { memo, useCallback, useState } from 'react';
 import { TouchableOpacity, View, Switch } from 'react-native';
 import { Icon } from '@ant-design/react-native';
 import { t } from 'i18n-js';
-
-import Text from '../Text';
-import { Colors } from '../../configs';
 import styles from './ThreeButtonTemplateStyle';
+import Text from '../Text';
+import { TESTID } from '../../configs/Constants';
+import { Colors } from '../../configs';
 
 const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
   const { configuration } = actionGroup;
@@ -44,7 +44,10 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
       <>
         <View style={styles.lockDoor}>
           <Icon name={icon} size={15} color={color} style={styles.iconLock} />
-          <Text style={styles.textLockDoor}>
+          <Text
+            style={styles.textLockDoor}
+            testID={TESTID.TEXT_DOOR_LOOK_ON_OFF}
+          >
             {configuration.text_door_lock}{' '}
           </Text>
         </View>
@@ -64,6 +67,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
         <Text style={styles.headerThreeButton}>{t('controller')}</Text>
         <View style={styles.wrap}>
           <TouchableOpacity
+            testID={TESTID.BUTTON_TEMPLATE_1}
             style={styles.buttonActionDoor}
             onPress={onButton1Press}
             underlayColor={Colors.Gray2}
@@ -79,6 +83,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
           </TouchableOpacity>
 
           <TouchableOpacity
+            testID={TESTID.BUTTON_TEMPLATE_2}
             style={styles.buttonActionDoor}
             onPress={onButton2Press}
             underlayColor={Colors.Gray2}
@@ -88,6 +93,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
           </TouchableOpacity>
 
           <TouchableOpacity
+            testID={TESTID.BUTTON_TEMPLATE_3}
             style={styles.buttonActionDoor}
             onPress={onButton3Press}
             underlayColor={Colors.Gray2}

@@ -2,6 +2,7 @@ import {
   mockSendCommandOverBluetooth,
   mockSendCommandOverGoogleHome,
   mockSendCommandOverInternet,
+  mockSendCommandOverLGThinq,
 } from './index.mock.js'; // need to be imported first in the file
 import { sendRemoteCommand } from '../index';
 import Toast from 'react-native-toast-message';
@@ -86,5 +87,15 @@ describe('Test Remote Control', () => {
       }
     );
     expect(mockSendCommandOverGoogleHome).toBeCalled();
+  });
+
+  it('Send remote command route over lg_thinq', async () => {
+    await sendRemoteCommand(
+      {},
+      {
+        command_prefer_over_lg: true,
+      }
+    );
+    expect(mockSendCommandOverLGThinq).toBeCalled();
   });
 });

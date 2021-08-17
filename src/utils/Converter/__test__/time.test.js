@@ -1,7 +1,11 @@
 import moment from 'moment';
-import { t } from 'i18n-js';
+import t from 'i18n-js';
 
-const { transformDatetime, timeDifference } = require('../time');
+const {
+  transformDatetime,
+  timeDifference,
+  getTitleFromTime,
+} = require('../time');
 
 describe('test time utils, transformDatetime', () => {
   const timeSample = '2020-10-05T08:00:00.000Z';
@@ -23,6 +27,18 @@ describe('test time utils, transformDatetime', () => {
       time: timeSample,
     });
   });
+
+  test('test all case transformDatetime data null', () => {
+    transformDatetime();
+    let data = {
+      time: [''],
+    };
+    transformDatetime(data, ['time']);
+    expect(data.time).toEqual(['']);
+    data.time = '';
+    transformDatetime(data, ['time']);
+    expect(data.time).toEqual('');
+  });
 });
 
 describe('test time utils, timeDifference', () => {
@@ -35,6 +51,13 @@ describe('test time utils, timeDifference', () => {
     const current = '2020-10-05T08:00:01.000Z';
     const lastUpdated = '2020-10-05T08:00:00.000Z';
     const result = `1 ${t('seconds_ago')}`;
+    _testTime(current, lastUpdated, result);
+  });
+
+  test('test transformDatetime seconds ago less than 0', () => {
+    const current = '2020-10-05T08:00:01.000Z';
+    const lastUpdated = '2020-10-05T08:00:02.000Z';
+    const result = `0 ${t('seconds_ago')}`;
     _testTime(current, lastUpdated, result);
   });
 
@@ -71,5 +94,33 @@ describe('test time utils, timeDifference', () => {
     const lastUpdated = '2020-10-05T08:00:00.000Z';
     const result = `1 ${t('years_ago')}`;
     _testTime(current, lastUpdated, result);
+  });
+});
+
+describe('test time utils, getTitleFromTime', () => {
+  const _testTime = (time, current, result) => {
+    const timeString = getTitleFromTime(new Date(time), new Date(current));
+    expect(timeString).toEqual(result);
+  };
+
+  test('test getTitleFromTime today', () => {
+    const current = '2021-07-16T12:39:36.852687Z';
+    const time = '2021-07-16T12:39:36.852687Z';
+    const result = `${t('today')}`;
+    _testTime(time, current, result);
+  });
+
+  test('test getTitleFromTime yesterday', () => {
+    const current = '2021-07-16T12:39:36.852687Z';
+    const time = '2021-07-15T12:39:36.852687Z';
+    const result = `${t('yesterday')}`;
+    _testTime(time, current, result);
+  });
+
+  test('test getTitleFromTime day', () => {
+    const current = '2021-07-16T12:39:36.852687Z';
+    const time = '2021-07-14T12:39:36.852687Z';
+    const result = '14/07/2021';
+    _testTime(time, current, result);
   });
 });

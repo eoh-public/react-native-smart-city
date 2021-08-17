@@ -55,6 +55,7 @@ export default StyleSheet.create({
     fontSize: 16,
   },
   loadMore: {
+    marginTop: 10,
     marginBottom: 16 + getBottomSpace(),
   },
   contentContainerStyle: {

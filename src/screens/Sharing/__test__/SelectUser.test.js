@@ -1,14 +1,14 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import axios from 'axios';
-import { TESTID } from '../../../configs/Constants';
 
 import SelectUser from '../SelectUser';
-import { t } from 'i18n-js';
-import { Button, ViewButtonBottom } from '../../../commons';
+import t from 'i18n-js';
+import { TESTID } from '../../../configs/Constants';
+import { ViewButtonBottom, Button } from '../../../commons';
 import _TextInput from '../../../commons/Form/TextInput';
-import API from '../../../configs/API';
 import AccountList from '../../../commons/Auth/AccountList';
+import { API } from '../../../configs';
 
 const mockedNavigate = jest.fn();
 const mockedGoBack = jest.fn();
@@ -67,7 +67,7 @@ describe('test SelectUser container', () => {
 
   const mockAxiosPost = (response) => {
     axios.post.mockImplementation(async () => {
-      return response;
+      return await response;
     });
   };
 
@@ -115,19 +115,18 @@ describe('test SelectUser container', () => {
     const response = {
       status: 200,
       data: {
-        user: { id: 1, name: 'User' },
+        user: { id: 1, name: 'User', phone_number: '0909123456' },
       },
     };
     mockAxiosPost(response);
 
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = await create(<SelectUser route={route} />);
     });
     const instance = tree.root;
 
     const textInput = instance.findByType(_TextInput);
-    expect(textInput.props.placeholder).toEqual(t('add_user_phone_number'));
-    expect(textInput.props.keyboardType).toEqual('numeric');
+    expect(textInput.props.placeholder).toEqual(t('phone_number_or_email'));
     expect(textInput.props.errorText).toEqual('');
 
     const button = instance.findByType(Button);
@@ -148,12 +147,18 @@ describe('test SelectUser container', () => {
     expect(textInput.props.errorText).toEqual('');
     expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE, {
       phone: '0909123456',
+      email: '',
       unit: 1,
-      permissions: { read_permissions: [], control_permissions: [] },
+      permissions: { controlPermissions: {}, readPermissions: {} },
     });
-
     accountList = instance.findAllByType(AccountList);
     expect(accountList).toHaveLength(1);
+    axios.post.mockClear();
+    await act(async () => {
+      await button.props.onPress();
+    });
+
+    expect(axios.post).not.toHaveBeenCalled();
   });
 
   test('_TextInput onChange phone, validate and call api sharedPermission with new permission', async () => {
@@ -172,23 +177,29 @@ describe('test SelectUser container', () => {
     });
     const instance = tree.root;
     const textInput = instance.findByType(_TextInput);
+    expect(textInput.props.errorText).toEqual('');
     const button = instance.findByType(Button);
 
-    act(() => {
-      textInput.props.onChange('0909123456');
+    await act(async () => {
+      await textInput.props.onChange('0909123456');
     });
 
-    act(() => {
-      button.props.onPress();
+    await act(async () => {
+      await button.props.onPress();
     });
 
     expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE, {
-      phone: '0909123456',
-      unit: 1,
       permissions: {
-        read_permissions: [{ id: 'Read1', values: 'AccessRead1' }],
-        control_permissions: [{ id: 'Control1', values: 'AccessControl1' }],
+        controlPermissions: {
+          Control1: 'AccessControl1',
+        },
+        readPermissions: {
+          Read1: 'AccessRead1',
+        },
       },
+      phone: '0909123456',
+      email: '',
+      unit: 1,
     });
   });
 
@@ -216,7 +227,9 @@ describe('test SelectUser container', () => {
       button.props.onPress();
     });
 
-    expect(textInput.props.errorText).toEqual(t('invalid_phone_number'));
+    expect(textInput.props.errorText).toEqual(
+      t('invalid_phone_number_or_email')
+    );
     expect(axios.post).not.toHaveBeenCalled();
   });
 
@@ -246,8 +259,9 @@ describe('test SelectUser container', () => {
     expect(textInput.props.errorText).toEqual('');
     expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE, {
       phone: '0909123456',
+      email: '',
       unit: 1,
-      permissions: { read_permissions: [], control_permissions: [] },
+      permissions: { controlPermissions: {}, readPermissions: {} },
     });
 
     accountList = instance.findAllByType(AccountList);

@@ -1,3 +1,5 @@
+import { Platform, StatusBar } from 'react-native';
+import { Colors } from '../../configs';
 import { useSCContextSelector } from '../../context';
 
 export const useStatusBar = () => {
@@ -7,3 +9,6 @@ export const useStatusBar = () => {
     statusBar,
   };
 };
+
+export const useStatusBarPreview = (color = Colors.TextTransparent) =>
+  Platform.OS === 'android' && StatusBar.setBackgroundColor(color);

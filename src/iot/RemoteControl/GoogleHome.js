@@ -2,6 +2,8 @@ import { Auth, createConnection, getStates } from 'home-assistant-js-websocket';
 import { t } from 'i18n-js';
 import { getConfigGlobalState, setConfigGlobalState } from '../states';
 import { ToastBottomHelper } from '../../utils/Utils';
+import { API } from '../../configs';
+import { axiosPost } from '../../utils/Apis/axios';
 
 let connections = {};
 
@@ -221,5 +223,10 @@ export async function sendCommandOverGoogleHome(sensor, action, data) {
 
     await connection.sendMessagePromise(message);
   }
+
+  await axiosPost(API.SENSOR.ACTIVITY_LOG, {
+    action_id: action.id,
+    message: 'Trigger by user action with google home',
+  });
   ToastBottomHelper.success(t('command_send_success_googlehome'));
 }

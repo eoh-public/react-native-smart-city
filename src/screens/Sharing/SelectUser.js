@@ -7,49 +7,64 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import t from 'i18n-js';
 
 import { API, Colors, Theme } from '../../configs';
 import AccountList from '../../commons/Auth/AccountList';
 import _TextInput from '../../commons/Form/TextInput';
-import { Button, ViewButtonBottom } from '../../commons';
-import Text from '../../commons/Text';
-import { isValidPhoneNumber } from '../../utils/Validation';
+import { ViewButtonBottom, Button } from '../../commons';
+import {
+  isValidEmailAddress,
+  isValidPhoneNumber,
+} from '../../utils/Validation';
 import { axiosPost } from '../../utils/Apis/axios';
 import { TESTID } from '../../configs/Constants';
+import Text from '../../commons/Text';
 
 const SelectUser = ({ route }) => {
   const navigation = useNavigation();
   const { unit, permissions } = route.params;
   const [errorText, setErrorText] = useState('');
-  const [phone, setPhone] = useState('');
+  const [content, setContent] = useState('');
   const [users, setUsers] = useState([]);
 
-  const sharePermissions = useCallback(async () => {
-    let userSharedPermission = users.filter(
-      (user) => user.phone_number === phone
-    );
-    if (userSharedPermission.length) {
-      return false;
-    }
-    const { success, data } = await axiosPost(API.SHARE.SHARE, {
-      phone,
-      unit: unit.id,
-      permissions,
-    });
-    if (success) {
-      setUsers([...users, data.user]);
-    }
-  }, [phone, unit, permissions, users]);
+  const sharePermissions = useCallback(
+    async (phone, email) => {
+      let userSharedPermission = await users.filter(
+        (user) => user.phone_number === phone || user.email === email
+      );
+      if (userSharedPermission.length) {
+        return false;
+      }
+      const { success, data } = await axiosPost(API.SHARE.SHARE, {
+        phone,
+        email,
+        unit: unit.id,
+        permissions,
+      });
+      if (success) {
+        setUsers([...users, data.user]);
+      }
+    },
+    [unit, permissions, users]
+  );
 
   const validate = useCallback(() => {
-    if (!isValidPhoneNumber(phone)) {
-      setErrorText(t('invalid_phone_number'));
-      return;
+    let phone = '';
+    let email = '';
+    if (!isValidPhoneNumber(content)) {
+      if (!isValidEmailAddress(content)) {
+        setErrorText(t('invalid_phone_number_or_email'));
+        return;
+      } else {
+        email = content;
+      }
+    } else {
+      phone = content;
     }
     setErrorText('');
-    sharePermissions();
-  }, [phone, sharePermissions]);
+    sharePermissions(phone, email);
+  }, [content, sharePermissions]);
 
   const onPressNext = useCallback(() => {
     navigation.dangerouslyGetParent().goBack();
@@ -81,13 +96,12 @@ const SelectUser = ({ route }) => {
             <View style={styles.formWrapper}>
               <_TextInput
                 bottomButton
-                placeholder={t('add_user_phone_number')}
-                onChange={(value) => setPhone(value)}
+                placeholder={t('phone_number_or_email')}
+                onChange={(value) => setContent(value)}
                 errorText={errorText}
                 textInputStyle={styles.textInput}
                 wrapStyle={styles.noMarginTop}
                 selectionColor={Colors.Primary}
-                keyboardType={'numeric'}
               />
 
               <View style={styles.buttonWrapper}>

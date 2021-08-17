@@ -4,7 +4,7 @@ import { IconOutline } from '@ant-design/icons-react-native';
 import { Colors } from '../../../configs';
 import styles from './Styles/SensorItemStyles';
 import FImage from '../../../commons/FImage';
-import TitleCheckBox from './TitleCheckBox';
+import { TitleCheckBox } from '.';
 
 const SensorItem = ({
   item = {},

@@ -90,6 +90,8 @@ const Routes = {
   EmergencyContactsSelectContacts: 'EmergencyContactsSelectContacts',
   TermAndPolicy: 'TermAndPolicy',
   Browser: 'Browser',
+  AddLGDevice: 'AddLGDevice',
+  AddLGDeviceStack: 'AddLGDeviceStack',
 };
 
 export default Routes;

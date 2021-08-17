@@ -1,16 +1,13 @@
 import React from 'react';
-import { Icon } from '@ant-design/react-native';
-import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { Image, StyleSheet, View } from 'react-native';
+import t from 'i18n';
 
-import { Colors, Images, Device } from '../../configs';
+import { Images, Device } from '../../configs';
 import { TESTID } from '../../configs/Constants';
-import { Section } from '../../commons/index';
-import Text from '../../commons/Text';
-import ItemDevice from '../../commons/Device/ItemDevice';
-import MediaPlayer from '../../commons/MediaPlayer';
-import Routes from '../../utils/Route';
+import { Section } from '../Section';
+import Text from '../Text';
+import ItemDevice from '../Device/ItemDevice';
+import MediaPlayer from '../MediaPlayer';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
@@ -18,16 +15,6 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
-  const navigation = useNavigation();
-
-  const goToDetail = () => {
-    navigation.navigate(Routes.SubUnitDetail, {
-      unit,
-      station,
-      isGGHomeConnected,
-    });
-  };
-
   const renderCamera = () => {
     if (station.camera) {
       return (
@@ -67,28 +54,14 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
   };
 
   return (
-    <Section>
-      <TouchableOpacity
-        onPress={goToDetail}
-        testID={TESTID.SUB_UNIT_GO_TO_DETAIL}
-      >
-        <View style={styles.boxTitle}>
-          <View>
-            <Text type="H4" semibold style={styles.nameSubUnit}>
-              {`${station.name}  `}
-              <Text regular style={styles.numberDevices}>
-                {/* &nbsp; mean numberDevices and devices always come together */}
-                {station.sensors ? station.sensors.length : 0}
-                &nbsp;
-                {t('devices')}
-              </Text>
-            </Text>
-          </View>
-          <Icon name={'right'} color={Colors.Black} size={16} />
-        </View>
-      </TouchableOpacity>
-
+    <Section style={styles.noShadow}>
       {renderCamera()}
+
+      {!!station?.sensors?.length && (
+        <Text type={'H4'} semibold style={styles.device}>{`${t('device')} (${
+          station?.sensors?.length
+        })`}</Text>
+      )}
 
       <View style={styles.boxDevices}>
         {!!station.sensors &&
@@ -114,23 +87,6 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
 };
 
 const styles = StyleSheet.create({
-  nameSubUnit: {
-    fontStyle: 'normal',
-    fontWeight: '600',
-    fontSize: 20,
-    lineHeight: 28,
-  },
-  numberDevices: {
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 12,
-    color: Colors.Gray8,
-  },
-  boxTitle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   boxImage: {
     flexDirection: 'row',
     marginTop: 8,
@@ -147,6 +103,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 16,
     justifyContent: 'space-between',
+  },
+  noShadow: {
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  device: {
+    marginTop: 24,
   },
 });
 

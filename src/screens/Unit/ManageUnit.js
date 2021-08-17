@@ -293,6 +293,11 @@ const styles = StyleSheet.create({
   textInputWrapStyle: {
     marginTop: 0,
   },
+  buttonLGSync: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });
 
 export default ManageUnit;

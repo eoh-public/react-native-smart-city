@@ -1,82 +1,63 @@
-import React, { useCallback } from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import React, { memo, useEffect } from 'react';
+import { TouchableOpacity, ScrollView } from 'react-native';
 import Popover from 'react-native-popover-view';
 
-import { Colors } from '../../configs';
+import styles from './MenuActionMoreStyles';
 import Text from '../Text';
 import { TESTID } from '../../configs/Constants';
+import { useStatusBarPreview } from '../../hooks/Common/useStatusBar';
+import { Colors } from '../../configs';
 
-const MenuActionMoreComponent = ({
-  isVisible,
-  hideMore,
-  listMenuItem,
-  childRef,
-  onItemClick,
-  wrapStyle,
-}) => {
-  const onPress = useCallback(
-    (item) => {
+const MenuActionMore = memo(
+  ({
+    isVisible,
+    hideMore,
+    listMenuItem,
+    childRef,
+    onItemClick,
+    wrapStyle,
+    isTextCenter = true,
+  }) => {
+    const handleOnPress = (index) => () => {
       hideMore && hideMore();
-      onItemClick && onItemClick(item);
-    },
-    [hideMore, onItemClick]
-  );
-  return (
-    <Popover
-      popoverStyle={[styles.menuStyle, wrapStyle]}
-      placement="bottom"
-      from={childRef}
-      onRequestClose={hideMore}
-      onBackButtonPress={hideMore}
-      onBackdropPress={hideMore}
-      isVisible={isVisible}
-      arrowStyle={styles.wrap}
-    >
-      {listMenuItem.map((item, index) => {
-        return (
-          <TouchableOpacity
-            style={[styles.menuWrapper, styles.modalHeader]}
-            onPress={() => onPress(item)}
-            key={index}
-            testID={TESTID.TOUCHABLE_ACTION_ADD_MORE}
-          >
-            <Text style={styles.modalHeaderText}>{item.text}</Text>
-          </TouchableOpacity>
-        );
-      })}
-    </Popover>
-  );
-};
-export default MenuActionMoreComponent;
+      onItemClick && onItemClick(index);
+    };
 
-const styles = StyleSheet.create({
-  wrap: {
-    backgroundColor: Colors.TextTransparent,
-  },
-  menuStyle: {
-    borderRadius: 20,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-  },
-  menuWrapper: {
-    flex: 1,
-    flexDirection: 'column',
-    borderRadius: 20,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-  },
-  modalHeader: {
-    padding: 16,
-    backgroundColor: Colors.white,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderColor: Colors.Gray4,
-  },
-  modalHeaderText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: Colors.Gray9,
-  },
-});
+    useEffect(() => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useStatusBarPreview(
+        isVisible ? Colors.BlackTransparent5 : Colors.TextTransparent
+      );
+    }, [isVisible]);
+
+    return (
+      <Popover
+        popoverStyle={[styles.menuStyle, wrapStyle]}
+        placement="bottom"
+        from={childRef}
+        onRequestClose={hideMore}
+        isVisible={isVisible}
+        arrowStyle={styles.wrap}
+      >
+        <ScrollView>
+          {listMenuItem.map((item, index) => {
+            return (
+              <TouchableOpacity
+                style={[
+                  styles.menuWrapper,
+                  isTextCenter ? styles.modalHeaderCenter : styles.modalHeader,
+                ]}
+                onPress={handleOnPress(index)}
+                key={index}
+                testID={TESTID.TOUCHABLE_ACTION_ADD_MORE}
+              >
+                <Text style={styles.modalHeaderText}>{item.text}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
+      </Popover>
+    );
+  }
+);
+export default MenuActionMore;

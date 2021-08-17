@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { act, create } from 'react-test-renderer';
-
 import { TESTID } from '../../../configs/Constants';
 
 import ShortDetailSubUnit from '../ShortDetail';
@@ -94,22 +93,6 @@ describe('test ShortDetail Subunit', () => {
       (item) => item.props.testID === TESTID.SUB_UNIT_CAMERA_VIEW
     );
     expect(viewCamera).toBeDefined();
-  });
-
-  test('click go to subunit detail', () => {
-    act(() => {
-      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
-    });
-    const instance = tree.root;
-    const button = instance.findAllByType(TouchableOpacity);
-    const buttonGoToDetail = button.find(
-      (item) => item.props.testID === TESTID.SUB_UNIT_GO_TO_DETAIL
-    );
-
-    act(() => {
-      buttonGoToDetail.props.onPress();
-    });
-    expect(mockedNavigate).toHaveBeenCalled();
   });
 
   test('render ShortDetail with device', () => {

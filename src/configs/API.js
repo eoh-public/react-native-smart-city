@@ -77,7 +77,7 @@ const API = {
     UPDATE_SENSOR: (unit_id, station_id, id) =>
       API_ROOT +
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/`,
-    GET_ACTIVITY_LOG: API_ROOT + '/chip_manager/action_log',
+    ACTIVITY_LOG: API_ROOT + '/chip_manager/action_log',
   },
   CONFIG: {
     DISPLAY_HISTORY: API_ROOT + '/property_manager/configs/display_history/',
@@ -189,6 +189,18 @@ const API = {
       WATCH_CONFIGS: API_ROOT + '/chip_manager/watch_configs/',
       PUSHER_AUTH: API_ROOT + '/chip_manager/pusher/auth/',
     },
+  },
+  LG: {
+    AUTHORIZE: (client_id, redirect_uri) =>
+      // eslint-disable-next-line max-len
+      `https://qt-vn.m.lgaccount.com/emp/v2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&state=1`,
+    GET_TOKEN: (client_id, code, redirect_uri, backend_url) =>
+      // eslint-disable-next-line max-len
+      `https://qt-VN.m.lgaccount.com/emp/v2/token?client_id=${client_id}&code=${code}&redirect_uri=${redirect_uri}&backend_url=${backend_url}&grant_type=authorization_code`,
+    SYNC_DEVICE: API_ROOT + '/connection_manager/lg_thinq/sync_device/',
+    CONTROL_DEVICE: API_ROOT + '/connection_manager/lg_thinq/control_device/',
+    DEVICE_STATUS: (sensorId) =>
+      API_ROOT + `/connection_manager/lg_thinq/device_status/${sensorId}/`,
   },
 };
 
