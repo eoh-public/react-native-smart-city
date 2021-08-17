@@ -1,6 +1,6 @@
+import { StyleSheet } from 'react-native';
 import { Colors } from '../../../../configs';
 import { normalize } from '../../../../configs/Constants';
-import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   wrap: {
@@ -44,8 +44,10 @@ export default StyleSheet.create({
     marginRight: normalize(30),
   },
   titleStyle: {
-    fontWeight: 'normal',
-    fontSize: 16,
+    color: Colors.Gray9,
+    fontSize: normalize(16),
+    lineHeight: normalize(24),
+    fontWeight: '600',
   },
   wrapExpand: {
     marginTop: 10,

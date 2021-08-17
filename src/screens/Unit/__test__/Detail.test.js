@@ -1,33 +1,41 @@
-import React, { useState } from 'react';
-import renderer, { act } from 'react-test-renderer';
-import UnitDetail from '../Detail';
 import axios from 'axios';
-import { API } from '../../../configs';
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import renderer, { act } from 'react-test-renderer';
 import { createConnection, getStates } from 'home-assistant-js-websocket';
-import ParallaxScrollView from '../../../libs/react-native-parallax-scroll-view';
+import ParallaxScrollView from 'libs/react-native-parallax-scroll-view';
 import { BleManager } from 'react-native-ble-plx';
 import { useIsFocused } from '@react-navigation/native';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import UnitDetail from '../Detail';
+import { API } from '../../../configs';
 import ShortDetailSubUnit from '../../../commons/SubUnit/ShortDetail';
-import UnitSummary from '../../UnitSummary/components';
+import Summaries from '../Summaries';
+import { TESTID } from '../../../configs/Constants';
+import NavBar from '../../../commons/NavBar';
 
-const mockSetState = jest.fn();
-
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  memo: (x) => x,
-  useState: jest.fn(),
-}));
-
-const mockDispatch = () => {};
+const mockDispatch = jest.fn();
 
 jest.mock('react-redux', () => {
   return {
     ...jest.requireActual('react-redux'),
-    useDispatch: () => mockDispatch, // fix problem of re-render continuously
+    useDispatch: mockDispatch, // fix problem of re-render continuously
     useSelector: () => 'vi',
     connect: () => {
       return (component) => component;
     },
+  };
+});
+
+const mockedNavigate = jest.fn();
+jest.mock('@react-navigation/native', () => {
+  return {
+    ...jest.requireActual('@react-navigation/native'),
+    useIsFocused: jest.fn(),
+    useNavigation: () => ({
+      navigate: mockedNavigate,
+    }),
   };
 });
 
@@ -42,11 +50,6 @@ jest.mock('home-assistant-js-websocket', () => {
 jest.mock('axios');
 
 describe('Test UnitDetail', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    jest.clearAllTimers();
-  });
-
   const route = {
     params: {
       unitId: 1,
@@ -59,18 +62,53 @@ describe('Test UnitDetail', () => {
 
   let tree;
 
+  axios.get.mockImplementation(() => ({ status: 200 }));
+
   beforeEach(() => {
+    jest.clearAllTimers();
     axios.get.mockClear();
-    mockSetState.mockClear();
     useIsFocused.mockImplementation(() => true);
-    useState.mockImplementation((init) => [init, mockSetState]);
+    AsyncStorage.clear();
   });
 
-  test('fetch unit detail', async () => {
+  test('fetch unit detail success', async () => {
     axios.get.mockImplementation((url) => ({
       status: 200,
       data: {},
     }));
+    await act(async () => {
+      await renderer.create(<UnitDetail route={route} account={account} />);
+    });
+
+    expect(axios.get).toHaveBeenCalledWith(detailUnitApiUrl, {});
+  });
+
+  test('fetch unit detail no network then load from cache', async () => {
+    axios.get.mockImplementation((url) => ({
+      status: 200,
+      data: {},
+    }));
+    await act(async () => {
+      await renderer.create(<UnitDetail route={route} account={account} />);
+    });
+
+    axios.get.mockImplementation((url) => {
+      if (url === detailUnitApiUrl) {
+        throw {};
+      }
+      return { status: 200, data: [] };
+    });
+    await act(async () => {
+      await renderer.create(<UnitDetail route={route} account={account} />);
+    });
+
+    expect(axios.get).toHaveBeenCalledWith(detailUnitApiUrl, {});
+  });
+
+  test('fetch unit detail no network and fail load from cache', async () => {
+    axios.get.mockImplementation((url) => {
+      throw {};
+    });
     await act(async () => {
       await renderer.create(<UnitDetail route={route} account={account} />);
     });
@@ -97,7 +135,6 @@ describe('Test UnitDetail', () => {
     });
 
     expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
-    expect(mockSetState).toBeCalledTimes(1);
   });
 
   test('fetch unit summary has data', async () => {
@@ -119,9 +156,9 @@ describe('Test UnitDetail', () => {
     });
 
     expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
-    expect(mockSetState).toBeCalledTimes(2);
   });
   test('not fetch unit summary if not focus', async () => {
+    useIsFocused.mockImplementation(() => false);
     axios.get.mockImplementation((url) => {
       if (url === summaryUnitApiUrl) {
         return {
@@ -139,25 +176,22 @@ describe('Test UnitDetail', () => {
       await renderer.create(<UnitDetail route={route} account={account} />);
     });
 
-    expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
-    expect(mockSetState).toBeCalledTimes(2);
+    expect(axios.get).not.toHaveBeenCalledWith(summaryUnitApiUrl, {});
   });
 
-  test('fetch unit summary and detail when refresh', async () => {
+  test('fetch unit detail when refresh', async () => {
     await act(async () => {
       tree = await renderer.create(
         <UnitDetail route={route} account={account} />
       );
     });
     axios.get.mockClear();
-
     const scrollView = tree.root.findByType(ParallaxScrollView);
     const refreshControl = scrollView.props.refreshControl;
-    act(() => {
+    await act(async () => {
       refreshControl.props.onRefresh();
     });
     expect(axios.get).toHaveBeenCalledWith(detailUnitApiUrl, {});
-    expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
   });
 
   test('when unit has google home action then connect to google home', async () => {
@@ -214,28 +248,110 @@ describe('Test UnitDetail', () => {
 
   test('when unit has stations', async () => {
     const unitData = {
-      stations: [{}],
+      stations: [
+        {
+          background: 'https://eoh-gateway-backend.eoh.io/Atlantis.png',
+          camera: {
+            id: 6,
+            name: 'Camera',
+            uri: 'rtsp://admin:1@1.1.1.1:1/Streaming/',
+            preview_uri: 'rtsp://admin:1@1.1.1.1:1/Streaming/',
+          },
+          id: 172,
+          name: '[EoH Office] Atlantis',
+          sensors: [
+            {
+              action: null,
+              action2: null,
+              chip_id: 40,
+              description: null,
+              icon: '',
+              icon_kit: '',
+              id: 73,
+              is_managed_by_backend: true,
+              is_other_device: false,
+              name: 'Multi-Air Quality',
+              quick_action: null,
+            },
+          ],
+        },
+        {
+          background: 'https://eoh-gateway-backend.eoh.io/Atlantis.png',
+          camera: {
+            id: 6,
+            name: 'Camera',
+            uri: 'rtsp://admin:1@1.1.1.1:1/Streaming/',
+            preview_uri: 'rtsp://admin:1@1.1.1.1:1/Streaming/',
+          },
+          id: 145,
+          name: 'HR Room',
+          sensors: [
+            {
+              action: null,
+              action2: null,
+              chip_id: 40,
+              description: null,
+              icon: '',
+              icon_kit: '',
+              id: 73,
+              is_managed_by_backend: true,
+              is_other_device: false,
+              name: 'HR',
+              quick_action: null,
+            },
+          ],
+        },
+      ],
     };
     jest.useFakeTimers();
+    axios.get.mockImplementation((url) => {
+      if (url === summaryUnitApiUrl) {
+        return {
+          status: 200,
+          data: [],
+        };
+      }
+
+      return {
+        status: 200,
+        data: unitData,
+      };
+    });
 
     await act(async () => {
-      tree = renderer.create(
+      tree = await renderer.create(
         <UnitDetail
           route={{ params: { ...route.params, unitData } }}
           account={account}
         />
       );
     });
-
-    const stationViews = tree.root.findAllByType(ShortDetailSubUnit);
+    const instance = tree.root;
+    const stationViews = instance.findAllByType(ShortDetailSubUnit);
     expect(stationViews).toHaveLength(1);
+
+    const icon = await instance.findAll(
+      (el) =>
+        el.props.testID === TESTID.NAVBAR_ICON_BARS &&
+        el.type === TouchableOpacity
+    );
+    expect(icon.length).toEqual(1);
+
+    await act(async () => {
+      await icon[0].props.onPress();
+    });
+
+    const menu = instance.findAll(
+      (el) => el.props.testID === TESTID.NAVBAR_MENU_ACTION_MORE
+    );
+    expect(menu).toHaveLength(1);
+    expect(menu[0].props.isVisible).toEqual(true);
+
+    const nav = instance.findAllByType(NavBar);
+    expect(nav[0].props.indexStation).toEqual(0);
   });
 
   test('when unit has summaries', async () => {
-    const mockSetSummaries = jest.fn();
-    const summaries = [{}];
-    useState.mockImplementationOnce((init) => [summaries, mockSetSummaries]);
-
     jest.useFakeTimers();
 
     await act(async () => {
@@ -244,7 +360,7 @@ describe('Test UnitDetail', () => {
       );
     });
 
-    const summaryViews = tree.root.findAllByType(UnitSummary);
+    const summaryViews = tree.root.findAllByType(Summaries);
     expect(summaryViews).toHaveLength(1);
   });
 });

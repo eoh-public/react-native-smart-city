@@ -30,7 +30,7 @@ const ActivityLogScreen = () => {
         </View>
         <View style={styles.wrapText}>
           <Text style={styles.text}>
-            {`${item.action} ${t('by')} `}
+            {`${item.action_name} ${t('by')} `}
             <Text style={styles.name}>{item.name}</Text>
           </Text>
         </View>

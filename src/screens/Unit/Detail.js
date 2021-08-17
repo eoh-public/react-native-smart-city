@@ -1,21 +1,23 @@
-import { useIsFocused } from '@react-navigation/native';
-import Text from '../../commons/Text';
-import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
-
-import { API } from '../../configs';
-import { useBoolean, useIsOwnerOfUnit, usePopover } from '../../hooks/Common';
-import { t } from 'i18n-js';
-import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
-import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
 import React, { useCallback, useEffect, useState } from 'react';
 import { AppState, RefreshControl, View } from 'react-native';
-import { fetchWithCache } from '../../utils/Apis/axios';
-import { mqttConnect } from '../../iot/RemoteControl/Mqtt';
+import { useIsFocused } from '@react-navigation/native';
+import WrapParallaxScrollView from 'components/WrapParallaxScrollView';
+import t from 'i18n-js';
+
 import styles from './styles';
 import AddMenu from './AddMenu';
 import MoreMenu from './MoreMenu';
 import Summaries from './Summaries';
-import Stations from './Stations';
+
+import Text from '../../commons/Text';
+import { API } from '../../configs';
+import { useBoolean, useIsOwnerOfUnit, usePopover } from '../../hooks/Common';
+import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
+import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
+import { fetchWithCache } from '../../utils/Apis/axios';
+import { lgThinqConnect } from '../../iot/RemoteControl/LG';
+import ShortDetailSubUnit from '../../commons/SubUnit/ShortDetail';
+import NavBar from '../../commons/NavBar';
 
 const UnitDetail = ({ route }) => {
   const { unitId, unitData } = route.params;
@@ -23,7 +25,11 @@ const UnitDetail = ({ route }) => {
   const [unit, setUnit] = useState(unitData || { id: unitId });
   const [appState, setAppState] = useState(AppState.currentState);
   const [showAdd, setShowAdd, setHideAdd] = useBoolean();
+  const [listMenuItem, setListMenuItem] = useState([]);
+  const [listStation, setListStation] = useState([]);
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
+  const [station, setStation] = useState([]);
+  const [indexStation, setIndexStation] = useState(0);
 
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
@@ -66,6 +72,10 @@ const UnitDetail = ({ route }) => {
     setIsGGHomeConnected(isConnected);
   }, []);
 
+  const handleLgThinqConnect = useCallback(async (options) => {
+    await lgThinqConnect(options);
+  }, []);
+
   useEffect(() => {
     if (unit.remote_control_options) {
       if (unit.remote_control_options.bluetooth) {
@@ -74,17 +84,39 @@ const UnitDetail = ({ route }) => {
       if (unit.remote_control_options.googlehome) {
         handleGoogleHomeConnect(unit.remote_control_options.googlehome);
       }
-      if (unit.remote_control_options.mqtt) {
-        mqttConnect(unit.remote_control_options.mqtt);
+      if (unit.remote_control_options.lg_thinq) {
+        handleLgThinqConnect(unit.remote_control_options.lg_thinq);
       }
     }
-  }, [handleGoogleHomeConnect, unit]);
+  }, [handleGoogleHomeConnect, handleLgThinqConnect, unit]);
 
   useEffect(() => {
     if (isFocused) {
       fetchDetails();
     }
   }, [fetchDetails, isFocused]);
+
+  useEffect(() => {
+    if (unit.stations) {
+      let listMenu = unit.stations.map((item, index) => ({
+        text: item.name,
+        station: item,
+        index: index,
+      }));
+      setStation(unit.stations[indexStation]);
+      setListMenuItem(listMenu);
+      setListStation(listMenu.concat([{ text: '' }]));
+    }
+  }, [unit, indexStation, isGGHomeConnected]);
+
+  const onSnapToItem = useCallback(
+    (index) => {
+      setStation(unit.stations[index]);
+      setIndexStation(index);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [unit, indexStation]
+  );
 
   return (
     <WrapParallaxScrollView
@@ -101,10 +133,18 @@ const UnitDetail = ({ route }) => {
     >
       <View style={styles.container}>
         <Summaries unit={unit} />
-        <View style={styles.subUnitsHeading}>
-          <Text style={styles.subUnitTitle}>{t('sub_unit')}</Text>
-        </View>
-        <Stations unit={unit} isGGHomeConnected={isGGHomeConnected} />
+        <NavBar
+          listStation={listStation}
+          listMenuItem={listMenuItem}
+          onSnapToItem={onSnapToItem}
+          indexStation={indexStation}
+        />
+
+        <ShortDetailSubUnit
+          unit={unit}
+          station={station}
+          isGGHomeConnected={isGGHomeConnected}
+        />
 
         {!!unit.can_add && unit.stations.length === 0 && (
           <View style={styles.canAdd}>

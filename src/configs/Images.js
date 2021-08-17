@@ -39,4 +39,5 @@ export default {
   // mainDoor: require('images/Device/main-door.png'),
   // doorLock: require('images/Device/door-lock.png'),
   // Banner: require('images/Dashboard/banner.jpg'),
+  check: require('../Images/Common/checked.png'),
 };

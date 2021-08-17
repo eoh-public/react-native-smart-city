@@ -654,6 +654,8 @@
   "activity_log": "Activity Log",
   "no_activity": "There is no activity.",
   "by": "by",
+  "today": "Today",
+  "yesterday": "Yesterday",
   "at": "at",
   "choose_at_least_one": "Please choose at least one sensor.",
   "transaction_is_unsuccessful_%{message}": "Transaction is unsuccessful. %{message}",

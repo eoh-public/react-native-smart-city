@@ -2,9 +2,9 @@ import React, { memo, useCallback } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-import Text from '../../commons/Text';
+import Text from '../Text';
+import RadioCircle from '../RadioCircle';
 import { Colors } from '../../configs';
-import { RadioCircle } from '../../commons';
 
 const CheckBox = memo(
   ({ select, title, index, onSelect, source, description }) => {

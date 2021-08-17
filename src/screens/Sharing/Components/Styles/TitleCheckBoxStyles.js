@@ -1,6 +1,6 @@
+import { StyleSheet } from 'react-native';
 import { Colors } from '../../../../configs';
 import { normalize } from '../../../../configs/Constants';
-import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   wrap: {

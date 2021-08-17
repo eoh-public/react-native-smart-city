@@ -1,15 +1,26 @@
+import { act } from '@testing-library/react-hooks';
 import React, { useState } from 'react';
-import { create, act } from 'react-test-renderer';
-import axios from 'axios';
-import { Text } from 'react-native';
-
-import { API } from '../../../configs';
-import { TESTID } from '../../../configs/Constants';
-
+import { FlatList, Text, Platform } from 'react-native';
+import { create } from 'react-test-renderer';
 import SelectPermission from '../SelectPermission';
+import axios from 'axios';
+import { SensorItem, TitleCheckBox } from '../Components';
+import { ViewButtonBottom } from '../../../commons';
+import Routes from '../../../utils/Route';
 
-const mockGoBack = jest.fn();
+jest.mock('axios');
+
+const mockSetState = jest.fn();
+jest.mock('react', () => {
+  return {
+    ...jest.requireActual('react'),
+    useState: jest.fn((init) => [init, mockSetState]),
+    memo: (x) => x,
+  };
+});
+
 const mockNavigate = jest.fn();
+const mockGoBack = jest.fn();
 jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
@@ -20,135 +31,158 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
-jest.mock('axios');
-
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn(),
-}));
-
-describe('test SelectPermission container', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    useState.mockClear();
-    axios.get.mockClear();
-  });
-
-  const setDataStations = jest.fn();
-  const setReadPermissions = jest.fn();
-  const setControlPermissions = jest.fn();
-  const mockSetStates = (initList = []) => {
-    useState.mockImplementationOnce((init) => [initList, setDataStations]);
-    useState.mockImplementationOnce((init) => [init, setReadPermissions]); // setList
-    useState.mockImplementationOnce((init) => [init, setControlPermissions]);
-  };
-
+describe('Test SelectPermission', () => {
   let tree;
-  let route = {
-    key: 'SharingSelectPermission-xCaALgMCXeee1rgzZJ09j',
-    name: 'SharingSelectPermission',
-    params: {},
-  };
-
-  test('default render SelectPermission unit null', async () => {
-    mockSetStates();
-    await act(async () => {
-      tree = create(<SelectPermission route={route} />);
-    });
-    expect(axios.get).not.toHaveBeenCalledWith(
-      API.SHARE.UNIT_PERMISSIONS(30),
-      {}
-    );
-  });
-
-  test('default render SelectPermission get permission return null data', async () => {
-    mockSetStates();
-    route.params = { unit: { id: 30 } };
-
-    const response = {
-      status: 200,
-      data: [],
-    };
-    axios.get.mockImplementationOnce(async (url) => response);
-
-    await act(async () => {
-      tree = await create(<SelectPermission route={route} />);
-    });
-    expect(axios.get).toHaveBeenCalledWith(API.SHARE.UNIT_PERMISSIONS(30), {});
-    expect(setDataStations).toHaveBeenCalledWith([]);
-
-    const instance = tree.root;
-    const textNoData = instance.find(
-      (el) =>
-        el.props.testID === TESTID.TEXT_NO_DATA_STATIONS && el.type === Text
-    );
-    expect(textNoData).not.toBeUndefined();
-    expect(textNoData.props.children).toEqual('Không có dữ liệu');
-    const leftButton = instance.find(
-      (el) =>
-        el.props.testID ===
-        `${TESTID.PREFIX.SHARING_SELECT_PERMISSION}${TESTID.VIEW_BUTTON_BOTTOM_LEFT_BUTTON}`
-    );
-    act(() => {
-      leftButton.props.onPress();
-    });
-    expect(mockGoBack).toHaveBeenCalled();
-    const rightButton = instance.find(
-      (el) =>
-        el.props.testID ===
-        `${TESTID.PREFIX.SHARING_SELECT_PERMISSION}${TESTID.VIEW_BUTTON_BOTTOM_RIGHT_BUTTON}`
-    );
-    act(() => {
-      rightButton.props.onPress();
-    });
-    expect(mockNavigate).toHaveBeenCalled();
-  });
-
-  test('default render SelectPermission get permission return data', async () => {
-    const listSensors = [
-      {
-        actions: [{ id: 136, name: "Phuong's action 1" }],
-        id: 204,
-        name: "Phuong's sensor",
-        read_configs: [],
-      },
-    ];
-    const initList = [
-      {
-        name: 'Lorem',
-        sensors: listSensors,
-      },
-    ];
-    const response = {
-      status: 200,
-      data: [
+  let route = { params: { unit: null } };
+  let listSensors = [
+    {
+      id: 204,
+      name: 'sensor',
+      sensors: [
         {
-          id: 14,
-          name: 'Lorem',
-          sensors: listSensors,
+          id: 123,
+          actions: [{ id: 136, name: 'action 1' }],
+          read_configs: [{ id: 137, name: 'config 1' }],
+          name: 'child1',
         },
       ],
-    };
+    },
+  ];
 
-    mockSetStates(initList);
-    route.params = { unit: { id: 30 } };
-    const setListChosen = jest.fn();
-    const setExpandedIndex = jest.fn();
-    const setSelectIndexes = jest.fn();
-    axios.get.mockImplementationOnce(async (url) => response);
-    useState.mockImplementationOnce((init) => [init, setListChosen]);
-    useState.mockImplementationOnce((init) => [init, setExpandedIndex]);
-    useState.mockImplementationOnce((init) => [init, setSelectIndexes]);
+  const mockSetTickAllDevice = jest.fn();
+  const mockSetActiveItemId = jest.fn();
+  const mockSetDataStations = jest.fn();
 
-    await act(async () => {
-      tree = await create(<SelectPermission route={route} />);
+  afterEach(() => {
+    axios.mockClear();
+    mockSetState.mockClear();
+    mockSetTickAllDevice.mockClear();
+    mockSetActiveItemId.mockClear();
+    mockSetDataStations.mockClear();
+  });
+
+  function mockLoading() {
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [false, mockSetState]); // loading
+  }
+
+  function mocSetdata() {
+    useState.mockImplementationOnce((init) => [
+      listSensors,
+      mockSetDataStations,
+    ]);
+    useState.mockImplementationOnce((init) => [init, mockSetTickAllDevice]);
+    useState.mockImplementationOnce((init) => [init, mockSetActiveItemId]);
+    useState.mockImplementationOnce((init) => [false, mockSetState]); // loading
+  }
+
+  it('test unit null', () => {
+    Platform.OS = 'android';
+    act(() => {
+      tree = create(<SelectPermission route={route} />);
     });
-    expect(axios.get).toHaveBeenCalledWith(API.SHARE.UNIT_PERMISSIONS(30), {});
-    expect(setDataStations).toHaveBeenCalledWith(initList);
-    const instance = tree.root;
+    expect(axios.get).not.toBeCalled();
+  });
 
-    instance.find(
-      (el) => el.props.testID === TESTID.STATION_DEVICE_PERMISSIONS
-    ); // found
+  it('render empty list', () => {
+    mockLoading();
+    Platform.OS = 'ios';
+
+    route.params.unit = 1;
+    axios.get.mockImplementationOnce(() => ({ status: 200, data: [] }));
+    act(() => {
+      tree = create(<SelectPermission route={route} />);
+    });
+    const instance = tree.root;
+    const TextElement = instance.findAllByType(Text);
+    expect(TextElement[2].props.children).toBe('Không có dữ liệu');
+  });
+
+  it('test get unit fail', () => {
+    mockLoading();
+
+    route.params.unit = 1;
+    axios.get.mockImplementationOnce(() => ({ status: 400, data: [] }));
+    act(() => {
+      tree = create(<SelectPermission route={route} />);
+    });
+    const instance = tree.root;
+    const TextElement = instance.findAllByType(Text);
+    expect(TextElement[2].props.children).toBe('Không có dữ liệu');
+  });
+
+  it('render list', () => {
+    mocSetdata();
+    act(() => {
+      tree = create(<SelectPermission route={route} />);
+    });
+    const instance = tree.root;
+    const FlatListElement = instance.findAllByType(FlatList);
+    expect(FlatListElement).toHaveLength(1);
+    const TitleCheckBoxElement = instance.findAllByType(TitleCheckBox);
+    expect(TitleCheckBoxElement).toHaveLength(2);
+    act(() => {
+      TitleCheckBoxElement[0].props.onPress(null, true);
+    });
+    expect(mockSetTickAllDevice).toBeCalledWith(true);
+    expect(mockSetDataStations).toBeCalledWith([
+      {
+        id: 204,
+        isChecked: true,
+        name: 'sensor',
+        sensors: [
+          {
+            actions: [{ id: 136, isChecked: true, name: 'action 1' }],
+            id: 123,
+            name: 'child1',
+            read_configs: [{ id: 137, isChecked: true, name: 'config 1' }],
+          },
+        ],
+      },
+    ]);
+    act(() => {
+      TitleCheckBoxElement[0].props.onPress(204, true);
+    });
+    expect(mockSetTickAllDevice).toBeCalledWith(true);
+  });
+
+  it('test onTickedChild function', () => {
+    mocSetdata();
+    act(() => {
+      tree = create(<SelectPermission route={route} />);
+    });
+    const instance = tree.root;
+    const SensorItemElement = instance.findAllByType(SensorItem);
+    expect(SensorItemElement).toHaveLength(1);
+    act(() => {
+      SensorItemElement[0].props.onTickedChild(204, 123, 136, true, true);
+    });
+    expect(mockSetDataStations).toBeCalled();
+  });
+
+  it('test ViewButtonBottom', () => {
+    mocSetdata();
+    act(() => {
+      tree = create(<SelectPermission route={route} />);
+    });
+    const instance = tree.root;
+    const ViewButtonBottomElement = instance.findAllByType(ViewButtonBottom);
+    expect(ViewButtonBottomElement).toHaveLength(1);
+    act(() => {
+      ViewButtonBottomElement[0].props.onRightClick();
+    });
+    expect(mockNavigate).toBeCalledWith(Routes.SharingInviteMembers, {
+      permissions: {
+        control_permissions: [{ id: 123, values: [136] }],
+        read_permissions: [{ id: 123, values: [137] }],
+      },
+      unit: 1,
+    });
+    act(() => {
+      ViewButtonBottomElement[0].props.onLeftClick();
+    });
+    expect(mockGoBack).toBeCalled();
   });
 });

@@ -245,7 +245,7 @@ const SelectPermission = ({ route }) => {
           testIDPrefix={TESTID.PREFIX.SHARING_SELECT_PERMISSION}
           leftTitle={t('cancel')}
           onLeftClick={() => navigation.goBack()}
-          rightTitle={t('done')}
+          rightTitle={t('next')}
           rightDisabled={false}
           onRightClick={onPressNext}
         />

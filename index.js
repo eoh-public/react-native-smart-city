@@ -8,6 +8,7 @@ import { EmergencyContactsStack } from './src/navigations/EmergencyContactsStack
 import { AddUnitStack } from './src/navigations/AddUnitStack';
 import SharedStack from './src/navigations/SharedStack';
 import Explore from './src/screens/Explore';
+import { AddLGDeviceStack } from './src/navigations/AddLGDeviceStack';
 
 export {
   AddSubUnitStack,
@@ -21,4 +22,5 @@ export {
   Explore,
   SCProvider,
   SCContext,
+  AddLGDeviceStack,
 };

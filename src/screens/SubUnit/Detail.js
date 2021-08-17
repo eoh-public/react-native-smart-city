@@ -12,7 +12,7 @@ import Text from '../../commons/Text';
 import ItemDevice from '../../commons/Device/ItemDevice';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 import MediaPlayer from '../../commons/MediaPlayer';
-import MenuActionMore from '../../commons/MenuActionMore';
+import { MenuActionMore } from '../../commons';
 import { useSCContextSelector } from '../../context';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(

@@ -3,7 +3,7 @@ import { Colors } from '../../configs';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: Colors.Gray2,
+    backgroundColor: Colors.White,
   },
   unitSummary: {
     flex: 1,

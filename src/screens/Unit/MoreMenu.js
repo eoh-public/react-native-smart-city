@@ -2,7 +2,7 @@ import React, { memo, useCallback, useMemo } from 'react';
 import { t } from 'i18n-js';
 import Routes from '../../utils/Route';
 import { useNavigation } from '@react-navigation/native';
-import MenuActionMore from '../../commons/MenuActionMore';
+import { MenuActionMore } from '../../commons';
 
 const MoreMenu = memo(
   ({ unit, isOwner, hidePopover, childRef, showingPopover }) => {

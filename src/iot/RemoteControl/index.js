@@ -6,6 +6,7 @@ import { sendCommandOverInternet } from './Internet';
 import { sendCommandOverGoogleHome } from './GoogleHome';
 import { ToastBottomHelper } from '../../utils/Utils';
 import { t } from 'i18n-js';
+import { sendCommandOverLGThinq } from './LG';
 
 export const sendRemoteCommand = async (sensor, action, data) => {
   // No action, raise not authorized
@@ -34,5 +35,9 @@ export const sendRemoteCommand = async (sensor, action, data) => {
 
   if (action.command_prefer_over_googlehome) {
     await sendCommandOverGoogleHome(sensor, action, data);
+  }
+
+  if (action.command_prefer_over_lg) {
+    await sendCommandOverLGThinq(sensor, action, data);
   }
 };

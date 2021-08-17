@@ -9,6 +9,7 @@ import {
   ActionDataMap,
   ActionType,
   AuthData,
+  ConfigData,
   Language,
   StatusBar,
 } from './actionType';
@@ -28,6 +29,7 @@ type SCContextType = {
   setAuth: (authData: AuthData) => void;
   setLocale: (language: Language) => void;
   setStatusBar: (statusBar: StatusBar) => void;
+  setConfig: (config: ConfigData) => void;
   setAction: <T extends ActionType>(
     action: T,
     payload?: ActionDataMap[T]
@@ -65,6 +67,10 @@ export const SCProvider = ({ children }) => {
     setAction('STORE_STATUS_BAR', statusBar);
   };
 
+  const setConfig = (config: ConfigData) => {
+    setAction('SET_CONFIG', config);
+  };
+
   const setAction = <T extends ActionType>(
     action: T,
     payload?: ActionDataMap[T]
@@ -78,6 +84,7 @@ export const SCProvider = ({ children }) => {
     setLocale,
     setAction,
     setStatusBar,
+    setConfig,
   };
 
   return (

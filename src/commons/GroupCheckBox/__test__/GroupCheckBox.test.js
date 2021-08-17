@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { act, create } from 'react-test-renderer';
+import { TouchableOpacity } from 'react-native';
 
 import { TESTID } from '../../../configs/Constants';
-import GroupCheckBox from '../index';
+import GroupCheckBox from '..';
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -64,6 +65,13 @@ describe('Test Group CheckBox', () => {
     expect(mockFunc).toHaveBeenCalledWith([
       { description: 'description', source: 'source', title: 'testItem' },
     ]);
+    const instance = tree.root;
+    const buttons = instance.findAllByType(TouchableOpacity);
+    expect(buttons.length).toEqual(1);
+    act(() => {
+      buttons[0].props.onPress();
+    });
+    expect(mockFunc).toBeCalledTimes(2);
   });
 
   test('render Group CheckBox with foundIndex === -1 multiple false', async () => {

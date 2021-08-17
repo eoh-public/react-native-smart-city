@@ -7,6 +7,7 @@ import StatesGridActionTemplate from './StatesGridActionTemplate';
 import NumberUpDownActionTemplate from './NumberUpDownActionTemplate';
 import OptionsDropdownActionTemplate from './OptionsDropdownActionTemplate';
 import OnOffTemplate from './OnOffTemplate';
+import TimerActionTemplate from './TimerActionTemplate';
 
 export const getActionComponent = (template) => {
   switch (template) {
@@ -26,6 +27,8 @@ export const getActionComponent = (template) => {
       return StatesGridActionTemplate;
     case 'OptionsDropdownActionTemplate':
       return OptionsDropdownActionTemplate;
+    case 'TimerActionTemplate':
+      return TimerActionTemplate;
     default:
       return null;
   }
