@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { Colors } from 'configs/Colors';
-import Text from 'components/Text';
-import { TESTID } from 'configs/Constants';
+import { Colors } from '../../configs';
+import { TESTID } from '../../configs/Constants';
+import Text from '../Text';
 
 const TotalPowerBox = memo(({ title, value, measure }) => {
   return (

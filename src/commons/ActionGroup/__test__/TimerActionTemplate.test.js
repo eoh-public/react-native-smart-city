@@ -9,7 +9,7 @@ import { watchMultiConfigs } from '../../../iot/Monitor';
 
 jest.mock('../../../iot/Monitor');
 
-jest.mock('iot/states', () => ({
+jest.mock('../../../iot/states', () => ({
   useConfigGlobalState: () => [{ 5: 18, 6: 30 }, null],
 }));
 

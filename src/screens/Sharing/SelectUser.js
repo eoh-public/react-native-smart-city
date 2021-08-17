@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import t from 'i18n-js';
+import { t } from 'i18n-js';
 
 import { API, Colors, Theme } from '../../configs';
 import AccountList from '../../commons/Auth/AccountList';

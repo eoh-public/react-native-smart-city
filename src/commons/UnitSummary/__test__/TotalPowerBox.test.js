@@ -1,7 +1,7 @@
 import TotalPowerBox from '../TotalPowerBox';
 import React from 'react';
 import renderer, { act } from 'react-test-renderer';
-import { TESTID } from 'configs/Constants';
+import { TESTID } from '../../../configs/Constants';
 
 describe('Test Total Power Box', () => {
   let tree;
