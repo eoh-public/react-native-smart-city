@@ -8,7 +8,9 @@ export const Action = {
 export type AuthData = {
   account: {
     token: string;
-    user: any;
+    user: {
+      id: string | number;
+    };
   };
 };
 
