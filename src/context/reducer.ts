@@ -23,7 +23,9 @@ export const initialState = {
   auth: {
     account: {
       token: '',
-      user: {},
+      user: {
+        id: '',
+      },
     },
   },
   language: 'en' as Language,
