@@ -40,4 +40,6 @@ export default {
   // doorLock: require('images/Device/door-lock.png'),
   // Banner: require('images/Dashboard/banner.jpg'),
   check: require('../Images/Common/checked.png'),
+  arrowBack: require('images/Common/arrow-back.png'),
+  refresh: require('images/Common/refresh.png'),
 };
