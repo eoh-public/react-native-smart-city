@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 import { Alert } from '../commons';
 import { Colors } from '../configs';
-import { initI18n, i18nSetLocale } from '../utils/I18n';
+import { setLanguage, updateTranslation } from '../utils/I18n';
 import {
   ActionDataMap,
   ActionType,
@@ -30,6 +30,7 @@ type SCContextType = {
   setLocale: (language: Language) => void;
   setStatusBar: (statusBar: StatusBar) => void;
   setConfig: (config: ConfigData) => void;
+  updateLocale: (langTranslate: any) => void;
   setAction: <T extends ActionType>(
     action: T,
     payload?: ActionDataMap[T]
@@ -45,10 +46,6 @@ type Reducer<StateData, Action> = (
 ) => StateData;
 
 export const SCProvider = ({ children }) => {
-  useEffect(() => {
-    initI18n();
-  }, []);
-
   const [stateData, dispatch] = useReducer<Reducer<ContextData, Action>>(
     reducer,
     initialState
@@ -59,7 +56,7 @@ export const SCProvider = ({ children }) => {
   };
 
   const setLocale = (language: Language) => {
-    i18nSetLocale(language);
+    setLanguage(language);
     setAction('UPDATE_LANGUAGE', language);
   };
 
@@ -69,6 +66,10 @@ export const SCProvider = ({ children }) => {
 
   const setConfig = (config: ConfigData) => {
     setAction('SET_CONFIG', config);
+  };
+
+  const updateLocale = (langTranslate: any) => {
+    updateTranslation(langTranslate);
   };
 
   const setAction = <T extends ActionType>(
@@ -85,6 +86,7 @@ export const SCProvider = ({ children }) => {
     setAction,
     setStatusBar,
     setConfig,
+    updateLocale,
   };
 
   return (
