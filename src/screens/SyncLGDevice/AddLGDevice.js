@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 
 import styles from './AddLGDeviceStyles';
-import { useSCContextSelector } from '../../context';
 import { API, Colors } from '../../configs';
 import { Section, ViewButtonBottom } from '../../commons';
 import Text from '../../commons/Text';
@@ -13,11 +12,9 @@ import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 import { TESTID } from '../../configs/Constants';
 import { ToastBottomHelper } from '../../utils/Utils';
+import { SCConfig } from '../../configs';
 
 const AddLGDevice = memo(({ route }) => {
-  const { LG_CLIENT_ID, LG_REDIRECT_URI_APP } = useSCContextSelector(
-    (state) => state.config
-  );
   const { unit_id, code, backend_url } = route.params;
   const { navigate, goBack } = useNavigation();
   const [unit, setUnit] = useState({ stations: [] });
@@ -40,7 +37,12 @@ const AddLGDevice = memo(({ route }) => {
 
   const onRight = useCallback(async () => {
     const { success, data } = await axiosPost(
-      API.IOT.LG.GET_TOKEN(LG_CLIENT_ID, code, LG_REDIRECT_URI_APP, backend_url)
+      API.IOT.LG.GET_TOKEN(
+        SCConfig.LG_CLIENT_ID,
+        code,
+        SCConfig.LG_REDIRECT_URI_APP,
+        backend_url
+      )
     );
     if (!success || !data.access_token) {
       ToastBottomHelper.error(t('lg_sync_failed'));
@@ -66,14 +68,7 @@ const AddLGDevice = memo(({ route }) => {
 
     ToastBottomHelper.success(t('lg_sync_success'));
     navigate(Routes.Dashboard);
-  }, [
-    backend_url,
-    code,
-    navigate,
-    stationId,
-    LG_CLIENT_ID,
-    LG_REDIRECT_URI_APP,
-  ]);
+  }, [backend_url, code, navigate, stationId]);
 
   const stations = unit.stations.map((item) => ({
     ...item,
