@@ -2,7 +2,6 @@ import { initData } from '../utils/InitData';
 import {
   ActionType,
   AuthData,
-  ConfigData,
   Language,
   StatusBar,
   Action,
@@ -11,7 +10,6 @@ import {
 export type ContextData = {
   auth: AuthData;
   language: Language;
-  config: ConfigData;
 };
 
 export type Action = {
@@ -30,10 +28,6 @@ export const initialState = {
   },
   language: 'en' as Language,
   statusBar: {} as StatusBar,
-  config: {
-    LG_CLIENT_ID: '',
-    LG_REDIRECT_URI_APP: '',
-  } as ConfigData,
 };
 
 export const reducer = (currentState: ContextData, action: Action) => {
@@ -44,11 +38,6 @@ export const reducer = (currentState: ContextData, action: Action) => {
       return { ...currentState, auth: payload };
     case Action.STORE_STATUS_BAR:
       return { ...currentState, statusBar: payload };
-    case Action.SET_CONFIG:
-      return {
-        ...currentState,
-        config: payload,
-      };
     default:
       return currentState;
   }

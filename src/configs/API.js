@@ -1,100 +1,112 @@
-const API_ROOT = 'https://backend.eoh.io/api';
+import { SCConfig } from './SCConfig';
 
 const API = {
   AUTH: {
-    LOGIN_PHONE: API_ROOT + '/accounts/login/',
-    LOGIN_FACEBOOK: API_ROOT + '/accounts/login/facebook/',
-    REGISTER_PHONE: API_ROOT + '/accounts/register/phone/',
-    RESEND_OTP: API_ROOT + '/accounts/register/resend_otp/',
-    VERIFY_OTP: API_ROOT + '/accounts/register/verify_otp/',
-    LOGIN_SOCIAL_FB: API_ROOT + '/accounts/login/facebook/',
-    LOGIN_SOCIAL_GG: API_ROOT + '/accounts/login/google/',
-    LOGIN_SOCIAL_AP: API_ROOT + '/accounts/login/apple/',
-    FORGOT_PASSWORD: API_ROOT + '/accounts/forgot_password/',
+    LOGIN_PHONE: SCConfig.apiRoot + '/accounts/login/',
+    LOGIN_FACEBOOK: SCConfig.apiRoot + '/accounts/login/facebook/',
+    REGISTER_PHONE: SCConfig.apiRoot + '/accounts/register/phone/',
+    RESEND_OTP: SCConfig.apiRoot + '/accounts/register/resend_otp/',
+    VERIFY_OTP: SCConfig.apiRoot + '/accounts/register/verify_otp/',
+    LOGIN_SOCIAL_FB: SCConfig.apiRoot + '/accounts/login/facebook/',
+    LOGIN_SOCIAL_GG: SCConfig.apiRoot + '/accounts/login/google/',
+    LOGIN_SOCIAL_AP: SCConfig.apiRoot + '/accounts/login/apple/',
+    FORGOT_PASSWORD: SCConfig.apiRoot + '/accounts/forgot_password/',
     FORGOT_PASSWORD_VERIFY_OTP:
-      API_ROOT + '/accounts/forgot_password/verify_otp/',
-    RESET_PASSWORD: API_ROOT + '/accounts/forgot_password/set_password/',
+      SCConfig.apiRoot + '/accounts/forgot_password/verify_otp/',
+    RESET_PASSWORD:
+      SCConfig.apiRoot + '/accounts/forgot_password/set_password/',
   },
   ACCOUNTS: {
-    FEATURES: API_ROOT + '/accounts/features/',
-    ADD_CARD: API_ROOT + '/billing/payments/stripe/add_card/',
+    FEATURES: SCConfig.apiRoot + '/accounts/features/',
+    ADD_CARD: SCConfig.apiRoot + '/billing/payments/stripe/add_card/',
     REMOVE_CARD: (id) =>
-      API_ROOT + `/billing/payments/stripe/remove_cards/${id}/`,
-    CHANGE_DEFAULT_CARD: API_ROOT + '/billing/payments/stripe/set_default/',
-    LIST_PAYMENT_METHODS: API_ROOT + '/billing/list_payment_methods/',
+      SCConfig.apiRoot + `/billing/payments/stripe/remove_cards/${id}/`,
+    CHANGE_DEFAULT_CARD:
+      SCConfig.apiRoot + '/billing/payments/stripe/set_default/',
+    LIST_PAYMENT_METHODS: SCConfig.apiRoot + '/billing/list_payment_methods/',
     CREATE_CARD_TOKEN: 'https://api.stripe.com/v1/tokens',
   },
   UNIT: {
-    ADD_USER: API_ROOT + '/property_manager/shared_units/add_by_phone_number/',
-    MY_UNITS: API_ROOT + '/property_manager/units/mine/',
-    SHARED_UNITS: API_ROOT + '/property_manager/shared_units/',
-    UNIT_DETAIL: (id) => API_ROOT + `/property_manager/units/${id}/`,
+    ADD_USER:
+      SCConfig.apiRoot + '/property_manager/shared_units/add_by_phone_number/',
+    MY_UNITS: SCConfig.apiRoot + '/property_manager/units/mine/',
+    SHARED_UNITS: SCConfig.apiRoot + '/property_manager/shared_units/',
+    UNIT_DETAIL: (id) => SCConfig.apiRoot + `/property_manager/units/${id}/`,
     UNIT_NEAR_ME: (lat, lon, page) =>
-      API_ROOT + `/property_manager/units/near-me/${lat},${lon}/?page=${page}`,
-    UNITS_PUBLIC: API_ROOT + '/property_manager/units/public/',
-    UNIT_SUMMARY: (id) => API_ROOT + `/property_manager/units/${id}/summary/`,
+      SCConfig.apiRoot +
+      `/property_manager/units/near-me/${lat},${lon}/?page=${page}`,
+    UNITS_PUBLIC: SCConfig.apiRoot + '/property_manager/units/public/',
+    UNIT_SUMMARY: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/summary/`,
     UNIT_SUMMARY_DETAIL: (id, id2) =>
-      API_ROOT + `/property_manager/units/${id}/summary_detail/${id2}/`,
+      SCConfig.apiRoot + `/property_manager/units/${id}/summary_detail/${id2}/`,
     FILTER_SHARED_UNITS: (field) =>
-      API_ROOT + `/property_manager/shared_units/?ordering=${field}`,
-    STAR_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/star/`,
-    UNSTAR_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/unstar/`,
-    PIN_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/pin/`,
-    UNPIN_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/unpin/`,
-    MANAGE_UNIT: (id) => API_ROOT + `/property_manager/units/${id}/`,
-    CHIP_SCAN: (id) => API_ROOT + `/property_manager/units/${id}/chip_scan/`,
+      SCConfig.apiRoot + `/property_manager/shared_units/?ordering=${field}`,
+    STAR_UNIT: (id) => SCConfig.apiRoot + `/property_manager/units/${id}/star/`,
+    UNSTAR_UNIT: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/unstar/`,
+    PIN_UNIT: (id) => SCConfig.apiRoot + `/property_manager/units/${id}/pin/`,
+    UNPIN_UNIT: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/unpin/`,
+    MANAGE_UNIT: (id) => SCConfig.apiRoot + `/property_manager/units/${id}/`,
+    CHIP_SCAN: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/chip_scan/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>
-      API_ROOT + `/property_manager/${unitId}/sub_units/${id}/`,
+      SCConfig.apiRoot + `/property_manager/${unitId}/sub_units/${id}/`,
     CREATE_SUB_UNIT: (unitId) =>
-      API_ROOT + `/property_manager/${unitId}/sub_units/`,
+      SCConfig.apiRoot + `/property_manager/${unitId}/sub_units/`,
     MANAGE_SUB_UNIT: (unitId, id) =>
-      API_ROOT + `/property_manager/${unitId}/sub_units/${id}/`,
+      SCConfig.apiRoot + `/property_manager/${unitId}/sub_units/${id}/`,
     SENSOR_SCAN: (id) =>
-      API_ROOT + `/property_manager/stations/${id}/sensor_scan/`,
+      SCConfig.apiRoot + `/property_manager/stations/${id}/sensor_scan/`,
   },
   CHIP: {
     CHECK_FINALIZED:
-      API_ROOT + '/property_manager/stations/check_chip_finalized/',
+      SCConfig.apiRoot + '/property_manager/stations/check_chip_finalized/',
   },
   SENSOR: {
-    DISPLAY: (id) => API_ROOT + `/property_manager/sensors/${id}/display/`,
+    DISPLAY: (id) =>
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display/`,
     DISPLAY_VALUES: (id) =>
-      API_ROOT + `/property_manager/sensors/${id}/display_values/`,
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display_values/`,
     DISPLAY_VALUES_V2: (id) =>
-      API_ROOT + `/property_manager/sensors/${id}/display_values_v2/`,
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display_values_v2/`,
     DISPLAY_HISTORY: (id, hId) =>
-      API_ROOT + `/property_manager/sensors/${id}/display_history/`,
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display_history/`,
     CAMERA_DISPLAY: (id) =>
-      API_ROOT + `/property_manager/sensors/${id}/cameras/`,
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/cameras/`,
     REMOTE_CONTROL_OPTIONS: (id) =>
-      API_ROOT + `/property_manager/sensors/${id}/remote_control_options/`,
+      SCConfig.apiRoot +
+      `/property_manager/sensors/${id}/remote_control_options/`,
     QUICK_ACTION: (id) =>
-      API_ROOT + `/property_manager/sensors/${id}/quick_action/`,
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/quick_action/`,
     CHECK_CONNECTION: (id) =>
-      API_ROOT + `/property_manager/sensors/${id}/check_connection/`,
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/check_connection/`,
     UPDATE_SENSOR: (unit_id, station_id, id) =>
-      API_ROOT +
+      SCConfig.apiRoot +
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/`,
-    ACTIVITY_LOG: API_ROOT + '/chip_manager/action_log',
+    ACTIVITY_LOG: SCConfig.apiRoot + '/chip_manager/action_log',
   },
   CONFIG: {
-    DISPLAY_HISTORY: API_ROOT + '/property_manager/configs/display_history/',
+    DISPLAY_HISTORY:
+      SCConfig.apiRoot + '/property_manager/configs/display_history/',
   },
   POWER_CONSUME: {
     DISPLAY_HISTORY:
-      API_ROOT + '/property_manager/power_consume/display_history/',
+      SCConfig.apiRoot + '/property_manager/power_consume/display_history/',
   },
   SHARE: {
-    UNITS: API_ROOT + '/property_manager/sharing/units/',
+    UNITS: SCConfig.apiRoot + '/property_manager/sharing/units/',
     UNIT_PERMISSIONS: (id) =>
-      API_ROOT + `/property_manager/sharing/units/${id}/permissions/`,
+      SCConfig.apiRoot + `/property_manager/sharing/units/${id}/permissions/`,
     UNITS_MEMBERS: (id) =>
-      API_ROOT + `/property_manager/sharing/units/${id}/members/`,
+      SCConfig.apiRoot + `/property_manager/sharing/units/${id}/members/`,
     UNITS_MEMBER_DETAIL: (id, shareId) =>
-      API_ROOT + `/property_manager/sharing/units/${id}/members/${shareId}/`,
-    SHARE: API_ROOT + '/property_manager/sharing/share/',
+      SCConfig.apiRoot +
+      `/property_manager/sharing/units/${id}/members/${shareId}/`,
+    SHARE: SCConfig.apiRoot + '/property_manager/sharing/share/',
   },
   EXTERNAL: {
     WEATHER: (location, weatherMapId) =>
@@ -112,95 +124,112 @@ const API = {
     },
   },
   PARKING: {
-    NEARBY: API_ROOT + '/smart_parking/parking_areas/near_me/',
+    NEARBY: SCConfig.apiRoot + '/smart_parking/parking_areas/near_me/',
     NEAREST:
-      API_ROOT + '/smart_parking/parking_areas/nearest_available_parking/',
-    SAVED_LIST: API_ROOT + '/smart_parking/parking_areas/saved_list/',
-    SAVE: (id) => API_ROOT + `/smart_parking/parking_areas/${id}/save/`,
-    UNSAVE: (id) => API_ROOT + `/smart_parking/parking_areas/${id}/unsave/`,
-    DETAIL: (id) => API_ROOT + `/smart_parking/parking_areas/${id}/`,
+      SCConfig.apiRoot +
+      '/smart_parking/parking_areas/nearest_available_parking/',
+    SAVED_LIST: SCConfig.apiRoot + '/smart_parking/parking_areas/saved_list/',
+    SAVE: (id) => SCConfig.apiRoot + `/smart_parking/parking_areas/${id}/save/`,
+    UNSAVE: (id) =>
+      SCConfig.apiRoot + `/smart_parking/parking_areas/${id}/unsave/`,
+    DETAIL: (id) => SCConfig.apiRoot + `/smart_parking/parking_areas/${id}/`,
     GET_BOOKING_PRICE: (id) =>
-      API_ROOT + `/smart_parking/parking_areas/${id}/get_price/`,
+      SCConfig.apiRoot + `/smart_parking/parking_areas/${id}/get_price/`,
     AVAILABLE_TIME_SLOTS: (id) =>
-      API_ROOT + `/smart_parking/parkings/${id}/available-time-slots/`,
-    PAYMENT_SUCCESS: (id) => API_ROOT + `/smart_parking/payment_success/${id}/`,
-    CHECK_CAR_PARKED: API_ROOT + '/smart_parking/spots/check_car_parked/',
-    PARKING_INFO: API_ROOT + '/smart_parking/spots/parking_info/',
+      SCConfig.apiRoot + `/smart_parking/parkings/${id}/available-time-slots/`,
+    PAYMENT_SUCCESS: (id) =>
+      SCConfig.apiRoot + `/smart_parking/payment_success/${id}/`,
+    CHECK_CAR_PARKED:
+      SCConfig.apiRoot + '/smart_parking/spots/check_car_parked/',
+    PARKING_INFO: SCConfig.apiRoot + '/smart_parking/spots/parking_info/',
   },
   CAR: {
-    MY_CARS: API_ROOT + '/smart_parking/cars/',
-    CHECK_CARS_INFO: API_ROOT + '/smart_parking/cars/check_information/',
-    REMOVE_CAR: (id) => API_ROOT + `/smart_parking/cars/${id}/`,
-    UPDATE: (id) => API_ROOT + `/smart_parking/cars/${id}/`,
+    MY_CARS: SCConfig.apiRoot + '/smart_parking/cars/',
+    CHECK_CARS_INFO:
+      SCConfig.apiRoot + '/smart_parking/cars/check_information/',
+    REMOVE_CAR: (id) => SCConfig.apiRoot + `/smart_parking/cars/${id}/`,
+    UPDATE: (id) => SCConfig.apiRoot + `/smart_parking/cars/${id}/`,
     UPDATE_DEFAULT: (id) =>
-      API_ROOT + `/smart_parking/cars/${id}/update_default/`,
+      SCConfig.apiRoot + `/smart_parking/cars/${id}/update_default/`,
   },
   BOOKING: {
-    CREATE: API_ROOT + '/smart_parking/bookings/',
-    DETAIL: (id) => API_ROOT + `/smart_parking/bookings/${id}/`,
-    ACTIVE_SESSION: API_ROOT + '/smart_parking/bookings/active_session/',
+    CREATE: SCConfig.apiRoot + '/smart_parking/bookings/',
+    DETAIL: (id) => SCConfig.apiRoot + `/smart_parking/bookings/${id}/`,
+    ACTIVE_SESSION:
+      SCConfig.apiRoot + '/smart_parking/bookings/active_session/',
     HISTORY: (page) =>
-      API_ROOT + `/smart_parking/bookings/history/?page=${page}`,
-    SCAN_TO_BOOK: API_ROOT + '/smart_parking/bookings/scan_to_book/',
-    SCAN_TO_CONFIRM: API_ROOT + '/smart_parking/bookings/scan_to_confirm/',
+      SCConfig.apiRoot + `/smart_parking/bookings/history/?page=${page}`,
+    SCAN_TO_BOOK: SCConfig.apiRoot + '/smart_parking/bookings/scan_to_book/',
+    SCAN_TO_CONFIRM:
+      SCConfig.apiRoot + '/smart_parking/bookings/scan_to_confirm/',
     EXTEND_INFO: (id) =>
-      API_ROOT + `/smart_parking/bookings/${id}/extend_info/`,
-    EXTEND: (id) => API_ROOT + `/smart_parking/bookings/${id}/extend/`,
-    CANCEL: (id) => API_ROOT + `/smart_parking/bookings/${id}/cancel/`,
-    STOP: (id) => API_ROOT + `/smart_parking/bookings/${id}/stop/`,
+      SCConfig.apiRoot + `/smart_parking/bookings/${id}/extend_info/`,
+    EXTEND: (id) => SCConfig.apiRoot + `/smart_parking/bookings/${id}/extend/`,
+    CANCEL: (id) => SCConfig.apiRoot + `/smart_parking/bookings/${id}/cancel/`,
+    STOP: (id) => SCConfig.apiRoot + `/smart_parking/bookings/${id}/stop/`,
   },
   EMERGENCY: {
-    CONTACTS: API_ROOT + '/emergency_button/contacts/',
+    CONTACTS: SCConfig.apiRoot + '/emergency_button/contacts/',
   },
   BILLING: {
     LIST_PAYMENT_METHODS_BY_COUNTRY: (code) =>
-      API_ROOT + `/billing/list-methods/${code}/`,
+      SCConfig.apiRoot + `/billing/list-methods/${code}/`,
     PAYMENT: {
       STRIPE: {
-        PROCESS: (id) => API_ROOT + `/billing/payments/stripe/process/${id}/`,
-        ADD_CARD: API_ROOT + '/billing/payments/stripe/add_card/',
+        PROCESS: (id) =>
+          SCConfig.apiRoot + `/billing/payments/stripe/process/${id}/`,
+        ADD_CARD: SCConfig.apiRoot + '/billing/payments/stripe/add_card/',
         CREATE_PAYMENT_INTENT: (id) =>
-          API_ROOT + `/billing/payments/stripe/sca/create-payment/${id}/`,
+          SCConfig.apiRoot +
+          `/billing/payments/stripe/sca/create-payment/${id}/`,
         PAYMENT_INTENT_SUCCESS: (intent_id) =>
-          API_ROOT +
+          SCConfig.apiRoot +
           `/billing/payments/stripe/sca/payment_success/${intent_id}/`,
       },
     },
-    DEFAULT_PAYMENT_METHODS: API_ROOT + '/billing/default_payment_method/',
+    DEFAULT_PAYMENT_METHODS:
+      SCConfig.apiRoot + '/billing/default_payment_method/',
   },
   NOTIFICATION: {
-    REGISTER_SIGNAL_ID: API_ROOT + '/accounts/register-signal-id/',
+    REGISTER_SIGNAL_ID: SCConfig.apiRoot + '/accounts/register-signal-id/',
     LIST_ALL_NOTIFICATIONS: (page, type) =>
-      API_ROOT + `/notifications/notifications/?page=${page}&type=${type}`,
-    SET_READ: (id) => API_ROOT + `/notifications/notifications/${id}/set_read/`,
+      SCConfig.apiRoot +
+      `/notifications/notifications/?page=${page}&type=${type}`,
+    SET_READ: (id) =>
+      SCConfig.apiRoot + `/notifications/notifications/${id}/set_read/`,
     SET_LAST_SEEN: (id) =>
-      API_ROOT + '/notifications/notifications/set_last_seen/',
-    NUMBER: API_ROOT + '/notifications/notifications/number/',
+      SCConfig.apiRoot + '/notifications/notifications/set_last_seen/',
+    NUMBER: SCConfig.apiRoot + '/notifications/notifications/number/',
   },
   EMERGENCY_BUTTON: {
-    CREATE_CONTACT: API_ROOT + '/emergency_button/contacts/',
-    CONTACTS: API_ROOT + '/emergency_button/contacts/',
-    REMOVE_CONTACTS: (id) => API_ROOT + `/emergency_button/contacts/${id}/`,
-    SEND_ALERT: API_ROOT + '/emergency_button/events/',
-    RESOLVE: (id) => API_ROOT + `/emergency_button/events/${id}/resolve/`,
+    CREATE_CONTACT: SCConfig.apiRoot + '/emergency_button/contacts/',
+    CONTACTS: SCConfig.apiRoot + '/emergency_button/contacts/',
+    REMOVE_CONTACTS: (id) =>
+      SCConfig.apiRoot + `/emergency_button/contacts/${id}/`,
+    SEND_ALERT: SCConfig.apiRoot + '/emergency_button/events/',
+    RESOLVE: (id) =>
+      SCConfig.apiRoot + `/emergency_button/events/${id}/resolve/`,
   },
   IOT: {
     CHIP_MANAGER: {
-      WATCH_CONFIGS: API_ROOT + '/chip_manager/watch_configs/',
-      PUSHER_AUTH: API_ROOT + '/chip_manager/pusher/auth/',
+      WATCH_CONFIGS: SCConfig.apiRoot + '/chip_manager/watch_configs/',
+      PUSHER_AUTH: SCConfig.apiRoot + '/chip_manager/pusher/auth/',
     },
-  },
-  LG: {
-    AUTHORIZE: (client_id, redirect_uri) =>
-      // eslint-disable-next-line max-len
-      `https://qt-vn.m.lgaccount.com/emp/v2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&state=1`,
-    GET_TOKEN: (client_id, code, redirect_uri, backend_url) =>
-      // eslint-disable-next-line max-len
-      `https://qt-VN.m.lgaccount.com/emp/v2/token?client_id=${client_id}&code=${code}&redirect_uri=${redirect_uri}&backend_url=${backend_url}&grant_type=authorization_code`,
-    SYNC_DEVICE: API_ROOT + '/connection_manager/lg_thinq/sync_device/',
-    CONTROL_DEVICE: API_ROOT + '/connection_manager/lg_thinq/control_device/',
-    DEVICE_STATUS: (sensorId) =>
-      API_ROOT + `/connection_manager/lg_thinq/device_status/${sensorId}/`,
+    LG: {
+      AUTHORIZE: (client_id, redirect_uri) =>
+        // eslint-disable-next-line max-len
+        `${SCConfig.LG_URL}/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&state=1`,
+      GET_TOKEN: (client_id, code, redirect_uri, backend_url) =>
+        // eslint-disable-next-line max-len
+        `${SCConfig.LG_URL}/token?client_id=${client_id}&code=${code}&redirect_uri=${redirect_uri}&backend_url=${backend_url}&grant_type=authorization_code`,
+      SYNC_DEVICE:
+        SCConfig.apiRoot + '/connection_manager/lg_thinq/sync_device/',
+      CONTROL_DEVICE:
+        SCConfig.apiRoot + '/connection_manager/lg_thinq/control_device/',
+      DEVICE_STATUS: (sensorId) =>
+        SCConfig.apiRoot +
+        `/connection_manager/lg_thinq/device_status/${sensorId}/`,
+    },
   },
 };
 
