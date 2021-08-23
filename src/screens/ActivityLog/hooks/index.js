@@ -42,7 +42,7 @@ export default (sensor) => {
       }
       setIsLoading(true);
     }
-    const { success, data } = await axiosGet(API.SENSOR.ACTIVITY_LOG, {
+    const { success, data } = await axiosGet(API.SENSOR.ACTIVITY_LOG(), {
       params: { id: sensor.id, page },
     });
     if (success && data) {

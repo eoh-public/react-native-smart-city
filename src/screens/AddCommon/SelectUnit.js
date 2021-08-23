@@ -53,7 +53,7 @@ const AddCommonSelectUnit = ({ route }) => {
 
   useEffect(() => {
     (async () => {
-      const { data, success } = await axiosGet(API.SHARE.UNITS);
+      const { data, success } = await axiosGet(API.SHARE.UNITS());
       if (success) {
         const normalizeData = data.map((unit) => ({
           name: unit.name,

@@ -36,7 +36,7 @@ const SelectUser = ({ route }) => {
       if (userSharedPermission.length) {
         return false;
       }
-      const { success, data } = await axiosPost(API.SHARE.SHARE, {
+      const { success, data } = await axiosPost(API.SHARE.SHARE(), {
         phone,
         email,
         unit: unit.id,

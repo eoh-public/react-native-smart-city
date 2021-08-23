@@ -32,7 +32,7 @@ export const EmergencyContactsAddNew = ({ route }) => {
     goBack();
   }, [goBack]);
   const onSave = useCallback(async () => {
-    const { success } = await axiosPost(API.EMERGENCY_BUTTON.CREATE_CONTACT, {
+    const { success } = await axiosPost(API.EMERGENCY_BUTTON.CREATE_CONTACT(), {
       group: group.id,
       phone_number: textPhone,
       name: textName,

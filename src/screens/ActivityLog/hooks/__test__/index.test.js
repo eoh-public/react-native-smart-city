@@ -47,7 +47,7 @@ describe('Test useActivityLog', () => {
     act(() => {
       result.current.onRefresh();
     });
-    expect(axios.get).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG, {
+    expect(axios.get).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG(), {
       params: { id: 1, page: 1 },
     });
   });
@@ -82,7 +82,7 @@ describe('Test useActivityLog', () => {
     await act(async () => {
       await result.current.onLoadMore();
     });
-    expect(axios.get).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG, {
+    expect(axios.get).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG(), {
       params: { id: 1, page: 2 },
     });
 

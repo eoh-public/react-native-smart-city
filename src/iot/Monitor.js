@@ -16,7 +16,7 @@ const getPusher = () => {
           // eslint-disable-next-line promise/prefer-await-to-callbacks
           authorize: async function (socketId, callback) {
             const { success, data } = await axiosPost(
-              API.IOT.CHIP_MANAGER.PUSHER_AUTH,
+              API.IOT.CHIP_MANAGER.PUSHER_AUTH(),
               {
                 channel_name: channel.name,
                 socket_id: socketId,
@@ -89,7 +89,7 @@ export const watchMultiConfigs = async (configIds) => {
 
 export const realWatchMultiConfigs = async (configIds) => {
   const { success, data } = await axiosPost(
-    API.IOT.CHIP_MANAGER.WATCH_CONFIGS,
+    API.IOT.CHIP_MANAGER.WATCH_CONFIGS(),
     {
       configs: configIds,
     }

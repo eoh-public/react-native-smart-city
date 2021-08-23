@@ -88,7 +88,7 @@ const PowerConsumption = memo(({ summaryDetail }) => {
       params.append('date_from', new Date(startDate).setHours(0, 0) / 1000);
       params.append('date_to', new Date(endDate).setHours(23, 59) / 1000);
       const { success, data } = await axiosGet(
-        API.POWER_CONSUME.DISPLAY_HISTORY,
+        API.POWER_CONSUME.DISPLAY_HISTORY(),
         {
           params,
         }

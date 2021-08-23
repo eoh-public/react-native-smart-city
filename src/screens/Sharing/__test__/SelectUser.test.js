@@ -145,7 +145,7 @@ describe('test SelectUser container', () => {
     });
 
     expect(textInput.props.errorText).toEqual('');
-    expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE, {
+    expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE(), {
       phone: '0909123456',
       email: '',
       unit: 1,
@@ -188,7 +188,7 @@ describe('test SelectUser container', () => {
       await button.props.onPress();
     });
 
-    expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE, {
+    expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE(), {
       permissions: {
         controlPermissions: {
           Control1: 'AccessControl1',
@@ -257,7 +257,7 @@ describe('test SelectUser container', () => {
     });
 
     expect(textInput.props.errorText).toEqual('');
-    expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE, {
+    expect(axios.post).toHaveBeenCalledWith(API.SHARE.SHARE(), {
       phone: '0909123456',
       email: '',
       unit: 1,

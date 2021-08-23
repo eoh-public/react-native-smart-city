@@ -45,7 +45,7 @@ const Explore = ({ navigation }) => {
   const [coords, setCoords] = useState({ lat: null, lon: null });
 
   const fetchUnitsPublic = useCallback(async (pageId) => {
-    const { success } = await axiosGet(API.UNIT.UNITS_PUBLIC, {
+    const { success } = await axiosGet(API.UNIT.UNITS_PUBLIC(), {
       params: { page: pageId },
     });
     if (success) {

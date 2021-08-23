@@ -51,7 +51,7 @@ const AddLGDevice = memo(({ route }) => {
     }
 
     const { success: successSync } = await axiosPost(
-      `${API.IOT.LG.SYNC_DEVICE}`,
+      `${API.IOT.LG.SYNC_DEVICE()}`,
       {
         access_token: data.access_token,
         refresh_token: data.refresh_token,
