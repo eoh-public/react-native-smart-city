@@ -224,7 +224,7 @@ export async function sendCommandOverGoogleHome(sensor, action, data) {
     await connection.sendMessagePromise(message);
   }
 
-  await axiosPost(API.SENSOR.ACTIVITY_LOG, {
+  await axiosPost(API.SENSOR.ACTIVITY_LOG(), {
     action_id: action.id,
     message: 'Trigger by user action with google home',
   });

@@ -43,7 +43,7 @@ export const useEmeragencyContacts = () => {
   const [listContacts, setListContacts] = useState([]);
 
   const getListContacts = useCallback(async (group_id) => {
-    const { data, success } = await axiosGet(API.EMERGENCY_BUTTON.CONTACTS, {
+    const { data, success } = await axiosGet(API.EMERGENCY_BUTTON.CONTACTS(), {
       params: {
         group: group_id,
       },

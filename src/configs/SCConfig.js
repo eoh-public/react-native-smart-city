@@ -17,6 +17,5 @@ export const initSCConfig = (config) => {
   SCConfig.LG_CLIENT_ID = config.LG_CLIENT_ID ?? SCDefaultConfig.LG_CLIENT_ID;
   SCConfig.LG_REDIRECT_URI_APP =
     config.LG_REDIRECT_URI_APP ?? SCDefaultConfig.LG_REDIRECT_URI_APP;
-  SCConfig.LG_URL =
-    config.LG_URL ?? SCDefaultConfig.LG_URL;
+  SCConfig.LG_URL = config.LG_URL ?? SCDefaultConfig.LG_URL;
 };

@@ -21,7 +21,7 @@ describe('Test Monitor IoT Config', () => {
     channel.bind.mockClear();
     Pusher().unsubscribe.mockClear();
     axios.post.mockImplementation((url) => {
-      if (url === API.IOT.CHIP_MANAGER.WATCH_CONFIGS) {
+      if (url === API.IOT.CHIP_MANAGER.WATCH_CONFIGS()) {
         return { status: 200, data: {}, success: true };
       }
       return { status: 200, data: authData, success: true };
@@ -35,7 +35,7 @@ describe('Test Monitor IoT Config', () => {
 
   it('Watch configs will call watch API', async () => {
     await watchMultiConfigs([1]);
-    expect(axios.post).toBeCalledWith(API.IOT.CHIP_MANAGER.WATCH_CONFIGS, {
+    expect(axios.post).toBeCalledWith(API.IOT.CHIP_MANAGER.WATCH_CONFIGS(), {
       configs: [1],
     });
     expect(channel.bind).toBeCalled();
@@ -48,7 +48,7 @@ describe('Test Monitor IoT Config', () => {
 
     await watchMultiConfigs([1]);
 
-    expect(axios.post).toBeCalledWith(API.IOT.CHIP_MANAGER.WATCH_CONFIGS, {
+    expect(axios.post).toBeCalledWith(API.IOT.CHIP_MANAGER.WATCH_CONFIGS(), {
       configs: [1],
     });
     expect(channel.bind).not.toBeCalled();
@@ -97,7 +97,7 @@ describe('Test Monitor IoT Config', () => {
 
     let authFunc = jest.fn();
     await authorize('1234.5678', authFunc);
-    expect(axios.post).toBeCalledWith(API.IOT.CHIP_MANAGER.PUSHER_AUTH, {
+    expect(axios.post).toBeCalledWith(API.IOT.CHIP_MANAGER.PUSHER_AUTH(), {
       channel_name: 'private-config-1',
       socket_id: '1234.5678',
     });

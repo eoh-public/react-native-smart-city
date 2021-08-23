@@ -217,7 +217,7 @@ describe('Remote Control Google Home', () => {
     expect(connection.sendMessagePromise).toBeCalledWith(
       action.googlehome_actions[0].message
     );
-    expect(axios.post).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG, {
+    expect(axios.post).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG(), {
       action_id: 1,
       message: 'Trigger by user action with google home',
     });

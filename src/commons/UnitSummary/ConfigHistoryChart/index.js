@@ -27,7 +27,7 @@ const ConfigHistoryChart = memo(({ configs }) => {
       });
       params.append('date_from', startDate / 1000);
       params.append('date_to', endDate / 1000);
-      const { success, data } = await axiosGet(API.CONFIG.DISPLAY_HISTORY, {
+      const { success, data } = await axiosGet(API.CONFIG.DISPLAY_HISTORY(), {
         params,
       });
       if (success) {
