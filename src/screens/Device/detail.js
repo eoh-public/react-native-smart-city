@@ -51,7 +51,7 @@ import { useConfigGlobalState } from '../../iot/states';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
-import { Card } from 'components/CardShadow';
+import { Card } from '../../commons/CardShadow';
 
 const { standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
