@@ -46,4 +46,7 @@ export default StyleSheet.create({
     lineHeight: 24,
     color: Colors.Gray9,
   },
+  writeNotAvailable: {
+    marginLeft: 16,
+  },
 });

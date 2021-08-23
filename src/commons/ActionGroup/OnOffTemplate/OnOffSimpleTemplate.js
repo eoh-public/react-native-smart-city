@@ -6,7 +6,12 @@ import Text from '../../Text';
 import styles from './OnOffSimpleTemplateStyle';
 import { Colors } from '../../../configs';
 
-const OnOffSimpleTemplate = ({ isOn, triggerAction, actionGroup }) => {
+const OnOffSimpleTemplate = ({
+  isOn,
+  triggerAction,
+  actionGroup,
+  disabled,
+}) => {
   const isEnabled = !!isOn;
 
   return (
@@ -21,6 +26,7 @@ const OnOffSimpleTemplate = ({ isOn, triggerAction, actionGroup }) => {
         ios_backgroundColor={Colors.Gray4}
         onValueChange={triggerAction}
         value={isEnabled}
+        disabled={disabled}
       />
     </View>
   );

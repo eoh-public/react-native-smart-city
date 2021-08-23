@@ -59,6 +59,12 @@ const API = {
       SCConfig.apiRoot +
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/`,
     ACTIVITY_LOG: () => SCConfig.apiRoot + '/chip_manager/action_log',
+    ADD_TO_FAVOURITES: (unit_id, station_id, id) =>
+      SCConfig.apiRoot +
+      `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/add_to_favourites/`,
+    REMOVE_FROM_FAVOURITES: (unit_id, station_id, id) =>
+      SCConfig.apiRoot +
+      `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/remove_from_favourites/`,
   },
   CONFIG: {
     DISPLAY_HISTORY: () =>
