@@ -73,7 +73,7 @@ export const sendCommandOverLGThinq = async (sensor, action, data) => {
     const item = action.lg_actions[i];
     let new_message = {};
 
-    if (typeof data === 'string') {
+    if (typeof data === 'string' || typeof data === 'boolean') {
       for (const [key, value] of Object.entries(item.message)) {
         let new_property = {};
         // eslint-disable-next-line no-unused-vars
@@ -86,9 +86,8 @@ export const sendCommandOverLGThinq = async (sensor, action, data) => {
       for (const [key, value] of Object.entries(item.message)) {
         let new_property = {};
         let index = 0;
-        // eslint-disable-next-line no-unused-vars
         for (const [key1, value1] of Object.entries(value)) {
-          new_property[key1] = data[index];
+          new_property[key1] = data[index] ? data[index] : value1;
           index += 1;
         }
         new_message[key] = new_property;

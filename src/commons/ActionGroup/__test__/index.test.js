@@ -296,10 +296,10 @@ describe('Test ActionGroup', () => {
     const actionGroup = {
       template: 'on_off_button_action_template',
       configuration: {
-        action_on: '5ed1d4dc-a905-47cd-b0c9-f979644bd21a',
+        action_on_data: '5ed1d4dc-a905-47cd-b0c9-f979644bd21a',
+        action_off_data: '5ed1d4dc-a905-47cd-b0c9-f979644bd21b',
         icon_on: 'caret-up',
         text_on: 'ON',
-        action_off: '5ed1d4dc-a905-47cd-b0c9-f979644bd21b',
         icon_off: 'caret-up',
         text_off: 'OFF',
       },

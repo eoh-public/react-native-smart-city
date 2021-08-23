@@ -12,7 +12,7 @@ import { Icon } from '@ant-design/react-native';
 import { useCountUp } from './hooks/useCountUp';
 import { getData as getLocalData } from '../../utils/Storage';
 import { API, Colors, Device } from '../../configs';
-import { axiosGet } from '../../utils/Apis/axios';
+import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
 import {
@@ -42,10 +42,9 @@ import { AlertAction, ButtonPopup, MenuActionMore } from '../../commons';
 import EmergencyButton from '../../commons/Device/Emergency/EmergencyButton';
 import { TESTID } from '../../configs/Constants';
 import FooterInfo from '../../commons/Device/FooterInfo';
-import { navigate } from '../../navigations/utils';
 import Routes from '../../utils/Route';
 import { sendRemoteCommand } from '../../iot/RemoteControl';
-import HeaderCustom from '../../commons/Header/HeaderCustom';
+import HeaderDevice from './HeaderDevice';
 import { usePopover } from '../../hooks/Common';
 import { useConfigGlobalState } from '../../iot/states';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
@@ -75,6 +74,25 @@ const DeviceDetail = ({ account, route }) => {
   const [configValues, setConfigValues] = useConfigGlobalState('configValues');
 
   const { unit, station, sensor, title, isGGHomeConnected } = route.params;
+  const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
+
+  const addToFavorites = useCallback(async () => {
+    const { success } = await axiosPost(
+      API.SENSOR.ADD_TO_FAVOURITES(unit.id, station.id, sensor.id)
+    );
+    if (success) {
+      setIsFavourite(true);
+    }
+  }, [unit, station, sensor]);
+
+  const removeFromFavorites = useCallback(async () => {
+    const { success } = await axiosPost(
+      API.SENSOR.REMOVE_FROM_FAVOURITES(unit.id, station.id, sensor.id)
+    );
+    if (success) {
+      setIsFavourite(false);
+    }
+  }, [unit, station, sensor]);
 
   const listMenuItemDefault = useMemo(
     () => [
@@ -89,19 +107,36 @@ const DeviceDetail = ({ account, route }) => {
   );
 
   const listMenuItem = useMemo(() => {
+    const menuItems = [];
     if (
       display.items.some((i) => getActionComponent(i.configuration.template))
     ) {
-      return [
-        ...listMenuItemDefault,
-        {
-          route: Routes.ActivityLog,
-          text: t('activity_log'),
-        },
-      ];
+      menuItems.push({
+        route: Routes.ActivityLog,
+        data: { sensor },
+        text: t('activity_log'),
+      });
     }
-    return listMenuItemDefault;
-  }, [display, listMenuItemDefault]);
+    if (!isFavourite) {
+      menuItems.push({
+        doAction: addToFavorites,
+        text: t('add_to_favorites'),
+      });
+    } else {
+      menuItems.push({
+        doAction: removeFromFavorites,
+        text: t('remove_from_favorites'),
+      });
+    }
+    return [...listMenuItemDefault, ...menuItems];
+  }, [
+    display,
+    sensor,
+    isFavourite,
+    listMenuItemDefault,
+    addToFavorites,
+    removeFromFavorites,
+  ]);
 
   const currentUserId = useSelector((state) =>
     get(state, 'auth.account.user.id', 0)
@@ -369,8 +404,15 @@ const DeviceDetail = ({ account, route }) => {
     controlOptionData && setControlOptions(JSON.parse(controlOptionData));
   };
 
-  const onItemMenuClicked = (item) =>
-    item.route ? navigate(item.route, { sensor }) : alert('Coming soon !');
+  const onItemMenuClicked = (item) => {
+    if (item.route) {
+      navigation.navigate(item.route, item.data);
+    } else if (item.doAction) {
+      item.doAction();
+    } else {
+      alert(t('feature_under_development'));
+    }
+  };
 
   useEffect(() => {
     getDataFromLocal();
@@ -382,10 +424,11 @@ const DeviceDetail = ({ account, route }) => {
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom
-        onRefresh={onRefresh}
+      <HeaderDevice
+        isFavourite={isFavourite}
+        addToFavourites={addToFavorites}
+        removeFromFavourites={removeFromFavorites}
         showPopoverWithRef={showPopoverWithRef}
-        isShowRight
       />
       <ScrollView
         style={styles.wrap}

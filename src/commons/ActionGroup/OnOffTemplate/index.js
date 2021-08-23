@@ -18,20 +18,38 @@ const getComponent = (template) => {
 
 const OnOffTemplate = memo(({ actionGroup, doAction, sensor }) => {
   const { configuration } = actionGroup;
+  const { action_data, action_on_data, action_off_data } = configuration;
   const [isOn, setIsOn] = useState(true);
   // eslint-disable-next-line no-unused-vars
   const [configValues, _] = useConfigGlobalState('configValues');
 
   const triggerAction = useCallback(() => {
-    if (isOn) {
-      doAction(configuration.action_off_data);
-    } else {
-      doAction(configuration.action_on_data);
+    if (action_data) {
+      if (isOn) {
+        doAction(action_data, false);
+      } else {
+        doAction(action_data, true);
+      }
+    }
+    if (action_on_data && action_off_data) {
+      if (isOn) {
+        doAction(action_off_data);
+      } else {
+        doAction(action_on_data);
+      }
     }
     if (sensor.is_managed_by_backend) {
       configuration.config && watchMultiConfigs([configuration.config]);
     }
-  }, [configuration, doAction, isOn, sensor.is_managed_by_backend]);
+  }, [
+    action_data,
+    action_off_data,
+    action_on_data,
+    configuration.config,
+    doAction,
+    isOn,
+    sensor.is_managed_by_backend,
+  ]);
 
   useEffect(() => {
     const { is_on_value, config } = configuration;
@@ -65,6 +83,7 @@ const OnOffTemplate = memo(({ actionGroup, doAction, sensor }) => {
         isOn={isOn}
         triggerAction={triggerAction}
         actionGroup={actionGroup}
+        disabled={!action_data && !action_on_data && !action_off_data}
       />
     </>
   );
