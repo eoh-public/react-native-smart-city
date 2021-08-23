@@ -81,7 +81,7 @@ const UnitDetail = ({ route }) => {
           chipId: chipId,
           sentEmail: true,
         });
-        await axiosPost(API.GOOGLE_HOME.CHECK_SEND_EMAIL, {
+        await axiosPost(API.GOOGLE_HOME.CHECK_SEND_EMAIL(), {
           chip_id: chipId,
           is_connected: false,
         });
@@ -90,7 +90,7 @@ const UnitDetail = ({ route }) => {
           chipId: chipId,
           sentEmail: false,
         });
-        await axiosPost(API.GOOGLE_HOME.CHECK_SEND_EMAIL, {
+        await axiosPost(API.GOOGLE_HOME.CHECK_SEND_EMAIL(), {
           chip_id: chipId,
           is_connected: true,
         });
