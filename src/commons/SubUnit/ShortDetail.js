@@ -16,7 +16,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 
 const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
   const renderCamera = () => {
-    if (station.camera) {
+    if (station?.camera) {
       return (
         <View
           style={[
@@ -34,7 +34,7 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
           />
         </View>
       );
-    } else if (station.background) {
+    } else if (station?.background) {
       return (
         <View style={styles.boxImage}>
           <Image

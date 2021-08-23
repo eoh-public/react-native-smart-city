@@ -8,9 +8,10 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    color: Colors.Gray9,
-    fontSize: normalize(16),
-    lineHeight: normalize(24),
+    color: Colors.Gray8,
+    fontSize: normalize(14),
+    lineHeight: normalize(22),
     fontWeight: '600',
+    fontStyle: 'normal',
   },
 });

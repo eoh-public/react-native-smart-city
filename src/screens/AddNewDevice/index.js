@@ -15,7 +15,7 @@ const AddNewDevice = memo(({ route }) => {
   const { unit_id } = route.params;
   const { navigate, goBack } = useNavigation();
   const [unit, setUnit] = useState({ stations: [] });
-  const [stationId, setStationId] = useState(0);
+  const [stationId, setStationId] = useState(-1);
 
   const fetchDetails = useCallback(async () => {
     const { success, data } = await axiosGet(
@@ -46,6 +46,14 @@ const AddNewDevice = memo(({ route }) => {
     title: item.name,
   }));
 
+  const handleOnSelect = (itemSelect) => {
+    if (itemSelect.id !== stationId) {
+      setStationId(itemSelect.id);
+    } else {
+      setStationId(-1);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.wrap}>
       <Text
@@ -71,19 +79,14 @@ const AddNewDevice = memo(({ route }) => {
         showsVerticalScrollIndicator={false}
       >
         <Section type={'border'}>
-          <GroupCheckBox
-            data={stations}
-            onSelect={(itemSelect) => {
-              setStationId(itemSelect.id);
-            }}
-          />
+          <GroupCheckBox data={stations} onSelect={handleOnSelect} />
         </Section>
       </ScrollView>
       <ViewButtonBottom
         leftTitle={t('text_back')}
         onLeftClick={goBack}
         rightTitle={t('text_next')}
-        rightDisabled={!stationId}
+        rightDisabled={stationId === -1}
         onRightClick={onRight}
       />
     </SafeAreaView>

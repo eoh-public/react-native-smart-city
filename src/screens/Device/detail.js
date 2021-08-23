@@ -11,11 +11,7 @@ import { Icon } from '@ant-design/react-native';
 
 import { useCountUp } from './hooks/useCountUp';
 import { getData as getLocalData } from '../../utils/Storage';
-import styles from './styles';
 import { API, Colors, Device } from '../../configs';
-const { standardizeHeight } = standardizeCameraScreenSize(
-  Device.screenWidth - 32
-);
 import { axiosGet } from '../../utils/Apis/axios';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
@@ -53,8 +49,16 @@ import HeaderCustom from '../../commons/Header/HeaderCustom';
 import { usePopover } from '../../hooks/Common';
 import { useConfigGlobalState } from '../../iot/states';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
+import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
+import { Card } from 'components/CardShadow';
+
+const { standardizeHeight } = standardizeCameraScreenSize(
+  Device.screenWidth - 32
+);
 
 const DeviceDetail = ({ account, route }) => {
+  const navigation = useNavigation();
   const [offsetTitle, setOffsetTitle] = useState(1);
   const [display, setDisplay] = useState({ items: [] });
   const [displayValues, setDisplayValues] = useState([]);
@@ -289,8 +293,12 @@ const DeviceDetail = ({ account, route }) => {
     ).length > 0;
 
   const onSetupContacts = useCallback(() => {
-    navigate(Routes.ManageUnit, { unit });
-  }, [unit]);
+    const group = unit.group;
+    navigation.navigate(Routes.EmergencyContactsStack, {
+      screen: Routes.EmergencyContactsList,
+      params: { unitId: unit.id, group },
+    });
+  }, [navigation, unit.group, unit.id]);
 
   // replace isConnected=True to see template
   const renderSensorConnected = () => {
@@ -389,6 +397,16 @@ const DeviceDetail = ({ account, route }) => {
           {title}
         </Text>
         <View style={styles.wrapTemplate}>{renderSensorConnected()}</View>
+        {isShowSetupEmergencyContact && canManageSubUnit && (
+          <BottomButtonView
+            style={styles.bottomButtonEmergencyContact}
+            mainIcon={<Icon name="phone" size={24} color={Colors.Gray9} />}
+            mainTitle={t('emergency_contacts')}
+            onPressMain={onSetupContacts}
+            typeMain="CardShadow"
+            semiboldMain={false}
+          />
+        )}
         <AlertSendConfirm
           showAlertConfirm={showAlertConfirm}
           countDown={countDown}
@@ -414,16 +432,6 @@ const DeviceDetail = ({ account, route }) => {
           onPressMain={onPressResolveSituationConfirm}
           topComponent={<EmergencyCountdown countUpStr={countUpStr} />}
           typeMain="alertBorder"
-        />
-      )}
-      {isShowSetupEmergencyContact && canManageSubUnit && (
-        <BottomButtonView
-          style={styles.bottomButtonEmergencyContact}
-          mainIcon={<Icon name="plus" size={15} color={Colors.Primary} />}
-          mainTitle={t('setup_my_emergency_contact')}
-          onPressMain={onSetupContacts}
-          textTypeMain="Body"
-          typeMain="setupBorder"
         />
       )}
       <AlertAction
@@ -553,8 +561,7 @@ const SensorDisplayItem = ({
   switch (item.type) {
     case 'camera':
       return (
-        <View style={styles.CameraContainer}>
-          <Text style={styles.headerCamera}>{t('camera')}</Text>
+        <Card title={t('camera')}>
           <View style={styles.mediaContainer}>
             <MediaPlayer
               testID={TESTID.DEVICE_DETAIL_MEDIA_PLAYER}
@@ -562,7 +569,7 @@ const SensorDisplayItem = ({
               style={{ height: standardizeHeight }}
             />
           </View>
-        </View>
+        </Card>
       );
     case 'action':
       return (

@@ -121,6 +121,7 @@ const SelectPermission = ({ route }) => {
           title={name}
           wrapCheckBoxStyle={styles.checkBoxTile}
           onPress={onTickTitle}
+          titleStyle={styles.GroupSenSorItem}
           isChecked={isChecked}
           idGroup={id}
         />
@@ -189,6 +190,7 @@ const SelectPermission = ({ route }) => {
                 title={t('text_all_devices')}
                 wrapStyle={styles.wrapAllDevices}
                 onPress={onTickTitle}
+                titleStyle={styles.textAllDevice}
                 isChecked={isTickAllDevices}
               />
             )

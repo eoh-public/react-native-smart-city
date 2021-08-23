@@ -1,6 +1,7 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { Colors } from '../../../configs';
 import { Constants, normalize } from '../../../configs/Constants';
+import { FONT_PREFIX } from '../../../configs/Constants';
 
 export default StyleSheet.create({
   containerAndroid: {
@@ -51,5 +52,19 @@ export default StyleSheet.create({
   textNodata: {
     alignSelf: 'center',
     marginTop: normalize(Constants.height * 0.3),
+  },
+  textAllDevice: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '600',
+    fontFamily: FONT_PREFIX + '-' + 'Semibold',
+    fontStyle: 'normal',
+  },
+  GroupSenSorItem: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontWeight: '600',
+    fontFamily: FONT_PREFIX + '-' + 'Semibold',
+    fontStyle: 'normal',
   },
 });
