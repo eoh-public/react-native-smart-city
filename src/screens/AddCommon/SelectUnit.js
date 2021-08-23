@@ -95,6 +95,14 @@ const AddCommonSelectUnit = ({ route }) => {
     }
   }, [addType, navigation, units, selectedIndex, route.params]);
 
+  const handleSelectIndex = (index) => {
+    if (index !== selectedIndex) {
+      setSelectedIndex(index);
+    } else {
+      setSelectedIndex(-1);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text semibold style={styles.title}>
@@ -108,23 +116,25 @@ const AddCommonSelectUnit = ({ route }) => {
         >
           <Section type={'border'}>
             {units.map((item, index) => (
-              <View key={index} style={styles.rowContainer}>
+              <TouchableOpacity
+                key={index}
+                style={styles.rowContainer}
+                onPress={() => handleSelectIndex(index)}
+              >
                 <RadioCircle
                   active={selectedIndex === index}
                   testID={TESTID.SELECT_UNIT_RADIO_BUTTON}
                 />
                 <TouchableOpacity
                   style={styles.row}
-                  onPress={() => {
-                    setSelectedIndex(index);
-                  }}
+                  onPress={() => handleSelectIndex(index)}
                   testID={TESTID.SELECT_UNIT_SELECT}
                 >
                   <Text style={styles.text} testID={TESTID.SELECT_UNIT_NAME}>
                     {item.name}
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             ))}
           </Section>
         </ScrollView>

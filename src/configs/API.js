@@ -64,6 +64,10 @@ const API = {
     DISPLAY_HISTORY: () =>
       SCConfig.apiRoot + '/property_manager/configs/display_history/',
   },
+  GOOGLE_HOME: {
+    CHECK_SEND_EMAIL: () =>
+      SCConfig.apiRoot + '/connection_manager/googlehome/check_send_email/',
+  },
   POWER_CONSUME: {
     DISPLAY_HISTORY: () =>
       SCConfig.apiRoot + '/property_manager/power_consume/display_history/',

@@ -13,8 +13,8 @@ const Station = ({ listStation = [], onSnapToItem, indexStation }) => {
     arrRef.current.push(el);
   };
 
-  const handleOnSnapToItem = (index) => () => {
-    onSnapToItem && onSnapToItem(index);
+  const handleOnSnapToItem = (item, index) => () => {
+    onSnapToItem && onSnapToItem(item, index);
   };
 
   const renderItem = ({ item, index }) => {
@@ -23,7 +23,7 @@ const Station = ({ listStation = [], onSnapToItem, indexStation }) => {
         ref={addToRefs}
         key={index}
         style={styles.wrapTitle}
-        onPress={handleOnSnapToItem(index)}
+        onPress={handleOnSnapToItem(item, index)}
       >
         <Text
           style={[styles.title, index === indexStation && styles.titleActive]}

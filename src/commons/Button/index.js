@@ -67,6 +67,19 @@ const ButtonStyle = {
     borderWidth: 1,
     borderColor: Colors.Primary,
   },
+  CardShadow: {
+    flexDirection: 'column',
+    backgroundColor: Colors.White,
+    borderRadius: 10,
+    shadowColor: Colors.Shadow,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 6,
+  },
 };
 
 const TextColor = {
@@ -81,6 +94,7 @@ const TextColor = {
   alertBorder: Colors.Red6,
   underline: Colors.Gray6,
   setupBorder: Colors.Primary,
+  CardShadow: Colors.Gray9,
 };
 
 const TextSize = {
@@ -115,6 +129,7 @@ export default ({
 
   const isDisabled = type === 'disabled' || type === 'disabledBorder';
   const isUnderline = type === 'underline';
+  const isCardShadow = type === 'CardShadow';
   const textSize = TextSize[textType];
   const PreventDoubleTouch = withPreventDoubleClick(TouchableOpacity);
   return (
@@ -125,7 +140,7 @@ export default ({
           width,
           height,
         },
-        styles.button,
+        isCardShadow ? styles.buttonLeft : styles.button,
         styleButton,
         style,
       ]}
@@ -167,5 +182,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonLeft: {
+    width: '100%',
+    paddingLeft: 18,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor: Colors.Gray1,
+    paddingVertical: 32,
   },
 });

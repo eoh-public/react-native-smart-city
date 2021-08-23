@@ -5,11 +5,13 @@ import {
   Language,
   StatusBar,
   Action,
+  ListDevice,
 } from './actionType';
 
 export type ContextData = {
   auth: AuthData;
   language: Language;
+  listDevice: ListDevice;
 };
 
 export type Action = {
@@ -28,6 +30,7 @@ export const initialState = {
   },
   language: 'en' as Language,
   statusBar: {} as StatusBar,
+  listDevice: {} as ListDevice,
 };
 
 export const reducer = (currentState: ContextData, action: Action) => {
@@ -38,6 +41,25 @@ export const reducer = (currentState: ContextData, action: Action) => {
       return { ...currentState, auth: payload };
     case Action.STORE_STATUS_BAR:
       return { ...currentState, statusBar: payload };
+    case Action.LIST_DEVICE_TYPES:
+      if (currentState.listDevice) {
+        currentState.listDevice[action.payload.chipId] = {
+          sentEmail: action.payload.sentEmail,
+        };
+        return {
+          ...currentState,
+        };
+      } else {
+        let listDevice = {};
+        listDevice[action.payload.chipId] = {
+          sentEmail: action.payload.sentEmail,
+        };
+        return {
+          ...currentState,
+          listDevice: listDevice,
+        };
+      }
+
     default:
       return currentState;
   }

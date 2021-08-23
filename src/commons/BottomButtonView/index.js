@@ -24,7 +24,9 @@ const BottomButtonView = memo(
     return (
       <View
         style={[
-          styleCustom.container,
+          typeMain === 'CardShadow'
+            ? styleCustom.container1
+            : styleCustom.container,
           rowButton && styleCustom.horizontalContainer,
           style,
         ]}
@@ -88,5 +90,12 @@ const styleCustom = StyleSheet.create({
   },
   buttonSecondaryColumn: {
     marginTop: 8,
+  },
+  container1: {
+    marginTop: -14,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flex: 1,
   },
 });

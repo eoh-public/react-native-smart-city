@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { AppState, RefreshControl, View } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { t } from 'i18n-js';
@@ -13,23 +13,27 @@ import { API } from '../../configs';
 import { useBoolean, useIsOwnerOfUnit, usePopover } from '../../hooks/Common';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import { googleHomeConnect } from '../../iot/RemoteControl/GoogleHome';
-import { fetchWithCache } from '../../utils/Apis/axios';
+import { axiosPost, fetchWithCache } from '../../utils/Apis/axios';
 import { lgThinqConnect } from '../../iot/RemoteControl/LG';
 import ShortDetailSubUnit from '../../commons/SubUnit/ShortDetail';
 import NavBar from '../../commons/NavBar';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
+import { SCContext } from '../../context';
+import { Action } from '../../context/actionType';
 
 const UnitDetail = ({ route }) => {
   const { unitId, unitData } = route.params;
   const isFocused = useIsFocused();
+  const { stateData, setAction } = useContext(SCContext);
+
   const [unit, setUnit] = useState(unitData || { id: unitId });
   const [appState, setAppState] = useState(AppState.currentState);
-  const [showAdd, setShowAdd, setHideAdd] = useBoolean();
   const [listMenuItem, setListMenuItem] = useState([]);
   const [listStation, setListStation] = useState([]);
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
   const [station, setStation] = useState([]);
   const [indexStation, setIndexStation] = useState(0);
+  const [showAdd, setShowAdd, setHideAdd] = useBoolean();
 
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
@@ -67,10 +71,34 @@ const UnitDetail = ({ route }) => {
     };
   }, [handleAppStateChange]);
 
-  const handleGoogleHomeConnect = useCallback(async (options) => {
-    let isConnected = await googleHomeConnect(options); // this may wrong if have multiple connection
-    setIsGGHomeConnected(isConnected);
-  }, []);
+  const handleGoogleHomeConnect = useCallback(
+    async (options) => {
+      let isConnected = await googleHomeConnect(options); // this may wrong if have multiple connection
+      setIsGGHomeConnected(isConnected);
+      let chipId = options[0].chip_id;
+      if (!isConnected) {
+        setAction(Action.LIST_DEVICE_TYPES, {
+          chipId: chipId,
+          sentEmail: true,
+        });
+        await axiosPost(API.GOOGLE_HOME.CHECK_SEND_EMAIL, {
+          chip_id: chipId,
+          is_connected: false,
+        });
+      } else if (isConnected && stateData?.listDevice[chipId]?.sentEmail) {
+        setAction(Action.LIST_DEVICE_TYPES, {
+          chipId: chipId,
+          sentEmail: false,
+        });
+        await axiosPost(API.GOOGLE_HOME.CHECK_SEND_EMAIL, {
+          chip_id: chipId,
+          is_connected: true,
+        });
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const handleLgThinqConnect = useCallback(async (options) => {
     await lgThinqConnect(options);
@@ -81,7 +109,7 @@ const UnitDetail = ({ route }) => {
       if (unit.remote_control_options.bluetooth) {
         scanBluetoothDevices(unit.remote_control_options.bluetooth);
       }
-      if (unit.remote_control_options.googlehome) {
+      if (unit.remote_control_options.googlehome?.length) {
         handleGoogleHomeConnect(unit.remote_control_options.googlehome);
       }
       if (unit.remote_control_options.lg_thinq) {
@@ -110,7 +138,7 @@ const UnitDetail = ({ route }) => {
   }, [unit, indexStation, isGGHomeConnected]);
 
   const onSnapToItem = useCallback(
-    (index) => {
+    (item, index) => {
       setStation(unit.stations[index]);
       setIndexStation(index);
     },

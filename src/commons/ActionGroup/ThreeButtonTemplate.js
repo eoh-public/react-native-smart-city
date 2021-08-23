@@ -6,6 +6,7 @@ import styles from './ThreeButtonTemplateStyle';
 import Text from '../Text';
 import { TESTID } from '../../configs/Constants';
 import { Colors } from '../../configs';
+import { Card } from '../../commons/CardShadow';
 
 const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
   const { configuration } = actionGroup;
@@ -63,8 +64,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
   };
   return (
     <>
-      <View style={styles.card}>
-        <Text style={styles.headerThreeButton}>{t('controller')}</Text>
+      <Card title={actionGroup.title ? actionGroup.title : t('controller')}>
         <View style={styles.wrap}>
           <TouchableOpacity
             testID={TESTID.BUTTON_TEMPLATE_1}
@@ -115,12 +115,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
               lock ? Colors.Primary : Colors.Gray6
             )}
         </View>
-      </View>
-      {!!actionGroup.title && (
-        <Text size={20} semibold center>
-          {actionGroup.title}
-        </Text>
-      )}
+      </Card>
     </>
   );
 });

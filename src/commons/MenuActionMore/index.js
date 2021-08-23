@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { TouchableOpacity, ScrollView } from 'react-native';
 import Popover from 'react-native-popover-view';
 
@@ -18,10 +18,13 @@ const MenuActionMore = memo(
     wrapStyle,
     isTextCenter = true,
   }) => {
-    const handleOnPress = (index) => () => {
-      hideMore && hideMore();
-      onItemClick && onItemClick(index);
-    };
+    const onPress = useCallback(
+      (item, index) => {
+        hideMore && hideMore();
+        onItemClick && onItemClick(item, index);
+      },
+      [hideMore, onItemClick]
+    );
 
     useEffect(() => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -47,7 +50,7 @@ const MenuActionMore = memo(
                   styles.menuWrapper,
                   isTextCenter ? styles.modalHeaderCenter : styles.modalHeader,
                 ]}
-                onPress={handleOnPress(index)}
+                onPress={() => onPress(item, index)}
                 key={index}
                 testID={TESTID.TOUCHABLE_ACTION_ADD_MORE}
               >

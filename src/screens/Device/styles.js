@@ -14,36 +14,12 @@ export default StyleSheet.create({
   title: {
     marginHorizontal: 16,
   },
-  headerCamera: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    color: Colors.Gray8,
-    fontSize: 16,
-    lineHeight: 24,
-    marginTop: 18,
-    marginLeft: 20,
-    marginBottom: 16,
-  },
-  CameraContainer: {
-    paddingBottom: 16,
-    marginHorizontal: 16,
-    flexDirection: 'column',
-    backgroundColor: Colors.White,
-    borderRadius: 10,
-    shadowColor: Colors.Shadow,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 6,
-  },
   mediaContainer: {
     alignSelf: 'center',
     width: standardizeWidth,
     height: standardizeHeight,
     paddingHorizontal: 16,
+    paddingTop: 16,
   },
   chartStyle: {
     paddingHorizontal: 16,

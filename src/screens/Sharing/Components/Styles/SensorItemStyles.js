@@ -20,9 +20,12 @@ export default StyleSheet.create({
     paddingTop: normalize(16),
   },
   text: {
+    color: Colors.Gray9,
+    fontWeight: '400',
     fontSize: normalize(16),
     flex: 1,
     paddingRight: normalize(20),
+    fontStyle: 'normal',
   },
   viewSeparated: {
     height: 1,
@@ -44,10 +47,8 @@ export default StyleSheet.create({
     marginRight: normalize(30),
   },
   titleStyle: {
-    color: Colors.Gray9,
-    fontSize: normalize(16),
-    lineHeight: normalize(24),
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: 'normal',
   },
   wrapExpand: {
     marginTop: 10,

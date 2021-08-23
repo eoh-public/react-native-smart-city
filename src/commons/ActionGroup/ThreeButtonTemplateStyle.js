@@ -2,37 +2,10 @@ import { StyleSheet } from 'react-native';
 import { Colors } from '../../configs';
 
 export default StyleSheet.create({
-  headerThreeButton: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    color: Colors.Gray8,
-    fontSize: 16,
-    lineHeight: 24,
-    marginTop: 18,
-    marginLeft: 20,
-  },
-  card: {
-    marginTop: 14,
-    marginBottom: 14,
-    marginHorizontal: 16,
-    flexDirection: 'column',
-    backgroundColor: Colors.White,
-    borderRadius: 10,
-    shadowColor: Colors.Shadow,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 6,
-  },
   wrap: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingHorizontal: 8,
     paddingVertical: 16,
-    marginHorizontal: 8,
   },
   imageBtn: {
     height: 28,
@@ -66,9 +39,6 @@ export default StyleSheet.create({
   lockSwitch: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 8,
-    paddingVertical: 9,
-    marginHorizontal: 8,
     marginBottom: 7,
   },
   iconLock: {
@@ -83,5 +53,6 @@ export default StyleSheet.create({
   lockDoor: {
     flexDirection: 'row',
     alignItems: 'flex-end',
+    paddingLeft: 5,
   },
 });

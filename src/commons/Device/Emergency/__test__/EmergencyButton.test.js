@@ -14,12 +14,8 @@ describe('Test EmergencyButton', () => {
     });
 
     const instance = tree.root;
-    const text = instance.findAllByType(Text);
-    const emergencyTitle = text.find(
-      (item) => item.props.testID === TESTID.EMERGENCY_TITLE
-    );
-
-    expect(emergencyTitle).toBeDefined();
+    const textEmergencyDes = instance.findAllByType(Text);
+    expect(textEmergencyDes[0]).toBeDefined();
   });
 
   test('long press EmergencyButton', () => {
