@@ -11,7 +11,7 @@ import styles from './OptionsDropdownActionTemplateStyle';
 import { watchMultiConfigs } from '../../iot/Monitor';
 import { TESTID } from '../../configs/Constants';
 import IconComponent from '../../commons/IconComponent';
-import t from 'i18n-js';
+import { t } from 'i18n-js';
 
 function getOptionValue(option) {
   if (option.value_text) {
