@@ -15,10 +15,7 @@ import { API, Colors, Device } from '../../configs';
 import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
 import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
-import {
-  ConnectedViewHeader,
-  DisconnectedView,
-} from '../../commons/Device/ConnectedViewHeader';
+import { ConnectedViewHeader, DisconnectedView } from '../../commons/Device';
 import HistoryChart from '../../commons/Device/HistoryChart';
 import PMSensorIndicatior from '../../commons/Device/PMSensor/PMSensorIndicatior';
 import CurrentRainSensor from '../../commons/Device/RainningSensor/CurrentRainSensor';
