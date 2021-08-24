@@ -1,12 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { Icon } from '@ant-design/react-native';
-import {
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  View,
-  Platform,
-} from 'react-native';
+import { TouchableOpacity, StyleSheet, Animated, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
@@ -14,7 +8,7 @@ import Text from '../../commons/Text';
 import { Colors } from '../../configs';
 
 const default_height = 44;
-const paddingIos = Platform.OS === 'ios' ? getStatusBarHeight() : 0;
+const paddingIos = getStatusBarHeight();
 export const title_height = 44;
 export const heightHeader = default_height + title_height + paddingIos;
 
