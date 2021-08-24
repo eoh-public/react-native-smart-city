@@ -7,7 +7,7 @@ import { watchMultiConfigs } from '../../../iot/Monitor';
 import { AlertAction, RadioCircle } from '../../../commons';
 import { TESTID } from '../../../configs/Constants';
 import IconComponent from '../../../commons/IconComponent';
-import t from 'i18n-js';
+import { t } from 'i18n-js';
 
 jest.mock('../../../iot/Monitor');
 

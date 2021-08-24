@@ -1,6 +1,6 @@
 import { Colors } from '../../../configs';
 import { getStatusBarHeight } from '../../../configs/Constants';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   wrap: {
@@ -10,10 +10,7 @@ export default StyleSheet.create({
     paddingLeft: 7,
     paddingRight: 10,
     paddingBottom: 6,
-    paddingTop: Platform.select({
-      android: 0,
-      ios: getStatusBarHeight() + 10,
-    }),
+    paddingTop: getStatusBarHeight(),
   },
   separator: {
     borderBottomWidth: 0.5,
