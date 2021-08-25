@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { t } from 'i18n-js';
 
 import { Images, Device } from '../../configs';
@@ -9,6 +9,7 @@ import Text from '../Text';
 import ItemDevice from '../Device/ItemDevice';
 import MediaPlayer from '../MediaPlayer';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
+import FastImage from 'react-native-fast-image';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
@@ -37,7 +38,7 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
     } else if (station?.background) {
       return (
         <View style={styles.boxImage}>
-          <Image
+          <FastImage
             source={{
               uri: station.background,
             }}
