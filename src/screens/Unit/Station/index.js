@@ -1,6 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
-import { t } from 'i18n-js';
 import styles from './StationStyles';
 
 const Station = ({ listStation = [], onSnapToItem, indexStation }) => {
@@ -71,16 +70,6 @@ const Station = ({ listStation = [], onSnapToItem, indexStation }) => {
         extraData={data}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
-        ListHeaderComponent={
-          <View style={styles.wrapTitle}>
-            <Text style={[styles.title, styles.titleFavorites]}>
-              {t('favorites')}
-            </Text>
-            <View
-              style={[styles.viewSeparated, styles.viewSeparatedFavorites]}
-            />
-          </View>
-        }
       />
     </View>
   );

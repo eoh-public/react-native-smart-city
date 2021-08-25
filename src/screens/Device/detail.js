@@ -75,21 +75,21 @@ const DeviceDetail = ({ account, route }) => {
 
   const addToFavorites = useCallback(async () => {
     const { success } = await axiosPost(
-      API.SENSOR.ADD_TO_FAVOURITES(unit.id, station.id, sensor.id)
+      API.SENSOR.ADD_TO_FAVOURITES(unit.id, sensor.station.id, sensor.id)
     );
     if (success) {
       setIsFavourite(true);
     }
-  }, [unit, station, sensor]);
+  }, [unit, sensor]);
 
   const removeFromFavorites = useCallback(async () => {
     const { success } = await axiosPost(
-      API.SENSOR.REMOVE_FROM_FAVOURITES(unit.id, station.id, sensor.id)
+      API.SENSOR.REMOVE_FROM_FAVOURITES(unit.id, sensor.station.id, sensor.id)
     );
     if (success) {
       setIsFavourite(false);
     }
-  }, [unit, station, sensor]);
+  }, [unit, sensor]);
 
   const listMenuItemDefault = useMemo(
     () => [
@@ -453,7 +453,7 @@ const DeviceDetail = ({ account, route }) => {
           onCancelConfirmAlert={onCancelConfirmAlert}
           onSendNowAlert={onSendNowAlert}
           unit={unit}
-          station={station}
+          station={sensor.station}
         />
 
         <AlertSent
@@ -461,7 +461,7 @@ const DeviceDetail = ({ account, route }) => {
           onClose={onCloseAlertSent}
           onPressMain={onViewDetails}
           unit={unit}
-          station={station}
+          station={sensor.station}
         />
       </ScrollView>
       {isShowEmergencyResolve && (
@@ -498,7 +498,7 @@ const DeviceDetail = ({ account, route }) => {
             type="H4"
             style={styles.textName}
           >
-            {unit.name} - {station.name}
+            {unit.name} - {sensor.station.name}
           </Text>
           <IconFill
             testID={TESTID.BUTTON_POPUP_RESOLVED_ICON}

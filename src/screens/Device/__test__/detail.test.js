@@ -86,7 +86,11 @@ describe('test DeviceDetail', () => {
           id: 2,
           name: 'Station name',
         },
-        sensor: { id: 1, is_managed_by_backend: true },
+        sensor: {
+          id: 1,
+          is_managed_by_backend: true,
+          station: { id: 2, name: 'Station name' },
+        },
         title: 'Button',
       },
     };

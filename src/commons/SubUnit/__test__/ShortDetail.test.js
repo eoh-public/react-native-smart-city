@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, TouchableWithoutFeedback } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import { TESTID } from '../../../configs/Constants';
 
@@ -127,5 +127,24 @@ describe('test ShortDetail Subunit', () => {
         item.props.testID === TESTID.SUB_UNIT_DEVICES && item.type === View
     );
     expect(itemDevice.length).toBe(1);
+  });
+
+  test('render ShortDetail add new device', () => {
+    act(() => {
+      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
+    });
+    const instance = tree.root;
+    const buttonAddNew = instance.findAllByType(TouchableWithoutFeedback);
+    act(() => {
+      buttonAddNew[0].props.onPress();
+    });
+    expect(mockedNavigate).toHaveBeenCalledWith(Routes.AddDeviceStack, {
+      screen: Routes.ScanSensorQR,
+      params: {
+        station_id: station.id,
+        unit_id: unit.id,
+        unit_name: unit.name,
+      },
+    });
   });
 });
