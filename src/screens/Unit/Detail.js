@@ -40,14 +40,31 @@ const UnitDetail = ({ route }) => {
 
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 
+  const prepareData = useCallback((rawUnitData) => {
+    const favorites = {
+      isFakeStation: true,
+      isFavorites: true,
+      name: t('favorites'),
+      sensors: [],
+    };
+    rawUnitData.stations.unshift(favorites);
+    rawUnitData.stations.forEach((stationItem) => {
+      const favoriteDevices = stationItem.sensors.filter(
+        (sensorItem) => sensorItem.is_favourite
+      );
+      favorites.sensors = favorites.sensors.concat(favoriteDevices);
+    });
+  }, []);
+
   const fetchDetails = useCallback(async () => {
     await fetchWithCache(API.UNIT.UNIT_DETAIL(unitId), {}, (response) => {
       const { success, data } = response;
       if (success) {
+        prepareData(data);
         setUnit(data);
       }
     });
-  }, [setUnit, unitId]);
+  }, [setUnit, unitId, prepareData]);
 
   const onRefresh = useCallback(() => {
     fetchDetails();

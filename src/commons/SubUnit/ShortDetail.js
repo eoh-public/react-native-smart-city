@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 
 import { Images, Device } from '../../configs';
@@ -7,8 +8,10 @@ import { TESTID } from '../../configs/Constants';
 import { Section } from '../Section';
 import Text from '../Text';
 import ItemDevice from '../Device/ItemDevice';
+import ItemAddNew from '../Device/ItemAddNew';
 import MediaPlayer from '../MediaPlayer';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
+import Routes from '../../utils/Route';
 import FastImage from 'react-native-fast-image';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
@@ -16,6 +19,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
+  const { navigate } = useNavigation();
   const renderCamera = () => {
     if (station?.camera) {
       return (
@@ -54,6 +58,25 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
     return false;
   };
 
+  const handleOnAddNew = () => {
+    if (!station.isFavorites) {
+      navigate(Routes.AddDeviceStack, {
+        screen: Routes.ScanSensorQR,
+        params: {
+          station_id: station.id,
+          unit_id: unit.id,
+          unit_name: unit.name,
+        },
+      });
+    } else {
+      alert(t('feature_under_development'));
+    }
+  };
+
+  const itemAddNewTitle = station.isFavorites
+    ? t('add_to_favorites')
+    : t('add_new_device');
+
   return (
     <Section style={styles.noShadow}>
       {renderCamera()}
@@ -65,6 +88,7 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
       )}
 
       <View style={styles.boxDevices}>
+        <ItemAddNew title={itemAddNewTitle} onAddNew={handleOnAddNew} />
         {!!station.sensors &&
           station.sensors.map((sensor, index) => (
             <ItemDevice
