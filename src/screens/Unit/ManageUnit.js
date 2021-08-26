@@ -39,25 +39,31 @@ const ManageUnit = ({ route }) => {
   const { unit } = route.params;
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
   const [showEdit, setshowEdit, setHideEdit] = useBoolean();
+  const [unitData, setUnitData] = useState({
+    name: unit.name,
+    address: unit.address,
+    background: unit.background,
+  });
+
   const [unitName, setUnitName] = useState(unit.name);
   const [imageUrl, setImageUrl] = useState('');
   const [showImagePicker, setShowImagePicker] = useState(false);
 
   const updateUnit = useCallback(
-    async (headers) => {
-      const formData = createFormData(imageUrl, ['background']);
+    async (bodyData, headers) => {
+      const formData = createFormData(bodyData, ['background']);
 
-      const { success } = await axiosPatch(
+      const { success, data } = await axiosPatch(
         API.UNIT.MANAGE_UNIT(unit.id),
         formData,
         headers
       );
-
       if (success) {
+        setUnitData({ ...data });
         ToastBottomHelper.success(t('unit_updated_successfully'));
       }
     },
-    [unit.id, imageUrl]
+    [unit.id, setUnitData]
   );
 
   const goRename = useCallback(async () => {
@@ -71,9 +77,12 @@ const ManageUnit = ({ route }) => {
 
   useEffect(() => {
     if (imageUrl) {
-      updateUnit({
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      updateUnit(
+        { background: imageUrl },
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        }
+      );
     }
   }, [imageUrl, updateUnit]);
 
@@ -113,7 +122,7 @@ const ManageUnit = ({ route }) => {
                 testID={TESTID.MANAGE_UNIT_CHANGE_NAME}
               >
                 <Text style={[styles.textWraper, styles.unitName]}>
-                  {unit.name}
+                  {unitData.name}
                 </Text>
               </TouchableOpacity>
 
@@ -122,7 +131,7 @@ const ManageUnit = ({ route }) => {
                 testID={TESTID.MANAGE_UNIT_CHANGE_LOCATION}
               >
                 <Text style={styles.unitName}>{t('geolocation')}</Text>
-                <Text style={styles.unitGeolocation}>{unit.address}</Text>
+                <Text style={styles.unitGeolocation}>{unitData.address}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.backgroundContainer]}
@@ -134,7 +143,7 @@ const ManageUnit = ({ route }) => {
                 </Text>
                 <Image
                   style={styles.image}
-                  source={{ uri: unit.background }}
+                  source={{ uri: unitData.background }}
                   resizeMode="cover"
                 />
               </TouchableOpacity>
@@ -292,11 +301,6 @@ const styles = StyleSheet.create({
   },
   textInputWrapStyle: {
     marginTop: 0,
-  },
-  buttonLGSync: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 });
 
