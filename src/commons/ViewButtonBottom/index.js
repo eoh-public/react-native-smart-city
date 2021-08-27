@@ -14,6 +14,7 @@ const ViewButtonBottom = ({
   rightDisabled,
   onRightClick,
   styleButton,
+  styleButtonLeftText,
   styleButtonRightText,
   testIDPrefix = '',
 }) => {
@@ -36,6 +37,7 @@ const ViewButtonBottom = ({
             semibold
             type={'H4'}
             color={leftDisabled ? Colors.Gray6 : Colors.Primary}
+            style={styleButtonLeftText}
           >
             {leftTitle}
           </Text>

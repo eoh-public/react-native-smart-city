@@ -1,16 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Platform,
-} from 'react-native';
+import { View, TouchableOpacity, Image, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import Animated from 'react-native-reanimated';
 import { t } from 'i18n-js';
 
-import { Colors, API, Device } from '../../configs';
+import { Colors, API, Device, Images } from '../../configs';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import {
@@ -22,21 +16,54 @@ import { navigate } from '../../navigations/utils';
 import useBoolean from '../../hooks/Common/useBoolean';
 import useKeyboardAnimated from '../../hooks/Explore/useKeyboardAnimated';
 
-import {
-  AlertAction,
-  Section,
-  ViewButtonBottom,
-  ImagePicker,
-} from '../../commons';
+import { AlertAction, ViewButtonBottom, ImagePicker } from '../../commons';
 import Text from '../../commons/Text';
 import _TextInput from '../../commons/Form/TextInput';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+
 import { useIsOwnerOfUnit } from '../../hooks/Common';
 import { TESTID } from '../../configs/Constants';
+import { IconOutline } from '@ant-design/icons-react-native';
+import styles from './ManageUnitStyles';
+import { useNavigation } from '@react-navigation/native';
+
+const ButtonWrapper = ({
+  onPress,
+  testId,
+  title,
+  value,
+  valueColor,
+  children,
+}) => {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      testID={testId}
+      style={styles.buttonWrapper}
+    >
+      <View style={styles.buttonInfo}>
+        <Text type="H4" semibold>
+          {title}
+        </Text>
+        <View style={styles.buttonValue}>
+          <Text
+            type="Body"
+            color={valueColor || Colors.Gray7}
+            style={styles.value}
+          >
+            {value}
+          </Text>
+          <IconOutline name="right" size={20} color={Colors.Gray7} />
+        </View>
+      </View>
+      {children}
+    </TouchableOpacity>
+  );
+};
 
 const ManageUnit = ({ route }) => {
   const { unit } = route.params;
+  const navigation = useNavigation();
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
   const [showEdit, setshowEdit, setHideEdit] = useBoolean();
   const [unitData, setUnitData] = useState({
@@ -65,6 +92,22 @@ const ManageUnit = ({ route }) => {
     },
     [unit.id, setUnitData]
   );
+
+  const updateLocation = useCallback(
+    async (address) => {
+      await updateUnit({ address }, {});
+    },
+    [updateUnit]
+  );
+
+  const goSelectLocation = useCallback(() => {
+    navigation.navigate(Routes.UnitStack, {
+      screen: Routes.SelectLocation,
+      params: {
+        updateLocation,
+      },
+    });
+  }, [navigation, updateLocation]);
 
   const goRename = useCallback(async () => {
     await updateUnit({ name: unitName }, {});
@@ -113,40 +156,52 @@ const ManageUnit = ({ route }) => {
 
   return (
     <>
-      <WrapHeaderScrollable title={t('manage_unit')}>
+      <WrapHeaderScrollable
+        title={t('manage_unit')}
+        styleScrollView={styles.scrollView}
+      >
         <View style={styles.wraper}>
           {isOwner && (
-            <Section type={'border'}>
-              <TouchableOpacity
+            <>
+              <ButtonWrapper
                 onPress={setshowEdit}
                 testID={TESTID.MANAGE_UNIT_CHANGE_NAME}
-              >
-                <Text style={[styles.textWraper, styles.unitName]}>
-                  {unitData.name}
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={[styles.textWraper]}
+                title={t('unit_name')}
+                value={unitData.name}
+              />
+              <ButtonWrapper
+                onPress={goSelectLocation}
+                title={t('location')}
                 testID={TESTID.MANAGE_UNIT_CHANGE_LOCATION}
               >
-                <Text style={styles.unitName}>{t('geolocation')}</Text>
-                <Text style={styles.unitGeolocation}>{unitData.address}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.backgroundContainer]}
+                <Text type="Body" color={Colors.Gray7} style={styles.location}>
+                  {unitData.address}
+                </Text>
+              </ButtonWrapper>
+              <ButtonWrapper
+                title={t('manage_sub_units')}
+                value={`${unit.stations.length} sub-units`}
+              />
+              <ButtonWrapper
                 onPress={handleChoosePhoto}
+                title={t('unit_wallpaper')}
+                value={t('tap_to_change')}
+                valueColor={Colors.Orange}
                 testID={TESTID.MANAGE_UNIT_CHANGE_PHOTO}
               >
-                <Text style={[styles.unitName, styles.textBackground]}>
-                  {t('background')}
-                </Text>
-                <Image
-                  style={styles.image}
-                  source={{ uri: unitData.background }}
-                  resizeMode="cover"
-                />
-              </TouchableOpacity>
+                <View style={styles.boxImage}>
+                  <Image
+                    source={{
+                      uri: unit.background,
+                    }}
+                    borderRadius={10}
+                    style={styles.image}
+                    defaultSource={Images.BgDevice}
+                    resizeMode="cover"
+                    testID={TESTID.SUB_UNIT_BACKGROUND}
+                  />
+                </View>
+              </ButtonWrapper>
 
               <ImagePicker
                 showImagePicker={showImagePicker}
@@ -155,7 +210,7 @@ const ManageUnit = ({ route }) => {
                 optionsCapture={options}
                 testID={TESTID.MANAGE_UNIT_IMAGE_PICKER}
               />
-            </Section>
+            </>
           )}
         </View>
       </WrapHeaderScrollable>
@@ -164,7 +219,12 @@ const ManageUnit = ({ route }) => {
         onPress={setshowRemove}
         testID={TESTID.MANAGE_UNIT_SHOW_REMOVE}
       >
-        <Text type={'H4'} semibold color={Colors.Gray6}>
+        <Text
+          type={'H4'}
+          semibold
+          color={Colors.Red}
+          style={styles.removeBorderBottom}
+        >
           {t('remove_unit')}
         </Text>
       </TouchableOpacity>
@@ -208,100 +268,14 @@ const ManageUnit = ({ route }) => {
         message={t('remove_note')}
         leftButtonTitle={t('cancel')}
         leftButtonClick={setHideRemove}
+        leftButtonStyle={styles.leftButtonStyle}
         rightButtonTitle={t('remove')}
         rightButtonClick={goRemove}
+        rightButtonStyle={styles.rightButtonStyle}
         testIDPrefix={TESTID.PREFIX.MANAGE_UNIT_ALERT}
       />
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  wraper: {
-    flex: 1,
-  },
-  textWraper: {
-    paddingTop: 16,
-    paddingBottom: 16,
-    borderBottomWidth: 0.5,
-  },
-  unitName: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 16,
-    lineHeight: 24,
-    color: Colors.Gray9,
-  },
-  unitGeolocation: {
-    fontSize: 14,
-    lineHeight: 22,
-    color: Colors.Primary,
-  },
-  removeButton: {
-    position: 'absolute',
-    bottom: 0,
-    borderWidth: 0,
-    alignSelf: 'center',
-    paddingBottom: 16 + getBottomSpace(),
-  },
-  backgroundContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderBottomWidth: 0.5,
-  },
-  image: {
-    width: 40,
-    height: 40,
-    borderRadius: 40 / 2,
-  },
-  textBackground: {
-    flex: 1,
-    paddingTop: 16,
-    paddingBottom: 16,
-  },
-  modalContainer: {
-    flex: 1,
-    margin: 0,
-  },
-  popoverStyle: {
-    width: '100%',
-    backgroundColor: Colors.White,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-    borderRadius: 10,
-  },
-  modalWrapper: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: Colors.White,
-    borderRadius: 10,
-  },
-  modalHeader: {
-    padding: 16,
-    backgroundColor: Colors.White,
-    borderBottomWidth: 1,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    borderColor: Colors.Gray4,
-  },
-  modalHeaderText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: Colors.Gray9,
-  },
-  textInputStyle: {
-    borderWidth: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.Primary,
-    fontSize: 16,
-    marginLeft: 16,
-    marginRight: 16,
-    paddingHorizontal: 0,
-  },
-  textInputWrapStyle: {
-    marginTop: 0,
-  },
-});
 
 export default ManageUnit;

@@ -13,6 +13,7 @@ const AlertAction = ({
   message,
   leftButtonTitle,
   leftButtonClick,
+  leftButtonStyle,
   rightButtonTitle,
   rightButtonClick,
   rightButtonStyle,
@@ -44,6 +45,7 @@ const AlertAction = ({
             onLeftClick={leftButtonClick}
             rightTitle={rightButtonTitle}
             onRightClick={rightButtonClick}
+            styleButtonLeftText={leftButtonStyle}
             styleButtonRightText={rightButtonStyle}
             testIDPrefix={testIDPrefix}
           />

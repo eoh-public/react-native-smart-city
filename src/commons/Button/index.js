@@ -46,6 +46,10 @@ const ButtonStyle = {
     borderWidth: 1,
     borderColor: Colors.Primary,
   },
+  primaryText: {
+    backgroundColor: Colors.White,
+    borderWidth: 0,
+  },
   alert: {
     backgroundColor: Colors.Red5,
     borderRadius: 28,
@@ -95,6 +99,7 @@ const TextColor = {
   underline: Colors.Gray6,
   setupBorder: Colors.Primary,
   CardShadow: Colors.Gray9,
+  primaryText: Colors.Primary,
 };
 
 const TextSize = {

@@ -39,6 +39,7 @@ const Routes = {
   ConnectingDevices: 'ConnectingDevices',
   ConnectingGateway: 'ConnectingGateway',
   ManageUnit: 'ManageUnit',
+  SelectLocation: 'SelectLocation',
   ManageSubUnit: 'ManageSubUnit',
   Dashboard: 'Dashboard',
   Shared: 'Shared',

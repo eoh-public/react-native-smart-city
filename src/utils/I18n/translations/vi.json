@@ -671,5 +671,12 @@
   "push_and_wait_chip_response": "Đã gửi và đợi phản hồi của chip",
   "general_trading_conditions": "Điều khoản giao dịch chung",
   "station_name": "Tên station",
+  "unit_name": "Tên địa điểm",
+  "location": "Vị trí",
+  "manage_sub_units": "Quản lý khu vực",
+  "unit_wallpaper": "Hình nền địa điểm",
+  "tap_to_change": "Nhấn để thay đổi",
+  "choose_location": "Chọn vị trí",
+  "select_address": "Chọn Địa Chỉ",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

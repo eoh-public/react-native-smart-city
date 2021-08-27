@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, View, TouchableWithoutFeedback } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import { TESTID } from '../../../configs/Constants';
+import Routes from '../../../utils/Route';
 
 import ShortDetailSubUnit from '../ShortDetail';
 
