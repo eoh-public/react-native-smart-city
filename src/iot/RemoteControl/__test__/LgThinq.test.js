@@ -396,6 +396,6 @@ describe('Remote Control LG Thinq', () => {
     });
 
     configValues = getConfigGlobalState('configValues');
-    expect(configValues).toEqual({ '1': -10, '2': 7 });
+    expect(configValues).toEqual({ 1: -10, 2: 7 });
   });
 });
