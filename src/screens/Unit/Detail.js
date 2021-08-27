@@ -100,7 +100,14 @@ const UnitDetail = ({ route }) => {
     []
   );
 
+  let isCalled = false;
+
   const handleLgThinqConnect = useCallback(async (options) => {
+    if (isCalled) {
+      return;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    isCalled = true;
     await lgThinqConnect(options);
   }, []);
 
@@ -113,7 +120,9 @@ const UnitDetail = ({ route }) => {
         handleGoogleHomeConnect(unit.remote_control_options.googlehome);
       }
       if (unit.remote_control_options.lg_thinq) {
-        handleLgThinqConnect(unit.remote_control_options.lg_thinq);
+        (async () => {
+          await handleLgThinqConnect(unit.remote_control_options.lg_thinq);
+        })();
       }
     }
   }, [handleGoogleHomeConnect, handleLgThinqConnect, unit]);
