@@ -1,3 +1,4 @@
+import { act } from '@testing-library/react-hooks';
 import axios from 'axios';
 import { API } from '../../../configs';
 import { getConfigGlobalState, setConfigGlobalState } from '../../states';
@@ -66,7 +67,13 @@ describe('Remote Control LG Thinq', () => {
 
     let configValues = getConfigGlobalState('configValues');
     expect(configValues).toEqual({});
+
+    jest.useFakeTimers();
     await lgThinqConnect(options);
+    await act(async () => {
+      await jest.runAllTimers();
+    });
+
     configValues = getConfigGlobalState('configValues');
     expect(configValues).toEqual({ 1: 'LOW' });
   });
@@ -92,8 +99,13 @@ describe('Remote Control LG Thinq', () => {
       return responsePost;
     });
 
+    jest.useFakeTimers();
     setConfigGlobalState('configValues', { 1: 'LOW' });
     await sendCommandOverLGThinq(sensor, action, 'AUTO');
+    await act(async () => {
+      await jest.runAllTimers();
+    });
+
     expect(axios.post).toHaveBeenCalledTimes(1);
     expect(axios.post).toHaveBeenCalledWith(
       API.SENSOR.QUICK_ACTION(sensor.id),
@@ -128,8 +140,14 @@ describe('Remote Control LG Thinq', () => {
       return responsePost;
     });
 
+    jest.useFakeTimers();
+
     setConfigGlobalState('configValues', { 1: 'LOW' });
     await sendCommandOverLGThinq(sensor, action, 'AUTO');
+    await act(async () => {
+      await jest.runAllTimers();
+    });
+
     expect(axios.post).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith(
@@ -202,6 +220,7 @@ describe('Remote Control LG Thinq', () => {
     axios.post.mockImplementation(async () => {
       return responsePost;
     });
+    jest.useFakeTimers();
 
     await lgThinqConnect(options);
 
@@ -218,6 +237,10 @@ describe('Remote Control LG Thinq', () => {
         source: 'lg_thinq',
       }
     );
+
+    await act(async () => {
+      await jest.runAllTimers();
+    });
     expect(axios.get).toHaveBeenCalledTimes(2);
     expect(axios.get).toHaveBeenCalledWith(
       API.IOT.LG.DEVICE_STATUS(sensor.id),
@@ -225,5 +248,154 @@ describe('Remote Control LG Thinq', () => {
     );
     let configValues = getConfigGlobalState('configValues');
     expect(configValues).toEqual({ 1: 18, 2: 30 });
+  });
+
+  it('Send command over lg thinq will call sendCommandOverInternet with boolean', async () => {
+    const responsePost = {
+      status: 200,
+      data: {},
+    };
+    axios.post.mockImplementation(async () => {
+      return responsePost;
+    });
+
+    await sendCommandOverLGThinq(sensor, action, true);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith(
+      API.SENSOR.QUICK_ACTION(sensor.id),
+      {
+        key: action.key,
+        data: JSON.stringify({ airFlow: { windStrength: true } }),
+        source: 'lg_thinq',
+      }
+    );
+  });
+
+  it('Send command over lg thinq will call sendCommandOverInternet with number', async () => {
+    const responsePost = {
+      status: 200,
+      data: {},
+    };
+    axios.post.mockImplementation(async () => {
+      return responsePost;
+    });
+
+    await sendCommandOverLGThinq(sensor, action, 7);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith(
+      API.SENSOR.QUICK_ACTION(sensor.id),
+      {
+        key: action.key,
+        data: JSON.stringify({ airFlow: { windStrength: 7 } }),
+        source: 'lg_thinq',
+      }
+    );
+  });
+
+  it('Send command over lg thinq will call sendCommandOverInternet with number, write first in message', async () => {
+    action.lg_actions[0].message = {
+      temperature: { targetTemperature: 0, locationName: 'FRIDGE', unit: 'C' },
+    };
+
+    const responsePost = {
+      status: 200,
+      data: {},
+    };
+    axios.post.mockImplementation(async () => {
+      return responsePost;
+    });
+
+    await sendCommandOverLGThinq(sensor, action, 7);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith(
+      API.SENSOR.QUICK_ACTION(sensor.id),
+      {
+        key: action.key,
+        data: JSON.stringify({
+          temperature: {
+            targetTemperature: 7,
+            locationName: 'FRIDGE',
+            unit: 'C',
+          },
+        }),
+        source: 'lg_thinq',
+      }
+    );
+  });
+
+  it('fetch temperature case', async () => {
+    options = [
+      {
+        id: 1,
+        lg_devices: [
+          {
+            id: 1,
+            sensor_id: 2,
+            device_id: 'DEVICE_ID',
+            configs: [
+              {
+                id: 1,
+                name: 'FREEZER',
+              },
+              {
+                id: 2,
+                name: 'FRIDGE',
+              },
+            ],
+          },
+        ],
+      },
+    ];
+
+    action = {
+      lg_actions: [
+        {
+          key: 'ACTION_KEY',
+          message: {
+            temperature: [
+              {
+                locationName: 'FREEZER',
+                targetTemperature: -10,
+              },
+              {
+                locationName: 'FRIDGE',
+                targetTemperature: 7,
+              },
+            ],
+          },
+        },
+      ],
+    };
+
+    const response = {
+      status: 200,
+      data: {
+        temperature: [
+          {
+            locationName: 'FREEZER',
+            targetTemperature: -10,
+          },
+          {
+            locationName: 'FRIDGE',
+            targetTemperature: 7,
+          },
+        ],
+      },
+    };
+    axios.get.mockImplementation(async () => {
+      return response;
+    });
+
+    let configValues = getConfigGlobalState('configValues');
+    expect(configValues).toEqual({});
+
+    jest.useFakeTimers();
+    await lgThinqConnect(options);
+    await act(async () => {
+      await jest.runAllTimers();
+    });
+
+    configValues = getConfigGlobalState('configValues');
+    expect(configValues).toEqual({ '1': -10, '2': 7 });
   });
 });

@@ -4,6 +4,18 @@ import { getConfigGlobalState, setConfigGlobalState } from '../states';
 import { sendCommandOverInternet } from './Internet';
 
 let deviceMaps = {};
+let propertyListMaps = {
+  temperature: 'targetTemperature',
+  doorStatus: 'doorState',
+};
+
+function updateConfigValues(device, configValues, name, value) {
+  if (device.hasOwnProperty(name)) {
+    const [configId] = device[name];
+    configValues[configId] = value;
+  }
+  return configValues;
+}
 
 export async function updateStateByLgThinq(device_id, data) {
   const device = deviceMaps[device_id];
@@ -15,25 +27,47 @@ export async function updateStateByLgThinq(device_id, data) {
   let configValues = getConfigGlobalState('configValues');
   // eslint-disable-next-line no-unused-vars
   for (const [resource, property] of Object.entries(data)) {
-    for (const [propertyName, propertyValue] of Object.entries(property)) {
-      if (device.hasOwnProperty(propertyName)) {
-        const [configId] = device[propertyName];
-        configValues[configId] = propertyValue;
+    if (Array.isArray(property)) {
+      const valueName = propertyListMaps[resource];
+      if (valueName) {
+        for (let i = 0; i < property.length; i++) {
+          const item = property[i];
+          configValues = updateConfigValues(
+            device,
+            configValues,
+            item.locationName,
+            item[valueName]
+          );
+        }
       }
+      continue;
+    }
+
+    for (const [propertyName, propertyValue] of Object.entries(property)) {
+      configValues = updateConfigValues(
+        device,
+        configValues,
+        propertyName,
+        propertyValue
+      );
     }
   }
-
   setConfigGlobalState('configValues', { ...configValues });
 }
 
 export async function fetchDeviceStatusLG(sensor) {
-  const { success, data: dataStatus } = await axiosGet(
-    API.IOT.LG.DEVICE_STATUS(sensor.id)
-  );
+  // still need some delay
+  setTimeout(async () => {
+    const { success, data: dataStatus } = await axiosGet(
+      API.IOT.LG.DEVICE_STATUS(sensor.id),
+      {},
+      true
+    );
 
-  if (success) {
-    updateStateByLgThinq(sensor.lg_device_id, dataStatus);
-  }
+    if (success) {
+      updateStateByLgThinq(sensor.lg_device_id, dataStatus);
+    }
+  }, 1000);
 }
 
 export const lgThinqConnect = async (options) => {
@@ -70,28 +104,20 @@ export const sendCommandOverLGThinq = async (sensor, action, data) => {
   }
 
   for (let i = 0; i < action.lg_actions.length; i++) {
+    if (['string', 'boolean', 'number'].includes(typeof data)) {
+      data = [data];
+    }
+
     const item = action.lg_actions[i];
     let new_message = {};
-
-    if (typeof data === 'string' || typeof data === 'boolean') {
-      for (const [key, value] of Object.entries(item.message)) {
-        let new_property = {};
-        // eslint-disable-next-line no-unused-vars
-        for (const [key1, value1] of Object.entries(value)) {
-          new_property[key1] = data;
-        }
-        new_message[key] = new_property;
+    for (const [key, value] of Object.entries(item.message)) {
+      let new_property = {};
+      let index = 0;
+      for (const [key1, value1] of Object.entries(value)) {
+        new_property[key1] = data[index] ? data[index] : value1; // new or keep old one
+        index += 1;
       }
-    } else {
-      for (const [key, value] of Object.entries(item.message)) {
-        let new_property = {};
-        let index = 0;
-        for (const [key1, value1] of Object.entries(value)) {
-          new_property[key1] = data[index] ? data[index] : value1;
-          index += 1;
-        }
-        new_message[key] = new_property;
-      }
+      new_message[key] = new_property;
     }
 
     await sendCommandOverInternet(

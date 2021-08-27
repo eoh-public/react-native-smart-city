@@ -114,7 +114,7 @@ const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
         rightButtonClick={onDone}
       >
         <View style={styles.wrapRename}>
-          {options.length <= 0 && (
+          {!action_data && (
             <Text
               color={Colors.Gray6}
               style={styles.writeNotAvailable}

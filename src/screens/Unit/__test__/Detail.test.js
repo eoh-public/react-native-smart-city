@@ -363,4 +363,56 @@ describe('Test UnitDetail', () => {
     const summaryViews = tree.root.findAllByType(Summaries);
     expect(summaryViews).toHaveLength(1);
   });
+
+  test('when unit has google home action then connect to lg thinq', async () => {
+    const unitData = {
+      remote_control_options: {
+        lg_thinq: [
+          {
+            id: 1,
+            lg_devices: [
+              {
+                id: 1,
+                sensor_id: 2,
+                device_id: 'DEVICE_ID',
+                configs: [
+                  {
+                    id: 1,
+                    name: 'windStrength',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    const responseGet = {
+      status: 200,
+      data: {
+        airFlow: {
+          windStrength: 'AUTO',
+        },
+      },
+    };
+    axios.get.mockImplementation(async () => {
+      return responseGet;
+    });
+
+    jest.useFakeTimers();
+    await act(async () => {
+      tree = await renderer.create(
+        <UnitDetail
+          route={{ params: { ...route.params, unitData } }}
+          account={account}
+        />
+      );
+    });
+    await act(async () => {
+      await jest.runAllTimers();
+    });
+    // TODO Called but can not expect
+    // expect(axios.get).toHaveBeenCalledWith(API.IOT.LG.DEVICE_STATUS(2));
+  });
 });
