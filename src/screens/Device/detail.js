@@ -70,7 +70,7 @@ const DeviceDetail = ({ account, route }) => {
   // eslint-disable-next-line no-unused-vars
   const [configValues, setConfigValues] = useConfigGlobalState('configValues');
 
-  const { unit, station, sensor, title, isGGHomeConnected } = route.params;
+  const { unit, sensor, title, isGGHomeConnected } = route.params;
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
 
   const addToFavorites = useCallback(async () => {

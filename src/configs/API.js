@@ -122,6 +122,14 @@ const API = {
         `/connection_manager/lg_thinq/device_status/${sensorId}/`,
     },
   },
+  EXTERNAL: {
+    GOOGLE_MAP: {
+      AUTO_COMPLETE:
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json',
+      GET_LAT_LNG_BY_PLACE_ID:
+        'https://maps.googleapis.com/maps/api/place/details/json',
+    },
+  },
 };
 
 export default API;

@@ -11,6 +11,7 @@ import AQIGuide from '../screens/AQIGuide';
 import DeviceDetail from '../screens/Device/detail';
 import SharingMemberList from '../screens/Sharing/MemberList';
 import ManageSubUnit from '../screens/SubUnit/ManageSubUnit';
+import SelectLocation from '../screens/Unit/SelectLocation';
 import ManageUnit from '../screens/Unit/ManageUnit';
 import MyAllUnit from '../screens/Unit/MyAllUnit';
 import SubUnitDetail from '../screens/SubUnit/Detail';
@@ -62,6 +63,14 @@ export const UnitStack = memo((props) => {
         component={ManageUnit}
         options={{
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.SelectLocation}
+        component={SelectLocation}
+        options={{
+          headerShown: true,
+          headerTitle: t('select_address')
         }}
       />
       <Stack.Screen

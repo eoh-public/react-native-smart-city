@@ -668,5 +668,12 @@
   "general_trading_conditions": "General Trading Conditions",
   "station_name": "Station name",
   "alert_send_error": "Send alert fail!",
+  "unit_name": "Unit name",
+  "location": "Location",
+  "manage_sub_units": "Manage Sub-units",
+  "unit_wallpaper": "Unit Wallpaper",
+  "tap_to_change": "Tap to change",
+  "choose_location": "Choose location",
+  "select_address": "Select Address",
   "error_please_try_later": "Error! Please try later"
 }
