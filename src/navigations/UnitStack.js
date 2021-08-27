@@ -70,7 +70,7 @@ export const UnitStack = memo((props) => {
         component={SelectLocation}
         options={{
           headerShown: true,
-          headerTitle: t('select_address')
+          headerTitle: t('select_address'),
         }}
       />
       <Stack.Screen

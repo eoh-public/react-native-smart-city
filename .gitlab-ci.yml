@@ -14,6 +14,8 @@ cache:
 test_mr:
   stage: test
   script:
+    - yarn
+    - yarn run lint
     - echo "Test Passed"
 
 release-patch:
