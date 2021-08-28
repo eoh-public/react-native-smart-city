@@ -648,7 +648,7 @@
   "choose_from_library": "Chọn Ảnh từ Thư Viện",
   "setup_my_emergency_contact": "Danh sách liên hệ khẩn cấp của tôi",
   "emergency_button": "Nút khẩn cấp",
-  "press_and_hold_3_seconds_emergency": "Nhấn và giữ 3 giây để bắt đầu gửi cảnh báo đến các thành viên trong địa điểm này khi có trường hợp khẩn cấp xảy ra.",
+  "press_and_hold_for_3_seconds_emergency": "Nhấn và giữ trong 3 giây để bắt đầu gửi cảnh báo đến các thành viên trong địa điểm này khi có trường hợp khẩn cấp xảy ra.",
   "payment_has_not_completed": "Thanh toán chưa được hòan tất",
   "resolved": "Đã an toàn",
   "create_contact_failed": "Tạo liên hệ không thành công!",

@@ -642,7 +642,7 @@
   "take_photo": "Take Photo",
   "choose_from_library": "Choose from Library",
   "emergency_button": "Emergency button",
-  "press_and_hold_3_seconds_emergency": "Press and hold 3 seconds to send alert to all the members in this unit when you’re in an emergency situation.",
+  "press_and_hold_for_3_seconds_emergency": "Press and hold for 3 seconds to send alert to all the members in this unit when you’re in an emergency situation.",
   "payment_has_not_completed": "Payment has not been completed yet",
   "resolved": "Resolved",
   "setup_my_emergency_contact": "Set up my Emergency Contact list",

@@ -20,7 +20,7 @@ const EmergencyButton = memo(({ emergency }) => {
           <SvgEmergencyButton />
         </TouchableOpacity>
         <Text style={styles.emergencyDescription} type="Body">
-          {t('press_and_hold_3_seconds_emergency')}
+          {t('press_and_hold_for_3_seconds_emergency')}
         </Text>
       </View>
     </Card>

@@ -145,7 +145,8 @@ export default ({
           width,
           height,
         },
-        isCardShadow ? styles.buttonLeft : styles.button,
+        styles.button,
+        isCardShadow && styles.buttonLeft,
         styleButton,
         style,
       ]}
@@ -195,6 +196,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     backgroundColor: Colors.Gray1,
-    paddingVertical: 32,
   },
 });
