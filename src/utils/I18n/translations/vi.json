@@ -678,5 +678,13 @@
   "tap_to_change": "Nhấn để thay đổi",
   "choose_location": "Chọn vị trí",
   "select_address": "Chọn Địa Chỉ",
+  "device_info": "Thông tin thiết bị",
+  "battery": "Dung lượng pin",
+  "voltage": "Điện áp",
+  "temperature": "Nhiệt độ",
+  "rssi_board": "RSSI Board",
+  "request_fail": "Request fail",
+  "modbus_fail": "Modbus failrate",
+  "rssi_node": "RSSI Node",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }
