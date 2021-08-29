@@ -675,5 +675,13 @@
   "tap_to_change": "Tap to change",
   "choose_location": "Choose location",
   "select_address": "Select Address",
+  "device_info": "Device Info",
+  "battery": "Battery capacity",
+  "voltage": "Voltage",
+  "temperature": "Temperature",
+  "rssi_board": "RSSI Board",
+  "request_fail": "Request fail",
+  "modbus_fail": "Modbus failrate",
+  "rssi_node": "RSSI Node",
   "error_please_try_later": "Error! Please try later"
 }

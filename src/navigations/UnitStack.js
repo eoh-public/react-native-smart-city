@@ -20,6 +20,7 @@ import UnitSummary from '../screens/UnitSummary';
 import UVIndexGuide from '../screens/UVIndexGuide';
 import TDSGuide from '../screens/TDSGuide';
 import WaterQualityGuide from '../screens/WaterQualityGuide';
+import DeviceInfo from '../screens/DeviceInfo';
 
 import _ from 'lodash';
 
@@ -137,6 +138,13 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.UnitMemberList}
         component={SharingMemberList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.DeviceInfo}
+        component={DeviceInfo}
         options={{
           headerShown: false,
         }}
