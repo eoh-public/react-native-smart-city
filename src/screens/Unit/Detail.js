@@ -20,6 +20,7 @@ import NavBar from '../../commons/NavBar';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 import { SCContext } from '../../context';
 import { Action } from '../../context/actionType';
+import CameraDevice from '../../commons/CameraDevice';
 
 const UnitDetail = ({ route }) => {
   const { unitId, unitData } = route.params;
@@ -49,10 +50,12 @@ const UnitDetail = ({ route }) => {
     };
     rawUnitData.stations.unshift(favorites);
     rawUnitData.stations.forEach((stationItem) => {
-      const favoriteDevices = stationItem.sensors.filter(
-        (sensorItem) => sensorItem.is_favourite
-      );
-      favorites.sensors = favorites.sensors.concat(favoriteDevices);
+      if (stationItem.sensors) {
+        const favoriteDevices = stationItem.sensors.filter(
+          (sensorItem) => sensorItem.is_favourite
+        );
+        favorites.sensors = favorites.sensors.concat(favoriteDevices);
+      }
     });
   }, []);
 
@@ -171,7 +174,19 @@ const UnitDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [unit, indexStation]
   );
-
+  const renderDetailSubUnit = () => {
+    if (station.camera_devices) {
+      return <CameraDevice station={station} />;
+    } else if (station) {
+      return (
+        <ShortDetailSubUnit
+          unit={unit}
+          station={station}
+          isGGHomeConnected={isGGHomeConnected}
+        />
+      );
+    }
+  };
   return (
     <WrapParallaxScrollView
       uriImg={unit.background}
@@ -193,13 +208,7 @@ const UnitDetail = ({ route }) => {
           onSnapToItem={onSnapToItem}
           indexStation={indexStation}
         />
-
-        <ShortDetailSubUnit
-          unit={unit}
-          station={station}
-          isGGHomeConnected={isGGHomeConnected}
-        />
-
+        {renderDetailSubUnit()}
         {!!unit.can_add && unit.stations.length === 0 && (
           <View style={styles.canAdd}>
             <Text style={styles.emptyUnit}>{t('text_no_sub_unit_yet')}</Text>
