@@ -43,14 +43,15 @@ export const Colors = {
   GeekBlue3: '#ADC6FF',
 
   // Range Gray
+  Gray1: '#FFFFFF',
+  Gray2: '#FAFAFA',
+  Gray3: '#F5F5F5',
   Gray4: '#E8E8E8',
   Gray5: '#D9D9D9',
   Gray6: '#BFBFBF',
   Gray7: '#8C8C8C',
   Gray8: '#595959',
   Gray9: '#262626',
-  Gray2: '#FAFAFA',
-  Gray3: '#F5F5F5',
   Gray11: '#3031331a',
   Gray12: '#DDD',
   Gray13: '#CCC',

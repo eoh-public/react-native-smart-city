@@ -99,17 +99,8 @@ const DeviceDetail = ({ account, route }) => {
       {
         text: t('remove_device'),
       },
-      {
-        route: Routes.DeviceInfo,
-        text: t('device_info'),
-        data: {
-          deviceInfo: display.items.filter(
-            (item) => item.type === 'device_info'
-          ),
-        },
-      },
     ],
-    [display]
+    []
   );
 
   const listMenuItem = useMemo(() => {
@@ -123,6 +114,13 @@ const DeviceDetail = ({ account, route }) => {
         text: t('activity_log'),
       });
     }
+    menuItems.push({
+      route: Routes.DeviceInfo,
+      text: t('device_info'),
+      data: {
+        deviceInfo: display.items.filter((item) => item.type === 'device_info'),
+      },
+    });
     if (!isFavourite) {
       menuItems.push({
         doAction: addToFavorites,

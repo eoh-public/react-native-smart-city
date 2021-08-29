@@ -28,14 +28,14 @@ const DeviceInfo = () => {
     <View style={styles.wrap}>
       <HeaderCustom title={t('device_info')} isShowSeparator />
       <View style={styles.content}>
-        {configuration.battery &&
+        {!!configuration.battery &&
           renderRow(
             TESTID.DEVICE_INFO_BATTERY,
             'battery',
             configuration.battery
           )}
 
-        {configuration.rssi_node &&
+        {typeof configuration.rssi_node !== 'undefined' &&
           renderRow(
             TESTID.DEVICE_INFO_RSSI_NODE,
             'rssi_node',
