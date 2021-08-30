@@ -22,7 +22,7 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
 
   const sendAlertNow = useCallback(async () => {
     const { success, message } = await axiosPost(
-      API.EMERGENCY_BUTTON.SEND_ALERT,
+      API.EMERGENCY_BUTTON.SEND_ALERT(),
       {
         device: deviceId,
       }
@@ -41,22 +41,22 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
   }, [deviceId, fetchDataDeviceDetail, timeoutEmergencyId]);
 
   const onCancelConfirmAlert = useCallback(() => {
-    resetCountDown();
     setShowAlertConfirm(false);
     clearTimeout(timeoutEmergencyId);
-  }, [resetCountDown, timeoutEmergencyId]);
+  }, [timeoutEmergencyId]);
 
   const onSendNowAlert = useCallback(() => {
     sendAlertNow();
   }, [sendAlertNow]);
 
   const onEmergencyButtonPress = useCallback(() => {
+    resetCountDown();
     setShowAlertConfirm(true);
     if (countDown.seconds > 0) {
       const id = setTimeout(() => sendAlertNow(), initTimeCountDown * 1000);
       setTimeoutEmergencyId(id);
     }
-  }, [countDown.seconds, sendAlertNow]);
+  }, [countDown.seconds, sendAlertNow, resetCountDown]);
 
   const onCloseAlertSent = useCallback(() => {
     setShowAlertSent(false);
