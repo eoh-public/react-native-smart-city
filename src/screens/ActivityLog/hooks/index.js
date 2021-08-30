@@ -53,8 +53,8 @@ export default (sensor) => {
       } else {
         dataTemp = dataTemp.concat(results);
         setData(getDataForList(dataTemp));
-        setIsCanLoadMore(page < Math.ceil(data.count / 20));
       }
+      setIsCanLoadMore(page < Math.ceil(data.count / 20));
     }
     page === 1 ? setIsRefreshing(false) : setIsLoading(false);
   };
