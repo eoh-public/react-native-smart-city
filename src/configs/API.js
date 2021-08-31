@@ -94,10 +94,10 @@ const API = {
   },
   EMERGENCY_BUTTON: {
     CREATE_CONTACT: () => SCConfig.apiRoot + '/emergency_button/contacts/',
-    CONTACTS: SCConfig.apiRoot + '/emergency_button/contacts/',
+    CONTACTS: () => SCConfig.apiRoot + '/emergency_button/contacts/',
     REMOVE_CONTACTS: (id) =>
       SCConfig.apiRoot + `/emergency_button/contacts/${id}/`,
-    SEND_ALERT: SCConfig.apiRoot + '/emergency_button/events/',
+    SEND_ALERT: () => SCConfig.apiRoot + '/emergency_button/events/',
     RESOLVE: (id) =>
       SCConfig.apiRoot + `/emergency_button/events/${id}/resolve/`,
   },
