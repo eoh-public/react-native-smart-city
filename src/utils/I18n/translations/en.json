@@ -683,5 +683,6 @@
   "request_fail": "Request fail",
   "modbus_fail": "Modbus failrate",
   "rssi_node": "RSSI Node",
+  "gateway_name": "Gateway name",
   "error_please_try_later": "Error! Please try later"
 }

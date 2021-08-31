@@ -136,7 +136,7 @@ const AddNewGateway = memo(({ route }) => {
           <TextInput
             value={chipName}
             style={styles.textInput}
-            placeholder={t('chip_name')}
+            placeholder={t('gateway_name')}
             underlineColorAndroid={null}
             keyboardType={'num-pad'}
             onChangeText={onChangeChipName}
