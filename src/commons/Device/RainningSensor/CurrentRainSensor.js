@@ -14,7 +14,9 @@ const CurrentRainSensor = memo(({ data }) => {
     : {
         evaluate: {},
       };
-  const { text, raining, backgroundColor, borderColor } = item.evaluate;
+  const { text, raining, backgroundColor, borderColor } = item.evaluate
+    ? item.evaluate
+    : {};
   return (
     <View style={styles.standard}>
       <CircleView
