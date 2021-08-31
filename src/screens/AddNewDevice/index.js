@@ -1,5 +1,11 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  SafeAreaView,
+  StatusBar,
+  Platform,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 
@@ -55,7 +61,13 @@ const AddNewDevice = memo(({ route }) => {
   };
 
   return (
-    <SafeAreaView style={styles.wrap}>
+    <SafeAreaView
+      style={
+        Platform.OS === 'android'
+          ? styles.containerAndroid
+          : styles.containerIOS
+      }
+    >
       <Text
         testID={TESTID.ADD_NEW_DEVICE_ADD}
         semibold
@@ -96,9 +108,15 @@ const AddNewDevice = memo(({ route }) => {
 export default AddNewDevice;
 
 const styles = StyleSheet.create({
-  wrap: {
+  containerAndroid: {
     flex: 1,
     backgroundColor: Colors.Gray2,
+    paddingTop: StatusBar.currentHeight,
+  },
+  containerIOS: {
+    flex: 1,
+    backgroundColor: Colors.Gray2,
+    paddingTop: 0,
   },
   txtHeader: {
     marginTop: 16,
