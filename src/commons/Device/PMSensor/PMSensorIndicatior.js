@@ -23,12 +23,17 @@ const PMSensorIndicatior = memo(({ data, style }) => {
     [style]
   );
 
+  const isScrollMode = data.length > 3;
+
   return (
     <FlatList
       bounces={false}
       numColumns={1}
-      horizontal={true}
-      contentContainerStyle={styles.standard}
+      horizontal={isScrollMode}
+      contentContainerStyle={[
+        styles.standard,
+        !isScrollMode && styles.centerItem,
+      ]}
       data={data}
       keyExtractor={keyExtractor}
       renderItem={renderItem}

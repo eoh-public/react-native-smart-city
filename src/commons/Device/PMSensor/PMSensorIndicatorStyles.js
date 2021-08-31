@@ -5,6 +5,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 16,
     marginBottom: 10,
-    justifyContent: 'center',
+  },
+  centerItem: {
+    justifyContent: 'space-evenly',
   },
 });

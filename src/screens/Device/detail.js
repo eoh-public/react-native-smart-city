@@ -634,7 +634,12 @@ const SensorDisplayItem = ({
         case 'circle':
           return <CurrentRainSensor data={getData(item)} />;
         case 'simple_list':
-          return <PMSensorIndicatior data={getData(item)} />;
+          return (
+            <PMSensorIndicatior
+              data={getData(item)}
+              style={styles.simpleList}
+            />
+          );
         case 'gauge':
           return <Anemometer data={getData(item)} maxValue={maxValue} />;
         case 'compass':

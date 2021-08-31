@@ -71,4 +71,7 @@ export default StyleSheet.create({
   wrapTemplate: {
     marginBottom: 20,
   },
+  simpleList: {
+    height: '100%',
+  },
 });
