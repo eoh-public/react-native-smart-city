@@ -22,6 +22,8 @@ const API = {
     MANAGE_UNIT: (id) => SCConfig.apiRoot + `/property_manager/units/${id}/`,
     CHIP_SCAN: (id) =>
       SCConfig.apiRoot + `/property_manager/units/${id}/chip_scan/`,
+    MANAGE_ACCESS: (id) =>
+      SCConfig.apiRoot + `/property_manager/manage_access/${id}/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>

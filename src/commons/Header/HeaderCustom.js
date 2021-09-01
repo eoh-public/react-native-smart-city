@@ -8,6 +8,7 @@ import styles from './Styles/HeaderCustomStyles';
 
 const HeaderCustom = ({
   title = '',
+  isShowAdd = false,
   isShowRight = false,
   onRefresh,
   showPopoverWithRef,
@@ -15,6 +16,8 @@ const HeaderCustom = ({
 }) => {
   const { goBack } = useNavigation();
   const refMenuAction = useRef();
+  const refAddAction = useRef();
+  const handleAddAction = () => {};
   const handleShowMenuAction = () => showPopoverWithRef(refMenuAction);
   return (
     <View style={[styles.wrap, isShowSeparator && styles.separator]}>
@@ -48,6 +51,15 @@ const HeaderCustom = ({
               <Icon name={'more'} size={27} color={Colors.Black} />
             </TouchableOpacity>
           </>
+        )}
+        {isShowAdd && (
+          <TouchableOpacity
+            style={styles.buttonAdd}
+            onPress={handleAddAction}
+            ref={refAddAction}
+          >
+            <Icon name={'plus'} size={27} color={Colors.Black} />
+          </TouchableOpacity>
         )}
       </View>
     </View>

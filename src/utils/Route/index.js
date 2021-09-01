@@ -92,6 +92,7 @@ const Routes = {
   EmergencyContactsSelectContacts: 'EmergencyContactsSelectContacts',
   TermAndPolicy: 'TermAndPolicy',
   Browser: 'Browser',
+  ManageAccess: 'ManageAccess',
   AddLGDevice: 'AddLGDevice',
   AddLGDeviceStack: 'AddLGDeviceStack',
 };

@@ -26,6 +26,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonAdd: {
+    paddingRight: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   viewRight: {
     flexDirection: 'row',
   },
