@@ -35,7 +35,7 @@ const DeviceInfo = () => {
             configuration.battery
           )}
 
-        {typeof configuration.rssi_node !== 'undefined' &&
+        {!!configuration.rssi_node &&
           renderRow(
             TESTID.DEVICE_INFO_RSSI_NODE,
             'rssi_node',
