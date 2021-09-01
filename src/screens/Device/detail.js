@@ -48,6 +48,7 @@ import { standardizeCameraScreenSize } from '../../utils/Utils';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { Card } from '../../commons/CardShadow';
+import { useIsOwnerOfUnit } from '../../hooks/Common';
 
 const { standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
@@ -72,6 +73,7 @@ const DeviceDetail = ({ account, route }) => {
 
   const { unit, sensor, title, isGGHomeConnected } = route.params;
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
+  const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 
   const addToFavorites = useCallback(async () => {
     const { success } = await axiosPost(
@@ -113,6 +115,13 @@ const DeviceDetail = ({ account, route }) => {
         data: { sensor },
         text: t('activity_log'),
       });
+      if (isOwner) {
+        menuItems.push({
+          route: Routes.ManageAccess,
+          data: { unit, sensor },
+          text: t('manage_access'),
+        });
+      }
     }
     menuItems.push({
       route: Routes.DeviceInfo,
@@ -136,6 +145,8 @@ const DeviceDetail = ({ account, route }) => {
   }, [
     display,
     sensor,
+    unit,
+    isOwner,
     isFavourite,
     listMenuItemDefault,
     addToFavorites,
