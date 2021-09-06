@@ -32,6 +32,7 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
         >
           <MediaPlayer
             uri={station.camera.uri}
+            previewUri={station.camera.preview_uri}
             thumbnail={{
               uri: station.background,
             }}
