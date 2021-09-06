@@ -8,12 +8,23 @@ import Text from '../Text';
 import { Section } from '..';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
 import { Device } from '../../configs';
+import { useNavigation } from '@react-navigation/native';
+import Routes from '../../utils/Route';
 
 const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
 );
 
 const CameraDevice = ({ station }) => {
+  const { navigate } = useNavigation();
+
+  const onPressViewAll = () => {
+    navigate(Routes.AllCamera, {
+      arrCameras: station?.camera_devices,
+      thumbnail: { uri: station?.background },
+    });
+  };
+
   return (
     <Section style={styles.noShadow}>
       <View style={styles.UnitsHeading}>
@@ -23,14 +34,11 @@ const CameraDevice = ({ station }) => {
           })`}</Text>
         )}
 
-        <TouchableOpacity
-          onPress={() => {
-            // eslint-disable-next-line no-alert
-            alert(t('feature_under_development'));
-          }}
-        >
-          <Text style={styles.viewAll}>{t('view_all')}</Text>
-        </TouchableOpacity>
+        {Boolean(station?.camera_devices?.length) && (
+          <TouchableOpacity onPress={onPressViewAll}>
+            <Text style={styles.viewAll}>{t('view_all')}</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
       {station.camera_devices.map((device) => (

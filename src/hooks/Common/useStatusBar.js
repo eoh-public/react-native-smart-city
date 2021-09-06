@@ -12,3 +12,6 @@ export const useStatusBar = () => {
 
 export const useStatusBarPreview = (color = Colors.TextTransparent) =>
   Platform.OS === 'android' && StatusBar.setBackgroundColor(color);
+
+export const useHiddenStatusBar = (hidden) =>
+  Platform.OS === 'android' && StatusBar.setHidden(hidden, true);

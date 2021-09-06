@@ -690,6 +690,7 @@
   "request_fail": "Request fail",
   "modbus_fail": "Modbus failrate",
   "rssi_node": "RSSI Node",
+  "all_camera": "All Cameras",
   "gateway_name": "Tên Gateway",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

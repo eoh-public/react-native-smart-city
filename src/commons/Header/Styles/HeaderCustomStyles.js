@@ -20,7 +20,7 @@ export default StyleSheet.create({
     width: 12,
     height: 18,
   },
-  btnBack: {
+  buttonBack: {
     width: 35,
     height: 40,
     justifyContent: 'center',

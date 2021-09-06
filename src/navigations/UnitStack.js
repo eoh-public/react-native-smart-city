@@ -21,6 +21,8 @@ import UVIndexGuide from '../screens/UVIndexGuide';
 import TDSGuide from '../screens/TDSGuide';
 import WaterQualityGuide from '../screens/WaterQualityGuide';
 import DeviceInfo from '../screens/DeviceInfo';
+import PlaybackCamera from '../screens/PlayBackCamera';
+import AllCamera from '../screens/AllCamera';
 import ManageAccessScreen from '../screens/ManageAccess';
 
 import _ from 'lodash';
@@ -146,6 +148,20 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.DeviceInfo}
         component={DeviceInfo}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.PlaybackCamera}
+        component={PlaybackCamera}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.AllCamera}
+        component={AllCamera}
         options={{
           headerShown: false,
         }}

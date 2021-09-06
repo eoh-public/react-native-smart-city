@@ -13,6 +13,8 @@ const HeaderCustom = ({
   onRefresh,
   showPopoverWithRef,
   isShowSeparator = false,
+  isDisableRefresh = false,
+  titleStyles,
 }) => {
   const { goBack } = useNavigation();
   const refMenuAction = useRef();
@@ -21,12 +23,12 @@ const HeaderCustom = ({
   const handleShowMenuAction = () => showPopoverWithRef(refMenuAction);
   return (
     <View style={[styles.wrap, isShowSeparator && styles.separator]}>
-      <TouchableOpacity style={styles.btnBack} onPress={goBack}>
+      <TouchableOpacity style={styles.buttonBack} onPress={goBack}>
         <Image source={Images.arrowBack} style={styles.iconBack} />
       </TouchableOpacity>
       <View style={styles.wrapTitle}>
         <Text
-          style={[styles.title, !isShowRight && styles.title2]}
+          style={[styles.title, titleStyles, !isShowRight && styles.title2]}
           numberOfLines={1}
         >
           {title}
@@ -36,15 +38,17 @@ const HeaderCustom = ({
       <View style={styles.viewRight}>
         {isShowRight && (
           <>
-            <TouchableOpacity style={styles.btnBack} onPress={onRefresh}>
-              <Image
-                source={Images.refresh}
-                style={styles.iconFresh}
-                resizeMode={'contain'}
-              />
-            </TouchableOpacity>
+            {!isDisableRefresh && (
+              <TouchableOpacity style={styles.buttonBack} onPress={onRefresh}>
+                <Image
+                  source={Images.refresh}
+                  style={styles.iconFresh}
+                  resizeMode={'contain'}
+                />
+              </TouchableOpacity>
+            )}
             <TouchableOpacity
-              style={styles.btnBack}
+              style={styles.buttonBack}
               onPress={handleShowMenuAction}
               ref={refMenuAction}
             >

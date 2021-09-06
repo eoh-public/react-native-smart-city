@@ -1,5 +1,6 @@
 import { Colors } from '../../configs';
 import { StyleSheet } from 'react-native';
+import { normalize } from '../../configs/Constants';
 
 export default StyleSheet.create({
   wrap: {
@@ -46,6 +47,20 @@ export default StyleSheet.create({
   },
   buttonPause: {
     flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cameraName2: {
+    fontSize: normalize(10),
+    top: '75%',
+  },
+  iconFullScreen: {
+    position: 'absolute',
+    zIndex: 10,
+    width: 40,
+    height: 40,
+    bottom: 10,
+    right: 10,
+    justifyContent: 'center',
     alignItems: 'center',
   },
 });
