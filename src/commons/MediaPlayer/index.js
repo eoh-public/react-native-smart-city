@@ -1,35 +1,126 @@
-import React, { memo, useCallback, useState } from 'react';
-import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { VLCPlayer } from 'react-native-vlc-media-player';
 import { t } from 'i18n-js';
 import PauseIcon from '../../../assets/images/Common/Pause.svg';
 import { Colors, Images } from '../../configs';
 import { colorOpacity } from '../../utils/Converter/color';
+import styles from './styles';
 
-const MediaPlayer = memo(({ uri, thumbnail, style }) => {
-  const [paused, setPaused] = useState(true);
-  const onTapPause = useCallback(() => {
-    if (paused) {
-      setPaused(false);
-    } else {
-      setPaused(true);
+const PreviewPlayer = memo(({ uri, start }) => {
+  const [count, setCount] = useState(0);
+  const [load1, setLoad1] = useState(false);
+  const [load2, setLoad2] = useState(false);
+  const [load3, setLoad3] = useState(false);
+
+  useEffect(() => {
+    if (start) {
+      setTimeout(() => {
+        setCount(1);
+      }, 3000);
+      setTimeout(() => {
+        setCount(2);
+      }, 6000);
+      setTimeout(() => {
+        setCount(3);
+      }, 9000);
     }
-  }, [paused]);
-  const source = !thumbnail || !thumbnail.uri ? Images.BgDevice : thumbnail;
+  }, [start]);
+
+  const onLoad1 = useCallback(() => {
+    setLoad1(true);
+  }, []);
+  const onLoad2 = useCallback(() => {
+    setLoad2(true);
+  }, []);
+  const onLoad3 = useCallback(() => {
+    setLoad3(true);
+  }, []);
+
+  return (
+    <>
+      {start && count >= 2 && (
+        <Image
+          source={{ uri: uri + '?c=2' }}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={[styles.previewImage, { zIndex: -3 }]}
+          resizeMode="stretch"
+          fadeDuration={0}
+          onLoad={onLoad3}
+        />
+      )}
+      {start && count >= 1 && (
+        <Image
+          source={{ uri: uri + '?c=1' }}
+          style={[
+            styles.previewImage,
+            // eslint-disable-next-line react-native/no-inline-styles
+            { zIndex: -2 },
+            load3 ? styles.hideImage : {},
+          ]}
+          resizeMode="stretch"
+          fadeDuration={0}
+          onLoad={onLoad2}
+        />
+      )}
+      {start && (
+        <Image
+          source={{ uri: uri + '?c=0' }}
+          style={[
+            styles.previewImage,
+            // eslint-disable-next-line react-native/no-inline-styles
+            { zIndex: -1 },
+            load2 ? styles.hideImage : {},
+          ]}
+          resizeMode="stretch"
+          fadeDuration={0}
+          onLoad={onLoad1}
+        />
+      )}
+      <Image
+        source={{ uri: uri }}
+        style={[
+          styles.previewImage,
+          // eslint-disable-next-line react-native/no-inline-styles
+          { zIndex: 0 },
+          load1 ? styles.hideImage : {},
+        ]}
+        resizeMode="stretch"
+        fadeDuration={0}
+      />
+    </>
+  );
+});
+
+const MediaPlayer = memo(({ uri, previewUri, thumbnail, style }) => {
+  const [started, setStarted] = useState(false);
+  const [paused, setPaused] = useState(true);
+
+  const onTapPause = useCallback(() => {
+    setStarted(true);
+    setPaused((p) => !p);
+  }, []);
+
+  const imageSource =
+    !thumbnail || !thumbnail.uri ? Images.BgDevice : thumbnail;
   return (
     <View style={styles.wrap}>
       <View style={styles.loadingWrap}>
-        <Text style={styles.loadingText}>{t('loading')}</Text>
+        {previewUri ? (
+          <PreviewPlayer uri={previewUri} start={started} />
+        ) : (
+          <Text style={styles.loadingText}>{t('loading')}</Text>
+        )}
       </View>
       <TouchableOpacity
         activeOpacity={1}
         style={styles.videoBtn}
         onPress={onTapPause}
       >
-        {paused ? (
+        {!started ? (
           <View style={[styles.player, style]}>
             <Image
-              source={source}
+              source={imageSource}
               style={[styles.player]}
               defaultSource={Images.BgDevice}
               resizeMode="cover"
@@ -42,58 +133,22 @@ const MediaPlayer = memo(({ uri, thumbnail, style }) => {
             />
           </View>
         ) : (
-          <VLCPlayer
-            autoAspectRatio={true}
-            videoAspectRatio="21:9"
-            source={{ uri: uri }}
-            style={[styles.player, style]}
-          />
+          <>
+            <VLCPlayer
+              autoAspectRatio={true}
+              videoAspectRatio="21:9"
+              source={{ uri }}
+              style={[styles.player, style]}
+              paused={paused}
+            />
+          </>
         )}
-
-        <View style={[styles.bottomView]}>{paused && <PauseIcon />}</View>
+        <View style={styles.bottomView}>
+          {(paused || !started) && <PauseIcon />}
+        </View>
       </TouchableOpacity>
     </View>
   );
 });
 
 export default MediaPlayer;
-
-const styles = StyleSheet.create({
-  wrap: {
-    flex: 1,
-    justifyContent: 'center',
-    borderRadius: 10,
-    backgroundColor: Colors.TextGray,
-    overflow: 'hidden',
-  },
-  loadingWrap: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loadingText: {
-    color: Colors.White,
-  },
-  player: {
-    zIndex: 0,
-    flex: 1,
-    borderRadius: 10,
-  },
-  videoBtn: {
-    flex: 1,
-  },
-  bottomView: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    bottom: 0,
-    left: 0,
-    height: '100%',
-    position: 'absolute',
-    width: '100%',
-    // backgroundColor: 'rgba(0,0,0,0)',
-  },
-});

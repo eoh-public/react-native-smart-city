@@ -7967,7 +7967,7 @@ react-native-version-check@^3.4.2:
     lodash.pick "^4.4.0"
     semver "^6.1.1"
 
-react-native-vlc-media-player@^1.0.29:
+react-native-vlc-media-player@^1.0.39:
   version "1.0.39"
   resolved "https://registry.yarnpkg.com/react-native-vlc-media-player/-/react-native-vlc-media-player-1.0.39.tgz#cff813637ca864644d980362fae37ad4ef0642aa"
   integrity sha512-BKFYo1f7tFNOgpPATQ9m897IO/jFy00CloUKGimk4uTBcbBUka3yHAaPb+9A0C/JZgU2z1CIAbUq13x8PnmOPQ==
