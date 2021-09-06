@@ -95,6 +95,8 @@ const Routes = {
   ManageAccess: 'ManageAccess',
   AddLGDevice: 'AddLGDevice',
   AddLGDeviceStack: 'AddLGDeviceStack',
+  PlaybackCamera: 'PlaybackCamera',
+  AllCamera: 'AllCamera',
 };
 
 export default Routes;
