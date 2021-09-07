@@ -6,6 +6,8 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   SafeAreaView,
+  StatusBar,
+  Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
@@ -139,6 +141,11 @@ const styles = StyleSheet.create({
   wrap: {
     flex: 1,
     backgroundColor: Colors.Gray2,
+    ...Platform.select({
+      android: {
+        paddingTop: StatusBar.currentHeight,
+      },
+    }),
   },
   padding: {
     paddingHorizontal: 16,

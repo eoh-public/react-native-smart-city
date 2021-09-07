@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar, Platform } from 'react-native';
 
 import { Colors, Device } from '../../configs';
 
@@ -6,6 +6,11 @@ export default StyleSheet.create({
   wrap: {
     flex: 1,
     backgroundColor: Colors.Gray2,
+    ...Platform.select({
+      android: {
+        paddingTop: StatusBar.currentHeight,
+      },
+    }),
   },
   txtHeader: {
     marginTop: 16,
