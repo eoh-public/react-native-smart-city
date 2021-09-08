@@ -75,6 +75,8 @@ const SelectLocation = memo(({ route }) => {
   }, []);
 
   const onPressRowLocation = useCallback(async (item) => {
+    setInput(item.description);
+    setSearchData([]);
     const body = {
       params: {
         place_id: item.place_id,
