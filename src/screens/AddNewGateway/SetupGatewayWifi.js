@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import { ScrollView, SafeAreaView } from 'react-native';
+import { ScrollView, SafeAreaView, PermissionsAndroid } from 'react-native';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
+import wifi from 'react-native-android-wifi';
 import { t } from 'i18n-js';
 
 import { Colors } from '../../configs';
@@ -30,6 +31,26 @@ const SetupGatewayWifi = memo(({ route }) => {
   const [displayLoadingConnect, setDisplayLoadingConnect] = useState(false);
   const [displayConnectFail, setDisplayConnectFail] = useState(false);
   const [timeoutSubcribtion, setTimeoutSubcribtion] = useState(null);
+
+  useEffect(() => {
+    const wifiPermission = async () => {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          {
+            title: t('wifi_networks'),
+            message: t('wifi_permission'),
+          }
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          wifi.getSSID((ssid) => {
+            setWifiName(ssid);
+          });
+        }
+      } catch (err) {}
+    };
+    wifiPermission();
+  }, []);
 
   useEffect(() => {
     if (isFocused) {
@@ -132,6 +153,7 @@ const SetupGatewayWifi = memo(({ route }) => {
             onChange={onChangeWifiName}
             textInputStyle={styles.wifiInput}
             selectionColor={Colors.Primary}
+            value={wifiName}
           />
           <Text style={styles.textWifi} bold color={Colors.Primary}>
             {t('password')}
