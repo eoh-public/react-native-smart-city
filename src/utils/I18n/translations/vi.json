@@ -690,6 +690,9 @@
   "request_fail": "Request fail",
   "modbus_fail": "Modbus failrate",
   "rssi_node": "RSSI Node",
+  "please_add_your_phone_number_and_chip_name": "Vui lòng thêm số điện thoại và tên chip của bạn",
+  "phone_number_of_data_sim": "Số điện thoại của dữ liệu sim",
+  "select_a_sub_unit": "Lựa chọn một khu vực mà bạn muốn thêm gateway",
   "all_camera": "All Cameras",
   "gateway_name": "Tên Gateway",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"

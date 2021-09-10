@@ -36,7 +36,7 @@ const API = {
       SCConfig.apiRoot + `/property_manager/stations/${id}/sensor_scan/`,
   },
   CHIP: {
-    CHECK_FINALIZED:
+    CHECK_FINALIZED: () =>
       SCConfig.apiRoot + '/property_manager/stations/check_chip_finalized/',
   },
   SENSOR: {

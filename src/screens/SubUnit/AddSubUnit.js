@@ -2,17 +2,14 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   View,
   Image,
-  StyleSheet,
   Keyboard,
   TouchableWithoutFeedback,
   SafeAreaView,
-  StatusBar,
-  Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18n-js';
 
-import { API, Colors, Theme } from '../../configs';
+import { API, Colors } from '../../configs';
 import { ViewButtonBottom, ImagePicker } from '../../commons';
 import Text from '../../commons/Text';
 import _TextInput from '../../commons/Form/TextInput';
@@ -20,10 +17,11 @@ import Routes from '../../utils/Route';
 import { axiosPost, createFormData } from '../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../utils/Utils';
 import { TESTID } from '../../configs/Constants';
+import styles from './AddSubUnitStyles';
 
 const AddSubUnit = ({ route }) => {
   const navigation = useNavigation();
-  const { unit } = route.params;
+  const { unit, addType } = route.params;
   const [roomName, setRoomName] = useState('');
   const [wallpaper, setWallpaper] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -40,8 +38,14 @@ const AddSubUnit = ({ route }) => {
       }
     );
     if (success) {
-      //TODO remove redux
-      //dispatch(createSubUnit(data));
+      ToastBottomHelper.success(t('text_create_sub_unit_success'));
+
+      if (addType === 'AddNewGateway') {
+        navigation.navigate(Routes.AddCommonSelectSubUnit, {
+          ...route.params,
+        });
+        return;
+      }
       navigation.navigate(Routes.UnitStack, {
         screen: Routes.SubUnitDetail,
         params: {
@@ -49,11 +53,10 @@ const AddSubUnit = ({ route }) => {
           station: data,
         },
       });
-      ToastBottomHelper.success(t('text_create_sub_unit_success'));
     } else {
       ToastBottomHelper.error(t('text_create_sub_unit_fail'));
     }
-  }, [navigation, roomName, unit, wallpaper]);
+  }, [addType, navigation, roomName, route.params, unit, wallpaper]);
 
   const onChoosePhoto = useCallback(() => {
     setShowImagePicker(true);
@@ -133,74 +136,5 @@ const AddSubUnit = ({ route }) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  commonWrap: {
-    flex: 1,
-  },
-  wrap: {
-    flex: 1,
-    backgroundColor: Colors.Gray2,
-    ...Platform.select({
-      android: {
-        paddingTop: StatusBar.currentHeight,
-      },
-    }),
-  },
-  padding: {
-    paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 20,
-    marginTop: 20,
-    lineHeight: 28,
-    marginBottom: 16,
-  },
-  textInput: {
-    marginTop: 0,
-  },
-  formWrapper: {
-    ...Theme.whiteBoxRadius,
-    paddingTop: 0,
-    paddingBottom: 24,
-  },
-  roomName: {
-    borderWidth: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.Primary,
-    paddingLeft: 0,
-    fontSize: 16,
-    lineHeight: 24,
-    margin: 0,
-    padding: 0,
-  },
-  wrapWallpaper: {
-    marginTop: 6,
-    borderBottomWidth: 1,
-    borderColor: Colors.Gray4,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  addWallpaper: {
-    fontSize: 16,
-    lineHeight: 24,
-    paddingBottom: 14,
-    paddingTop: 14,
-  },
-  wallpaper: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    marginRight: 8,
-  },
-  wallpaperEmpty: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    marginRight: 8,
-    backgroundColor: Colors.Pink1,
-  },
-});
 
 export default AddSubUnit;

@@ -190,7 +190,6 @@ const SetupGatewayWifi = memo(({ route }) => {
         leftTitle={t('cancel')}
         onLeftClick={goBack}
         rightTitle={t('text_next')}
-        rightDisabled={!wifiName || !wifiPass}
         onRightClick={onRight}
       />
     </SafeAreaView>

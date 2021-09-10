@@ -1,23 +1,18 @@
 import React, { useCallback, useMemo } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { get } from 'lodash';
 import { t } from 'i18n-js';
 
-import { Device, Colors, Theme } from '../../configs';
-import { standardizeCameraScreenSize } from '../../utils/Utils';
 import Routes from '../../utils/Route';
-import { useAndroidTranslucentStatusBar, usePopover } from '../../hooks/Common';
+import { usePopover } from '../../hooks/Common';
 import Text from '../../commons/Text';
 import ItemDevice from '../../commons/Device/ItemDevice';
 import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 import MediaPlayer from '../../commons/MediaPlayer';
 import { MenuActionMore } from '../../commons';
 import { useSCContextSelector } from '../../context';
-
-const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
-  Device.screenWidth - 32
-);
+import styles from './DetailStyles';
 
 const SubUnitDetail = ({ route }) => {
   const { unit, station, isGGHomeConnected } = route.params;
@@ -33,21 +28,6 @@ const SubUnitDetail = ({ route }) => {
   const canManageSubUnit = useCallback(() => {
     return currentUserId === unit.user_id;
   }, [currentUserId, unit]);
-
-  useAndroidTranslucentStatusBar();
-
-  // TODO remove redux
-  // const arrStation = useSelector((state) => state.unit.unitDetail.stations);
-
-  // const checkID = useCallback(() => {
-  //   const result = arrStation.find((x) => x.id === station.id)
-  //     ? 'true'
-  //     : 'false';
-  //   return result;
-  // }, [arrStation, station]);
-  // const idExists = checkID();
-  // const stationState =
-  //   idExists === 'true' ? arrStation.find((x) => x.id === station.id) : station;
   const stationState = station;
 
   const devices = stationState.sensors;
@@ -167,44 +147,5 @@ const SubUnitDetail = ({ route }) => {
     </WrapParallaxScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  wrap: {
-    flex: 1,
-  },
-  boxCamera: {
-    height: standardizeHeight,
-    width: standardizeWidth,
-    alignSelf: 'center',
-    borderRadius: 10,
-    ...Theme.shadow,
-  },
-  subUnitTitle: {
-    fontSize: 20,
-    lineHeight: 28,
-    color: Colors.Gray8,
-    marginLeft: 16,
-    marginTop: 24,
-    marginBottom: 8,
-  },
-  emptyDevice: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 18,
-    lineHeight: 28,
-    color: Colors.Border,
-  },
-  boxDevices: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    justifyContent: 'space-between',
-  },
-  boxEmptyDevices: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    paddingTop: 16,
-  },
-});
 
 export default SubUnitDetail;
