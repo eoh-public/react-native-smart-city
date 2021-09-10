@@ -7,6 +7,7 @@ import Route from '../utils/Route';
 import ConnectedGateway from '../screens/AddNewGateway/ConnectedGateway';
 import ConnectingGateway from '../screens/AddNewGateway/ConnectingGateway';
 import SetupGatewayWifi from '../screens/AddNewGateway/SetupGatewayWifi';
+import AddCommonSelectSubUnit from '../screens/AddCommon/SelectSubUnit';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,10 @@ export const AddGatewayStack = memo(() => {
         component={SetupGatewayWifi}
       />
       <Stack.Screen name={Route.AddNewGateway} component={AddNewGateway} />
+      <Stack.Screen
+        name={Route.AddCommonSelectSubUnit}
+        component={AddCommonSelectSubUnit}
+      />
       <Stack.Screen name={Route.ScanChipQR} component={ScanChipQR} />
       <Stack.Screen
         name={Route.ConnectingGateway}

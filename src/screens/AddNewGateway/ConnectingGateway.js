@@ -14,7 +14,7 @@ const ConnectingGateway = memo(({ route }) => {
   useEffect(() => {
     const checkChipFinalized = setInterval(async () => {
       const { success } = await axiosGet(
-        API.CHIP.CHECK_FINALIZED,
+        API.CHIP.CHECK_FINALIZED(),
         {
           params: {
             chip_id: new_chip.id,

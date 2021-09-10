@@ -52,6 +52,7 @@ const Routes = {
   DashboardStack: 'DashboardStack',
   AddSubUnit: 'AddSubUnit',
   AddCommonSelectUnit: 'AddCommonSelectUnit',
+  AddCommonSelectSubUnit: 'AddCommonSelectSubUnit',
   UnitMemberList: 'UnitMemberList',
   SharingSelectPermission: 'SharingSelectPermission',
   SharingInviteMembers: 'SharingInviteMembers',

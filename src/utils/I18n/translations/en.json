@@ -687,6 +687,9 @@
   "request_fail": "Request fail",
   "modbus_fail": "Modbus failrate",
   "rssi_node": "RSSI Node",
+  "please_add_your_phone_number_and_chip_name": "Please add your phone number and chip name",
+  "phone_number_of_data_sim": "Phone number of data sim",
+  "select_a_sub_unit": "Select a sub-unit that you want to add this gateway",
   "all_camera": "All Cameras",
   "gateway_name": "Gateway name",
   "error_please_try_later": "Error! Please try later"

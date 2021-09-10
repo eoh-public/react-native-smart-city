@@ -5,15 +5,8 @@ import { axiosPost } from '../../../utils/Apis/axios';
 import Routes from '../../../utils/Route';
 
 const useChipScan = (route) => {
-  const {
-    unit_id,
-    stationName,
-    phoneNumber,
-    chipName,
-    wifiName,
-    wifiPass,
-    imei,
-  } = route.params;
+  const { unit_id, station, phoneNumber, chipName, wifiName, wifiPass, imei } =
+    route.params;
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +21,7 @@ const useChipScan = (route) => {
           qr_code: body.imei,
           phone: phoneNumber,
           name: chipName,
-          station_name: stationName,
+          station: station,
           wifi_ssid: wifiName,
           wifi_pass: wifiPass,
         }
@@ -48,7 +41,7 @@ const useChipScan = (route) => {
       navigation,
       phoneNumber,
       route.params,
-      stationName,
+      station,
       unit_id,
       wifiName,
       wifiPass,
