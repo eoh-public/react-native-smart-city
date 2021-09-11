@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, TouchableOpacity, Platform, Image } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { chunk } from 'lodash';
 import Carousel from 'react-native-snap-carousel';
 import { t } from 'i18n-js';
@@ -12,11 +12,13 @@ import MediaPlayerDetail from '../../commons/MediaPlayerDetail';
 import { Constants, normalize } from '../../configs/Constants';
 import styles from './Styles/index';
 import { ModalFullVideo } from '../../commons/Modal';
+import Routes from '../../utils/Route';
 
 const AllCamera = () => {
   const carouselRef = useRef();
   const { params = {} } = useRoute();
   const { arrCameras = [], thumbnail = '' } = params;
+  const { navigate } = useNavigation();
 
   const [amount, setAmount] = useState(1);
   const [data, setData] = useState(arrCameras);
@@ -52,6 +54,10 @@ const AllCamera = () => {
     setIsFullScreen(false);
   };
 
+  const goToPlayBack = (item, thumbnail) => () => {
+    navigate(Routes.PlaybackCamera, { item, thumbnail });
+  };
+
   const CameraItem = ({ item }) => {
     return (
       <View style={styles.wrap}>
@@ -66,7 +72,8 @@ const AllCamera = () => {
             cameraName={amount !== 1 && item?.configuration?.name}
             amount={amount}
             handleFullScreen={handleFullScreen}
-            isFullScreen={false}
+            goToPlayBack={goToPlayBack(item, thumbnail)}
+            isShowFullScreenIcon={amount === 1}
           />
         )}
       </View>
@@ -168,7 +175,7 @@ const AllCamera = () => {
   return (
     <>
       <View style={styles.wrap2}>
-        <HeaderCustom title={t('all_camera')} />
+        <HeaderCustom title={t('all_camera')} isShowSeparator />
         <View style={styles.center}>
           <View style={styles.wrapTitle}>
             <TouchableOpacity style={styles.buttonNext} onPress={onPressPrev}>

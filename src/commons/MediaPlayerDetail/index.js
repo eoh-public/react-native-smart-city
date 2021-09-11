@@ -1,14 +1,14 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState, useEffect } from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { VLCPlayer } from 'react-native-vlc-media-player';
-
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { t } from 'i18n-js';
+
 import PauseIcon from '../../../assets/images/Common/Pause.svg';
 import { Colors, Constants, Images } from '../../configs';
 import { colorOpacity } from '../../utils/Converter/color';
 import styles from './MediaPlayerDetailStyles';
 import FImage from '../../commons/FImage';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 const MediaPlayerDetail = memo(
   ({
@@ -22,6 +22,8 @@ const MediaPlayerDetail = memo(
     handleFullScreen,
     isFullScreen = false,
     isPaused = true,
+    goToPlayBack,
+    isShowFullScreenIcon = false,
   }) => {
     const [paused, setPaused] = useState(isPaused);
     const onTapPause = useCallback(() => {
@@ -32,15 +34,19 @@ const MediaPlayerDetail = memo(
       if (!paused) {
         setPaused(true);
       } else {
-        // eslint-disable-next-line no-alert
-        alert(t('feature_under_development'));
+        goToPlayBack && goToPlayBack();
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [paused]);
 
     const onFullScreen = useCallback(() => {
       handleFullScreen && handleFullScreen({ uri, cameraName, thumbnail });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+      setPaused(isPaused);
+    }, [isPaused]);
 
     const source = !thumbnail || !thumbnail.uri ? Images.BgDevice : thumbnail;
     return (
@@ -83,20 +89,19 @@ const MediaPlayerDetail = memo(
               />
             </View>
           ) : isFullScreen ? (
-            <VLCPlayer
-              autoAspectRatio={true}
-              videoAspectRatio={`${Constants.height}:${Constants.width}`}
-              source={{ uri: uri }}
-              style={[
-                {
-                  marginLeft: -Constants.width / 2 - getStatusBarHeight(),
-                  marginTop: Constants.width / 2 + getStatusBarHeight(),
-                  width: Constants.height,
-                  height: Constants.width,
-                  transform: [{ rotate: '90deg' }],
-                },
-              ]}
-            />
+            <View style={{ transform: [{ rotate: '90deg' }] }}>
+              <VLCPlayer
+                autoAspectRatio={true}
+                videoAspectRatio={`${Constants.height}:${Constants.width}`}
+                source={{ uri }}
+                style={[
+                  {
+                    width: Constants.height,
+                    height: Constants.width,
+                  },
+                ]}
+              />
+            </View>
           ) : (
             <VLCPlayer
               autoAspectRatio={true}
@@ -109,7 +114,7 @@ const MediaPlayerDetail = memo(
                   ? '5:3'
                   : '10:9'
               }
-              source={{ uri: uri }}
+              source={{ uri }}
               style={[styles.player, style]}
               resizeMode={resizeMode}
             />
@@ -141,7 +146,7 @@ const MediaPlayerDetail = memo(
             {cameraName}
           </Text>
         )}
-        {amount && amount === 1 && !paused && (
+        {isShowFullScreenIcon && (
           <TouchableOpacity
             onPress={onFullScreen}
             style={styles.iconFullScreen}
