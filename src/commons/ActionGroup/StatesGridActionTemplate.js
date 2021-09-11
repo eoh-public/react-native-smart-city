@@ -36,7 +36,15 @@ const GridItem = ({ item, index, length, doAction, sensor }) => {
     extraStyle.marginTop = 24;
   }
 
-  const { active, text, icon, icon_kit_data, action_data, config } = item;
+  const {
+    active,
+    text,
+    icon_kit_data,
+    icon,
+    icon_outlined,
+    action_data,
+    config,
+  } = item;
   const buttonOnOffStyle = active ? buttonStyle.ON : buttonStyle.OFF;
 
   const doActionAndWatchConfig = useCallback(
@@ -63,6 +71,7 @@ const GridItem = ({ item, index, length, doAction, sensor }) => {
         <IconComponent
           icon={icon}
           iconKit={iconKit}
+          icon_outlined={icon_outlined}
           isSendingCommand={false}
           size={24}
         />
