@@ -22,7 +22,8 @@ function getOptionValue(option) {
 
 const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
   const { configuration, title } = actionGroup;
-  const { action_data, options, icon, icon_kit_data } = configuration;
+  const { action_data, options, icon_kit_data, icon, icon_outlined } =
+    configuration;
   // eslint-disable-next-line no-unused-vars
   const [configValues, setConfigValues] = useConfigGlobalState('configValues');
 
@@ -84,6 +85,7 @@ const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
         <IconComponent
           icon={icon}
           iconKit={iconKit}
+          icon_outlined={icon_outlined}
           isSendingCommand={false}
           size={17}
           style={styles.marginRight}
