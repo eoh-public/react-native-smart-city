@@ -21,11 +21,15 @@ import WrapParallaxScrollView from '../../commons/WrapParallaxScrollView';
 import { SCContext } from '../../context';
 import { Action } from '../../context/actionType';
 import CameraDevice from '../../commons/CameraDevice';
+import { ModalFullVideo } from '../../commons/Modal';
+import { useNavigation } from '@react-navigation/native';
+import Routes from '../../utils/Route';
 
 const UnitDetail = ({ route }) => {
   const { unitId, unitData } = route.params;
   const isFocused = useIsFocused();
   const { stateData, setAction } = useContext(SCContext);
+  const { navigate } = useNavigation();
 
   const [unit, setUnit] = useState(unitData || { id: unitId });
   const [appState, setAppState] = useState(AppState.currentState);
@@ -35,11 +39,22 @@ const UnitDetail = ({ route }) => {
   const [station, setStation] = useState([]);
   const [indexStation, setIndexStation] = useState(0);
   const [showAdd, setShowAdd, setHideAdd] = useBoolean();
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [dataFullScreen, setDataFullScreen] = useState();
 
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
 
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
+
+  const handleFullScreen = (data) => {
+    setIsFullScreen(!isFullScreen);
+    setDataFullScreen(data);
+  };
+
+  const onClose = useCallback(() => {
+    setIsFullScreen(false);
+  }, []);
 
   const prepareData = useCallback((rawUnitData) => {
     const favorites = {
@@ -174,9 +189,20 @@ const UnitDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [unit, indexStation]
   );
+
+  const goToPlayBack = (item, thumbnail) => () => {
+    navigate(Routes.PlaybackCamera, { item, thumbnail });
+  };
+
   const renderDetailSubUnit = () => {
     if (station.camera_devices) {
-      return <CameraDevice station={station} />;
+      return (
+        <CameraDevice
+          station={station}
+          handleFullScreen={handleFullScreen}
+          goToPlayBack={goToPlayBack}
+        />
+      );
     } else if (station) {
       return (
         <ShortDetailSubUnit
@@ -228,6 +254,12 @@ const UnitDetail = ({ route }) => {
         isOwner={isOwner}
         childRef={childRef}
         showingPopover={showingPopover}
+      />
+      <ModalFullVideo
+        isVisible={isFullScreen}
+        data={dataFullScreen}
+        modalStyles={styles.modal}
+        onClose={onClose}
       />
     </WrapParallaxScrollView>
   );

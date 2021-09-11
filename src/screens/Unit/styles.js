@@ -67,4 +67,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
+  modal: {
+    margin: 0,
+    padding: 0,
+  },
 });

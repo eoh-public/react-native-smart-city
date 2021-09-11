@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { ModalCustom } from '../../commons/Modal';
 import MediaPlayerDetail from '../../commons/MediaPlayerDetail';
 import { Images } from '../../configs';
 import styles from './Styles/ModalFullVideoStyles';
+import { useHiddenStatusBar } from '../../hooks/Common/useStatusBar';
 
 const ModalFullVideo = ({
   animationOut = 'fadeOut',
@@ -13,6 +14,11 @@ const ModalFullVideo = ({
   resizeMode = 'cover',
   onClose,
 }) => {
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useHiddenStatusBar(isVisible);
+  }, [isVisible]);
+
   return (
     <ModalCustom
       animationOut={animationOut}

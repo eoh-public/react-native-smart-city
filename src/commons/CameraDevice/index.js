@@ -15,7 +15,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
 );
 
-const CameraDevice = ({ station }) => {
+const CameraDevice = ({ station, handleFullScreen, goToPlayBack }) => {
   const { navigate } = useNavigation();
 
   const onPressViewAll = () => {
@@ -55,6 +55,9 @@ const CameraDevice = ({ station }) => {
             }}
             key={`camera-device-${device.id}`}
             cameraName={device.configuration.name}
+            isShowFullScreenIcon
+            handleFullScreen={handleFullScreen}
+            goToPlayBack={goToPlayBack(device, { uri: station?.background })}
           />
         </View>
       ))}
