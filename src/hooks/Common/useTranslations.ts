@@ -5,8 +5,12 @@ import {
   TranslationString,
 } from '../../utils/I18n';
 import { useCallback } from 'react';
+import { useSCContextSelector } from '../../context';
 
-const language: Language = 'en'; //can get from the app setting, currently for POC only
+// eslint-disable-next-line react-hooks/rules-of-hooks
+const lang = useSCContextSelector((state) => state.language);
+
+const language: Language = lang as Language;
 
 export const useTranslations = () => {
   const t = useCallback(

@@ -56,6 +56,10 @@ export const SCProvider = ({ children }) => {
     setAction('STORE_STATUS_BAR', statusBar);
   };
 
+  const setLocale = (language: Language) => {
+    setAction('UPDATE_LANGUAGE', language);
+  };
+
   const setAction = <T extends ActionType>(
     action: T,
     payload?: ActionDataMap[T]
@@ -67,6 +71,7 @@ export const SCProvider = ({ children }) => {
     stateData,
     setAuth,
     setAction,
+    setLocale,
     setStatusBar,
   };
 
