@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { API, Colors } from '../../configs';
 import { ViewButtonBottom, ImagePicker } from '../../commons';
@@ -20,6 +20,7 @@ import { TESTID } from '../../configs/Constants';
 import styles from './AddSubUnitStyles';
 
 const AddSubUnit = ({ route }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
   const { unit, addType } = route.params;
   const [roomName, setRoomName] = useState('');
@@ -56,7 +57,7 @@ const AddSubUnit = ({ route }) => {
     } else {
       ToastBottomHelper.error(t('text_create_sub_unit_fail'));
     }
-  }, [addType, navigation, roomName, route.params, unit, wallpaper]);
+  }, [addType, navigation, roomName, route.params, t, unit, wallpaper]);
 
   const onChoosePhoto = useCallback(() => {
     setShowImagePicker(true);

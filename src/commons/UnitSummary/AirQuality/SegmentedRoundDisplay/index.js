@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Svg, { G, Text, Path } from 'react-native-svg';
-import { t } from 'i18n-js';
 
 import { Colors } from '../../../../configs';
 import TextCustom from '../../../../commons/Text';
@@ -255,7 +254,7 @@ SegmentedRoundDisplay.defaultProps = {
   radius: 90,
   pos: [0, 100, 200, 300, 400, 500],
   boxTitle: false,
-  textHeader: t('text_air_quality_index'),
+  textHeader: '',
   initIndex: 0,
 };
 

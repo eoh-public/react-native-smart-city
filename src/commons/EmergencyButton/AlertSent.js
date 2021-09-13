@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { ButtonPopup } from '../index';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { IconFill } from '@ant-design/icons-react-native';
 import Text from '../Text';
 import { Colors } from '../../configs';
@@ -16,6 +16,7 @@ const AlertSent = ({
   station,
   isDashboard,
 }) => {
+  const t = useTranslations();
   const data = useMemo(() => {
     if (isDashboard) {
       return {
@@ -34,7 +35,7 @@ const AlertSent = ({
         typeMain: 'alertBorder',
       };
     }
-  }, [isDashboard]);
+  }, [isDashboard, t]);
 
   return (
     <ButtonPopup

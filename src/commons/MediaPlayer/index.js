@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { VLCPlayer } from 'react-native-vlc-media-player';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import PauseIcon from '../../../assets/images/Common/Pause.svg';
 import { Colors, Images } from '../../configs';
 import { colorOpacity } from '../../utils/Converter/color';
@@ -93,6 +93,7 @@ const PreviewPlayer = memo(({ uri, start }) => {
 });
 
 const MediaPlayer = memo(({ uri, previewUri, thumbnail, style }) => {
+  const t = useTranslations();
   const [started, setStarted] = useState(false);
   const [paused, setPaused] = useState(true);
 

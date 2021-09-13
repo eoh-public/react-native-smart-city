@@ -5,7 +5,7 @@ import {
   ScrollView,
   RefreshControl,
 } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { HeaderCustom } from '../../commons/Header';
 import { IconOutline } from '@ant-design/icons-react-native';
 import styles from './styles/ManageAccessStyles';
@@ -26,6 +26,7 @@ const arrColor = [
 ];
 
 const ManageAccessScreen = memo(() => {
+  const t = useTranslations();
   const { params = {} } = useRoute();
   const { unit, sensor } = params;
   const { data, isRefreshing, onRefresh } = useManageAccess(unit, sensor);

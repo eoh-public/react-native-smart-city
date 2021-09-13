@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { HeaderCustom } from '../../commons/Header';
 import { useRoute } from '@react-navigation/native';
 import Text from '../../commons/Text';
@@ -8,6 +8,7 @@ import styles from './DeviceInfoStyles';
 import { TESTID } from '../../configs/Constants';
 
 const DeviceInfo = () => {
+  const t = useTranslations();
   const { params = {} } = useRoute();
   const { deviceInfo } = params;
   const configuration = deviceInfo[0] ? deviceInfo[0].configuration : {};

@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { View, TouchableOpacity, Image, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import Animated from 'react-native-reanimated';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors, API, Device, Images } from '../../configs';
 import Routes from '../../utils/Route';
@@ -62,6 +62,7 @@ const ButtonWrapper = ({
 };
 
 const ManageUnit = ({ route }) => {
+  const t = useTranslations();
   const { unit } = route.params;
   const navigation = useNavigation();
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
@@ -90,7 +91,7 @@ const ManageUnit = ({ route }) => {
         ToastBottomHelper.success(t('unit_updated_successfully'));
       }
     },
-    [unit.id, setUnitData]
+    [unit.id, t]
   );
 
   const updateLocation = useCallback(
@@ -137,7 +138,7 @@ const ManageUnit = ({ route }) => {
       ToastBottomHelper.success(t('unit_deleted_successfully'));
       navigate(Routes.Dashboard);
     }
-  }, [unit.id, setHideEdit]);
+  }, [unit.id, setHideEdit, t]);
 
   const [transY] = useKeyboardAnimated(-16);
   const animatedStyle = Platform.select({

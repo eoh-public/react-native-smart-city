@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { View, StyleSheet, Linking } from 'react-native';
 import Text from '../../Text';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import MediaPlayer from '../../MediaPlayer';
 import { standardizeCameraScreenSize } from '../../../utils/Utils';
 import { Colors, Device } from '../../../configs';
@@ -16,6 +16,7 @@ const { standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const EmergencyDetail = memo(({ item }) => {
+  const t = useTranslations();
   const groupId = item.configuration.device.group.id;
   const isFocused = useIsFocused();
   const { listContacts, getListContacts } = useEmeragencyContacts();

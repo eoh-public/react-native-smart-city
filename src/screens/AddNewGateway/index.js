@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { ScrollView, SafeAreaView, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import { Section, ViewButtonBottom } from '../../commons';
@@ -11,6 +11,7 @@ import { TESTID } from '../../configs/Constants';
 import styles from './AddNewGatewayStyles';
 
 const AddNewGateway = memo(({ route }) => {
+  const t = useTranslations();
   const { unit_id, wifiName, wifiPass, imei } = route.params;
   const { navigate, goBack } = useNavigation();
   const [phoneNumber, setPhoneNumber] = useState('');

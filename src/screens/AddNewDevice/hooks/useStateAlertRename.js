@@ -1,7 +1,8 @@
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useCallback, useState } from 'react';
 
 export const useStateAlertRename = () => {
+  const t = useTranslations();
   const [stateAlertRename, setStateAlertRename] = useState({
     visible: false,
     title: t('rename_device'),

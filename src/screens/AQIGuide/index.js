@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors, Theme } from '../../configs';
 import useTitleHeader from '../../hooks/Common/useTitleHeader';
@@ -23,7 +23,7 @@ import { useSCContextSelector } from '../../context';
 const AQIGuide = memo(() => {
   useTitleHeader(t('AQI Guide'));
   const language = useSCContextSelector((state) => state.language);
-
+  const t = useTranslations();
   const data = useMemo(
     () => ({
       titles: [

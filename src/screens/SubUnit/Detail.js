@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { get } from 'lodash';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import Routes from '../../utils/Route';
 import { usePopover } from '../../hooks/Common';
@@ -15,6 +15,7 @@ import { useSCContextSelector } from '../../context';
 import styles from './DetailStyles';
 
 const SubUnitDetail = ({ route }) => {
+  const t = useTranslations();
   const { unit, station, isGGHomeConnected } = route.params;
   const language = useSCContextSelector((state) => state.language);
   const navigation = useNavigation();

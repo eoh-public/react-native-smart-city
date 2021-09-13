@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 
@@ -12,6 +12,8 @@ const MemberList = ({
   currentUserId, //user is using app
   onPressRemove,
 }) => {
+  const t = useTranslations();
+
   return (
     <View style={styles.box}>
       {!!dataMember.length &&

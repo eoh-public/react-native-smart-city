@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { API } from '../../../configs';
 import Routes from '../../../utils/Route';
@@ -8,6 +8,7 @@ import { axiosDelete, axiosGet } from '../../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../../utils/Utils';
 
 const useDataMember = (unitId) => {
+  const t = useTranslations();
   const { navigate, addListener } = useNavigation();
   const [dataMembers, setDataMembers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ const useDataMember = (unitId) => {
       );
       setDataMembers(dataMembers.filter((item) => item.share_id !== id));
     },
-    [dataMembers, unitId]
+    [dataMembers, t, unitId]
   );
   const leaveUnit = useCallback(
     (unitName) => async () => {
@@ -39,7 +40,7 @@ const useDataMember = (unitId) => {
       setDataMembers([]);
       navigate(Routes.Dashboard);
     },
-    [navigate, unitId]
+    [navigate, t, unitId]
   );
 
   const onRefresh = useCallback(async () => {
@@ -74,6 +75,7 @@ const useDataMember = (unitId) => {
 };
 
 const useStateAlertAction = () => {
+  const t = useTranslations();
   const [stateAlertAction, setStateAlertAction] = useState({
     visible: false,
     title: '',
@@ -85,19 +87,22 @@ const useStateAlertAction = () => {
   const hideAlertAction = useCallback(() => {
     setStateAlertAction({ ...stateAlertAction, visible: false });
   }, [stateAlertAction]);
-  const onPressRemoveUser = useCallback((member) => {
-    setStateAlertAction((action) => {
-      let name = member.name || 'N/A';
-      return {
-        ...action,
-        visible: true,
-        title: t('sharing_remove_user', { name: name }),
-        message: t('sharing_remove_user_message', { name: name }),
-        rightButton: t('remove'),
-        member: member,
-      };
-    });
-  }, []);
+  const onPressRemoveUser = useCallback(
+    (member) => {
+      setStateAlertAction((action) => {
+        let name = member.name || 'N/A';
+        return {
+          ...action,
+          visible: true,
+          title: t('sharing_remove_user', { name: name }),
+          message: t('sharing_remove_user_message', { name: name }),
+          rightButton: t('remove'),
+          member: member,
+        };
+      });
+    },
+    [t]
+  );
   const stateLeaveUnit = useCallback(() => {
     setStateAlertAction((action) => {
       return {
@@ -109,7 +114,7 @@ const useStateAlertAction = () => {
         member: null,
       };
     });
-  }, []);
+  }, [t]);
 
   return {
     stateAlertAction,

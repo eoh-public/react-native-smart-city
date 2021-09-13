@@ -2,7 +2,7 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import AddNewDevice from '../index';
 import GroupCheckBox from '../../../commons/GroupCheckBox';
 import { TESTID } from '../../../configs/Constants';
@@ -30,6 +30,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test AddNewDevice', () => {
+  const t = useTranslations();
   let tree;
   let route;
 

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { StyleSheet, View } from 'react-native';
 
 import { Colors } from '../../configs';
@@ -8,6 +8,7 @@ import DateTimeButton from './DateTimeButton';
 
 const DateTimeRangeChange = memo(
   ({ startTime, onStart, onEnd, endTime, style, date, formatType }) => {
+    const t = useTranslations();
     return (
       <View style={[styles.dateTimeView, style]}>
         <Text size={12} color={Colors.Gray7}>

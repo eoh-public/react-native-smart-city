@@ -1,6 +1,6 @@
 import React from 'react';
 import { act, create } from 'react-test-renderer';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import axios from 'axios';
 
 import AddLGDevice from '../AddLGDevice';
@@ -27,6 +27,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test Add LG Device', () => {
+  const t = useTranslations();
   let tree;
   let route;
 

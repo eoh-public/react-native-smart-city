@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import MapView, { Marker, Circle, PROVIDER_GOOGLE } from 'react-native-maps';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
@@ -17,6 +17,7 @@ const initialRegion = {
 };
 
 const AddLocationMaps = memo(() => {
+  const t = useTranslations();
   const { goBack } = useNavigation();
   const [color, setColor] = useState(Colors.Black);
   useEffect(() => {

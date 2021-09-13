@@ -8,11 +8,12 @@ import {
   SEND_COMMAND_OVER_BLUETOOTH_FAIL,
   clearFoundDevices,
 } from '../Bluetooth';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 const bleManager = new BleManager();
 
 describe('Test IOT Bluetooth', () => {
+  const t = useTranslations();
   beforeEach(() => {
     bleManager.startDeviceScan.mockClear();
     bleManager.stopDeviceScan.mockClear();

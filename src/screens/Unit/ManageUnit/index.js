@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 import Animated from 'react-native-reanimated';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { Colors, API, Device } from '../../../configs';
 import Routes from '../../../utils/Route';
@@ -37,6 +37,7 @@ import { useIsOwnerOfUnit } from '../../../hooks/Common';
 import { TESTID } from '../../../configs/Constants';
 
 const ManageUnit = ({ route }) => {
+  const t = useTranslations();
   const { unit } = route.params;
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
   const [showEdit, setshowEdit, setHideEdit] = useBoolean();
@@ -57,7 +58,7 @@ const ManageUnit = ({ route }) => {
         ToastBottomHelper.success(t('unit_updated_successfully'));
       }
     },
-    [unit.id, imageUrl]
+    [imageUrl, unit.id, t]
   );
 
   const goRename = useCallback(async () => {
@@ -85,7 +86,7 @@ const ManageUnit = ({ route }) => {
       ToastBottomHelper.success(t('unit_deleted_successfully'));
       navigate(Routes.Dashboard);
     }
-  }, [unit.id, setHideEdit]);
+  }, [unit.id, setHideEdit, t]);
 
   const [transY] = useKeyboardAnimated(-16);
   const animatedStyle = Platform.select({

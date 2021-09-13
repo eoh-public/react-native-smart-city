@@ -1,5 +1,5 @@
 import { Auth, createConnection, getStates } from 'home-assistant-js-websocket';
-import { t } from 'i18n-js';
+import t from '../../hooks/Common/useTranslations';
 import { getConfigGlobalState, setConfigGlobalState } from '../states';
 import { ToastBottomHelper } from '../../utils/Utils';
 import { API } from '../../configs';

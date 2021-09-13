@@ -8,13 +8,14 @@ import Text from '../Text';
 import Routes from '../../utils/Route';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Colors, Constants } from '../../configs';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { TESTID } from '../../configs/Constants';
 
 const marginHorizontal = 20;
 const widthItem = (Constants.width - marginHorizontal * 2) / 2;
 
 const FlatListItems = memo(({ data, style, title, offsetTitle }) => {
+  const t = useTranslations();
   const [showInfo, setShowInfo, setHideInfo] = useBoolean(false);
   const filtersNeedReplace = data.filter((item) => item.value <= 10);
 

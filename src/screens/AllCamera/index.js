@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Platform, Image } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { chunk } from 'lodash';
 import Carousel from 'react-native-snap-carousel';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Images, Colors } from '../../configs';
 import { useHiddenStatusBar } from '../../hooks/Common/useStatusBar';
@@ -15,6 +15,7 @@ import { ModalFullVideo } from '../../commons/Modal';
 import Routes from '../../utils/Route';
 
 const AllCamera = () => {
+  const t = useTranslations();
   const carouselRef = useRef();
   const { params = {} } = useRoute();
   const { arrCameras = [], thumbnail = '' } = params;

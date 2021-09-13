@@ -9,7 +9,7 @@ import { useRoute } from '@react-navigation/core';
 import MediaPlayerDetail from '../../commons/MediaPlayerDetail';
 import { ModalFullVideo, ModalCustom } from '../../commons/Modal';
 import Images from '../../configs/Images';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import Text from '../../commons/Text';
 import Timer from './Timer';
 import { useStatusBarPreview } from '../../hooks/Common/useStatusBar';
@@ -18,6 +18,7 @@ let dateTemp = moment().format('YYYY-MM-DD');
 const arrDayTemp = dateTemp.split('-');
 
 const PlayBackCamera = () => {
+  const t = useTranslations();
   const { params = {} } = useRoute();
   const { item = {}, thumbnail } = params;
   const [selected, setSelected] = useState(dateTemp);

@@ -1,6 +1,6 @@
 import MenuActionAddnew from '../../commons/MenuActionAddnew';
 import React, { memo, useCallback, useMemo } from 'react';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import Routes from '../../utils/Route';
 import AddSubUnitIcon from '../../../assets/images/Popover/Dashboard/AddSubUnit.svg';
 import AddDeviceIcon from '../../../assets/images/Popover/Dashboard/AddDevice.svg';
@@ -8,6 +8,7 @@ import AddMemberIcon from '../../../assets/images/Popover/Dashboard/AddMember.sv
 import { useNavigation } from '@react-navigation/native';
 
 const AddMenu = memo(({ unit, afterItemClick, showAdd, setHideAdd }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
 
   const onItemClick = useCallback(
@@ -50,7 +51,7 @@ const AddMenu = memo(({ unit, afterItemClick, showAdd, setHideAdd }) => {
         data: { screen: Routes.SetupGatewayWifi, params: { unit_id: unit.id } },
       },
     ];
-  }, [unit]);
+  }, [t, unit]);
 
   const hideAddModal = useCallback(() => {
     setHideAdd(false);

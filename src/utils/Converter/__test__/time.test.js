@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 const {
   transformDatetime,
@@ -42,6 +42,7 @@ describe('test time utils, transformDatetime', () => {
 });
 
 describe('test time utils, timeDifference', () => {
+  const t = useTranslations();
   const _testTime = (current, lastUpdated, result) => {
     const timeString = timeDifference(new Date(current), new Date(lastUpdated));
     expect(timeString).toEqual(result);
@@ -98,6 +99,7 @@ describe('test time utils, timeDifference', () => {
 });
 
 describe('test time utils, getTitleFromTime', () => {
+  const t = useTranslations();
   const _testTime = (time, current, result) => {
     const timeString = getTitleFromTime(new Date(time), new Date(current));
     expect(timeString).toEqual(result);

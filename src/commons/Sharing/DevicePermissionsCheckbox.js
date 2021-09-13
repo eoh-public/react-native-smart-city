@@ -1,6 +1,6 @@
 import React, { memo, useState, useCallback } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import RadioCircle from '../RadioCircle';
 import Text from '../Text';
 import { Colors } from '../../configs';
@@ -30,6 +30,7 @@ const DevicePermissionsCheckbox = ({
   selectedIndexes,
   onSelectIndexes,
 }) => {
+  const t = useTranslations();
   const sensorHasData = !!sensor.read_configs.length || !!sensor.actions.length;
 
   const [selectIndexes, setSelectIndexes] = useState(selectedIndexes); // [-1] all , [1, 2 ,3] some , [] no

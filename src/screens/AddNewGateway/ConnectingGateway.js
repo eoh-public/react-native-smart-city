@@ -2,12 +2,13 @@ import React, { memo, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { API, Colors } from '../../configs';
 import Text from '../../commons/Text';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../utils/Route';
 import { axiosGet } from '../../utils/Apis/axios';
 
 const ConnectingGateway = memo(({ route }) => {
+  const t = useTranslations();
   const { navigate } = useNavigation();
   const { new_chip } = route.params;
 

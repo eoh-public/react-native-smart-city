@@ -3,7 +3,7 @@ import { View, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Modal from 'react-native-modal';
 import { axiosGet } from '../../utils/Apis/axios';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { API } from '../../configs';
 import Text from '../../commons/Text';
@@ -21,6 +21,7 @@ import { useSCContextSelector } from '../../context';
 const Shared = () => {
   useBlockBackAndroid();
   useTitleHeader(t('text_shared_with_me'));
+  const t = useTranslations();
   const navigation = useNavigation();
   const [tab, setTabActiveState] = useState(0);
 
@@ -102,7 +103,7 @@ const Shared = () => {
         textFilter: t('text_can_edit'),
       },
     ],
-    []
+    [t]
   );
 
   return (

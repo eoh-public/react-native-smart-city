@@ -11,7 +11,7 @@ import styles from './OptionsDropdownActionTemplateStyle';
 import { watchMultiConfigs } from '../../iot/Monitor';
 import { TESTID } from '../../configs/Constants';
 import IconComponent from '../../commons/IconComponent';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 function getOptionValue(option) {
   if (option.value_text) {
@@ -21,6 +21,7 @@ function getOptionValue(option) {
 }
 
 const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
+  const t = useTranslations();
   const { configuration, title } = actionGroup;
   const { action_data, options, icon_kit_data, icon, icon_outlined } =
     configuration;
@@ -77,7 +78,7 @@ const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
       return t('not_available');
     }
     return selectedOption.text;
-  }, [configuration.config, selectedOption]);
+  }, [configuration.config, selectedOption.text, t]);
 
   return (
     <View style={styles.wrap}>

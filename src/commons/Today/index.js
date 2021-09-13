@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import moment from 'moment';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import i18n from 'i18n-js';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 
 const TodayComponent = ({ style }) => {
+  const t = useTranslations();
   const getCurrentDate = () => {
     const currentLanguage = i18n.currentLocale();
     moment.locale(currentLanguage);

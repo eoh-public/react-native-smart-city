@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import Text from '../../commons/Text';
 
 import styles from './styles';
 
 const TabHeader = ({ current, getCurrentTab, showModal, textFilter }) => {
+  const t = useTranslations();
   const [currentTab, setCurrentTabState] = useState(current);
 
   useEffect(() => {

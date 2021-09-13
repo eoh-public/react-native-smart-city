@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@ant-design/react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../hooks/Common/useTranslations';
 
 import Shared from '../screens/SharedUnit';
 import { Colors } from '../configs';
@@ -11,6 +11,7 @@ import Routes from '../utils/Route';
 
 const Stack = createStackNavigator();
 const SharedStack = memo(() => {
+  const t = useTranslations();
   const navigation = useNavigation();
   return (
     <Stack.Navigator>

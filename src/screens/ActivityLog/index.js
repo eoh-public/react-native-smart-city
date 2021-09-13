@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, SectionList, ActivityIndicator } from 'react-native';
 import moment from 'moment';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Colors } from '../../configs';
 import { HeaderCustom } from '../../commons/Header';
 import { getTitleFromTime } from '../../utils/Converter/time';
@@ -13,6 +13,7 @@ import styles from './Styles/indexStyles';
 const keyExtractor = (item) => item.id;
 
 const ActivityLogScreen = () => {
+  const t = useTranslations();
   const { params = {} } = useRoute();
   const { sensor } = params;
   const { data, isLoading, isRefreshing, onLoadMore, onRefresh } =

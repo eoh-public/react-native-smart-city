@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors, API, Device } from '../../configs';
 import { ToastBottomHelper } from '../../utils/Utils';
@@ -26,6 +26,7 @@ import { IconOutline } from '@ant-design/icons-react-native';
 import { useEmeragencyContacts } from './hooks/useEmergencyContacts';
 
 const ManageSubUnit = (props) => {
+  const t = useTranslations();
   const { station } = props.route.params;
   //TODO remove redux
   // const unit = useSelector((state) => state.unit.unitDetail);
@@ -82,7 +83,7 @@ const ManageSubUnit = (props) => {
         ToastBottomHelper.success(t('text_rename_sub_unit_success'));
       }
     },
-    [unit, station]
+    [unit.id, station.id, t]
   );
   const updateBackground = useCallback(
     async (headers) => {
@@ -97,7 +98,7 @@ const ManageSubUnit = (props) => {
         ToastBottomHelper.success(t('text_change_background_sub_unit_success'));
       }
     },
-    [unit, station, imageUrl]
+    [imageUrl, unit.id, station.id, t]
   );
 
   const onPressRemove = useCallback(() => {
@@ -120,7 +121,7 @@ const ManageSubUnit = (props) => {
     } else {
       ToastBottomHelper.error(t('text_remove_sub_unit_fail'));
     }
-  }, [unit, station, onBack, setHideModalRemoveSubUnit]);
+  }, [setHideModalRemoveSubUnit, unit.id, station.id, t, onBack]);
 
   const goRename = useCallback(() => {
     updateSubUnit({ name: inputName }, {});

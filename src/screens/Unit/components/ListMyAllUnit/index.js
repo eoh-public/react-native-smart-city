@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Animated, ScrollView } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors, Images } from '../../../../configs';
 import Text from '../../../../commons/Text';
@@ -11,6 +11,7 @@ import { colorOpacity } from '../../../../utils/Converter/color';
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 
 const ListMyAllUnit = ({ unitItems }) => {
+  const t = useTranslations();
   // eslint-disable-next-line no-unused-vars
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 

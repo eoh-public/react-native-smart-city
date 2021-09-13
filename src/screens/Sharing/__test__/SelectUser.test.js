@@ -3,7 +3,7 @@ import { create, act } from 'react-test-renderer';
 import axios from 'axios';
 
 import SelectUser from '../SelectUser';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import { ViewButtonBottom, Button } from '../../../commons';
 import _TextInput from '../../../commons/Form/TextInput';
@@ -40,6 +40,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('test SelectUser container', () => {
+  const t = useTranslations();
   let tree;
   let route;
 

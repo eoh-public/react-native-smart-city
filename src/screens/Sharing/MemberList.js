@@ -7,7 +7,7 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Routes from '../../utils/Route';
@@ -21,6 +21,7 @@ import { TESTID } from '../../configs/Constants';
 import { useSCContextSelector } from '../../context';
 
 const MemberList = ({ route }) => {
+  const t = useTranslations();
   const { navigate } = useNavigation();
   const account = useSCContextSelector((state) => state.auth.account);
   const { unitId, unit } = route.params;

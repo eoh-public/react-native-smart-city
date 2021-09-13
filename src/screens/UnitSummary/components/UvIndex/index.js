@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../../configs';
 import Text from '../../../../commons/Text';
@@ -10,6 +10,7 @@ import ConfigHistoryChart from '../../../../commons/UnitSummary/ConfigHistoryCha
 import SegmentedRoundDisplay from '../../../../commons/UnitSummary/AirQuality/SegmentedRoundDisplay';
 
 const UvIndex = memo(({ summaryDetail }) => {
+  const t = useTranslations();
   const { uv_id } = summaryDetail;
   const showBoxHistory = useMemo(() => {
     return !!uv_id;

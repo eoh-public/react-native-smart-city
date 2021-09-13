@@ -1,6 +1,6 @@
 import { createConnection, getStates } from 'home-assistant-js-websocket';
 import Toast from 'react-native-toast-message';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import axios from 'axios';
 import {
   googleHomeConnect,
@@ -30,6 +30,7 @@ getStates.mockImplementation(() => []);
 createConnection.mockImplementation(() => connection);
 
 describe('Remote Control Google Home', () => {
+  const t = useTranslations();
   const options = [
     {
       auth: {},

@@ -7,7 +7,7 @@ import { watchMultiConfigs } from '../../../iot/Monitor';
 import { AlertAction, RadioCircle } from '../../../commons';
 import { TESTID } from '../../../configs/Constants';
 import IconComponent from '../../../commons/IconComponent';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 jest.mock('../../../iot/Monitor');
 
@@ -16,6 +16,7 @@ jest.mock('../../../iot/states', () => ({
 }));
 
 describe('Test OptionsDropdownActionTemplate', () => {
+  const t = useTranslations();
   const action_data = {
     color: '#00979D',
     command_prefer_over_bluetooth: true,

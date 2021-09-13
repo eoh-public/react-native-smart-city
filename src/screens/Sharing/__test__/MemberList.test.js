@@ -8,7 +8,7 @@ import MemberList from '../MemberList';
 import { AlertAction } from '../../../commons';
 import SharingMembers from '../../../commons/Sharing/MemberList';
 import API from '../../../configs/API';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import { TouchableOpacity } from 'react-native';
 import Routes from '../../../utils/Route';
@@ -42,6 +42,7 @@ jest.mock('react-redux', () => {
 });
 
 describe('test MemberList', () => {
+  const t = useTranslations();
   let route;
   let account;
 

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import moment from 'moment';
 import _ from 'lodash';
 import { get } from 'lodash';
@@ -55,6 +55,7 @@ const { standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const DeviceDetail = ({ account, route }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
   const [offsetTitle, setOffsetTitle] = useState(1);
   const [display, setDisplay] = useState({ items: [] });
@@ -102,7 +103,7 @@ const DeviceDetail = ({ account, route }) => {
         text: t('remove_device'),
       },
     ],
-    []
+    [t]
   );
 
   const listMenuItem = useMemo(() => {
@@ -143,12 +144,13 @@ const DeviceDetail = ({ account, route }) => {
     }
     return [...listMenuItemDefault, ...menuItems];
   }, [
-    display,
-    sensor,
-    unit,
-    isOwner,
+    display.items,
+    t,
     isFavourite,
     listMenuItemDefault,
+    sensor,
+    isOwner,
+    unit,
     addToFavorites,
     removeFromFavorites,
   ]);
@@ -609,6 +611,7 @@ const SensorDisplayItem = ({
   offsetTitle,
   setOffsetTitle,
 }) => {
+  const t = useTranslations();
   const doAction = useCallback(
     (action, data) => {
       sendRemoteCommand(sensor, action, data);
@@ -691,16 +694,19 @@ const SensorDisplayItem = ({
   return false;
 };
 
-const EmergencyCountdown = memo(({ countUpStr }) => (
-  <View style={styles.countDown}>
-    <Text type="Label" center style={styles.messageCountDown}>
-      {t('time_since_the_emergency_button_was_pressed')}
-    </Text>
-    <Text type="H3" center semibold color={Colors.Red6}>
-      {countUpStr}
-    </Text>
-  </View>
-));
+const EmergencyCountdown = memo(({ countUpStr }) => {
+  const t = useTranslations();
+  return (
+    <View style={styles.countDown}>
+      <Text type="Label" center style={styles.messageCountDown}>
+        {t('time_since_the_emergency_button_was_pressed')}
+      </Text>
+      <Text type="H3" center semibold color={Colors.Red6}>
+        {countUpStr}
+      </Text>
+    </View>
+  );
+});
 
 const mapStateToProps = (state) => ({
   account: state.auth.account,

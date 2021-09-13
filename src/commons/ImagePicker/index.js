@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Platform, PermissionsAndroid } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import ButtonPopup from '../ButtonPopup';
 
@@ -12,6 +12,8 @@ const ImagePicker = ({
   optionsCapture,
   optionsSelect,
 }) => {
+  const t = useTranslations();
+
   const requestCameraPermission = useCallback(async () => {
     if (Platform.OS === 'android') {
       try {

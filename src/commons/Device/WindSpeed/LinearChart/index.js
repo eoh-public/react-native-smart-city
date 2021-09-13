@@ -6,7 +6,7 @@ import {
   VictoryScatter,
   VictoryTooltip,
 } from 'victory-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../../configs';
 import ChartLoading from '../../../ChartLoading';
@@ -23,6 +23,7 @@ const LinearChart = memo(
     datasColor,
     chartOptions,
   }) => {
+    const t = useTranslations();
     const datas = chartOptions.showAll
       ? datasShow
       : datasShow.filter((item, index) => index === chartOptions.index);

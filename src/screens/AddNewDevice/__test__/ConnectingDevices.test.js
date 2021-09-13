@@ -5,7 +5,7 @@ import axios from 'axios';
 import { API } from '../../../configs';
 import ConnectingDevices from '../ConnectingDevices';
 import Text from '../../../commons/Text';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Routes from '../../../utils/Route';
 
 jest.mock('axios');
@@ -21,6 +21,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test ConnectingDevices', () => {
+  const t = useTranslations();
   let tree;
   let route;
 

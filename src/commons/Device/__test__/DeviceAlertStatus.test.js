@@ -1,10 +1,11 @@
 import DeviceAlertStatus from '../DeviceAlertStatus';
 import React from 'react';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import renderer, { act } from 'react-test-renderer';
 import { TESTID } from '../../../configs/Constants';
 
 describe('Test Device Alert Status', () => {
+  const t = useTranslations();
   let tree;
   let list_standard = [
     'tank_is_full',

@@ -1,4 +1,4 @@
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import Toast from 'react-native-toast-message';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import { sendCommandOverInternet } from '../Internet';
 jest.mock('axios');
 
 describe('Test IOT Remote Control Internet', () => {
+  const t = useTranslations();
   beforeEach(() => {
     Toast.show.mockClear();
     axios.post.mockClear();

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import ConnectingGateway from '../ConnectingGateway';
 import Text from '../../../commons/Text';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import API from '../../../configs/API';
 import Routes from '../../../utils/Route';
 
@@ -21,6 +21,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test ConnectingGateway', () => {
+  const t = useTranslations();
   let tree;
   let route;
 

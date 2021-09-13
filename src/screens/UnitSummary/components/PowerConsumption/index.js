@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 import moment from 'moment';
 import { API, Colors } from '../../../../configs';
 import Text from '../../../../commons/Text';
@@ -14,6 +14,7 @@ import { TESTID } from '../../../../configs/Constants';
 import { axiosGet } from '../../../../utils/Apis/axios';
 
 const PowerConsumption = memo(({ summaryDetail }) => {
+  const t = useTranslations();
   const {
     voltValue,
     currentValue,

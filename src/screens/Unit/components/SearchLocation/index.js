@@ -1,12 +1,13 @@
 import React, { memo } from 'react';
 import { View, TextInput } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../../configs';
 import styles from './SearchBarLocationStyles';
 
 const SearchBarLocation = memo(({ input, onTextInput }) => {
+  const t = useTranslations();
   return (
     <View style={styles.container}>
       <IconOutline

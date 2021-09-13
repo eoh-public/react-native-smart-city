@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors, Theme } from '../../configs';
 import Text from '../../commons/Text';
@@ -15,6 +15,7 @@ import { TESTID } from '../../configs/Constants';
 import { useSCContextSelector } from '../../context';
 
 const UVIndexGuide = memo(() => {
+  const t = useTranslations();
   useTitleHeader(t('UV Index Guide'));
   const language = useSCContextSelector((state) => state.language);
 

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Theme from '../../../configs/Theme';
 
 import { Colors } from '../../../configs';
@@ -8,6 +8,7 @@ import Text from '../../../commons/Text';
 import { useSCContextSelector } from '../../../context';
 
 const HeaderExplore = memo(() => {
+  const t = useTranslations();
   useSCContextSelector((state) => state.language);
   return (
     <View style={styles.container}>

@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState, useEffect } from 'react';
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { VLCPlayer } from 'react-native-vlc-media-player';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import PauseIcon from '../../../assets/images/Common/Pause.svg';
 import { Colors, Constants, Images } from '../../configs';
@@ -25,6 +25,7 @@ const MediaPlayerDetail = memo(
     goToPlayBack,
     isShowFullScreenIcon = false,
   }) => {
+    const t = useTranslations();
     const [paused, setPaused] = useState(isPaused);
     const onTapPause = useCallback(() => {
       setPaused(false);

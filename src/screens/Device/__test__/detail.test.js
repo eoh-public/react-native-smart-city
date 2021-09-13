@@ -7,7 +7,7 @@ import { API } from '../../../configs';
 import { AlertSendConfirm } from '../../../commons/EmergencyButton/AlertSendConfirm';
 import { AlertSent } from '../../../commons/EmergencyButton/AlertSent';
 import { AlertAction, ButtonPopup, MenuActionMore } from '../../../commons';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import Text from '../../../commons/Text';
 import { IconFill } from '@ant-design/icons-react-native';
@@ -67,6 +67,7 @@ const mockAxios = (
 };
 
 describe('test DeviceDetail', () => {
+  const t = useTranslations();
   let tree;
   let route;
   let account;

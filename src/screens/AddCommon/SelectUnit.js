@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   SafeAreaView,
@@ -19,6 +19,7 @@ import Routes from '../../utils/Route';
 import { TESTID } from '../../configs/Constants';
 
 const AddCommonSelectUnit = ({ route }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
   const { addType } = route.params;
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -49,7 +50,7 @@ const AddCommonSelectUnit = ({ route }) => {
         setSubTitle(t('add_new_subunit_select_unit'));
         break;
     }
-  }, [title, subTitle, addType]);
+  }, [title, subTitle, addType, t]);
 
   useEffect(() => {
     (async () => {

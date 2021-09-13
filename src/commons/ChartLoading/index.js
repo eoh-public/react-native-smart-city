@@ -1,8 +1,9 @@
 import React from 'react';
 import Svg, { Text } from 'react-native-svg';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 const ChartLoading = ({ message }) => {
+  const t = useTranslations();
   return (
     <Svg width={'100%'} height={300}>
       <Text

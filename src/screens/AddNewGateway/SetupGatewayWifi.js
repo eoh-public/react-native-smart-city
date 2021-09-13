@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react';
 import { ScrollView, SafeAreaView, PermissionsAndroid } from 'react-native';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import wifi from 'react-native-android-wifi';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import { AlertAction, Section, ViewButtonBottom } from '../../commons';
@@ -23,6 +23,7 @@ import {
 import styles from './SetupGatewayWifiStyles';
 
 const SetupGatewayWifi = memo(({ route }) => {
+  const t = useTranslations();
   const { unit_id } = route.params;
   const isFocused = useIsFocused();
   const { navigate, goBack } = useNavigation();
@@ -50,7 +51,7 @@ const SetupGatewayWifi = memo(({ route }) => {
       } catch (err) {}
     };
     wifiPermission();
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (isFocused) {

@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../configs';
 import Text from '../../../commons/Text';
@@ -12,6 +12,7 @@ import { formatNumberCompact } from '../../../utils/Utils';
 import { axiosPost } from '../../../utils/Apis/axios';
 
 const CityItem = memo(({ item, onSelect }) => {
+  const t = useTranslations();
   const { id, name, icon, is_pin, count_pin } = item;
 
   const onPressPinPublicUnit = useCallback(async () => {

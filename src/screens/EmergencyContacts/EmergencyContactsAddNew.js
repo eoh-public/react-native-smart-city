@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { SafeAreaView, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Section, ViewButtonBottom } from '../../commons';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { API, Colors } from '../../configs';
@@ -11,6 +11,7 @@ import { axiosPost } from '../../utils/Apis/axios';
 import { ToastBottomHelper } from '../../utils/Utils';
 
 export const EmergencyContactsAddNew = ({ route }) => {
+  const t = useTranslations();
   const { group } = route.params;
   const { goBack } = useNavigation();
   const { keyboardBottomPadding } = useKeyboardShow();
@@ -42,7 +43,7 @@ export const EmergencyContactsAddNew = ({ route }) => {
     } else {
       ToastBottomHelper.error(t('create_contact_failed'));
     }
-  }, [goBack, group.id, textName, textPhone]);
+  }, [goBack, group.id, t, textName, textPhone]);
 
   return (
     <SafeAreaView

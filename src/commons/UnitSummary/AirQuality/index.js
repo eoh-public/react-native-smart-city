@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../configs';
 import { Section } from '../../../commons/index';
@@ -12,6 +12,7 @@ import SegmentedRoundDisplay from './SegmentedRoundDisplay';
 import { TESTID } from '../../../configs/Constants';
 
 const AirQuality = memo(({ summaryDetail }) => {
+  const t = useTranslations();
   const {
     outdoor_pm10_id,
     outdoor_pm2_5_id,
@@ -121,6 +122,7 @@ const AirQuality = memo(({ summaryDetail }) => {
             totalValue={500}
             title={outdoorValues[indexOutdoor].title}
             style={styles.segment}
+            textHeader={t('text_air_quality_index')}
           />
 
           <TouchableOpacity

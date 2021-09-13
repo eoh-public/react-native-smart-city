@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Images, Device } from '../../configs';
 import { TESTID } from '../../configs/Constants';
@@ -19,6 +19,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
+  const t = useTranslations();
   const { navigate } = useNavigation();
   const renderCamera = () => {
     if (station?.camera) {
