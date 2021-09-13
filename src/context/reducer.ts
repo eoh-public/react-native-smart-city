@@ -41,6 +41,8 @@ export const reducer = (currentState: ContextData, action: Action) => {
       return { ...currentState, auth: payload };
     case Action.STORE_STATUS_BAR:
       return { ...currentState, statusBar: payload };
+    case Action.UPDATE_LANGUAGE:
+      return { ...currentState, language: payload };
     case Action.LIST_DEVICE_TYPES:
       if (currentState.listDevice) {
         currentState.listDevice[action.payload.chipId] = {
