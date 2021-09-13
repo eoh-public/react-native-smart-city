@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../configs';
 import TotalPowerBox from '../TotalPowerBox';
@@ -8,6 +8,7 @@ import Text from '../../Text';
 import { TESTID } from '../../../configs/Constants';
 
 const TotalPowerConsumption = memo(({ time, total }) => {
+  const t = useTranslations();
   return (
     <View style={styles.container}>
       <Text color={Colors.Gray9} size={16} style={styles.txtCurrent}>

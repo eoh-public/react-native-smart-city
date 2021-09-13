@@ -7,12 +7,13 @@ import { Section, Today } from '../../../../commons';
 import ListQualityIndicator from '../../../../commons/Device/WaterQualitySensor/ListQualityIndicator';
 import PMSensorIndicatior from '../../../../commons/Device/PMSensor/PMSensorIndicatior';
 import ConfigHistoryChart from '../../../../commons/UnitSummary/ConfigHistoryChart';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 import HistoryChart from '../../../../commons/Device/HistoryChart';
 import { axiosGet } from '../../../../utils/Apis/axios';
 import { TESTID } from '../../../../configs/Constants';
 
 const ThreePhasePowerConsumption = memo(({ unit, summary, summaryDetail }) => {
+  const t = useTranslations();
   const {
     volt1Value,
     volt2Value,

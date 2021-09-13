@@ -4,7 +4,6 @@ import Toast from 'react-native-toast-message';
 
 import { Alert } from '../commons';
 import { Colors } from '../configs';
-import { setLanguage, updateTranslation } from '../utils/I18n';
 import {
   ActionDataMap,
   ActionType,
@@ -53,17 +52,8 @@ export const SCProvider = ({ children }) => {
     setAction('UPDATE_AUTH', authData);
   };
 
-  const setLocale = (language: Language) => {
-    setLanguage(language);
-    setAction('UPDATE_LANGUAGE', language);
-  };
-
   const setStatusBar = (statusBar: StatusBar) => {
     setAction('STORE_STATUS_BAR', statusBar);
-  };
-
-  const updateLocale = (langTranslate: any) => {
-    updateTranslation(langTranslate);
   };
 
   const setAction = <T extends ActionType>(
@@ -76,10 +66,8 @@ export const SCProvider = ({ children }) => {
   const providerValue = {
     stateData,
     setAuth,
-    setLocale,
     setAction,
     setStatusBar,
-    updateLocale,
   };
 
   return (

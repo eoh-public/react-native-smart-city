@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import styles from './CameraDeviceStyles';
 import MediaPlayerDetail from '../MediaPlayerDetail';
@@ -16,6 +16,7 @@ const { standardizeWidth, standardizeHeight } = standardizeCameraScreenSize(
 );
 
 const CameraDevice = ({ station, handleFullScreen, goToPlayBack }) => {
+  const t = useTranslations();
   const { navigate } = useNavigation();
 
   const onPressViewAll = () => {

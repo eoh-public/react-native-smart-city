@@ -10,7 +10,7 @@ import Toast from 'react-native-toast-message';
 
 import Routes from '../../../utils/Route';
 import ManageSubUnit from '../ManageSubUnit';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { removeSubUnit, manageSubUnit } from '../../../redux/Actions/unit';
 import { TESTID } from '../../../configs/Constants';
 import Text from '../../../commons/Text';
@@ -49,6 +49,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test ManageSubUnit', () => {
+  const t = useTranslations();
   let route;
 
   beforeEach(() => {

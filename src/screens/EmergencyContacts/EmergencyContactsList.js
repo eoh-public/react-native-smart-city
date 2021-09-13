@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { AlertAction, MenuActionList, Section } from '../../commons';
 import { RowUser } from '../../commons/RowUser';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
@@ -17,6 +17,7 @@ import { ToastBottomHelper } from '../../utils/Utils';
 const MAX_EMERGENCY_CONTACTS = 5;
 
 export const EmergencyContactsList = ({ route }) => {
+  const t = useTranslations();
   const { unitId, group } = route.params;
   const { navigate } = useNavigation();
   const isFocused = useIsFocused();
@@ -48,7 +49,13 @@ export const EmergencyContactsList = ({ route }) => {
       ToastBottomHelper.error(message);
     }
     hideAlertRemoveContact();
-  }, [stateAlertRemoveContact, getListContacts, group, hideAlertRemoveContact]);
+  }, [
+    stateAlertRemoveContact.member.id,
+    hideAlertRemoveContact,
+    t,
+    getListContacts,
+    group.id,
+  ]);
 
   const onAddNew = useCallback(() => {
     setShowAddnewModal();

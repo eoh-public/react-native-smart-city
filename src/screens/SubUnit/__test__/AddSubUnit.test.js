@@ -5,7 +5,7 @@ import { ImagePicker, ViewButtonBottom } from '../../../commons';
 import { act, create } from 'react-test-renderer';
 import Toast from 'react-native-toast-message';
 import Routes from '../../../utils/Route';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { createSubUnit } from '../../../redux/Actions/unit';
 import { TESTID } from '../../../configs/Constants';
 import _TextInput from '../../../commons/Form/TextInput';
@@ -36,6 +36,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test AddSubUnit', () => {
+  const t = useTranslations();
   let route;
 
   beforeEach(() => {

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { t } from 'i18n-js';
+import { useTranslations } from '../hooks/Common/useTranslations';
 import { Colors, Device } from '../configs';
 import Route from '../utils/Route';
 import ActivityLogScreen from '../screens/ActivityLog';
@@ -30,6 +30,7 @@ import _ from 'lodash';
 const Stack = createStackNavigator();
 
 export const UnitStack = memo((props) => {
+  const t = useTranslations();
   return (
     <Stack.Navigator
       screenOptions={{

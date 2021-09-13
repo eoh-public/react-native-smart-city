@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../Text';
@@ -10,6 +10,7 @@ import ImageButton from '../ImageButton';
 const keyExtractor = (item) => item.id.toString();
 const MenuActionAddnew = memo(
   ({ visible, hideModal, dataActions, onItemClick }) => {
+    const t = useTranslations();
     const numColumns = dataActions.length < 3 ? dataActions.length : 3;
 
     const onPress = useCallback(

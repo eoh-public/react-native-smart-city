@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { ScrollView, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import styles from './AddLGDeviceStyles';
 import { API, Colors } from '../../configs';
@@ -15,6 +15,7 @@ import { ToastBottomHelper } from '../../utils/Utils';
 import { SCConfig } from '../../configs';
 
 const AddLGDevice = memo(({ route }) => {
+  const t = useTranslations();
   const { unit_id, code, backend_url } = route.params;
   const { navigate, goBack } = useNavigation();
   const [unit, setUnit] = useState({ stations: [] });
@@ -68,7 +69,7 @@ const AddLGDevice = memo(({ route }) => {
 
     ToastBottomHelper.success(t('lg_sync_success'));
     navigate(Routes.Dashboard);
-  }, [backend_url, code, navigate, stationId]);
+  }, [backend_url, code, navigate, stationId, t]);
 
   const stations = unit.stations.map((item) => ({
     ...item,

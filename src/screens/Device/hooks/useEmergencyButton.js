@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { API } from '../../../configs';
 import { axiosPost, axiosPut } from '../../../utils/Apis/axios';
@@ -80,6 +80,7 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
 };
 
 export const useAlertResolveEmergency = (lastEvent, fetchDataDeviceDetail) => {
+  const t = useTranslations();
   const [showPopupResolveSuccess, setShowPopupResolveSuccess] = useState(false);
   const [stateAlertResolve, setStateAlertResolve] = useState({
     visible: false,
@@ -125,7 +126,7 @@ export const useAlertResolveEmergency = (lastEvent, fetchDataDeviceDetail) => {
       hideAlertResolve();
       ToastBottomHelper.error(t('alert_resolve_error'));
     }
-  }, [hideAlertResolve, lastEvent, fetchDataDeviceDetail]);
+  }, [lastEvent.id, hideAlertResolve, fetchDataDeviceDetail, t]);
 
   return {
     showPopupResolveSuccess,

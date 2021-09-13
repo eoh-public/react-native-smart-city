@@ -2,7 +2,7 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import ConnectedGateway from '../ConnectedGateway';
 
@@ -19,6 +19,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test ConnectedGateway', () => {
+  const t = useTranslations();
   let tree;
   let route;
 

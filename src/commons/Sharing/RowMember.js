@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
@@ -19,6 +19,7 @@ const arrColor = [
 ];
 const RowMember = memo(
   ({ member, index, ownerId, currentUserId, onPressRemove }) => {
+    const t = useTranslations();
     const canRemoveMember = useMemo(
       () => ownerId === currentUserId && member.id !== ownerId,
       [currentUserId, member.id, ownerId]
@@ -30,7 +31,7 @@ const RowMember = memo(
           : member.id === currentUserId
           ? [t('me'), Colors.Gray6]
           : ['', ''],
-      [currentUserId, member.id, ownerId]
+      [currentUserId, member.id, ownerId, t]
     );
     const paddingBottom = role ? 16 : 23;
 

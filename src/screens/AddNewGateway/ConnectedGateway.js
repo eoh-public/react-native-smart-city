@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
@@ -11,6 +11,7 @@ import { useConnectGateway } from './hooks';
 import { TESTID } from '../../configs/Constants';
 
 const ConnectedGateway = memo(({ route }) => {
+  const t = useTranslations();
   const { new_chip, unit_id, unit_name } = route.params;
   const { onPressDone } = useConnectGateway(unit_id);
 

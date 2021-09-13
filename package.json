@@ -84,6 +84,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
+    "@messageformat/core": "^3.0.0",
     "@ant-design/icons-react-native": "^2.2.1",
     "@ant-design/react-native": "^4.0.5",
     "@formatjs/intl-getcanonicallocales": "^1.4.5",

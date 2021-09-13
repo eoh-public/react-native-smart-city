@@ -5,7 +5,7 @@ import { IconOutline } from '@ant-design/icons-react-native';
 import { RNCamera } from 'react-native-camera';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors, Device } from '../../../../configs';
 import Text from '../../../../commons/Text';
@@ -26,6 +26,7 @@ const LoadingCamera = memo(() => {
 });
 
 const VerifingQRCode = memo(() => {
+  const t = useTranslations();
   return (
     <View style={styles.maskOutter}>
       <TouchableOpacity style={[styles.viewVerifing, styles.buttonShadow]}>

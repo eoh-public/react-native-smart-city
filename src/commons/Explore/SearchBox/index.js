@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../configs';
 import Theme from '../../../configs/Theme';
@@ -9,6 +9,7 @@ import Search from '../../../../assets/images/Explore/Search.svg';
 import ArrowBack from '../../../../assets/images/Explore/ArrowBack.svg';
 
 const SearchBox = memo(({ isBack, style, onFocus }) => {
+  const t = useTranslations();
   const { goBack } = useNavigation();
   const onBack = useCallback(() => {
     goBack();

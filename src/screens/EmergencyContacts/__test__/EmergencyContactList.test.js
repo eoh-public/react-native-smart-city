@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { act, create } from 'react-test-renderer';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Routes from '../../../utils/Route';
 import { AlertAction } from '../../../commons';
 import { EmergencyContactsList } from '../EmergencyContactsList';
@@ -20,6 +20,7 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('test EmergencyContactList', () => {
+  const t = useTranslations();
   let route;
 
   beforeEach(() => {

@@ -2,10 +2,11 @@ import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Text from '../Text';
 import { Colors } from '../../configs';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import FImage from '../FImage';
 
 const FooterInfo = memo(({ data }) => {
+  const t = useTranslations();
   return (
     <View style={styles.container}>
       <View style={styles.containerPoweredBy}>

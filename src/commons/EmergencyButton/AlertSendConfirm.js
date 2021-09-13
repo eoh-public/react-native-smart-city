@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ButtonPopup } from '../index';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { IconOutline } from '@ant-design/icons-react-native';
 import Text from '../Text';
 import { Colors } from '../../configs';
@@ -14,6 +14,7 @@ const AlertSendConfirm = ({
   unit,
   station,
 }) => {
+  const t = useTranslations();
   return (
     <ButtonPopup
       rowButton

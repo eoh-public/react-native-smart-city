@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
@@ -14,6 +14,7 @@ import { useStateAlertRename } from './hooks/useStateAlertRename';
 import { TESTID } from '../../configs/Constants';
 
 const ConnectDevices = memo(({ route }) => {
+  const t = useTranslations();
   const { new_sensor, station_id, unit_id, unit_name } = route.params;
   const {
     onPressDone,

@@ -1,12 +1,13 @@
 import React, { memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 import { Today, Section } from '../../../../commons';
 import Text from '../../../../commons/Text';
 import ConfigHistoryChart from '../../../../commons/UnitSummary/ConfigHistoryChart';
 import Item from './Item';
 
 const WaterQuality = memo(({ summaryDetail }) => {
+  const t = useTranslations();
   const { ph_id, tur_id, clo_id } = summaryDetail;
   const showBoxHistory = useMemo(() => {
     return ph_id || tur_id || clo_id ? true : false;

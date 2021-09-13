@@ -1,11 +1,12 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import Routes from '../../utils/Route';
 import { useNavigation } from '@react-navigation/native';
 import { MenuActionMore } from '../../commons';
 
 const MoreMenu = memo(
   ({ unit, isOwner, hidePopover, childRef, showingPopover }) => {
+    const t = useTranslations();
     const navigation = useNavigation();
 
     const onItemClick = useCallback(
@@ -30,7 +31,7 @@ const MoreMenu = memo(
       return isOwner
         ? [RouteManageUnit, RouteUnitMemberList]
         : [RouteUnitMemberList];
-    }, [unit, isOwner]);
+    }, [t, unit, isOwner]);
 
     return (
       <MenuActionMore

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import i18n from 'i18n-js';
 import { TESTID } from '../../configs/Constants';
 
@@ -9,6 +9,7 @@ import Text from '../../commons/Text';
 import useTitleHeader from '../../hooks/Common/useTitleHeader';
 
 const TDSGuide = memo(() => {
+  const t = useTranslations();
   useTitleHeader(t('tds_infomation'));
   const currentLanguage = i18n.currentLocale();
 

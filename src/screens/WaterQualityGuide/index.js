@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import { View, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import Text from '../../commons/Text';
 import { Colors, Theme } from '../../configs';
@@ -9,6 +9,7 @@ import { TESTID } from '../../configs/Constants';
 import { useSCContextSelector } from '../../context';
 
 const WaterQualityGuide = memo(({ route }) => {
+  const t = useTranslations();
   const { waterType } = route.params;
   const language = useSCContextSelector((state) => state.language);
 

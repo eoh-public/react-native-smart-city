@@ -1,7 +1,7 @@
 /* eslint-disable promise/prefer-await-to-then */
 /* eslint-disable promise/prefer-await-to-callbacks */
 import { BLE } from '../../configs';
-import { t } from 'i18n-js';
+import t from '../../hooks/Common/useTranslations';
 import base64 from 'react-native-base64';
 import { BleManager } from 'react-native-ble-plx';
 import { ToastBottomHelper } from '../../utils/Utils';
@@ -68,11 +68,7 @@ const realScanBluetoothDevices = () => {
     const index = needToScanDevices.indexOf(name);
     needToScanDevices.splice(index, 1);
 
-    ToastBottomHelper.success(
-      t('Found bluetooth %{name} for remote control', {
-        name,
-      })
-    );
+    ToastBottomHelper.success(t(`Found bluetooth ${name} for remote control`));
 
     bluetoothDevices[name] = device;
     if (!needToScanDevices.length) {

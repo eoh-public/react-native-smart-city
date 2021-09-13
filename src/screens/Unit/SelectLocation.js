@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import BottomButtonView from '../../commons/BottomButtonView';
 
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { API } from '../../configs';
 import styles from './SelectLocationStyles';
 import SearchBarLocation from './components/SearchLocation';
@@ -24,6 +24,7 @@ const DEFAULT_LATITUDE = 10.7974046; // EoH center
 const DEFAULT_LONGITUDE = 106.7035663;
 
 const SelectLocation = memo(({ route }) => {
+  const t = useTranslations();
   const { updateLocation } = route.params;
   const { goBack } = useNavigation();
   const [input, setInput] = useState('');

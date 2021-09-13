@@ -6,10 +6,11 @@ import {
 } from './index.mock.js'; // need to be imported first in the file
 import { sendRemoteCommand } from '../index';
 import Toast from 'react-native-toast-message';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { SEND_COMMAND_OVER_BLUETOOTH_FAIL } from '../Bluetooth';
 
 describe('Test Remote Control', () => {
+  const t = useTranslations();
   beforeEach(() => {
     Toast.show.mockClear();
     mockSendCommandOverBluetooth.mockClear();

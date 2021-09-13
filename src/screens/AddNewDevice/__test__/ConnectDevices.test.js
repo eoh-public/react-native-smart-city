@@ -2,7 +2,7 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import ConnectDevices from '../ConnectDevices';
 import { TESTID } from '../../../configs/Constants';
 import { TouchableOpacity } from 'react-native';
@@ -49,6 +49,7 @@ describe('Test ConnectDevices', () => {
   };
 
   test('create', async () => {
+    const t = useTranslations();
     await act(async () => {
       tree = await create(<ConnectDevices route={route} />);
     });

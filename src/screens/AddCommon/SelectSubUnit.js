@@ -1,5 +1,5 @@
 import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import React, { useCallback, useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native';
 
@@ -13,6 +13,7 @@ import styles from './SelectSubUnitStyles';
 import Button from '../../commons/Button';
 
 const AddCommonSelectSubUnit = ({ route }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
   const isFocused = useIsFocused();
   const { addType, unit_id } = route.params;
@@ -32,7 +33,7 @@ const AddCommonSelectSubUnit = ({ route }) => {
         setSubTitle(t('select_a_sub_unit'));
         break;
     }
-  }, [title, subTitle, addType]);
+  }, [title, subTitle, addType, t]);
 
   const fetchDetails = useCallback(async () => {
     const { success, data } = await axiosGet(

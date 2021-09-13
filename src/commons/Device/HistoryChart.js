@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import moment from 'moment';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
@@ -29,6 +29,7 @@ const HistoryChart = memo(
     setStartDate,
     configuration,
   }) => {
+    const t = useTranslations();
     const dateNow = moment().valueOf();
     const [chartOptions, setChartOptions] = useState({
       index: -1,

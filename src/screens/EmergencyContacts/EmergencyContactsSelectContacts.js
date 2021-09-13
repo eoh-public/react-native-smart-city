@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Section, ViewButtonBottom } from '../../commons';
 import { RowUser } from '../../commons/RowUser';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
@@ -29,6 +29,7 @@ const dataContact = [
 ];
 
 export const EmergencyContactsSelectContacts = ({ route }) => {
+  const t = useTranslations();
   const { goBack } = useNavigation();
   // const { unitId } = route.params;
 

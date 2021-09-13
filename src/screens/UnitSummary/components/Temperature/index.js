@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { t } from 'i18n-js';
+import t, { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../../configs';
 import { Section, Today } from '../../../../commons';
@@ -44,6 +44,7 @@ const getDataTemperature = (summaryDetail) => {
 };
 
 const Temperature = memo(({ summaryDetail }) => {
+  const t = useTranslations();
   const { listConfigs } = summaryDetail;
 
   const showBoxHistory = useMemo(() => {

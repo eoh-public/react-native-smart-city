@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { AppState, RefreshControl, View } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import styles from './styles';
 import AddMenu from './AddMenu';
@@ -26,6 +26,7 @@ import { useNavigation } from '@react-navigation/native';
 import Routes from '../../utils/Route';
 
 const UnitDetail = ({ route }) => {
+  const t = useTranslations();
   const { unitId, unitData } = route.params;
   const isFocused = useIsFocused();
   const { stateData, setAction } = useContext(SCContext);
@@ -56,23 +57,26 @@ const UnitDetail = ({ route }) => {
     setIsFullScreen(false);
   }, []);
 
-  const prepareData = useCallback((rawUnitData) => {
-    const favorites = {
-      isFakeStation: true,
-      isFavorites: true,
-      name: t('favorites'),
-      sensors: [],
-    };
-    rawUnitData.stations.unshift(favorites);
-    rawUnitData.stations.forEach((stationItem) => {
-      if (stationItem.sensors) {
-        const favoriteDevices = stationItem.sensors.filter(
-          (sensorItem) => sensorItem.is_favourite
-        );
-        favorites.sensors = favorites.sensors.concat(favoriteDevices);
-      }
-    });
-  }, []);
+  const prepareData = useCallback(
+    (rawUnitData) => {
+      const favorites = {
+        isFakeStation: true,
+        isFavorites: true,
+        name: t('favorites'),
+        sensors: [],
+      };
+      rawUnitData.stations.unshift(favorites);
+      rawUnitData.stations.forEach((stationItem) => {
+        if (stationItem.sensors) {
+          const favoriteDevices = stationItem.sensors.filter(
+            (sensorItem) => sensorItem.is_favourite
+          );
+          favorites.sensors = favorites.sensors.concat(favoriteDevices);
+        }
+      });
+    },
+    [t]
+  );
 
   const fetchDetails = useCallback(async () => {
     await fetchWithCache(API.UNIT.UNIT_DETAIL(unitId), {}, (response) => {
@@ -216,7 +220,7 @@ const UnitDetail = ({ route }) => {
   return (
     <WrapParallaxScrollView
       uriImg={unit.background}
-      title={t('Welcome %{name}', {
+      title={t('Welcome {name}', {
         name: unit.name ? unit.name : '',
       })}
       refreshControl={

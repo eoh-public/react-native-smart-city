@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors, Images } from '../../../../configs';
 import { TESTID } from '../../../../configs/Constants';
@@ -20,6 +20,7 @@ import { colorOpacity } from '../../../../utils/Converter/color';
 let screenWidth = Dimensions.get('window').width;
 
 const MyUnit = ({ myUnits }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
   const carouselItems = useMemo(() => myUnits, [myUnits]);
   const goToDetail = useCallback(

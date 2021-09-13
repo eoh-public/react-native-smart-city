@@ -1,7 +1,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 import SensorIcon from '../../../assets/images/Device/sensor.svg';
@@ -14,6 +14,7 @@ import DoorInactive from '../../../assets/images/Device/door-inactive.svg';
 import DevicePermissionsCheckbox from './DevicePermissionsCheckbox';
 
 const StationDevicePermissions = memo(({ dataStation, onselectSensor }) => {
+  const t = useTranslations();
   const [listChosen, setListChosen] = useState({}); // { sensorId : indexConfigChoosen , ...}
   const [expandedIndex, setExpandedIndex] = useState(-1);
 

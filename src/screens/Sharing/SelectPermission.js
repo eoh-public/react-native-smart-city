@@ -8,7 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { API, Colors } from '../../configs';
 import ViewButtonBottom from '../../commons/ViewButtonBottom';
@@ -23,6 +23,7 @@ import { TESTID } from '../../configs/Constants';
 let dataStationTemp = [];
 
 const SelectPermission = ({ route }) => {
+  const t = useTranslations();
   const { unit } = route.params;
   const navigation = useNavigation();
   const [dataStations, setDataStations] = useState([]);

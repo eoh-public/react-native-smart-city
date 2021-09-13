@@ -3,10 +3,11 @@ import { View, StyleSheet } from 'react-native';
 import AlertStatusMachine from './WaterPurifierStatus/AlertStatusMachine';
 import { TESTID } from '../../configs/Constants';
 import { Colors } from '../../configs';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 const DeviceAlertStatus = memo(
   ({ data, style, offsetTitle, setOffsetTitle }) => {
+    const t = useTranslations();
     const listStatus = data.filter((item) => item.value === 1);
 
     useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { IconOutline, IconFill } from '@ant-design/icons-react-native';
 
 import { API, Colors, Images } from '../../configs';
@@ -18,6 +18,7 @@ const SharedUnit = ({
   index,
   isOptions = true,
 }) => {
+  const t = useTranslations();
   const { unit } = item;
   const goToDetail = useCallback(() => {
     navigation.navigate(Routes.UnitStack, {

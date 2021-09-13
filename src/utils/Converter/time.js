@@ -1,4 +1,4 @@
-import { t } from 'i18n-js';
+import t, { useTranslations } from '../../hooks/Common/useTranslations';
 import moment from 'moment';
 
 export const transformDatetime = (data = {}, listFieldName = []) => {
@@ -47,7 +47,8 @@ export const timeDifference = (current, previous) => {
   }
 };
 
-export const getTitleFromTime = (time, current) => {
+export const useGetTitleFromTime = (time, current) => {
+  const t = useTranslations();
   time = moment(time).format('YYYY-MM-DD');
   current = moment(current).format('YYYY-MM-DD');
 

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
@@ -8,6 +8,7 @@ import Connect from '../../../assets/images/Device/Connect.svg';
 import { TESTID } from '../../configs/Constants';
 
 const SensorConnectedStatus = memo(({ txtSensor, timeLastUpdate }) => {
+  const t = useTranslations();
   return (
     <View style={styles.container} testID={TESTID.SENSOR_CONNECTED_STATUS}>
       <View style={styles.connectStatus}>

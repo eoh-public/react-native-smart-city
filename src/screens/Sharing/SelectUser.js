@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { API, Colors, Theme } from '../../configs';
 import AccountList from '../../commons/Auth/AccountList';
@@ -22,6 +22,7 @@ import { TESTID } from '../../configs/Constants';
 import Text from '../../commons/Text';
 
 const SelectUser = ({ route }) => {
+  const t = useTranslations();
   const navigation = useNavigation();
   const { unit, permissions } = route.params;
   const [errorText, setErrorText] = useState('');
@@ -64,7 +65,7 @@ const SelectUser = ({ route }) => {
     }
     setErrorText('');
     sharePermissions(phone, email);
-  }, [content, sharePermissions]);
+  }, [content, sharePermissions, t]);
 
   const onPressNext = useCallback(() => {
     navigation.dangerouslyGetParent().goBack();

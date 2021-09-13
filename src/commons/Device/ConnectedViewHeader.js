@@ -1,13 +1,14 @@
 import React, { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 import { timeDifference } from '../../utils/Converter/time';
 
 const DisplayTextConnected = memo(({ type }) => {
+  const t = useTranslations();
   let text = '';
   switch (type) {
     case 'GoogleHome':
@@ -21,6 +22,7 @@ const DisplayTextConnected = memo(({ type }) => {
 });
 
 const ConnectedViewHeader = memo(({ lastUpdated, type, isDisplayTime }) => {
+  const t = useTranslations();
   const lastUpdatedStr = lastUpdated
     ? timeDifference(new Date(), lastUpdated)
     : null;

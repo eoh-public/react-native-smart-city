@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import { CircleView } from '../../commons';
@@ -29,6 +29,7 @@ const DeviceIcon = memo(({ sensor }) => {
 });
 
 const DisplayTextDisconnected = memo(({ type }) => {
+  const t = useTranslations();
   let text = '';
   switch (type) {
     case 'GoogleHome':
@@ -41,35 +42,42 @@ const DisplayTextDisconnected = memo(({ type }) => {
   return <Text style={styles.redStatus}>{text}</Text>;
 });
 
-const DisconnectedView = memo(({ sensor, type }) => (
-  <View style={styles.statusContainer}>
-    <CircleView size={80} backgroundColor={Colors.Gray3} style={styles.center}>
-      <CircleView size={64} backgroundColor={Colors.BG} style={styles.center}>
-        <DeviceIcon sensor={sensor} />
+const DisconnectedView = memo(({ sensor, type }) => {
+  const t = useTranslations();
+  return (
+    <View style={styles.statusContainer}>
+      <CircleView
+        size={80}
+        backgroundColor={Colors.Gray3}
+        style={styles.center}
+      >
+        <CircleView size={64} backgroundColor={Colors.BG} style={styles.center}>
+          <DeviceIcon sensor={sensor} />
+        </CircleView>
       </CircleView>
-    </CircleView>
-    <View style={styles.connectStatus}>
-      <WifiOffIcon width={16} height={16} />
-      <DisplayTextDisconnected type={type} />
+      <View style={styles.connectStatus}>
+        <WifiOffIcon width={16} height={16} />
+        <DisplayTextDisconnected type={type} />
+      </View>
+      <View style={styles.disconnectSuggestionContainer}>
+        <View style={styles.row}>
+          <IconOutline name={'alert'} size={16} />
+          <Text bold style={styles.boldText}>
+            {t('suggestions')}:
+          </Text>
+        </View>
+        <View style={styles.infoRow}>
+          <CircleView size={6} backgroundColor={Colors.Gray8} />
+          <Text style={styles.noticeText}>{t('check_the_power')}</Text>
+        </View>
+        <View style={styles.infoRow}>
+          <CircleView size={6} backgroundColor={Colors.Gray8} />
+          <Text style={styles.noticeText}>{t('check_the_wifi')}</Text>
+        </View>
+      </View>
     </View>
-    <View style={styles.disconnectSuggestionContainer}>
-      <View style={styles.row}>
-        <IconOutline name={'alert'} size={16} />
-        <Text bold style={styles.boldText}>
-          {t('suggestions')}:
-        </Text>
-      </View>
-      <View style={styles.infoRow}>
-        <CircleView size={6} backgroundColor={Colors.Gray8} />
-        <Text style={styles.noticeText}>{t('check_the_power')}</Text>
-      </View>
-      <View style={styles.infoRow}>
-        <CircleView size={6} backgroundColor={Colors.Gray8} />
-        <Text style={styles.noticeText}>{t('check_the_wifi')}</Text>
-      </View>
-    </View>
-  </View>
-));
+  );
+});
 
 const styles = StyleSheet.create({
   statusContainer: {

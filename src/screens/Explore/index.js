@@ -7,7 +7,7 @@ import {
   FlatList,
 } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { API, Colors } from '../../configs';
 import { axiosGet } from '../../utils/Apis/axios';
@@ -25,6 +25,7 @@ navigator.geolocation = require('@react-native-community/geolocation');
 let page = 1;
 
 const Explore = ({ navigation }) => {
+  const t = useTranslations();
   useBlockBackAndroid();
   const [transY] = useKeyboard(80);
 
@@ -104,7 +105,7 @@ const Explore = ({ navigation }) => {
         </View>
       </>
     );
-  }, [unitsNearMe, coords, navigation]);
+  }, [t, unitsNearMe, navigation, coords]);
 
   const itemCity = useCallback(({ item }) => {
     return <CityItem item={item} />;

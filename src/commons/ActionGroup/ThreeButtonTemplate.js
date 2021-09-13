@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from 'react';
 import { TouchableOpacity, View, Switch } from 'react-native';
 import { Icon } from '@ant-design/react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import styles from './ThreeButtonTemplateStyle';
 import Text from '../Text';
 import { TESTID } from '../../configs/Constants';
@@ -9,6 +9,7 @@ import { Colors } from '../../configs';
 import { Card } from '../../commons/CardShadow';
 
 const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
+  const t = useTranslations();
   const { configuration } = actionGroup;
   const [lock, setLock] = useState(false);
   const iconSquareStop = () => {

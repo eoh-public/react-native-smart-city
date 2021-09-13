@@ -3,7 +3,7 @@ import { Dimensions, View, TouchableOpacity, StyleSheet } from 'react-native';
 import Popover from 'react-native-popover-view';
 import Modal from 'react-native-modal';
 import { IconOutline } from '@ant-design/icons-react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../../configs';
 import Text from '../../../../commons/Text';
@@ -30,6 +30,7 @@ const HeaderComponent = ({
   fixedHeight, // when height of header is fixed
   style,
 }) => {
+  const t = useTranslations();
   const popoverRef = useRef();
   const [menu, setMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);

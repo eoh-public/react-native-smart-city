@@ -7,7 +7,7 @@ import {
   Platform,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { API, Colors } from '../../configs';
 import { Section, ViewButtonBottom } from '../../commons'; //components/Common
@@ -18,6 +18,7 @@ import Routes from '../../utils/Route';
 import { TESTID } from '../../configs/Constants';
 
 const AddNewDevice = memo(({ route }) => {
+  const t = useTranslations();
   const { unit_id } = route.params;
   const { navigate, goBack } = useNavigation();
   const [unit, setUnit] = useState({ stations: [] });

@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import { Colors } from '../../../configs';
 import Text from '../../../commons/Text';
 
 const HeaderLabel = memo(({ title, style, onPress, seeMore }) => {
+  const t = useTranslations();
   return (
     <View style={[styles.labelHeader, style]}>
       <Text fontSize={14} color={Colors.Gray8} style={styles.textLineHeight}>

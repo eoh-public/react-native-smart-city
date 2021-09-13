@@ -1,9 +1,10 @@
-import { t } from 'i18n-js';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import { useCallback, useState } from 'react';
 import { API } from '../../configs';
 import { axiosGet } from '../../utils/Apis/axios';
 
 export const useAlertRemoveEmergencyContact = () => {
+  const t = useTranslations();
   const [stateAlertRemoveContact, setStateAlertRemoveContact] = useState({
     visible: false,
     title: '',
@@ -25,7 +26,7 @@ export const useAlertRemoveEmergencyContact = () => {
         };
       });
     },
-    []
+    [t]
   );
 
   const hideAlertRemoveContact = useCallback(() => {

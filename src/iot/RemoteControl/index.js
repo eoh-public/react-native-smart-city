@@ -5,7 +5,7 @@ import {
 import { sendCommandOverInternet } from './Internet';
 import { sendCommandOverGoogleHome } from './GoogleHome';
 import { ToastBottomHelper } from '../../utils/Utils';
-import { t } from 'i18n-js';
+import t from '../../hooks/Common/useTranslations';
 import { sendCommandOverLGThinq } from './LG';
 
 export const sendRemoteCommand = async (sensor, action, data) => {

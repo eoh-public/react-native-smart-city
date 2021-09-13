@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import Text from '../../Text';
 import { Colors } from '../../../configs';
@@ -9,6 +9,7 @@ import SvgEmergencyButton from '../../../../assets/images/Emergency/emergency-bu
 import { Card } from '../../../commons/CardShadow';
 
 const EmergencyButton = memo(({ emergency }) => {
+  const t = useTranslations();
   return (
     <Card title={t('button')}>
       <View style={styles.container}>

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import '../src/utils/I18n/index'; // translation
+import '../src/utils/I18n'; // translation
 
 (function () {
   if (typeof Object.id === 'undefined') {

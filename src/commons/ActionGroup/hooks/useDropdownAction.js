@@ -1,7 +1,8 @@
-import { t } from 'i18n-js';
+import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useCallback, useState } from 'react';
 
 export const useDropdownAction = () => {
+  const t = useTranslations();
   const [stateAlert, setStateAlert] = useState({
     visible: false,
     title: 'Fan Speed',
