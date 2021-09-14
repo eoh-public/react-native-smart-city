@@ -129,4 +129,5 @@ export const Colors = {
   BlackTransparent6: 'rgba(0, 0, 0, 0.6)',
   BlackTransparent16: 'rgba(0, 0, 0, 0.16)',
   WhiteTransparent8: 'rgba(255, 255, 255, 0.8)',
+  BlueTransparent5: 'rgba(230, 247, 255, 0.5)',
 };
