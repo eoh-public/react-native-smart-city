@@ -12,6 +12,7 @@ import {
   StatusBar,
 } from './actionType';
 import { initialState, Action, ContextData, reducer } from './reducer';
+import { setConfigGlobalState } from '../iot/states.js';
 
 const toastConfig = {
   // only for error for now
@@ -57,6 +58,7 @@ export const SCProvider = ({ children }) => {
   };
 
   const setLocale = (language: Language) => {
+    setConfigGlobalState('lang', language);
     setAction('UPDATE_LANGUAGE', language);
   };
 
