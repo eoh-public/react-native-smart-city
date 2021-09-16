@@ -14,6 +14,7 @@ import { axiosGet } from '../../utils/Apis/axios';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { SCConfig } from '../../configs';
+import Point from '../../../assets/images/AddLocationMaps/Point.svg';
 
 const initialRegion = {
   latitudeDelta: 0.0922,
@@ -137,7 +138,11 @@ const SelectLocation = memo(({ route }) => {
               longitude: searchedLocation.longitude,
             }}
             tracksViewChanges={false}
-          />
+          >
+            <View style={styles.pointCircle}>
+              <Point />
+            </View>
+          </Marker>
         )}
       </MapView>
       <BottomButtonView

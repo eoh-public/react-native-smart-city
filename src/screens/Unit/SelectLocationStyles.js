@@ -15,6 +15,17 @@ export default StyleSheet.create({
   bottomButton: {
     backgroundColor: Colors.White,
   },
+  pointCircle: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 109,
+    height: 109,
+    borderRadius: 50,
+    backgroundColor: Colors.BlueTransparent5,
+    borderWidth: 1,
+    borderColor: Colors.Blue10,
+  },
   searchLocation: {
     paddingVertical: 8,
     position: 'absolute',
