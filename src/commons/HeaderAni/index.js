@@ -8,7 +8,7 @@ import Text from '../../commons/Text';
 import { Colors } from '../../configs';
 
 const default_height = 44;
-const paddingIos = getStatusBarHeight();
+const paddingIos = getStatusBarHeight() + 10;
 export const title_height = 44;
 export const heightHeader = default_height + title_height + paddingIos;
 
