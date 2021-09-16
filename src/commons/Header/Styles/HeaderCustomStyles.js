@@ -1,6 +1,6 @@
 import { Colors } from '../../../configs';
-import { getStatusBarHeight } from '../../../configs/Constants';
 import { StyleSheet } from 'react-native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export default StyleSheet.create({
   wrap: {
@@ -10,7 +10,7 @@ export default StyleSheet.create({
     paddingLeft: 7,
     paddingRight: 10,
     paddingBottom: 6,
-    paddingTop: getStatusBarHeight(),
+    paddingTop: getStatusBarHeight() + 10,
   },
   separator: {
     borderBottomWidth: 0.5,
