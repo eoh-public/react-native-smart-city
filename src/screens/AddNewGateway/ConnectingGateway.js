@@ -31,7 +31,7 @@ const ProcessItem = ({ title, active, line }) => {
           {title}
         </Text>
       </View>
-      {line && <View style={[styles.line, active && styles.lineActive]}></View>}
+      {line && <View style={[styles.line, active && styles.lineActive]} />}
     </>
   );
 };

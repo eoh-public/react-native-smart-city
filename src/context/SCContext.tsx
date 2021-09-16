@@ -28,7 +28,6 @@ type SCContextType = {
   setAuth: (authData: AuthData) => void;
   setLocale: (language: Language) => void;
   setStatusBar: (statusBar: StatusBar) => void;
-  updateLocale: (langTranslate: any) => void;
   setAction: <T extends ActionType>(
     action: T,
     payload?: ActionDataMap[T]
