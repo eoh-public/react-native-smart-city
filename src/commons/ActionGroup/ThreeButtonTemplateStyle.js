@@ -7,7 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     paddingVertical: 16,
   },
-  imageBtn: {
+  imageButton: {
     height: 28,
     marginBottom: 7,
   },
