@@ -63,3 +63,26 @@ export const useGetTitleFromTime = (time, current) => {
     return moment(time).format('DD/MM/YYYY');
   }
 };
+
+export const getDateData = (initialDate, max, min) => {
+  let dateData = [];
+  let dateIndex = -1;
+  const date = moment(min);
+  const today = moment();
+
+  while (date <= max) {
+    const dateString = date.isSame(today, 'day')
+      ? t('today')
+      : date.format('ddd DD/MM');
+    dateData.push({
+      text: dateString,
+      value: moment(date),
+    });
+    if (date.isSame(initialDate, 'day')) {
+      dateIndex = dateData.length - 1;
+    }
+    date.add(1, 'days');
+  }
+  const indexInitialDate = dateIndex !== -1 ? dateIndex : 0;
+  return [dateData, indexInitialDate];
+};

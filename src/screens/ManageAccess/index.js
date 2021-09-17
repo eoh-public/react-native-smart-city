@@ -5,6 +5,7 @@ import {
   ScrollView,
   RefreshControl,
 } from 'react-native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { HeaderCustom } from '../../commons/Header';
 import { IconOutline } from '@ant-design/icons-react-native';
@@ -14,6 +15,7 @@ import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 import { useRoute } from '@react-navigation/native';
 import useManageAccess from './hooks';
+import Routes from '../../utils/Route';
 
 const arrColor = [
   Colors.GeekBlue3,
@@ -29,12 +31,20 @@ const ManageAccessScreen = memo(() => {
   const t = useTranslations();
   const { params = {} } = useRoute();
   const { unit, sensor } = params;
+  const { navigate } = useNavigation();
+  const isFocused = useIsFocused();
   const { data, isRefreshing, onRefresh } = useManageAccess(unit, sensor);
 
-  const Member = ({ name, status, index }) => {
+  const goToGuestInfo = (id) => {
+    navigate(Routes.GuestInfo, {
+      id: id,
+    });
+  };
+
+  const Member = ({ id, name, status, index }) => {
     return (
       <View style={styles.wrapItem}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => goToGuestInfo(id)}>
           <View style={styles.Border}>
             <View style={styles.paddingLeft16}>
               <CircleView
@@ -68,7 +78,12 @@ const ManageAccessScreen = memo(() => {
         >
           {!!data.length &&
             data.map((item, index) => (
-              <Member name={item.name} status={item.schedule} index={index} />
+              <Member
+                id={item.id}
+                name={item.name}
+                status={item.schedule}
+                index={index}
+              />
             ))}
           {!data.length && !isRefreshing && (
             <Text style={styles.textNoGuest}>{t('no_guest')}</Text>
@@ -78,9 +93,10 @@ const ManageAccessScreen = memo(() => {
     );
   };
   useEffect(() => {
-    onRefresh();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (isFocused) {
+      onRefresh();
+    }
+  }, [onRefresh, isFocused]);
 
   return (
     <View style={styles.wrap}>
