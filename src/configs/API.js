@@ -24,6 +24,8 @@ const API = {
       SCConfig.apiRoot + `/property_manager/units/${id}/chip_scan/`,
     MANAGE_ACCESS: (id) =>
       SCConfig.apiRoot + `/property_manager/manage_access/${id}/`,
+    AUTOMATE: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/automate/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>
@@ -75,6 +77,10 @@ const API = {
   CONFIG: {
     DISPLAY_HISTORY: () =>
       SCConfig.apiRoot + '/property_manager/configs/display_history/',
+  },
+  AUTOMATE: {
+    ACTION_ONE_TAP: (id) =>
+      SCConfig.apiRoot + `property_manager/automate/${id}/action_one_tap/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>
