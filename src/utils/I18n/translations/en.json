@@ -595,7 +595,9 @@
   "emergency_alert": "EMERGENCY ALERT!",
   "the_emergency_button_has_been_activated": "The Emergency button has been activated at unit ",
   "seconds_ago": "seconds ago",
+  "secs_ago": "secs ago",
   "minutes_ago": "minutes ago",
+  "mins_ago": "mins ago",
   "hours_ago": "hours ago",
   "days_ago": "days ago",
   "months_ago": "months ago",
@@ -701,5 +703,8 @@
   "select_a_sub_unit": "Select a sub-unit that you want to add this gateway",
   "all_camera": "All Cameras",
   "gateway_name": "Gateway name",
+  "activated_time": "Activated {time}",
+  "activated_successfully": "Activated successfully.",
+  "activation_failed": "Activation failed.",
   "error_please_try_later": "Error! Please try later"
 }

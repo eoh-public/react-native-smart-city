@@ -24,6 +24,7 @@ import CameraDevice from '../../commons/CameraDevice';
 import { ModalFullVideo } from '../../commons/Modal';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../utils/Route';
+import SubUnitOneTap from '../../commons/SubUnit/OneTap';
 
 const UnitDetail = ({ route }) => {
   const t = useTranslations();
@@ -36,6 +37,7 @@ const UnitDetail = ({ route }) => {
   const [appState, setAppState] = useState(AppState.currentState);
   const [listMenuItem, setListMenuItem] = useState([]);
   const [listStation, setListStation] = useState([]);
+  const [automates, setAutomates] = useState([]);
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
   const [station, setStation] = useState([]);
   const [indexStation, setIndexStation] = useState(0);
@@ -59,6 +61,11 @@ const UnitDetail = ({ route }) => {
 
   const prepareData = useCallback(
     (rawUnitData) => {
+      const oneTap = {
+        isOneTap: true,
+        name: 'One-Tap',
+      };
+      rawUnitData.stations.unshift(oneTap);
       const favorites = {
         isFakeStation: true,
         isFavorites: true,
@@ -87,6 +94,15 @@ const UnitDetail = ({ route }) => {
       }
     });
   }, [setUnit, unitId, prepareData]);
+
+  const getScriptOneTap = useCallback(async () => {
+    await fetchWithCache(API.UNIT.AUTOMATE(unitId), {}, (response) => {
+      const { success, data } = response;
+      if (success) {
+        setAutomates(data);
+      }
+    });
+  }, [unitId]);
 
   const onRefresh = useCallback(() => {
     fetchDetails();
@@ -169,8 +185,9 @@ const UnitDetail = ({ route }) => {
   useEffect(() => {
     if (isFocused) {
       fetchDetails();
+      getScriptOneTap();
     }
-  }, [fetchDetails, isFocused]);
+  }, [fetchDetails, getScriptOneTap, isFocused]);
 
   useEffect(() => {
     if (unit.stations) {
@@ -207,6 +224,8 @@ const UnitDetail = ({ route }) => {
           goToPlayBack={goToPlayBack}
         />
       );
+    } else if (station.isOneTap) {
+      return <SubUnitOneTap automates={automates} />;
     } else if (station) {
       return (
         <ShortDetailSubUnit

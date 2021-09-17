@@ -596,7 +596,9 @@
   "emergency_alert": "Khẩn cấp!",
   "the_emergency_button_has_been_activated": "Nút cảnh báo khẩn cấp vừa được kích hoạt tại địa điểm ",
   "seconds_ago": "giây trước",
+  "secs_ago": "giây trước",
   "minutes_ago": "phút trước",
+  "mins_ago": "phút trước",
   "hours_ago": "giờ trước",
   "days_ago": "ngày trước",
   "months_ago": "tháng trước",
@@ -709,5 +711,8 @@
   "select_a_sub_unit": "Lựa chọn một khu vực mà bạn muốn thêm gateway",
   "all_camera": "All Cameras",
   "gateway_name": "Tên Gateway",
+  "activated_time": "Đã kích hoạt {time}",
+  "activated_successfully": "Đã kích hoạt thành công.",
+  "activation_failed": "Kích hoạt đã thất bại.",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

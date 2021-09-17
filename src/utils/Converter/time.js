@@ -1,4 +1,4 @@
-import t, { useTranslations } from '../../hooks/Common/useTranslations';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import moment from 'moment';
 
 export const transformDatetime = (data = {}, listFieldName = []) => {
@@ -19,7 +19,9 @@ export const transformDatetime = (data = {}, listFieldName = []) => {
   });
 };
 
-export const timeDifference = (current, previous) => {
+export const timeDifference = (current, previous, symbol = false) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const t = useTranslations();
   let msPerMinute = 60 * 1000;
   let msPerHour = msPerMinute * 60;
   let msPerDay = msPerHour * 24;
@@ -33,9 +35,11 @@ export const timeDifference = (current, previous) => {
     if (second < 0) {
       second = 0;
     }
-    return `${second} ${t('seconds_ago')}`;
+    return `${second} ${symbol ? t('secs_ago') : t('seconds_ago')}`;
   } else if (elapsed < msPerHour) {
-    return `${Math.round(elapsed / msPerMinute)} ${t('minutes_ago')}`;
+    return `${Math.round(elapsed / msPerMinute)} ${
+      symbol ? t('mins_ago') : t('minutes_ago')
+    }`;
   } else if (elapsed < msPerDay) {
     return `${Math.round(elapsed / msPerHour)} ${t('hours_ago')}`;
   } else if (elapsed < msPerMonth) {
@@ -65,6 +69,8 @@ export const useGetTitleFromTime = (time, current) => {
 };
 
 export const getDateData = (initialDate, max, min) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const t = useTranslations();
   let dateData = [];
   let dateIndex = -1;
   const date = moment(min);
