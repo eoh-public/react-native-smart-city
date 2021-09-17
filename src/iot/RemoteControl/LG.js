@@ -4,10 +4,16 @@ import { getConfigGlobalState, setConfigGlobalState } from '../states';
 import { sendCommandOverInternet } from './Internet';
 
 let deviceMaps = {};
-let propertyListMaps = {
+const propertyListMaps = {
   temperature: 'targetTemperature',
   doorStatus: 'doorState',
 };
+const propertyTimer = [
+  'absoluteHourToStart',
+  'absoluteMinuteToStart',
+  'absoluteHourToStop',
+  'absoluteMinuteToStop',
+];
 
 function updateConfigValues(device, configValues, name, value) {
   if (device.hasOwnProperty(name)) {
@@ -27,6 +33,7 @@ export async function updateStateByLgThinq(device_id, data) {
   let configValues = getConfigGlobalState('configValues');
   // eslint-disable-next-line no-unused-vars
   for (const [resource, property] of Object.entries(data)) {
+    // base on data
     if (Array.isArray(property)) {
       const valueName = propertyListMaps[resource];
       if (valueName) {
@@ -52,6 +59,18 @@ export async function updateStateByLgThinq(device_id, data) {
       );
     }
   }
+
+  // For timer, if there is not exist in data, set undefined
+  for (let i = 0; i < propertyTimer.length; i++) {
+    // base on device
+    const name = propertyTimer[i];
+    if (device.hasOwnProperty(name)) {
+      const value = data.timer && data.timer[name];
+      const [configId] = device[name];
+      configValues[configId] = value;
+    }
+  }
+
   setConfigGlobalState('configValues', { ...configValues });
 }
 

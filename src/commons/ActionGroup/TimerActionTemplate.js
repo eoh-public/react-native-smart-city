@@ -18,7 +18,8 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
   const currentTime = useMemo(() => {
     const configHour = configValues[configuration.config_hour];
     const configMinute = configValues[configuration.config_minute];
-    if (!configHour || !configMinute) {
+
+    if (configHour === undefined || configMinute === undefined) {
       return undefined;
     }
     return moment(`${configHour}:${configMinute}`, 'HH:mm');
@@ -45,6 +46,13 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
     return !!currentTime;
   }, [currentTime]);
 
+  const onSwitchOff = useCallback(() => {
+    if (!isTimerOn) {
+      return;
+    }
+    doAction(configuration.action_data, [-1, -1]);
+  }, [configuration.action_data, doAction, isTimerOn]);
+
   return (
     <View style={styles.wrap}>
       <TouchableOpacity style={styles.timerButton} onPress={onShowTimer}>
@@ -69,7 +77,8 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
         thumbColor={isTimerOn ? Colors.White : Colors.Gray6}
         ios_backgroundColor={Colors.Gray4}
         value={isTimerOn}
-        disabled
+        onValueChange={onSwitchOff}
+        disabled={!isTimerOn}
       />
       <DateTimePickerModal
         isVisible={showTimer}
