@@ -12,8 +12,12 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
   const t = useTranslations();
   const { configuration } = actionGroup;
   const [lock, setLock] = useState(false);
-  const iconSquareStop = () => {
-    return <View style={styles.squareStop} />;
+  const iconCustom = (icon) => {
+    return icon === 'stop' ? (
+      <View style={styles.squareStop} />
+    ) : (
+      <Icon name={icon} size={30} color={Colors.Primary} />
+    );
   };
   const onButton1Press = useCallback(
     () => doAction(configuration.action1_data),
@@ -73,7 +77,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
             onPress={onButton1Press}
             underlayColor={Colors.Gray2}
           >
-            <View style={styles.imageBtn}>
+            <View style={styles.imageButton}>
               <Icon
                 name={configuration.icon1}
                 size={30}
@@ -89,7 +93,9 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
             onPress={onButton2Press}
             underlayColor={Colors.Gray2}
           >
-            <View style={styles.imageBtn}>{iconSquareStop()}</View>
+            <View style={styles.imageButton}>
+              {iconCustom(configuration.icon2)}
+            </View>
             <Text style={styles.text}>{configuration.text2}</Text>
           </TouchableOpacity>
 
@@ -99,7 +105,7 @@ const ThreeButtonTemplate = memo(({ actionGroup, doAction }) => {
             onPress={onButton3Press}
             underlayColor={Colors.Gray2}
           >
-            <View style={styles.imageBtn}>
+            <View style={styles.imageButton}>
               <Icon
                 name={configuration.icon3}
                 size={30}
