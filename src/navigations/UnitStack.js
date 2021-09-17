@@ -24,6 +24,7 @@ import DeviceInfo from '../screens/DeviceInfo';
 import PlaybackCamera from '../screens/PlayBackCamera';
 import AllCamera from '../screens/AllCamera';
 import ManageAccessScreen from '../screens/ManageAccess';
+import GuestInfo from '../screens/GuestInfo';
 
 import _ from 'lodash';
 
@@ -170,6 +171,13 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.ManageAccess}
         component={ManageAccessScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.GuestInfo}
+        component={GuestInfo}
         options={{
           headerShown: false,
         }}

@@ -94,6 +94,7 @@ const Routes = {
   TermAndPolicy: 'TermAndPolicy',
   Browser: 'Browser',
   ManageAccess: 'ManageAccess',
+  GuestInfo: 'GuestInfo',
   AddLGDevice: 'AddLGDevice',
   AddLGDeviceStack: 'AddLGDeviceStack',
   PlaybackCamera: 'PlaybackCamera',

@@ -68,6 +68,10 @@ const API = {
       SCConfig.apiRoot +
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/remove_from_favourites/`,
   },
+  SHARED_SENSOR: {
+    ACCESS: (id) =>
+      SCConfig.apiRoot + `/property_manager/shared_sensors/${id}/access/`,
+  },
   CONFIG: {
     DISPLAY_HISTORY: () =>
       SCConfig.apiRoot + '/property_manager/configs/display_history/',
