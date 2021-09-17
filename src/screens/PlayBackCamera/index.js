@@ -31,7 +31,7 @@ const PlayBackCamera = () => {
     s: '00',
   });
   const [uri, setUri] = useState(
-    `${(item?.configuration?.playback || '').split('=')[0]}${arrDayTemp[0]}${
+    `${(item?.configuration?.playback || '').split('=')[0]}${arrDayTemp[0]}=${
       arrDayTemp[1]
     }${arrDayTemp[2]}T000000Z`
   );
@@ -88,9 +88,11 @@ const PlayBackCamera = () => {
 
   useEffect(() => {
     const date = selected.split('-');
-    const playback = item?.configuration?.playback;
+    const playback = item?.configuration?.playback || '';
     setUri(
-      `${playback}${date[0]}${date[1]}${date[2]}T${hour.h}${hour.m}${hour.s}Z`
+      `${playback.split('=')[0]}=${date[0]}${date[1]}${date[2]}T${hour.h}${
+        hour.m
+      }${hour.s}Z`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hour, selected]);
@@ -111,7 +113,7 @@ const PlayBackCamera = () => {
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom title={'Playback Camera'} />
+      <HeaderCustom title={t('playback_camera')} />
       <View style={styles.wrapCamera}>
         <MediaPlayerDetail
           uri={uri}
