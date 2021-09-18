@@ -706,5 +706,7 @@
   "activated_time": "Activated {time}",
   "activated_successfully": "Activated successfully.",
   "activation_failed": "Activation failed.",
+  "name_your_button": "Name your button",
+  "continue": "Continue",
   "error_please_try_later": "Error! Please try later"
 }

@@ -99,6 +99,7 @@ const Routes = {
   AddLGDeviceStack: 'AddLGDeviceStack',
   PlaybackCamera: 'PlaybackCamera',
   AllCamera: 'AllCamera',
+  AddNewOneTap: 'AddNewOneTap',
 };
 
 export default Routes;
