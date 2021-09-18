@@ -80,7 +80,7 @@ const API = {
   },
   AUTOMATE: {
     ACTION_ONE_TAP: (id) =>
-      SCConfig.apiRoot + `property_manager/automate/${id}/action_one_tap/`,
+      SCConfig.apiRoot + `/property_manager/automate/${id}/action_one_tap/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>

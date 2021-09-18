@@ -6,12 +6,14 @@ import { Section } from '../..';
 import ItemAddNew from '../../Device/ItemAddNew';
 import ItemOneTap from './ItemOneTap';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
+import { useNavigation } from '@react-navigation/native';
+import Routes from '../../../utils/Route/index.js';
 
 const SubUnitOneTap = ({ automates }) => {
   const t = useTranslations();
+  const navigation = useNavigation();
   const handleOnAddNew = () => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
+    navigation.navigate(Routes.AddNewOneTap);
   };
   return (
     <Section style={styles.noShadow}>
