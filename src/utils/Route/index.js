@@ -100,6 +100,7 @@ const Routes = {
   PlaybackCamera: 'PlaybackCamera',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',
+  AddNewScriptAction: 'AddNewScriptAction',
 };
 
 export default Routes;

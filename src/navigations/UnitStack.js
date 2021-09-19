@@ -22,6 +22,7 @@ import TDSGuide from '../screens/TDSGuide';
 import WaterQualityGuide from '../screens/WaterQualityGuide';
 import DeviceInfo from '../screens/DeviceInfo';
 import AddNewOneTap from '../screens/AddNewOneTap';
+import AddNewScriptAction from '../screens/AddNewScriptAction';
 import PlaybackCamera from '../screens/PlayBackCamera';
 import AllCamera from '../screens/AllCamera';
 import ManageAccessScreen from '../screens/ManageAccess';
@@ -186,6 +187,13 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.AddNewOneTap}
         component={AddNewOneTap}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.AddNewScriptAction}
+        component={AddNewScriptAction}
         options={{
           headerShown: false,
         }}

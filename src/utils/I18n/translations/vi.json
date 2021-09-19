@@ -716,5 +716,9 @@
   "activation_failed": "Kích hoạt đã thất bại.",
   "name_your_button": "Đặt tên cho nút nhấn của bạn",
   "continue": "Tiếp tục",
+  "tap_to_run": "Nhấn để chạy",
+  "how_to_start": "Cách khởi động",
+  "actions_list": "Dánh sách hành động",
+  "go_to_automate_scripts": "Đi đến kịch bản tự động",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }
