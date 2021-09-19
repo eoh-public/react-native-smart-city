@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ScrollView,
   RefreshControl,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
@@ -33,7 +34,10 @@ const ManageAccessScreen = memo(() => {
   const { unit, sensor } = params;
   const { navigate } = useNavigation();
   const isFocused = useIsFocused();
-  const { data, isRefreshing, onRefresh } = useManageAccess(unit, sensor);
+  const { data, isRefresh, isLoading, onRefresh } = useManageAccess(
+    unit,
+    sensor
+  );
 
   const goToGuestInfo = (id) => {
     navigate(Routes.GuestInfo, {
@@ -71,24 +75,32 @@ const ManageAccessScreen = memo(() => {
   const renderMemberGuest = (data) => {
     return (
       <View>
-        <ScrollView
-          refreshControl={
-            <RefreshControl refreshing={false} onRefresh={onRefresh} />
-          }
-        >
-          {!!data.length &&
-            data.map((item, index) => (
-              <Member
-                id={item.id}
-                name={item.name}
-                status={item.schedule}
-                index={index}
-              />
-            ))}
-          {!data.length && !isRefreshing && (
-            <Text style={styles.textNoGuest}>{t('no_guest')}</Text>
-          )}
-        </ScrollView>
+        {isLoading ? (
+          <ActivityIndicator
+            size="large"
+            color={Colors.Primary}
+            style={styles.loading}
+          />
+        ) : (
+          <ScrollView
+            refreshControl={
+              <RefreshControl refreshing={false} onRefresh={onRefresh} />
+            }
+          >
+            {!!data.length &&
+              data.map((item, index) => (
+                <Member
+                  id={item.id}
+                  name={item.name}
+                  status={item.schedule}
+                  index={index}
+                />
+              ))}
+            {!data.length && !isRefresh && (
+              <Text style={styles.textNoGuest}>{t('no_guest')}</Text>
+            )}
+          </ScrollView>
+        )}
       </View>
     );
   };

@@ -66,4 +66,7 @@ export default StyleSheet.create({
     marginTop: Constants.height * 0.3,
     fontSize: 16,
   },
+  loading: {
+    marginTop: 24,
+  },
 });
