@@ -1,8 +1,9 @@
 import React, { memo, useCallback, useState } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
+import Route from '../../utils/Route';
 import { HeaderCustom } from '../../commons/Header';
 import Text from '../../commons/Text';
 import BottomButtonView from '../../commons/BottomButtonView';
@@ -16,6 +17,7 @@ import { Colors } from '../../configs';
 const AddNewScriptAction = memo(() => {
   const t = useTranslations();
   const { params = {} } = useRoute();
+  const { navigate } = useNavigation();
   // eslint-disable-next-line no-unused-vars
   const { automateType, name } = params;
 
@@ -27,8 +29,11 @@ const AddNewScriptAction = memo(() => {
   }, [t]);
 
   const handleOnAddNew = useCallback(() => {
-    alert(t('feature_under_development'));
-  }, [t]);
+    navigate(Route.AddNewActionStack, {
+      screen: Route.SelectDevice,
+      params: { unitId: 5 },
+    });
+  }, [navigate]);
 
   const handleOnDone = useCallback(() => {
     alert(t('feature_under_development'));

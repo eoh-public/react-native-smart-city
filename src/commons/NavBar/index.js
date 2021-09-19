@@ -10,7 +10,7 @@ import Station from '../../screens/Unit/Station';
 import MenuActionMore from '../MenuActionMore';
 
 const NavBar = memo(
-  ({ listMenuItem, listStation, onSnapToItem, indexStation }) => {
+  ({ listMenuItem, listStation, onSnapToItem, indexStation, style }) => {
     const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
       usePopover();
     const refMenuAction = useRef();
@@ -18,7 +18,7 @@ const NavBar = memo(
 
     return (
       <>
-        <View style={styles.wrap}>
+        <View style={[styles.wrap, style]}>
           <View style={styles.wrapTitle}>
             <Station
               listStation={listStation}

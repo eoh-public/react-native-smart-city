@@ -26,6 +26,8 @@ const API = {
       SCConfig.apiRoot + `/property_manager/manage_access/${id}/`,
     AUTOMATE: (id) =>
       SCConfig.apiRoot + `/property_manager/units/${id}/automate/`,
+    DEVICE_CONTROL: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/device_control/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>

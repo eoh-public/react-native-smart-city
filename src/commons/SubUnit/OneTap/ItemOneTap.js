@@ -33,7 +33,7 @@ const ItemOneTap = memo(({ automate }) => {
   }, [id]);
 
   const displayIcon = () => {
-    const iconKit = script?.url_icon_kit;
+    const iconKit = script?.icon_kit;
     return iconKit ? (
       <FImage source={{ uri: iconKit }} style={styles.iconSensor} />
     ) : (
