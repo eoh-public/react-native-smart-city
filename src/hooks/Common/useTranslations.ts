@@ -22,9 +22,13 @@ export const useTranslations = () => {
   return t;
 };
 
-const t = (text) => {
+const t = (
+  translations: TranslationString,
+  interpolateStr?: InterPolateString
+) => {
   const lang = getConfigGlobalState('lang');
-  getTranslate(lang, text);
+  const language: Language = lang as Language;
+  getTranslate(language, translations, interpolateStr);
 };
 
 export default t;

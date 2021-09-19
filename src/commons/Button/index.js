@@ -65,6 +65,10 @@ const ButtonStyle = {
     backgroundColor: Colors.White,
     borderWidth: 0,
   },
+  primaryUnderline: {
+    backgroundColor: Colors.White,
+    borderWidth: 0,
+  },
   setupBorder: {
     backgroundColor: Colors.Cyan1,
     borderRadius: 28,
@@ -97,6 +101,7 @@ const TextColor = {
   alert: Colors.White,
   alertBorder: Colors.Red6,
   underline: Colors.Gray6,
+  primaryUnderline: Colors.Primary,
   setupBorder: Colors.Primary,
   CardShadow: Colors.Gray9,
   primaryText: Colors.Primary,
@@ -133,7 +138,7 @@ export default ({
   const textColor = TextColor[type];
 
   const isDisabled = type === 'disabled' || type === 'disabledBorder';
-  const isUnderline = type === 'underline';
+  const isUnderline = type === 'underline' || type === 'primaryUnderline';
   const isCardShadow = type === 'CardShadow';
   const textSize = TextSize[textType];
   const PreventDoubleTouch = withPreventDoubleClick(TouchableOpacity);

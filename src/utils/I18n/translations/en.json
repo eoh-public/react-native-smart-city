@@ -708,5 +708,9 @@
   "activation_failed": "Activation failed.",
   "name_your_button": "Name your button",
   "continue": "Continue",
+  "tap_to_run": "Tap to run",
+  "how_to_start": "How to start",
+  "actions_list": "Actions list",
+  "go_to_automate_scripts": "Go to automate scripts",
   "error_please_try_later": "Error! Please try later"
 }

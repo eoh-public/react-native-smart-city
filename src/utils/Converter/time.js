@@ -1,4 +1,4 @@
-import { useTranslations } from '../../hooks/Common/useTranslations';
+import t from '../../hooks/Common/useTranslations';
 import moment from 'moment';
 
 export const transformDatetime = (data = {}, listFieldName = []) => {
@@ -20,8 +20,6 @@ export const transformDatetime = (data = {}, listFieldName = []) => {
 };
 
 export const timeDifference = (current, previous, symbol = false) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const t = useTranslations();
   let msPerMinute = 60 * 1000;
   let msPerHour = msPerMinute * 60;
   let msPerDay = msPerHour * 24;
@@ -52,7 +50,6 @@ export const timeDifference = (current, previous, symbol = false) => {
 };
 
 export const useGetTitleFromTime = (time, current) => {
-  const t = useTranslations();
   time = moment(time).format('YYYY-MM-DD');
   current = moment(current).format('YYYY-MM-DD');
 
@@ -69,8 +66,6 @@ export const useGetTitleFromTime = (time, current) => {
 };
 
 export const getDateData = (initialDate, max, min) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const t = useTranslations();
   let dateData = [];
   let dateIndex = -1;
   const date = moment(min);
