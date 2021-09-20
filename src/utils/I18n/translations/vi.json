@@ -714,6 +714,11 @@
   "activated_time": "Đã kích hoạt {time}",
   "activated_successfully": "Đã kích hoạt thành công.",
   "activation_failed": "Kích hoạt đã thất bại.",
+  "set_hour": "Đặt giờ",
+  "sync_lg_device": "Đồng bộ thiết bị LG",
+  "lg_sync_failed": "Đồng bộ thiết bị LG thất bại!",
+  "lg_sync_success": "Đồng bộ thiết bị LG thành công!",
+  "setting_at": "Thiết lập tại",
   "name_your_button": "Đặt tên cho nút nhấn của bạn",
   "continue": "Tiếp tục",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"

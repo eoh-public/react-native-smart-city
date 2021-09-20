@@ -4,47 +4,115 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import { IconOutline } from '@ant-design/icons-react-native';
 
+import { useTranslations } from '../../hooks/Common/useTranslations';
+
 import styles from './TimerActionTemplateStyles';
 import Text from '../Text';
 import { Colors } from '../../configs';
 import { useConfigGlobalState } from '../../iot/states';
+import BottomScrollPicker from '../BottomScrollPicker';
 
 const TimerActionTemplate = ({ actionGroup, doAction }) => {
+  const t = useTranslations();
   const { configuration, title } = actionGroup;
-  const [showTimer, setShowTimer] = useState(false);
+  const [showTime, setShowTime] = useState(false);
+  const [showHour, setShowHour] = useState(false);
+
   // eslint-disable-next-line no-unused-vars
   const [configValues, setConfigValues] = useConfigGlobalState('configValues');
+  const configHour = configValues[configuration.config_hour];
+  const configMinute = configValues[configuration.config_minute];
 
-  const currentTime = useMemo(() => {
-    const configHour = configValues[configuration.config_hour];
-    const configMinute = configValues[configuration.config_minute];
-
-    if (configHour === undefined || configMinute === undefined) {
+  const dataTime = useMemo(() => {
+    if (
+      !configuration.config_hour ||
+      !configuration.config_minute ||
+      configHour === undefined ||
+      configHour === -1 ||
+      configMinute === undefined ||
+      configMinute === -1
+    ) {
       return undefined;
     }
     return moment(`${configHour}:${configMinute}`, 'HH:mm');
-  }, [configValues, configuration.config_hour, configuration.config_minute]);
+  }, [
+    configHour,
+    configMinute,
+    configuration.config_hour,
+    configuration.config_minute,
+  ]);
+
+  const dataHour = useMemo(() => {
+    if (
+      !configuration.config_hour ||
+      configuration.config_minute ||
+      configHour === undefined ||
+      configHour === -1
+    ) {
+      return undefined;
+    }
+    return configHour;
+  }, [configHour, configuration.config_hour, configuration.config_minute]);
+
+  const onShowHour = useCallback(() => {
+    setShowHour(true);
+  }, []);
+
+  const onHideHour = useCallback(() => {
+    setShowHour(false);
+  }, []);
+
+  const onShowTime = useCallback(() => {
+    setShowTime(true);
+  }, []);
+
+  const onHideTime = useCallback(() => {
+    setShowTime(false);
+  }, []);
 
   const onShowTimer = useCallback(() => {
-    setShowTimer(true);
-  }, []);
+    if (configuration.config_hour && configuration.config_minute) {
+      onShowTime();
+      return;
+    }
+    onShowHour();
+  }, [
+    configuration.config_hour,
+    configuration.config_minute,
+    onShowHour,
+    onShowTime,
+  ]);
 
-  const onHideTimer = useCallback(() => {
-    setShowTimer(false);
-  }, []);
-
-  const onConfirm = useCallback(
+  const onConfirmTime = useCallback(
     (timeData) => {
-      setShowTimer(false);
+      onHideTime();
       const timeObj = moment(timeData);
       doAction(configuration.action_data, [timeObj.hour(), timeObj.minute()]);
     },
-    [configuration.action_data, doAction]
+    [configuration.action_data, doAction, onHideTime]
+  );
+
+  const onConfirmHour = useCallback(
+    (number) => {
+      onHideHour();
+      doAction(configuration.action_data, number);
+    },
+    [configuration.action_data, doAction, onHideHour]
   );
 
   const isTimerOn = useMemo(() => {
-    return !!currentTime;
-  }, [currentTime]);
+    return !!dataTime || !!dataHour;
+  }, [dataHour, dataTime]);
+
+  const textTimer = useMemo(() => {
+    if (dataTime) {
+      return `${t('setting_at')} ${dataTime.format('HH:mm')}`;
+    }
+    if (dataHour) {
+      return `${t('setting_at')} ${dataHour} ${t('hours')}`;
+    }
+    return null;
+  }, [dataHour, dataTime, t]);
 
   const onSwitchOff = useCallback(() => {
     if (!isTimerOn) {
@@ -58,11 +126,10 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
       <TouchableOpacity style={styles.timerButton} onPress={onShowTimer}>
         <View style={styles.timerTitle}>
           <Text>{title}</Text>
-          {currentTime && (
-            <Text
-              type="Label"
-              color={Colors.Gray7}
-            >{`Setting at ${currentTime.format('HH:mm')}`}</Text>
+          {textTimer && (
+            <Text type="Label" color={Colors.Gray7}>
+              {textTimer}
+            </Text>
           )}
         </View>
         <View style={styles.timerButton}>
@@ -81,12 +148,19 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
         disabled={!isTimerOn}
       />
       <DateTimePickerModal
-        isVisible={showTimer}
-        date={currentTime ? currentTime.valueOf() : moment().valueOf()}
+        isVisible={showTime}
+        date={dataTime ? dataTime.valueOf() : moment().valueOf()}
         mode="time"
-        onConfirm={onConfirm}
-        onCancel={onHideTimer}
+        onConfirm={onConfirmTime}
+        onCancel={onHideTime}
         display="spinner"
+      />
+      <BottomScrollPicker
+        min={configuration.min}
+        max={configuration.max}
+        isVisible={showHour}
+        onHide={onHideHour}
+        onPicked={onConfirmHour}
       />
     </View>
   );
