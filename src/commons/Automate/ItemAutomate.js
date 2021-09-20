@@ -37,7 +37,7 @@ const AUTOMATES = {
 
 const ItemAutomate = ({ type, isSelected = false, onPress = () => {} }) => {
   const item = AUTOMATES[type];
-  const Icon = item.icon;
+  const Icon = item?.icon;
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -49,10 +49,10 @@ const ItemAutomate = ({ type, isSelected = false, onPress = () => {} }) => {
         </View>
         <View>
           <Text type="H4" bold>
-            {item.title}
+            {item?.title}
           </Text>
           <Text type="Label" color={Colors.Gray8} numberOfLines={1}>
-            {item.explanation}
+            {item?.explanation}
           </Text>
         </View>
       </View>
