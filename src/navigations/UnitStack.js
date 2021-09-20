@@ -27,6 +27,9 @@ import PlaybackCamera from '../screens/PlayBackCamera';
 import AllCamera from '../screens/AllCamera';
 import ManageAccessScreen from '../screens/ManageAccess';
 import GuestInfo from '../screens/GuestInfo';
+import ScriptDetail from '../screens/ScriptDetail';
+import EditActionsList from '../screens/EditActionsList';
+import SelectDevice from '../screens/AddNewAction/SelectDevice';
 
 import _ from 'lodash';
 
@@ -192,11 +195,30 @@ export const UnitStack = memo((props) => {
         }}
       />
       <Stack.Screen
+        name={Route.ScriptDetail}
+        component={ScriptDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.EditActionsList}
+        component={EditActionsList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name={Route.AddNewScriptAction}
         component={AddNewScriptAction}
         options={{
           headerShown: false,
         }}
+      />
+      <Stack.Screen
+        name={Route.SelectDevice}
+        component={SelectDevice}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

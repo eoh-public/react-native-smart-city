@@ -46,7 +46,9 @@ const HeaderAni = memo(
     const titleMarginRight = rightComponent ? 80 : 0;
 
     return (
-      <Animated.View style={[styles.container, { height: headerHeightAnim }]}>
+      <Animated.View
+        style={[styles.container, headerStyle, { height: headerHeightAnim }]}
+      >
         <View style={styles.header}>
           <TouchableOpacity style={styles.btnBack} onPress={onPressLeft}>
             <Icon name={'left'} size={27} color={Colors.Gray9} />
@@ -90,7 +92,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // zIndex: 2,
+    alignItems: 'center',
+    zIndex: 2,
   },
   btnBack: {
     height: default_height,

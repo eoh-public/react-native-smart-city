@@ -99,6 +99,8 @@ const Routes = {
   GuestInfo: 'GuestInfo',
   AddLGDevice: 'AddLGDevice',
   AddLGDeviceStack: 'AddLGDeviceStack',
+  ScriptDetail: 'TapTuRun',
+  EditActionsList: 'EditActionsList',
   PlaybackCamera: 'PlaybackCamera',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',

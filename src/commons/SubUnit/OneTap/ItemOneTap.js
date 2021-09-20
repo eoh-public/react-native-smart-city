@@ -12,13 +12,16 @@ import styles from './ItemOneTapStyles.js';
 import { ToastBottomHelper } from '../../../utils/Utils';
 import { axiosPost } from '../../../utils/Apis/axios';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
+import { useNavigation } from '@react-navigation/core';
+import Routes from '../../../utils/Route';
 
 const ItemOneTap = memo(({ automate }) => {
+  const { navigate } = useNavigation();
   const { id, script, activate_at } = automate;
+
   const t = useTranslations();
   const goToDetail = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
+    navigate(Routes.ScriptDetail, { id, name: script?.name });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
