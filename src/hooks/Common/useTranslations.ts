@@ -28,7 +28,7 @@ const t = (
 ) => {
   const lang = getConfigGlobalState('lang');
   const language: Language = lang as Language;
-  getTranslate(language, translations, interpolateStr);
+  return getTranslate(language, translations, interpolateStr);
 };
 
 export default t;

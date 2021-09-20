@@ -49,7 +49,7 @@ export const timeDifference = (current, previous, symbol = false) => {
   }
 };
 
-export const useGetTitleFromTime = (time, current) => {
+export const getTitleFromTime = (time, current) => {
   time = moment(time).format('YYYY-MM-DD');
   current = moment(current).format('YYYY-MM-DD');
 
