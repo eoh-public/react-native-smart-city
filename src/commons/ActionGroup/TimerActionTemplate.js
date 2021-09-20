@@ -3,6 +3,7 @@ import { Switch, TouchableOpacity, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import { IconOutline } from '@ant-design/icons-react-native';
+import { watchMultiConfigs } from '../../iot/Monitor';
 
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
@@ -12,7 +13,7 @@ import { Colors } from '../../configs';
 import { useConfigGlobalState } from '../../iot/states';
 import BottomScrollPicker from '../BottomScrollPicker';
 
-const TimerActionTemplate = ({ actionGroup, doAction }) => {
+const TimerActionTemplate = ({ actionGroup, doAction, sensor }) => {
   const t = useTranslations();
   const { configuration, title } = actionGroup;
   const [showTime, setShowTime] = useState(false);
@@ -28,8 +29,10 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
       !configuration.config_hour ||
       !configuration.config_minute ||
       configHour === undefined ||
+      configHour === null ||
       configHour === -1 ||
       configMinute === undefined ||
+      configMinute === null ||
       configMinute === -1
     ) {
       return undefined;
@@ -47,6 +50,7 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
       !configuration.config_hour ||
       configuration.config_minute ||
       configHour === undefined ||
+      configHour === null ||
       configHour === -1
     ) {
       return undefined;
@@ -83,26 +87,69 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
     onShowTime,
   ]);
 
+  const doActionTime = useCallback(
+    (hour, minute) => {
+      doAction(configuration.action_data, [hour, minute]);
+      if (sensor.is_managed_by_backend) {
+        hour &&
+          minute &&
+          watchMultiConfigs([
+            configuration.config_hour,
+            configuration.config_minute,
+          ]);
+      }
+    },
+    [
+      configuration.action_data,
+      configuration.config_hour,
+      configuration.config_minute,
+      doAction,
+      sensor.is_managed_by_backend,
+    ]
+  );
+
+  const doActionHour = useCallback(
+    (hour) => {
+      doAction(configuration.action_data, hour);
+      if (sensor.is_managed_by_backend) {
+        hour && watchMultiConfigs([configuration.config_hour]);
+      }
+    },
+    [
+      configuration.action_data,
+      configuration.config_hour,
+      doAction,
+      sensor.is_managed_by_backend,
+    ]
+  );
+
   const onConfirmTime = useCallback(
     (timeData) => {
       onHideTime();
       const timeObj = moment(timeData);
-      doAction(configuration.action_data, [timeObj.hour(), timeObj.minute()]);
+      doActionTime(timeObj.hour(), timeObj.minute());
     },
-    [configuration.action_data, doAction, onHideTime]
+    [doActionTime, onHideTime]
   );
 
   const onConfirmHour = useCallback(
     (number) => {
       onHideHour();
-      doAction(configuration.action_data, number);
+      doActionHour(number);
     },
-    [configuration.action_data, doAction, onHideHour]
+    [doActionHour, onHideHour]
   );
 
+  const onSwitchOff = useCallback(() => {
+    if (!isTimerOn) {
+      return;
+    }
+    doActionTime(-1, -1);
+  }, [doActionTime, isTimerOn]);
+
   const isTimerOn = useMemo(() => {
-    return !!dataTime || !!dataHour;
-  }, [dataHour, dataTime]);
+    return !!dataTime;
+  }, [dataTime]);
 
   const textTimer = useMemo(() => {
     if (dataTime) {
@@ -113,13 +160,6 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
     }
     return null;
   }, [dataHour, dataTime, t]);
-
-  const onSwitchOff = useCallback(() => {
-    if (!isTimerOn) {
-      return;
-    }
-    doAction(configuration.action_data, [-1, -1]);
-  }, [configuration.action_data, doAction, isTimerOn]);
 
   return (
     <View style={styles.wrap}>
@@ -139,14 +179,16 @@ const TimerActionTemplate = ({ actionGroup, doAction }) => {
           </Text>
         </View>
       </TouchableOpacity>
-      <Switch
-        trackColor={{ false: Colors.Gray4, true: Colors.Primary }}
-        thumbColor={isTimerOn ? Colors.White : Colors.Gray6}
-        ios_backgroundColor={Colors.Gray4}
-        value={isTimerOn}
-        onValueChange={onSwitchOff}
-        disabled={!isTimerOn}
-      />
+      {configuration.config_hour && configuration.config_minute && (
+        <Switch
+          trackColor={{ false: Colors.Gray4, true: Colors.Primary }}
+          thumbColor={isTimerOn ? Colors.White : Colors.Gray6}
+          ios_backgroundColor={Colors.Gray4}
+          value={isTimerOn}
+          onValueChange={onSwitchOff}
+          disabled={!isTimerOn}
+        />
+      )}
       <DateTimePickerModal
         isVisible={showTime}
         date={dataTime ? dataTime.valueOf() : moment().valueOf()}

@@ -59,7 +59,8 @@ function parseData(configValues, device, data) {
     const name = propertyTimer[i];
     // eslint-disable-next-line no-prototype-builtins
     if (device.hasOwnProperty(name)) {
-      const value = data.timer && data.timer[name];
+      const timer = data.timer;
+      const value = timer ? timer[name] : -1;
       const [configId] = device[name];
       configValues[configId] = value;
     }
@@ -169,5 +170,4 @@ export const sendCommandOverLGThinq = async (sensor, action, data) => {
       'lg_thinq'
     );
   }
-  await fetchDeviceStatusLG(sensor);
 };

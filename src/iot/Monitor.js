@@ -3,13 +3,14 @@ import { getConfigGlobalState, setConfigGlobalState } from './states';
 import _ from 'lodash';
 import Pusher from 'pusher-js/react-native';
 import { axiosPost } from '../utils/Apis/axios';
+import { SCConfig } from '../configs';
 
 Pusher.logToConsole = true;
 let pusher = null;
 
 const getPusher = () => {
   if (!pusher) {
-    pusher = new Pusher('8557fcc63959f564f1aa', {
+    pusher = new Pusher(SCConfig.pusherAppKey, {
       cluster: 'ap1',
       authorizer: function (channel, option) {
         return {
