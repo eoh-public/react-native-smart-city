@@ -301,7 +301,7 @@ const DeviceDetail = ({ account, route }) => {
         setLastUpdated(data.last_updated);
       }
     };
-    if (sensor.is_managed_by_backend) {
+    if (sensor.is_managed_by_backend && !sensor.is_other_device) {
       const updateInterval = setInterval(() => fetchValues(), 5000);
       fetchValues();
       return () => clearInterval(updateInterval);
