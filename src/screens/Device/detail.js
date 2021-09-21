@@ -37,7 +37,7 @@ import Text from '../../commons/Text';
 import { transformDatetime } from '../../utils/Converter/time';
 import { AlertAction, ButtonPopup, MenuActionMore } from '../../commons';
 import EmergencyButton from '../../commons/Device/Emergency/EmergencyButton';
-import { TESTID } from '../../configs/Constants';
+import { DEVICE_TYPE, TESTID } from '../../configs/Constants';
 import FooterInfo from '../../commons/Device/FooterInfo';
 import Routes from '../../utils/Route';
 import { sendRemoteCommand } from '../../iot/RemoteControl';
@@ -381,13 +381,10 @@ const DeviceDetail = ({ account, route }) => {
         return <DisconnectedView sensor={sensor} />;
       }
     } else {
-      if (isGGHomeConnected) {
+      if (sensor.device_type === DEVICE_TYPE.LG_THINQ) {
         return (
           <>
-            <ConnectedViewHeader
-              lastUpdated={lastUpdated}
-              type={'GoogleHome'}
-            />
+            <ConnectedViewHeader lastUpdated={lastUpdated} />
             {display.items.map((item) => (
               <SensorDisplayItem
                 testID={TESTID.SENSOR_DISPLAY_ITEM}
@@ -404,7 +401,31 @@ const DeviceDetail = ({ account, route }) => {
           </>
         );
       } else {
-        return <DisconnectedView sensor={sensor} type={'GoogleHome'} />;
+        if (isGGHomeConnected) {
+          return (
+            <>
+              <ConnectedViewHeader
+                lastUpdated={lastUpdated}
+                type={'GoogleHome'}
+              />
+              {display.items.map((item) => (
+                <SensorDisplayItem
+                  testID={TESTID.SENSOR_DISPLAY_ITEM}
+                  key={item.id.toString()}
+                  item={item}
+                  emergency={onEmergencyButtonPress}
+                  sensor={sensor}
+                  getData={getData}
+                  maxValue={maxValue}
+                  offsetTitle={offsetTitle}
+                  setOffsetTitle={setOffsetTitle}
+                />
+              ))}
+            </>
+          );
+        } else {
+          return <DisconnectedView sensor={sensor} type={'GoogleHome'} />;
+        }
       }
     }
   };
