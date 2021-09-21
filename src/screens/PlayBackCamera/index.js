@@ -176,6 +176,7 @@ const PlayBackCamera = () => {
         data={dataFullScreen}
         modalStyles={styles.modal}
         onClose={onClose}
+        uri={uri}
       />
 
       <ModalCustom isVisible={isShowDate} style={styles.modal}>

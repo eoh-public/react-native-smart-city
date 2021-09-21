@@ -13,6 +13,7 @@ const ModalFullVideo = ({
   data,
   resizeMode = 'cover',
   onClose,
+  uri,
 }) => {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,7 +28,7 @@ const ModalFullVideo = ({
     >
       <View style={styles.modalContent}>
         <MediaPlayerDetail
-          uri={data?.uri}
+          uri={uri || data?.uri}
           thumbnail={data?.thumbnail}
           style={styles.camera}
           wrapStyles={styles.wrapStyles}
