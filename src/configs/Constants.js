@@ -67,6 +67,10 @@ export const Constants = {
   DEEP_LINK,
 };
 
+export const DEVICE_TYPE = {
+  LG_THINQ: 'LG_THINQ',
+};
+
 export const SCANNING_STATUS = {
   BOOKING_ACTIVATED: 'booking_activated',
   WRONG_SPOT: 'wrong_spot',
