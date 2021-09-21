@@ -29,7 +29,7 @@ const AddNewScriptAction = memo(() => {
   }, [t]);
 
   const handleOnAddNew = useCallback(() => {
-    navigate(Route.AddNewActionStack, {
+    navigate(Route.UnitStack, {
       screen: Route.SelectDevice,
       params: { unitId: 5 },
     });
