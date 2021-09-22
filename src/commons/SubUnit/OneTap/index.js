@@ -18,9 +18,9 @@ const SubUnitOneTap = ({ automates }) => {
   return (
     <Section style={styles.noShadow}>
       <View style={styles.boxDevices}>
-        <ItemAddNew title={t('add_new')} onAddNew={handleOnAddNew} />
         {!!automates.length &&
           automates.map((item) => <ItemOneTap automate={item} />)}
+        <ItemAddNew title={t('add_new')} onAddNew={handleOnAddNew} />
       </View>
     </Section>
   );

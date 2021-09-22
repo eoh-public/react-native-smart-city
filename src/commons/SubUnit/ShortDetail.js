@@ -90,7 +90,6 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
       )}
 
       <View style={styles.boxDevices}>
-        <ItemAddNew title={itemAddNewTitle} onAddNew={handleOnAddNew} />
         {!!station.sensors &&
           station.sensors.map((sensor, index) => (
             <ItemDevice
@@ -108,6 +107,7 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
               isGGHomeConnected={isGGHomeConnected}
             />
           ))}
+        <ItemAddNew title={itemAddNewTitle} onAddNew={handleOnAddNew} />
       </View>
     </Section>
   );
