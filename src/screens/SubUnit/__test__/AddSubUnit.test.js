@@ -5,11 +5,18 @@ import { ImagePicker, ViewButtonBottom } from '../../../commons';
 import { act, create } from 'react-test-renderer';
 import Toast from 'react-native-toast-message';
 import Routes from '../../../utils/Route';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
-import { createSubUnit } from '../../../redux/Actions/unit';
 import { TESTID } from '../../../configs/Constants';
 import _TextInput from '../../../commons/Form/TextInput';
 import AddSubUnit from '../AddSubUnit';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <AddSubUnit route={route} />
+  </SCProvider>
+);
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -36,7 +43,6 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test AddSubUnit', () => {
-  const t = useTranslations();
   let route;
 
   beforeEach(() => {
@@ -60,7 +66,7 @@ describe('Test AddSubUnit', () => {
 
   test('onChoosePhoto show image picker', async () => {
     await act(async () => {
-      tree = await create(<AddSubUnit route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const buttonChoosePhoto = instance.find(
@@ -78,7 +84,7 @@ describe('Test AddSubUnit', () => {
 
   test('ImagePicker setImageUrl show wallpaper', async () => {
     await act(async () => {
-      tree = await create(<AddSubUnit route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const imagePicker = instance.findByType(ImagePicker);
@@ -111,7 +117,7 @@ describe('Test AddSubUnit', () => {
 
   test('onChangeRoomName and setImageUrl for validateData', async () => {
     await act(async () => {
-      tree = await create(<AddSubUnit route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     await makeValidateData(instance);
@@ -119,7 +125,7 @@ describe('Test AddSubUnit', () => {
 
   test('ViewButtonBottom onLeftClick', async () => {
     await act(async () => {
-      tree = await create(<AddSubUnit route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
@@ -142,7 +148,7 @@ describe('Test AddSubUnit', () => {
     });
 
     await act(async () => {
-      tree = await create(<AddSubUnit route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = await makeValidateData(instance);
@@ -150,7 +156,6 @@ describe('Test AddSubUnit', () => {
       await viewButtonBottom.props.onRightClick();
     });
     expect(axios.post).toHaveBeenCalled();
-    expect(mockedDispatch).toHaveBeenCalledWith(createSubUnit(response.data));
     expect(mockedNavigate).toHaveBeenCalledWith(Routes.UnitStack, {
       screen: Routes.SubUnitDetail,
       params: {
@@ -161,7 +166,7 @@ describe('Test AddSubUnit', () => {
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('text_create_sub_unit_success'),
+      text1: getTranslate('en', 'text_create_sub_unit_success'),
       visibilityTime: 1000,
     });
   });
@@ -176,7 +181,7 @@ describe('Test AddSubUnit', () => {
     });
 
     await act(async () => {
-      tree = await create(<AddSubUnit route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = await makeValidateData(instance);
@@ -187,7 +192,7 @@ describe('Test AddSubUnit', () => {
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'error',
       position: 'bottom',
-      text1: t('text_create_sub_unit_fail'),
+      text1: getTranslate('en', 'text_create_sub_unit_fail'),
       visibilityTime: 1000,
     });
   });

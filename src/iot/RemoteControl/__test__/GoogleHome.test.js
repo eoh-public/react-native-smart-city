@@ -1,6 +1,5 @@
 import { createConnection, getStates } from 'home-assistant-js-websocket';
 import Toast from 'react-native-toast-message';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import axios from 'axios';
 import {
   googleHomeConnect,
@@ -9,6 +8,7 @@ import {
 } from '../GoogleHome';
 import { getConfigGlobalState, setConfigGlobalState } from '../../states';
 import { API } from '../../../configs';
+import { getTranslate } from '../../../utils/I18n';
 
 jest.mock('axios');
 jest.mock('home-assistant-js-websocket', () => {
@@ -30,7 +30,6 @@ getStates.mockImplementation(() => []);
 createConnection.mockImplementation(() => connection);
 
 describe('Remote Control Google Home', () => {
-  const t = useTranslations();
   const options = [
     {
       auth: {},
@@ -178,9 +177,9 @@ describe('Remote Control Google Home', () => {
     });
     await googleHomeConnect(options);
     expect(Toast.show).toBeCalledWith({
-      type: 'error',
+      type: 'success',
       position: 'bottom',
-      text1: t('command_googlehome_lost'),
+      text1: getTranslate('en', 'command_googlehome_ready'),
       visibilityTime: 1000,
     });
   });

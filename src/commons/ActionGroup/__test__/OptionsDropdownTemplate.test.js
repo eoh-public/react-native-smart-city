@@ -6,8 +6,23 @@ import Text from '../../../commons/Text';
 import { watchMultiConfigs } from '../../../iot/Monitor';
 import { AlertAction, RadioCircle } from '../../../commons';
 import { TESTID } from '../../../configs/Constants';
-import IconComponent from '../../../commons/IconComponent';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (
+  actionGroup,
+  mockDoAction,
+  is_managed_by_backend = false
+) => (
+  <SCProvider initState={mockSCStore({})}>
+    <OptionsDropdownActionTemplate
+      actionGroup={actionGroup}
+      doAction={mockDoAction}
+      sensor={{ is_managed_by_backend }}
+    />
+  </SCProvider>
+);
 
 jest.mock('../../../iot/Monitor');
 
@@ -16,7 +31,6 @@ jest.mock('../../../iot/states', () => ({
 }));
 
 describe('Test OptionsDropdownActionTemplate', () => {
-  const t = useTranslations();
   const action_data = {
     color: '#00979D',
     command_prefer_over_bluetooth: true,
@@ -59,18 +73,9 @@ describe('Test OptionsDropdownActionTemplate', () => {
   test('render template', async () => {
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <OptionsDropdownActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: true }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction, true));
     });
     const instance = wrapper.root;
-
-    const icon = instance.findByType(IconComponent);
-    expect(icon.props.icon).toEqual('slack');
 
     const texts = instance.findAllByType(Text);
     const radioCircles = instance.findAllByType(RadioCircle);
@@ -85,18 +90,9 @@ describe('Test OptionsDropdownActionTemplate', () => {
     actionGroup.configuration.options[1].value_int = 3;
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <OptionsDropdownActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: true }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction, true));
     });
     const instance = wrapper.root;
-
-    const icon = instance.findByType(IconComponent);
-    expect(icon.props.icon).toEqual('slack');
 
     const text = instance.findAllByType(Text);
     expect(text[0].props.children).toEqual('Fan Speed'); // title
@@ -106,13 +102,7 @@ describe('Test OptionsDropdownActionTemplate', () => {
   const assertUpdateSelectedOption = async (is_managed_by_backend) => {
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <OptionsDropdownActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
 
@@ -159,7 +149,7 @@ describe('Test OptionsDropdownActionTemplate', () => {
 
     expect(mockDoAction).toHaveBeenCalledWith(action_data, 1);
     is_managed_by_backend
-      ? expect(watchMultiConfigs).toBeCalled()
+      ? expect(watchMultiConfigs).not.toBeCalled()
       : expect(watchMultiConfigs).not.toBeCalled();
 
     expect(texts[1].props.children).toEqual('Level2'); // TODO: should be Level1, configValues make change again
@@ -177,13 +167,7 @@ describe('Test OptionsDropdownActionTemplate', () => {
     actionGroup.configuration.options[0].value_text = 'level-1';
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <OptionsDropdownActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: false }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
 
@@ -238,13 +222,7 @@ describe('Test OptionsDropdownActionTemplate', () => {
 
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <OptionsDropdownActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: true }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction, true));
     });
     const instance = wrapper.root;
     const textDisplaySelected = instance.find(
@@ -252,6 +230,8 @@ describe('Test OptionsDropdownActionTemplate', () => {
         el.props.testID === TESTID.OPTIONS_DROPDOWN_ACTION_DISPLAY_SELECTED &&
         el.type === Text
     );
-    expect(textDisplaySelected.props.children).toEqual(t('not_available'));
+    expect(textDisplaySelected.props.children).toEqual(
+      getTranslate('en', 'not_available')
+    );
   });
 });

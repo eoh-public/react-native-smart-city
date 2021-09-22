@@ -3,6 +3,19 @@ import renderer, { act } from 'react-test-renderer';
 import MemberList from '../MemberList';
 import RowMember from '../RowMember';
 import Text from '../../Text';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (dataMember, ownerId, currentUserId, mockFunc) => (
+  <SCProvider initState={mockSCStore({})}>
+    <MemberList
+      dataMember={dataMember}
+      ownerId={ownerId}
+      currentUserId={currentUserId}
+      onPressRemove={mockFunc}
+    />
+  </SCProvider>
+);
 
 describe('MemberList', () => {
   let tree;
@@ -10,14 +23,7 @@ describe('MemberList', () => {
   test('MemberList snapshot id dataMember === ownerId', () => {
     const dataMember = [{ id: 1, name: 'CEO' }];
     act(() => {
-      tree = renderer.create(
-        <MemberList
-          dataMember={dataMember}
-          ownerId={1}
-          currentUserId={2}
-          onPressRemove={mockFunc}
-        />
-      );
+      tree = renderer.create(wrapComponent(dataMember, 1, 2, mockFunc));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(Text);
@@ -26,13 +32,7 @@ describe('MemberList', () => {
   test('MemberList snapshot id dataMember !== ownerId', () => {
     const dataMember = [{ id: 1, name: 'CEO' }];
     act(() => {
-      tree = renderer.create(
-        <MemberList
-          dataMember={dataMember}
-          ownerId={2}
-          onPressRemove={mockFunc}
-        />
-      );
+      tree = renderer.create(wrapComponent(dataMember, 2, null, mockFunc));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(Text);
@@ -41,14 +41,7 @@ describe('MemberList', () => {
   test('MemberList snapshot id dataMember === currentUserId', () => {
     const dataMember = [{ id: 1, name: 'CEO' }];
     act(() => {
-      tree = renderer.create(
-        <MemberList
-          dataMember={dataMember}
-          ownerId={2}
-          currentUserId={1}
-          onPressRemove={mockFunc}
-        />
-      );
+      tree = renderer.create(wrapComponent(dataMember, 2, 1, mockFunc));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(Text);
@@ -56,9 +49,8 @@ describe('MemberList', () => {
   });
   test('MemberList dataMember null', () => {
     const dataMember = [];
-    const component = <MemberList dataMember={dataMember} />;
     act(() => {
-      tree = renderer.create(component);
+      tree = renderer.create(wrapComponent(dataMember));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(RowMember);

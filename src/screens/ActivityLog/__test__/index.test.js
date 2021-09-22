@@ -4,6 +4,8 @@ import { create } from 'react-test-renderer';
 import { act } from '@testing-library/react-hooks';
 import ActivityLog from '../';
 import { Constants } from '../../../configs';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockUseSelector = jest.fn();
 const mockSetState = jest.fn();
@@ -34,41 +36,28 @@ jest.mock('@react-navigation/core', () => {
 
 jest.mock('axios');
 
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <ActivityLog />
+  </SCProvider>
+);
+
 describe('Test Activity log', () => {
   let tree;
   Date.now = jest.fn(() => new Date('2021-07-02T15:48:24.917932Z'));
-  const data = [
-    {
-      date: '02/07/2021',
-      data: [
-        {
-          id: 2,
-          action: 'Gara Up',
-          name: 'Kevin Love',
-          created_at: '2021-07-01T15:48:24.917932Z',
-        },
-        {
-          id: 1,
-          action: 'Gara Down',
-          name: 'Stephen Holloway',
-          created_at: '2021-07-01T15:48:24.791769Z',
-        },
-      ],
-    },
-  ];
 
   afterEach(() => {
     mockSetState.mockClear();
   });
 
-  it('render empty list', () => {
+  it('render empty list', async () => {
     useState.mockImplementationOnce((init) => [init, mockSetState]);
     useState.mockImplementationOnce((init) => [init, mockSetState]);
     useState.mockImplementationOnce((init) => [init, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
-    act(() => {
-      tree = create(<ActivityLog />);
+    await act(() => {
+      tree = create(wrapComponent());
     });
     const instance = tree.root;
     const SectionListElement = instance.findAllByType(SectionList);
@@ -81,28 +70,14 @@ describe('Test Activity log', () => {
     });
   });
 
-  it('render list', () => {
-    useState.mockImplementationOnce((init) => [data, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    act(() => {
-      tree = create(<ActivityLog />);
-    });
-    const instance = tree.root;
-    const SectionListElement = instance.findAllByType(SectionList);
-    expect(SectionListElement).toHaveLength(1);
-  });
-
-  it('render ActivityIndicator', () => {
+  it('render ActivityIndicator', async () => {
     useState.mockImplementationOnce((init) => [[], mockSetState]);
     useState.mockImplementationOnce((init) => [true, mockSetState]);
     useState.mockImplementationOnce((init) => [init, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
-    act(() => {
-      tree = create(<ActivityLog />);
+    await act(() => {
+      tree = create(wrapComponent());
     });
     const instance = tree.root;
     const ActivityIndicatorElement = instance.findAllByType(ActivityIndicator);

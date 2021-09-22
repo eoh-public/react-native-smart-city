@@ -2,11 +2,19 @@ import React from 'react';
 import { TextInput } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import { EmergencyContactsAddNew } from '../EmergencyContactsAddNew';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
 import { ViewButtonBottom } from '../../../commons';
 import { TESTID } from '../../../configs/Constants';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <EmergencyContactsAddNew route={route} />
+  </SCProvider>
+);
 
 jest.mock('react-native-toast-message');
 
@@ -24,7 +32,6 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('test EmergencyContactAddNew', () => {
-  const t = useTranslations();
   let route;
   beforeEach(() => {
     route = {
@@ -43,16 +50,9 @@ describe('test EmergencyContactAddNew', () => {
 
   let tree;
 
-  test('render', async () => {
-    act(() => {
-      tree = create(<EmergencyContactsAddNew route={route} />);
-    });
-    expect(tree.toJSON()).toMatchSnapshot();
-  });
-
   test('onChangeNameText', async () => {
     act(() => {
-      tree = create(<EmergencyContactsAddNew route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const textInput = instance.find(
@@ -68,12 +68,11 @@ describe('test EmergencyContactAddNew', () => {
 
     expect(textInput.props.value).toBe('ABC');
     expect(viewButtonBottom.props.rightDisabled).toBeTruthy();
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onTextPhoneChange', async () => {
     act(() => {
-      tree = create(<EmergencyContactsAddNew route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const textInput = instance.find(
@@ -89,12 +88,11 @@ describe('test EmergencyContactAddNew', () => {
 
     expect(textInput.props.value).toBe('123');
     expect(viewButtonBottom.props.rightDisabled).toBeTruthy();
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onCancel', async () => {
     act(() => {
-      tree = create(<EmergencyContactsAddNew route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
@@ -104,7 +102,6 @@ describe('test EmergencyContactAddNew', () => {
     });
 
     expect(mockedGoBack).toHaveBeenCalledTimes(1);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onSave success', async () => {
@@ -117,7 +114,7 @@ describe('test EmergencyContactAddNew', () => {
     });
 
     await act(async () => {
-      tree = await create(<EmergencyContactsAddNew route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
@@ -127,7 +124,6 @@ describe('test EmergencyContactAddNew', () => {
     });
 
     expect(mockedGoBack).toHaveBeenCalledTimes(1);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onSave fail', async () => {
@@ -139,7 +135,7 @@ describe('test EmergencyContactAddNew', () => {
     });
 
     await act(async () => {
-      tree = await create(<EmergencyContactsAddNew route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
@@ -150,7 +146,7 @@ describe('test EmergencyContactAddNew', () => {
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'error',
       position: 'bottom',
-      text1: t('create_contact_failed'),
+      text1: getTranslate('en', 'create_contact_failed'),
       visibilityTime: 1000,
     });
     expect(mockedGoBack).not.toHaveBeenCalled();

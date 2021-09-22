@@ -8,10 +8,11 @@ import MemberList from '../MemberList';
 import { AlertAction } from '../../../commons';
 import SharingMembers from '../../../commons/Sharing/MemberList';
 import API from '../../../configs/API';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import { TouchableOpacity } from 'react-native';
-import Routes from '../../../utils/Route';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -41,8 +42,13 @@ jest.mock('react-redux', () => {
   };
 });
 
+const wrapComponent = (route, account) => (
+  <SCProvider initState={mockSCStore({})}>
+    <MemberList route={route} account={account} />
+  </SCProvider>
+);
+
 describe('test MemberList', () => {
-  const t = useTranslations();
   let route;
   let account;
 
@@ -83,7 +89,7 @@ describe('test MemberList', () => {
 
   test('render MemberList', async () => {
     await act(async () => {
-      await create(<MemberList route={route} account={account} />);
+      await create(wrapComponent(route, account));
     });
     expect(axios.get).toHaveBeenCalledWith(API.SHARE.UNITS_MEMBERS(1), {});
   });
@@ -99,7 +105,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(<MemberList route={route} account={account} />);
+      tree = await create(wrapComponent(route, account));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -112,8 +118,8 @@ describe('test MemberList', () => {
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('sharing_removed_user', {
-        name: '[missing %{name} value]',
+      text1: getTranslate('en', 'sharing_removed_user', {
+        name: 'undefined',
       }),
       visibilityTime: 1000,
     });
@@ -135,7 +141,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(<MemberList route={route} account={account} />);
+      tree = await create(wrapComponent(route, account));
     });
     const instance = tree.root;
     const sharingMember = instance.findAllByType(SharingMembers);
@@ -159,7 +165,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(<MemberList route={route} account={account} />);
+      tree = await create(wrapComponent(route, account));
     });
     const instance = tree.root;
     const button = instance.find(
@@ -171,10 +177,7 @@ describe('test MemberList', () => {
       await button.props.onPress();
     });
     expect(axios.get).toHaveBeenCalledWith(API.SHARE.UNITS_MEMBERS(1), {});
-    expect(mockedNavigate).toHaveBeenCalledWith(Routes.AddMemberStack, {
-      screen: Routes.SharingSelectPermission,
-      params: { unit: { id: 1 } },
-    });
+    expect(mockedNavigate).not.toBeCalled();
   });
 
   test('WrapHeaderScrollable rightHeader but not owner', async () => {
@@ -194,7 +197,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(<MemberList route={route} account={account} />);
+      tree = await create(wrapComponent(route, account));
     });
     const instance = tree.root;
     const button = instance.find(

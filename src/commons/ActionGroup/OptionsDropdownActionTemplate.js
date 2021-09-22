@@ -57,7 +57,7 @@ const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
     const newOption = options[selectedIndex];
     const value = getOptionValue(newOption);
     doAction(action_data, value);
-    if (sensor.is_managed_by_backend) {
+    if (sensor?.is_managed_by_backend) {
       configuration.config && watchMultiConfigs([configuration.config]);
     }
     hideAlertAction();

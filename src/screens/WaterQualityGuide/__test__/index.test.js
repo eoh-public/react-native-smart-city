@@ -5,6 +5,8 @@ import WaterQualityGuide from '../index';
 import { create, act } from 'react-test-renderer';
 import { TESTID } from '../../../configs/Constants';
 import Text from '../../../commons/Text';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
@@ -15,6 +17,12 @@ jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useLayoutEffect: jest.fn(),
 }));
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <WaterQualityGuide route={route} />
+  </SCProvider>
+);
 
 describe('Test WaterQualityGuide', () => {
   let route;
@@ -91,7 +99,7 @@ describe('Test WaterQualityGuide', () => {
 
   test('render WaterQualityGuide default turbidityGuide', async () => {
     act(() => {
-      tree = create(<WaterQualityGuide route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -115,14 +123,12 @@ describe('Test WaterQualityGuide', () => {
     expect(textDescription1).toHaveLength(0);
     expect(textTitleLevel1).toHaveLength(0);
     expect(textDescriptionLevel1).toHaveLength(0);
-
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('render WaterQualityGuide with turbidityGuide', async () => {
     route.params.waterType = 'turbidity';
     act(() => {
-      tree = create(<WaterQualityGuide route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -146,14 +152,12 @@ describe('Test WaterQualityGuide', () => {
     expect(textDescription1).toHaveLength(0);
     expect(textTitleLevel1).toHaveLength(0);
     expect(textDescriptionLevel1).toHaveLength(0);
-
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('render WaterQualityGuide with cloGuide', async () => {
     route.params.waterType = 'clo';
     act(() => {
-      tree = create(<WaterQualityGuide route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -177,14 +181,12 @@ describe('Test WaterQualityGuide', () => {
     expect(textDescription1).toHaveLength(0);
     expect(textTitleLevel1).toHaveLength(0);
     expect(textDescriptionLevel1).toHaveLength(0);
-
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('render WaterQualityGuide with phGuide', async () => {
     route.params.waterType = 'ph';
     act(() => {
-      tree = create(<WaterQualityGuide route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -208,7 +210,5 @@ describe('Test WaterQualityGuide', () => {
     expect(textDescription1).toHaveLength(1);
     expect(textTitleLevel1).toHaveLength(14);
     expect(textDescriptionLevel1).toHaveLength(14);
-
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 });

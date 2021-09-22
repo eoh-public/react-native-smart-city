@@ -3,6 +3,14 @@ import renderer, { act } from 'react-test-renderer';
 import { TESTID } from '../../../../../configs/Constants';
 import { Colors } from '../../../../../configs';
 import PowerConsumption from '../index';
+import { SCProvider } from '../../../../../context';
+import { mockSCStore } from '../../../../../context/mockStore';
+
+const wrapComponent = (summaryDetail) => (
+  <SCProvider initState={mockSCStore({})}>
+    <PowerConsumption summaryDetail={summaryDetail} />
+  </SCProvider>
+);
 
 describe('Test 3PPowerConsumption', () => {
   let tree;
@@ -17,9 +25,7 @@ describe('Test 3PPowerConsumption', () => {
       listConfigs: [1, 2, 3],
     };
     act(() => {
-      tree = renderer.create(
-        <PowerConsumption summaryDetail={summaryDetail} />
-      );
+      tree = renderer.create(wrapComponent(summaryDetail));
     });
     const instance = tree.root;
     const listIndicator = instance.find(
@@ -32,24 +38,28 @@ describe('Test 3PPowerConsumption', () => {
         standard: 'Voltage 1',
         value: summaryDetail.volt1Value,
         measure: '',
+        id: 1,
       },
       {
         color: Colors.Blue10,
         standard: 'Current 1',
         value: summaryDetail.current1Value,
         measure: '',
+        id: 4,
       },
       {
         color: Colors.Orange,
         standard: 'Active Power',
         value: summaryDetail.activePowerValue,
         measure: '',
+        id: 7,
       },
       {
         color: Colors.Green6,
         standard: 'Power Factor 1',
         value: summaryDetail.powerFactor1Value,
         measure: '',
+        id: 8,
       },
     ];
     expect(listIndicator.props.data).toEqual(resultList);

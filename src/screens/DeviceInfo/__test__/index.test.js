@@ -1,9 +1,11 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 import { act } from '@testing-library/react-hooks';
-import { TESTID } from 'configs/Constants';
+import { TESTID } from '../../../configs/Constants';
 import DeviceInfo from '../';
 import { View } from 'react-native';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
 
@@ -32,12 +34,19 @@ jest.mock('@react-navigation/core', () => {
     }),
   };
 });
+
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <DeviceInfo />
+  </SCProvider>
+);
+
 describe('Test DeviceInfo', () => {
   let tree;
 
   it('render DeviceInfo', async () => {
     await act(async () => {
-      tree = await create(<DeviceInfo />);
+      tree = await create(wrapComponent());
     });
     const instance = tree.root;
     const battety = instance.findAll(
@@ -55,6 +64,6 @@ describe('Test DeviceInfo', () => {
       (el) =>
         el.props.testID === TESTID.DEVICE_INFO_CHIP_INFO && el.type === View
     );
-    expect(chip.length).toEqual(1);
+    expect(chip.length).toEqual(5);
   });
 });

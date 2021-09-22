@@ -3,6 +3,14 @@ import React from 'react';
 import renderer, { act } from 'react-test-renderer';
 import { TouchableOpacity } from 'react-native';
 import { TESTID } from '../../../configs/Constants';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (data) => (
+  <SCProvider initState={mockSCStore({})}>
+    <FlatListItems data={data} title={'filters'} />
+  </SCProvider>
+);
 
 describe('Test FlatListItems', () => {
   let tree;
@@ -19,7 +27,7 @@ describe('Test FlatListItems', () => {
       },
     ];
     act(() => {
-      tree = renderer.create(<FlatListItems data={data} title={'filters'} />);
+      tree = renderer.create(wrapComponent(data));
     });
     const instance = tree.root;
     const touch = instance.find(

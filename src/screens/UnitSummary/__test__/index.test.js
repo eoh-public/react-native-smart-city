@@ -14,6 +14,8 @@ import RunningDevices from '../components/RunningDevices';
 import Temperature from '../components/Temperature';
 import UvIndex from '../components/UvIndex';
 import WaterQuality from '../components/WaterQuality';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
 
@@ -27,6 +29,12 @@ jest.mock('@react-navigation/native', () => {
     }),
   };
 });
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <UnitSummary route={route} />
+  </SCProvider>
+);
 
 describe('Test UnitSummary', () => {
   let route;
@@ -50,7 +58,7 @@ describe('Test UnitSummary', () => {
 
   test('onRefresh', async () => {
     act(() => {
-      tree = create(<UnitSummary route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const refreshControl = instance.findByType(RefreshControl);
@@ -74,7 +82,7 @@ describe('Test UnitSummary', () => {
     axios.get.mockImplementation(() => Promise.resolve(response));
 
     act(() => {
-      tree = create(<UnitSummary route={route} />);
+      tree = create(wrapComponent(route));
     });
     expect(axios.get).toHaveBeenCalled();
     expect(axios.get).toHaveBeenCalledWith(
@@ -94,7 +102,7 @@ describe('Test UnitSummary', () => {
     axios.get.mockImplementation(() => Promise.resolve(response));
 
     act(() => {
-      tree = create(<UnitSummary route={route} />);
+      tree = create(wrapComponent(route));
     });
     act(() => {
       jest.runOnlyPendingTimers();
@@ -149,7 +157,7 @@ describe('Test UnitSummary', () => {
     test(`create Unit Summarty Detail ${value}`, async () => {
       route.params.summary.screen = value;
       await act(async () => {
-        tree = await create(<UnitSummary route={route} />);
+        tree = await create(wrapComponent(route));
       });
       const instance = tree.root;
       const UnitSummaryDetail = list_result[index];

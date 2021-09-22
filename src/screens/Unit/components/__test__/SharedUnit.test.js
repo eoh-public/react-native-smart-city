@@ -7,8 +7,17 @@ import SharedUnit from '../SharedUnit';
 import { TESTID } from '../../../../configs/Constants';
 import { API } from '../../../../configs';
 import Routes from '../../../../utils/Route';
+import { SCProvider } from '../../../../context';
+import { mockSCStore } from '../../../../context/mockStore';
 
 jest.mock('axios');
+
+const wrapComponent = (item, navigation) => (
+  <SCProvider initState={mockSCStore({})}>
+    <SharedUnit item={item} navigation={navigation} />
+    );
+  </SCProvider>
+);
 
 const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => {
@@ -48,7 +57,7 @@ describe('Test SharedUnit', () => {
     const navigation = useNavigation();
 
     await act(async () => {
-      tree = await create(<SharedUnit item={item} navigation={navigation} />);
+      tree = await create(wrapComponent(item, navigation));
     });
     const instance = tree.root;
     const touchSharedUnit = instance.find(
@@ -93,7 +102,7 @@ describe('Test SharedUnit', () => {
     item.is_star = true;
 
     await act(async () => {
-      tree = await create(<SharedUnit item={item} navigation={navigation} />);
+      tree = await create(wrapComponent(item, navigation));
     });
     const instance = tree.root;
     const iconRemovePinSharedUnit = instance.find(

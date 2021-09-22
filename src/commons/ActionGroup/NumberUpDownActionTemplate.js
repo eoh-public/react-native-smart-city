@@ -40,7 +40,7 @@ const NumberUpDownActionTemplate = ({ actionGroup, doAction, sensor }) => {
   const doActionAndWatchConfig = useCallback(
     (actionData, actionValue) => {
       doAction(actionData, actionValue);
-      if (!sensor.is_managed_by_backend) {
+      if (!sensor?.is_managed_by_backend) {
         return;
       }
       if (!keep_track_config) {

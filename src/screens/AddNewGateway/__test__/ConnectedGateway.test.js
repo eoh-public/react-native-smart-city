@@ -2,9 +2,11 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import ConnectedGateway from '../ConnectedGateway';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+import { getTranslate } from '../../../utils/I18n';
 
 jest.mock('axios');
 
@@ -18,8 +20,13 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ConnectedGateway route={route} />
+  </SCProvider>
+);
+
 describe('Test ConnectedGateway', () => {
-  const t = useTranslations();
   let tree;
   let route;
 
@@ -49,7 +56,7 @@ describe('Test ConnectedGateway', () => {
 
   test('create', async () => {
     await act(async () => {
-      tree = await create(<ConnectedGateway route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -58,9 +65,11 @@ describe('Test ConnectedGateway', () => {
     const textChipName = getText(instance, TESTID.CONNECTED_GATEWAY_CHIP_NAME);
     const textDone = getText(instance, TESTID.CONNECTED_GATEWAY_DONE);
 
-    expect(textSuccess.props.children).toEqual(t('successfully_connected'));
+    expect(textSuccess.props.children).toEqual(
+      getTranslate('en', 'successfully_connected')
+    );
     expect(textUnitName.props.children).toEqual('Unit name');
     expect(textChipName.props.children).toEqual('Chip name - ABC123');
-    expect(textDone.props.children).toEqual(t('done'));
+    expect(textDone.props.children).toEqual(getTranslate('en', 'done'));
   });
 });

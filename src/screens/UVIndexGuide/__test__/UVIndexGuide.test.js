@@ -5,6 +5,14 @@ import { Text } from 'react-native';
 import { TESTID } from '../../../configs/Constants';
 
 import UVIndexGuide from '../index';
+import { mockSCStore } from '../../../context/mockStore';
+import { SCProvider } from '../../../context';
+
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <UVIndexGuide />
+  </SCProvider>
+);
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
@@ -21,7 +29,7 @@ describe('Test UV Index Guide', () => {
   test('render UV Index Guide', async () => {
     let tree;
     act(() => {
-      tree = create(<UVIndexGuide />);
+      tree = create(wrapComponent());
     });
 
     const instance = tree.root;

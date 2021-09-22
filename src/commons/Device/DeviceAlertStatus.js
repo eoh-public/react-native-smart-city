@@ -12,7 +12,9 @@ const DeviceAlertStatus = memo(
 
     useEffect(() => {
       if (!!listStatus.length && offsetTitle !== listStatus.length) {
-        !!listStatus.length && setOffsetTitle(listStatus.length);
+        !!listStatus.length &&
+          setOffsetTitle &&
+          setOffsetTitle(listStatus.length);
       }
     }, [listStatus.length, offsetTitle, setOffsetTitle]);
 

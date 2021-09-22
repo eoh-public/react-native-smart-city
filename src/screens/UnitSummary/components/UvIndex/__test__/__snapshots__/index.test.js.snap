@@ -38,7 +38,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24 tháng 1
+        Today, Jan 24
       </Text>
     </View>
     <View>
@@ -2687,7 +2687,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Chỉ số UV"
+              content="UV Index "
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -2804,7 +2804,7 @@ Array [
           ]
         }
       >
-        Khuyến nghị về sức khoẻ:
+        Protection advices:
       </Text>
     </View>
   </View>,
@@ -2848,7 +2848,7 @@ Array [
             ]
           }
         >
-          Lịch sử
+          History
         </Text>
         <View
           style={
@@ -2878,7 +2878,7 @@ Array [
               ]
             }
           >
-            từ
+            From
           </Text>
           <View
             accessible={true}
@@ -2958,7 +2958,7 @@ Array [
               ]
             }
           >
-            đến
+            to
           </Text>
           <View
             accessible={true}
@@ -3168,7 +3168,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24 tháng 1
+        Today, Jan 24
       </Text>
     </View>
     <View>
@@ -5817,7 +5817,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Chỉ số UV"
+              content="UV Index "
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -5934,7 +5934,7 @@ Array [
           ]
         }
       >
-        Khuyến nghị về sức khoẻ:
+        Protection advices:
       </Text>
     </View>
     <View
@@ -6022,7 +6022,7 @@ Array [
             ]
           }
         >
-          Lịch sử
+          History
         </Text>
         <View
           style={
@@ -6052,7 +6052,7 @@ Array [
               ]
             }
           >
-            từ
+            From
           </Text>
           <View
             accessible={true}
@@ -6132,7 +6132,7 @@ Array [
               ]
             }
           >
-            đến
+            to
           </Text>
           <View
             accessible={true}
@@ -6342,7 +6342,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24 tháng 1
+        Today, Jan 24
       </Text>
     </View>
     <View>
@@ -8991,7 +8991,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Chỉ số UV"
+              content="UV Index "
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -9108,7 +9108,7 @@ Array [
           ]
         }
       >
-        Khuyến nghị về sức khoẻ:
+        Protection advices:
       </Text>
     </View>
   </View>,
@@ -9152,7 +9152,7 @@ Array [
             ]
           }
         >
-          Lịch sử
+          History
         </Text>
         <View
           style={
@@ -9182,7 +9182,7 @@ Array [
               ]
             }
           >
-            từ
+            From
           </Text>
           <View
             accessible={true}
@@ -9262,7 +9262,7 @@ Array [
               ]
             }
           >
-            đến
+            to
           </Text>
           <View
             accessible={true}
@@ -9472,7 +9472,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24 tháng 1
+        Today, Jan 24
       </Text>
     </View>
     <View>
@@ -12121,7 +12121,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Chỉ số UV"
+              content="UV Index "
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -12215,7 +12215,7 @@ Array [
           ]
         }
       >
-        Khuyến nghị về sức khoẻ:
+        Protection advices:
       </Text>
     </View>
   </View>,
@@ -12259,7 +12259,7 @@ Array [
             ]
           }
         >
-          Lịch sử
+          History
         </Text>
         <View
           style={
@@ -12289,7 +12289,7 @@ Array [
               ]
             }
           >
-            từ
+            From
           </Text>
           <View
             accessible={true}
@@ -12369,7 +12369,7 @@ Array [
               ]
             }
           >
-            đến
+            to
           </Text>
           <View
             accessible={true}
@@ -12579,7 +12579,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24 tháng 1
+        Today, Jan 24
       </Text>
     </View>
     <View>
@@ -15228,7 +15228,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Chỉ số UV"
+              content="UV Index "
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -15267,7 +15267,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Đang tải"
+              content="Loading"
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -15322,7 +15322,7 @@ Array [
           ]
         }
       >
-        Khuyến nghị về sức khoẻ:
+        Protection advices:
       </Text>
     </View>
   </View>,
@@ -15366,7 +15366,7 @@ Array [
             ]
           }
         >
-          Lịch sử
+          History
         </Text>
         <View
           style={
@@ -15396,7 +15396,7 @@ Array [
               ]
             }
           >
-            từ
+            From
           </Text>
           <View
             accessible={true}
@@ -15476,7 +15476,7 @@ Array [
               ]
             }
           >
-            đến
+            to
           </Text>
           <View
             accessible={true}
@@ -15686,7 +15686,7 @@ Array [
           ]
         }
       >
-        Hôm nay, 24 tháng 1
+        Today, Jan 24
       </Text>
     </View>
     <View>
@@ -18335,7 +18335,7 @@ Array [
             }
           >
             <RNSVGTSpan
-              content="Chỉ số UV"
+              content="UV Index "
               dx={Array []}
               dy={Array []}
               font={Object {}}
@@ -18452,7 +18452,7 @@ Array [
           ]
         }
       >
-        Khuyến nghị về sức khoẻ:
+        Protection advices:
       </Text>
     </View>
   </View>,
@@ -18496,7 +18496,7 @@ Array [
             ]
           }
         >
-          Lịch sử
+          History
         </Text>
         <View
           style={
@@ -18526,7 +18526,7 @@ Array [
               ]
             }
           >
-            từ
+            From
           </Text>
           <View
             accessible={true}
@@ -18606,7 +18606,7 @@ Array [
               ]
             }
           >
-            đến
+            to
           </Text>
           <View
             accessible={true}

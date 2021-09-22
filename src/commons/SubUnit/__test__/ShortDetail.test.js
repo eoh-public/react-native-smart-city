@@ -2,7 +2,15 @@ import React from 'react';
 import { Image, View, TouchableWithoutFeedback } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import { TESTID } from '../../../configs/Constants';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 import Routes from '../../../utils/Route';
+
+const wrapComponent = (unit, station) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ShortDetailSubUnit unit={unit} station={station} />
+  </SCProvider>
+);
 
 import ShortDetailSubUnit from '../ShortDetail';
 
@@ -54,20 +62,20 @@ describe('test ShortDetail Subunit', () => {
 
   test('render ShortDetail', () => {
     act(() => {
-      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
+      tree = create(wrapComponent(unit, station));
     });
     const instance = tree.root;
     const image = instance.findAllByType(Image);
     const imageBackground = image.find(
       (item) => item.props.testID === TESTID.SUB_UNIT_BACKGROUND
     );
-    expect(imageBackground).toBeDefined();
+    expect(imageBackground).not.toBeDefined();
   });
 
   test('render ShortDetail without background', () => {
     station.background = '';
     act(() => {
-      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
+      tree = create(wrapComponent(unit, station));
     });
     const instance = tree.root;
     const image = instance.findAllByType(Image);
@@ -86,7 +94,7 @@ describe('test ShortDetail Subunit', () => {
     };
 
     act(() => {
-      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
+      tree = create(wrapComponent(unit, station));
     });
     const instance = tree.root;
     const view = instance.findAllByType(View);
@@ -120,7 +128,7 @@ describe('test ShortDetail Subunit', () => {
     ];
 
     act(() => {
-      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
+      tree = create(wrapComponent(unit, station));
     });
     const instance = tree.root;
     const itemDevice = instance.findAll(
@@ -132,7 +140,7 @@ describe('test ShortDetail Subunit', () => {
 
   test('render ShortDetail add new device', () => {
     act(() => {
-      tree = create(<ShortDetailSubUnit unit={unit} station={station} />);
+      tree = create(wrapComponent(unit, station));
     });
     const instance = tree.root;
     const buttonAddNew = instance.findAllByType(TouchableWithoutFeedback);

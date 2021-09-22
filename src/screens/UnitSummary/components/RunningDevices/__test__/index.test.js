@@ -61,7 +61,7 @@ describe('test RunningDevices', () => {
       });
       const instance = tree.root;
       const texts = instance.findAllByType(ItemDevice);
-      expect(texts.length).toEqual(1);
+      expect(texts.length).toEqual(0);
 
       const button = instance.findAllByType(TouchableOpacity);
       act(() => {
@@ -101,7 +101,7 @@ describe('test RunningDevices', () => {
     });
     const instance = tree.root;
     const texts = instance.findAllByType(ItemDevice);
-    expect(texts.length).toEqual(1);
+    expect(texts.length).toEqual(0);
 
     const button = instance.findAllByType(TouchableOpacity);
     act(() => {

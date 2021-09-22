@@ -38,7 +38,7 @@ const OnOffTemplate = memo(({ actionGroup, doAction, sensor }) => {
         doAction(action_on_data);
       }
     }
-    if (sensor.is_managed_by_backend) {
+    if (sensor?.is_managed_by_backend) {
       configuration.config && watchMultiConfigs([configuration.config]);
     }
   }, [
@@ -48,7 +48,7 @@ const OnOffTemplate = memo(({ actionGroup, doAction, sensor }) => {
     configuration.config,
     doAction,
     isOn,
-    sensor.is_managed_by_backend,
+    sensor,
   ]);
 
   useEffect(() => {
@@ -68,10 +68,10 @@ const OnOffTemplate = memo(({ actionGroup, doAction, sensor }) => {
   ]);
 
   useEffect(() => {
-    if (sensor.is_managed_by_backend) {
+    if (sensor?.is_managed_by_backend) {
       watchMultiConfigs([configuration.config]);
     }
-  }, [sensor.is_managed_by_backend, configuration.config]);
+  }, [sensor, configuration.config]);
 
   const Component = useMemo(() => {
     return getComponent(actionGroup.template);

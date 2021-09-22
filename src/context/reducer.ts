@@ -12,6 +12,7 @@ export type ContextData = {
   auth: AuthData;
   language: Language;
   listDevice: ListDevice;
+  statusBar: StatusBar;
 };
 
 export type Action = {

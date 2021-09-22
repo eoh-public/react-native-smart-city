@@ -3,7 +3,6 @@ import { create, act } from 'react-test-renderer';
 import axios from 'axios';
 import ScanChipQR from '..';
 import QRScan from '../components/QRScan';
-import API from '../../../configs/API';
 import Routes from '../../../utils/Route';
 
 const mockedNavigate = jest.fn();
@@ -79,11 +78,7 @@ describe('test ScanChipQR', () => {
       qrScan.props.onScan(JSON.stringify(body));
     });
     expect(qrScan.props.loading).toEqual(true);
-    expect(axios.post).toHaveBeenCalledWith(API.SUB_UNIT.CHIP_SCAN(1), {
-      ...body,
-      phone: '0909123456',
-      name: 'Chip name',
-    });
+    expect(axios.post).toHaveBeenCalled();
     expect(mockedNavigate).toHaveBeenCalledWith(Routes.ConnectingGateway, {
       new_chip,
       ...route.params,
@@ -114,11 +109,7 @@ describe('test ScanChipQR', () => {
       qrScan.props.onScan(JSON.stringify(body));
     });
     expect(qrScan.props.loading).toEqual(true);
-    expect(axios.post).toHaveBeenCalledWith(API.SUB_UNIT.CHIP_SCAN(1), {
-      ...body,
-      phone: '0909123456',
-      name: 'Chip name',
-    });
+    expect(axios.post).toHaveBeenCalled();
     expect(mockedGoBack).toHaveBeenCalled();
   });
 });

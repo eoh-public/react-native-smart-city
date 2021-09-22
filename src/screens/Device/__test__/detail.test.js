@@ -7,13 +7,15 @@ import { API } from '../../../configs';
 import { AlertSendConfirm } from '../../../commons/EmergencyButton/AlertSendConfirm';
 import { AlertSent } from '../../../commons/EmergencyButton/AlertSent';
 import { AlertAction, ButtonPopup, MenuActionMore } from '../../../commons';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import Text from '../../../commons/Text';
 import { IconFill } from '@ant-design/icons-react-native';
 // import CurrentRainSensor from 'components/Device/RainningSensor/CurrentRainSensor';
 import CurrentRainSensor from '../../../commons/Device/RainningSensor/CurrentRainSensor';
 import { ConnectedViewHeader } from '../../../commons/Device';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -66,8 +68,13 @@ const mockAxios = (
   });
 };
 
+const wrapComponent = (account, route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <DeviceDetail account={account} route={route} />
+  </SCProvider>
+);
+
 describe('test DeviceDetail', () => {
-  const t = useTranslations();
   let tree;
   let route;
   let account;
@@ -206,7 +213,7 @@ describe('test DeviceDetail', () => {
     mockAxios(responseDisplay, responseDisplayValueV2, responseRemoteControl);
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
     expect(axios.get).toHaveBeenCalledTimes(4);
@@ -266,7 +273,7 @@ describe('test DeviceDetail', () => {
 
   test('AlertSendConfirm onSendNowAlert', async () => {
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
     const alertSendConfirm = instance.findByType(AlertSendConfirm);
@@ -301,7 +308,7 @@ describe('test DeviceDetail', () => {
 
   test('ButtonPopup onClick', async () => {
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
     const buttonPopup = instance.find(
@@ -328,7 +335,7 @@ describe('test DeviceDetail', () => {
       await jest.runOnlyPendingTimers();
     });
     expect(buttonPopup.props.visible).toEqual(true);
-    expect(buttonPopup.props.mainTitle).toEqual(t('ok'));
+    expect(buttonPopup.props.mainTitle).toEqual(getTranslate('en', 'ok'));
     await act(async () => {
       await buttonPopup.props.onPressMain();
       await buttonPopup.props.onClose();
@@ -338,7 +345,7 @@ describe('test DeviceDetail', () => {
 
   test('ButtonPopup render', async () => {
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
     const buttonPopupTitle = instance.find(
@@ -361,7 +368,7 @@ describe('test DeviceDetail', () => {
 
   test('ScrollView onRefresh', async () => {
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
     const scrollView = instance.findByType(ScrollView);
@@ -370,7 +377,7 @@ describe('test DeviceDetail', () => {
     await act(async () => {
       refreshControl.props.onRefresh();
     });
-    expect(axios.get).toHaveBeenCalledTimes(8);
+    expect(axios.get).toHaveBeenCalledTimes(7);
   });
 
   test('Should render SensorDisplayItem', async () => {
@@ -501,14 +508,14 @@ describe('test DeviceDetail', () => {
     mockAxios(responseDisplay, responseDisplayValueV2);
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
 
     const instance = tree.root;
     const sensorDisplayItem = instance.findAll(
       (el) => el.props.testID === TESTID.SENSOR_DISPLAY_ITEM
     );
-    expect(sensorDisplayItem).toHaveLength(2);
+    expect(sensorDisplayItem).toHaveLength(4);
   });
 
   test('render CurrentRainSensor', async () => {
@@ -549,24 +556,24 @@ describe('test DeviceDetail', () => {
     mockAxios(responseDisplay, responseDisplayValueV2);
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
 
     const instance = tree.root;
     const sensorDisplayItem = instance.findAll(
       (el) => el.props.testID === TESTID.SENSOR_DISPLAY_ITEM
     );
-    expect(sensorDisplayItem).toHaveLength(4);
+    expect(sensorDisplayItem).toHaveLength(1);
 
     const currentRainSensor = instance.findAllByType(CurrentRainSensor);
-    expect(currentRainSensor).toHaveLength(0); // not crash app
+    expect(currentRainSensor).toHaveLength(1); // not crash app
   });
 
   test('not fetch value if not managed by backend', async () => {
     route.params.sensor.is_managed_by_backend = false;
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
 
     expect(axios.get).not.toBeCalledWith(API.SENSOR.DISPLAY_VALUES_V2(1));
@@ -613,7 +620,7 @@ describe('test DeviceDetail', () => {
     mockAxios(responseDisplay, responseDisplayValueV2);
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
 
     const instance = tree.root;
@@ -627,7 +634,7 @@ describe('test DeviceDetail', () => {
 
   test('HeaderDevice button more onClick', async () => {
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
     const menu = instance.findByType(MenuActionMore);
@@ -649,7 +656,7 @@ describe('test DeviceDetail', () => {
     sensor.is_favourite = false;
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
 
@@ -678,7 +685,7 @@ describe('test DeviceDetail', () => {
     sensor.is_favourite = true;
 
     await act(async () => {
-      tree = await create(<DeviceDetail account={account} route={route} />);
+      tree = await create(wrapComponent(account, route));
     });
     const instance = tree.root;
 

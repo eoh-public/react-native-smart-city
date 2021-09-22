@@ -5,8 +5,16 @@ import { Colors } from '../../../../../configs';
 import ListQualityIndicator from '../../../../../commons/Device/WaterQualitySensor/ListQualityIndicator';
 import axios from 'axios';
 import PowerConsumption from '../index';
+import { SCProvider } from '../../../../../context';
+import { mockSCStore } from '../../../../../context/mockStore';
 
 jest.mock('axios');
+
+const wrapComponent = (summaryDetail) => (
+  <SCProvider initState={mockSCStore({})}>
+    <PowerConsumption summaryDetail={summaryDetail} />
+  </SCProvider>
+);
 
 describe('Test PowerConsumption', () => {
   let tree;
@@ -21,9 +29,7 @@ describe('Test PowerConsumption', () => {
       listConfigs: [1, 2, 3],
     };
     act(() => {
-      tree = renderer.create(
-        <PowerConsumption summaryDetail={summaryDetail} />
-      );
+      tree = renderer.create(wrapComponent(summaryDetail));
     });
     const instance = tree.root;
     const listIndicator = instance.find(
@@ -36,24 +42,28 @@ describe('Test PowerConsumption', () => {
         standard: 'Voltage',
         value: summaryDetail.voltValue,
         measure: '',
+        id: 1,
       },
       {
         color: Colors.Blue10,
         standard: 'Current',
         value: summaryDetail.currentValue,
         measure: '',
+        id: 2,
       },
       {
         color: Colors.Orange,
         standard: 'Active Power',
         value: summaryDetail.activePowerValue,
         measure: '',
+        id: 3,
       },
       {
         color: Colors.Green6,
         standard: 'Power Factor',
         value: summaryDetail.powerFactorValue,
         measure: '',
+        id: 4,
       },
     ];
     expect(listIndicator.props.data).toEqual(resultList);
@@ -82,9 +92,7 @@ describe('Test PowerConsumption', () => {
     axios.get.mockImplementation(async (url) => response);
 
     await act(async () => {
-      tree = await renderer.create(
-        <PowerConsumption summaryDetail={summaryDetail} />
-      );
+      tree = await renderer.create(wrapComponent(summaryDetail));
     });
     expect(axios.get).toHaveBeenCalled();
   });
@@ -112,9 +120,7 @@ describe('Test PowerConsumption', () => {
     axios.get.mockImplementation(async (url) => response);
 
     await act(async () => {
-      tree = await renderer.create(
-        <PowerConsumption summaryDetail={summaryDetail} />
-      );
+      tree = await renderer.create(wrapComponent(summaryDetail));
     });
     expect(axios.get).toHaveBeenCalled();
   });
@@ -132,9 +138,7 @@ describe('Test PowerConsumption', () => {
     };
 
     await act(async () => {
-      tree = await renderer.create(
-        <PowerConsumption summaryDetail={summaryDetail} />
-      );
+      tree = await renderer.create(wrapComponent(summaryDetail));
     });
     const instance = tree.root;
     const listQualityIndicator = instance.findByType(ListQualityIndicator);

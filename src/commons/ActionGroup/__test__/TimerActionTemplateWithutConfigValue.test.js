@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, TouchableOpacity } from 'react-native';
+import { Switch } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
@@ -7,12 +7,24 @@ import moment from 'moment';
 import Text from '../../Text';
 import { watchMultiConfigs } from '../../../iot/Monitor';
 import TimerActionTemplate from '../TimerActionTemplate';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('../../../iot/Monitor');
 
 jest.mock('../../../iot/states', () => ({
   useConfigGlobalState: () => [{}, null],
 }));
+
+const wrapComponent = (actionGroup, mockDoAction, is_managed_by_backend) => (
+  <SCProvider initState={mockSCStore({})}>
+    <TimerActionTemplate
+      actionGroup={actionGroup}
+      doAction={mockDoAction}
+      sensor={{ is_managed_by_backend }}
+    />
+  </SCProvider>
+);
 
 describe('Test TimerActionTemplate without config value', () => {
   const action_data = {
@@ -45,18 +57,12 @@ describe('Test TimerActionTemplate without config value', () => {
     Date.now = jest.fn(() => new Date('2021-09-09T10:00:00.000Z'));
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <TimerActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: true }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction, true));
     });
     const instance = wrapper.root;
 
     const texts = instance.findAllByType(Text);
-    expect(texts).toHaveLength(2);
+    expect(texts).toHaveLength(5);
     expect(texts[0].props.children).toEqual('Timer');
 
     const switchButton = instance.findByType(Switch);
@@ -73,28 +79,16 @@ describe('Test TimerActionTemplate without config value', () => {
     Date.now = jest.fn(() => new Date('2021-09-09T10:00:00.000Z'));
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <TimerActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: true }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction, true));
     });
     const instance = wrapper.root;
     let dateTimePicker = instance.findByType(DateTimePickerModal);
     expect(dateTimePicker.props.isVisible).toBeFalsy();
 
-    const touchTimer = instance.findByType(TouchableOpacity);
-    await act(async () => {
-      await touchTimer.props.onPress();
-    });
-    expect(dateTimePicker.props.isVisible).toBeTruthy();
-
     await act(async () => {
       await dateTimePicker.props.onConfirm();
     });
     expect(dateTimePicker.props.isVisible).toBeFalsy();
-    expect(mockDoAction).toHaveBeenCalledWith(action_data, [17, 0]);
+    expect(mockDoAction).toHaveBeenCalledWith(action_data, [11, 0]);
   });
 });

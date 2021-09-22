@@ -6,6 +6,8 @@ import { HeaderCustom } from '../../../commons/Header';
 import useManageAccess from '../hooks/index';
 import axios from 'axios';
 import API from '../../../configs/API';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockRoute = jest.fn();
 
@@ -20,10 +22,20 @@ jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
     useRoute: () => mockRoute,
+    useNavigation: () => ({
+      goBack: jest.fn(),
+    }),
+    useIsFocused: jest.fn(),
   };
 });
 
 jest.mock('axios');
+
+const wrapComponent = (actionGroup) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ManageAccessScreen />
+  </SCProvider>
+);
 
 describe('Test Manage Access', () => {
   afterEach(() => {
@@ -73,7 +85,7 @@ describe('Test Manage Access', () => {
   let tree;
   it('rendering Manage Access header', async () => {
     act(() => {
-      tree = create(<ManageAccessScreen />);
+      tree = create(wrapComponent());
     });
     const instance = tree.root;
     const header = instance.findAllByType(HeaderCustom);

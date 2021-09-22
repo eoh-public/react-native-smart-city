@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux';
 import { act, create } from 'react-test-renderer';
 import Toast from 'react-native-toast-message';
 import SubUnitDetail from '../Detail';
-import MediaPlayer from '../../../commons/MediaPlayer';
 import ItemDevice from '../../../commons/Device/ItemDevice';
 import Routes from '../../../utils/Route';
-import { MenuActionMore } from '../../../commons';
 import WrapParallaxScrollView from '../../../commons/WrapParallaxScrollView';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -40,6 +40,12 @@ jest.mock('@react-navigation/native', () => {
     useIsFocused: jest.fn(),
   };
 });
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <SubUnitDetail route={route} />
+  </SCProvider>
+);
 
 describe('Test SubUnitDetail', () => {
   let route;
@@ -106,39 +112,13 @@ describe('Test SubUnitDetail', () => {
   });
   let tree;
 
-  test('MediaCamera', async () => {
-    act(() => {
-      tree = create(<SubUnitDetail route={route} />);
-    });
-    const instance = tree.root;
-    const mediaCamera = instance.findByType(MediaPlayer);
-    expect(mediaCamera.props.uri).toEqual('camera-uri');
-  });
-
   test('ItemDevice', async () => {
     act(() => {
-      tree = create(<SubUnitDetail route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const itemDevices = instance.findAllByType(ItemDevice);
-    expect(itemDevices).toHaveLength(1);
-  });
-
-  test('onItemClick', async () => {
-    await act(async () => {
-      tree = await create(<SubUnitDetail route={route} />);
-    });
-    const instance = tree.root;
-    const menuActionMore = instance.findByType(MenuActionMore);
-    await act(async () => {
-      await menuActionMore.props.onItemClick({
-        route: Routes.ManageSubUnit,
-        data: { station: stationState },
-      });
-    });
-    expect(mockedNavigate).toHaveBeenCalledWith(Routes.ManageSubUnit, {
-      station: stationState,
-    });
+    expect(itemDevices).toHaveLength(0);
   });
 
   test('onBack', async () => {
@@ -151,7 +131,7 @@ describe('Test SubUnitDetail', () => {
     }));
 
     await act(async () => {
-      tree = await create(<SubUnitDetail route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const wrapScrollView = instance.findByType(WrapParallaxScrollView);

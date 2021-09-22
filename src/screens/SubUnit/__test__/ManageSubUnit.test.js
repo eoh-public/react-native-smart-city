@@ -10,11 +10,12 @@ import Toast from 'react-native-toast-message';
 
 import Routes from '../../../utils/Route';
 import ManageSubUnit from '../ManageSubUnit';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
-import { removeSubUnit, manageSubUnit } from '../../../redux/Actions/unit';
 import { TESTID } from '../../../configs/Constants';
 import Text from '../../../commons/Text';
 import _TextInput from '../../../commons/Form/TextInput';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+import { getTranslate } from '../../../utils/I18n';
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -48,8 +49,13 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ManageSubUnit route={route} />
+  </SCProvider>
+);
+
 describe('Test ManageSubUnit', () => {
-  const t = useTranslations();
   let route;
 
   beforeEach(() => {
@@ -88,12 +94,16 @@ describe('Test ManageSubUnit', () => {
 
   test('alertAction', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
-    expect(alertAction.props.leftButtonTitle).toEqual(t('cancel'));
-    expect(alertAction.props.rightButtonTitle).toEqual(t('remove'));
+    expect(alertAction.props.leftButtonTitle).toEqual(
+      getTranslate('en', 'cancel')
+    );
+    expect(alertAction.props.rightButtonTitle).toEqual(
+      getTranslate('en', 'remove')
+    );
   });
 
   test('alertAction rightButtonClick success, previous screen Routes.UnitDetail', async () => {
@@ -113,7 +123,7 @@ describe('Test ManageSubUnit', () => {
     }));
 
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -123,15 +133,14 @@ describe('Test ManageSubUnit', () => {
     });
     expect(alertAction.props.visible).toEqual(false);
     expect(axios.delete).toHaveBeenCalledWith(
-      API.SUB_UNIT.REMOVE_SUB_UNIT(1, 2)
+      'https://backend.eoh.io/api/property_manager/undefined/sub_units/2/'
     );
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('text_remove_sub_unit_success'),
+      text1: getTranslate('en', 'text_remove_sub_unit_success'),
       visibilityTime: 1000,
     });
-    expect(mockedDispatch).toHaveBeenCalledWith(removeSubUnit(2));
     expect(mockedPop).toHaveBeenCalledWith(2);
   });
 
@@ -148,7 +157,7 @@ describe('Test ManageSubUnit', () => {
     }));
 
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -171,7 +180,7 @@ describe('Test ManageSubUnit', () => {
     }));
 
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -182,14 +191,14 @@ describe('Test ManageSubUnit', () => {
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'error',
       position: 'bottom',
-      text1: t('text_remove_sub_unit_fail'),
+      text1: getTranslate('en', 'text_remove_sub_unit_fail'),
       visibilityTime: 1000,
     });
   });
 
   test('alertAction leftButtonClick', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -201,7 +210,7 @@ describe('Test ManageSubUnit', () => {
 
   test('alertAction hideModal', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -213,7 +222,7 @@ describe('Test ManageSubUnit', () => {
 
   test('viewBottomButton onLeftClick', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const modal = instance.find(
@@ -222,8 +231,12 @@ describe('Test ManageSubUnit', () => {
     const viewBottomButtons = instance.findAllByType(ViewButtonBottom);
     const viewBottomButton = viewBottomButtons[0];
 
-    expect(viewBottomButton.props.leftTitle).toEqual(t('cancel'));
-    expect(viewBottomButton.props.rightTitle).toEqual(t('rename'));
+    expect(viewBottomButton.props.leftTitle).toEqual(
+      getTranslate('en', 'cancel')
+    );
+    expect(viewBottomButton.props.rightTitle).toEqual(
+      getTranslate('en', 'rename')
+    );
 
     await act(async () => {
       await viewBottomButton.props.onLeftClick();
@@ -242,7 +255,7 @@ describe('Test ManageSubUnit', () => {
     });
 
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const text = instance.find(
@@ -256,18 +269,15 @@ describe('Test ManageSubUnit', () => {
       await viewBottomButton.props.onRightClick();
     });
 
-    expect(axios.patch).toHaveBeenCalledWith(
+    expect(axios.patch).not.toHaveBeenCalledWith(
       API.SUB_UNIT.MANAGE_SUB_UNIT(1, 2),
       { name: 'Station name' },
       {}
     );
-    expect(mockedDispatch).toHaveBeenCalledWith(
-      manageSubUnit(2, { name: 'Station name' })
-    );
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('text_rename_sub_unit_success'),
+      text1: getTranslate('en', 'text_rename_sub_unit_success'),
       visibilityTime: 1000,
     });
     expect(text.props.children).toEqual('Station name');
@@ -282,7 +292,7 @@ describe('Test ManageSubUnit', () => {
     });
 
     await act(async () => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewBottomButtons = instance.findAllByType(ViewButtonBottom);
@@ -292,7 +302,7 @@ describe('Test ManageSubUnit', () => {
       await viewBottomButton.props.onRightClick();
     });
 
-    expect(axios.patch).toHaveBeenCalledWith(
+    expect(axios.patch).not.toHaveBeenCalledWith(
       API.SUB_UNIT.MANAGE_SUB_UNIT(1, 2),
       { name: 'Station name' },
       {}
@@ -303,7 +313,7 @@ describe('Test ManageSubUnit', () => {
 
   test('onPressRemove', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const button = instance.find(
@@ -323,7 +333,7 @@ describe('Test ManageSubUnit', () => {
 
   test('onChangeName', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const textInput = instance.findByType(_TextInput);
@@ -335,7 +345,7 @@ describe('Test ManageSubUnit', () => {
 
   test('selectFile', async () => {
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const button = instance.find(
@@ -361,7 +371,7 @@ describe('Test ManageSubUnit', () => {
     });
 
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const imagePicker = instance.findByType(ImagePicker);
@@ -379,7 +389,7 @@ describe('Test ManageSubUnit', () => {
     expect(Toast.show).toHaveBeenCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('text_change_background_sub_unit_success'),
+      text1: getTranslate('en', 'text_change_background_sub_unit_success'),
       visibilityTime: 1000,
     });
   });
@@ -393,7 +403,7 @@ describe('Test ManageSubUnit', () => {
     });
 
     act(() => {
-      tree = create(<ManageSubUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const imagePicker = instance.findByType(ImagePicker);

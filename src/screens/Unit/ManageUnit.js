@@ -181,7 +181,7 @@ const ManageUnit = ({ route }) => {
               </ButtonWrapper>
               <ButtonWrapper
                 title={t('manage_sub_units')}
-                value={`${unit.stations.length} sub-units`}
+                value={`${unit?.stations?.length} sub-units`}
               />
               <ButtonWrapper
                 onPress={handleChoosePhoto}

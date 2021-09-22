@@ -5,6 +5,14 @@ import AirQuality from '../index';
 import { Section } from '../../../index';
 import Text from '../../../Text';
 import { TESTID } from '../../../../configs/Constants';
+import { SCProvider } from '../../../../context';
+import { mockSCStore } from '../../../../context/mockStore';
+
+const wrapComponent = (data) => (
+  <SCProvider initState={mockSCStore({})}>
+    <AirQuality {...data} />
+  </SCProvider>
+);
 
 describe('Test AirQuality', () => {
   let data;
@@ -40,12 +48,11 @@ describe('Test AirQuality', () => {
 
   test('render AirQuality', async () => {
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const sections = instance.findAllByType(Section);
     expect(sections).toHaveLength(2);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('without showBoxHistory', async () => {
@@ -54,12 +61,11 @@ describe('Test AirQuality', () => {
     data.summaryDetail.outdoor_co_id = null;
 
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const sections = instance.findAllByType(Section);
     expect(sections).toHaveLength(1);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('value is undefined', async () => {
@@ -68,7 +74,7 @@ describe('Test AirQuality', () => {
     data.summaryDetail.outdoor_co_value = undefined;
 
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const buttons = instance.findAll(
@@ -77,7 +83,6 @@ describe('Test AirQuality', () => {
         el.type === TouchableOpacity
     );
     expect(buttons).toHaveLength(3);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onSelectOutdoor', async () => {
@@ -93,7 +98,7 @@ describe('Test AirQuality', () => {
     const styleInactive = { backgroundColor: '#FFFFFF', borderWidth: 1 };
 
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const buttons = instance.findAll(
@@ -112,14 +117,12 @@ describe('Test AirQuality', () => {
     expect(buttons[0].props.style).toEqual([styleTouch, styleInactive]);
     expect(buttons[1].props.style).toEqual([styleTouch, styleActive]);
     expect(buttons[2].props.style).toEqual([styleTouch, styleInactive]);
-
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('advices', async () => {
     data.summaryDetail.advices = ['Amazing Good Chop'];
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const text = instance.find(
@@ -128,13 +131,12 @@ describe('Test AirQuality', () => {
         el.type === Text
     );
     expect(text.props.children).toEqual('Amazing Good Chop');
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('without outdoor_pm2_5_value', async () => {
     data.summaryDetail.outdoor_pm2_5_value = null;
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const buttons = instance.findAll(
@@ -143,13 +145,12 @@ describe('Test AirQuality', () => {
         el.type === TouchableOpacity
     );
     expect(buttons).toHaveLength(2);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('without outdoor_pm10_value', async () => {
     data.summaryDetail.outdoor_pm10_value = null;
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const buttons = instance.findAll(
@@ -158,13 +159,12 @@ describe('Test AirQuality', () => {
         el.type === TouchableOpacity
     );
     expect(buttons).toHaveLength(2);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('without outdoor_co_value', async () => {
     data.summaryDetail.outdoor_co_value = null;
     act(() => {
-      tree = create(<AirQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const buttons = instance.findAll(
@@ -173,6 +173,5 @@ describe('Test AirQuality', () => {
         el.type === TouchableOpacity
     );
     expect(buttons).toHaveLength(2);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 });

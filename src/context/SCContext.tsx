@@ -1,9 +1,5 @@
 import React, { useContext, useReducer } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import Toast from 'react-native-toast-message';
 
-import { Alert } from '../commons';
-import { Colors } from '../configs';
 import {
   ActionDataMap,
   ActionType,
@@ -13,15 +9,6 @@ import {
 } from './actionType';
 import { initialState, Action, ContextData, reducer } from './reducer';
 import { setConfigGlobalState } from '../iot/states.js';
-
-const toastConfig = {
-  // only for error for now
-  error: (internalState) => (
-    <View style={styles.toastContainer}>
-      <Text style={styles.textWhite}>{internalState.text1}</Text>
-    </View>
-  ),
-};
 
 type SCContextType = {
   stateData: ContextData;
@@ -79,8 +66,8 @@ export const SCProvider = ({ children }) => {
   return (
     <SCContext.Provider value={providerValue}>
       {children}
-      <Alert ref={(ref) => Alert.setRef(ref)} />
-      <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} />
+      {/* <Alert ref={(ref) => Alert.setRef(ref)} />
+      <Toast config={toastConfig} ref={(ref) => Toast.setRef(ref)} /> */}
     </SCContext.Provider>
   );
 };
@@ -91,14 +78,3 @@ export const useSCContextSelector = (
   const { stateData } = useContext(SCContext);
   return selector(stateData);
 };
-
-const styles = StyleSheet.create({
-  toastContainer: {
-    borderRadius: 5,
-    padding: 10,
-    backgroundColor: Colors.Black,
-  },
-  textWhite: {
-    color: Colors.White,
-  },
-});

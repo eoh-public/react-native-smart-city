@@ -5,6 +5,8 @@ import renderer, { act } from 'react-test-renderer';
 import UnitDetail from '../Detail';
 import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockDispatch = jest.fn();
 
@@ -23,6 +25,15 @@ jest.mock('../../../iot/RemoteControl/GoogleHome', () => ({
 }));
 
 jest.mock('axios');
+
+const wrapComponent = (route, unitData, account) => (
+  <SCProvider initState={mockSCStore({})}>
+    <UnitDetail
+      route={{ params: { ...route.params, unitData } }}
+      account={account}
+    />
+  </SCProvider>
+);
 
 describe('Test UnitDetail google home disconnect', () => {
   const route = {
@@ -58,17 +69,15 @@ describe('Test UnitDetail google home disconnect', () => {
     jest.useFakeTimers();
 
     await act(async () => {
-      await renderer.create(
-        <UnitDetail
-          route={{ params: { ...route.params, unitData } }}
-          account={account}
-        />
-      );
+      await renderer.create(wrapComponent(route, unitData, account));
     });
 
-    expect(axios.post).toHaveBeenCalledWith(API.GOOGLE_HOME.CHECK_SEND_EMAIL, {
-      chip_id: 1,
-      is_connected: false,
-    });
+    expect(axios.post).toHaveBeenCalledWith(
+      API.GOOGLE_HOME.CHECK_SEND_EMAIL(),
+      {
+        chip_id: 1,
+        is_connected: false,
+      }
+    );
   });
 });
