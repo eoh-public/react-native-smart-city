@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Colors, Device } from '../../configs';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
 
@@ -67,6 +67,10 @@ export default StyleSheet.create({
     borderRadius: 10,
     borderBottomRightRadius: 10,
     borderBottomLeftRadius: 10,
+    marginTop: Platform.select({
+      ios: 0,
+      android: -25,
+    }),
   },
   wrapTemplate: {
     marginBottom: 20,
