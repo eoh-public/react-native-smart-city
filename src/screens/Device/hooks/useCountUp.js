@@ -16,6 +16,10 @@ export const useCountUp = (eventTime) => {
     };
   }, [eventTime]);
 
+  if (!eventTime) {
+    return {};
+  }
+
   const diffSeconds = currentTime.diff(eventTime, 'seconds');
   const seconds = diffSeconds > 0 ? diffSeconds % 60 : 0;
   const minutes = parseInt(diffSeconds / 60, 10) % 60;
