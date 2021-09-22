@@ -87,7 +87,7 @@ const API = {
       SCConfig.apiRoot + `/property_manager/automate/${id}/script/`,
     ORDER_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot +
-      `/api/property_manager/automate/${id}/order_script_action/`,
+      `/property_manager/automate/${id}/order_script_action/`,
     DELETE_SCRIPT_ACTION: (automateId, actionId) =>
       SCConfig.apiRoot +
       `/property_manager/automate/${automateId}/script_action/${actionId}/`,

@@ -70,4 +70,15 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginRight: -10,
   },
+  wrapChildModal: {
+    padding: 16,
+  },
+  messageDelete: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: Colors.Gray9,
+  },
+  textHighlight: {
+    fontWeight: 'bold',
+  },
 });

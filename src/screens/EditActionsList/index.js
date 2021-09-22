@@ -1,21 +1,32 @@
 import React, { useState, useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import { useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
+import ParsedText from 'react-native-parsed-text';
 
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import Text from '../../commons/Text';
 import styles from './Styles/indexStyles';
-import { Colors } from '../../configs';
+import { API, Colors } from '../../configs';
 import FImage from '../../commons/FImage';
 import Rearrange from '../../../assets/images/Rearrange.svg';
 import Close from '../../../assets/images/Close.svg';
+import { axiosDelete, axiosPut } from '../../utils/Apis/axios';
+import { ModalBottom } from '../../commons/Modal';
+import { ToastBottomHelper } from '../../utils/Utils';
 
 const EditActionsList = () => {
   const t = useTranslations();
+  const { goBack } = useNavigation();
   const { params = {} } = useRoute();
-  const { data = [] } = params;
+  const { data = [], id, setData } = params;
+  const [itemRemove, setItemRemove] = useState({
+    id: '',
+    actionName: '',
+    stationName: '',
+  });
+  const [isVisible, setIsVisible] = useState(false);
   const [actionsList, setActionList] = useState(
     [...data].map((item) => {
       return {
@@ -26,28 +37,46 @@ const EditActionsList = () => {
   );
 
   const onPressCancel = useCallback(() => {
-    setActionList(
-      [...data].map((item) => {
-        return {
-          ...item,
-          key: `item-${item?.id}`,
-        };
-      })
+    goBack();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onPressSave = useCallback(async () => {
+    const { success } = await axiosPut(API.AUTOMATE.ORDER_SCRIPT_ACTION(id), {
+      id_script_actions: actionsList.map((i) => i.id),
+    });
+    if (success) {
+      setData && setData(actionsList);
+      ToastBottomHelper.success(t('text_done'));
+      goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actionsList, id, setData]);
+
+  const onPressRemove = (item) => () => {
+    setIsVisible(true);
+    setItemRemove(item);
+  };
+
+  const onClose = useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
+  const onRemove = useCallback(async () => {
+    const { success } = await axiosDelete(
+      API.AUTOMATE.DELETE_SCRIPT_ACTION(id, itemRemove.id)
     );
+    if (success) {
+      ToastBottomHelper.success(t('removed_successfully'));
+      onClose();
+      const temp = [...actionsList];
+      const index = actionsList.findIndex((item) => item.id === itemRemove.id);
+      temp.splice(index, 1);
+      setActionList(temp);
+      setData && setData(temp);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onPressSave = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onPressRemove = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id, itemRemove, actionsList]);
 
   const renderItem = useCallback(({ item, index, drag }) => {
     return (
@@ -74,7 +103,14 @@ const EditActionsList = () => {
               {item?.action_name}
             </Text>
           </View>
-          <TouchableOpacity onPress={onPressRemove} style={styles.closeButton}>
+          <TouchableOpacity
+            onPress={onPressRemove({
+              id: item?.id,
+              actionName: item?.sensor_name,
+              stationName: item?.station_name,
+            })}
+            style={styles.closeButton}
+          >
             <Close />
           </TouchableOpacity>
         </View>
@@ -115,6 +151,34 @@ const EditActionsList = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      <ModalBottom
+        isVisible={isVisible}
+        title={t('delette_action')}
+        onClose={onClose}
+        onRemove={onRemove}
+      >
+        <View style={styles.wrapChildModal}>
+          <ParsedText
+            style={styles.messageDelete}
+            parse={[
+              {
+                pattern: new RegExp(itemRemove?.actionName),
+                style: styles.textHighlight,
+              },
+              {
+                pattern: new RegExp(itemRemove?.stationName),
+                style: styles.textHighlight,
+              },
+            ]}
+            childrenProps={{ allowFontScaling: false }}
+          >
+            {t('message_delete_action', {
+              actionName: itemRemove?.actionName,
+              stationName: itemRemove?.stationName,
+            })}
+          </ParsedText>
+        </View>
+      </ModalBottom>
     </View>
   );
 };

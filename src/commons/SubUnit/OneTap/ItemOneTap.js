@@ -15,13 +15,13 @@ import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useNavigation } from '@react-navigation/core';
 import Routes from '../../../utils/Route';
 
-const ItemOneTap = memo(({ automate }) => {
+const ItemOneTap = memo(({ automate, unitId }) => {
   const { navigate } = useNavigation();
   const { id, script, activate_at } = automate;
 
   const t = useTranslations();
   const goToDetail = useCallback(() => {
-    navigate(Routes.ScriptDetail, { id, name: script?.name });
+    navigate(Routes.ScriptDetail, { id, name: script?.name, unitId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

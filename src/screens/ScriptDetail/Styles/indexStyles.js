@@ -67,7 +67,10 @@ export default StyleSheet.create({
     borderBottomRightRadius: 8,
     borderBottomLeftRadius: 8,
     width: 160,
-    marginTop: 0,
+    marginTop: Platform.select({
+      android: -25,
+      ios: 0,
+    }),
     marginLeft: -10,
   },
   wrapItem: {
