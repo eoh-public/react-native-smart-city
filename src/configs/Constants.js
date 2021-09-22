@@ -80,6 +80,10 @@ export const SCANNING_STATUS = {
   SPOT_DOES_NOT_EXIST: 'spot_does_not_exist',
 };
 
+export const SubUnitName = {
+  scenario: 'Kịch Bản',
+};
+
 export const TESTID = {
   // Dashboard
   DASHBOARD_TAB_HOME: 'DASHBOARD_TAB_HOME',

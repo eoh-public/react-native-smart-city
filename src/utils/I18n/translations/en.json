@@ -732,6 +732,7 @@
   "tap_to_run": "Tap to run",
   "how_to_start": "How to start",
   "actions_list": "Actions list",
+  "add_script": "Add Script",
   "go_to_automate_scripts": "Go to automate scripts",
   "error_please_try_later": "Error! Please try later"
 }

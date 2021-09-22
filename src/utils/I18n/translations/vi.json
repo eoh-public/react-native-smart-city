@@ -733,6 +733,7 @@
   "tap_to_run": "Nhấn để chạy",
   "how_to_start": "Cách khởi động",
   "actions_list": "Dánh sách hành động",
+  "add_script": "Thêm Kịch Bản",
   "go_to_automate_scripts": "Đi đến kịch bản tự động",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }
