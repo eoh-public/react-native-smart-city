@@ -9,7 +9,7 @@ import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../../utils/Route/index.js';
 
-const SubUnitOneTap = ({ automates }) => {
+const SubUnitOneTap = ({ automates, unitId }) => {
   const t = useTranslations();
   const navigation = useNavigation();
   const handleOnAddNew = () => {

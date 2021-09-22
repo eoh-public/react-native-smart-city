@@ -225,7 +225,7 @@ const UnitDetail = ({ route }) => {
         />
       );
     } else if (station.isOneTap) {
-      return <SubUnitOneTap automates={automates} />;
+      return <SubUnitOneTap automates={automates} unitId={unitId} />;
     } else if (station) {
       return (
         <ShortDetailSubUnit
