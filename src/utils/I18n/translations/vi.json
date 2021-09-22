@@ -346,6 +346,7 @@
   "camera": "Camera",
   "favorites": "Yêu thích",
   "add_to_favorites": "Thêm vào yêu thích",
+  "remove_from_favorites": "Loại khỏi yêu thích",
   "add_new_device": "Thêm thiết bị",
   "add_new_device_message_no_unit": "Để thêm thiết bị mới, trước tiên bạn cần tạo một địa điểm.",
   "add_member": "Thêm thành viên",

@@ -313,6 +313,7 @@
   "camera": "Camera",
   "favorites": "Favorites",
   "add_to_favorites": "Add to Favorites",
+  "remove_from_favorites": "Remove from Favorites",
   "add_new_device": "Add new device",
   "add_new_device_message_no_unit": "You cannot add new device. You have to add a new unit first.",
   "add_member": "Add member",

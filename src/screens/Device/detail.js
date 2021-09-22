@@ -107,7 +107,7 @@ const DeviceDetail = ({ account, route }) => {
   );
 
   const listMenuItem = useMemo(() => {
-    const menuItems = [];
+    const menuItems = [...listMenuItemDefault];
     if (
       display.items.some((i) => getActionComponent(i.configuration.template))
     ) {
@@ -132,17 +132,17 @@ const DeviceDetail = ({ account, route }) => {
       },
     });
     if (!isFavourite) {
-      menuItems.push({
+      menuItems.unshift({
         doAction: addToFavorites,
         text: t('add_to_favorites'),
       });
     } else {
-      menuItems.push({
+      menuItems.unshift({
         doAction: removeFromFavorites,
         text: t('remove_from_favorites'),
       });
     }
-    return [...listMenuItemDefault, ...menuItems];
+    return [...menuItems];
   }, [
     display.items,
     t,
@@ -567,6 +567,7 @@ const DeviceDetail = ({ account, route }) => {
         childRef={childRef}
         onItemClick={onItemMenuClicked}
         wrapStyle={styles.menuAction}
+        isTextCenter={false}
       />
     </View>
   );
