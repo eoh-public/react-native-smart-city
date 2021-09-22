@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Images, Device } from '../../configs';
-import { TESTID } from '../../configs/Constants';
+import { SubUnitName, TESTID } from '../../configs/Constants';
 import { Section } from '../Section';
 import Text from '../Text';
 import ItemDevice from '../Device/ItemDevice';
@@ -75,9 +75,13 @@ const ShortDetailSubUnit = ({ unit, station, isGGHomeConnected }) => {
     }
   };
 
-  const itemAddNewTitle = station.isFavorites
-    ? t('add_to_favorites')
-    : t('add_new_device');
+  const itemAddNewTitle = t(
+    station?.isFavorites
+      ? 'add_to_favorites'
+      : station?.name === SubUnitName.scenario
+      ? 'add_script'
+      : 'add_new_device'
+  );
 
   return (
     <Section style={styles.noShadow}>
