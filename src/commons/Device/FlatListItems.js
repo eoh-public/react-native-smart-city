@@ -46,7 +46,7 @@ const FlatListItems = memo(({ data, style, title, offsetTitle }) => {
     }
     return items.map((item, index) => (
       <QualityIndicatorItem
-        key={item.id.toString()}
+        key={item?.id}
         standard={item.standard}
         value={item.value}
         measure={item.measure}

@@ -6,8 +6,16 @@ import axios from 'axios';
 import { API } from '../../../configs';
 import Pin from '../../../../assets/images/Explore/Pin.svg';
 import PinOutline from '../../../../assets/images/Explore/PinOutline.svg';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockedDispatch = jest.fn();
+
+const wrapComponent = (item, mockeSelect) => (
+  <SCProvider initState={mockSCStore({})}>
+    <CityItem item={item} onSelect={mockeSelect} />
+  </SCProvider>
+);
 
 jest.mock('axios');
 jest.mock('react-redux', () => ({
@@ -38,9 +46,7 @@ describe('Test CityItem', () => {
       return response;
     });
     await act(async () => {
-      tree = await renderer.create(
-        <CityItem item={item} onSelect={mockeSelect} />
-      );
+      tree = await renderer.create(wrapComponent(item, mockeSelect));
     });
     const instance = tree.root;
     const buttons = instance.findAllByType(TouchableOpacity);
@@ -82,9 +88,7 @@ describe('Test CityItem', () => {
       return response;
     });
     await act(async () => {
-      tree = await renderer.create(
-        <CityItem item={item} onSelect={mockeSelect} />
-      );
+      tree = await renderer.create(wrapComponent(item, mockeSelect));
     });
     const instance = tree.root;
 
@@ -111,9 +115,7 @@ describe('Test CityItem', () => {
       return response;
     });
     await act(async () => {
-      tree = await renderer.create(
-        <CityItem item={item} onSelect={mockeSelect} />
-      );
+      tree = await renderer.create(wrapComponent(item, mockeSelect));
     });
     const instance = tree.root;
 
@@ -140,9 +142,7 @@ describe('Test CityItem', () => {
       return response;
     });
     await act(async () => {
-      tree = await renderer.create(
-        <CityItem item={item} onSelect={mockeSelect} />
-      );
+      tree = await renderer.create(wrapComponent(item, mockeSelect));
     });
     const instance = tree.root;
     const pin = instance.findAllByType(Pin);
@@ -164,9 +164,7 @@ describe('Test CityItem', () => {
     const mockeSelect = jest.fn();
 
     await act(async () => {
-      tree = await renderer.create(
-        <CityItem item={item} onSelect={mockeSelect} />
-      );
+      tree = await renderer.create(wrapComponent(item, mockeSelect));
     });
     const instance = tree.root;
     const buttons = instance.findAllByType(TouchableOpacity);

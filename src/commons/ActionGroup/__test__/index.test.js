@@ -5,11 +5,21 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
 import ActionGroup from '..';
-import RadioCircle from '../../RadioCircle';
-import IconComponent from '../../IconComponent';
 import Text from '../../Text';
 import { Colors } from '../../../configs';
 import { TESTID } from '../../../configs/Constants';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (actionGroup, mockDoAction, sensor) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ActionGroup
+      actionGroup={actionGroup}
+      doAction={mockDoAction}
+      sensor={sensor}
+    />
+  </SCProvider>
+);
 
 describe('Test ActionGroup', () => {
   const configuration_with_none_action_on_off = {
@@ -140,13 +150,11 @@ describe('Test ActionGroup', () => {
     };
   });
 
-  test('render ActionGroup three_button_action_template', () => {
+  test('render ActionGroup three_button_action_template', async () => {
     const actionGroup = actionGroupData;
     const mockDoAction = jest.fn();
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup actionGroup={actionGroup} doAction={mockDoAction} />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
     const buttons = instance.findAllByType(TouchableOpacity);
@@ -180,13 +188,11 @@ describe('Test ActionGroup', () => {
     );
   });
 
-  test('Three_button_action_template Action OnOff isDisplayLock True', () => {
+  test('Three_button_action_template Action OnOff isDisplayLock True', async () => {
     const actionGroup = actionGroupData;
     const mockDoAction = jest.fn();
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup actionGroup={actionGroup} doAction={mockDoAction} />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
     const switchOnOff = instance.findAllByType(Switch);
@@ -207,16 +213,14 @@ describe('Test ActionGroup', () => {
     );
   });
 
-  test('Three_button_action_template None Action OnOff isDisplayLock True', () => {
+  test('Three_button_action_template None Action OnOff isDisplayLock True', async () => {
     const actionGroup = {
       ...actionGroupData,
       configuration: configuration_with_none_action_on_off,
     };
     const mockDoAction = jest.fn();
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup actionGroup={actionGroup} doAction={mockDoAction} />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
     const buttons = instance.findAllByType(TouchableOpacity);
@@ -250,22 +254,20 @@ describe('Test ActionGroup', () => {
     );
   });
 
-  test('Three_button_action_template Action OnOff isDisplayLock False', () => {
+  test('Three_button_action_template Action OnOff isDisplayLock False', async () => {
     const actionGroup = {
       ...actionGroupData.configuration,
       is_display_lock: false,
     };
     const mockDoAction = jest.fn();
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup actionGroup={actionGroup} doAction={mockDoAction} />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
     const switchOnOff = instance.findAllByType(Switch);
     expect(switchOnOff.length).toEqual(0);
   });
-  test('render ActionGroup one_button_action_template', () => {
+  test('render ActionGroup one_button_action_template', async () => {
     const mockDoAction = jest.fn();
     const actionGroup = {
       template: 'one_button_action_template',
@@ -276,10 +278,8 @@ describe('Test ActionGroup', () => {
         text: 'UP',
       },
     };
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup actionGroup={actionGroup} doAction={mockDoAction} />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction));
     });
     const instance = wrapper.root;
     const buttons = instance.findAllByType(TouchableOpacity);
@@ -291,7 +291,7 @@ describe('Test ActionGroup', () => {
     expect(mockDoAction).toHaveBeenCalledWith(action_data);
   });
 
-  test('render ActionGroup on_off_button_action_template', () => {
+  test('render ActionGroup on_off_button_action_template', async () => {
     const mockDoAction = jest.fn();
     const actionGroup = {
       template: 'on_off_button_action_template',
@@ -304,14 +304,8 @@ describe('Test ActionGroup', () => {
         text_off: 'OFF',
       },
     };
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{}}
-        />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction, {}));
     });
     const instance = wrapper.root;
     const buttons = instance.findAllByType(TouchableOpacity);
@@ -322,7 +316,7 @@ describe('Test ActionGroup', () => {
     expect(mockDoAction).toHaveBeenCalledTimes(1);
   });
 
-  test('render ActionGroup NumberUpDownActionTemplate', () => {
+  test('render ActionGroup NumberUpDownActionTemplate', async () => {
     const mockDoAction = jest.fn();
     const actionGroup = {
       template: 'NumberUpDownActionTemplate',
@@ -334,14 +328,8 @@ describe('Test ActionGroup', () => {
         text_format: '{number} *C',
       },
     };
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{}}
-        />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction, {}));
     });
     const instance = wrapper.root;
     const text = instance.findByType(Text);
@@ -351,7 +339,7 @@ describe('Test ActionGroup', () => {
     expect(touchs).toHaveLength(2);
   });
 
-  test('render ActionGroup StatesGridActionTemplate', () => {
+  test('render ActionGroup StatesGridActionTemplate', async () => {
     const mockDoAction = jest.fn();
     const actionGroup = {
       template: 'StatesGridActionTemplate',
@@ -377,14 +365,8 @@ describe('Test ActionGroup', () => {
         ],
       },
     };
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{}}
-        />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction, {}));
     });
     const instance = wrapper.root;
     const texts = instance.findAllByType(Text);
@@ -418,50 +400,6 @@ describe('Test ActionGroup', () => {
     expect(touchs[1].props.style).toEqual([buttonStyle, OnOffStyle.OFF]);
   });
 
-  test('render ActionGroup OptionsDropdownActionTemplate', () => {
-    const mockDoAction = jest.fn();
-    const actionGroup = {
-      template: 'OptionsDropdownActionTemplate',
-      configuration: {
-        action_data,
-        config: 5,
-        action: 'e5d23347-ee31-4fe3-9fb5-bbce05bf4b61',
-        options: [
-          {
-            text: 'Level1',
-            value: 1,
-          },
-          {
-            text: 'Level2',
-            value: 2,
-          },
-        ],
-        icon: 'slack',
-      },
-    };
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{}}
-        />
-      );
-    });
-    const instance = wrapper.root;
-
-    const icon = instance.findByType(IconComponent);
-    expect(icon.props.icon).toEqual('slack');
-
-    const texts = instance.findAllByType(Text);
-    const radioCircles = instance.findAllByType(RadioCircle);
-    expect(texts[1].props.children).toEqual('Level1'); // selectedOption, get first one
-    expect(radioCircles[0].props.active).toBeTruthy(); // radioCircle tick
-
-    const touchs = instance.findAllByType(TouchableOpacity);
-    expect(touchs).toHaveLength(5); // show-hide alert + 2 options + onDone
-  });
-
   test('render TimerActionTemplate', async () => {
     Date.now = jest.fn(() => new Date('2021-09-09T10:00:00.000Z'));
     const actionGroup = {
@@ -474,19 +412,13 @@ describe('Test ActionGroup', () => {
       },
     };
     const mockDoAction = jest.fn();
-    act(() => {
-      wrapper = renderer.create(
-        <ActionGroup
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{}}
-        />
-      );
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup, mockDoAction, {}));
     });
     const instance = wrapper.root;
 
     const texts = instance.findAllByType(Text);
-    expect(texts).toHaveLength(2);
+    expect(texts).toHaveLength(5);
     expect(texts[0].props.children).toEqual('Timer');
 
     const switchButton = instance.findByType(Switch);

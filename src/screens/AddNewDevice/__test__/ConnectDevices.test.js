@@ -2,12 +2,14 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import ConnectDevices from '../ConnectDevices';
 import { TESTID } from '../../../configs/Constants';
 import { TouchableOpacity } from 'react-native';
 import _TextInput from '../../../commons/Form/TextInput';
 import { AlertAction } from '../../../commons';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+import { getTranslate } from '../../../utils/I18n';
 
 jest.mock('axios');
 
@@ -20,6 +22,12 @@ jest.mock('@react-navigation/native', () => {
     }),
   };
 });
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ConnectDevices route={route} />
+  </SCProvider>
+);
 
 describe('Test ConnectDevices', () => {
   let tree;
@@ -49,9 +57,8 @@ describe('Test ConnectDevices', () => {
   };
 
   test('create', async () => {
-    const t = useTranslations();
     await act(async () => {
-      tree = await create(<ConnectDevices route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -67,16 +74,20 @@ describe('Test ConnectDevices', () => {
     );
     const textDone = getText(instance, TESTID.CONNECTED_DEVICE_DONE);
 
-    expect(textSuccess.props.children).toEqual(t('successfully_connected'));
+    expect(textSuccess.props.children).toEqual(
+      getTranslate('en', 'successfully_connected')
+    );
     expect(textUnitName.props.children).toEqual('Unit name');
     expect(textDeviceName.props.children).toEqual('Sensor name');
-    expect(textRenameDevice.props.children).toEqual(t('rename_your_device'));
-    expect(textDone.props.children).toEqual(t('done'));
+    expect(textRenameDevice.props.children).toEqual(
+      getTranslate('en', 'rename_your_device')
+    );
+    expect(textDone.props.children).toEqual(getTranslate('en', 'done'));
   });
 
   test('hide show alert action', async () => {
     await act(async () => {
-      tree = await create(<ConnectDevices route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const button = instance.find(
@@ -98,7 +109,7 @@ describe('Test ConnectDevices', () => {
 
   test('change and rename', async () => {
     await act(async () => {
-      tree = await create(<ConnectDevices route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const textDeviceName = getText(

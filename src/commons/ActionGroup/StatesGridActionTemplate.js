@@ -50,7 +50,7 @@ const GridItem = ({ item, index, length, doAction, sensor }) => {
   const doActionAndWatchConfig = useCallback(
     (actionData) => {
       doAction(actionData);
-      if (sensor.is_managed_by_backend) {
+      if (sensor?.is_managed_by_backend) {
         config && watchMultiConfigs([config]);
       }
     },
@@ -102,7 +102,7 @@ const StatesGridActionTemplate = ({ actionGroup, doAction, sensor }) => {
   }, [configuration, configValues]);
 
   useEffect(() => {
-    if (sensor.is_managed_by_backend) {
+    if (sensor?.is_managed_by_backend) {
       watchMultiConfigs(configuration.options.map((option) => option.config));
     }
   }, [sensor.is_managed_by_backend, configuration.options]);

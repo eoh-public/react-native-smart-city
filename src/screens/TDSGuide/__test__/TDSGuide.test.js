@@ -5,6 +5,14 @@ import { Text } from 'react-native';
 import { TESTID } from '../../../configs/Constants';
 
 import TDSGuide from '../index';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <TDSGuide />
+  </SCProvider>
+);
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
@@ -21,7 +29,7 @@ describe('Test TDS Guide', () => {
   test('render tds guide', () => {
     let tree;
     act(() => {
-      tree = create(<TDSGuide />);
+      tree = create(wrapComponent());
     });
 
     const instance = tree.root;

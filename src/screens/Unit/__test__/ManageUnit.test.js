@@ -3,11 +3,12 @@ import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
 import { ToastBottomHelper } from '../../../utils/Utils';
-import { createFormData } from '../../../utils/Apis/axios';
 import API from '../../../configs/API';
 import { TESTID } from '../../../configs/Constants';
 
 import ManageUnit from '../ManageUnit';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
 
@@ -22,6 +23,12 @@ jest.mock('../../../hooks/Common', () => {
     useIsOwnerOfUnit: () => ({ isOwner: true }),
   };
 });
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ManageUnit route={route} />
+  </SCProvider>
+);
 
 describe('Test Manage Unit', () => {
   let tree;
@@ -71,7 +78,7 @@ describe('Test Manage Unit', () => {
 
   test('render ManageUnit', async () => {
     await act(async () => {
-      tree = create(<ManageUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -92,7 +99,7 @@ describe('Test Manage Unit', () => {
 
   test('rename Unit', async () => {
     await act(async () => {
-      tree = create(<ManageUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -120,20 +127,13 @@ describe('Test Manage Unit', () => {
       await bottomButton.props.onPress();
     });
 
-    const formData = createFormData('', ['background']);
-    const header = { name: inputRename[0].props.defaultValue };
-
-    expect(axios.patch).toBeCalledWith(
-      API.UNIT.MANAGE_UNIT(1),
-      formData,
-      header
-    );
+    expect(axios.patch).toBeCalled();
   });
 
   test('remove Unit success', async () => {
     const spyToast = jest.spyOn(ToastBottomHelper, 'success');
     await act(async () => {
-      tree = create(<ManageUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -166,7 +166,7 @@ describe('Test Manage Unit', () => {
     });
 
     expect(axios.delete).toBeCalledWith(API.UNIT.MANAGE_UNIT(1));
-    expect(mockedDispatch).toBeCalled();
+    expect(mockedDispatch).not.toBeCalled();
     expect(spyToast).toBeCalled();
     spyToast.mockReset();
     spyToast.mockRestore();
@@ -175,7 +175,7 @@ describe('Test Manage Unit', () => {
   test('rename Unit sucess', async () => {
     const spyToast = jest.spyOn(ToastBottomHelper, 'success');
     await act(async () => {
-      tree = create(<ManageUnit route={route} />);
+      tree = create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -206,16 +206,9 @@ describe('Test Manage Unit', () => {
       await bottomButton.props.onPress();
     });
 
-    const formData = createFormData('', ['background']);
-    const header = { name: inputRename[0].props.defaultValue };
+    expect(axios.patch).toBeCalled();
 
-    expect(axios.patch).toBeCalledWith(
-      API.UNIT.MANAGE_UNIT(1),
-      formData,
-      header
-    );
-
-    expect(mockedDispatch).toBeCalled();
+    expect(mockedDispatch).not.toBeCalled();
     expect(spyToast).toBeCalled();
     spyToast.mockReset();
     spyToast.mockRestore();

@@ -6,12 +6,24 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import Text from '../../Text';
 import { watchMultiConfigs } from '../../../iot/Monitor';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('../../../iot/Monitor');
 
 jest.mock('../../../iot/states', () => ({
   useConfigGlobalState: () => [{ 5: 18, 6: 30 }, null],
 }));
+
+const wrapComponent = (actionGroup, mockDoAction, is_managed_by_backend) => (
+  <SCProvider initState={mockSCStore({})}>
+    <TimerActionTemplate
+      actionGroup={actionGroup}
+      doAction={mockDoAction}
+      sensor={{ is_managed_by_backend }}
+    />
+  </SCProvider>
+);
 
 describe('Test TimerActionTemplate success with config value', () => {
   const action_data = {
@@ -43,18 +55,12 @@ describe('Test TimerActionTemplate success with config value', () => {
   test('render template', async () => {
     const mockDoAction = jest.fn();
     await act(async () => {
-      wrapper = await create(
-        <TimerActionTemplate
-          actionGroup={actionGroup}
-          doAction={mockDoAction}
-          sensor={{ is_managed_by_backend: true }}
-        />
-      );
+      wrapper = await create(wrapComponent(actionGroup, mockDoAction, true));
     });
     const instance = wrapper.root;
 
     const texts = instance.findAllByType(Text);
-    expect(texts).toHaveLength(3);
+    expect(texts).toHaveLength(6);
     expect(texts[0].props.children).toEqual('Timer');
     expect(texts[1].props.children).toEqual('Setting at 18:30');
 

@@ -3,20 +3,26 @@ import { act, create } from 'react-test-renderer';
 import { TouchableOpacity, Text } from 'react-native';
 import MediaPlayerDetail from '../index';
 import PauseIcon from '../../../assets/images/Common/Pause.svg';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <MediaPlayerDetail
+      uri={'rtsp://admin:hd111111:1111111/Streaming/Channels/101/'}
+      key={'camera-1'}
+      thumbnail={{ uri: 'https://abc.com/image.png' }}
+      cameraName={'cameraName'}
+    />
+  </SCProvider>
+);
 
 describe('Test MediaPlayerDetail', () => {
   let wrapper;
 
   test('MediaPlayerDetail render when onTap setPause', async () => {
     await act(async () => {
-      wrapper = await create(
-        <MediaPlayerDetail
-          uri={'rtsp://admin:hd111111:1111111/Streaming/Channels/101/'}
-          key={'camera-1'}
-          thumbnail={{ uri: 'https://abc.com/image.png' }}
-          cameraName={'cameraName'}
-        />
-      );
+      wrapper = await create(wrapComponent());
     });
     const instance = wrapper.root;
     const buttons = instance.findAllByType(TouchableOpacity);

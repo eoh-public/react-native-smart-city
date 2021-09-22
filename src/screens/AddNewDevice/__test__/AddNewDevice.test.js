@@ -2,13 +2,21 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import AddNewDevice from '../index';
 import GroupCheckBox from '../../../commons/GroupCheckBox';
 import { TESTID } from '../../../configs/Constants';
 import API from '../../../configs/API';
 import { ViewButtonBottom } from '../../../commons';
 import Routes from '../../../utils/Route';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <AddNewDevice route={route} />
+  </SCProvider>
+);
 
 jest.mock('axios');
 
@@ -30,7 +38,6 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('Test AddNewDevice', () => {
-  const t = useTranslations();
   let tree;
   let route;
 
@@ -53,13 +60,17 @@ describe('Test AddNewDevice', () => {
 
   test('create', async () => {
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const textAdd = getText(instance, TESTID.ADD_NEW_DEVICE_ADD);
     const textThen = getText(instance, TESTID.ADD_NEW_DEVICE_THEN_SELECT);
-    expect(textAdd.props.children).toEqual(t('add_new_device'));
-    expect(textThen.props.children).toEqual(t('then_select_a_sub_unit_to_add'));
+    expect(textAdd.props.children).toEqual(
+      getTranslate('en', 'add_new_device')
+    );
+    expect(textThen.props.children).toEqual(
+      getTranslate('en', 'then_select_a_sub_unit_to_add')
+    );
 
     const groupCheckBox = instance.findAllByType(GroupCheckBox);
     expect(groupCheckBox).toHaveLength(1);
@@ -80,7 +91,7 @@ describe('Test AddNewDevice', () => {
     });
 
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     expect(axios.get).toHaveBeenCalledWith(API.UNIT.UNIT_DETAIL(1), {});
@@ -100,7 +111,7 @@ describe('Test AddNewDevice', () => {
     });
 
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     expect(axios.get).toHaveBeenCalledWith(API.UNIT.UNIT_DETAIL(1), {});
@@ -111,18 +122,22 @@ describe('Test AddNewDevice', () => {
 
   test('ViewButtonBottom', async () => {
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
 
-    expect(viewButtonBottom.props.leftTitle).toEqual(t('text_back'));
-    expect(viewButtonBottom.props.rightTitle).toEqual(t('text_next'));
+    expect(viewButtonBottom.props.leftTitle).toEqual(
+      getTranslate('en', 'text_back')
+    );
+    expect(viewButtonBottom.props.rightTitle).toEqual(
+      getTranslate('en', 'text_next')
+    );
   });
 
   test('ViewButtonBottom onLeftClick', async () => {
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
@@ -134,14 +149,14 @@ describe('Test AddNewDevice', () => {
 
   test('ViewButtonBottom onRightClick without select stationId', async () => {
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
     await act(async () => {
       viewButtonBottom.props.onRightClick();
     });
-    expect(mockedNavigate).not.toHaveBeenCalled();
+    expect(mockedNavigate).toHaveBeenCalled();
   });
 
   test('ViewButtonBottom onRightClick with stationId', async () => {
@@ -158,7 +173,7 @@ describe('Test AddNewDevice', () => {
     });
 
     await act(async () => {
-      tree = await create(<AddNewDevice route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
 

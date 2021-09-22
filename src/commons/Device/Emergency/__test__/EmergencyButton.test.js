@@ -3,14 +3,22 @@ import { TouchableOpacity } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 
 import { TESTID } from '../../../../configs/Constants';
+import { SCProvider } from '../../../../context';
+import { mockSCStore } from '../../../../context/mockStore';
 import Text from '../../../Text';
 import EmergencyButton from '../EmergencyButton';
 
+const wrapComponent = (mockFunction) => (
+  <SCProvider initState={mockSCStore({})}>
+    <EmergencyButton emergency={mockFunction} />
+  </SCProvider>
+);
+
 describe('Test EmergencyButton', () => {
   let tree;
-  test('create EmergencyButton', () => {
-    act(() => {
-      tree = renderer.create(<EmergencyButton />);
+  test('create EmergencyButton', async () => {
+    await act(() => {
+      tree = renderer.create(wrapComponent());
     });
 
     const instance = tree.root;
@@ -18,10 +26,10 @@ describe('Test EmergencyButton', () => {
     expect(textEmergencyDes[0]).toBeDefined();
   });
 
-  test('long press EmergencyButton', () => {
+  test('long press EmergencyButton', async () => {
     const mockFunction = jest.fn();
-    act(() => {
-      tree = renderer.create(<EmergencyButton emergency={mockFunction} />);
+    await act(() => {
+      tree = renderer.create(wrapComponent(mockFunction));
     });
 
     const instance = tree.root;

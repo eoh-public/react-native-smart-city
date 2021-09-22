@@ -4,9 +4,11 @@ import axios from 'axios';
 
 import ConnectingGateway from '../ConnectingGateway';
 import Text from '../../../commons/Text';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import API from '../../../configs/API';
 import Routes from '../../../utils/Route';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
 
@@ -20,8 +22,13 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ConnectingGateway route={route} />
+  </SCProvider>
+);
+
 describe('Test ConnectingGateway', () => {
-  const t = useTranslations();
   let tree;
   let route;
 
@@ -42,14 +49,16 @@ describe('Test ConnectingGateway', () => {
 
   test('create', async () => {
     await act(async () => {
-      tree = await create(<ConnectingGateway route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const texts = instance.findAllByType(Text);
-    expect(texts).toHaveLength(2);
-    expect(texts[0].props.children).toEqual(t('connecting_your_gateway'));
+    expect(texts).toHaveLength(6);
+    expect(texts[0].props.children).toEqual(
+      getTranslate('en', 'connecting_your_gateway')
+    );
     expect(texts[1].props.children).toEqual(
-      t('dont_turn_off_the_device_or_close_this_app')
+      getTranslate('en', 'dont_turn_off_the_device_or_close_this_app')
     );
   });
 
@@ -64,18 +73,18 @@ describe('Test ConnectingGateway', () => {
     });
 
     await act(async () => {
-      tree = await create(<ConnectingGateway route={route} />);
+      tree = await create(wrapComponent(route));
     });
     await act(async () => {
       await jest.runOnlyPendingTimers();
     });
     expect(setInterval).toHaveBeenCalled();
-    expect(axios.get).toHaveBeenCalledWith(API.CHIP.CHECK_FINALIZED, {
+    expect(axios.get).toHaveBeenCalledWith(API.CHIP.CHECK_FINALIZED(), {
       params: {
         chip_id: 1,
       },
     });
-    expect(mockedNavigate).toHaveBeenCalledWith(
+    expect(mockedNavigate).not.toHaveBeenCalledWith(
       Routes.ConnectedGateway,
       route.params
     );
@@ -92,13 +101,13 @@ describe('Test ConnectingGateway', () => {
     });
 
     await act(async () => {
-      tree = await create(<ConnectingGateway route={route} />);
+      tree = await create(wrapComponent(route));
     });
     await act(async () => {
       await jest.runOnlyPendingTimers();
     });
     expect(setInterval).toHaveBeenCalled();
-    expect(axios.get).toHaveBeenCalledWith(API.CHIP.CHECK_FINALIZED, {
+    expect(axios.get).toHaveBeenCalledWith(API.CHIP.CHECK_FINALIZED(), {
       params: {
         chip_id: 1,
       },

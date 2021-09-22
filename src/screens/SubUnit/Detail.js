@@ -105,13 +105,13 @@ const SubUnitDetail = ({ route }) => {
             </View>
           </>
         )}
-        {devices.length !== 0 ? (
+        {devices?.length !== 0 ? (
           <View>
             <Text style={styles.subUnitTitle}>
-              {t('text_all_devices')} ({devices.length})
+              {t('text_all_devices')} ({devices?.length})
             </Text>
             <View style={styles.boxDevices}>
-              {devices.map((item, index) => {
+              {devices?.map((item, index) => {
                 return (
                   <ItemDevice
                     key={`sensor-${item.id}`}

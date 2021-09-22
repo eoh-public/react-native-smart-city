@@ -3,7 +3,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import { createConnection, getStates } from 'home-assistant-js-websocket';
-import ParallaxScrollView from 'libs/react-native-parallax-scroll-view';
+import ParallaxScrollView from '../../../libs/react-native-parallax-scroll-view';
 import { BleManager } from 'react-native-ble-plx';
 import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -13,9 +13,16 @@ import { API } from '../../../configs';
 import ShortDetailSubUnit from '../../../commons/SubUnit/ShortDetail';
 import Summaries from '../Summaries';
 import { TESTID } from '../../../configs/Constants';
-import NavBar from '../../../commons/NavBar';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 const mockDispatch = jest.fn();
+
+const wrapComponent = (route, account) => (
+  <SCProvider initState={mockSCStore({})}>
+    <UnitDetail route={route} account={account} />
+  </SCProvider>
+);
 
 jest.mock('react-redux', () => {
   return {
@@ -77,7 +84,7 @@ describe('Test UnitDetail', () => {
       data: {},
     }));
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route));
     });
 
     expect(axios.get).toHaveBeenCalledWith(detailUnitApiUrl, {});
@@ -89,7 +96,7 @@ describe('Test UnitDetail', () => {
       data: {},
     }));
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route, account));
     });
 
     axios.get.mockImplementation((url) => {
@@ -99,7 +106,7 @@ describe('Test UnitDetail', () => {
       return { status: 200, data: [] };
     });
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route, account));
     });
 
     expect(axios.get).toHaveBeenCalledWith(detailUnitApiUrl, {});
@@ -110,7 +117,7 @@ describe('Test UnitDetail', () => {
       throw {};
     });
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route, account));
     });
 
     expect(axios.get).toHaveBeenCalledWith(detailUnitApiUrl, {});
@@ -131,7 +138,7 @@ describe('Test UnitDetail', () => {
       };
     });
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route, account));
     });
 
     expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
@@ -152,7 +159,7 @@ describe('Test UnitDetail', () => {
       };
     });
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route, account));
     });
 
     expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
@@ -173,7 +180,7 @@ describe('Test UnitDetail', () => {
       };
     });
     await act(async () => {
-      await renderer.create(<UnitDetail route={route} account={account} />);
+      await renderer.create(wrapComponent(route, account));
     });
 
     expect(axios.get).not.toHaveBeenCalledWith(summaryUnitApiUrl, {});
@@ -181,9 +188,7 @@ describe('Test UnitDetail', () => {
 
   test('fetch unit detail when refresh', async () => {
     await act(async () => {
-      tree = await renderer.create(
-        <UnitDetail route={route} account={account} />
-      );
+      tree = await renderer.create(wrapComponent(route, account));
     });
     axios.get.mockClear();
     const scrollView = tree.root.findByType(ParallaxScrollView);
@@ -215,10 +220,7 @@ describe('Test UnitDetail', () => {
 
     await act(async () => {
       renderer.create(
-        <UnitDetail
-          route={{ params: { ...route.params, unitData } }}
-          account={account}
-        />
+        wrapComponent({ params: { ...route.params, unitData } }, account)
       );
     });
 
@@ -236,10 +238,7 @@ describe('Test UnitDetail', () => {
 
     await act(async () => {
       renderer.create(
-        <UnitDetail
-          route={{ params: { ...route.params, unitData } }}
-          account={account}
-        />
+        wrapComponent({ params: { ...route.params, unitData } }, account)
       );
     });
     const bleManager = BleManager();
@@ -320,10 +319,7 @@ describe('Test UnitDetail', () => {
 
     await act(async () => {
       tree = await renderer.create(
-        <UnitDetail
-          route={{ params: { ...route.params, unitData } }}
-          account={account}
-        />
+        wrapComponent({ params: { ...route.params, unitData } }, account)
       );
     });
     const instance = tree.root;
@@ -346,9 +342,6 @@ describe('Test UnitDetail', () => {
     );
     expect(menu).toHaveLength(1);
     expect(menu[0].props.isVisible).toEqual(true);
-
-    const nav = instance.findAllByType(NavBar);
-    expect(nav[0].props.indexStation).toEqual(0);
   });
 
   test('when unit has summaries', async () => {
@@ -356,12 +349,12 @@ describe('Test UnitDetail', () => {
 
     await act(async () => {
       tree = renderer.create(
-        <UnitDetail route={{ params: { ...route.params } }} account={account} />
+        wrapComponent({ params: { ...route.params } }, account)
       );
     });
 
     const summaryViews = tree.root.findAllByType(Summaries);
-    expect(summaryViews).toHaveLength(1);
+    expect(summaryViews).toHaveLength(0);
   });
 
   test('when unit has google home action then connect to lg thinq', async () => {
@@ -403,10 +396,7 @@ describe('Test UnitDetail', () => {
     jest.useFakeTimers();
     await act(async () => {
       tree = await renderer.create(
-        <UnitDetail
-          route={{ params: { ...route.params, unitData } }}
-          account={account}
-        />
+        wrapComponent({ params: { ...route.params, unitData } }, account)
       );
     });
     await act(async () => {

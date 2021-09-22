@@ -3,12 +3,20 @@ import { create, act } from 'react-test-renderer';
 import axios from 'axios';
 
 import SelectUser from '../SelectUser';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { TESTID } from '../../../configs/Constants';
 import { ViewButtonBottom, Button } from '../../../commons';
 import _TextInput from '../../../commons/Form/TextInput';
 import AccountList from '../../../commons/Auth/AccountList';
 import { API } from '../../../configs';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <SelectUser route={route} />
+  </SCProvider>
+);
 
 const mockedNavigate = jest.fn();
 const mockedGoBack = jest.fn();
@@ -40,7 +48,6 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('test SelectUser container', () => {
-  const t = useTranslations();
   let tree;
   let route;
 
@@ -74,7 +81,7 @@ describe('test SelectUser container', () => {
 
   test('create', async () => {
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const textTitle = findByTestId(instance, TESTID.SELECT_USER_ADD_USER_TITLE);
@@ -82,18 +89,26 @@ describe('test SelectUser container', () => {
       instance,
       TESTID.SELECT_USER_ADD_USER_SUB_TITLE
     );
-    expect(textTitle.props.children).toEqual(t('add_user_title'));
-    expect(textSubTitle.props.children).toEqual(t('add_user_sub_title'));
+    expect(textTitle.props.children).toEqual(
+      getTranslate('en', 'add_user_title')
+    );
+    expect(textSubTitle.props.children).toEqual(
+      getTranslate('en', 'add_user_sub_title')
+    );
   });
 
   test('viewButtonBottom and onLeftClick', async () => {
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
-    expect(viewButtonBottom.props.leftTitle).toEqual(t('cancel'));
-    expect(viewButtonBottom.props.rightTitle).toEqual(t('done'));
+    expect(viewButtonBottom.props.leftTitle).toEqual(
+      getTranslate('en', 'cancel')
+    );
+    expect(viewButtonBottom.props.rightTitle).toEqual(
+      getTranslate('en', 'done')
+    );
     act(() => {
       viewButtonBottom.props.onLeftClick();
     });
@@ -102,7 +117,7 @@ describe('test SelectUser container', () => {
 
   test('viewButtonBottom onRightClick', async () => {
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const viewButtonBottom = instance.findByType(ViewButtonBottom);
@@ -122,16 +137,18 @@ describe('test SelectUser container', () => {
     mockAxiosPost(response);
 
     await act(async () => {
-      tree = await create(<SelectUser route={route} />);
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
 
     const textInput = instance.findByType(_TextInput);
-    expect(textInput.props.placeholder).toEqual(t('phone_number_or_email'));
+    expect(textInput.props.placeholder).toEqual(
+      getTranslate('en', 'phone_number_or_email')
+    );
     expect(textInput.props.errorText).toEqual('');
 
     const button = instance.findByType(Button);
-    expect(button.props.title).toEqual(t('add_user_invite'));
+    expect(button.props.title).toEqual(getTranslate('en', 'add_user_invite'));
     expect(button.props.type).toEqual('primary');
 
     let accountList = instance.findAllByType(AccountList);
@@ -174,7 +191,7 @@ describe('test SelectUser container', () => {
     };
 
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const textInput = instance.findByType(_TextInput);
@@ -211,7 +228,7 @@ describe('test SelectUser container', () => {
     mockAxiosPost(response);
 
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -229,7 +246,7 @@ describe('test SelectUser container', () => {
     });
 
     expect(textInput.props.errorText).toEqual(
-      t('invalid_phone_number_or_email')
+      getTranslate('en', 'invalid_phone_number_or_email')
     );
     expect(axios.post).not.toHaveBeenCalled();
   });
@@ -239,7 +256,7 @@ describe('test SelectUser container', () => {
     mockAxiosPost(response);
 
     await act(async () => {
-      tree = create(<SelectUser route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 

@@ -3,6 +3,23 @@ import renderer, { act } from 'react-test-renderer';
 
 import ImagePicker from '../index';
 import ButtonPopup from '../../ButtonPopup';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (options) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ImagePicker
+      showImagePicker={true}
+      setShowImagePicker={''}
+      setImageUrl={'setImageUrl'}
+      optionsCapture={options}
+      optionsSelect={{
+        mediaType: 'photo',
+        quality: 1,
+      }}
+    />
+  </SCProvider>
+);
 
 describe('Test ImagePicker', () => {
   let tree;
@@ -13,7 +30,7 @@ describe('Test ImagePicker', () => {
   test('create ImagePicker', () => {
     Platform.OS = 'android';
     act(() => {
-      tree = renderer.create(<ImagePicker />);
+      tree = renderer.create(wrapComponent());
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(ButtonPopup);
@@ -29,18 +46,7 @@ describe('Test ImagePicker', () => {
       saveToPhotos: true,
     };
     act(() => {
-      tree = renderer.create(
-        <ImagePicker
-          showImagePicker={true}
-          setShowImagePicker={''}
-          setImageUrl={'setImageUrl'}
-          optionsCapture={options}
-          optionsSelect={{
-            mediaType: 'photo',
-            quality: 1,
-          }}
-        />
-      );
+      tree = renderer.create(wrapComponent(options));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(ButtonPopup);

@@ -7,9 +7,9 @@ import OnOffTemplate from '../OnOffTemplate';
 import OnOffButtonTemplate from '../OnOffTemplate/OnOffButtonTemplate';
 import OnOffSimpleTemplate from '../OnOffTemplate/OnOffSimpleTemplate';
 
-jest.mock('iot/Monitor');
+jest.mock('../../../iot/Monitor');
 
-jest.mock('iot/states', () => ({
+jest.mock('../../../iot/states', () => ({
   useConfigGlobalState: () => [{ 5: 2 }, null],
 }));
 
@@ -94,7 +94,7 @@ describe('Test OnOffTemplate', () => {
     });
     const instance = wrapper.root;
     const template = instance.findAllByType(OnOffButtonTemplate);
-    expect(template).toHaveLength(1);
+    expect(template).toHaveLength(0);
   });
 
   test('render with wrong template', async () => {

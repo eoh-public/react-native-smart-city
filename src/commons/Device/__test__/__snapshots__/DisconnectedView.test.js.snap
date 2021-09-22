@@ -88,7 +88,7 @@ exports[`Test DisconnectedView render DisconnectedView icon barrier 1`] = `
         ]
       }
     >
-      Ngắt kết nối
+      Disconnected
     </Text>
   </View>
   <View
@@ -143,7 +143,7 @@ exports[`Test DisconnectedView render DisconnectedView icon barrier 1`] = `
           ]
         }
       >
-        Gợi ý
+        Suggestions
         :
       </Text>
     </View>
@@ -191,7 +191,7 @@ exports[`Test DisconnectedView render DisconnectedView icon barrier 1`] = `
           ]
         }
       >
-        Kiểm tra lại nguồn điện của thiết bị.
+        Check the power on your device.
       </Text>
     </View>
     <View
@@ -238,7 +238,7 @@ exports[`Test DisconnectedView render DisconnectedView icon barrier 1`] = `
           ]
         }
       >
-        Kiểm tra lại Wi-Fi/tín hiệu di động hoặc thử khởi động lại.
+        Check the Wi-Fi/Cellular signal or try to reset it.
       </Text>
     </View>
   </View>
@@ -333,7 +333,7 @@ exports[`Test DisconnectedView render DisconnectedView icon dooor 1`] = `
         ]
       }
     >
-      Ngắt kết nối
+      Disconnected
     </Text>
   </View>
   <View
@@ -388,7 +388,7 @@ exports[`Test DisconnectedView render DisconnectedView icon dooor 1`] = `
           ]
         }
       >
-        Gợi ý
+        Suggestions
         :
       </Text>
     </View>
@@ -436,7 +436,7 @@ exports[`Test DisconnectedView render DisconnectedView icon dooor 1`] = `
           ]
         }
       >
-        Kiểm tra lại nguồn điện của thiết bị.
+        Check the power on your device.
       </Text>
     </View>
     <View
@@ -483,7 +483,7 @@ exports[`Test DisconnectedView render DisconnectedView icon dooor 1`] = `
           ]
         }
       >
-        Kiểm tra lại Wi-Fi/tín hiệu di động hoặc thử khởi động lại.
+        Check the Wi-Fi/Cellular signal or try to reset it.
       </Text>
     </View>
   </View>
@@ -578,7 +578,7 @@ exports[`Test DisconnectedView render DisconnectedView icon sensor 1`] = `
         ]
       }
     >
-      Ngắt kết nối
+      Disconnected
     </Text>
   </View>
   <View
@@ -633,7 +633,7 @@ exports[`Test DisconnectedView render DisconnectedView icon sensor 1`] = `
           ]
         }
       >
-        Gợi ý
+        Suggestions
         :
       </Text>
     </View>
@@ -681,7 +681,7 @@ exports[`Test DisconnectedView render DisconnectedView icon sensor 1`] = `
           ]
         }
       >
-        Kiểm tra lại nguồn điện của thiết bị.
+        Check the power on your device.
       </Text>
     </View>
     <View
@@ -728,7 +728,7 @@ exports[`Test DisconnectedView render DisconnectedView icon sensor 1`] = `
           ]
         }
       >
-        Kiểm tra lại Wi-Fi/tín hiệu di động hoặc thử khởi động lại.
+        Check the Wi-Fi/Cellular signal or try to reset it.
       </Text>
     </View>
   </View>
@@ -823,7 +823,7 @@ exports[`Test DisconnectedView render DisconnectedView icon test 1`] = `
         ]
       }
     >
-      Ngắt kết nối
+      Disconnected
     </Text>
   </View>
   <View
@@ -878,7 +878,7 @@ exports[`Test DisconnectedView render DisconnectedView icon test 1`] = `
           ]
         }
       >
-        Gợi ý
+        Suggestions
         :
       </Text>
     </View>
@@ -926,7 +926,7 @@ exports[`Test DisconnectedView render DisconnectedView icon test 1`] = `
           ]
         }
       >
-        Kiểm tra lại nguồn điện của thiết bị.
+        Check the power on your device.
       </Text>
     </View>
     <View
@@ -973,7 +973,7 @@ exports[`Test DisconnectedView render DisconnectedView icon test 1`] = `
           ]
         }
       >
-        Kiểm tra lại Wi-Fi/tín hiệu di động hoặc thử khởi động lại.
+        Check the Wi-Fi/Cellular signal or try to reset it.
       </Text>
     </View>
   </View>
@@ -1068,7 +1068,7 @@ exports[`Test DisconnectedView render DisconnectedView icon wind 1`] = `
         ]
       }
     >
-      Ngắt kết nối
+      Disconnected
     </Text>
   </View>
   <View
@@ -1123,7 +1123,7 @@ exports[`Test DisconnectedView render DisconnectedView icon wind 1`] = `
           ]
         }
       >
-        Gợi ý
+        Suggestions
         :
       </Text>
     </View>
@@ -1171,7 +1171,7 @@ exports[`Test DisconnectedView render DisconnectedView icon wind 1`] = `
           ]
         }
       >
-        Kiểm tra lại nguồn điện của thiết bị.
+        Check the power on your device.
       </Text>
     </View>
     <View
@@ -1218,7 +1218,7 @@ exports[`Test DisconnectedView render DisconnectedView icon wind 1`] = `
           ]
         }
       >
-        Kiểm tra lại Wi-Fi/tín hiệu di động hoặc thử khởi động lại.
+        Check the Wi-Fi/Cellular signal or try to reset it.
       </Text>
     </View>
   </View>

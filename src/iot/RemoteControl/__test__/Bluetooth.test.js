@@ -1,5 +1,6 @@
 import { BleManager } from 'react-native-ble-plx';
 import Toast from 'react-native-toast-message';
+import { getTranslate } from '../../../utils/I18n';
 import '../Bluetooth';
 import {
   scanBluetoothDevices,
@@ -8,12 +9,10 @@ import {
   SEND_COMMAND_OVER_BLUETOOTH_FAIL,
   clearFoundDevices,
 } from '../Bluetooth';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 const bleManager = new BleManager();
 
 describe('Test IOT Bluetooth', () => {
-  const t = useTranslations();
   beforeEach(() => {
     bleManager.startDeviceScan.mockClear();
     bleManager.stopDeviceScan.mockClear();
@@ -33,7 +32,7 @@ describe('Test IOT Bluetooth', () => {
     expect(Toast.show).toBeCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('text_ble_is_powered_on'),
+      text1: getTranslate('en', 'text_ble_is_powered_on'),
       visibilityTime: 1000,
     });
   });
@@ -92,9 +91,7 @@ describe('Test IOT Bluetooth', () => {
     expect(Toast.show).toBeCalledWith({
       type: 'success',
       position: 'bottom',
-      text1: t('Found bluetooth %{name} for remote control', {
-        name: device.localName,
-      }),
+      text1: 'Found bluetooth 123456 for remote control',
       visibilityTime: 1000,
     });
   });

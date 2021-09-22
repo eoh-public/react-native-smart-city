@@ -2,6 +2,18 @@ import React from 'react';
 import renderer, { act } from 'react-test-renderer';
 import { TouchableOpacity } from 'react-native';
 import DevicePermissionsCheckbox from '../DevicePermissionsCheckbox';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (sensor, mockFunction) => (
+  <SCProvider initState={mockSCStore({})}>
+    <DevicePermissionsCheckbox
+      sensor={sensor}
+      selectedIndexes={[1]}
+      onSelectIndexes={mockFunction}
+    />
+  </SCProvider>
+);
 
 jest.mock('axios');
 describe('Test DevicePermissionsCheckbox', () => {
@@ -13,15 +25,9 @@ describe('Test DevicePermissionsCheckbox', () => {
     actions: [13],
   };
   const mockFunction = jest.fn();
-  test('test create DevicePermissionsCheckbox', () => {
-    act(() => {
-      tree = renderer.create(
-        <DevicePermissionsCheckbox
-          sensor={sensor}
-          selectedIndexes={[1]}
-          onSelectIndexes={mockFunction}
-        />
-      );
+  test('test create DevicePermissionsCheckbox', async () => {
+    await act(() => {
+      tree = renderer.create(wrapComponent(sensor, mockFunction));
     });
     const instance = tree.root;
     const dropdownButtons = instance.findAllByType(TouchableOpacity);

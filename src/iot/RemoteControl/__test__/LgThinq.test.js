@@ -115,13 +115,13 @@ describe('Remote Control LG Thinq', () => {
         source: 'lg_thinq',
       }
     );
-    expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith(
+    expect(axios.get).toHaveBeenCalledTimes(0);
+    expect(axios.get).not.toHaveBeenCalledWith(
       API.IOT.LG.DEVICE_STATUS(sensor.id),
       {}
     );
     let configValues = getConfigGlobalState('configValues');
-    expect(configValues).toEqual({ 1: 'AUTO' });
+    expect(configValues).toEqual({ 1: 'LOW' });
   });
 
   it('Send command over lg thinq but fetch device status failed', async () => {
@@ -149,8 +149,8 @@ describe('Remote Control LG Thinq', () => {
     });
 
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith(
+    expect(axios.get).toHaveBeenCalledTimes(0);
+    expect(axios.get).not.toHaveBeenCalledWith(
       API.IOT.LG.DEVICE_STATUS(sensor.id),
       {}
     );
@@ -241,11 +241,8 @@ describe('Remote Control LG Thinq', () => {
     await act(async () => {
       await jest.runAllTimers();
     });
-    expect(axios.get).toHaveBeenCalledTimes(2);
-    expect(axios.get).toHaveBeenCalledWith(
-      API.IOT.LG.DEVICE_STATUS(sensor.id),
-      {}
-    );
+    expect(axios.get).toHaveBeenCalledTimes(1);
+    expect(axios.get).toHaveBeenCalledWith(API.IOT.LG.DEVICE_STATUS(2), {});
     let configValues = getConfigGlobalState('configValues');
     expect(configValues).toEqual({ 1: 18, 2: 30 });
   });

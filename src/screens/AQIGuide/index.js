@@ -21,9 +21,9 @@ import SvgVeryTired from '../../../assets/images/Feeling/very-tired.svg';
 import { useSCContextSelector } from '../../context';
 
 const AQIGuide = memo(() => {
+  const t = useTranslations();
   useTitleHeader(t('AQI Guide'));
   const language = useSCContextSelector((state) => state.language);
-  const t = useTranslations();
   const data = useMemo(
     () => ({
       titles: [

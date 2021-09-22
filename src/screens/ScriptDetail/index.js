@@ -74,7 +74,7 @@ const ScriptDetail = () => {
   }, [data]);
 
   const onPressAddAction = useCallback(() => {
-    navigate(Routes.UnitStack, {
+    navigate(Routes.SelectDevice, {
       unitId,
     });
   }, [navigate, unitId]);

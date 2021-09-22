@@ -6,6 +6,8 @@ import axios from 'axios';
 import AddCommonSelectUnit from '../SelectUnit';
 import Text from '../../../commons/Text';
 import { TESTID } from '../../../configs/Constants';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
 
@@ -21,6 +23,12 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <AddCommonSelectUnit route={route} />
+  </SCProvider>
+);
+
 describe('Test SelectUnit container', () => {
   beforeEach(() => {
     mockedNavigate.mockClear();
@@ -29,17 +37,17 @@ describe('Test SelectUnit container', () => {
   let tree;
   const list_type = ['AddSubUnit', 'AddDevice', 'AddMember', 'AddLGDevice', ''];
   const result = [
-    'Thêm khu vực',
-    'Thêm thiết bị',
-    'Chọn một địa điểm',
-    'Chọn một địa điểm',
-    'Thêm khu vực',
+    'Add new sub-unit',
+    'Add new device',
+    'Select a unit',
+    'Select a unit',
+    'Add new sub-unit',
   ];
   list_type.forEach(function (type, i) {
     test(`create SelectUnit ${type} container`, () => {
       const route = { params: { addType: type } };
       act(() => {
-        tree = renderer.create(<AddCommonSelectUnit route={route} />);
+        tree = renderer.create(wrapComponent(route));
       });
       const instance = tree.root;
       const button = instance.findAllByType(TouchableOpacity);
@@ -76,7 +84,7 @@ describe('Test SelectUnit container', () => {
       });
 
       await act(async () => {
-        tree = renderer.create(<AddCommonSelectUnit route={route} />);
+        tree = renderer.create(wrapComponent(route));
       });
 
       const instance = tree.root;
@@ -149,7 +157,7 @@ describe('test single SelectUnit', () => {
     });
 
     await act(async () => {
-      tree = renderer.create(<AddCommonSelectUnit route={route} />);
+      tree = renderer.create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -190,7 +198,7 @@ describe('test single SelectUnit', () => {
     });
 
     await act(async () => {
-      tree = renderer.create(<AddCommonSelectUnit route={route} />);
+      tree = renderer.create(wrapComponent(route));
     });
 
     const instance = tree.root;
@@ -209,7 +217,7 @@ describe('test single SelectUnit', () => {
   test('click goBack', async () => {
     const route = { params: { addType: 'AddSubUnit' } };
     await act(async () => {
-      tree = renderer.create(<AddCommonSelectUnit route={route} />);
+      tree = renderer.create(wrapComponent(route));
     });
 
     const instance = tree.root;

@@ -1,11 +1,18 @@
 import DeviceAlertStatus from '../DeviceAlertStatus';
 import React from 'react';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import renderer, { act } from 'react-test-renderer';
 import { TESTID } from '../../../configs/Constants';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+import { getTranslate } from '../../../utils/I18n';
+
+const wrapComponent = (data) => (
+  <SCProvider initState={mockSCStore({})}>
+    <DeviceAlertStatus data={data} />
+  </SCProvider>
+);
 
 describe('Test Device Alert Status', () => {
-  const t = useTranslations();
   let tree;
   let list_standard = [
     'tank_is_full',
@@ -23,13 +30,13 @@ describe('Test Device Alert Status', () => {
         },
       ];
       act(() => {
-        tree = renderer.create(<DeviceAlertStatus data={data} />);
+        tree = renderer.create(wrapComponent(data));
       });
       const instance = tree.root;
       const item = instance.find(
         (el) => el.props.testID === TESTID.ALERT_STATUS_MACHINE
       );
-      expect(item.props.message).toEqual(t(standard));
+      expect(item.props.message).toEqual(getTranslate('en', standard));
     });
   });
   test('render Device Alert Status data value == 0', () => {
@@ -40,7 +47,7 @@ describe('Test Device Alert Status', () => {
       },
     ];
     act(() => {
-      tree = renderer.create(<DeviceAlertStatus data={data} />);
+      tree = renderer.create(wrapComponent(data));
     });
     const instance = tree.root;
     const item = instance.findAll(
@@ -55,7 +62,7 @@ describe('Test Device Alert Status', () => {
       },
     ];
     act(() => {
-      tree = renderer.create(<DeviceAlertStatus data={data} />);
+      tree = renderer.create(wrapComponent(data));
     });
     const instance = tree.root;
     const item = instance.findAll(

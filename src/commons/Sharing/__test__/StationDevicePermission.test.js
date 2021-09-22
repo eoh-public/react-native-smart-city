@@ -3,10 +3,18 @@ import renderer, { act } from 'react-test-renderer';
 import StationDevicePermissions from '../StationDevicePermissions';
 import { TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (dataStation) => (
+  <SCProvider initState={mockSCStore({})}>
+    <StationDevicePermissions dataStation={dataStation} />
+  </SCProvider>
+);
 
 describe('StationDevicePermission', () => {
   let tree;
-  test('StationDevicePermission', () => {
+  test('StationDevicePermission', async () => {
     const dataStation = {
       name: 'test',
       sensors: [
@@ -19,9 +27,8 @@ describe('StationDevicePermission', () => {
         },
       ],
     };
-    const component = <StationDevicePermissions dataStation={dataStation} />;
-    act(() => {
-      tree = renderer.create(component);
+    await act(() => {
+      tree = renderer.create(wrapComponent(dataStation));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(TouchableOpacity);
@@ -35,7 +42,7 @@ describe('StationDevicePermission', () => {
     iconOutline = instance.findAllByType(IconOutline);
     expect(iconOutline[0].props.name).toEqual('up');
   });
-  test('StationDevicePermission  icon: barrier', () => {
+  test('StationDevicePermission  icon: barrier', async () => {
     const dataStation = {
       name: 'test',
       sensors: [
@@ -48,15 +55,14 @@ describe('StationDevicePermission', () => {
         },
       ],
     };
-    const component = <StationDevicePermissions dataStation={dataStation} />;
-    act(() => {
-      tree = renderer.create(component);
+    await act(() => {
+      tree = renderer.create(wrapComponent(dataStation));
     });
     const instance = tree.root;
     const textInputs = instance.findAllByType(TouchableOpacity);
     expect(textInputs.length).toBe(5);
   });
-  test('StationDevicePermission  icon: sensor', () => {
+  test('StationDevicePermission  icon: sensor', async () => {
     const dataStation = {
       name: 'test',
       sensors: [
@@ -68,9 +74,8 @@ describe('StationDevicePermission', () => {
         },
       ],
     };
-    const component = <StationDevicePermissions dataStation={dataStation} />;
-    act(() => {
-      tree = renderer.create(component);
+    await act(() => {
+      tree = renderer.create(wrapComponent(dataStation));
     });
 
     const instance = tree.root;

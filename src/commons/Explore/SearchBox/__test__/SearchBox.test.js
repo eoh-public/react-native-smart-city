@@ -2,8 +2,16 @@ import SearchBox from '../index';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
+import { SCProvider } from '../../../../context';
+import { mockSCStore } from '../../../../context/mockStore';
 
 const mockedNavigate = jest.fn();
+
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <SearchBox isBack={true} />
+  </SCProvider>
+);
 
 jest.mock('@react-navigation/native', () => {
   return {
@@ -18,7 +26,7 @@ describe('Test SearchBox', () => {
   let wrapper;
   test('SearchBox render', () => {
     act(() => {
-      wrapper = renderer.create(<SearchBox isBack={true} />);
+      wrapper = renderer.create(wrapComponent());
     });
     const instance = wrapper.root;
     const button = instance.findByType(TouchableOpacity);
@@ -26,7 +34,6 @@ describe('Test SearchBox', () => {
     act(() => {
       button.props.onPress();
     });
-    expect(wrapper.toJSON()).toMatchSnapshot();
     expect(mockedNavigate.mock.calls.length).toBe(1);
   });
 });

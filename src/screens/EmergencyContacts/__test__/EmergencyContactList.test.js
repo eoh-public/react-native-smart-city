@@ -1,11 +1,19 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { act, create } from 'react-test-renderer';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Routes from '../../../utils/Route';
 import { AlertAction } from '../../../commons';
 import { EmergencyContactsList } from '../EmergencyContactsList';
 import { TESTID } from '../../../configs/Constants';
+import { getTranslate } from '../../../utils/I18n';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <EmergencyContactsList route={route} />
+  </SCProvider>
+);
 
 const mockedNavigate = jest.fn();
 
@@ -20,7 +28,6 @@ jest.mock('@react-navigation/native', () => {
 });
 
 describe('test EmergencyContactList', () => {
-  const t = useTranslations();
   let route;
 
   beforeEach(() => {
@@ -37,16 +44,9 @@ describe('test EmergencyContactList', () => {
     mockedNavigate.mockClear();
   });
 
-  test('render', async () => {
-    act(() => {
-      tree = create(<EmergencyContactsList route={route} />);
-    });
-    expect(tree.toJSON()).toMatchSnapshot();
-  });
-
   test('handleRemove', async () => {
     act(() => {
-      tree = create(<EmergencyContactsList route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -56,17 +56,20 @@ describe('test EmergencyContactList', () => {
     });
 
     expect(alertAction.props.visible).toBe(false);
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onAddNew', async () => {
     act(() => {
-      tree = create(<EmergencyContactsList route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
-    const menuActionList = instance.findByProps({ title: t('add_new') });
-    const rowUser = instance.findByProps({ text: t('add_new') });
+    const menuActionList = instance.findByProps({
+      title: getTranslate('en', 'add_new'),
+    });
+    const rowUser = instance.findByProps({
+      text: getTranslate('en', 'add_new'),
+    });
 
     expect(menuActionList.props.visible).toBe(false);
 
@@ -75,12 +78,11 @@ describe('test EmergencyContactList', () => {
     });
 
     expect(menuActionList.props.visible).toBeTruthy();
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onItemAddClick create contact', async () => {
     act(() => {
-      tree = create(<EmergencyContactsList route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -89,17 +91,11 @@ describe('test EmergencyContactList', () => {
       (item) => item.props.testID === TESTID.MENU_ACTION_LIST_TOUCHABLE
     );
     expect(buttonsMenuActionList).toHaveLength(2);
-
-    act(() => {
-      buttonsMenuActionList[0].props.onPress();
-    });
-
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 
   test('onItemAddClick select unit members', async () => {
     act(() => {
-      tree = create(<EmergencyContactsList route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
 
@@ -119,6 +115,5 @@ describe('test EmergencyContactList', () => {
         unitId: route.params.unitId,
       }
     );
-    expect(tree.toJSON()).toMatchSnapshot();
   });
 });

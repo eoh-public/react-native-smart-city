@@ -7,6 +7,8 @@ import axios from 'axios';
 import { SensorItem, TitleCheckBox } from '../Components';
 import { ViewButtonBottom } from '../../../commons';
 import Routes from '../../../utils/Route';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
 
@@ -30,6 +32,12 @@ jest.mock('@react-navigation/native', () => {
     }),
   };
 });
+
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <SelectPermission route={route} />
+  </SCProvider>
+);
 
 describe('Test SelectPermission', () => {
   let tree;
@@ -81,7 +89,7 @@ describe('Test SelectPermission', () => {
   it('test unit null', () => {
     Platform.OS = 'android';
     act(() => {
-      tree = create(<SelectPermission route={route} />);
+      tree = create(wrapComponent(route));
     });
     expect(axios.get).not.toBeCalled();
   });
@@ -93,11 +101,11 @@ describe('Test SelectPermission', () => {
     route.params.unit = 1;
     axios.get.mockImplementationOnce(() => ({ status: 200, data: [] }));
     act(() => {
-      tree = create(<SelectPermission route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const TextElement = instance.findAllByType(Text);
-    expect(TextElement[2].props.children).toBe('Không có dữ liệu');
+    expect(TextElement[2].props.children).toBe('No data');
   });
 
   it('test get unit fail', () => {
@@ -106,17 +114,17 @@ describe('Test SelectPermission', () => {
     route.params.unit = 1;
     axios.get.mockImplementationOnce(() => ({ status: 400, data: [] }));
     act(() => {
-      tree = create(<SelectPermission route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const TextElement = instance.findAllByType(Text);
-    expect(TextElement[2].props.children).toBe('Không có dữ liệu');
+    expect(TextElement[2].props.children).toBe('No data');
   });
 
   it('render list', () => {
     mocSetdata();
     act(() => {
-      tree = create(<SelectPermission route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const FlatListElement = instance.findAllByType(FlatList);
@@ -151,7 +159,7 @@ describe('Test SelectPermission', () => {
   it('test onTickedChild function', () => {
     mocSetdata();
     act(() => {
-      tree = create(<SelectPermission route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const SensorItemElement = instance.findAllByType(SensorItem);
@@ -165,7 +173,7 @@ describe('Test SelectPermission', () => {
   it('test ViewButtonBottom', () => {
     mocSetdata();
     act(() => {
-      tree = create(<SelectPermission route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const ViewButtonBottomElement = instance.findAllByType(ViewButtonBottom);

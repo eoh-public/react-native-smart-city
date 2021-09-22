@@ -5,8 +5,10 @@ import axios from 'axios';
 import { API } from '../../../configs';
 import ConnectingDevices from '../ConnectingDevices';
 import Text from '../../../commons/Text';
-import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Routes from '../../../utils/Route';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+import { getTranslate } from '../../../utils/I18n';
 
 jest.mock('axios');
 
@@ -20,8 +22,13 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+const wrapComponent = (route) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ConnectingDevices route={route} />
+  </SCProvider>
+);
+
 describe('Test ConnectingDevices', () => {
-  const t = useTranslations();
   let tree;
   let route;
 
@@ -42,14 +49,16 @@ describe('Test ConnectingDevices', () => {
 
   test('create', () => {
     act(() => {
-      tree = create(<ConnectingDevices route={route} />);
+      tree = create(wrapComponent(route));
     });
     const instance = tree.root;
     const texts = instance.findAllByType(Text);
     expect(texts).toHaveLength(2);
-    expect(texts[0].props.children).toEqual(t('connecting_your_device'));
+    expect(texts[0].props.children).toEqual(
+      getTranslate('en', 'connecting_your_device')
+    );
     expect(texts[1].props.children).toEqual(
-      t('dont_turn_off_the_device_or_close_this_app')
+      getTranslate('en', 'dont_turn_off_the_device_or_close_this_app')
     );
   });
 
@@ -64,7 +73,7 @@ describe('Test ConnectingDevices', () => {
     });
 
     await act(async () => {
-      tree = await create(<ConnectingDevices route={route} />);
+      tree = await create(wrapComponent(route));
     });
     await act(async () => {
       await jest.runOnlyPendingTimers();
@@ -87,7 +96,7 @@ describe('Test ConnectingDevices', () => {
     });
 
     await act(async () => {
-      tree = await create(<ConnectingDevices route={route} />);
+      tree = await create(wrapComponent(route));
     });
     await act(async () => {
       await jest.runOnlyPendingTimers();

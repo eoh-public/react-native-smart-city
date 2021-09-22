@@ -3,6 +3,14 @@ import renderer, { act } from 'react-test-renderer';
 import { TouchableOpacity } from 'react-native';
 
 import ThreeButtonTemplate from '../ThreeButtonTemplate';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = (actionGroup) => (
+  <SCProvider initState={mockSCStore({})}>
+    <ThreeButtonTemplate actionGroup={actionGroup} doAction={jest.fn()} />
+  </SCProvider>
+);
 
 describe('Test ThreeButtonTemplate', () => {
   const actionGroup = {
@@ -53,11 +61,9 @@ describe('Test ThreeButtonTemplate', () => {
 
   let wrapper;
 
-  test('render ThreeButtonTemplate', () => {
-    act(() => {
-      wrapper = renderer.create(
-        <ThreeButtonTemplate actionGroup={actionGroup} doAction={jest.fn()} />
-      );
+  test('render ThreeButtonTemplate', async () => {
+    await act(() => {
+      wrapper = renderer.create(wrapComponent(actionGroup));
     });
     expect(wrapper.toJSON()).toMatchSnapshot();
     const instance = wrapper.root;

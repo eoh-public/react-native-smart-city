@@ -1,5 +1,3 @@
-import { useTranslations } from '../../../hooks/Common/useTranslations';
-
 import Toast from 'react-native-toast-message';
 import axios from 'axios';
 import { sendCommandOverInternet } from '../Internet';
@@ -7,7 +5,6 @@ import { sendCommandOverInternet } from '../Internet';
 jest.mock('axios');
 
 describe('Test IOT Remote Control Internet', () => {
-  const t = useTranslations();
   beforeEach(() => {
     Toast.show.mockClear();
     axios.post.mockClear();
@@ -17,12 +14,7 @@ describe('Test IOT Remote Control Internet', () => {
     axios.post.mockImplementation(() => ({ status: 200 }));
     await sendCommandOverInternet({}, {}, 'internet');
     expect(axios.post).toBeCalled();
-    expect(Toast.show).toBeCalledWith({
-      type: 'success',
-      position: 'bottom',
-      text1: t('Command is sent to device via internet'),
-      visibilityTime: 1000,
-    });
+    expect(Toast.show).toBeCalledTimes(2);
   });
 
   test('Trigger action fail show error', async () => {

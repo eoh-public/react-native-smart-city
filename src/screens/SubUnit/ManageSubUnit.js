@@ -72,7 +72,7 @@ const ManageSubUnit = (props) => {
   const updateSubUnit = useCallback(
     async (params, headers) => {
       const { success, data } = await axiosPatch(
-        API.SUB_UNIT.MANAGE_SUB_UNIT(unit.id, station.id),
+        API.SUB_UNIT.MANAGE_SUB_UNIT(unit?.id, station.id),
         params,
         headers
       );
@@ -83,13 +83,13 @@ const ManageSubUnit = (props) => {
         ToastBottomHelper.success(t('text_rename_sub_unit_success'));
       }
     },
-    [unit.id, station.id, t]
+    [unit, station.id, t]
   );
   const updateBackground = useCallback(
     async (headers) => {
       const formData = createFormData(imageUrl, ['background']);
       const { success } = await axiosPatch(
-        API.SUB_UNIT.MANAGE_SUB_UNIT(unit.id, station.id),
+        API.SUB_UNIT.MANAGE_SUB_UNIT(unit?.id, station.id),
         formData,
         headers
       );
@@ -98,7 +98,7 @@ const ManageSubUnit = (props) => {
         ToastBottomHelper.success(t('text_change_background_sub_unit_success'));
       }
     },
-    [imageUrl, unit.id, station.id, t]
+    [imageUrl, unit, station.id, t]
   );
 
   const onPressRemove = useCallback(() => {
@@ -112,7 +112,7 @@ const ManageSubUnit = (props) => {
   const onRemoveSubUnit = useCallback(async () => {
     setHideModalRemoveSubUnit();
     const { success } = await axiosDelete(
-      API.SUB_UNIT.REMOVE_SUB_UNIT(unit.id, station.id)
+      API.SUB_UNIT.REMOVE_SUB_UNIT(unit?.id, station.id)
     );
     if (success) {
       //dispatch(removeSubUnit(station.id));
@@ -121,7 +121,7 @@ const ManageSubUnit = (props) => {
     } else {
       ToastBottomHelper.error(t('text_remove_sub_unit_fail'));
     }
-  }, [setHideModalRemoveSubUnit, unit.id, station.id, t, onBack]);
+  }, [setHideModalRemoveSubUnit, unit, station.id, t, onBack]);
 
   const goRename = useCallback(() => {
     updateSubUnit({ name: inputName }, {});
@@ -155,9 +155,9 @@ const ManageSubUnit = (props) => {
   const onPressEmergencyContact = useCallback(() => {
     navigation.navigate(Routes.EmergencyContactsStack, {
       screen: Routes.EmergencyContactsList,
-      params: { unitId: unit.id, group },
+      params: { unitId: unit?.id, group },
     });
-  }, [group, navigation, unit.id]);
+  }, [group, navigation, unit]);
 
   return (
     <SafeAreaView style={styles.container}>

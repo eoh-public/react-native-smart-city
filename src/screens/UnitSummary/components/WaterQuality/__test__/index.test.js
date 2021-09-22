@@ -4,6 +4,8 @@ import { act, create } from 'react-test-renderer';
 import Routes from '../../../../../utils/Route';
 import WaterQuality from '../index';
 import { Section } from '../../../../../commons';
+import { SCProvider } from '../../../../../context';
+import { mockSCStore } from '../../../../../context/mockStore';
 
 const mockedNavigate = jest.fn();
 
@@ -15,6 +17,12 @@ jest.mock('@react-navigation/native', () => {
     }),
   };
 });
+
+const wrapComponent = (data) => (
+  <SCProvider initState={mockSCStore({})}>
+    <WaterQuality {...data} />
+  </SCProvider>
+);
 
 describe('Test WaterQualityGuide', () => {
   let data;
@@ -36,9 +44,8 @@ describe('Test WaterQualityGuide', () => {
 
   test('render WaterQualityGuide', async () => {
     act(() => {
-      tree = create(<WaterQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
     const instance = tree.root;
     const sections = instance.findAllByType(Section);
     expect(sections).toHaveLength(2);
@@ -49,9 +56,8 @@ describe('Test WaterQualityGuide', () => {
     data.summaryDetail.tur_id = 0;
     data.summaryDetail.clo_id = 0;
     act(() => {
-      tree = create(<WaterQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
     const instance = tree.root;
     const sections = instance.findAllByType(Section);
     expect(sections).toHaveLength(1);
@@ -59,7 +65,7 @@ describe('Test WaterQualityGuide', () => {
 
   test('onClickItem waterType', async () => {
     act(() => {
-      tree = create(<WaterQuality {...data} />);
+      tree = create(wrapComponent(data));
     });
     const instance = tree.root;
     const buttons = instance.findAllByType(TouchableOpacity);

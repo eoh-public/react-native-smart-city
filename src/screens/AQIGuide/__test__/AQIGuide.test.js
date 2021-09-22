@@ -5,6 +5,14 @@ import { act, create } from 'react-test-renderer';
 import AQIGuide from '..';
 import Text from '../../../commons/Text';
 import { TESTID } from '../../../configs/Constants';
+import { SCProvider } from '../../../context';
+import { mockSCStore } from '../../../context/mockStore';
+
+const wrapComponent = () => (
+  <SCProvider initState={mockSCStore({})}>
+    <AQIGuide />
+  </SCProvider>
+);
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
@@ -29,7 +37,7 @@ describe('test AQIGuide', () => {
   test('render', async () => {
     let tree;
     act(() => {
-      tree = create(<AQIGuide />);
+      tree = create(wrapComponent());
     });
 
     const instance = tree.root;

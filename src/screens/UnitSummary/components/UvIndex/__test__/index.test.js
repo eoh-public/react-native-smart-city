@@ -1,6 +1,14 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
+import { SCProvider } from '../../../../../context';
+import { mockSCStore } from '../../../../../context/mockStore';
 import UvIndex from '../index';
+
+const wrapComponent = (data) => (
+  <SCProvider initState={mockSCStore({})}>
+    <UvIndex {...data} />
+  </SCProvider>
+);
 
 describe('Test UvIndex', () => {
   let data;
@@ -21,7 +29,7 @@ describe('Test UvIndex', () => {
 
   test('render UvIndex', async () => {
     act(() => {
-      tree = create(<UvIndex {...data} />);
+      tree = create(wrapComponent(data));
     });
     expect(tree.toJSON()).toMatchSnapshot();
   });
@@ -29,7 +37,7 @@ describe('Test UvIndex', () => {
   test('render UvIndex with negative uv_value', async () => {
     data.summaryDetail.uv_value = -1;
     act(() => {
-      tree = create(<UvIndex {...data} />);
+      tree = create(wrapComponent(data));
     });
     expect(tree.toJSON()).toMatchSnapshot();
   });
@@ -37,7 +45,7 @@ describe('Test UvIndex', () => {
   test('render UvIndex with high uv_value', async () => {
     data.summaryDetail.uv_value = 11;
     act(() => {
-      tree = create(<UvIndex {...data} />);
+      tree = create(wrapComponent(data));
     });
     expect(tree.toJSON()).toMatchSnapshot();
   });
@@ -45,7 +53,7 @@ describe('Test UvIndex', () => {
   test('render UvIndex with advices', async () => {
     data.summaryDetail.advices = ['Amazing good chop'];
     act(() => {
-      tree = create(<UvIndex {...data} />);
+      tree = create(wrapComponent(data));
     });
     expect(tree.toJSON()).toMatchSnapshot();
   });
@@ -53,7 +61,7 @@ describe('Test UvIndex', () => {
   test('render UvIndex without advices', async () => {
     delete data.summaryDetail.advices;
     act(() => {
-      tree = create(<UvIndex {...data} />);
+      tree = create(wrapComponent(data));
     });
     expect(tree.toJSON()).toMatchSnapshot();
   });
@@ -61,7 +69,7 @@ describe('Test UvIndex', () => {
   test('render UvIndex with undefined uv_value', async () => {
     data.summaryDetail.uv_value = undefined;
     act(() => {
-      tree = create(<UvIndex {...data} />);
+      tree = create(wrapComponent(data));
     });
     expect(tree.toJSON()).toMatchSnapshot();
   });

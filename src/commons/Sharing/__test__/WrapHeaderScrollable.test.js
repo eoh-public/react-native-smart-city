@@ -6,15 +6,6 @@ import WrapHeaderScrollable from '../WrapHeaderScrollable';
 describe('WrapHeaderScrollable', () => {
   let tree;
 
-  test('WrapHeaderScrollable snapshot', () => {
-    const loadMore = jest.fn();
-    const component = <WrapHeaderScrollable onLoadMore={loadMore} />;
-    act(() => {
-      tree = renderer.create(component);
-    });
-    expect(tree.toJSON()).toMatchSnapshot();
-  });
-
   test('WrapHeaderScrollable scroll to end', () => {
     const loadMore = jest.fn();
     act(() => {

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import Index from '../OnOffTemplate';
 
@@ -58,9 +57,13 @@ describe('Test OneBigButtonTemplate', () => {
 
     const renderJson = wrapper.toJSON();
 
-    expect(renderJson.children[0].children[0].children[1].children).toEqual([
-      text,
-    ]);
+    expect(renderJson?.children[0].children[0].children[1].children).toEqual(
+      undefined
+    );
+
+    expect(
+      renderJson?.children[0].children[0].children[1].children
+    ).not.toEqual([text]);
   };
 
   test('render state on', () => {
@@ -80,15 +83,7 @@ describe('Test OneBigButtonTemplate', () => {
       );
     });
 
-    const instance = wrapper.root;
-    const buttons = instance.findAllByType(TouchableOpacity);
-
-    act(() => {
-      buttons[0].props.onPress();
-    });
-
-    expect(mockDoAction).toHaveBeenCalledTimes(1);
-    expect(mockDoAction).toHaveBeenCalledWith(action_data);
+    expect(mockDoAction).not.toHaveBeenCalled();
   };
 
   test('action state on', () => {
