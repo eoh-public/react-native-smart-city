@@ -3,7 +3,6 @@ image: node:14.16.0
 stages:
   - check
   - test
-  - skip
   - release
   - publish
 
@@ -33,13 +32,6 @@ test_mr:
     - yarn
     - yarn run lint
     - yarn run jest
-
-skip:
-  stage: skip
-  only:
-    - merge_requests
-  script:
-    - echo "Skip check and test in merge request"
 
 release-patch:
   stage: release
