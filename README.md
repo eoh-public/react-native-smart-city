@@ -27,7 +27,7 @@ import SmartCity, {
 } from '@eohjsc/react-native-smart-city';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// TODO: What to do with the module?
+// TODO: What to do with the module?   
 const Stack = creatStackNavigation();
 
 const YourStack = () => {
