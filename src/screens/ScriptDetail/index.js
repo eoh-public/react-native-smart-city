@@ -12,7 +12,6 @@ import { Icon } from '@ant-design/react-native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import styles from './Styles/indexStyles';
 import Text from '../../commons/Text';
-import HowToStart from '../../../assets/images/HowToStart.svg';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { API, Colors, Images } from '../../configs';
 import { usePopover } from '../../hooks/Common';
@@ -23,6 +22,8 @@ import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import FImage from '../../commons/FImage';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
+import ItemAutomate from '../../commons/Automate/ItemAutomate';
+import { AUTOMATE_TYPE } from '../../configs/Constants';
 
 const ScriptDetail = () => {
   const { navigate } = useNavigation();
@@ -31,7 +32,7 @@ const ScriptDetail = () => {
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
   const t = useTranslations();
-  const { id, name = '', unitId } = params;
+  const { id, name = '', type, havePermission, unitId } = params;
   const [isFavourite, setIsFavourite] = useState(false);
   const [data, setData] = useState([]);
 
@@ -192,32 +193,27 @@ const ScriptDetail = () => {
           <Text type="H3" semibold>
             {t('how_to_start')}
           </Text>
-          <View style={styles.box}>
-            <HowToStart />
-            <View style={styles.wrapText}>
-              <Text type="H4" color={Colors.Gray9} semibold>
-                {t('launch_one_tap')}
-              </Text>
-              <Text type="Label" color={Colors.Gray8}>
-                {t('des_launch_one_tap')}
-              </Text>
-            </View>
-          </View>
-          <TouchableOpacity
-            onPress={handleScriptAction}
-            style={styles.activeButton}
-          >
-            <Image source={Images.activeButton} />
-          </TouchableOpacity>
+          <ItemAutomate type={type} />
+          {type === AUTOMATE_TYPE.ONE_TAP && (
+            <TouchableOpacity
+              onPress={handleScriptAction}
+              style={styles.activeButton}
+            >
+              <Image source={Images.activeButton} />
+            </TouchableOpacity>
+          )}
+
           <View style={styles.row}>
             <Text type="H3" color={Colors.Gray9} semibold>
               {t('active_list')}
             </Text>
-            <TouchableOpacity onPress={onPressEdit} style={styles.editButton}>
-              <Text type="Label" hilight>
-                {t('edit')}
-              </Text>
-            </TouchableOpacity>
+            {havePermission && (
+              <TouchableOpacity onPress={onPressEdit} style={styles.editButton}>
+                <Text type="Label" hilight>
+                  {t('edit')}
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
           {data.map((item, index) => (
             <Item key={item?.id} item={item} index={index} />

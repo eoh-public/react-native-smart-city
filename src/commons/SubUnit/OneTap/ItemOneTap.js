@@ -12,18 +12,25 @@ import styles from './ItemOneTapStyles.js';
 import { ToastBottomHelper } from '../../../utils/Utils';
 import { axiosPost } from '../../../utils/Apis/axios';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 import Routes from '../../../utils/Route';
+import { useGetIdUser } from '../../../hooks/Common';
+import { TESTID } from '../../../configs/Constants';
 
-const ItemOneTap = memo(({ automate, unitId }) => {
+const ItemOneTap = memo(({ isOwner, automate, unitId }) => {
   const { navigate } = useNavigation();
-  const { id, script, activate_at } = automate;
-
+  const { id, type, user, script, activate_at } = automate;
   const t = useTranslations();
+  const idUser = useGetIdUser();
+
   const goToDetail = useCallback(() => {
-    navigate(Routes.ScriptDetail, { id, name: script?.name, unitId });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    navigate(Routes.ScriptDetail, {
+      id,
+      name: script?.name,
+      type: type,
+      havePermission: isOwner || user === idUser,
+    });
+  }, [isOwner, user, idUser, navigate, id, script, type]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -51,11 +58,14 @@ const ItemOneTap = memo(({ automate, unitId }) => {
       <View style={styles.container}>
         <View style={styles.boxIcon}>
           {displayIcon()}
-          <TouchableOpacity onPress={handleScriptAction}>
+          <TouchableOpacity
+            testID={TESTID.AUTOMATE_SCRIPT_ACTION}
+            onPress={handleScriptAction}
+          >
             <CheckCircle />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={goToDetail}>
+        <TouchableOpacity testID={TESTID.GO_DETAIL} onPress={goToDetail}>
           <Text
             numberOfLines={1}
             semibold

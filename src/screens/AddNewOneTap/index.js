@@ -13,16 +13,17 @@ import { useTranslations } from '../../hooks/Common/useTranslations';
 import Route from '../../utils/Route';
 
 const AddNewOneTap = memo(({ route }) => {
+  const { type } = route.params;
   const t = useTranslations();
   const { navigate } = useNavigation();
-  const [name, setName] = useState('Tap to run');
+  const [name, setName] = useState(t('tap_to_run'));
 
   const handleContinue = useCallback(() => {
     navigate(Route.AddNewScriptAction, {
-      automateType: 'one-tap',
+      type: type,
       name: name,
     });
-  }, [navigate, name]);
+  }, [navigate, type, name]);
 
   const onChangeName = useCallback((text) => {
     setName(text);
@@ -53,6 +54,7 @@ const AddNewOneTap = memo(({ route }) => {
           onChange={onChangeName}
           textInputStyle={styles.textInput}
           value={name}
+          testID={TESTID.NAME_YOUR_BUTTON}
         />
       </ScrollView>
       <BottomButtonView

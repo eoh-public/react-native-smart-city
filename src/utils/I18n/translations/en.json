@@ -734,5 +734,6 @@
   "message_delete_action": "Are you sure you want to delete action of \n{actionName} in {stationName}?",
   "add_script": "Add Script",
   "go_to_automate_scripts": "Go to automate scripts",
+  "Script": "Script",
   "error_please_try_later": "Error! Please try later"
 }

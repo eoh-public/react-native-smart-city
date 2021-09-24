@@ -8,6 +8,7 @@ import useControllList from './useControllList';
 import { useBlockBackAndroid } from './useBlockBackAndroid';
 import { useIsOwnerOfUnit } from './useIsOwnerOfUnit';
 import { useStatusBar } from './useStatusBar';
+import { useGetIdUser } from './useGetIdUser';
 
 export {
   useAndroidTranslucentStatusBar,
@@ -20,4 +21,5 @@ export {
   useBlockBackAndroid,
   useIsOwnerOfUnit,
   useStatusBar,
+  useGetIdUser,
 };

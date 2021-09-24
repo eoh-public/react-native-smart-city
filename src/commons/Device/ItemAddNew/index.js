@@ -5,13 +5,18 @@ import Text from '../../Text';
 
 import { Colors } from '../../../configs';
 import styles from './styles';
+import { TESTID } from '../../../configs/Constants';
 
 const ItemAddNew = memo(({ title, onAddNew }) => {
   return (
     <TouchableWithoutFeedback onPress={onAddNew}>
       <View style={styles.container}>
         <View style={styles.boxIcon}>
-          <TouchableOpacity style={styles.buttonPlus} onPress={onAddNew}>
+          <TouchableOpacity
+            style={styles.buttonPlus}
+            onPress={onAddNew}
+            testID={TESTID.PLUS}
+          >
             <IconOutline name="plus" size={22} color={Colors.Gray8} />
           </TouchableOpacity>
         </View>

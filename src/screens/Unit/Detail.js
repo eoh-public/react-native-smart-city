@@ -24,7 +24,8 @@ import CameraDevice from '../../commons/CameraDevice';
 import { ModalFullVideo } from '../../commons/Modal';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../utils/Route';
-import SubUnitOneTap from '../../commons/SubUnit/OneTap';
+import SubUnitAutomate from '../../commons/SubUnit/OneTap';
+import { AUTOMATE_TYPE } from '../../configs/Constants';
 
 const UnitDetail = ({ route }) => {
   const t = useTranslations();
@@ -37,7 +38,8 @@ const UnitDetail = ({ route }) => {
   const [appState, setAppState] = useState(AppState.currentState);
   const [listMenuItem, setListMenuItem] = useState([]);
   const [listStation, setListStation] = useState([]);
-  const [automates, setAutomates] = useState([]);
+  const [oneTap, setOneTap] = useState([]);
+  const [script, setScript] = useState([]);
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
   const [station, setStation] = useState([]);
   const [indexStation, setIndexStation] = useState(0);
@@ -61,11 +63,10 @@ const UnitDetail = ({ route }) => {
 
   const prepareData = useCallback(
     (rawUnitData) => {
-      const oneTap = {
+      rawUnitData.stations.unshift({
         isOneTap: true,
         name: 'One-Tap',
-      };
-      rawUnitData.stations.unshift(oneTap);
+      });
       const favorites = {
         isFakeStation: true,
         isFavorites: true,
@@ -81,11 +82,16 @@ const UnitDetail = ({ route }) => {
           favorites.sensors = favorites.sensors.concat(favoriteDevices);
         }
       });
+      rawUnitData.stations.push({
+        isScript: true,
+        name: t('Script'),
+      });
     },
     [t]
   );
 
   const fetchDetails = useCallback(async () => {
+    getAutomates();
     await fetchWithCache(API.UNIT.UNIT_DETAIL(unitId), {}, (response) => {
       const { success, data } = response;
       if (success) {
@@ -93,13 +99,14 @@ const UnitDetail = ({ route }) => {
         setUnit(data);
       }
     });
-  }, [setUnit, unitId, prepareData]);
+  }, [setUnit, unitId, prepareData, getAutomates]);
 
-  const getScriptOneTap = useCallback(async () => {
+  const getAutomates = useCallback(async () => {
     await fetchWithCache(API.UNIT.AUTOMATE(unitId), {}, (response) => {
       const { success, data } = response;
       if (success) {
-        setAutomates(data);
+        setOneTap(data.filter((item) => item.type === AUTOMATE_TYPE.ONE_TAP));
+        setScript(data.filter((item) => item.type !== AUTOMATE_TYPE.ONE_TAP));
       }
     });
   }, [unitId]);
@@ -185,9 +192,8 @@ const UnitDetail = ({ route }) => {
   useEffect(() => {
     if (isFocused) {
       fetchDetails();
-      getScriptOneTap();
     }
-  }, [fetchDetails, getScriptOneTap, isFocused]);
+  }, [fetchDetails, isFocused]);
 
   useEffect(() => {
     if (unit.stations) {
@@ -225,7 +231,23 @@ const UnitDetail = ({ route }) => {
         />
       );
     } else if (station.isOneTap) {
-      return <SubUnitOneTap automates={automates} unitId={unitId} />;
+      return (
+        <SubUnitAutomate
+          isOwner={isOwner}
+          type={AUTOMATE_TYPE.ONE_TAP}
+          automates={oneTap}
+          unitId={unitId}
+        />
+      );
+    } else if (station.isScript) {
+      return (
+        <SubUnitAutomate
+          isOwner={isOwner}
+          type={AUTOMATE_TYPE.VALUE_CHANGE}
+          automates={script}
+          unitId={unitId}
+        />
+      );
     } else if (station) {
       return (
         <ShortDetailSubUnit

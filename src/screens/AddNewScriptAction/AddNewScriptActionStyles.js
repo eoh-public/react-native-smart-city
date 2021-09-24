@@ -24,4 +24,5 @@ export default StyleSheet.create({
     borderTopWidth: 1,
     backgroundColor: Colors.White,
   },
+  automate: { marginRight: 16, marginLeft: 16 },
 });
