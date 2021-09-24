@@ -15,6 +15,8 @@ import Summaries from '../Summaries';
 import { TESTID } from '../../../configs/Constants';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
+import SubUnitAutomate from '../../../commons/SubUnit/OneTap';
+import CameraDevice from '../../../commons/CameraDevice';
 
 const mockDispatch = jest.fn();
 
@@ -404,5 +406,42 @@ describe('Test UnitDetail', () => {
     });
     // TODO Called but can not expect
     // expect(axios.get).toHaveBeenCalledWith(API.IOT.LG.DEVICE_STATUS(2));
+  });
+  test('render subunit automate', async () => {
+    const unitData = {
+      stations: [
+        {
+          isScript: true,
+          name: 'Script',
+        },
+      ],
+    };
+
+    await act(async () => {
+      tree = await renderer.create(
+        wrapComponent({ params: { ...route.params, unitData } }, account)
+      );
+    });
+    const instance = tree.root;
+    const automateViews = instance.findAllByType(SubUnitAutomate);
+    expect(automateViews).toHaveLength(1);
+  });
+  test('render subunit camera devices', async () => {
+    const unitData = {
+      stations: [
+        {
+          camera_devices: [],
+        },
+      ],
+    };
+
+    await act(async () => {
+      tree = await renderer.create(
+        wrapComponent({ params: { ...route.params, unitData } }, account)
+      );
+    });
+    const instance = tree.root;
+    const CameraDeviceViews = instance.findAllByType(CameraDevice);
+    expect(CameraDeviceViews).toHaveLength(1);
   });
 });

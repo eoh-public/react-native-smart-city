@@ -1,5 +1,8 @@
 import { Platform, Dimensions, StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import OneTap from '../../../assets/images/OneTap.svg';
+import WeatherChange from '../../../assets/images/WeatherChange.svg';
+import Schedule from '../../../assets/images/Schedule.svg';
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -82,6 +85,33 @@ export const SCANNING_STATUS = {
 
 export const SubUnitName = {
   scenario: 'Kịch Bản',
+};
+
+export const AUTOMATE_TYPE = {
+  ONE_TAP: 'one_tap',
+  VALUE_CHANGE: 'value_change',
+  SCHEDULE: 'schedule',
+};
+
+export const AUTOMATES = {
+  one_tap: {
+    value: AUTOMATE_TYPE.ONE_TAP,
+    title: 'Launch One-Tap',
+    explanation: 'Do everything with just one button',
+    icon: OneTap,
+  },
+  value_change: {
+    value: AUTOMATE_TYPE.VALUE_CHANGE,
+    title: 'When weather change',
+    explanation: 'Short Explanation',
+    icon: WeatherChange,
+  },
+  schedule: {
+    value: AUTOMATE_TYPE.SCHEDULE,
+    title: 'Schedule',
+    explanation: 'Short Explanation',
+    icon: Schedule,
+  },
 };
 
 export const TESTID = {
@@ -224,6 +254,11 @@ export const TESTID = {
   ITEM_TEXT_INPUT: 'ITEM_TEXT_INPUT',
   ITEM_TEXT_ERROR: 'ITEM_TEXT_ERROR',
   SEARCH_BAR_INPUT: 'SEARCH_BAR_INPUT',
+  GO_DETAIL: 'GO_DETAIL',
+
+  // Automate
+  AUTOMATE_SCRIPT_ACTION: 'AUTOMATE_SCRIPT_ACTION',
+  NAME_YOUR_BUTTON: 'NAME_YOUR_BUTTON',
 
   // Parking input maunaly spot
   PARKING_SPOT_INFO_BUTTON: 'PARKING_SPOT_INFO_BUTTON',

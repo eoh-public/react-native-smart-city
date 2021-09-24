@@ -19,7 +19,7 @@ const AddNewScriptAction = memo(() => {
   const { params = {} } = useRoute();
   const { navigate } = useNavigation();
   // eslint-disable-next-line no-unused-vars
-  const { automateType, name } = params;
+  const { type, name } = params;
 
   // eslint-disable-next-line no-unused-vars
   const [actions, setActions] = useState([]);
@@ -56,8 +56,9 @@ const AddNewScriptAction = memo(() => {
             {t('how_to_start')}
           </Text>
         </View>
-        <ItemAutomate type={automateType} />
-
+        <View style={styles.automate}>
+          <ItemAutomate type={type} />
+        </View>
         <View style={styles.row}>
           <Text type="H3" bold>
             {t('actions_list')}
