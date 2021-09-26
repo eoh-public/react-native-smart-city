@@ -8,12 +8,20 @@ import ItemOneTap from './ItemOneTap';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../../utils/Route/index.js';
+import { AUTOMATE_TYPE } from '../../../configs/Constants';
 
 const SubUnitAutomate = ({ isOwner, type, automates, unit }) => {
   const t = useTranslations();
   const { navigate } = useNavigation();
   const handleOnAddNew = () => {
-    navigate(Routes.AddNewOneTap, { type: type, unit });
+    switch (type) {
+      case AUTOMATE_TYPE.ONE_TAP:
+        navigate(Routes.AddNewOneTap, { type: type, unit });
+        break;
+      case AUTOMATE_TYPE.VALUE_CHANGE:
+        navigate(Routes.AddNewAutoSmart, { type: type });
+        break;
+    }
   };
   return (
     <Section style={styles.noShadow}>

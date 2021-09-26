@@ -18,7 +18,10 @@ export default StyleSheet.create({
     elevation: 6,
   },
   active: {
+    borderWidth: 2,
     borderColor: Colors.Primary,
+    marginBottom: 16,
+    marginHorizontal: 16,
   },
   row: {
     flexDirection: 'row',
