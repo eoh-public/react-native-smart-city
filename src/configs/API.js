@@ -71,6 +71,8 @@ const API = {
     REMOVE_FROM_FAVOURITES: (unit_id, station_id, id) =>
       SCConfig.apiRoot +
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/remove_from_favourites/`,
+    DISPLAY_ACTIONS: (id) =>
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display_actions/`,
   },
   SHARED_SENSOR: {
     ACCESS: (id) =>
@@ -91,6 +93,8 @@ const API = {
     DELETE_SCRIPT_ACTION: (automateId, actionId) =>
       SCConfig.apiRoot +
       `/property_manager/automate/${automateId}/script_action/${actionId}/`,
+    ADD_SCRIPT_ACTION: (id) =>
+      SCConfig.apiRoot + `property_manager/automate/${id}/add_script_action/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>

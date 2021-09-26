@@ -1,9 +1,11 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useContext } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
-import Route from '../../utils/Route';
+import { SCContext } from '../../context';
+import { Action } from '../../context/actionType';
+import Routes from '../../utils/Route';
 import { HeaderCustom } from '../../commons/Header';
 import Text from '../../commons/Text';
 import BottomButtonView from '../../commons/BottomButtonView';
@@ -19,21 +21,22 @@ const AddNewScriptAction = memo(() => {
   const { params = {} } = useRoute();
   const { navigate } = useNavigation();
   // eslint-disable-next-line no-unused-vars
-  const { type, name } = params;
+  const { type, name, unit } = params;
 
   // eslint-disable-next-line no-unused-vars
-  const [actions, setActions] = useState([]);
+  const { stateData, setAction } = useContext(SCContext);
 
   const handleOnEdit = useCallback(() => {
     alert(t('feature_under_development'));
   }, [t]);
 
   const handleOnAddNew = useCallback(() => {
-    navigate(Route.UnitStack, {
-      screen: Route.SelectDevice,
-      params: { unitId: 5 },
+    navigate(Routes.SelectDevice, {
+      automateId: null,
+      unit,
+      scriptName: name,
     });
-  }, [navigate]);
+  }, [navigate, name, unit]);
 
   const handleOnDone = useCallback(() => {
     alert(t('feature_under_development'));
@@ -43,9 +46,13 @@ const AddNewScriptAction = memo(() => {
     alert(t('feature_under_development'));
   }, [t]);
 
+  const handleGoBack = useCallback(() => {
+    setAction(Action.LIST_ACTION, {});
+  }, [setAction]);
+
   return (
     <View style={styles.wrap}>
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onGoBack={handleGoBack} />
       <ScrollView scrollEnabled={true} contentContainerStyle={styles.container}>
         <Text type="H2" bold style={styles.title}>
           {name}
@@ -69,11 +76,11 @@ const AddNewScriptAction = memo(() => {
             </Text>
           </TouchableOpacity>
         </View>
-        {actions.map((item, index) => (
+        {stateData?.listAction.map((item, index) => (
           <ItemScriptAction order={index + 1} item={item} key={index} />
         ))}
         <ItemAddNewScriptAction
-          order={actions.length + 1}
+          order={stateData?.listAction.length + 1}
           title={t('add_new')}
           onAddNew={handleOnAddNew}
         />

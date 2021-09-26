@@ -35,4 +35,8 @@ export default StyleSheet.create({
   unitName: {
     marginRight: 4,
   },
+  iconItem: {
+    width: 40,
+    height: 40,
+  },
 });

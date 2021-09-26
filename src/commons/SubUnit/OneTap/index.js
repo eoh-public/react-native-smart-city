@@ -9,18 +9,18 @@ import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../../utils/Route/index.js';
 
-const SubUnitAutomate = ({ isOwner, type, automates, unitId }) => {
+const SubUnitAutomate = ({ isOwner, type, automates, unit }) => {
   const t = useTranslations();
   const { navigate } = useNavigation();
   const handleOnAddNew = () => {
-    navigate(Routes.AddNewOneTap, { type: type });
+    navigate(Routes.AddNewOneTap, { type: type, unit });
   };
   return (
     <Section style={styles.noShadow}>
       <View style={styles.boxDevices}>
         {!!automates.length &&
           automates.map((item) => (
-            <ItemOneTap isOwner={isOwner} automate={item} />
+            <ItemOneTap isOwner={isOwner} automate={item} unit={unit} />
           ))}
         <ItemAddNew title={t('add_new')} onAddNew={handleOnAddNew} />
       </View>

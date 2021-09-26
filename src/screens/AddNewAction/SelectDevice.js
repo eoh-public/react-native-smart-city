@@ -1,6 +1,8 @@
 import React, { memo, useState, useEffect, useCallback } from 'react';
 import { ScrollView, View } from 'react-native';
-import { t } from 'i18n-js';
+import { useNavigation } from '@react-navigation/native';
+
+import { useTranslations } from '../../hooks/Common/useTranslations';
 import Text from '../../commons/Text';
 import NavBar from '../../commons/NavBar';
 import { fetchWithCache } from '../../utils/Apis/axios';
@@ -8,27 +10,30 @@ import { API } from '../../configs';
 import Device from './Device';
 import BottomButtonView from '../../commons/BottomButtonView';
 import { HeaderCustom } from '../../commons/Header';
+import Routes from '../../utils/Route';
 import styles from './Styles/SelectDeviceStyles';
 
 const SelectDevice = memo(({ route }) => {
-  const { unitId } = route.params;
+  const t = useTranslations();
+  const { unit, automateId, scriptName } = route.params;
 
   const [listStation, setListStation] = useState([]);
   const [listMenuItem, setListMenuItem] = useState([]);
   const [indexStation, setIndexStation] = useState(0);
   const [station, setStation] = useState([]);
-  const [device, setDevice] = useState(-1);
+  const [selectedDevice, setSelectedDevice] = useState();
+  const { navigate } = useNavigation();
 
   const onSnapToItem = useCallback(
     (item, index) => {
       setIndexStation(index);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [unitId, indexStation]
+    [unit.id, indexStation]
   );
 
   const fetchDetails = useCallback(async () => {
-    await fetchWithCache(API.UNIT.DEVICE_CONTROL(unitId), {}, (response) => {
+    await fetchWithCache(API.UNIT.DEVICE_CONTROL(unit.id), {}, (response) => {
       const { success, data } = response;
 
       if (success) {
@@ -42,22 +47,28 @@ const SelectDevice = memo(({ route }) => {
         setListStation(listMenu.concat([{ text: '' }]));
       }
     });
-  }, [unitId]);
+  }, [unit.id]);
 
   useEffect(() => {
     fetchDetails();
   }, [fetchDetails]);
 
   const onPressDevice = (sensor) => {
-    if (device === sensor.id) {
-      setDevice(-1);
+    if (selectedDevice && selectedDevice.id === sensor.id) {
+      setSelectedDevice(false);
     } else {
-      setDevice(sensor.id);
+      setSelectedDevice(sensor);
     }
   };
 
   const onPressContinue = () => {
-    alert(t('feature_under_development'));
+    navigate(Routes.SelectAction, {
+      unit,
+      device: selectedDevice,
+      automateId: automateId,
+      stationName: station[indexStation]?.name,
+      scriptName,
+    });
   };
 
   return (
@@ -87,7 +98,9 @@ const SelectDevice = memo(({ route }) => {
                 svgMain={sensor.icon || 'sensor'}
                 title={sensor.name}
                 sensor={sensor}
-                isSelectDevice={device === sensor.id}
+                isSelectDevice={
+                  selectedDevice && selectedDevice.id === sensor.id
+                }
                 onPress={onPressDevice}
               />
             ))}
@@ -98,6 +111,7 @@ const SelectDevice = memo(({ route }) => {
         style={styles.bottomButtonView}
         mainTitle={t('continue')}
         onPressMain={onPressContinue}
+        typeMain={selectedDevice ? 'primary' : 'disabled'}
       />
     </View>
   );

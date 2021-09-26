@@ -236,7 +236,7 @@ const UnitDetail = ({ route }) => {
           isOwner={isOwner}
           type={AUTOMATE_TYPE.ONE_TAP}
           automates={oneTap}
-          unitId={unitId}
+          unit={unit}
         />
       );
     } else if (station.isScript) {
@@ -245,7 +245,7 @@ const UnitDetail = ({ route }) => {
           isOwner={isOwner}
           type={AUTOMATE_TYPE.VALUE_CHANGE}
           automates={script}
-          unitId={unitId}
+          unit={unit}
         />
       );
     } else if (station) {

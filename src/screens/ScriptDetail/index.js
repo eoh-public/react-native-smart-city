@@ -32,7 +32,7 @@ const ScriptDetail = () => {
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
   const t = useTranslations();
-  const { id, name = '', type, havePermission, unitId } = params;
+  const { id, name = '', type, havePermission, unit } = params;
   const [isFavourite, setIsFavourite] = useState(false);
   const [data, setData] = useState([]);
 
@@ -76,9 +76,11 @@ const ScriptDetail = () => {
 
   const onPressAddAction = useCallback(() => {
     navigate(Routes.SelectDevice, {
-      unitId,
+      unit,
+      automateId: id,
+      scriptName: name,
     });
-  }, [navigate, unitId]);
+  }, [navigate, id, name, unit]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));

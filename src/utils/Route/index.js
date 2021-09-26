@@ -95,6 +95,7 @@ const Routes = {
   Browser: 'Browser',
   ManageAccess: 'ManageAccess',
   SelectDevice: 'SelectDevice',
+  SelectAction: 'SelectAction',
   GuestInfo: 'GuestInfo',
   AddLGDevice: 'AddLGDevice',
   AddLGDeviceStack: 'AddLGDeviceStack',
