@@ -19,6 +19,10 @@ check-coverage-configuration:
       - master
     variables:
       - $CI_COMMIT_MESSAGE =~ /skip-check/
+      - $CI_COMMIT_MESSAGE =~ /Release \d+\.\d+\.\d+/
+      - $CI_COMMIT_REF_SLUG =~ /bumpversion/
+      - $CI_COMMIT_REF_SLUG =~ /chore/
+      - $E2E_PATH
   script:
     - git fetch origin master
     - yarn run check_coverage_config
@@ -28,10 +32,13 @@ test_mr:
   except:
     variables:
       - $CI_COMMIT_MESSAGE =~ /skip-test/
+      - $CI_COMMIT_MESSAGE =~ /Release \d+\.\d+\.\d+/
+      - $E2E_PATH
   script:
     - yarn
     - yarn run lint
     - yarn run jest
+  coverage: /^All files\s+\|\s+([0-9]*[.]?[0-9]{1,2})\s+\|\s+[0-9]*[.]?[0-9]{1,2}\s+\|\s+[0-9]*[.]?[0-9]{1,2}\s+\|\s+[0-9]*[.]?[0-9]{1,2}\s+\|/
 
 release-patch:
   stage: release
