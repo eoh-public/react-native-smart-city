@@ -102,6 +102,7 @@ const Routes = {
   ScriptDetail: 'ScriptDetail',
   EditActionsList: 'EditActionsList',
   PlaybackCamera: 'PlaybackCamera',
+  AddNewAutoSmart: 'AddNewAutoSmart',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',
   AddNewScriptAction: 'AddNewScriptAction',
