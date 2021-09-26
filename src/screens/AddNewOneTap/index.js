@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from 'react';
 import { ScrollView, SafeAreaView, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Colors } from '../../configs';
+import { API, Colors } from '../../configs';
 import { TESTID } from '../../configs/Constants';
 import _TextInput from '../../commons/Form/TextInput';
 import styles from './AddNewOneTapStyles';
@@ -10,7 +10,8 @@ import { HeaderCustom } from '../../commons/Header';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
-import Route from '../../utils/Route';
+import { axiosPost } from '../../utils/Apis/axios';
+import Routes from '../../utils/Route';
 
 const AddNewOneTap = memo(({ route }) => {
   const { type, unit } = route.params;
@@ -18,13 +19,22 @@ const AddNewOneTap = memo(({ route }) => {
   const { navigate } = useNavigation();
   const [name, setName] = useState(t('tap_to_run'));
 
-  const handleContinue = useCallback(() => {
-    navigate(Route.AddNewScriptAction, {
+  const handleContinue = useCallback(async () => {
+    const { success, data } = await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), {
+      unit: unit.id,
       type: type,
       name: name,
-      unit,
     });
-  }, [navigate, type, name, unit]);
+    if (success) {
+      navigate(Routes.ScriptDetail, {
+        unit: unit,
+        id: data.id,
+        name: name,
+        type: type,
+        havePermission: true,
+      });
+    }
+  }, [type, name, unit, navigate]);
 
   const onChangeName = useCallback((text) => {
     setName(text);

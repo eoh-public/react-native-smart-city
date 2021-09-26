@@ -32,7 +32,7 @@ const ScriptDetail = () => {
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
   const t = useTranslations();
-  const { id, name = '', type, havePermission, unit } = params;
+  const { id, name = '', type, havePermission, unit, dateNow = null } = params;
   const [isFavourite, setIsFavourite] = useState(false);
   const [data, setData] = useState([]);
 
@@ -182,7 +182,7 @@ const ScriptDetail = () => {
   useEffect(() => {
     getOneTapDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, dateNow]); // TODO will remove dateNow later
 
   return (
     <View style={styles.wrap}>
@@ -195,7 +195,11 @@ const ScriptDetail = () => {
           <Text type="H3" semibold>
             {t('how_to_start')}
           </Text>
-          <ItemAutomate type={type} />
+          <ItemAutomate
+            type={type}
+            // eslint-disable-next-line no-alert
+            onPress={() => alert(t('feature_under_development'))}
+          />
           {type === AUTOMATE_TYPE.ONE_TAP && (
             <TouchableOpacity
               onPress={handleScriptAction}
@@ -220,7 +224,7 @@ const ScriptDetail = () => {
           {data.map((item, index) => (
             <Item key={item?.id} item={item} index={index} />
           ))}
-          <ItemAdd index={data.length} />
+          {havePermission && <ItemAdd index={data.length} />}
         </View>
       </WrapHeaderScrollable>
       <MenuActionMore

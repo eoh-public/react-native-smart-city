@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { Platform, TextInput, TouchableOpacity } from 'react-native';
 import { act, create } from 'react-test-renderer';
@@ -13,6 +14,7 @@ const wrapComponent = (route) => (
     <AddNewOneTap route={route} />
   </SCProvider>
 );
+jest.mock('axios');
 
 jest.mock('react-redux', () => {
   return {
@@ -32,14 +34,33 @@ jest.mock('@react-navigation/native', () => {
 });
 
 jest.mock('axios');
+let tree;
 
 describe('test AddNewOneTap', () => {
-  test('render AddNewOneTap', async () => {
+  beforeEach(() => {
+    axios.post.mockClear();
+    mockedNavigate.mockClear();
+  });
+  test('create AddNewOneTap success', async () => {
     Platform.OS = 'ios';
-    let tree;
     let route = {
-      params: { type: 'one_tap' },
+      params: { type: 'one_tap', unit: { id: 1 } },
     };
+
+    const response = {
+      status: 200,
+      data: {
+        id: 1,
+        unit: 1,
+        type: 'one_tap',
+        weekday_repeat: [],
+        script: { id: 1, name: 'William Miller' },
+      },
+    };
+
+    axios.post.mockImplementation(async () => {
+      return response;
+    });
 
     await act(async () => {
       tree = await create(wrapComponent(route));
@@ -62,23 +83,47 @@ describe('test AddNewOneTap', () => {
     );
 
     expect(item).toHaveLength(1);
-    act(() => {
-      item[0].props.onPress();
+    await act(async () => {
+      await item[0].props.onPress();
     });
-    expect(mockedNavigate).toHaveBeenCalledWith(Routes.AddNewScriptAction, {
+    expect(mockedNavigate).toHaveBeenCalledWith(Routes.ScriptDetail, {
+      havePermission: true,
+      id: 1,
       type: 'one_tap',
       name: 'Tap to up',
+      unit: {
+        id: 1,
+      },
     });
-    mockedNavigate.mockClear();
   });
-  test('render AddNewOneTap Platform android', async () => {
+  test('create AddNewOneTap fail', async () => {
     Platform.OS = 'android';
     let route = {
       params: { type: 'one_tap' },
     };
 
-    await act(async () => {
-      await create(wrapComponent(route));
+    const response = {
+      status: 400,
+    };
+
+    axios.post.mockImplementation(async () => {
+      return response;
     });
+
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+
+    const item = tree.root.findAll(
+      (el) =>
+        el.props.testID === TESTID.BOTTOM_VIEW_MAIN &&
+        el.type === TouchableOpacity
+    );
+
+    expect(item).toHaveLength(1);
+    await act(async () => {
+      await item[0].props.onPress();
+    });
+    expect(mockedNavigate).not.toBeCalled();
   });
 });

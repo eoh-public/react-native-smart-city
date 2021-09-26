@@ -1,5 +1,5 @@
-import React, { memo, useState, useCallback } from 'react';
-import { View, ScrollView, RefreshControl } from 'react-native';
+import React, { memo, useState } from 'react';
+import { Alert, View } from 'react-native';
 import { HeaderCustom } from '../../commons/Header';
 import styles from './styles/AddNewAutoSmartStyles';
 import Text from '../../commons/Text';
@@ -34,10 +34,10 @@ const AddNewAutoSmart = memo(({ route }) => {
     ],
   };
 
-  const onPress = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-  }, [t]);
+  // eslint-disable-next-line no-alert
+  const onPress = () => {
+    Alert.alert(t('feature_under_development'));
+  };
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [data] = useState(typeAutoSmart[type]);
@@ -54,24 +54,22 @@ const AddNewAutoSmart = memo(({ route }) => {
     <View style={styles.wrap}>
       <HeaderCustom isShowClose />
       <View style={styles.container}>
-        <ScrollView refreshControl={<RefreshControl refreshing={false} />}>
-          <Text semibold type={'H2'} style={styles.titleCreate}>
-            {t('create_smart')}
-          </Text>
-          <Text type={'Body'} style={styles.titleChoose}>
-            {t('choose_the_automation_method_you_want')}
-          </Text>
-          <View>
-            {!!data &&
-              data.map((item, index) => (
-                <ItemAutomate
-                  type={item.type}
-                  isSelected={selectedIndex === index}
-                  onPress={() => handleSelectIndex(index)}
-                />
-              ))}
-          </View>
-        </ScrollView>
+        <Text semibold type={'H2'} style={styles.titleCreate}>
+          {t('create_smart')}
+        </Text>
+        <Text type={'Body'} style={styles.titleChoose}>
+          {t('choose_the_automation_method_you_want')}
+        </Text>
+        <View>
+          {!!data &&
+            data.map((item, index) => (
+              <ItemAutomate
+                type={item.type}
+                isSelected={selectedIndex === index}
+                onPress={() => handleSelectIndex(index)}
+              />
+            ))}
+        </View>
       </View>
       <BottomButtonView
         testIDPrefix={TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}
