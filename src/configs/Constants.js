@@ -1,8 +1,8 @@
 import { Platform, Dimensions, StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import OneTap from '../../../assets/images/OneTap.svg';
-import WeatherChange from '../../../assets/images/WeatherChange.svg';
-import Schedule from '../../../assets/images/Schedule.svg';
+import OneTap from '../../assets/images/OneTap.svg';
+import WeatherChange from '../../assets/images/WeatherChange.svg';
+import Schedule from '../../assets/images/Schedule.svg';
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -302,6 +302,7 @@ export const TESTID = {
   SENSOR_DISPLAY_ITEM: 'SENSOR_DISPLAY_ITEM',
   ITEM_QUICK_ACTION_PRESS: 'ITEM_QUICK_ACTION_PRESS',
   TIME_COUNT_DOWN_TEXT: 'TIME_COUNT_DOWN_TEXT',
+  ACTION_ITEM: 'ACTION_ITEM',
 
   // DeviceInfo
   DEVICE_INFO_BATTERY: 'DEVICE_INFO_BATTERY',

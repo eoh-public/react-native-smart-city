@@ -17,7 +17,7 @@ import Routes from '../../../utils/Route';
 import { useGetIdUser } from '../../../hooks/Common';
 import { TESTID } from '../../../configs/Constants';
 
-const ItemOneTap = memo(({ isOwner, automate, unitId }) => {
+const ItemOneTap = memo(({ isOwner, automate, unit }) => {
   const { navigate } = useNavigation();
   const { id, type, user, script, activate_at } = automate;
   const t = useTranslations();
@@ -29,8 +29,9 @@ const ItemOneTap = memo(({ isOwner, automate, unitId }) => {
       name: script?.name,
       type: type,
       havePermission: isOwner || user === idUser,
+      unit,
     });
-  }, [isOwner, user, idUser, navigate, id, script, type]);
+  }, [isOwner, user, idUser, navigate, id, script, type, unit]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));

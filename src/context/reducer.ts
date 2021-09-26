@@ -6,12 +6,14 @@ import {
   StatusBar,
   Action,
   ListDevice,
+  ListAction,
 } from './actionType';
 
 export type ContextData = {
   auth: AuthData;
   language: Language;
   listDevice: ListDevice;
+  listAction: ListAction;
   statusBar: StatusBar;
 };
 
@@ -32,6 +34,7 @@ export const initialState = {
   language: 'en' as Language,
   statusBar: {} as StatusBar,
   listDevice: {} as ListDevice,
+  listAction: [] as ListAction,
 };
 
 export const reducer = (currentState: ContextData, action: Action) => {
@@ -63,6 +66,23 @@ export const reducer = (currentState: ContextData, action: Action) => {
         };
       }
 
+    case Action.LIST_ACTION:
+      let newListAction = [...currentState.listAction];
+
+      if (Object.keys(payload).length === 0) {
+        newListAction = [];
+      } else {
+        const order = newListAction.length + 1;
+
+        const isHaveAction = newListAction.findIndex(
+          (item) => item.action === payload.action
+        );
+        if (isHaveAction < 0) {
+          newListAction.push({ ...payload, order });
+        }
+      }
+
+      return { ...currentState, listAction: newListAction };
     default:
       return currentState;
   }

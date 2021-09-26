@@ -13,7 +13,7 @@ import { useTranslations } from '../../hooks/Common/useTranslations';
 import Route from '../../utils/Route';
 
 const AddNewOneTap = memo(({ route }) => {
-  const { type } = route.params;
+  const { type, unit } = route.params;
   const t = useTranslations();
   const { navigate } = useNavigation();
   const [name, setName] = useState(t('tap_to_run'));
@@ -22,8 +22,9 @@ const AddNewOneTap = memo(({ route }) => {
     navigate(Route.AddNewScriptAction, {
       type: type,
       name: name,
+      unit,
     });
-  }, [navigate, type, name]);
+  }, [navigate, type, name, unit]);
 
   const onChangeName = useCallback((text) => {
     setName(text);

@@ -17,6 +17,7 @@ const HeaderCustom = ({
   isDisableRefresh = false,
   titleStyles,
   isShowClose = false,
+  onGoBack,
 }) => {
   const t = useTranslations();
   const { goBack } = useNavigation();
@@ -26,9 +27,14 @@ const HeaderCustom = ({
   // eslint-disable-next-line no-alert
   const handleClose = () => alert(t('feature_under_development'));
   const handleShowMenuAction = () => showPopoverWithRef(refMenuAction);
+  const handleGoback = () => {
+    onGoBack && onGoBack();
+    goBack();
+  };
+
   return (
     <View style={[styles.wrap, isShowSeparator && styles.separator]}>
-      <TouchableOpacity style={styles.buttonBack} onPress={goBack}>
+      <TouchableOpacity style={styles.buttonBack} onPress={handleGoback}>
         <Image source={Images.arrowBack} style={styles.iconBack} />
       </TouchableOpacity>
       <View style={styles.wrapTitle}>

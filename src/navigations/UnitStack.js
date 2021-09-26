@@ -30,6 +30,7 @@ import GuestInfo from '../screens/GuestInfo';
 import ScriptDetail from '../screens/ScriptDetail';
 import EditActionsList from '../screens/EditActionsList';
 import SelectDevice from '../screens/AddNewAction/SelectDevice';
+import SelectAction from '../screens/AddNewAction/SelectAction';
 
 import _ from 'lodash';
 
@@ -218,6 +219,11 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.SelectDevice}
         component={SelectDevice}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={Route.SelectAction}
+        component={SelectAction}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

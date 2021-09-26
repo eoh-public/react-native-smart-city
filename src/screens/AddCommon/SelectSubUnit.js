@@ -56,8 +56,8 @@ const AddCommonSelectSubUnit = ({ route }) => {
     switch (addType) {
       case 'AddNewGateway':
         navigation.navigate(Routes.ScanChipQR, {
-          station: subUnits[selectedIndex].id,
-          unit_name: unit.name,
+          station: subUnits[selectedIndex]?.id,
+          unit_name: unit?.name,
           ...route.params,
         });
         break;
