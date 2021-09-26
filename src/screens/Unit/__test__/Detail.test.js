@@ -17,6 +17,7 @@ import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import SubUnitAutomate from '../../../commons/SubUnit/OneTap';
 import CameraDevice from '../../../commons/CameraDevice';
+import { ModalFullVideo } from '../../../commons/Modal';
 
 const mockDispatch = jest.fn();
 
@@ -430,7 +431,22 @@ describe('Test UnitDetail', () => {
     const unitData = {
       stations: [
         {
-          camera_devices: [],
+          camera_devices: [
+            {
+              configuration: {
+                id: 4,
+                name: 'Camera cửa nhà xe',
+                uri: 'rtsp://admin:hd543211@/ISAPI/Streaming/Channels/101/',
+                preview_uri:
+                  'rtsp://admin:hd543211@/ISAPI/Streaming/Channels/101/',
+                playback: 'rtsp://admin:hd543211@/Streaming/tracks/101/',
+              },
+              id: 41,
+              order: 1,
+              template: 'camera',
+              type: 'camera',
+            },
+          ],
         },
       ],
     };
@@ -443,5 +459,19 @@ describe('Test UnitDetail', () => {
     const instance = tree.root;
     const CameraDeviceViews = instance.findAllByType(CameraDevice);
     expect(CameraDeviceViews).toHaveLength(1);
+
+    const fullCamera = tree.root.findAll(
+      (el) =>
+        el.props.testID === TESTID.SUB_UNIT_FULL_CAMERA &&
+        el.type === TouchableOpacity
+    );
+
+    expect(fullCamera).toHaveLength(1);
+    await act(async () => {
+      await fullCamera[0].props.onPress();
+    });
+    const fullView = instance.findAllByType(ModalFullVideo);
+    expect(fullView).toHaveLength(1);
+    expect(fullView[0].props.isVisible).toEqual(true);
   });
 });

@@ -3,25 +3,25 @@ import { Colors } from '../../configs';
 
 export default StyleSheet.create({
   wrap: {
-    padding: 16,
-    margin: 16,
-    marginTop: 0,
-    borderRadius: 10,
+    height: 76,
     backgroundColor: Colors.White,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 8,
+    marginTop: 16,
     shadowColor: Colors.Shadow,
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 6,
+    shadowOpacity: 0.5,
+    shadowRadius: 14,
+    elevation: 9,
   },
   active: {
     borderWidth: 2,
     borderColor: Colors.Primary,
-    marginBottom: 16,
-    marginHorizontal: 16,
   },
   row: {
     flexDirection: 'row',

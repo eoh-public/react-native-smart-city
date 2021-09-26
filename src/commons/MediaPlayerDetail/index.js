@@ -9,6 +9,7 @@ import { Colors, Constants, Images } from '../../configs';
 import { colorOpacity } from '../../utils/Converter/color';
 import styles from './MediaPlayerDetailStyles';
 import FImage from '../../commons/FImage';
+import { TESTID } from '../../configs/Constants';
 
 const MediaPlayerDetail = memo(
   ({
@@ -151,6 +152,7 @@ const MediaPlayerDetail = memo(
           <TouchableOpacity
             onPress={onFullScreen}
             style={styles.iconFullScreen}
+            testID={TESTID.SUB_UNIT_FULL_CAMERA}
           >
             <Image source={Images.fullscreen} />
           </TouchableOpacity>

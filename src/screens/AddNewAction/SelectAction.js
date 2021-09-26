@@ -20,6 +20,7 @@ import { API } from '../../configs';
 import { TESTID } from '../../configs/Constants';
 import Routes from '../../utils/Route';
 import styles from './Styles/SelectActionStyles';
+import moment from 'moment';
 
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
@@ -55,7 +56,9 @@ const SelectAction = memo(({ route }) => {
         navigate(Routes.ScriptDetail, {
           id: automateId,
           name: scriptName,
+          havePermission: true,
           unit,
+          dateNow: moment().valueOf(), // TODO will remove dateNow later
         });
       }
     } else {
