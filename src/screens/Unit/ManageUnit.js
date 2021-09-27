@@ -140,6 +140,15 @@ const ManageUnit = ({ route }) => {
     }
   }, [unit.id, setHideEdit, t]);
 
+  const goToManageSubUnit = useCallback(() => {
+    navigation.navigate(Routes.UnitStack, {
+      screen: Routes.ManageSubUnit,
+      params: {
+        unit,
+      },
+    });
+  }, [navigation, unit]);
+
   const [transY] = useKeyboardAnimated(-16);
   const animatedStyle = Platform.select({
     ios: {
@@ -180,6 +189,7 @@ const ManageUnit = ({ route }) => {
                 </Text>
               </ButtonWrapper>
               <ButtonWrapper
+                onPress={goToManageSubUnit}
                 title={t('manage_sub_units')}
                 value={`${unit?.stations?.length} sub-units`}
               />

@@ -33,6 +33,7 @@ import EditActionsList from '../screens/EditActionsList';
 import SelectDevice from '../screens/AddNewAction/SelectDevice';
 import SelectAction from '../screens/AddNewAction/SelectAction';
 
+import EditSubUnit from '../screens/SubUnit/EditSubUnit';
 import _ from 'lodash';
 
 const Stack = createStackNavigator();
@@ -101,11 +102,16 @@ export const UnitStack = memo((props) => {
         }}
       />
       <Stack.Screen
+        name={Route.ManageSubUnit}
+        component={ManageSubUnit}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={Route.EditSubUnit}
+        component={EditSubUnit}
         options={{
           headerTitle: '',
         }}
-        name={Route.ManageSubUnit}
-        component={ManageSubUnit}
       />
       <Stack.Screen
         name={Route.DeviceDetail}

@@ -13,7 +13,14 @@ export const title_height = 44;
 export const heightHeader = default_height + title_height + paddingIos;
 
 const HeaderAni = memo(
-  ({ scrollY, onLeft, title, rightComponent, headerStyle }) => {
+  ({
+    scrollY,
+    onLeft,
+    title,
+    rightComponent,
+    headerStyle,
+    headerAniCenterStyle,
+  }) => {
     const { goBack } = useNavigation();
     const onPressLeft = useCallback(() => {
       if (onLeft) {
@@ -22,6 +29,9 @@ const HeaderAni = memo(
         goBack();
       }
     }, [goBack, onLeft]);
+
+    const headerX = headerAniCenterStyle ? 75 : 16;
+
     const titleTransformY = scrollY.interpolate({
       inputRange: [0, 2 * title_height],
       outputRange: [0, -title_height],
@@ -29,7 +39,7 @@ const HeaderAni = memo(
     });
     const titleTransformX = scrollY.interpolate({
       inputRange: [0, 2 * title_height],
-      outputRange: [0, 16],
+      outputRange: [0, headerX],
       extrapolate: 'clamp',
     });
     const titleScale = scrollY.interpolate({
@@ -44,10 +54,17 @@ const HeaderAni = memo(
     });
 
     const titleMarginRight = rightComponent ? 80 : 0;
+    const checkHeaderAniCenterStyle = headerAniCenterStyle
+      ? styles.containerNoneBorder
+      : styles.container;
 
     return (
       <Animated.View
-        style={[styles.container, headerStyle, { height: headerHeightAnim }]}
+        style={[
+          checkHeaderAniCenterStyle,
+          headerStyle,
+          { height: headerHeightAnim },
+        ]}
       >
         <View style={styles.header}>
           <TouchableOpacity style={styles.btnBack} onPress={onPressLeft}>
@@ -110,6 +127,17 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomWidth: 0.3,
     borderColor: Colors.Border,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 100,
+    zIndex: 3,
+    paddingTop: paddingIos,
+  },
+  containerNoneBorder: {
+    backgroundColor: Colors.White,
+    width: '100%',
     position: 'absolute',
     top: 0,
     left: 0,
