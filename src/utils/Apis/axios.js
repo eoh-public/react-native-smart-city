@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { deleteData, getData, storeData } from '../Storage';
-import { ToastBottomHelper } from '../Utils';
 
 export const replaceParams = (apiURL, params) => {
   let _result = apiURL;
@@ -30,9 +29,6 @@ const parseErrorResponse = (error) => {
   } else {
     message = error.message;
   }
-
-  ToastBottomHelper.error(message);
-
   return {
     success: false,
     error,
