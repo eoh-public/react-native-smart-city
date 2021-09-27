@@ -26,6 +26,7 @@ const WrapHeaderScrollable = memo(
     contentContainerStyle,
     onLoadMore,
     headerAniStyle,
+    headerAniCenterStyle,
   }) => {
     const animatedScrollYValue = useRef(new Animated.Value(0)).current;
     const [loadingMore, setLoadingMore] = useState(false);
@@ -42,6 +43,7 @@ const WrapHeaderScrollable = memo(
           scrollY={animatedScrollYValue}
           title={title}
           rightComponent={rightComponent}
+          headerAniCenterStyle={headerAniCenterStyle}
           headerStyle={headerAniStyle}
         />
         <Animated.ScrollView

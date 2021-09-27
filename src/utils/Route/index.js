@@ -15,6 +15,7 @@ const Routes = {
   AddMemberStack: 'AddMemberStack',
   AddUnitStack: 'AddUnitStack',
   AddGatewayStack: 'AddGatewayStack',
+  EditSubUnit: 'EditSubUnit',
   Language: 'Language',
   MyAllUnit: 'MyAllUnit',
   SubUnit: 'SubUnit',
