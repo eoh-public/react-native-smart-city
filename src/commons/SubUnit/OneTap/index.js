@@ -19,7 +19,7 @@ const SubUnitAutomate = ({ isOwner, type, automates, unit }) => {
         navigate(Routes.AddNewOneTap, { type: type, unit });
         break;
       case AUTOMATE_TYPE.VALUE_CHANGE:
-        navigate(Routes.AddNewAutoSmart, { type: type });
+        navigate(Routes.AddNewAutoSmart, { type, unit });
         break;
     }
   };

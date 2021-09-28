@@ -70,7 +70,7 @@ const AddNewOneTap = memo(({ route }) => {
       </ScrollView>
       <BottomButtonView
         style={styles.viewBottomFixed}
-        mainTitle={t('continue')}
+        mainTitle={t('save')}
         onPressMain={handleContinue}
       />
     </SafeAreaView>

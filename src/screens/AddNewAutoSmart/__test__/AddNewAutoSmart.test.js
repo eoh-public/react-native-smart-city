@@ -5,12 +5,23 @@ import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import { TESTID } from '../../../configs/Constants';
 import ItemAutomate from '../../../commons/Automate/ItemAutomate';
+import Routes from '../../../utils/Route';
 
 const wrapComponent = (route) => (
   <SCProvider initState={mockSCStore({})}>
     <AddNewAutoSmart route={route} />
   </SCProvider>
 );
+
+const mockNavigate = jest.fn();
+jest.mock('@react-navigation/native', () => {
+  return {
+    ...jest.requireActual('@react-navigation/native'),
+    useNavigation: () => ({
+      navigate: mockNavigate,
+    }),
+  };
+});
 
 jest.mock('react-redux', () => {
   return {
@@ -20,28 +31,23 @@ jest.mock('react-redux', () => {
 });
 
 describe('test AddNewAutoSmart', () => {
-  test('render AddNewAutoSmart', async () => {
+  test('AddNewAutoSmart select sensor device', async () => {
     let tree;
     let route = {
-      params: { type: 'value_change' },
+      params: { type: 'value_change', unit: { id: 1 } },
     };
 
     await act(async () => {
       tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
-    const addNewAutoSmart = instance.findAllByType(ItemAutomate);
-    expect(addNewAutoSmart).toHaveLength(2);
-  });
-  test('render BottomButtonView', async () => {
-    let tree;
-    let route = {
-      params: { type: 'change_value' },
-    };
+    const item = instance.findAllByType(ItemAutomate);
+    expect(item).toHaveLength(2);
+
     await act(async () => {
-      tree = await create(wrapComponent(route));
+      await item[0].props.onPress();
     });
-    const instance = tree.root;
+
     const bottomButton = instance.find(
       (item) =>
         item.props.testID ===
@@ -50,6 +56,12 @@ describe('test AddNewAutoSmart', () => {
     expect(bottomButton).toBeTruthy();
     await act(async () => {
       await bottomButton.props.onPress();
+    });
+
+    expect(mockNavigate).toBeCalledWith(Routes.SelectSensorDevices, {
+      title: 'select_sensor',
+      type: 'value_change',
+      unit: { id: 1 },
     });
   });
 });

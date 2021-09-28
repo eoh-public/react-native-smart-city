@@ -75,7 +75,7 @@ const ScriptDetail = () => {
   }, [data]);
 
   const onPressAddAction = useCallback(() => {
-    navigate(Routes.SelectDevice, {
+    navigate(Routes.SelectSensorDevices, {
       unit,
       automateId: id,
       scriptName: name,
