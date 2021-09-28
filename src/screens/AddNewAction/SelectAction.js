@@ -1,16 +1,8 @@
-import React, {
-  memo,
-  useCallback,
-  useEffect,
-  useState,
-  useContext,
-} from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTranslations } from '../../hooks/Common/useTranslations';
-import { SCContext } from '../../context';
-import { Action } from '../../context/actionType';
 import { HeaderCustom } from '../../commons/Header';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
@@ -25,8 +17,7 @@ import moment from 'moment';
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
   const { navigate } = useNavigation();
-  const { unit, device, stationName, automateId, scriptName } = route.params;
-  const { setAction } = useContext(SCContext);
+  const { unit, device, automateId, scriptName } = route.params;
   const [data, setData] = useState([]);
   const [actions, setActions] = useState({
     name: '',
@@ -45,49 +36,22 @@ const SelectAction = memo(({ route }) => {
   }, [device.id]);
 
   const onSave = useCallback(async () => {
-    if (automateId) {
-      const { success } = await axiosPost(
-        API.AUTOMATE.ADD_SCRIPT_ACTION(automateId),
-        {
-          action: actions.action,
-        }
-      );
-      if (success) {
-        navigate(Routes.ScriptDetail, {
-          id: automateId,
-          name: scriptName,
-          havePermission: true,
-          unit,
-          dateNow: moment().valueOf(), // TODO will remove dateNow later
-        });
-      }
-    } else {
-      setAction(Action.LIST_ACTION, {
+    const { success } = await axiosPost(
+      API.AUTOMATE.ADD_SCRIPT_ACTION(automateId),
+      {
         action: actions.action,
-        unit_name: unit.name,
-        action_name: actions.name,
-        sensor_name: device.name,
-        sensor_icon_kit: device.icon_kit,
-        station_name: stationName,
-      });
-      navigate(Routes.AddNewScriptAction, {
-        automateType: 'one-tap',
+      }
+    );
+    if (success) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
         name: scriptName,
+        havePermission: true,
         unit,
+        dateNow: moment().valueOf(), // TODO will remove dateNow later
       });
     }
-  }, [
-    actions.action,
-    actions.name,
-    automateId,
-    device.icon_kit,
-    device.name,
-    navigate,
-    scriptName,
-    setAction,
-    stationName,
-    unit,
-  ]);
+  }, [actions.action, automateId, navigate, scriptName, unit]);
 
   useEffect(() => {
     fetchData();

@@ -6,7 +6,6 @@ import SelectAction from '../SelectAction';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import BottomButtonView from '../../../commons/BottomButtonView';
-import Routes from '../../../utils/Route';
 import { TESTID } from '../../../configs/Constants';
 import ActionTemplate from '../../../commons/ActionTemplate';
 
@@ -72,24 +71,6 @@ describe('Test SelectAction', () => {
     });
     expect(axios.post).toHaveBeenCalled();
     expect(mockedNavigate).toHaveBeenCalled();
-  });
-
-  test('test onSave no automateId', async () => {
-    route.params.automateId = null;
-    await act(async () => {
-      tree = renderer.create(wrapComponent(route));
-    });
-    const instance = tree.root;
-
-    const bottomButton = instance.findByType(BottomButtonView);
-    act(() => {
-      bottomButton.props.onPressMain();
-    });
-    expect(mockedNavigate).toHaveBeenCalledWith(Routes.AddNewScriptAction, {
-      automateType: 'one-tap',
-      name: route.params.scriptName,
-      unit: route.params.unit,
-    });
   });
 
   test('test fetchData', async () => {

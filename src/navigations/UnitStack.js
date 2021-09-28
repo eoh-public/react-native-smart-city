@@ -22,7 +22,6 @@ import TDSGuide from '../screens/TDSGuide';
 import WaterQualityGuide from '../screens/WaterQualityGuide';
 import DeviceInfo from '../screens/DeviceInfo';
 import AddNewOneTap from '../screens/AddNewOneTap';
-import AddNewScriptAction from '../screens/AddNewScriptAction';
 import AddNewAutoSmart from '../screens/AddNewAutoSmart';
 import PlaybackCamera from '../screens/PlayBackCamera';
 import AllCamera from '../screens/AllCamera';
@@ -30,7 +29,7 @@ import ManageAccessScreen from '../screens/ManageAccess';
 import GuestInfo from '../screens/GuestInfo';
 import ScriptDetail from '../screens/ScriptDetail';
 import EditActionsList from '../screens/EditActionsList';
-import SelectDevice from '../screens/AddNewAction/SelectDevice';
+import SelectSensorDevices from '../screens/AddNewAction/SelectSensorDevices';
 import SelectAction from '../screens/AddNewAction/SelectAction';
 
 import EditSubUnit from '../screens/SubUnit/EditSubUnit';
@@ -224,15 +223,8 @@ export const UnitStack = memo((props) => {
         }}
       />
       <Stack.Screen
-        name={Route.AddNewScriptAction}
-        component={AddNewScriptAction}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={Route.SelectDevice}
-        component={SelectDevice}
+        name={Route.SelectSensorDevices}
+        component={SelectSensorDevices}
         options={{ headerShown: false }}
       />
       <Stack.Screen

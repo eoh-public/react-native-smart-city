@@ -93,6 +93,11 @@ export const AUTOMATE_TYPE = {
   SCHEDULE: 'schedule',
 };
 
+export const AUTOMATE_SELECT = {
+  SELECT_DEVICES: 'select_devices',
+  SELECT_SENSOR: 'select_sensor',
+};
+
 export const AUTOMATES = {
   one_tap: {
     value: AUTOMATE_TYPE.ONE_TAP,

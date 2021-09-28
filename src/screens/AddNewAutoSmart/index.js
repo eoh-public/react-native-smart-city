@@ -1,17 +1,23 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { Alert, View } from 'react-native';
 import { HeaderCustom } from '../../commons/Header';
 import styles from './styles/AddNewAutoSmartStyles';
 import Text from '../../commons/Text';
 import BottomButtonView from '../../commons/BottomButtonView';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
-import { AUTOMATE_TYPE, TESTID } from '../../configs/Constants';
-
+import {
+  AUTOMATE_SELECT,
+  AUTOMATE_TYPE,
+  TESTID,
+} from '../../configs/Constants';
+import { useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
+import Routes from '../../utils/Route';
 
 const AddNewAutoSmart = memo(({ route }) => {
   const t = useTranslations();
-  const { type } = route.params;
+  const { navigate } = useNavigation();
+  const { type, unit } = route.params;
   const typeAutoSmart = {
     automate: [
       {
@@ -33,14 +39,20 @@ const AddNewAutoSmart = memo(({ route }) => {
       },
     ],
   };
-
-  // eslint-disable-next-line no-alert
-  const onPress = () => {
-    Alert.alert(t('feature_under_development'));
-  };
-
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [data] = useState(typeAutoSmart[type]);
+
+  const onPress = useCallback(() => {
+    if (data[selectedIndex].type === AUTOMATE_TYPE.VALUE_CHANGE) {
+      navigate(Routes.SelectSensorDevices, {
+        unit,
+        type: AUTOMATE_TYPE.VALUE_CHANGE,
+        title: AUTOMATE_SELECT.SELECT_SENSOR,
+      });
+    } else {
+      Alert.alert(t('feature_under_development'));
+    }
+  }, [data, navigate, selectedIndex, t, unit]);
 
   const handleSelectIndex = (index) => {
     if (index !== selectedIndex) {
