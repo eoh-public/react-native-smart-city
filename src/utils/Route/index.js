@@ -106,6 +106,7 @@ const Routes = {
   AddNewAutoSmart: 'AddNewAutoSmart',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',
+  SelectUnit: 'SelectUnit',
   AddNewScriptAction: 'AddNewScriptAction',
   SetSchedule: 'SetSchedule',
 };
