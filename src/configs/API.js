@@ -85,7 +85,7 @@ const API = {
   AUTOMATE: {
     ACTION_ONE_TAP: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/action_one_tap/`,
-    ONE_TAP_DETAIL: (id) =>
+    SCRIPT: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/script/`,
     ORDER_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot +
