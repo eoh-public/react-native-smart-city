@@ -1,5 +1,6 @@
-import React, { memo, useCallback, useState } from 'react';
-import { Alert, View } from 'react-native';
+import React, { memo, useState, useCallback } from 'react';
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { HeaderCustom } from '../../commons/Header';
 import styles from './styles/AddNewAutoSmartStyles';
 import Text from '../../commons/Text';
@@ -10,7 +11,6 @@ import {
   AUTOMATE_TYPE,
   TESTID,
 } from '../../configs/Constants';
-import { useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import Routes from '../../utils/Route';
 
@@ -22,37 +22,47 @@ const AddNewAutoSmart = memo(({ route }) => {
     automate: [
       {
         type: AUTOMATE_TYPE.ONE_TAP,
+        route: Routes.AddNewOneTap,
       },
       {
         type: AUTOMATE_TYPE.VALUE_CHANGE,
+        route: Routes.SelectSensorDevices,
+        data: {
+          title: AUTOMATE_SELECT.SELECT_SENSOR,
+        },
       },
       {
         type: AUTOMATE_TYPE.SCHEDULE,
+        route: Routes.SetSchedule,
       },
     ],
     value_change: [
       {
         type: AUTOMATE_TYPE.VALUE_CHANGE,
+        route: Routes.SelectSensorDevices,
+        data: {
+          title: AUTOMATE_SELECT.SELECT_SENSOR,
+        },
       },
       {
         type: AUTOMATE_TYPE.SCHEDULE,
+        route: Routes.SetSchedule,
       },
     ],
   };
-  const [selectedIndex, setSelectedIndex] = useState(-1);
   const [data] = useState(typeAutoSmart[type]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  const onPress = useCallback(() => {
-    if (data[selectedIndex].type === AUTOMATE_TYPE.VALUE_CHANGE) {
-      navigate(Routes.SelectSensorDevices, {
-        unit,
-        type: AUTOMATE_TYPE.VALUE_CHANGE,
-        title: AUTOMATE_SELECT.SELECT_SENSOR,
+  const handleOnContinue = useCallback(() => {
+    const automate = data[selectedIndex];
+    if (automate?.route) {
+      navigate(automate.route, {
+        type: automate.type,
+        unit: unit,
+        ...(automate.data || {}),
       });
-    } else {
-      Alert.alert(t('feature_under_development'));
     }
-  }, [data, navigate, selectedIndex, t, unit]);
+  }, [navigate, selectedIndex, data, unit]);
 
   const handleSelectIndex = (index) => {
     if (index !== selectedIndex) {
@@ -85,7 +95,7 @@ const AddNewAutoSmart = memo(({ route }) => {
       </View>
       <BottomButtonView
         testIDPrefix={TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}
-        onPressMain={onPress}
+        onPressMain={handleOnContinue}
         style={styles.bottomButton}
         mainTitle={t('continue')}
         typeMain={selectedIndex === -1 ? 'disabled' : 'primary'}

@@ -31,21 +31,24 @@ jest.mock('react-redux', () => {
 });
 
 describe('test AddNewAutoSmart', () => {
-  test('AddNewAutoSmart select sensor device', async () => {
-    let tree;
-    let route = {
-      params: { type: 'value_change', unit: { id: 1 } },
-    };
+  let tree;
+  let route = {
+    params: {
+      type: 'value_change',
+      unit: { id: 1 },
+    },
+  };
 
+  test('AddNewAutoSmart select sensor device', async () => {
     await act(async () => {
       tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
-    const item = instance.findAllByType(ItemAutomate);
-    expect(item).toHaveLength(2);
+    const items = instance.findAllByType(ItemAutomate);
+    expect(items).toHaveLength(2);
 
     await act(async () => {
-      await item[0].props.onPress();
+      await items[0].props.onPress();
     });
 
     const bottomButton = instance.find(
@@ -53,7 +56,7 @@ describe('test AddNewAutoSmart', () => {
         item.props.testID ===
         `${TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}${TESTID.BOTTOM_VIEW_MAIN}`
     );
-    expect(bottomButton).toBeTruthy();
+    expect(bottomButton).toBeDefined();
     await act(async () => {
       await bottomButton.props.onPress();
     });
@@ -62,6 +65,48 @@ describe('test AddNewAutoSmart', () => {
       title: 'select_sensor',
       type: 'value_change',
       unit: { id: 1 },
+    });
+  });
+
+  test('render BottomButtonView', async () => {
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const bottomButton = instance.find(
+      (item) =>
+        item.props.testID ===
+        `${TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}${TESTID.BOTTOM_VIEW_MAIN}`
+    );
+    expect(bottomButton).toBeDefined();
+    await act(async () => {
+      await bottomButton.props.onPress();
+    });
+  });
+
+  test('test choose Schedule', async () => {
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const items = instance.findAllByType(ItemAutomate);
+
+    await act(async () => {
+      await items[1].props.onPress();
+    });
+    expect(items[1].props.isSelected).toBeTruthy();
+
+    const bottomButton = instance.find(
+      (item) =>
+        item.props.testID ===
+        `${TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}${TESTID.BOTTOM_VIEW_MAIN}`
+    );
+    await act(async () => {
+      await bottomButton.props.onPress();
+    });
+    expect(mockNavigate).toHaveBeenCalledWith(Routes.SetSchedule, {
+      type: 'schedule',
+      unit: route.params.unit,
     });
   });
 });

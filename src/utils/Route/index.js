@@ -106,6 +106,8 @@ const Routes = {
   AddNewAutoSmart: 'AddNewAutoSmart',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',
+  AddNewScriptAction: 'AddNewScriptAction',
+  SetSchedule: 'SetSchedule',
 };
 
 export default Routes;
