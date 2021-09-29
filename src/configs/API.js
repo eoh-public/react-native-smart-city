@@ -96,6 +96,7 @@ const API = {
     ADD_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/add_script_action/`,
     CREATE_AUTOMATE: () => SCConfig.apiRoot + '/property_manager/automate/',
+    GET_AUTOMATES: () => SCConfig.apiRoot + '/accounts/automates/',
     GET_ALL_UNITS: () => SCConfig.apiRoot + '/property_manager/units/all_unit/',
   },
   GOOGLE_HOME: {

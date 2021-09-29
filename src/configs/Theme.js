@@ -85,4 +85,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  menuIcon: {
+    paddingLeft: 16,
+    height: '100%',
+    justifyContent: 'center',
+  },
 });

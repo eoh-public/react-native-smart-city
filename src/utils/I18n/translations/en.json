@@ -757,6 +757,8 @@
   "every_week": "Every Week",
   "button": "Button",
   "create_smart": "Create Smart",
+  "automate": "Automate",
+  "automate_scripts": "Automate Scripts",
   "choose_the_automation_method_you_want": "Choose the automation method you want",
   "error_please_try_later": "Error! Please try later"
 }

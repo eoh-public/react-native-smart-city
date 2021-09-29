@@ -7,10 +7,10 @@ import { Colors } from '../../../configs';
 import styles from './styles';
 import { TESTID } from '../../../configs/Constants';
 
-const ItemAddNew = memo(({ title, onAddNew }) => {
+const ItemAddNew = memo(({ title, onAddNew, wrapStyle }) => {
   return (
     <TouchableWithoutFeedback onPress={onAddNew}>
-      <View style={styles.container}>
+      <View style={[styles.container, wrapStyle]}>
         <View style={styles.boxIcon}>
           <TouchableOpacity
             style={styles.buttonPlus}
