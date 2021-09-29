@@ -739,6 +739,7 @@
   "go_to_automate_scripts": "Đi đến kịch bản tự động",
   "Script": "Kịch bản",
   "create_smart": "Tạo thông minh",
+  "button": "Nút nhấn",
   "choose_the_automation_method_you_want": "Chọn phương thức tự động hóa mà bạn mong muốn",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

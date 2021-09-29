@@ -737,6 +737,7 @@
   "add_script": "Add Script",
   "go_to_automate_scripts": "Go to automate scripts",
   "Script": "Script",
+  "button": "Button",
   "create_smart": "Create Smart",
   "choose_the_automation_method_you_want": "Choose the automation method you want",
   "error_please_try_later": "Error! Please try later"
