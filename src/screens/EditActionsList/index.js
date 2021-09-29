@@ -19,7 +19,7 @@ import { ToastBottomHelper } from '../../utils/Utils';
 const EditActionsList = () => {
   const t = useTranslations();
   const { goBack } = useNavigation();
-  const { params = {} } = useRoute();
+  const { params = {} } = useRoute() || {};
   const { data = [], id, setData } = params;
   const [itemRemove, setItemRemove] = useState({
     id: '',
