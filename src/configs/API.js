@@ -96,6 +96,10 @@ const API = {
     ADD_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/add_script_action/`,
     CREATE_AUTOMATE: () => SCConfig.apiRoot + '/property_manager/automate/',
+    STAR_SCRIPT: (id) =>
+      SCConfig.apiRoot + `/property_manager/automate/${id}/star_script/`,
+    UNSTAR_SCRIPT: (id) =>
+      SCConfig.apiRoot + `/property_manager/automate/${id}/unstar_script/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>

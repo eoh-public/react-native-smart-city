@@ -32,7 +32,7 @@ import FImage from '../../commons/FImage';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
-import { AUTOMATE_TYPE } from '../../configs/Constants';
+import { AUTOMATE_TYPE, TESTID } from '../../configs/Constants';
 
 const ScriptDetail = ({ route }) => {
   const { navigate, goBack } = useNavigation();
@@ -42,7 +42,7 @@ const ScriptDetail = ({ route }) => {
     usePopover();
   const t = useTranslations();
   const { id, name = '', type, havePermission, unit, dateNow = null } = params;
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
   const [inputName, setInputName] = useState(name);
   const [stateAlertAction, hideAlertAction, onShowRename, onShowDelete] =
@@ -56,9 +56,7 @@ const ScriptDetail = ({ route }) => {
         name: inputName,
       }
     );
-    if (success) {
-      setScriptName(script.name);
-    }
+    success && setScriptName(script.name);
     hideAlertAction();
   }, [id, inputName, hideAlertAction]);
 
@@ -76,6 +74,24 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const starScript = useCallback(async () => {
+    const { success } = await axiosPost(API.AUTOMATE.STAR_SCRIPT(id));
+    success && setIsStar(true);
+  }, [id]);
+
+  const unstarScript = useCallback(async () => {
+    const { success } = await axiosPost(API.AUTOMATE.UNSTAR_SCRIPT(id));
+    success && setIsStar(false);
+  }, [id]);
+
+  const onPressStar = useCallback(() => {
+    if (isStar) {
+      unstarScript();
+    } else {
+      starScript();
+    }
+  }, [isStar, starScript, unstarScript]);
+
   const listMenuItem = useMemo(
     () => [
       { text: t('rename'), doAction: onShowRename },
@@ -84,10 +100,6 @@ const ScriptDetail = ({ route }) => {
     ],
     [t, onShowRename, onShowDelete, scriptName]
   );
-
-  const onPressFavourite = useCallback(() => {
-    setIsFavourite(!isFavourite);
-  }, [isFavourite]);
 
   const handleShowMenuAction = useCallback(
     () => showPopoverWithRef(refMenuAction),
@@ -112,9 +124,10 @@ const ScriptDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const getOneTapDetail = useCallback(async () => {
+  const getScriptDetail = useCallback(async () => {
     const { success, data } = await axiosGet(API.AUTOMATE.SCRIPT(id));
     success && setData(data?.script_actions || []);
+    success && setIsStar(data?.is_star);
   }, [id]);
 
   const onPressEdit = useCallback(() => {
@@ -125,10 +138,10 @@ const ScriptDetail = ({ route }) => {
   const onPressAddAction = useCallback(() => {
     navigate(Routes.SelectSensorDevices, {
       unit,
+      scriptName,
       automateId: id,
-      scriptName: name,
     });
-  }, [navigate, id, name, unit]);
+  }, [navigate, id, scriptName, unit]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -180,6 +193,7 @@ const ScriptDetail = ({ route }) => {
         <TouchableOpacity
           onPress={onPressAddAction}
           style={[styles.rightItemAdd]}
+          testID={TESTID.BUTTON_ADD_SCRIPT_ACTION}
         >
           <Add />
           <Text type="H4" color={Colors.Gray8} style={styles.addAction}>
@@ -195,9 +209,10 @@ const ScriptDetail = ({ route }) => {
     return (
       <TouchableOpacity
         style={[styles.buttonStar, styles.headerButton]}
-        onPress={onPressFavourite}
+        onPress={onPressStar}
+        testID={TESTID.HEADER_DEVICE_BUTTON_STAR}
       >
-        {isFavourite ? (
+        {isStar ? (
           <IconFill name="star" size={25} color={Colors.Yellow6} />
         ) : (
           <IconOutline name="star" size={25} />
@@ -205,7 +220,7 @@ const ScriptDetail = ({ route }) => {
       </TouchableOpacity>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFavourite]);
+  }, [isStar]);
 
   const rightComponent = useMemo(
     () => (
@@ -224,11 +239,11 @@ const ScriptDetail = ({ route }) => {
       </View>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isFavourite]
+    [isStar]
   );
 
   useEffect(() => {
-    getOneTapDetail();
+    getScriptDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, dateNow]); // TODO will remove dateNow later
 
@@ -252,6 +267,7 @@ const ScriptDetail = ({ route }) => {
             <TouchableOpacity
               onPress={handleScriptAction}
               style={styles.activeButton}
+              testID={TESTID.BUTTON_ACTIVATE_ONE_TAP}
             >
               <Image source={Images.activeButton} />
             </TouchableOpacity>
@@ -262,7 +278,11 @@ const ScriptDetail = ({ route }) => {
               {t('active_list')}
             </Text>
             {havePermission && (
-              <TouchableOpacity onPress={onPressEdit} style={styles.editButton}>
+              <TouchableOpacity
+                onPress={onPressEdit}
+                style={styles.editButton}
+                testID={TESTID.BUTTON_EDIT_SCRIPT_ACTION}
+              >
                 <Text type="Label" hilight>
                   {t('edit')}
                 </Text>
