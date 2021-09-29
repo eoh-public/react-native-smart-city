@@ -1,7 +1,6 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, memo } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
-import { useRoute } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 
 import RowGuestInfo from './components/RowGuestInfo';
@@ -23,9 +22,9 @@ import {
 } from './constant';
 import styles from './styles/indexStyles';
 
-const GuestInfo = () => {
+const GuestInfo = ({ route }) => {
   const t = useTranslations();
-  const { params = {} } = useRoute();
+  const { params = {} } = route;
   const { id } = params;
   const { goBack } = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
@@ -148,4 +147,4 @@ const GuestInfo = () => {
   );
 };
 
-export default GuestInfo;
+export default memo(GuestInfo);

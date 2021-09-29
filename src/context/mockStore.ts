@@ -16,7 +16,7 @@ export const mockDataStore: ContextData = {
       },
     },
   },
-  language: 'vi',
+  language: 'en',
   listDevice: {
     sentEmail: false,
   },
@@ -24,6 +24,7 @@ export const mockDataStore: ContextData = {
     backgroundColor: '',
     barStyle: '',
   },
+  listAction: [],
 };
 
 export const mockSCStore = (data: ContextData): ContextData => {
@@ -45,5 +46,6 @@ export const mockSCStore = (data: ContextData): ContextData => {
         mockDataStore?.statusBar?.backgroundColor,
       barStyle: data?.statusBar?.barStyle || mockDataStore?.statusBar?.barStyle,
     },
+    listAction: [...mockDataStore.listAction, ...(data?.listAction || [])],
   };
 };

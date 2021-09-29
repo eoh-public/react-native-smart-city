@@ -140,4 +140,16 @@ export default StyleSheet.create({
     position: 'absolute',
     zIndex: 10,
   },
+  textInput: {
+    margin: 16,
+    marginTop: 0,
+    borderWidth: 0,
+    paddingLeft: 0,
+    paddingTop: 0,
+    borderBottomWidth: 2,
+    borderBottomColor: Colors.Primary,
+    fontSize: 16,
+    lineHeight: 24,
+    color: Colors.Gray9,
+  },
 });

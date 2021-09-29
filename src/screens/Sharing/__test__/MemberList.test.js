@@ -3,7 +3,6 @@ import React from 'react';
 import { create, act } from 'react-test-renderer';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
-import { useSelector } from 'react-redux';
 import MemberList from '../MemberList';
 import { AlertAction } from '../../../commons';
 import SharingMembers from '../../../commons/Sharing/MemberList';
@@ -13,6 +12,7 @@ import { TouchableOpacity } from 'react-native';
 import { getTranslate } from '../../../utils/I18n';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
+import Routes from '../../../utils/Route';
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -42,30 +42,25 @@ jest.mock('react-redux', () => {
   };
 });
 
-const wrapComponent = (route, account) => (
-  <SCProvider initState={mockSCStore({})}>
-    <MemberList route={route} account={account} />
+const wrapComponent = (route, state) => (
+  <SCProvider initState={mockSCStore(state)}>
+    <MemberList route={route} />
   </SCProvider>
 );
 
 describe('test MemberList', () => {
   let route;
-  let account;
-
-  beforeEach(() => {
-    const localState = {
-      auth: {
-        account: {
-          user: {
-            id: 2,
-          },
+  let localState = {
+    auth: {
+      account: {
+        user: {
+          id: 2,
         },
       },
-    };
-    useSelector.mockImplementation((cb) => {
-      return cb(localState);
-    });
+    },
+  };
 
+  beforeEach(() => {
     route = {
       params: {
         unitId: 1,
@@ -76,11 +71,6 @@ describe('test MemberList', () => {
         },
       },
     };
-    account = {
-      user: {
-        id: 1,
-      },
-    };
   });
 
   afterEach(() => {
@@ -89,7 +79,7 @@ describe('test MemberList', () => {
 
   test('render MemberList', async () => {
     await act(async () => {
-      await create(wrapComponent(route, account));
+      await create(wrapComponent(route, localState));
     });
     expect(axios.get).toHaveBeenCalledWith(API.SHARE.UNITS_MEMBERS(1), {});
   });
@@ -105,7 +95,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(wrapComponent(route, account));
+      tree = await create(wrapComponent(route, localState));
     });
     const instance = tree.root;
     const alertAction = instance.findByType(AlertAction);
@@ -141,7 +131,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(wrapComponent(route, account));
+      tree = await create(wrapComponent(route, localState));
     });
     const instance = tree.root;
     const sharingMember = instance.findAllByType(SharingMembers);
@@ -165,7 +155,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(wrapComponent(route, account));
+      tree = await create(wrapComponent(route, localState));
     });
     const instance = tree.root;
     const button = instance.find(
@@ -177,7 +167,10 @@ describe('test MemberList', () => {
       await button.props.onPress();
     });
     expect(axios.get).toHaveBeenCalledWith(API.SHARE.UNITS_MEMBERS(1), {});
-    expect(mockedNavigate).not.toBeCalled();
+    expect(mockedNavigate).toHaveBeenCalledWith(Routes.AddMemberStack, {
+      screen: Routes.SharingSelectPermission,
+      params: { unit: { id: route.params.unitId } },
+    });
   });
 
   test('WrapHeaderScrollable rightHeader but not owner', async () => {
@@ -197,7 +190,7 @@ describe('test MemberList', () => {
 
     let tree;
     await act(async () => {
-      tree = await create(wrapComponent(route, account));
+      tree = await create(wrapComponent(route, localState));
     });
     const instance = tree.root;
     const button = instance.find(

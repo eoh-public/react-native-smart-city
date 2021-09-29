@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   useEffect,
+  memo,
 } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
@@ -12,35 +13,77 @@ import { Icon } from '@ant-design/react-native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import styles from './Styles/indexStyles';
 import Text from '../../commons/Text';
+import AlertAction from '../../commons/AlertAction';
+import _TextInput from '../../commons/Form/TextInput';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { API, Colors, Images } from '../../configs';
 import { usePopover } from '../../hooks/Common';
+import { useStateAlertAction } from './hooks';
 import MenuActionMore from '../../commons/MenuActionMore';
 import Add from '../../../assets/images/Add.svg';
-import { useNavigation, useRoute } from '@react-navigation/core';
-import { axiosGet, axiosPost } from '../../utils/Apis/axios';
+import { useNavigation } from '@react-navigation/native';
+import {
+  axiosGet,
+  axiosPost,
+  axiosDelete,
+  axiosPatch,
+} from '../../utils/Apis/axios';
 import FImage from '../../commons/FImage';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
 import { AUTOMATE_TYPE } from '../../configs/Constants';
 
-const ScriptDetail = () => {
-  const { navigate } = useNavigation();
-  const { params = {} } = useRoute();
+const ScriptDetail = ({ route }) => {
+  const { navigate, goBack } = useNavigation();
+  const { params = {} } = route;
   const refMenuAction = useRef();
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
   const t = useTranslations();
   const { id, name = '', type, havePermission, unit, dateNow = null } = params;
   const [isFavourite, setIsFavourite] = useState(false);
+  const [scriptName, setScriptName] = useState(name);
+  const [inputName, setInputName] = useState(name);
+  const [stateAlertAction, hideAlertAction, onShowRename, onShowDelete] =
+    useStateAlertAction();
   const [data, setData] = useState([]);
 
-  const listMenuItem = [
-    { text: 'Rename' },
-    { text: 'Activity Log' },
-    { text: 'Delete Script' },
-  ];
+  const renameScript = useCallback(async () => {
+    const { success, data: script } = await axiosPatch(
+      API.AUTOMATE.SCRIPT(id),
+      {
+        name: inputName,
+      }
+    );
+    if (success) {
+      setScriptName(script.name);
+    }
+    hideAlertAction();
+  }, [id, inputName, hideAlertAction]);
+
+  const deleteScript = useCallback(async () => {
+    hideAlertAction();
+    const { success } = await axiosDelete(API.AUTOMATE.SCRIPT(id));
+    success && goBack();
+  }, [id, goBack, hideAlertAction]);
+
+  const handleRenameOrDelete = useCallback(async () => {
+    if (stateAlertAction.isDelete) {
+      deleteScript();
+    } else {
+      renameScript();
+    }
+  }, [stateAlertAction.isDelete, deleteScript, renameScript]);
+
+  const listMenuItem = useMemo(
+    () => [
+      { text: t('rename'), doAction: onShowRename },
+      { text: t('activity_log'), doAction: null },
+      { text: t('delete_script'), doAction: onShowDelete(scriptName) },
+    ],
+    [t, onShowRename, onShowDelete, scriptName]
+  );
 
   const onPressFavourite = useCallback(() => {
     setIsFavourite(!isFavourite);
@@ -52,11 +95,16 @@ const ScriptDetail = () => {
     []
   );
 
-  const onItemClick = useCallback((item) => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const onItemClick = useCallback(
+    (item) => {
+      if (item.doAction) {
+        item.doAction();
+      } else {
+        alert(t('feature_under_development'));
+      }
+    },
+    [t]
+  );
 
   const onPressAdd = useCallback(() => {
     // eslint-disable-next-line no-alert
@@ -65,7 +113,7 @@ const ScriptDetail = () => {
   }, []);
 
   const getOneTapDetail = useCallback(async () => {
-    const { success, data } = await axiosGet(API.AUTOMATE.ONE_TAP_DETAIL(id));
+    const { success, data } = await axiosGet(API.AUTOMATE.SCRIPT(id));
     success && setData(data?.script_actions || []);
   }, [id]);
 
@@ -187,7 +235,7 @@ const ScriptDetail = () => {
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
-        title={name}
+        title={scriptName}
         headerAniStyle={styles.headerAniStyle}
         rightComponent={rightComponent}
       >
@@ -236,8 +284,26 @@ const ScriptDetail = () => {
         isTextCenter={false}
         wrapStyle={styles.wrapStyle}
       />
+      <AlertAction
+        visible={stateAlertAction.visible}
+        hideModal={hideAlertAction}
+        title={stateAlertAction.title}
+        message={stateAlertAction.message}
+        leftButtonTitle={stateAlertAction.leftButton}
+        leftButtonClick={hideAlertAction}
+        rightButtonTitle={stateAlertAction.rightButton}
+        rightButtonClick={handleRenameOrDelete}
+      >
+        {!stateAlertAction.isDelete && (
+          <_TextInput
+            onChange={(text) => setInputName(text)}
+            defaultValue={scriptName}
+            textInputStyle={styles.textInput}
+          />
+        )}
+      </AlertAction>
     </View>
   );
 };
 
-export default ScriptDetail;
+export default memo(ScriptDetail);
