@@ -14,7 +14,7 @@ import { axiosPost } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 
 const AddNewOneTap = memo(({ route }) => {
-  const { type, unit } = route.params;
+  const { type, unit, automateData = {} } = route.params;
   const t = useTranslations();
   const { navigate } = useNavigation();
   const [name, setName] = useState(t('tap_to_run'));
@@ -24,6 +24,7 @@ const AddNewOneTap = memo(({ route }) => {
       unit: unit.id,
       type: type,
       name: name,
+      ...automateData,
     });
     if (success) {
       navigate(Routes.ScriptDetail, {
@@ -34,7 +35,7 @@ const AddNewOneTap = memo(({ route }) => {
         havePermission: true,
       });
     }
-  }, [type, name, unit, navigate]);
+  }, [type, name, unit, automateData, navigate]);
 
   const onChangeName = useCallback((text) => {
     setName(text);

@@ -29,6 +29,7 @@ import ManageAccessScreen from '../screens/ManageAccess';
 import GuestInfo from '../screens/GuestInfo';
 import ScriptDetail from '../screens/ScriptDetail';
 import EditActionsList from '../screens/EditActionsList';
+import SetSchedule from '../screens/SetSchedule';
 import SelectSensorDevices from '../screens/AddNewAction/SelectSensorDevices';
 import SelectAction from '../screens/AddNewAction/SelectAction';
 
@@ -231,6 +232,13 @@ export const UnitStack = memo((props) => {
         name={Route.SelectAction}
         component={SelectAction}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={Route.SetSchedule}
+        component={SetSchedule}
+        options={{
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );
