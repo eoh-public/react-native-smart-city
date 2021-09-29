@@ -17,81 +17,83 @@ import Routes from '../../../utils/Route';
 import { useGetIdUser } from '../../../hooks/Common';
 import { TESTID } from '../../../configs/Constants';
 
-const ItemOneTap = memo(({ isOwner, automate, unit }) => {
-  const { navigate } = useNavigation();
-  const { id, type, user, script, activate_at } = automate;
-  const t = useTranslations();
-  const idUser = useGetIdUser();
+const ItemOneTap = memo(
+  ({ isOwner, automate, unit, wrapSyles, onPressItem }) => {
+    const { navigate } = useNavigation();
+    const { id, type, user, script, activate_at } = automate;
+    const t = useTranslations();
+    const idUser = useGetIdUser();
 
-  const goToDetail = useCallback(() => {
-    navigate(Routes.ScriptDetail, {
-      id,
-      name: script?.name,
-      type: type,
-      havePermission: isOwner || user === idUser,
-      unit,
-    });
-  }, [isOwner, user, idUser, navigate, id, script, type, unit]);
+    const goToDetail = useCallback(() => {
+      navigate(Routes.ScriptDetail, {
+        id,
+        name: script?.name,
+        type: type,
+        havePermission: isOwner || user === idUser,
+        unit,
+      });
+    }, [isOwner, user, idUser, navigate, id, script, type, unit]);
 
-  const handleScriptAction = useCallback(async () => {
-    const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
-    if (success) {
-      ToastBottomHelper.success(t('Activated successfully.'));
-    } else {
-      ToastBottomHelper.error(t('Activation failed.'));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+    const handleScriptAction = useCallback(async () => {
+      const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
+      if (success) {
+        ToastBottomHelper.success(t('Activated successfully.'));
+      } else {
+        ToastBottomHelper.error(t('Activation failed.'));
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
 
-  const displayIcon = () => {
-    const iconKit = script?.icon_kit;
-    return iconKit ? (
-      <FImage source={{ uri: iconKit }} style={styles.iconSensor} />
-    ) : (
-      <OneTap />
-    );
-  };
-  const activateAt = activate_at
-    ? timeDifference(new Date(), moment(activate_at), true)
-    : null;
-  return (
-    <TouchableWithoutFeedback onPress={goToDetail}>
-      <View style={styles.container}>
-        <View style={styles.boxIcon}>
-          {displayIcon()}
-          <TouchableOpacity
-            testID={TESTID.AUTOMATE_SCRIPT_ACTION}
-            onPress={handleScriptAction}
-          >
-            <CheckCircle />
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity testID={TESTID.GO_DETAIL} onPress={goToDetail}>
-          <Text
-            numberOfLines={1}
-            semibold
-            size={14}
-            color={Colors.Gray9}
-            type="Body"
-          >
-            {script?.name}
-          </Text>
-          <View style={styles.descriptionContainer}>
+    const displayIcon = () => {
+      const iconKit = script?.icon_kit;
+      return iconKit ? (
+        <FImage source={{ uri: iconKit }} style={styles.iconSensor} />
+      ) : (
+        <OneTap />
+      );
+    };
+    const activateAt = activate_at
+      ? timeDifference(new Date(), moment(activate_at), true)
+      : null;
+    return (
+      <TouchableWithoutFeedback onPress={onPressItem || goToDetail}>
+        <View style={[styles.container, wrapSyles]}>
+          <View style={styles.boxIcon}>
+            {displayIcon()}
+            <TouchableOpacity
+              testID={TESTID.AUTOMATE_SCRIPT_ACTION}
+              onPress={handleScriptAction}
+            >
+              <CheckCircle />
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity testID={TESTID.GO_DETAIL} onPress={goToDetail}>
             <Text
               numberOfLines={1}
               semibold
-              size={12}
-              color={Colors.Gray8}
-              type="Label"
+              size={14}
+              color={Colors.Gray9}
+              type="Body"
             >
-              {activateAt && t('activated_time', { time: activateAt })}
+              {script?.name}
             </Text>
-            <IconOutline name="right" size={12} />
-          </View>
-        </TouchableOpacity>
-      </View>
-    </TouchableWithoutFeedback>
-  );
-});
+            <View style={styles.descriptionContainer}>
+              <Text
+                numberOfLines={1}
+                semibold
+                size={12}
+                color={Colors.Gray8}
+                type="Label"
+              >
+                {activateAt && t('activated_time', { time: activateAt })}
+              </Text>
+              <IconOutline name="right" size={12} />
+            </View>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+);
 
 export default ItemOneTap;

@@ -108,6 +108,7 @@ const Routes = {
   AddNewOneTap: 'AddNewOneTap',
   SelectUnit: 'SelectUnit',
   AddNewScriptAction: 'AddNewScriptAction',
+  Automate: 'Automate',
   SetSchedule: 'SetSchedule',
 };
 

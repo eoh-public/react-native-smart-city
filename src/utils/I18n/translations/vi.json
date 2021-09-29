@@ -757,6 +757,8 @@
   "every_day": "Hằng ngày",
   "every_week": "Hằng tuần",
   "create_smart": "Tạo thông minh",
+  "automate": "Tự động",
+  "automate_scripts": "Kịch bản tự động",
   "button": "Nút nhấn",
   "choose_the_automation_method_you_want": "Chọn phương thức tự động hóa mà bạn mong muốn",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
