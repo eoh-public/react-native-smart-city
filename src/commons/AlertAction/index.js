@@ -25,6 +25,8 @@ const AlertAction = ({
       isVisible={visible}
       onBackButtonPress={hideModal}
       onBackdropPress={hideModal}
+      useNativeDriver={true}
+      useNativeDriverForBackdrop={true}
       style={styles.container}
     >
       <View style={styles.popoverStyle}>
