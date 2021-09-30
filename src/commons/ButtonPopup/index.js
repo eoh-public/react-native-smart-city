@@ -31,6 +31,8 @@ const ButtonPopup = ({
       isVisible={visible}
       onBackButtonPress={onClose}
       onBackdropPress={onClose}
+      useNativeDriver={true}
+      useNativeDriverForBackdrop={true}
       testID={TESTID.MODAL_BUTTON_POPUP}
     >
       <View style={styles.popoverStyle}>
