@@ -368,7 +368,9 @@ const DeviceDetail = ({ account, route }) => {
           <>
             <ConnectedViewHeader
               lastUpdated={lastUpdated}
-              isDisplayTime={isDisplayTime}
+              isDisplayTime={
+                isShowSetupEmergencyContact ? false : isDisplayTime
+              }
             />
             {display.items.map((item) => (
               <SensorDisplayItem
