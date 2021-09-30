@@ -76,6 +76,12 @@ const DeviceDetail = ({ account, route }) => {
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 
+  const isShowSetupEmergencyContact =
+    display.items.filter(
+      (item) =>
+        item.type === 'emergency' && item.configuration.type === 'button'
+    ).length > 0;
+
   const addToFavorites = useCallback(async () => {
     const { success } = await axiosPost(
       API.SENSOR.ADD_TO_FAVOURITES(unit.id, sensor.station.id, sensor.id)
@@ -124,6 +130,13 @@ const DeviceDetail = ({ account, route }) => {
         });
       }
     }
+    if (isShowSetupEmergencyContact) {
+      menuItems.push({
+        route: Routes.ActivityLog,
+        data: { sensor },
+        text: t('activity_log'),
+      });
+    }
     menuItems.push({
       route: Routes.DeviceInfo,
       text: t('device_info'),
@@ -147,6 +160,7 @@ const DeviceDetail = ({ account, route }) => {
     display.items,
     t,
     isFavourite,
+    isShowSetupEmergencyContact,
     listMenuItemDefault,
     sensor,
     isOwner,
@@ -331,12 +345,6 @@ const DeviceDetail = ({ account, route }) => {
     display.items.filter(
       (item) =>
         item.type === 'emergency' && item.configuration.type === 'detail'
-    ).length > 0;
-
-  const isShowSetupEmergencyContact =
-    display.items.filter(
-      (item) =>
-        item.type === 'emergency' && item.configuration.type === 'button'
     ).length > 0;
 
   const isDisplayTime =
