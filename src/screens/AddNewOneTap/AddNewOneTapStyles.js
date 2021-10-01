@@ -35,9 +35,10 @@ export default StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    paddingBottom: getBottomSpace() > 0 ? getBottomSpace() : 24,
-    paddingTop: 16,
+    paddingBottom: getBottomSpace() > 0 ? getBottomSpace() : 32,
+    paddingTop: 24,
     backgroundColor: Colors.White,
-    marginHorizontal: 16,
+    borderColor: Colors.ShadownTransparent,
+    borderTopWidth: 1,
   },
 });
