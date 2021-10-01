@@ -36,7 +36,7 @@ export default ({
   }, [onHide, onConfirm, dateSelected]);
 
   return (
-    <BottomSheet isVisible={isVisible} onHide={onCancel}>
+    <BottomSheet isVisible={isVisible} onBackdropPress={onCancel}>
       <Calendar
         style={styles.calendar}
         onDayPress={onDateSelected}
