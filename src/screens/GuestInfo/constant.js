@@ -43,8 +43,8 @@ export const formatterForUpdateMaps = {
 };
 
 export const getDefaultValueMaps = {
-  time: () => moment().hour(0).minute(0),
-  datetime: () => moment().hour(0).minute(0),
+  time: () => moment().hour(0).minute(0).second(0),
+  datetime: () => moment().hour(0).minute(0).second(0),
   array: () => [],
 };
 

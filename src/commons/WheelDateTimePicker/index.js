@@ -10,6 +10,7 @@ import ViewButtonBottom from '../ViewButtonBottom';
 
 import { getDateData } from '../../utils/Converter/time';
 import styles from './styles';
+import { TESTID } from '../../configs/Constants';
 
 const formatNumber = (number) => {
   return {
@@ -26,6 +27,7 @@ const WheelDateTimePicker = ({
   isVisible,
   defaultValue,
   onPicked,
+  onCancel,
   onHide,
 }) => {
   const t = useTranslations();
@@ -35,7 +37,7 @@ const WheelDateTimePicker = ({
 
   const { dateData, indexInitialDate, indexInitialHour, indexInitialMinute } =
     useMemo(() => {
-      const date = defaultValue ? moment(defaultValue) : moment();
+      const date = defaultValue ? moment(defaultValue) : moment().second(0);
       const maximumDate = moment(date).add(15, 'days');
       const minimumDate = moment(date).add(-15, 'days');
       const [dateData, indexDate] =
@@ -77,17 +79,17 @@ const WheelDateTimePicker = ({
     [setMinuteSelected]
   );
 
-  const onCancel = useCallback(() => {
-    onHide && onHide();
-  }, [onHide]);
+  const onPickerCancel = useCallback(() => {
+    onCancel && onCancel();
+  }, [onCancel]);
 
   const onDone = useCallback(() => {
     const newDateTime = moment(dateSelected);
     newDateTime.hour(hourSelected);
     newDateTime.minute(minuteSelected);
     onPicked && onPicked(newDateTime.valueOf());
-    onHide && onHide();
-  }, [dateSelected, hourSelected, minuteSelected, onHide, onPicked]);
+    onCancel && onCancel();
+  }, [dateSelected, hourSelected, minuteSelected, onCancel, onPicked]);
 
   const title = useMemo(() => {
     if (mode === 'time') {
@@ -97,7 +99,12 @@ const WheelDateTimePicker = ({
   }, [t, mode]);
 
   return (
-    <BottomSheet isVisible={isVisible} onHide={onCancel} title={title}>
+    <BottomSheet
+      isVisible={isVisible}
+      onBackdropPress={onPickerCancel}
+      onHide={onHide}
+      title={title}
+    >
       {mode === 'time' ? (
         <View style={styles.container}>
           <Picker
@@ -149,9 +156,10 @@ const WheelDateTimePicker = ({
       )}
       <ViewButtonBottom
         leftTitle={t('cancel')}
-        onLeftClick={onCancel}
+        onLeftClick={onPickerCancel}
         rightTitle={t('done')}
         onRightClick={onDone}
+        testIDPrefix={TESTID.WHEEL_DATE_TIME_PICKER}
       />
     </BottomSheet>
   );
