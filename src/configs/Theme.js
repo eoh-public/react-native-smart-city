@@ -90,4 +90,19 @@ export default StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
   },
+  wrap: {
+    flex: 1,
+    backgroundColor: Colors.White,
+  },
+  shadowView: {
+    shadowColor: Colors.Gray7,
+    backgroundColor: Colors.White,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 3,
+    elevation: 3,
+  },
 });

@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import React, { memo, useCallback, useRef } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import Images from '../../configs/Images';
 import { Colors } from '../../configs';
@@ -18,19 +18,23 @@ const HeaderCustom = ({
   titleStyles,
   isShowClose = false,
   onGoBack,
+  onClose,
 }) => {
   const t = useTranslations();
   const { goBack } = useNavigation();
   const refMenuAction = useRef();
   const refAddAction = useRef();
   const handleAddAction = () => {};
-  // eslint-disable-next-line no-alert
-  const handleClose = () => alert(t('feature_under_development'));
   const handleShowMenuAction = () => showPopoverWithRef(refMenuAction);
   const handleGoback = () => {
     onGoBack && onGoBack();
     goBack();
   };
+
+  const handleClose = useCallback(() => {
+    onClose ? onClose() : alert(t('feature_under_development'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <View style={[styles.wrap, isShowSeparator && styles.separator]}>

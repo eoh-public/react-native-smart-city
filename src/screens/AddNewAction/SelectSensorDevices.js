@@ -1,5 +1,5 @@
 import React, { memo, useState, useEffect, useCallback } from 'react';
-import { Alert, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTranslations } from '../../hooks/Common/useTranslations';
@@ -13,6 +13,7 @@ import { HeaderCustom } from '../../commons/Header';
 import Routes from '../../utils/Route';
 import styles from './Styles/SelectSensorDevicesStyles';
 import { AUTOMATE_SELECT } from '../../configs/Constants';
+import { popAction } from '../../navigations/utils';
 
 const SelectSensorDevices = memo(({ route }) => {
   const t = useTranslations();
@@ -20,6 +21,9 @@ const SelectSensorDevices = memo(({ route }) => {
     unit,
     automateId,
     title = AUTOMATE_SELECT.SELECT_DEVICES,
+    type,
+    isScript,
+    scriptName,
   } = route.params;
 
   const [listStation, setListStation] = useState([]);
@@ -27,7 +31,7 @@ const SelectSensorDevices = memo(({ route }) => {
   const [indexStation, setIndexStation] = useState(0);
   const [station, setStation] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState();
-  const { navigate } = useNavigation();
+  const { navigate, dispatch } = useNavigation();
 
   const onSnapToItem = useCallback(
     (item, index) => {
@@ -70,22 +74,36 @@ const SelectSensorDevices = memo(({ route }) => {
     }
   };
 
-  const onPressContinue = () => {
-    if (title === AUTOMATE_SELECT.SELECT_SENSOR) {
-      Alert.alert(t('feature_under_development'));
-    } else {
-      navigate(Routes.SelectAction, {
-        unit,
-        device: selectedDevice,
-        automateId: automateId,
-        stationName: station[indexStation]?.name,
-      });
-    }
-  };
+  const onPressContinue = useCallback(() => {
+    navigate(Routes.SelectAction, {
+      unit,
+      device: selectedDevice,
+      automateId: automateId,
+      stationName: station[indexStation]?.name,
+      isScript,
+      type,
+      scriptName,
+    });
+  }, [
+    selectedDevice,
+    automateId,
+    station,
+    indexStation,
+    navigate,
+    unit,
+    type,
+    isScript,
+    scriptName,
+  ]);
+
+  const onClose = useCallback(() => {
+    isScript ? dispatch(popAction(2)) : alert(t('feature_under_development'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScript]);
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onClose={onClose} />
 
       <ScrollView
         style={styles.wrap}

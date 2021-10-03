@@ -48,16 +48,38 @@ describe('Test Select unit screen', () => {
       return response;
     });
     useState.mockImplementation((init) => [response.data, mockSetState]);
-    await act(() => {
-      tree = create(wrapComponent());
+    await act(async () => {
+      tree = await create(wrapComponent());
     });
     const instance = tree.root;
     const TouchableOpacities = instance.findAllByType(TouchableOpacity);
     expect(TouchableOpacities).toHaveLength(3);
-    act(() => {
-      TouchableOpacities[1].props.onPress();
-      TouchableOpacities[2].props.onPress(response.data[0]);
+    await act(async () => {
+      await TouchableOpacities[1].props.onPress();
+      await TouchableOpacities[2].props.onPress(response.data[0]);
     });
     expect(mockSetState).toBeCalledWith(response.data[0]);
+  });
+
+  it('Test SelectUnit getAllUnits fail', async () => {
+    const response = {
+      status: 400,
+    };
+    axios.get.mockImplementation(async () => {
+      return response;
+    });
+
+    await act(async () => {
+      tree = await create(wrapComponent());
+    });
+
+    const instance = tree.root;
+    const TouchableOpacities = instance.findAllByType(TouchableOpacity);
+    expect(TouchableOpacities).toHaveLength(3);
+    await act(async () => {
+      await TouchableOpacities[1].props.onPress();
+      await TouchableOpacities[2].props.onPress();
+    });
+    expect(mockSetState).toBeCalledTimes(1);
   });
 });

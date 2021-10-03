@@ -33,6 +33,7 @@ const AddNewOneTap = memo(({ route }) => {
         name: name,
         type: type,
         havePermission: true,
+        isCreateScriptSuccess: true,
       });
     }
   }, [type, name, unit, automateData, navigate]);

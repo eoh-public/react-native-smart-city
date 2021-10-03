@@ -15,7 +15,7 @@ import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../../utils/Route';
 import { useGetIdUser } from '../../../hooks/Common';
-import { TESTID } from '../../../configs/Constants';
+import { AUTOMATE_TYPE, TESTID } from '../../../configs/Constants';
 
 const ItemOneTap = memo(
   ({ isOwner, automate, unit, wrapSyles, onPressItem }) => {
@@ -60,12 +60,14 @@ const ItemOneTap = memo(
         <View style={[styles.container, wrapSyles]}>
           <View style={styles.boxIcon}>
             {displayIcon()}
-            <TouchableOpacity
-              testID={TESTID.AUTOMATE_SCRIPT_ACTION}
-              onPress={handleScriptAction}
-            >
-              <CheckCircle />
-            </TouchableOpacity>
+            {type === AUTOMATE_TYPE.ONE_TAP && (
+              <TouchableOpacity
+                testID={TESTID.AUTOMATE_SCRIPT_ACTION}
+                onPress={handleScriptAction}
+              >
+                <CheckCircle />
+              </TouchableOpacity>
+            )}
           </View>
           <TouchableOpacity testID={TESTID.GO_DETAIL} onPress={goToDetail}>
             <Text

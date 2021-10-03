@@ -16,8 +16,8 @@ import Routes from '../../utils/Route';
 
 const AddNewAutoSmart = memo(({ route }) => {
   const t = useTranslations();
-  const { navigate } = useNavigation();
-  const { type, unit } = route.params;
+  const { navigate, goBack } = useNavigation();
+  const { type, unit, isScript } = route.params;
   const typeAutoSmart = {
     automate: [
       {
@@ -60,9 +60,10 @@ const AddNewAutoSmart = memo(({ route }) => {
         type: automate.type,
         unit: unit,
         ...(automate.data || {}),
+        isScript,
       });
     }
-  }, [navigate, selectedIndex, data, unit]);
+  }, [navigate, selectedIndex, data, unit, isScript]);
 
   const handleSelectIndex = (index) => {
     if (index !== selectedIndex) {
@@ -72,9 +73,14 @@ const AddNewAutoSmart = memo(({ route }) => {
     }
   };
 
+  const onClose = useCallback(() => {
+    isScript ? goBack() : alert(t('feature_under_development'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScript]);
+
   return (
     <View style={styles.wrap}>
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onClose={onClose} />
       <View style={styles.container}>
         <Text semibold type={'H2'} style={styles.titleCreate}>
           {t('create_smart')}
