@@ -46,12 +46,14 @@ export default StyleSheet.create({
     marginRight: 20,
   },
   activeButton: {
+    marginTop: 16,
     alignSelf: 'center',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: 16,
     marginBottom: 16,
   },
   editButton: {

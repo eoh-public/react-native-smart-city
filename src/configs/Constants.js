@@ -1,7 +1,7 @@
 import { Platform, Dimensions, StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import OneTap from '../../assets/images/OneTap.svg';
-import WeatherChange from '../../assets/images/WeatherChange.svg';
+import ValueChange from '../../assets/images/ValueChange.svg';
 import Schedule from '../../assets/images/Schedule.svg';
 
 const X_WIDTH = 375;
@@ -107,9 +107,9 @@ export const AUTOMATES = {
   },
   value_change: {
     value: AUTOMATE_TYPE.VALUE_CHANGE,
-    title: 'When weather change',
+    title: 'Value change',
     explanation: 'Short Explanation',
-    icon: WeatherChange,
+    icon: ValueChange,
   },
   schedule: {
     value: AUTOMATE_TYPE.SCHEDULE,

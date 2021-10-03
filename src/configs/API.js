@@ -98,6 +98,8 @@ const API = {
     CREATE_AUTOMATE: () => SCConfig.apiRoot + '/property_manager/automate/',
     GET_AUTOMATES: () => SCConfig.apiRoot + '/accounts/automates/',
     GET_ALL_UNITS: () => SCConfig.apiRoot + '/property_manager/units/all_unit/',
+    GET_SENSOR_CONFIG: (id) =>
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display_configs/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>
