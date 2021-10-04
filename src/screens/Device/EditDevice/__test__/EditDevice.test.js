@@ -24,13 +24,13 @@ jest.mock('react', () => {
   };
 });
 
-const mockGoBack = jest.fn();
+const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
     useRoute: jest.fn(),
     useNavigation: () => ({
-      goBack: mockGoBack,
+      navigate: mockNavigate,
     }),
   };
 });
@@ -42,7 +42,8 @@ describe('Test EditDevice', () => {
 
   beforeEach(() => {
     axios.patch.mockClear();
-    mockGoBack.mockClear();
+    axios.delete.mockClear();
+    mockNavigate.mockClear();
     useRoute.mockReturnValue({
       params: {
         unit: {
@@ -112,11 +113,16 @@ describe('Test EditDevice', () => {
       await buttonDelete[0].props.onPress();
     });
     expect(alertAction.props.visible).toBeTruthy();
+    const response = { status: 204 };
+    axios.delete.mockImplementation(async () => {
+      return response;
+    });
 
     await act(async () => {
       await alertAction.props.rightButtonClick();
     });
+    expect(axios.delete).toHaveBeenCalledWith(API.SENSOR.REMOVE_SENSOR(1));
     expect(alertAction.props.visible).toBeFalsy();
-    expect(mockGoBack).toHaveBeenCalled();
+    expect(mockNavigate).toHaveBeenCalled();
   });
 });

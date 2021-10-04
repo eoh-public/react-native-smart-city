@@ -768,6 +768,7 @@
   "device_name": "Tên thiết bị",
   "rename_successfully": "Đổi tên thành công!",
   "rename_failed": "Đổi tên thất bại!",
+  "remove_failed": "Xóa thất bại!",
   "message_delete_device": "Bạn có chắc chắn muốn xóa thiết bị \"{name}\" này ?",
   "button": "Nút nhấn",
   "choose_the_automation_method_you_want": "Chọn phương thức tự động hóa mà bạn mong muốn",
