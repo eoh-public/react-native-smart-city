@@ -113,7 +113,7 @@ const PlayBackCamera = () => {
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom title={t('playback_camera')} />
+      <HeaderCustom title={t('video_detail')} />
       <View style={styles.wrapCamera}>
         <MediaPlayerDetail
           uri={uri}
