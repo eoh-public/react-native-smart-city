@@ -91,13 +91,21 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const goToActivityLog = useCallback(() => {
+    navigate(Routes.ActivityLog, {
+      id: id,
+      type: 'automate',
+      share: unit,
+    });
+  }, [navigate, id, unit]);
+
   const listMenuItem = useMemo(
     () => [
       { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: null },
+      { text: t('activity_log'), doAction: goToActivityLog },
       { text: t('delete_script'), doAction: onShowDelete(scriptName) },
     ],
-    [t, onShowRename, onShowDelete, scriptName]
+    [t, onShowRename, onShowDelete, goToActivityLog, scriptName]
   );
 
   const onPressFavourite = useCallback(() => {
@@ -110,16 +118,9 @@ const ScriptDetail = ({ route }) => {
     []
   );
 
-  const onItemClick = useCallback(
-    (item) => {
-      if (item.doAction) {
-        item.doAction();
-      } else {
-        alert(t('feature_under_development'));
-      }
-    },
-    [t]
-  );
+  const onItemClick = useCallback((item) => {
+    item.doAction();
+  }, []);
 
   const onPressAdd = useCallback(() => {
     // eslint-disable-next-line no-alert

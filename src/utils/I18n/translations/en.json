@@ -765,5 +765,10 @@
   "automate": "Automate",
   "automate_scripts": "Automate Scripts",
   "choose_the_automation_method_you_want": "Choose the automation method you want",
+  "auto_activated": "Auto Activated",
+  "activated_by": "Activated by",
+  "apply": "Apply",
+  "by_date": "By Date",
+  "by_user": "By User",
   "error_please_try_later": "Error! Please try later"
 }

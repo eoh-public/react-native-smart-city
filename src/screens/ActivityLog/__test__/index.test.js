@@ -56,14 +56,17 @@ describe('Test Activity log', () => {
     useState.mockImplementationOnce((init) => [init, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
-    await act(() => {
-      tree = create(wrapComponent());
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    await act(async () => {
+      tree = await create(wrapComponent());
     });
     const instance = tree.root;
     const SectionListElement = instance.findAllByType(SectionList);
     expect(SectionListElement).toHaveLength(1);
     const TextElement = instance.findAllByType(Text);
-    expect(TextElement[1].props.style).toEqual({
+    expect(TextElement[2].props.style).toEqual({
       alignSelf: 'center',
       marginTop: Constants.height * 0.3,
       fontSize: 16,
@@ -76,8 +79,11 @@ describe('Test Activity log', () => {
     useState.mockImplementationOnce((init) => [init, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
     useState.mockImplementationOnce((init) => [false, mockSetState]);
-    await act(() => {
-      tree = create(wrapComponent());
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    await act(async () => {
+      tree = await create(wrapComponent());
     });
     const instance = tree.root;
     const ActivityIndicatorElement = instance.findAllByType(ActivityIndicator);

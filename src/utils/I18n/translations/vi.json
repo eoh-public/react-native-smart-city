@@ -766,5 +766,10 @@
   "automate_scripts": "Kịch bản tự động",
   "button": "Nút nhấn",
   "choose_the_automation_method_you_want": "Chọn phương thức tự động hóa mà bạn mong muốn",
+  "auto_activated": "Tự động kích hoạt",
+  "activated_by": "Đã kích hoạt bởi",
+  "apply": "Xác nhận",
+  "by_date": "By Date",
+  "by_user": "By User",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

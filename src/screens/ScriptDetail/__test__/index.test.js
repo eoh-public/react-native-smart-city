@@ -9,6 +9,7 @@ import AlertAction from '../../../commons/AlertAction';
 import _TextInput from '../../../commons/Form/TextInput';
 import { AUTOMATE_TYPE } from '../../../configs/Constants';
 import { API } from '../../../configs';
+import Routes from '../../../utils/Route';
 
 const wrapComponent = (route) => (
   <SCProvider initState={mockSCStore({})}>
@@ -24,11 +25,13 @@ jest.mock('react', () => {
 });
 
 const mockGoBack = jest.fn();
+const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
     useNavigation: () => ({
       goBack: mockGoBack,
+      navigate: mockNavigate,
     }),
   };
 });
@@ -47,7 +50,7 @@ describe('Test ScriptDetail', () => {
       params: {
         id: 1,
         name: 'script',
-        unit: 2,
+        unit: { id: 2 },
         type: AUTOMATE_TYPE.ONE_TAP,
         havePermission: true,
       },
@@ -115,5 +118,23 @@ describe('Test ScriptDetail', () => {
     expect(axios.delete).toHaveBeenCalledWith(API.AUTOMATE.SCRIPT(1));
     expect(alertAction.props.visible).toBeFalsy();
     expect(mockGoBack).toHaveBeenCalled();
+  });
+
+  test('test go to activity log', async () => {
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const menu = instance.findByType(MenuActionMore);
+    const gotoActivityLog = menu.props.listMenuItem[1];
+
+    await act(async () => {
+      await menu.props.onItemClick(gotoActivityLog);
+    });
+    expect(mockNavigate).toHaveBeenCalledWith(Routes.ActivityLog, {
+      id: route.params.id,
+      type: 'automate',
+      share: route.params.unit,
+    });
   });
 });
