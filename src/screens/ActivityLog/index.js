@@ -75,7 +75,8 @@ const ActivityLogScreen = () => {
 
   useEffect(() => {
     fetchMembers();
-  }, [fetchMembers]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const headerRight = useMemo(
     () => (
