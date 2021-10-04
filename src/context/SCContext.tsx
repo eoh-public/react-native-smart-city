@@ -29,10 +29,10 @@ type Reducer<StateData, Action> = (
   action: Action
 ) => StateData;
 
-export const SCProvider = ({ children }) => {
+export const SCProvider = ({ children, initState = initialState }) => {
   const [stateData, dispatch] = useReducer<Reducer<ContextData, Action>>(
     reducer,
-    initialState
+    initState
   );
 
   const setAuth = (authData: AuthData) => {

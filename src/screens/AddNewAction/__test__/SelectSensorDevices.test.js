@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import renderer, { act } from 'react-test-renderer';
 import axios from 'axios';
 
-import SelectDevice from '../SelectDevice';
+import SelectSensorDevices from '../SelectSensorDevices';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import Device from '../Device';
@@ -33,11 +33,11 @@ jest.mock('react', () => {
 
 const wrapComponent = (route) => (
   <SCProvider initState={mockSCStore({})}>
-    <SelectDevice route={route} />
+    <SelectSensorDevices route={route} />
   </SCProvider>
 );
 
-describe('Test SelectDevice', () => {
+describe('Test SelectSensorDevices', () => {
   let tree;
   const route = {
     params: {

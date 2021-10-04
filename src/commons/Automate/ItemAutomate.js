@@ -5,12 +5,18 @@ import { Colors } from '../../configs';
 import styles from './ItemAutomateStyles';
 import { AUTOMATES } from '../../configs/Constants';
 
-const ItemAutomate = ({ type, isSelected = false, onPress = () => {} }) => {
+const ItemAutomate = ({
+  type,
+  isSelected = false,
+  onPress = () => {},
+  disabledOnPress = false,
+}) => {
   const item = AUTOMATES[type];
   const Icon = item?.icon;
   return (
     <TouchableOpacity
       onPress={onPress}
+      disabled={disabledOnPress}
       style={[styles.wrap, isSelected && styles.active]}
     >
       <View style={styles.row}>

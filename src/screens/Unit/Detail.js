@@ -65,7 +65,7 @@ const UnitDetail = ({ route }) => {
     (rawUnitData) => {
       rawUnitData.stations.unshift({
         isOneTap: true,
-        name: 'One-Tap',
+        name: t('One-Tap'),
       });
       const favorites = {
         isFakeStation: true,
@@ -84,7 +84,7 @@ const UnitDetail = ({ route }) => {
       });
       rawUnitData.stations.push({
         isScript: true,
-        name: t('Script'),
+        name: t('Scenario'),
       });
     },
     [t]
@@ -246,6 +246,7 @@ const UnitDetail = ({ route }) => {
           type={AUTOMATE_TYPE.VALUE_CHANGE}
           automates={script}
           unit={unit}
+          isScript
         />
       );
     } else if (station) {

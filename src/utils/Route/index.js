@@ -95,7 +95,7 @@ const Routes = {
   TermAndPolicy: 'TermAndPolicy',
   Browser: 'Browser',
   ManageAccess: 'ManageAccess',
-  SelectDevice: 'SelectDevice',
+  SelectSensorDevices: 'SelectSensorDevices',
   SelectAction: 'SelectAction',
   GuestInfo: 'GuestInfo',
   AddLGDevice: 'AddLGDevice',
@@ -103,10 +103,14 @@ const Routes = {
   ScriptDetail: 'ScriptDetail',
   EditActionsList: 'EditActionsList',
   PlaybackCamera: 'PlaybackCamera',
+  SetUpSensor: 'SetUpSensor',
   AddNewAutoSmart: 'AddNewAutoSmart',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',
+  SelectUnit: 'SelectUnit',
   AddNewScriptAction: 'AddNewScriptAction',
+  Automate: 'Automate',
+  SetSchedule: 'SetSchedule',
 };
 
 export default Routes;

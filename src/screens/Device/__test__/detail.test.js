@@ -518,6 +518,70 @@ describe('test DeviceDetail', () => {
     expect(sensorDisplayItem).toHaveLength(4);
   });
 
+  test('render SensorDisplayItem emercency', async () => {
+    const responseDisplay = {
+      status: 200,
+      data: {
+        items: [
+          {
+            id: 1,
+            order: 1,
+            template: 'emergency',
+            type: 'emergency',
+            configuration: {
+              camera: null,
+              device: {
+                configs: { id: 521, value: null, time: null },
+                last_event: { id: 374, reportedAt: '' },
+                id: 1,
+                group: {
+                  id: 1,
+                  contacts: [
+                    {
+                      id: 1,
+                      group: 1,
+                      name: 'user1',
+                      phone_number: '038111111',
+                    },
+                    {
+                      id: 2,
+                      group: 1,
+                      name: 'user1',
+                      phone_number: '038111112',
+                    },
+                    { id: 3, group: 1, name: 'user1', phone_number: '' },
+                  ],
+                },
+              },
+              title: '',
+            },
+          },
+        ],
+      },
+    };
+
+    const responseDisplayValueV2 = {
+      status: 200,
+      data: {
+        configs: [],
+        is_connected: true,
+        last_updated: '2021-01-24T12:00:00.000Z',
+      },
+    };
+
+    mockAxios(responseDisplay, responseDisplayValueV2);
+
+    await act(async () => {
+      tree = await create(wrapComponent(account, route));
+    });
+
+    const instance = tree.root;
+    const sensorDisplayItem = instance.findAll(
+      (el) => el.props.testID === TESTID.SENSOR_DISPLAY_ITEM
+    );
+    expect(sensorDisplayItem).toHaveLength(1);
+  });
+
   test('render CurrentRainSensor', async () => {
     const responseDisplay = {
       status: 200,

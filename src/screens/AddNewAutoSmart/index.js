@@ -1,46 +1,69 @@
-import React, { memo, useState } from 'react';
-import { Alert, View } from 'react-native';
+import React, { memo, useState, useCallback } from 'react';
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { HeaderCustom } from '../../commons/Header';
 import styles from './styles/AddNewAutoSmartStyles';
 import Text from '../../commons/Text';
 import BottomButtonView from '../../commons/BottomButtonView';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
-import { AUTOMATE_TYPE, TESTID } from '../../configs/Constants';
-
+import {
+  AUTOMATE_SELECT,
+  AUTOMATE_TYPE,
+  TESTID,
+} from '../../configs/Constants';
 import { useTranslations } from '../../hooks/Common/useTranslations';
+import Routes from '../../utils/Route';
 
 const AddNewAutoSmart = memo(({ route }) => {
   const t = useTranslations();
-  const { type } = route.params;
+  const { navigate, goBack } = useNavigation();
+  const { type, unit, isScript } = route.params;
   const typeAutoSmart = {
     automate: [
       {
         type: AUTOMATE_TYPE.ONE_TAP,
+        route: Routes.AddNewOneTap,
       },
       {
         type: AUTOMATE_TYPE.VALUE_CHANGE,
+        route: Routes.SelectSensorDevices,
+        data: {
+          title: AUTOMATE_SELECT.SELECT_SENSOR,
+        },
       },
       {
         type: AUTOMATE_TYPE.SCHEDULE,
+        route: Routes.SetSchedule,
       },
     ],
     value_change: [
       {
         type: AUTOMATE_TYPE.VALUE_CHANGE,
+        route: Routes.SelectSensorDevices,
+        data: {
+          title: AUTOMATE_SELECT.SELECT_SENSOR,
+        },
       },
       {
         type: AUTOMATE_TYPE.SCHEDULE,
+        route: Routes.SetSchedule,
       },
     ],
   };
-
-  // eslint-disable-next-line no-alert
-  const onPress = () => {
-    Alert.alert(t('feature_under_development'));
-  };
-
-  const [selectedIndex, setSelectedIndex] = useState(-1);
   const [data] = useState(typeAutoSmart[type]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  const handleOnContinue = useCallback(() => {
+    const automate = data[selectedIndex];
+    if (automate?.route) {
+      navigate(automate.route, {
+        type: automate.type,
+        unit: unit,
+        ...(automate.data || {}),
+        isScript,
+      });
+    }
+  }, [navigate, selectedIndex, data, unit, isScript]);
 
   const handleSelectIndex = (index) => {
     if (index !== selectedIndex) {
@@ -50,9 +73,14 @@ const AddNewAutoSmart = memo(({ route }) => {
     }
   };
 
+  const onClose = useCallback(() => {
+    isScript ? goBack() : alert(t('feature_under_development'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScript]);
+
   return (
     <View style={styles.wrap}>
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onClose={onClose} />
       <View style={styles.container}>
         <Text semibold type={'H2'} style={styles.titleCreate}>
           {t('create_smart')}
@@ -73,7 +101,7 @@ const AddNewAutoSmart = memo(({ route }) => {
       </View>
       <BottomButtonView
         testIDPrefix={TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}
-        onPressMain={onPress}
+        onPressMain={handleOnContinue}
         style={styles.bottomButton}
         mainTitle={t('continue')}
         typeMain={selectedIndex === -1 ? 'disabled' : 'primary'}

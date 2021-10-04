@@ -10,6 +10,7 @@ import SharedStack from './src/navigations/SharedStack';
 import Explore from './src/screens/Explore';
 import { AddLGDeviceStack } from './src/navigations/AddLGDeviceStack';
 import { initSCConfig } from './src/configs';
+import AutomateStack from './src/navigations/AutomateStack';
 
 export {
   AddSubUnitStack,
@@ -25,4 +26,5 @@ export {
   SCContext,
   AddLGDeviceStack,
   initSCConfig,
+  AutomateStack,
 };

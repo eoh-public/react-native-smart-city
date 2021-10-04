@@ -26,6 +26,7 @@ exports[`Test button popup create button popup 1`] = `
   swipeThreshold={100}
   testID="MODAL_BUTTON_POPUP"
   transparent={true}
+  useNativeDriverForBackdrop={true}
   visible={false}
 >
   <View
@@ -87,6 +88,7 @@ exports[`Test button popup create button popup 1`] = `
       ]
     }
     swipeThreshold={100}
+    useNativeDriverForBackdrop={true}
   >
     <View
       style={
