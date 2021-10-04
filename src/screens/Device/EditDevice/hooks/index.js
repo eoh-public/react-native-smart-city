@@ -1,8 +1,5 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from '../../../../hooks/Common/useTranslations';
-// import useBoolean from '../../../../hooks/Common/useBoolean';
-
-// import { ToastBottomHelper } from '../../../../utils/Utils';
 
 export default (unit, sensor, inputName) => {
   const t = useTranslations();
