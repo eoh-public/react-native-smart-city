@@ -684,7 +684,7 @@
   "connecting_your_gateway": "Đang kết nối gateway...",
   "manage_access": "Quản lý quyền truy cập",
   "owners": "Chủ sỡ hữu",
-  "guest": "Khách",
+  "guests": "Những vị khách",
   "no_guest": "Không có vị khách nào",
   "guest_info": "Thông tin khách",
   "eoh_account_id": "ID tài khoản EoH",
