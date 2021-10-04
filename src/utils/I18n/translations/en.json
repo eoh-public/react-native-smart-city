@@ -764,6 +764,11 @@
   "create_smart": "Create Smart",
   "automate": "Automate",
   "automate_scripts": "Automate Scripts",
+  "edit_device": "Edit Device",
+  "device_name": "Device name",
+  "rename_successfully": "Rename successfully!",
+  "rename_failed": "Rename failed!",
+  "message_delete_device": "Are you sure you want to delete device \"{name}\" ?",
   "choose_the_automation_method_you_want": "Choose the automation method you want",
   "error_please_try_later": "Error! Please try later"
 }

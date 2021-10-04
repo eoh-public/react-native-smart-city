@@ -73,6 +73,8 @@ const API = {
       `/property_manager/${unit_id}/sub_units/${station_id}/devices/${id}/remove_from_favourites/`,
     DISPLAY_ACTIONS: (id) =>
       SCConfig.apiRoot + `/property_manager/sensors/${id}/display_actions/`,
+    RENAME_SENSOR: (id) =>
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/`,
   },
   SHARED_SENSOR: {
     ACCESS: (id) =>
