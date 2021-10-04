@@ -1,7 +1,7 @@
 import { Platform, Dimensions, StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import OneTap from '../../assets/images/OneTap.svg';
-import WeatherChange from '../../assets/images/WeatherChange.svg';
+import ValueChange from '../../assets/images/ValueChange.svg';
 import Schedule from '../../assets/images/Schedule.svg';
 
 const X_WIDTH = 375;
@@ -93,6 +93,11 @@ export const AUTOMATE_TYPE = {
   SCHEDULE: 'schedule',
 };
 
+export const AUTOMATE_SELECT = {
+  SELECT_DEVICES: 'select_devices',
+  SELECT_SENSOR: 'select_sensor',
+};
+
 export const AUTOMATES = {
   one_tap: {
     value: AUTOMATE_TYPE.ONE_TAP,
@@ -102,9 +107,9 @@ export const AUTOMATES = {
   },
   value_change: {
     value: AUTOMATE_TYPE.VALUE_CHANGE,
-    title: 'When weather change',
+    title: 'Value change',
     explanation: 'Short Explanation',
-    icon: WeatherChange,
+    icon: ValueChange,
   },
   schedule: {
     value: AUTOMATE_TYPE.SCHEDULE,
@@ -521,4 +526,14 @@ export const TESTID = {
   // Add New Device LG
   ADD_NEW_DEVICE_LG_ADD: 'ADD_NEW_DEVICE_LG_ADD',
   ADD_NEW_DEVICE_LG_THEN_SELECT: 'ADD_NEW_DEVICE_LG_THEN_SELECT',
+
+  // WheelDateTimePicker
+  WHEEL_DATE_TIME_PICKER: 'WHEEL_DATE_TIME_PICKER',
+
+  // GuestInfo
+  SAVE_ACCESS_SCHEDULE: 'SAVE_ACCESS_SCHEDULE',
+  ACCESS_SCHEDULE_RADIO_BUTTON: 'ACCESS_SCHEDULE_RADIO_BUTTON',
+  ACCESS_SCHEDULE_SHEET: 'ACCESS_SCHEDULE_SHEET',
+  RECURRING_TEXT_BUTTON: 'RECURRING_TEXT_BUTTON',
+  TEMPORARY_TEXT_BUTTON: 'TEMPORARY_TEXT_BUTTON',
 };

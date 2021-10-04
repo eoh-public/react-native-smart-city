@@ -46,12 +46,14 @@ export default StyleSheet.create({
     marginRight: 20,
   },
   activeButton: {
+    marginTop: 16,
     alignSelf: 'center',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: 16,
     marginBottom: 16,
   },
   editButton: {
@@ -139,5 +141,17 @@ export default StyleSheet.create({
   number: {
     position: 'absolute',
     zIndex: 10,
+  },
+  textInput: {
+    margin: 16,
+    marginTop: 0,
+    borderWidth: 0,
+    paddingLeft: 0,
+    paddingTop: 0,
+    borderBottomWidth: 2,
+    borderBottomColor: Colors.Primary,
+    fontSize: 16,
+    lineHeight: 24,
+    color: Colors.Gray9,
   },
 });

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { RadioCircle } from '../../../commons';
 import Text from '../../../commons/Text';
+import { TESTID } from '../../../configs/Constants';
 import styles from '../styles/AccessScheduleItemStyles';
 
 const AccessScheduleItem = ({ item, isSelected, onSelect }) => {
@@ -13,7 +14,11 @@ const AccessScheduleItem = ({ item, isSelected, onSelect }) => {
   return (
     <View style={styles.rowWrap}>
       <View style={styles.rowContent}>
-        <TouchableOpacity style={styles.row} onPress={handleOnSelect}>
+        <TouchableOpacity
+          style={styles.row}
+          onPress={handleOnSelect}
+          testID={TESTID.ACCESS_SCHEDULE_RADIO_BUTTON}
+        >
           <RadioCircle active={isSelected} />
           <Text style={styles.textAccessSchedule}>{item.text}</Text>
         </TouchableOpacity>

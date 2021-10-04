@@ -5,9 +5,9 @@ import AlertAction from '../index';
 
 describe('Test AlertAction', () => {
   let tree;
-  test('create AlertAction', () => {
-    act(() => {
-      tree = renderer.create(
+  test('create AlertAction', async () => {
+    await act(async () => {
+      tree = await renderer.create(
         <AlertAction visible={false} hideModal={true} title={''} />
       );
     });
@@ -16,9 +16,9 @@ describe('Test AlertAction', () => {
     expect(textInputs.length).toBe(1);
   });
 
-  test('create AlertAction have message', () => {
-    act(() => {
-      tree = renderer.create(
+  test('create AlertAction have message', async () => {
+    await act(async () => {
+      tree = await renderer.create(
         <AlertAction
           visible={true}
           hideModal={true}

@@ -9,8 +9,10 @@ import AccessScheduleItem from './AccessScheduleItem';
 import RecurringDetail from './RecurringDetail';
 import TemporaryDetail from './TemporaryDetail';
 import WheelDateTimePicker from '../../../commons/WheelDateTimePicker';
+import { useBoolean } from '../../../hooks/Common';
 
 import { ACCESS_SCHEDULE } from '../constant';
+import { TESTID } from '../../../configs/Constants';
 
 const AccessScheduleSheet = ({
   isVisible,
@@ -20,12 +22,15 @@ const AccessScheduleSheet = ({
   onSetData,
 }) => {
   const t = useTranslations();
-  const [dateTimePickerState, setDateTimePickerState] = useState({
+  const [lockShowing, releaseLockShowing, acquireLockShowing] =
+    useBoolean(true);
+  const [stateDateTimePicker, setStateDateTimePicker] = useState({
     isVisible: false,
     mode: 'time',
     defaultValue: moment().valueOf(),
     setter: null,
   });
+
   const [accessSchedule, setAccessSchedule] = useState(data.access_schedule);
   const [recurringTimeStart, setRecurringTimeStart] = useState(
     data.recurring_time_start
@@ -46,31 +51,33 @@ const AccessScheduleSheet = ({
   const onShowSetDateTime = useCallback(
     (currentValue, setter, mode) => {
       onHide();
-      setDateTimePickerState((prevState) => ({
-        ...prevState,
+      acquireLockShowing();
+      setStateDateTimePicker((state) => ({
+        ...state,
         isVisible: true,
         mode: mode,
         defaultValue: currentValue,
         setter: setter,
       }));
     },
-    [setDateTimePickerState, onHide]
+    [setStateDateTimePicker, acquireLockShowing, onHide]
   );
 
   const onHideSetDateTime = useCallback(() => {
     onShow();
-    setDateTimePickerState((prevState) => ({
-      ...prevState,
+    acquireLockShowing();
+    setStateDateTimePicker((state) => ({
+      ...state,
       isVisible: false,
     }));
-  }, [setDateTimePickerState, onShow]);
+  }, [setStateDateTimePicker, acquireLockShowing, onShow]);
 
   const onDateTimePicked = useCallback(
     (timeData) => {
-      const setter = dateTimePickerState.setter;
+      const setter = stateDateTimePicker.setter;
       setter && setter(moment(timeData));
     },
-    [dateTimePickerState]
+    [stateDateTimePicker]
   );
 
   const listAccessSchedule = useMemo(
@@ -158,9 +165,11 @@ const AccessScheduleSheet = ({
   return (
     <>
       <BottomSheet
-        isVisible={isVisible}
-        onHide={onCancel}
+        isVisible={isVisible && lockShowing}
+        onBackdropPress={onCancel}
+        onHide={releaseLockShowing}
         title={t('access_schedule')}
+        testID={TESTID.ACCESS_SCHEDULE_SHEET}
       >
         <View>
           {listAccessSchedule.map((item, index) => (
@@ -177,14 +186,16 @@ const AccessScheduleSheet = ({
           onLeftClick={onCancel}
           rightTitle={t('done')}
           onRightClick={onDone}
+          testIDPrefix={TESTID.ACCESS_SCHEDULE_SHEET}
         />
       </BottomSheet>
       <WheelDateTimePicker
-        mode={dateTimePickerState.mode}
-        isVisible={dateTimePickerState.isVisible}
-        defaultValue={dateTimePickerState.defaultValue}
+        mode={stateDateTimePicker.mode}
+        isVisible={stateDateTimePicker.isVisible && lockShowing}
+        defaultValue={stateDateTimePicker.defaultValue}
         onPicked={onDateTimePicked}
-        onHide={onHideSetDateTime}
+        onCancel={onHideSetDateTime}
+        onHide={releaseLockShowing}
       />
     </>
   );

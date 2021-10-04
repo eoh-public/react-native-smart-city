@@ -85,7 +85,7 @@ const API = {
   AUTOMATE: {
     ACTION_ONE_TAP: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/action_one_tap/`,
-    ONE_TAP_DETAIL: (id) =>
+    SCRIPT: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/script/`,
     ORDER_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot +
@@ -96,6 +96,10 @@ const API = {
     ADD_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/add_script_action/`,
     CREATE_AUTOMATE: () => SCConfig.apiRoot + '/property_manager/automate/',
+    GET_AUTOMATES: () => SCConfig.apiRoot + '/accounts/automates/',
+    GET_ALL_UNITS: () => SCConfig.apiRoot + '/property_manager/units/all_unit/',
+    GET_SENSOR_CONFIG: (id) =>
+      SCConfig.apiRoot + `/property_manager/sensors/${id}/display_configs/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>

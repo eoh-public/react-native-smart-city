@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Text from '../../../commons/Text';
 import { Images, Colors } from '../../../configs';
+import { TESTID } from '../../../configs/Constants';
 import styles from '../styles/HeaderGuestInfoStyles';
 
 const HeaderGuestInfo = ({ onSave }) => {
@@ -19,7 +20,11 @@ const HeaderGuestInfo = ({ onSave }) => {
           {t('guest_info')}
         </Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={onSave}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={onSave}
+        testID={TESTID.SAVE_ACCESS_SCHEDULE}
+      >
         <Text type="H4" color={Colors.Primary}>
           {t('save')}
         </Text>

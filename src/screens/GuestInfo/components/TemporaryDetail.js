@@ -4,6 +4,7 @@ import { useTranslations } from '../../../hooks/Common/useTranslations';
 import Text from '../../../commons/Text';
 import { Colors } from '../../../configs';
 import styles from '../styles/AccessScheduleDetailStyles';
+import { TESTID } from '../../../configs/Constants';
 
 const TemporaryDetail = ({
   onShowSetDateTime,
@@ -26,7 +27,10 @@ const TemporaryDetail = ({
       <Text type="Body" color={Colors.Gray8} style={styles.title}>
         {t('start')}
       </Text>
-      <TouchableOpacity onPress={onSetTimeStart}>
+      <TouchableOpacity
+        onPress={onSetTimeStart}
+        testID={TESTID.TEMPORARY_TEXT_BUTTON}
+      >
         <Text type="Body" color={Colors.Orange} style={styles.value}>
           {temporaryTimeStart.format('hh:mm A DD/MM/YYYY')}
         </Text>
@@ -34,7 +38,10 @@ const TemporaryDetail = ({
       <Text type="Body" color={Colors.Gray8} style={styles.title}>
         {t('end')}
       </Text>
-      <TouchableOpacity onPress={onSetTimeEnd}>
+      <TouchableOpacity
+        onPress={onSetTimeEnd}
+        testID={TESTID.TEMPORARY_TEXT_BUTTON}
+      >
         <Text type="Body" color={Colors.Orange} style={styles.value}>
           {temporaryTimeEnd.format('hh:mm A DD/MM/YYYY')}
         </Text>

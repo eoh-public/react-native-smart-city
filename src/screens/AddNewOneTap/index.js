@@ -14,16 +14,17 @@ import { axiosPost } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 
 const AddNewOneTap = memo(({ route }) => {
-  const { type, unit } = route.params;
+  const { type, unit, automateData = {} } = route.params;
   const t = useTranslations();
   const { navigate } = useNavigation();
-  const [name, setName] = useState(t('tap_to_run'));
+  const [name, setName] = useState('');
 
   const handleContinue = useCallback(async () => {
     const { success, data } = await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), {
       unit: unit.id,
       type: type,
       name: name,
+      ...automateData,
     });
     if (success) {
       navigate(Routes.ScriptDetail, {
@@ -32,9 +33,10 @@ const AddNewOneTap = memo(({ route }) => {
         name: name,
         type: type,
         havePermission: true,
+        isCreateScriptSuccess: true,
       });
     }
-  }, [type, name, unit, navigate]);
+  }, [type, name, unit, automateData, navigate]);
 
   const onChangeName = useCallback((text) => {
     setName(text);
@@ -70,8 +72,9 @@ const AddNewOneTap = memo(({ route }) => {
       </ScrollView>
       <BottomButtonView
         style={styles.viewBottomFixed}
-        mainTitle={t('continue')}
+        mainTitle={t('save')}
         onPressMain={handleContinue}
+        typeMain={name !== '' ? 'primary' : 'disabled'}
       />
     </SafeAreaView>
   );

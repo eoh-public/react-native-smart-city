@@ -11,18 +11,27 @@ import Device from './Device';
 import BottomButtonView from '../../commons/BottomButtonView';
 import { HeaderCustom } from '../../commons/Header';
 import Routes from '../../utils/Route';
-import styles from './Styles/SelectDeviceStyles';
+import styles from './Styles/SelectSensorDevicesStyles';
+import { AUTOMATE_SELECT } from '../../configs/Constants';
+import { popAction } from '../../navigations/utils';
 
-const SelectDevice = memo(({ route }) => {
+const SelectSensorDevices = memo(({ route }) => {
   const t = useTranslations();
-  const { unit, automateId, scriptName } = route.params;
+  const {
+    unit,
+    automateId,
+    title = AUTOMATE_SELECT.SELECT_DEVICES,
+    type,
+    isScript,
+    scriptName,
+  } = route.params;
 
   const [listStation, setListStation] = useState([]);
   const [listMenuItem, setListMenuItem] = useState([]);
   const [indexStation, setIndexStation] = useState(0);
   const [station, setStation] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState();
-  const { navigate } = useNavigation();
+  const { navigate, dispatch } = useNavigation();
 
   const onSnapToItem = useCallback(
     (item, index) => {
@@ -33,9 +42,13 @@ const SelectDevice = memo(({ route }) => {
   );
 
   const fetchDetails = useCallback(async () => {
-    await fetchWithCache(API.UNIT.DEVICE_CONTROL(unit.id), {}, (response) => {
+    let callAPI = API.UNIT.DEVICE_CONTROL(unit.id);
+    if (title === AUTOMATE_SELECT.SELECT_SENSOR) {
+      // TODO will update API later
+      callAPI = API.UNIT.DEVICE_CONTROL(unit.id);
+    }
+    await fetchWithCache(callAPI, {}, (response) => {
       const { success, data } = response;
-
       if (success) {
         const listMenu = data.map((item, index) => ({
           text: item.name,
@@ -47,7 +60,7 @@ const SelectDevice = memo(({ route }) => {
         setListStation(listMenu.concat([{ text: '' }]));
       }
     });
-  }, [unit.id]);
+  }, [title, unit.id]);
 
   useEffect(() => {
     fetchDetails();
@@ -61,26 +74,43 @@ const SelectDevice = memo(({ route }) => {
     }
   };
 
-  const onPressContinue = () => {
+  const onPressContinue = useCallback(() => {
     navigate(Routes.SelectAction, {
       unit,
       device: selectedDevice,
       automateId: automateId,
       stationName: station[indexStation]?.name,
+      isScript,
+      type,
       scriptName,
     });
-  };
+  }, [
+    selectedDevice,
+    automateId,
+    station,
+    indexStation,
+    navigate,
+    unit,
+    type,
+    isScript,
+    scriptName,
+  ]);
+
+  const onClose = useCallback(() => {
+    isScript ? dispatch(popAction(2)) : alert(t('feature_under_development'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScript]);
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onClose={onClose} />
 
       <ScrollView
         style={styles.wrap}
         contentContainerStyle={styles.contentContainerStyle}
       >
         <Text bold type="H2" style={styles.title}>
-          {t('select_devices')}
+          {t(title)}
         </Text>
 
         <NavBar
@@ -117,4 +147,4 @@ const SelectDevice = memo(({ route }) => {
   );
 });
 
-export default SelectDevice;
+export default SelectSensorDevices;

@@ -1,22 +1,17 @@
+import { Colors } from '../../../configs';
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../configs';
 
 export default StyleSheet.create({
-  wrap: {
+  container: {
     flex: 1,
     backgroundColor: Colors.White,
   },
-  container: {
-    paddingBottom: 250,
-  },
   title: {
-    marginVertical: 16,
-    marginLeft: 16,
+    marginBottom: 32,
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    margin: 16,
+  scollView: {
+    paddingHorizontal: 16,
+    paddingBottom: 150,
   },
   viewBottom: {
     borderColor: Colors.Gray4,
@@ -24,5 +19,4 @@ export default StyleSheet.create({
     borderTopWidth: 1,
     backgroundColor: Colors.White,
   },
-  automate: { marginRight: 16, marginLeft: 16 },
 });

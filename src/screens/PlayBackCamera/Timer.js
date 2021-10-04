@@ -35,7 +35,7 @@ const Timer = ({
       (i) => i + minimum
     );
     return (
-      <View style={[styles.wrap, { width: timerWidth }]}>
+      <View style={[styles.wrap, { width: timerWidth + segmentWidth }]}>
         <View
           style={{
             width: spacerWidth,

@@ -6,6 +6,7 @@ import Text from '../../../commons/Text';
 import { Colors } from '../../../configs';
 import { REPEAT_ITEMS } from '../constant';
 import styles from '../styles/AccessScheduleDetailStyles';
+import { TESTID } from '../../../configs/Constants';
 
 const RecurringDetail = ({
   onShowSetDateTime,
@@ -67,7 +68,10 @@ const RecurringDetail = ({
       <Text type="Body" color={Colors.Gray8} style={styles.title}>
         {t('start')}
       </Text>
-      <TouchableOpacity onPress={onSetTimeStart}>
+      <TouchableOpacity
+        onPress={onSetTimeStart}
+        testID={TESTID.RECURRING_TEXT_BUTTON}
+      >
         <Text type="Body" color={Colors.Orange} style={styles.value}>
           {recurringTimeStart.format('HH:mm')}
         </Text>
@@ -75,7 +79,10 @@ const RecurringDetail = ({
       <Text type="Body" color={Colors.Gray8} style={styles.title}>
         {t('end')}
       </Text>
-      <TouchableOpacity onPress={onSetTimeEnd}>
+      <TouchableOpacity
+        onPress={onSetTimeEnd}
+        testID={TESTID.RECURRING_TEXT_BUTTON}
+      >
         <Text type="Body" color={Colors.Orange} style={styles.value}>
           {recurringTimeEnd.format('HH:mm')}
         </Text>
