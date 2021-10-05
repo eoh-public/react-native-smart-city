@@ -37,6 +37,7 @@ import SelectSensorDevices from '../screens/AddNewAction/SelectSensorDevices';
 import SelectAction from '../screens/AddNewAction/SelectAction';
 import EditSubUnit from '../screens/SubUnit/EditSubUnit';
 import SetUpSensor from '../screens/AddNewAction/SetupSensor';
+import EditDevice from '../screens/Device/EditDevice/index';
 
 const Stack = createStackNavigator();
 
@@ -77,6 +78,13 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.ManageUnit}
         component={ManageUnit}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.EditDevice}
+        component={EditDevice}
         options={{
           headerShown: false,
         }}
