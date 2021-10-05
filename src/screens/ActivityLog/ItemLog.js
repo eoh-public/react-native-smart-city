@@ -2,34 +2,25 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import moment from 'moment';
 import t from '../../hooks/Common/useTranslations';
-import styles from './Styles/ItemLogStyles';
+import styles from './styles/itemLogStyles';
 
-const DetailActionLog = ({ item }) => {
-  return (
-    <Text style={styles.text}>
-      {`${item.action_name} ${t('by')} `}
-      <Text style={styles.name}>{item.name}</Text>
-    </Text>
-  );
-};
+const DetailManualActivatedLog = ({ item }) => (
+  <Text style={styles.text}>
+    {item.action_name
+      ? `${item.action_name} ${t('by')} `
+      : `${t('activated_by')} `}
+    <Text style={styles.name}>{item.name || item.params?.username}</Text>
+  </Text>
+);
 
-const DetailSmartAssistantLog = () => {
-  return <Text style={styles.text}>{t('auto_activated')}</Text>;
-};
-
-const DetailOneTapLog = ({ item }) => {
-  return (
-    <Text style={styles.text}>
-      {`${t('activated_by')} `}
-      <Text style={styles.name}>{item.params.username}</Text>
-    </Text>
-  );
-};
+const DetailAutoActivatedLog = () => (
+  <Text style={styles.text}>{t('auto_activated')}</Text>
+);
 
 const itemDetailMaps = {
-  action: DetailActionLog,
-  'automate.AUTO_ACTIVATED': DetailSmartAssistantLog,
-  'automate.ACTIVATED_BY': DetailOneTapLog,
+  action: DetailManualActivatedLog,
+  'automate.AUTO_ACTIVATED': DetailAutoActivatedLog,
+  'automate.ACTIVATED_BY': DetailManualActivatedLog,
 };
 
 const ItemLog = ({ item, type, length, index }) => {

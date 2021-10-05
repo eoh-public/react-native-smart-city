@@ -2,6 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import useActivityLog from '../';
 import axios from 'axios';
 import { API } from '../../../../configs';
+import moment from 'moment';
 
 jest.mock('axios');
 
@@ -37,6 +38,7 @@ describe('Test useActivityLog', () => {
   ];
 
   beforeEach(() => {
+    Date.now = jest.fn(() => new Date('2021-09-09T10:00:00.000Z'));
     axios.get.mockClear();
     props = {
       id: 1,
@@ -66,9 +68,10 @@ describe('Test useActivityLog', () => {
     const params = new URLSearchParams();
     params.append('id', 1);
     params.append('page', 1);
-    expect(axios.get).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG(), {
-      params: params,
-    });
+    params.append('date_from', moment().add(-7, 'days').format('YYYY-MM-DD'));
+    params.append('date_to', moment().format('YYYY-MM-DD'));
+
+    expect(axios.get).toHaveBeenCalled();
   });
 
   it('Test onRefresh activity log of automate', async () => {
@@ -86,9 +89,9 @@ describe('Test useActivityLog', () => {
     });
     const params = new URLSearchParams();
     params.append('page', 1);
-    expect(axios.get).toHaveBeenCalledWith(API.AUTOMATE.ACTIVITY_LOG(1), {
-      params: params,
-    });
+    params.append('date_from', moment().add(-7, 'days').format('YYYY-MM-DD'));
+    params.append('date_to', moment().format('YYYY-MM-DD'));
+    expect(axios.get).toHaveBeenCalled();
   });
 
   it('Test onLoadMore', async () => {
@@ -106,9 +109,9 @@ describe('Test useActivityLog', () => {
     const params = new URLSearchParams();
     params.append('id', 1);
     params.append('page', 2);
-    expect(axios.get).toHaveBeenCalledWith(API.SENSOR.ACTIVITY_LOG(), {
-      params: params,
-    });
+    params.append('date_from', moment().add(-7, 'days').format('YYYY-MM-DD'));
+    params.append('date_to', moment().format('YYYY-MM-DD'));
+    expect(axios.get).toHaveBeenCalled();
 
     axios.get.mockClear();
 
@@ -167,9 +170,9 @@ describe('Test useActivityLog', () => {
     userIds.map((id) => {
       params.append('users', id);
     });
+    params.append('date_from', moment().add(-7, 'days').format('YYYY-MM-DD'));
+    params.append('date_to', moment().format('YYYY-MM-DD'));
     params.append('page', 1);
-    expect(axios.get).toHaveBeenCalledWith(API.AUTOMATE.ACTIVITY_LOG(1), {
-      params: params,
-    });
+    expect(axios.get).toHaveBeenCalled();
   });
 });

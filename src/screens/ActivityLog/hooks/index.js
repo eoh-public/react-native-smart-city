@@ -34,6 +34,8 @@ export default ({ id, type, share }) => {
   const [members, setMembers] = useState([]);
   const [filters, setFilters] = useState({
     users: [],
+    date_from: moment().add(-7, 'days').valueOf(),
+    date_to: moment().valueOf(),
   });
 
   const getDataForList = useCallback((data) => {
@@ -65,6 +67,8 @@ export default ({ id, type, share }) => {
     filters.users.map((id) => {
       params.append('users', id);
     });
+    params.append('date_from', moment(filters.date_from).format('YYYY-MM-DD'));
+    params.append('date_to', moment(filters.date_to).format('YYYY-MM-DD'));
     for (const [key, value] of Object.entries(api.params(id))) {
       params.append(key, value);
     }

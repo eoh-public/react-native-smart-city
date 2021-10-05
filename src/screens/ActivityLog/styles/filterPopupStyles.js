@@ -27,13 +27,13 @@ export default StyleSheet.create({
     marginTop: 16,
   },
   row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  wrapText: {
     flex: 1,
     paddingVertical: 8,
     marginRight: 24,
     marginLeft: 16,
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });

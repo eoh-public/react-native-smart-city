@@ -7,6 +7,9 @@ import { mockSCStore } from '../../../context/mockStore';
 import RadioCircle from '../../../commons/RadioCircle';
 import { TESTID } from '../../../configs/Constants';
 import BottomButtonView from '../../../commons/BottomButtonView';
+import DateTimeRangeChange from '../../../commons/DateTimeRangeChange';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 
 const wrapComponent = (props) => (
   <SCProvider initState={mockSCStore({})}>
@@ -22,6 +25,7 @@ jest.mock('react', () => {
 });
 
 test('test FilterPopup', async () => {
+  Date.now = jest.fn(() => new Date('2021-09-09T10:00:00.000Z'));
   const mockOnHide = jest.fn();
   const mockOnApply = jest.fn();
   let tree;
@@ -78,7 +82,6 @@ test('test FilterPopup', async () => {
   expect(radioCircles[0].props.active).toBeFalsy();
   expect(radioCircles[1].props.active).toBeTruthy();
   expect(radioCircles[2].props.active).toBeTruthy();
-
   // click 2
   await act(async () => {
     await itemButtons[2].props.onPress();
@@ -104,4 +107,58 @@ test('test FilterPopup', async () => {
   expect(radioCircles[0].props.active).toBeTruthy();
   expect(radioCircles[1].props.active).toBeFalsy();
   expect(radioCircles[2].props.active).toBeFalsy();
+});
+
+test('test date picker', async () => {
+  let tree;
+  let props = {
+    isVisible: true,
+    members: [],
+    filters: {
+      users: [],
+    },
+    onHide: jest.fn(),
+    onApply: jest.fn(),
+  };
+
+  await act(async () => {
+    tree = await create(wrapComponent(props));
+  });
+  const instance = tree.root;
+  const dateTimeRangeChange = instance.findByType(DateTimeRangeChange);
+  const datePicker = instance.findAllByType(DateTimePickerModal);
+
+  const _testDatePicker = async (index) => {
+    await act(async () => {
+      if (index === 0) {
+        await dateTimeRangeChange.props.onStart();
+      } else {
+        await dateTimeRangeChange.props.onEnd();
+      }
+    });
+    expect(datePicker[index].props.isVisible).toBeTruthy();
+
+    await act(async () => {
+      await datePicker[index].props.onCancel();
+    });
+    expect(datePicker[index].props.isVisible).toBeFalsy();
+
+    await act(async () => {
+      if (index === 0) {
+        await dateTimeRangeChange.props.onStart();
+      } else {
+        await dateTimeRangeChange.props.onEnd();
+      }
+    });
+    expect(datePicker[index].props.isVisible).toBeTruthy();
+
+    const time = moment();
+    await act(async () => {
+      await datePicker[index].props.onConfirm(time);
+    });
+    expect(datePicker[index].props.isVisible).toBeFalsy();
+  };
+
+  await _testDatePicker(0);
+  await _testDatePicker(1);
 });

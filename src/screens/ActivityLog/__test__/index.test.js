@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { SectionList, Text, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { SectionList, Text } from 'react-native';
 import { create } from 'react-test-renderer';
 import { act } from '@testing-library/react-hooks';
 import ActivityLog from '../';
 import { Constants } from '../../../configs';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
+import ItemLog from '../ItemLog';
+import axios from 'axios';
 
 const mockUseSelector = jest.fn();
-const mockSetState = jest.fn();
-const mockRoute = jest.fn();
 
 jest.mock('react-redux', () => {
   return {
@@ -22,45 +22,34 @@ jest.mock('react-redux', () => {
 jest.mock('react', () => {
   return {
     ...jest.requireActual('react'),
-    useState: jest.fn((init) => [init, mockSetState]),
     memo: (x) => x,
-  };
-});
-
-jest.mock('@react-navigation/core', () => {
-  return {
-    ...jest.requireActual('@react-navigation/core'),
-    useRoute: () => mockRoute,
   };
 });
 
 jest.mock('axios');
 
-const wrapComponent = () => (
+const wrapComponent = (route) => (
   <SCProvider initState={mockSCStore({})}>
-    <ActivityLog />
+    <ActivityLog route={route} />
   </SCProvider>
 );
 
 describe('Test Activity log', () => {
   let tree;
+  let route = {
+    params: {
+      id: 1,
+      type: 'action',
+    },
+  };
   Date.now = jest.fn(() => new Date('2021-07-02T15:48:24.917932Z'));
 
-  afterEach(() => {
-    mockSetState.mockClear();
-  });
-
   it('render empty list', async () => {
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
+    axios.get.mockImplementation(async () => {
+      return { status: 400 };
+    });
     await act(async () => {
-      tree = await create(wrapComponent());
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const SectionListElement = instance.findAllByType(SectionList);
@@ -73,20 +62,26 @@ describe('Test Activity log', () => {
     });
   });
 
-  it('render ActivityIndicator', async () => {
-    useState.mockImplementationOnce((init) => [[], mockSetState]);
-    useState.mockImplementationOnce((init) => [true, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    useState.mockImplementationOnce((init) => [false, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
-    useState.mockImplementationOnce((init) => [init, mockSetState]);
+  it('render list', async () => {
+    axios.get.mockImplementationOnce(() => ({
+      status: 200,
+      data: {
+        results: [
+          {
+            id: 2,
+            action: 'Gara Up',
+            name: 'Kevin Love',
+            created_at: '2021-07-01T15:48:24.917932Z',
+          },
+        ],
+        count: 1,
+      },
+    }));
     await act(async () => {
-      tree = await create(wrapComponent());
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
-    const ActivityIndicatorElement = instance.findAllByType(ActivityIndicator);
-    expect(ActivityIndicatorElement).toHaveLength(1);
+    const items = instance.findAllByType(ItemLog);
+    expect(items).toHaveLength(1);
   });
 });

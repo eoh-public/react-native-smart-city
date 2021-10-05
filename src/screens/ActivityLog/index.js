@@ -14,17 +14,15 @@ import { HeaderCustom } from '../../commons/Header';
 import ItemLog from './ItemLog';
 import FilterPopup from './FilterPopup';
 import { getTitleFromTime } from '../../utils/Converter/time';
-import { useRoute } from '@react-navigation/native';
 import { useBoolean } from '../../hooks/Common';
 import useActivityLog from './hooks';
-import styles from './Styles/indexStyles';
+import styles from './styles/indexStyles';
 
 const keyExtractor = (item) => item.id;
 
-const ActivityLogScreen = () => {
+const ActivityLogScreen = ({ route }) => {
   const t = useTranslations();
-  const { params = {} } = useRoute();
-  const { id, type, share } = params;
+  const { id, type, share } = route.params;
   const {
     data,
     isLoading,
