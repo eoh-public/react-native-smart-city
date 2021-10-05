@@ -64,7 +64,7 @@ const EditDevice = memo(() => {
     if (stateAlertAction.isDelete) {
       await deleteSensor();
     } else {
-      renameSensor();
+      await renameSensor();
     }
   }, [stateAlertAction.isDelete, deleteSensor, renameSensor]);
 
@@ -79,14 +79,12 @@ const EditDevice = memo(() => {
         >
           <View style={styles.DeviceButtonLeft}>
             <Text type="H4" semibold>
-              {' '}
-              {t('device_name')}{' '}
+              {t('device_name')}
             </Text>
           </View>
           <View style={styles.DeviceButtonRight}>
             <Text type="Body" Reugular color={Colors.Grey7}>
-              {' '}
-              {sensorName}{' '}
+              {sensorName}
             </Text>
             <IconOutline
               name="right"
