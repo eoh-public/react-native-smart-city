@@ -154,4 +154,10 @@ export default StyleSheet.create({
     lineHeight: 24,
     color: Colors.Gray9,
   },
+  titleItem: {
+    flexDirection: 'row',
+  },
+  paddingRight4: {
+    paddingRight: 4,
+  },
 });
