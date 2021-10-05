@@ -73,7 +73,7 @@ const RecurringDetail = ({
         testID={TESTID.RECURRING_TEXT_BUTTON}
       >
         <Text type="Body" color={Colors.Orange} style={styles.value}>
-          {recurringTimeStart.format('HH:mm')}
+          {recurringTimeStart.format('HH:mm A')}
         </Text>
       </TouchableOpacity>
       <Text type="Body" color={Colors.Gray8} style={styles.title}>
@@ -84,7 +84,7 @@ const RecurringDetail = ({
         testID={TESTID.RECURRING_TEXT_BUTTON}
       >
         <Text type="Body" color={Colors.Orange} style={styles.value}>
-          {recurringTimeEnd.format('HH:mm')}
+          {recurringTimeEnd.format('HH:mm A')}
         </Text>
       </TouchableOpacity>
       <Text type="Body" color={Colors.Gray8} style={styles.title}>
