@@ -20,8 +20,8 @@ import { useSCContextSelector } from '../../context';
 
 const Shared = () => {
   useBlockBackAndroid();
-  useTitleHeader(t('text_shared_with_me'));
   const t = useTranslations();
+  useTitleHeader(t('text_shared_with_me'));
   const navigation = useNavigation();
   const [tab, setTabActiveState] = useState(0);
 

@@ -811,7 +811,7 @@ describe('test DeviceDetail', () => {
     });
     const instance = tree.root;
     const menu = instance.findByType(MenuActionMore);
-    const gotoActivityLog = menu.props.listMenuItem[3];
+    const gotoActivityLog = menu.props.listMenuItem[1];
 
     await act(async () => {
       await menu.props.onItemClick(gotoActivityLog);
