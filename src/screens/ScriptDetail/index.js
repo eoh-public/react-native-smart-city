@@ -6,7 +6,13 @@ import React, {
   useEffect,
   memo,
 } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  BackHandler,
+  Alert,
+} from 'react-native';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Icon } from '@ant-design/react-native';
 
@@ -32,16 +38,26 @@ import FImage from '../../commons/FImage';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
-import { AUTOMATE_TYPE, TESTID } from '../../configs/Constants';
+import { AUTOMATE_TYPE } from '../../configs/Constants';
+import { popAction } from '../../navigations/utils';
+import { TESTID } from '../../configs/Constants';
 
 const ScriptDetail = ({ route }) => {
-  const { navigate, goBack } = useNavigation();
+  const { navigate, goBack, dispatch } = useNavigation();
   const { params = {} } = route;
   const refMenuAction = useRef();
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
   const t = useTranslations();
-  const { id, name = '', type, havePermission, unit, dateNow = null } = params;
+  const {
+    id,
+    name = '',
+    type,
+    havePermission,
+    unit,
+    dateNow = null,
+    isCreateScriptSuccess,
+  } = params;
   const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
   const [inputName, setInputName] = useState(name);
@@ -74,6 +90,15 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const listMenuItem = useMemo(
+    () => [
+      { text: t('rename'), doAction: onShowRename },
+      { text: t('activity_log'), doAction: null },
+      { text: t('delete_script'), doAction: onShowDelete(scriptName) },
+    ],
+    [t, onShowRename, onShowDelete, scriptName]
+  );
+
   const starScript = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.STAR_SCRIPT(id));
     success && setIsStar(true);
@@ -91,15 +116,6 @@ const ScriptDetail = ({ route }) => {
       starScript();
     }
   }, [isStar, starScript, unstarScript]);
-
-  const listMenuItem = useMemo(
-    () => [
-      { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: null },
-      { text: t('delete_script'), doAction: onShowDelete(scriptName) },
-    ],
-    [t, onShowRename, onShowDelete, scriptName]
-  );
 
   const handleShowMenuAction = useCallback(
     () => showPopoverWithRef(refMenuAction),
@@ -140,6 +156,8 @@ const ScriptDetail = ({ route }) => {
       unit,
       scriptName,
       automateId: id,
+      isScript: false,
+      type: AUTOMATE_TYPE.ONE_TAP,
     });
   }, [navigate, id, scriptName, unit]);
 
@@ -152,6 +170,15 @@ const ScriptDetail = ({ route }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  const onGoBack = useCallback(() => {
+    if (isCreateScriptSuccess) {
+      dispatch(popAction(5));
+    } else {
+      goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCreateScriptSuccess]);
 
   const Item = useCallback(({ item, index }) => {
     return (
@@ -247,12 +274,21 @@ const ScriptDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, dateNow]); // TODO will remove dateNow later
 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => isCreateScriptSuccess
+    );
+    return () => backHandler.remove();
+  }, [isCreateScriptSuccess]);
+
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
         title={scriptName}
         headerAniStyle={styles.headerAniStyle}
         rightComponent={rightComponent}
+        onGoBack={onGoBack}
       >
         <View style={styles.wrapContent}>
           <Text type="H3" semibold>
@@ -260,8 +296,8 @@ const ScriptDetail = ({ route }) => {
           </Text>
           <ItemAutomate
             type={type}
-            // eslint-disable-next-line no-alert
-            onPress={() => alert(t('feature_under_development'))}
+            onPress={() => Alert.alert(t('feature_under_development'))}
+            disabledOnPress={!havePermission}
           />
           {type === AUTOMATE_TYPE.ONE_TAP && (
             <TouchableOpacity

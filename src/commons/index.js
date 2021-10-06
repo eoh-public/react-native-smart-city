@@ -14,6 +14,7 @@ import MenuActionAddnew from './MenuActionAddnew';
 import MenuActionList from './MenuActionList';
 import RadioCircle from './RadioCircle';
 import { CircleButton } from './CircleButton';
+import HorizontalPicker from './HorizontalPicker';
 
 export {
   ButtonPopup,
@@ -32,4 +33,5 @@ export {
   MenuActionList,
   RadioCircle,
   CircleButton,
+  HorizontalPicker,
 };

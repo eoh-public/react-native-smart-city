@@ -117,7 +117,8 @@ describe('test Item', () => {
     });
   });
 
-  test('render SubUnitAutomate handleScriptAction fail', async () => {
+  test('render SubUnitAutomate not is owner handleScriptAction fail', async () => {
+    data.isOwner = false;
     const response = {
       status: 400,
     };
@@ -144,6 +145,51 @@ describe('test Item', () => {
       position: 'bottom',
       text1: 'Activation failed.',
       visibilityTime: 1000,
+    });
+  });
+
+  test('render SubUnitAutomate script value_change', async () => {
+    data.isOwner = false;
+    data.type = 'value_change';
+    data.automates = [
+      {
+        id: 1,
+        user: 6,
+        type: 'value_change',
+        activate_at: null,
+        script: {
+          name: 'Rain',
+          icon: '',
+          icon_kit: 'https://www.figma.com/',
+        },
+      },
+    ];
+    const response = {
+      status: 200,
+    };
+
+    axios.post.mockImplementation(async () => {
+      return response;
+    });
+
+    await act(async () => {
+      tree = await create(wrapComponent(data));
+    });
+
+    const goDetail = tree.root.findAll(
+      (el) =>
+        el.props.testID === TESTID.GO_DETAIL && el.type === TouchableOpacity
+    );
+    expect(goDetail).toHaveLength(1);
+    await act(async () => {
+      await goDetail[0].props.onPress();
+    });
+    expect(mockedNavigate).toHaveBeenCalledWith(Routes.ScriptDetail, {
+      havePermission: false,
+      id: 1,
+      name: 'Rain',
+      type: 'value_change',
+      unit: undefined,
     });
   });
 });

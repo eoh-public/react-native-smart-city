@@ -94,6 +94,7 @@ describe('test AddNewOneTap', () => {
       unit: {
         id: 1,
       },
+      isCreateScriptSuccess: true,
     });
   });
   test('create AddNewOneTap fail', async () => {

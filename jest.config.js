@@ -7,10 +7,10 @@ module.exports = {
   collectCoverage: true,
   coverageThreshold: {
     global: {
-      statements: 68.34,
-      branches: 61.98,
-      functions: 61.48,
-      lines: 68.83,
+      statements: 74.81,
+      branches: 66.48,
+      functions: 67.95,
+      lines: 75.34,
     },
   },
   modulePathIgnorePatterns: ['SampleProject'],
@@ -20,6 +20,8 @@ module.exports = {
     '!**/node_modules/**',
     '!**/vendor/**',
     '!src/libs/**',
+    '!src/navigations/**',
+    '!src/context/**',
   ],
   transformIgnorePatterns: ['node_modules/(?!react\b)\bw+\b'],
   setupFiles: [

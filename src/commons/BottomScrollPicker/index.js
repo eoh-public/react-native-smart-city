@@ -35,7 +35,11 @@ const BottomScrollPicker = ({ isVisible, onPicked, onHide, min, max }) => {
   }, [number, onHide, onPicked]);
 
   return (
-    <BottomSheet isVisible={isVisible} onHide={onCancel} title={t('set_hour')}>
+    <BottomSheet
+      isVisible={isVisible}
+      onBackdropPress={onCancel}
+      title={t('set_hour')}
+    >
       <View style={styles.container}>
         <Picker
           dataSource={numberData}

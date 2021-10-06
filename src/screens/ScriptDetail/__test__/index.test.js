@@ -74,8 +74,8 @@ describe('Test ScriptDetail', () => {
   });
 
   test('test rename script', async () => {
-    await act(() => {
-      tree = create(wrapComponent(route));
+    await act(async () => {
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const menu = instance.findByType(MenuActionMore);
@@ -111,8 +111,8 @@ describe('Test ScriptDetail', () => {
   });
 
   test('test delete script', async () => {
-    await act(() => {
-      tree = create(wrapComponent(route));
+    await act(async () => {
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const menu = instance.findByType(MenuActionMore);
@@ -217,6 +217,8 @@ describe('Test ScriptDetail', () => {
       unit: route.params.unit,
       automateId: route.params.id,
       scriptName: route.params.name,
+      isScript: false,
+      type: AUTOMATE_TYPE.ONE_TAP,
     });
   });
 });

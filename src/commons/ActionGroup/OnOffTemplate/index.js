@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { DEVICE_TYPE } from '../../../configs/Constants';
 
 import { watchMultiConfigs } from '../../../iot/Monitor';
 import { useConfigGlobalState } from '../../../iot/states';
@@ -68,6 +69,10 @@ const OnOffTemplate = memo(({ actionGroup, doAction, sensor }) => {
   ]);
 
   useEffect(() => {
+    if (sensor?.device_type === DEVICE_TYPE.LG_THINQ) {
+      return;
+    }
+
     if (sensor?.is_managed_by_backend) {
       watchMultiConfigs([configuration.config]);
     }

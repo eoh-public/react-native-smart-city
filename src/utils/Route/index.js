@@ -103,10 +103,14 @@ const Routes = {
   ScriptDetail: 'ScriptDetail',
   EditActionsList: 'EditActionsList',
   PlaybackCamera: 'PlaybackCamera',
+  SetUpSensor: 'SetUpSensor',
   AddNewAutoSmart: 'AddNewAutoSmart',
   AllCamera: 'AllCamera',
   AddNewOneTap: 'AddNewOneTap',
+  SelectUnit: 'SelectUnit',
   AddNewScriptAction: 'AddNewScriptAction',
+  Automate: 'Automate',
+  EditDevice: 'EditDevice',
   SetSchedule: 'SetSchedule',
 };
 

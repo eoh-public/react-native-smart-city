@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import { useNavigation, useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import ParsedText from 'react-native-parsed-text';
 
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
@@ -19,7 +19,7 @@ import { ToastBottomHelper } from '../../utils/Utils';
 const EditActionsList = () => {
   const t = useTranslations();
   const { goBack } = useNavigation();
-  const { params = {} } = useRoute();
+  const { params = {} } = useRoute() || {};
   const { data = [], id, setData } = params;
   const [itemRemove, setItemRemove] = useState({
     id: '',

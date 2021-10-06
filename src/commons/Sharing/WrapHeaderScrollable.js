@@ -14,84 +14,86 @@ import { Colors, Theme } from '../../configs';
 import HeaderAni, { heightHeader } from '../../commons/HeaderAni';
 import Text from '../../commons/Text';
 
-const WrapHeaderScrollable = memo(
-  ({
-    children,
-    title,
-    subTitle,
-    rightComponent,
-    loading = false,
-    onRefresh,
-    styleScrollView,
-    contentContainerStyle,
-    onLoadMore,
-    headerAniStyle,
-    headerAniCenterStyle,
-  }) => {
-    const animatedScrollYValue = useRef(new Animated.Value(0)).current;
-    const [loadingMore, setLoadingMore] = useState(false);
-    const loadMore = useCallback(() => {
-      if (onLoadMore) {
-        setLoadingMore(true);
-        onLoadMore(() => setLoadingMore(false));
-      }
-    }, [onLoadMore]);
+const WrapHeaderScrollable = ({
+  children,
+  title,
+  subTitle,
+  rightComponent,
+  loading = false,
+  onRefresh,
+  styleScrollView,
+  contentContainerStyle,
+  onLoadMore,
+  headerAniStyle,
+  headerAniCenterStyle,
+  onGoBack,
+}) => {
+  const animatedScrollYValue = useRef(new Animated.Value(0)).current;
+  const [loadingMore, setLoadingMore] = useState(false);
+  const loadMore = useCallback(() => {
+    if (onLoadMore) {
+      setLoadingMore(true);
+      onLoadMore(() => setLoadingMore(false));
+    }
+  }, [onLoadMore]);
 
-    return (
-      <SafeAreaView style={[styles.container, headerAniStyle]}>
-        <HeaderAni
-          scrollY={animatedScrollYValue}
-          title={title}
-          rightComponent={rightComponent}
-          headerAniCenterStyle={headerAniCenterStyle}
-          headerStyle={headerAniStyle}
-        />
-        <Animated.ScrollView
-          scrollEventThrottle={16}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: animatedScrollYValue } } }],
-            {
-              useNativeDriver: false,
-            }
-          )}
-          style={[styles.scrollView, styleScrollView]}
-          contentContainerStyle={[
-            styles.contentContainerStyle,
-            contentContainerStyle && contentContainerStyle,
-          ]}
-          refreshControl={
-            <RefreshControl
-              refreshing={loading}
-              onRefresh={onRefresh}
-              progressViewOffset={heightHeader}
-            />
+  return (
+    <SafeAreaView style={[styles.container, headerAniStyle]}>
+      <HeaderAni
+        scrollY={animatedScrollYValue}
+        title={title}
+        rightComponent={rightComponent}
+        headerAniCenterStyle={headerAniCenterStyle}
+        headerStyle={headerAniStyle}
+        onLeft={onGoBack}
+      />
+      <Animated.ScrollView
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: animatedScrollYValue } } }],
+          {
+            useNativeDriver: false,
           }
-          contentInset={{
-            top: heightHeader - (isIphoneX() ? 32 : 0),
-          }}
-          contentOffset={{
-            y: -heightHeader,
-          }}
-          showsVerticalScrollIndicator={false}
-          onMomentumScrollEnd={loadMore}
-        >
-          {!!subTitle && (
-            <Text type={'Body'} color={Colors.Gray8} style={styles.subTitle}>
-              {subTitle}
-            </Text>
-          )}
-          {children}
-          {loadingMore && (
-            <View style={styles.bottomLoading}>
-              <ActivityIndicator size="small" color={Colors.Black} />
-            </View>
-          )}
-        </Animated.ScrollView>
-      </SafeAreaView>
-    );
-  }
-);
-export default WrapHeaderScrollable;
+        )}
+        style={[styles.scrollView, styleScrollView]}
+        contentContainerStyle={[
+          styles.contentContainerStyle,
+          contentContainerStyle && contentContainerStyle,
+        ]}
+        refreshControl={
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={onRefresh}
+            progressViewOffset={heightHeader}
+          />
+        }
+        contentInset={{
+          top: heightHeader - (isIphoneX() ? 32 : 0),
+        }}
+        contentOffset={{
+          y: -heightHeader,
+        }}
+        showsVerticalScrollIndicator={false}
+        onMomentumScrollEnd={loadMore}
+      >
+        {!!subTitle && (
+          <Text type={'Body'} color={Colors.Gray8} style={styles.subTitle}>
+            {subTitle}
+          </Text>
+        )}
+        {children}
+        {loadingMore && (
+          <View style={styles.bottomLoading}>
+            <ActivityIndicator size="small" color={Colors.Black} />
+          </View>
+        )}
+      </Animated.ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default memo(WrapHeaderScrollable);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

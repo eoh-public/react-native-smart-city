@@ -2,6 +2,8 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { get } from 'lodash';
+
 import { useTranslations } from '../hooks/Common/useTranslations';
 import { Colors, Device } from '../configs';
 import Route from '../utils/Route';
@@ -29,12 +31,13 @@ import ManageAccessScreen from '../screens/ManageAccess';
 import GuestInfo from '../screens/GuestInfo';
 import ScriptDetail from '../screens/ScriptDetail';
 import EditActionsList from '../screens/EditActionsList';
+import SelectUnit from '../screens/SelectUnit';
 import SetSchedule from '../screens/SetSchedule';
 import SelectSensorDevices from '../screens/AddNewAction/SelectSensorDevices';
 import SelectAction from '../screens/AddNewAction/SelectAction';
-
 import EditSubUnit from '../screens/SubUnit/EditSubUnit';
-import _ from 'lodash';
+import SetUpSensor from '../screens/AddNewAction/SetupSensor';
+import EditDevice from '../screens/Device/EditDevice/index';
 
 const Stack = createStackNavigator();
 
@@ -64,7 +67,7 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.UnitDetail}
         component={UnitDetail}
-        initialParams={_.get(props, 'route.params', null)}
+        initialParams={get(props, 'route.params', null)}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -75,6 +78,13 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.ManageUnit}
         component={ManageUnit}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={Route.EditDevice}
+        component={EditDevice}
         options={{
           headerShown: false,
         }}
@@ -214,6 +224,7 @@ export const UnitStack = memo((props) => {
         component={ScriptDetail}
         options={{
           headerShown: false,
+          gestureEnabled: false,
         }}
       />
       <Stack.Screen
@@ -226,6 +237,16 @@ export const UnitStack = memo((props) => {
       <Stack.Screen
         name={Route.SelectSensorDevices}
         component={SelectSensorDevices}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={Route.SelectUnit}
+        component={SelectUnit}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={Route.SetUpSensor}
+        component={SetUpSensor}
         options={{ headerShown: false }}
       />
       <Stack.Screen

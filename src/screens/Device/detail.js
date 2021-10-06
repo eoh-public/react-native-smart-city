@@ -76,6 +76,12 @@ const DeviceDetail = ({ account, route }) => {
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 
+  const isShowSetupEmergencyContact =
+    display.items.filter(
+      (item) =>
+        item.type === 'emergency' && item.configuration.type === 'button'
+    ).length > 0;
+
   const addToFavorites = useCallback(async () => {
     const { success } = await axiosPost(
       API.SENSOR.ADD_TO_FAVOURITES(unit.id, sensor.station.id, sensor.id)
@@ -94,17 +100,7 @@ const DeviceDetail = ({ account, route }) => {
     }
   }, [unit, sensor]);
 
-  const listMenuItemDefault = useMemo(
-    () => [
-      {
-        text: t('edit'),
-      },
-      {
-        text: t('remove_device'),
-      },
-    ],
-    [t]
-  );
+  const listMenuItemDefault = useMemo(() => [], []);
 
   const listMenuItem = useMemo(() => {
     const menuItems = [...listMenuItemDefault];
@@ -118,11 +114,23 @@ const DeviceDetail = ({ account, route }) => {
       });
       if (isOwner) {
         menuItems.push({
+          text: t('edit'),
+          route: Routes.EditDevice,
+          data: { unit, sensor },
+        });
+        menuItems.push({
           route: Routes.ManageAccess,
           data: { unit, sensor },
           text: t('manage_access'),
         });
       }
+    }
+    if (isShowSetupEmergencyContact) {
+      menuItems.push({
+        route: Routes.ActivityLog,
+        data: { sensor },
+        text: t('activity_log'),
+      });
     }
     menuItems.push({
       route: Routes.DeviceInfo,
@@ -147,6 +155,7 @@ const DeviceDetail = ({ account, route }) => {
     display.items,
     t,
     isFavourite,
+    isShowSetupEmergencyContact,
     listMenuItemDefault,
     sensor,
     isOwner,
@@ -333,12 +342,6 @@ const DeviceDetail = ({ account, route }) => {
         item.type === 'emergency' && item.configuration.type === 'detail'
     ).length > 0;
 
-  const isShowSetupEmergencyContact =
-    display.items.filter(
-      (item) =>
-        item.type === 'emergency' && item.configuration.type === 'button'
-    ).length > 0;
-
   const isDisplayTime =
     display.items.filter(
       (item) => item.type !== 'action' && item.type !== 'camera'
@@ -360,7 +363,9 @@ const DeviceDetail = ({ account, route }) => {
           <>
             <ConnectedViewHeader
               lastUpdated={lastUpdated}
-              isDisplayTime={isDisplayTime}
+              isDisplayTime={
+                isShowSetupEmergencyContact ? false : isDisplayTime
+              }
             />
             {display.items.map((item) => (
               <SensorDisplayItem
