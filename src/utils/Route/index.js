@@ -110,6 +110,7 @@ const Routes = {
   SelectUnit: 'SelectUnit',
   AddNewScriptAction: 'AddNewScriptAction',
   Automate: 'Automate',
+  EditDevice: 'EditDevice',
   SetSchedule: 'SetSchedule',
 };
 

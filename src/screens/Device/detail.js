@@ -100,17 +100,7 @@ const DeviceDetail = ({ account, route }) => {
     }
   }, [unit, sensor]);
 
-  const listMenuItemDefault = useMemo(
-    () => [
-      {
-        text: t('edit'),
-      },
-      {
-        text: t('remove_device'),
-      },
-    ],
-    [t]
-  );
+  const listMenuItemDefault = useMemo(() => [], []);
 
   const listMenuItem = useMemo(() => {
     const menuItems = [...listMenuItemDefault];
@@ -123,6 +113,11 @@ const DeviceDetail = ({ account, route }) => {
         text: t('activity_log'),
       });
       if (isOwner) {
+        menuItems.push({
+          text: t('edit'),
+          route: Routes.EditDevice,
+          data: { unit, sensor },
+        });
         menuItems.push({
           route: Routes.ManageAccess,
           data: { unit, sensor },
