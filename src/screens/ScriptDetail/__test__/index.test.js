@@ -65,7 +65,9 @@ describe('Test ScriptDetail', () => {
 
     await act(async () => {
       await menu.props.onItemClick(rename);
+      await menu.props.hideComplete();
     });
+    expect(menu.props.isVisible).toBeFalsy();
     expect(alertAction.props.visible).toBeTruthy();
 
     const textInput = instance.findByType(_TextInput);
@@ -102,6 +104,7 @@ describe('Test ScriptDetail', () => {
 
     await act(async () => {
       await menu.props.onItemClick(deleteItem);
+      await menu.props.hideComplete();
     });
     expect(alertAction.props.visible).toBeTruthy();
 

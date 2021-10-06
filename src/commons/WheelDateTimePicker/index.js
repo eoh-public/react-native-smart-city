@@ -37,7 +37,7 @@ const WheelDateTimePicker = ({
 
   const { dateData, indexInitialDate, indexInitialHour, indexInitialMinute } =
     useMemo(() => {
-      const date = defaultValue ? moment(defaultValue) : moment().second(0);
+      const date = moment(defaultValue);
       const maximumDate = moment(date).add(15, 'days');
       const minimumDate = moment(date).add(-15, 'days');
       const [dateData, indexDate] =

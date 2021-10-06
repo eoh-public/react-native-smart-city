@@ -45,8 +45,14 @@ const ScriptDetail = ({ route }) => {
   const { navigate, goBack, dispatch } = useNavigation();
   const { params = {} } = route;
   const refMenuAction = useRef();
-  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
-    usePopover();
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+    hidingPopoverComplete,
+    hidePopoverComplete,
+  } = usePopover();
   const t = useTranslations();
   const {
     id,
@@ -313,6 +319,7 @@ const ScriptDetail = ({ route }) => {
       <MenuActionMore
         isVisible={showingPopover}
         hideMore={hidePopover}
+        hideComplete={hidePopoverComplete}
         listMenuItem={listMenuItem}
         childRef={childRef}
         onItemClick={onItemClick}
@@ -320,7 +327,7 @@ const ScriptDetail = ({ route }) => {
         wrapStyle={styles.wrapStyle}
       />
       <AlertAction
-        visible={stateAlertAction.visible}
+        visible={stateAlertAction.visible && hidingPopoverComplete}
         hideModal={hideAlertAction}
         title={stateAlertAction.title}
         message={stateAlertAction.message}
