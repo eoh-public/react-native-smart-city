@@ -57,6 +57,7 @@ export default StyleSheet.create({
   },
   contentContainerStyle2: {
     paddingLeft: 2,
+    paddingRight: 16,
   },
   addNewItem: {
     marginTop: 7,

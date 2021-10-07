@@ -56,6 +56,9 @@ const ScriptDetail = ({ route }) => {
     unit,
     dateNow = null,
     isCreateScriptSuccess,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = params;
   const [isFavourite, setIsFavourite] = useState(false);
   const [scriptName, setScriptName] = useState(name);
@@ -138,14 +141,19 @@ const ScriptDetail = ({ route }) => {
   }, [data]);
 
   const onPressAddAction = useCallback(() => {
-    navigate(Routes.SelectSensorDevices, {
+    const params = {
       unit,
       automateId: id,
       scriptName: name,
       isScript: false,
-      type: AUTOMATE_TYPE.ONE_TAP,
-    });
-  }, [navigate, id, name, unit]);
+      type,
+      isCreateNewAction: true,
+    };
+    navigate(
+      isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
+      params
+    );
+  }, [navigate, id, name, unit, isMultiUnits]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -158,8 +166,9 @@ const ScriptDetail = ({ route }) => {
   }, [id]);
 
   const onGoBack = useCallback(() => {
-    if (isCreateScriptSuccess) {
+    if (isCreateScriptSuccess || isCreateNewAction) {
       dispatch(popAction(5));
+      isAutomateTab && goBack();
     } else {
       goBack();
     }

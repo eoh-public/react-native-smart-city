@@ -12,11 +12,19 @@ import Text from '../../commons/Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { axiosPost } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
+import { popAction } from '../../navigations/utils';
 
 const AddNewOneTap = memo(({ route }) => {
-  const { type, unit, automateData = {} } = route.params;
+  const {
+    type,
+    unit,
+    automateData = {},
+    isAutomateTab,
+    isScript,
+    isMultiUnits,
+  } = route.params;
   const t = useTranslations();
-  const { navigate } = useNavigation();
+  const { navigate, dispatch, goBack } = useNavigation();
   const [name, setName] = useState('');
 
   const handleContinue = useCallback(async () => {
@@ -34,13 +42,35 @@ const AddNewOneTap = memo(({ route }) => {
         type: type,
         havePermission: true,
         isCreateScriptSuccess: true,
+        isAutomateTab,
+        isScript,
+        isMultiUnits,
       });
     }
-  }, [type, name, unit, automateData, navigate]);
+  }, [
+    type,
+    name,
+    unit,
+    automateData,
+    navigate,
+    isAutomateTab,
+    isScript,
+    isMultiUnits,
+  ]);
 
   const onChangeName = useCallback((text) => {
     setName(text);
   }, []);
+
+  const onClose = useCallback(() => {
+    if (isScript) {
+      dispatch(popAction(5));
+      isAutomateTab && goBack();
+    } else {
+      goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScript, isAutomateTab]);
 
   return (
     <SafeAreaView
@@ -50,7 +80,7 @@ const AddNewOneTap = memo(({ route }) => {
           : styles.containerIOS
       }
     >
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onClose={onClose} />
       <ScrollView>
         <Text
           testID={TESTID.ADD_NEW_DEVICE_ADD}

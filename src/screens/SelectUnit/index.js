@@ -8,9 +8,23 @@ import styles from './Styles/indexStyles';
 import { axiosGet } from '../../utils/Apis/axios';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import FImage from '../../commons/FImage';
+import BottomButtonView from '../../commons/BottomButtonView';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { popAction } from '../../navigations/utils';
+import Routes from '../../utils/Route';
 
 const SelectUnit = () => {
   const t = useTranslations();
+  const { navigate, dispatch, goBack } = useNavigation();
+  const { params = {} } = useRoute();
+  const {
+    isScript,
+    type,
+    isAutomateTab,
+    isMultiUnits,
+    routeName,
+    isCreateNewAction,
+  } = params;
   const [data, setData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(data[0]);
 
@@ -26,10 +40,25 @@ const SelectUnit = () => {
   }, []);
 
   const handleClose = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(popAction(2));
+    isAutomateTab && goBack();
   }, []);
+
+  const onContinue = useCallback(() => {
+    navigate(
+      isCreateNewAction || !routeName ? Routes.SelectSensorDevices : routeName,
+      {
+        ...params,
+        isScript,
+        selectedItem,
+        type,
+        isAutomateTab,
+        isMultiUnits,
+        routeName,
+        unit: selectedItem,
+      }
+    );
+  }, [isScript, selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
 
   const renderItem = ({ item = {} }) => {
     const {
@@ -93,6 +122,12 @@ const SelectUnit = () => {
           />
         </View>
       </WrapHeaderScrollable>
+      <BottomButtonView
+        style={styles.bottomButtonView}
+        mainTitle={t('continue')}
+        onPressMain={onContinue}
+        typeMain={selectedItem ? 'primary' : 'disabled'}
+      />
     </View>
   );
 };

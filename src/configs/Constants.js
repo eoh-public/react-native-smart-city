@@ -91,6 +91,8 @@ export const AUTOMATE_TYPE = {
   ONE_TAP: 'one_tap',
   VALUE_CHANGE: 'value_change',
   SCHEDULE: 'schedule',
+  ONE_TAP_ONLY: 'one_tap_only',
+  AUTOMATE: 'automate',
 };
 
 export const AUTOMATE_SELECT = {
@@ -117,6 +119,11 @@ export const AUTOMATES = {
     explanation: 'Short Explanation',
     icon: Schedule,
   },
+};
+
+export const UNIT_TYPES = {
+  MULTI: 'MultiUnit',
+  SINGLE: 'SingleUnit',
 };
 
 export const TESTID = {

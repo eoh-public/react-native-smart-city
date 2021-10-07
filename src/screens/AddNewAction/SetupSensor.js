@@ -45,7 +45,7 @@ const SetUpSensor = () => {
 
   const { goBack, dispatch } = useNavigation();
   const { params = {} } = useRoute();
-  const { item, sensorData, setSensorData } = params;
+  const { item, sensorData, setSensorData, isAutomateTab } = params;
   const isHasLimit = useMemo(() => !!item?.range_max, [item]);
   const [isShowModal, setIsShowModal] = useState(false);
   const [itemActiveModal, setItemActiveModal] = useState(modalData[0]);
@@ -74,6 +74,7 @@ const SetUpSensor = () => {
 
   const handleClose = useCallback(() => {
     dispatch(popAction(4));
+    isAutomateTab && goBack();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -24,6 +24,9 @@ const SelectSensorDevices = memo(({ route }) => {
     type,
     isScript,
     scriptName,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = route.params;
 
   const [listStation, setListStation] = useState([]);
@@ -31,7 +34,7 @@ const SelectSensorDevices = memo(({ route }) => {
   const [indexStation, setIndexStation] = useState(0);
   const [station, setStation] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState();
-  const { navigate, dispatch } = useNavigation();
+  const { navigate, dispatch, goBack } = useNavigation();
 
   const onSnapToItem = useCallback(
     (item, index) => {
@@ -83,6 +86,9 @@ const SelectSensorDevices = memo(({ route }) => {
       isScript,
       type,
       scriptName,
+      isAutomateTab,
+      isCreateNewAction,
+      isMultiUnits,
     });
   }, [
     selectedDevice,
@@ -94,12 +100,22 @@ const SelectSensorDevices = memo(({ route }) => {
     type,
     isScript,
     scriptName,
+    isMultiUnits,
+    isAutomateTab,
+    isCreateNewAction,
   ]);
 
   const onClose = useCallback(() => {
-    isScript ? dispatch(popAction(2)) : alert(t('feature_under_development'));
+    if (isCreateNewAction) {
+      goBack();
+    } else if (isScript) {
+      dispatch(popAction(2));
+      isAutomateTab && goBack();
+    } else {
+      alert(t('feature_under_development'));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript]);
+  }, [isScript, isCreateNewAction]);
 
   return (
     <View style={styles.wrap}>

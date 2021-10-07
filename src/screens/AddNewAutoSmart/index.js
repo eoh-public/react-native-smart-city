@@ -17,9 +17,9 @@ import Routes from '../../utils/Route';
 const AddNewAutoSmart = memo(({ route }) => {
   const t = useTranslations();
   const { navigate, goBack } = useNavigation();
-  const { type, unit, isScript } = route.params;
+  const { type, unit, isScript, isAutomateTab, isMultiUnits } = route.params;
   const typeAutoSmart = {
-    automate: [
+    [AUTOMATE_TYPE.AUTOMATE]: [
       {
         type: AUTOMATE_TYPE.ONE_TAP,
         route: Routes.AddNewOneTap,
@@ -36,7 +36,7 @@ const AddNewAutoSmart = memo(({ route }) => {
         route: Routes.SetSchedule,
       },
     ],
-    value_change: [
+    [AUTOMATE_TYPE.VALUE_CHANGE]: [
       {
         type: AUTOMATE_TYPE.VALUE_CHANGE,
         route: Routes.SelectSensorDevices,
@@ -49,21 +49,39 @@ const AddNewAutoSmart = memo(({ route }) => {
         route: Routes.SetSchedule,
       },
     ],
+    [AUTOMATE_TYPE.ONE_TAP_ONLY]: [
+      {
+        type: AUTOMATE_TYPE.ONE_TAP,
+        route: Routes.AddNewOneTap,
+      },
+    ],
   };
   const [data] = useState(typeAutoSmart[type]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const handleOnContinue = useCallback(() => {
     const automate = data[selectedIndex];
+    const params = {
+      type: automate.type,
+      unit: unit,
+      ...(automate.data || {}),
+      isScript,
+      isAutomateTab,
+      isMultiUnits,
+      routeName: automate?.route,
+    };
     if (automate?.route) {
-      navigate(automate.route, {
-        type: automate.type,
-        unit: unit,
-        ...(automate.data || {}),
-        isScript,
-      });
+      navigate(isMultiUnits ? Routes.SelectUnit : automate.route, params);
     }
-  }, [navigate, selectedIndex, data, unit, isScript]);
+  }, [
+    navigate,
+    selectedIndex,
+    data,
+    unit,
+    isScript,
+    isAutomateTab,
+    isMultiUnits,
+  ]);
 
   const handleSelectIndex = (index) => {
     if (index !== selectedIndex) {
