@@ -29,7 +29,7 @@ const AddNewOneTap = memo(({ route }) => {
 
   const handleContinue = useCallback(async () => {
     const { success, data } = await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), {
-      unit: unit.id,
+      unit: isMultiUnits ? null : unit.id,
       type: type,
       name: name,
       ...automateData,
