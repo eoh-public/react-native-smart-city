@@ -28,7 +28,7 @@ const getDateString = (date) => {
 
 const SetSchedule = ({ route }) => {
   const t = useTranslations();
-  const { type, unit, isAutomateTab, isScript } = route.params;
+  const { type, unit, isAutomateTab, isScript, isMultiUnits } = route.params;
   const { navigate, dispatch, goBack } = useNavigation();
   const [repeat, setRepeat] = useState(REPEAT_OPTIONS.ONCE);
   const [time, setTime] = useState(moment().hour(0).minute(0));
@@ -52,6 +52,7 @@ const SetSchedule = ({ route }) => {
       },
       isAutomateTab,
       isScript,
+      isMultiUnits
     });
   }, [
     navigate,
@@ -63,6 +64,7 @@ const SetSchedule = ({ route }) => {
     weekday,
     isAutomateTab,
     isScript,
+    isMultiUnits
   ]);
 
   const onSetRepeatOption = useCallback(
