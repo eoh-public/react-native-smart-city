@@ -79,19 +79,37 @@ const FilterPopup = ({ isVisible, onHide, members, filters, onApply }) => {
   }, [stateDatePicker]);
 
   const onConfirmStartDate = (date) => {
-    setStateDatePicker({
-      ...stateDatePicker,
-      showModalStart: false,
-      startDate: moment(date).valueOf(),
-    });
+    if (moment(date).valueOf() < stateDatePicker.endDate) {
+      setStateDatePicker({
+        ...stateDatePicker,
+        showModalStart: false,
+        startDate: moment(date).valueOf(),
+      });
+    } else {
+      setStateDatePicker({
+        ...stateDatePicker,
+        showModalStart: false,
+        startDate: moment(date).valueOf(),
+        endDate: moment(date).add(1, 'days').valueOf(),
+      });
+    }
   };
 
   const onConfirmEndDate = (date) => {
-    setStateDatePicker({
-      ...stateDatePicker,
-      showModalEnd: false,
-      endDate: moment(date).valueOf(),
-    });
+    if (moment(date).valueOf() > stateDatePicker.startDate) {
+      setStateDatePicker({
+        ...stateDatePicker,
+        showModalEnd: false,
+        endDate: moment(date).valueOf(),
+      });
+    } else {
+      setStateDatePicker({
+        ...stateDatePicker,
+        showModalEnd: false,
+        startDate: moment(date).add(-1, 'days').valueOf(),
+        endDate: moment(date).valueOf(),
+      });
+    }
   };
 
   const onPickerCancel = useCallback(() => {

@@ -94,10 +94,13 @@ const ScriptDetail = ({ route }) => {
   const goToActivityLog = useCallback(() => {
     navigate(Routes.ActivityLog, {
       id: id,
-      type: 'automate',
+      type:
+        type === AUTOMATE_TYPE.ONE_TAP
+          ? `automate.${AUTOMATE_TYPE.ONE_TAP}`
+          : 'automate',
       share: unit,
     });
-  }, [navigate, id, unit]);
+  }, [navigate, id, unit, type]);
 
   const listMenuItem = useMemo(
     () => [

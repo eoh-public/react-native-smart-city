@@ -162,3 +162,58 @@ test('test date picker', async () => {
   await _testDatePicker(0);
   await _testDatePicker(1);
 });
+
+test('test date picker pick valid and invalid date', async () => {
+  let tree;
+  let dateTo = moment('2021-09-09T10:00:00.000Z');
+  let dateFrom = moment(dateTo).add(-7, 'days');
+  let props = {
+    isVisible: true,
+    members: [],
+    filters: {
+      users: [],
+      date_from: dateFrom.valueOf(),
+      date_to: dateTo.valueOf(),
+    },
+    onHide: jest.fn(),
+    onApply: jest.fn(),
+  };
+
+  await act(async () => {
+    tree = await create(wrapComponent(props));
+  });
+  const instance = tree.root;
+  const dateTimeRangeChange = instance.findByType(DateTimeRangeChange);
+  const datePicker = instance.findAllByType(DateTimePickerModal);
+
+  expect(dateTimeRangeChange.props.startTime).toBe(dateFrom.valueOf());
+  expect(dateTimeRangeChange.props.endTime).toBe(dateTo.valueOf());
+
+  const _pickDateAndTest = async (index) => {
+    await act(async () => {
+      await datePicker[index].props.onConfirm(
+        index === 0 ? moment(dateFrom) : moment(dateTo)
+      );
+    });
+    expect(dateTimeRangeChange.props.startTime).toBe(dateFrom.valueOf());
+    expect(dateTimeRangeChange.props.endTime).toBe(dateTo.valueOf());
+  };
+
+  // pick valid dateFrom
+  dateFrom = moment(dateFrom).add(-1, 'days');
+  await _pickDateAndTest(0);
+
+  // pick valid dateTo
+  dateTo = moment(dateTo).add(1, 'days');
+  await _pickDateAndTest(1);
+
+  // pick invalid dateFrom
+  dateFrom = moment(dateTo);
+  dateTo = moment(dateFrom).add(1, 'days');
+  await _pickDateAndTest(0);
+
+  // pick invalid dateTo
+  dateTo = moment(dateFrom);
+  dateFrom = moment(dateTo).add(-1, 'days');
+  await _pickDateAndTest(1);
+});

@@ -31,6 +31,7 @@ const ActivityLogScreen = ({ route }) => {
     onRefresh,
     members,
     fetchMembers,
+    filterEnabled,
     filters,
     setFilters,
   } = useActivityLog({ id, type, share });
@@ -90,7 +91,7 @@ const ActivityLogScreen = ({ route }) => {
       <View style={styles.wrap}>
         <HeaderCustom
           title={t('activity_log')}
-          rightComponent={headerRight}
+          rightComponent={filterEnabled && headerRight}
           isShowSeparator
         />
         <SectionList
@@ -112,13 +113,15 @@ const ActivityLogScreen = ({ route }) => {
           contentContainerStyle={styles.contentContainerStyle}
         />
       </View>
-      <FilterPopup
-        isVisible={showFilterPopup}
-        onHide={setHideFilterPopup}
-        members={members}
-        filters={filters}
-        onApply={setFilters}
-      />
+      {filterEnabled && (
+        <FilterPopup
+          isVisible={showFilterPopup}
+          onHide={setHideFilterPopup}
+          members={members}
+          filters={filters}
+          onApply={setFilters}
+        />
+      )}
     </>
   );
 };

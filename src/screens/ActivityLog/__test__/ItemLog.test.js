@@ -4,6 +4,7 @@ import { act, create } from 'react-test-renderer';
 import ItemLog from '../ItemLog';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
+import { AUTOMATE_TYPE } from '../../../configs/Constants';
 
 const wrapComponent = (props) => (
   <SCProvider initState={mockSCStore({})}>
@@ -67,7 +68,7 @@ test('test ItemLog one tap', () => {
       },
       created_at: '2021-07-02T15:48:24.917932Z',
     },
-    type: 'automate',
+    type: `automate.${AUTOMATE_TYPE.ONE_TAP}`,
     length: 2,
     index: 1,
   };

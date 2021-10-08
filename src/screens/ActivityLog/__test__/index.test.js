@@ -7,6 +7,7 @@ import { Constants } from '../../../configs';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import ItemLog from '../ItemLog';
+import { AUTOMATE_TYPE } from '../../../configs/Constants';
 import axios from 'axios';
 
 const mockUseSelector = jest.fn();
@@ -39,7 +40,7 @@ describe('Test Activity log', () => {
   let route = {
     params: {
       id: 1,
-      type: 'action',
+      type: `automate.${AUTOMATE_TYPE.ONE_TAP}`,
     },
   };
   Date.now = jest.fn(() => new Date('2021-07-02T15:48:24.917932Z'));
@@ -68,9 +69,9 @@ describe('Test Activity log', () => {
       data: {
         results: [
           {
-            id: 2,
-            action: 'Gara Up',
-            name: 'Kevin Love',
+            id: 1,
+            content_code: 'ACTIVATED_BY',
+            params: { username: 'name' },
             created_at: '2021-07-01T15:48:24.917932Z',
           },
         ],

@@ -5,16 +5,24 @@ import { groupBy } from 'lodash';
 import { axiosGet } from '../../../utils/Apis/axios';
 import API from '../../../configs/API';
 import t from '../../../hooks/Common/useTranslations';
+import { AUTOMATE_TYPE } from '../../../configs/Constants';
 
 const apiMaps = {
-  action: {
+  ['action']: {
     url: () => API.SENSOR.ACTIVITY_LOG(),
     params: (id) => ({ id: id }),
+    filterEnabled: false,
   },
-  automate: {
+  ['automate']: {
+    url: (id) => API.AUTOMATE.ACTIVITY_LOG(id),
+    params: () => ({}),
+    filterEnabled: false,
+  },
+  [`automate.${AUTOMATE_TYPE.ONE_TAP}`]: {
     url: (id) => API.AUTOMATE.ACTIVITY_LOG(id),
     params: () => ({}),
     memberUrl: (id) => API.SHARE.UNITS_MEMBERS(id),
+    filterEnabled: true,
   },
 };
 
@@ -37,6 +45,8 @@ export default ({ id, type, share }) => {
     date_from: moment().add(-7, 'days').valueOf(),
     date_to: moment().valueOf(),
   });
+  const api = apiMaps[type];
+  const { filterEnabled } = api;
 
   const getDataForList = useCallback((data) => {
     const data1 = data.map((i) => ({
@@ -62,13 +72,17 @@ export default ({ id, type, share }) => {
       }
       setIsLoading(true);
     }
-    const api = apiMaps[type];
     const params = new URLSearchParams();
-    filters.users.map((id) => {
-      params.append('users', id);
-    });
-    params.append('date_from', moment(filters.date_from).format('YYYY-MM-DD'));
-    params.append('date_to', moment(filters.date_to).format('YYYY-MM-DD'));
+    if (filterEnabled) {
+      filters.users.map((id) => {
+        params.append('users', id);
+      });
+      params.append(
+        'date_from',
+        moment(filters.date_from).format('YYYY-MM-DD')
+      );
+      params.append('date_to', moment(filters.date_to).format('YYYY-MM-DD'));
+    }
     for (const [key, value] of Object.entries(api.params(id))) {
       params.append(key, value);
     }
@@ -114,6 +128,7 @@ export default ({ id, type, share }) => {
     onLoadMore,
     members,
     fetchMembers,
+    filterEnabled,
     filters,
     setFilters,
   };

@@ -120,21 +120,30 @@ describe('Test ScriptDetail', () => {
     expect(mockGoBack).toHaveBeenCalled();
   });
 
-  test('test go to activity log', async () => {
-    await act(async () => {
-      tree = await create(wrapComponent(route));
-    });
-    const instance = tree.root;
-    const menu = instance.findByType(MenuActionMore);
-    const gotoActivityLog = menu.props.listMenuItem[1];
+  const _testGoToActivityLog = (automateType, activityLogType) => {
+    test('test go to activity log', async () => {
+      route.params.type = automateType;
+      await act(async () => {
+        tree = await create(wrapComponent(route));
+      });
+      const instance = tree.root;
+      const menu = instance.findByType(MenuActionMore);
+      const gotoActivityLog = menu.props.listMenuItem[1];
 
-    await act(async () => {
-      await menu.props.onItemClick(gotoActivityLog);
+      await act(async () => {
+        await menu.props.onItemClick(gotoActivityLog);
+      });
+      expect(mockNavigate).toHaveBeenCalledWith(Routes.ActivityLog, {
+        id: route.params.id,
+        type: activityLogType,
+        share: route.params.unit,
+      });
     });
-    expect(mockNavigate).toHaveBeenCalledWith(Routes.ActivityLog, {
-      id: route.params.id,
-      type: 'automate',
-      share: route.params.unit,
-    });
-  });
+  };
+
+  _testGoToActivityLog(
+    AUTOMATE_TYPE.ONE_TAP,
+    `automate.${AUTOMATE_TYPE.ONE_TAP}`
+  );
+  _testGoToActivityLog(AUTOMATE_TYPE.VALUE_CHANGE, 'automate');
 });

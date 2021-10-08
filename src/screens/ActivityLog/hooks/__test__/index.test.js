@@ -3,6 +3,7 @@ import useActivityLog from '../';
 import axios from 'axios';
 import { API } from '../../../../configs';
 import moment from 'moment';
+import { AUTOMATE_TYPE } from '../../../../configs/Constants';
 
 jest.mock('axios');
 
@@ -68,14 +69,29 @@ describe('Test useActivityLog', () => {
     const params = new URLSearchParams();
     params.append('id', 1);
     params.append('page', 1);
-    params.append('date_from', moment().add(-7, 'days').format('YYYY-MM-DD'));
-    params.append('date_to', moment().format('YYYY-MM-DD'));
-
     expect(axios.get).toHaveBeenCalled();
   });
 
   it('Test onRefresh activity log of automate', async () => {
     props.type = 'automate';
+    const { result } = renderHook(() => useActivityLog(props));
+    axios.get.mockImplementation(() => ({
+      status: 200,
+      data: {
+        results: automateLogData,
+        count: 2,
+      },
+    }));
+    await act(async () => {
+      await result.current.onRefresh();
+    });
+    const params = new URLSearchParams();
+    params.append('page', 1);
+    expect(axios.get).toHaveBeenCalled();
+  });
+
+  it('Test onRefresh activity log of automate one tap', async () => {
+    props.type = `automate.${AUTOMATE_TYPE.ONE_TAP}`;
     const { result } = renderHook(() => useActivityLog(props));
     axios.get.mockImplementation(() => ({
       status: 200,
@@ -109,8 +125,6 @@ describe('Test useActivityLog', () => {
     const params = new URLSearchParams();
     params.append('id', 1);
     params.append('page', 2);
-    params.append('date_from', moment().add(-7, 'days').format('YYYY-MM-DD'));
-    params.append('date_to', moment().format('YYYY-MM-DD'));
     expect(axios.get).toHaveBeenCalled();
 
     axios.get.mockClear();
@@ -122,7 +136,7 @@ describe('Test useActivityLog', () => {
   });
 
   it('Test fetchMembers', async () => {
-    props.type = 'automate';
+    props.type = `automate.${AUTOMATE_TYPE.ONE_TAP}`;
     props.share = { id: 2 };
     const { result } = renderHook(() => useActivityLog(props));
     axios.get.mockImplementation(() => ({
@@ -147,7 +161,7 @@ describe('Test useActivityLog', () => {
   });
 
   it('Test filter by users', async () => {
-    props.type = 'automate';
+    props.type = `automate.${AUTOMATE_TYPE.ONE_TAP}`;
     const { result } = renderHook(() => useActivityLog(props));
 
     const userIds = [1, 2];

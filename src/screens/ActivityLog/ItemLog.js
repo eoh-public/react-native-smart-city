@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import moment from 'moment';
 import t from '../../hooks/Common/useTranslations';
 import styles from './styles/itemLogStyles';
+import { AUTOMATE_TYPE } from '../../configs/Constants';
 
 const DetailManualActivatedLog = ({ item }) => (
   <Text style={styles.text}>
@@ -18,15 +19,13 @@ const DetailAutoActivatedLog = () => (
 );
 
 const itemDetailMaps = {
-  action: DetailManualActivatedLog,
-  'automate.AUTO_ACTIVATED': DetailAutoActivatedLog,
-  'automate.ACTIVATED_BY': DetailManualActivatedLog,
+  ['action']: DetailManualActivatedLog,
+  ['automate']: DetailAutoActivatedLog,
+  [`automate.${AUTOMATE_TYPE.ONE_TAP}`]: DetailManualActivatedLog,
 };
 
 const ItemLog = ({ item, type, length, index }) => {
-  const itemType = item.content_code ? `${type}.${item.content_code}` : type;
-  const DetailComponent = itemDetailMaps[itemType];
-
+  const DetailComponent = itemDetailMaps[type];
   return (
     <View style={styles.wrapItem}>
       <Text style={styles.textLeft}>
