@@ -62,9 +62,9 @@ const AddNewAutoSmart = memo(({ route }) => {
   const handleOnContinue = useCallback(() => {
     const automate = data[selectedIndex];
     const params = {
-      type: automate.type,
+      type: automate?.type,
       unit: unit,
-      ...(automate.data || {}),
+      ...(automate?.data || {}),
       isScript,
       isAutomateTab,
       isMultiUnits,

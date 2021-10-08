@@ -42,7 +42,8 @@ const SelectUnit = () => {
   const handleClose = useCallback(() => {
     dispatch(popAction(2));
     isAutomateTab && goBack();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAutomateTab]);
 
   const onContinue = useCallback(() => {
     navigate(

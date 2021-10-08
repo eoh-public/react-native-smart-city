@@ -65,7 +65,6 @@ describe('Test ThreeButtonTemplate', () => {
     await act(() => {
       wrapper = renderer.create(wrapComponent(actionGroup));
     });
-    expect(wrapper.toJSON()).toMatchSnapshot();
     const instance = wrapper.root;
     const touchableOpacities = instance.findAllByType(TouchableOpacity);
     expect(touchableOpacities.length).toEqual(3);
