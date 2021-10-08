@@ -9,16 +9,23 @@ import OneButtonAction from './OneButtonAction';
 import ThreeButtonAction from './ThreeButtonAction';
 import SelectActionCard from '../SelectActionCard';
 
-const ActionTemplate = memo(({ data, onSelectAction, action }) => {
+const ActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
   const [visible, setVisible] = useState(false);
   const onClose = () => setVisible(false);
   const onPress = () => setVisible(true);
+  const [actionName, setActionName] = useState(null);
 
   const onPressSelectAction = useCallback(
     (action) => {
       setVisible(false);
-      onSelectAction && onSelectAction({ ...action });
+      setActionName(action.name);
+      onSelectAction &&
+        onSelectAction({
+          action: action.action,
+          data: null,
+          template: action.template,
+        });
     },
     [onSelectAction]
   );
@@ -49,7 +56,7 @@ const ActionTemplate = memo(({ data, onSelectAction, action }) => {
     <>
       <SelectActionCard
         onPress={onPress}
-        action={action?.name}
+        action={actionName}
         title={t('action')}
       />
 

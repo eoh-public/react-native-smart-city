@@ -3,13 +3,14 @@ import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import styles from './OnOffButtonActionStyles';
 
-const OnOffButtonAction = ({ configuration, onPress }) => {
+const OnOffButtonAction = ({ configuration, onPress, template }) => {
   const { text_on, text_off, action_on, action_off } = configuration;
   const onPressActionOn = () => {
     onPress &&
       onPress({
         name: text_on,
         action: action_on,
+        template,
       });
   };
 
@@ -18,6 +19,7 @@ const OnOffButtonAction = ({ configuration, onPress }) => {
       onPress({
         name: text_off,
         action: action_off,
+        template,
       });
   };
 

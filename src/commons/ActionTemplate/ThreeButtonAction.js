@@ -3,13 +3,14 @@ import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import styles from './ThreeButtonActionStyles';
 
-const ThreeButtonAction = ({ configuration, onPress }) => {
+const ThreeButtonAction = ({ configuration, onPress, template }) => {
   const { text1, text2, text3, action1, action2, action3 } = configuration;
   const onPressAction1 = () => {
     onPress &&
       onPress({
         name: text1,
         action: action1,
+        template,
       });
   };
 
@@ -18,6 +19,7 @@ const ThreeButtonAction = ({ configuration, onPress }) => {
       onPress({
         name: text2,
         action: action2,
+        template,
       });
   };
 
@@ -26,6 +28,7 @@ const ThreeButtonAction = ({ configuration, onPress }) => {
       onPress({
         name: text3,
         action: action3,
+        template,
       });
   };
 

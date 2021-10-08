@@ -7,6 +7,9 @@ import { useTranslations } from '../../hooks/Common/useTranslations';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import ActionTemplate from '../../commons/ActionTemplate';
+import NumberUpDownActionTemplate from '../../commons/OneTapTemplate/NumberUpDownActionTemplate';
+import OptionsDropdownActionTemplate from '../../commons/OneTapTemplate/OptionsDropdownActionTemplate';
+import StatesGridActionTemplate from '../../commons/OneTapTemplate/StatesGridActionTemplate';
 import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import { API, Images } from '../../configs';
 import { TESTID } from '../../configs/Constants';
@@ -31,10 +34,7 @@ const SelectAction = memo(({ route }) => {
     type,
   } = route.params;
   const [data, setData] = useState([]);
-  const [actions, setActions] = useState({
-    name: '',
-    action: '',
-  });
+  const [actions, setActions] = useState([]);
   const [sensorData, setSensorData] = useState([]);
   const [checkedItem, setCheckedItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -70,10 +70,15 @@ const SelectAction = memo(({ route }) => {
         unit,
       });
     } else {
+      let list_action = [...actions];
+      list_action = list_action.map((item) => ({
+        action: item.action,
+        data: item.data,
+      }));
       const { success } = await axiosPost(
         API.AUTOMATE.ADD_SCRIPT_ACTION(automateId),
         {
-          action: actions.action,
+          list_action,
           unit: unit.id,
         }
       );
@@ -89,7 +94,7 @@ const SelectAction = memo(({ route }) => {
       }
     }
   }, [
-    actions.action,
+    actions,
     automateId,
     navigate,
     scriptName,
@@ -101,7 +106,37 @@ const SelectAction = memo(({ route }) => {
   ]);
 
   const handleOnSelectAction = (action) => {
-    setActions({ ...action });
+    let newActions = [...actions];
+    let index = -1;
+
+    switch (action.template) {
+      case 'on_off_button_action_template':
+      case 'one_button_action_template':
+      case 'three_button_action_template':
+        index = newActions.findIndex((item) => {
+          return (
+            item.template === 'on_off_button_action_template' ||
+            item.template === 'one_button_action_template' ||
+            item.template === 'three_button_action_template'
+          );
+        });
+        break;
+
+      case 'OptionsDropdownActionTemplate':
+      case 'NumberUpDownActionTemplate':
+      case 'StatesGridActionTemplate':
+        index = newActions.findIndex(
+          (item) => item.template === action.template
+        );
+        break;
+    }
+
+    if (index < 0) {
+      newActions.push(action);
+    } else {
+      newActions[index] = action;
+    }
+    setActions(newActions);
   };
 
   const handleClose = useCallback(() => {
@@ -130,39 +165,15 @@ const SelectAction = memo(({ route }) => {
     []
   );
 
-  const RenderActionItem = ({ data }) => {
-    const actionTemplate = [];
-
-    data.forEach((item) => {
-      switch (item.template) {
-        case 'on_off_button_action_template':
-        case 'one_button_action_template':
-        case 'three_button_action_template':
-          actionTemplate.push(item);
-          break;
-      }
-    });
-
-    return (
-      <>
-        {actionTemplate.length > 0 && (
-          <ActionTemplate
-            action={actions}
-            data={actionTemplate}
-            onSelectAction={handleOnSelectAction}
-          />
-        )}
-      </>
-    );
-  };
-
   const renderBottomButtonView = useMemo(
     () => (
       <BottomButtonView
         style={styles.bottomButtonView}
         mainTitle={t(isScript ? 'continue' : 'save')}
         onPressMain={onSave}
-        typeMain={actions?.action || !!checkedItem?.id ? 'primary' : 'disabled'}
+        typeMain={
+          actions.length > 0 || !!checkedItem?.id ? 'primary' : 'disabled'
+        }
       />
     ),
     [onSave, actions, checkedItem, isScript, t]
@@ -226,12 +237,174 @@ const SelectAction = memo(({ route }) => {
             })
           )
         ) : (
-          <RenderActionItem data={data} testID={TESTID.ACTION_ITEM} />
+          <RenderActionItem
+            data={data}
+            onSelectAction={handleOnSelectAction}
+            testID={TESTID.ACTION_ITEM}
+          />
         )}
       </WrapHeaderScrollable>
       {renderBottomButtonView}
     </View>
   );
 });
+
+const RenderActionItem = ({ data, onSelectAction }) => {
+  if (!data) {
+    return null;
+  }
+  const actionTemplate = [];
+  let optionsDropdownActionTemplate = {
+    title: 'Fan Speed',
+    template: 'OptionsDropdownActionTemplate',
+    configuration: {
+      config: 1019,
+      action: '05195362-75de-4db5-9e5e-98fef9d4910c',
+      options: [
+        {
+          text: 'Auto',
+          value_int: 1,
+          value_text: 'auto',
+        },
+        {
+          text: 'Level1',
+          value_int: 2,
+          value_text: 'level1',
+        },
+        {
+          text: 'Level2',
+          value_int: 3,
+          value_text: 'level2',
+        },
+        {
+          text: 'Level3',
+          value_int: 4,
+          value_text: 'level3',
+        },
+        {
+          text: 'Level4',
+          value_int: 5,
+          value_text: 'level4',
+        },
+        {
+          text: 'Level5',
+          value_int: 6,
+          value_text: 'level5',
+        },
+        {
+          text: 'Silent',
+          value_int: 7,
+          value_text: 'silent',
+        },
+      ],
+      icon: 'up',
+      icon_kit: 43,
+    },
+  };
+  let numberUpDownActionTemplate = {
+    title: '',
+    template: 'NumberUpDownActionTemplate',
+    configuration: {
+      keep_track_config: true,
+      config: 1023,
+      action: 'b498234c-6c1a-452d-a1d1-87a314c20528',
+      min_value: 16,
+      max_value: 30,
+      text_format: '{number} \u00b0C',
+    },
+  };
+  let statesGridActionTemplate = {
+    title: 'Mode',
+    template: 'StatesGridActionTemplate',
+    configuration: {
+      options: [
+        {
+          config: 1024,
+          is_on_value: 1,
+          action: '800ff454-4e2a-4a38-bad6-1bded728193e',
+          icon: 'up-circle',
+          icon_kit: 41,
+          text: 'Auto',
+        },
+        {
+          config: 1024,
+          is_on_value: 2,
+          action: '4e43da81-469e-4d23-a66b-2656db7cf196',
+          icon: 'up-circle',
+          icon_kit: 42,
+          text: 'Cool',
+        },
+        {
+          config: 1024,
+          is_on_value: 3,
+          action: '63f1bbfa-0e42-4401-9ea2-4aa07327ff26',
+          icon: 'up-circle',
+          icon_kit: 44,
+          text: 'Dry',
+        },
+        {
+          config: 1024,
+          is_on_value: 4,
+          action: '8ba3e471-dd84-478b-87f3-6008aead8804',
+          icon: 'up-circle',
+          icon_kit: 43,
+          text: 'Fan Only',
+        },
+      ],
+    },
+  };
+
+  data.forEach((item) => {
+    switch (item.template) {
+      case 'on_off_button_action_template':
+      case 'one_button_action_template':
+      case 'three_button_action_template':
+        actionTemplate.push(item);
+        break;
+      case 'OptionsDropdownActionTemplate':
+        optionsDropdownActionTemplate = { ...item };
+        break;
+      case 'NumberUpDownActionTemplate':
+        numberUpDownActionTemplate = { ...item };
+        break;
+      case 'StatesGridActionTemplate':
+        statesGridActionTemplate = { ...item };
+        break;
+    }
+  });
+
+  const handleOnSelectAction = (action) => {
+    onSelectAction && onSelectAction(action);
+  };
+
+  return (
+    <>
+      {actionTemplate.length > 0 && (
+        <ActionTemplate
+          data={actionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+      {Object.keys(numberUpDownActionTemplate).length > 0 && (
+        <NumberUpDownActionTemplate
+          data={numberUpDownActionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+      {Object.keys(optionsDropdownActionTemplate).length > 0 && (
+        <OptionsDropdownActionTemplate
+          data={optionsDropdownActionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+      {Object.keys(statesGridActionTemplate).length > 0 && (
+        <StatesGridActionTemplate
+          data={statesGridActionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+    </>
+  );
+};
 
 export default SelectAction;

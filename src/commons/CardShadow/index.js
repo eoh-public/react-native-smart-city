@@ -5,7 +5,7 @@ import styles from './styles';
 
 const Card = memo(({ title, children, style }) => {
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, style]}>
       {title && <Text style={styles.headerTitle}>{title}</Text>}
       <View>{children}</View>
     </View>
