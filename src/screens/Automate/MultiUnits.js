@@ -1,6 +1,10 @@
 import React, { useCallback, useState, useEffect, useMemo } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import {
+  useRoute,
+  useNavigation,
+  useIsFocused,
+} from '@react-navigation/native';
 
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { useTranslations } from '../../hooks/Common/useTranslations';
@@ -16,6 +20,7 @@ import ItemAddNew from '../../commons/Device/ItemAddNew';
 
 const MultiUnits = () => {
   const t = useTranslations();
+  const isFocused = useIsFocused();
   const idUser = useGetIdUser();
   const { navigate } = useNavigation();
   const { params = {} } = useRoute();
@@ -24,10 +29,7 @@ const MultiUnits = () => {
   const tabName = useMemo(() => [t('One-Tap'), t('Scenario')], []);
   const [tabActive, setTabActive] = useState(tabName[0]);
 
-  console.log(tabActive);
-
   const getData = useCallback(async (params) => {
-    console.log({ params });
     const { success, data } = await axiosGet(
       API.AUTOMATE.GET_MULTI_UNITS(),
       params
@@ -66,6 +68,7 @@ const MultiUnits = () => {
         isMultiUnits: true,
       },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabActive]);
 
   const renderTab = useMemo(
@@ -88,6 +91,7 @@ const MultiUnits = () => {
         ))}
       </View>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [tabActive]
   );
 
@@ -117,11 +121,13 @@ const MultiUnits = () => {
         />
       </View>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, tabActive]);
 
   useEffect(() => {
     getData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFocused]);
 
   return (
     <View style={styles.wrap}>

@@ -50,5 +50,7 @@ export default StyleSheet.create({
   },
   addNewItem: {
     marginTop: 7,
+    width: 166,
+    height: 104,
   },
 });

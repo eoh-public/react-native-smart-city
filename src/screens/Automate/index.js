@@ -18,7 +18,7 @@ import Loading from './Components/Loading';
 import ItemAddNew from '../../commons/Device/ItemAddNew';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { useGetIdUser } from '../../hooks/Common';
-import { UNIT_TYPES } from '../../configs/Constants';
+import { AUTOMATE_TYPE, UNIT_TYPES } from '../../configs/Constants';
 
 const keyExtractor = (item) => item.id;
 
@@ -64,7 +64,7 @@ const Automate = () => {
       params: {
         isScript: true,
         unit: { id },
-        type: unitType === UNIT_TYPES.MULTI ? 'automate' : 'value_change',
+        type: AUTOMATE_TYPE.AUTOMATE,
         isAutomateTab: true,
         isMultiUnits: unitType === UNIT_TYPES.MULTI,
       },
