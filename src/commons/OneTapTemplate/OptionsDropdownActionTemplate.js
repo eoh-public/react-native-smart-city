@@ -31,7 +31,11 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
     onSelectAction &&
       onSelectAction({
         action,
-        data: options[activeAction].value_text,
+        data: {
+          airFlow: {
+            windStrength: options[activeAction].value_text,
+          },
+        },
         template,
       });
     setVisible(false);
