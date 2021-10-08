@@ -16,7 +16,7 @@ const propertyTimer = [
   'relativeHourToStart',
   'relativeMinuteToStart',
   'relativeHourToStop',
-  'relativeMinuteToStop'
+  'relativeMinuteToStop',
 ];
 
 function updateConfigValues(device, configValues, name, value) {

@@ -146,7 +146,7 @@ const TimerActionTemplate = ({ actionGroup, doAction, sensor }) => {
     }
     const { reset_value } = configuration;
     doActionTime(reset_value, reset_value);
-  }, [doActionTime, isTimerOn]);
+  }, [doActionTime, isTimerOn, configuration]);
 
   const isTimerOn = useMemo(() => {
     return !!dataTime;

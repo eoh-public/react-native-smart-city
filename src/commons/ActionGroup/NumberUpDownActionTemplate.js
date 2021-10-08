@@ -82,7 +82,11 @@ const NumberUpDownActionTemplate = ({ actionGroup, doAction, sensor }) => {
 
   return (
     <View style={styles.wrap}>
-      {!!title && <Text left type="Label" style={styles.title}>{title}</Text>}
+      {!!title && (
+        <Text left type="Label" style={styles.title}>
+          {title}
+        </Text>
+      )}
 
       <View style={styles.controlPannel}>
         <TouchableOpacity style={styles.downButton} onPress={doActionDown}>
