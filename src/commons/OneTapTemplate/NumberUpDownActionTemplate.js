@@ -16,7 +16,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
   const [visible, setVisible] = useState(false);
   const onClose = () => setVisible(false);
   const onPress = () => setVisible(true);
-  const { configuration, template } = data;
+  const { configuration, template, title } = data;
   const { config, text_format, min_value, max_value, action } = configuration;
   const [configValues] = useConfigGlobalState('configValues');
   const [value, setValue] = useState((config && configValues[config]) || 28);
@@ -62,11 +62,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
 
   return (
     <>
-      <SelectActionCard
-        onPress={onPress}
-        action={actionName}
-        title={'Temperature'}
-      />
+      <SelectActionCard onPress={onPress} action={actionName} title={title} />
 
       <Modal
         isVisible={visible}
@@ -76,7 +72,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
         <View style={styles.popoverStyle}>
           <View>
             <Text type="H4" bold style={styles.textwithline}>
-              Set temperature
+              {title}
             </Text>
             <View style={styles.modalContent}>
               <TouchableOpacity
