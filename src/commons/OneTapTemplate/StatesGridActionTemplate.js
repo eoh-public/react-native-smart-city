@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 import styles from './StatesGridActionTemplateStyles';
 import SelectActionCard from '../SelectActionCard';
 import Text from '../Text';
+import { TESTID } from '../../configs/Constants';
 
 const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
   const [visible, setVisible] = useState(false);
@@ -43,6 +44,7 @@ const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
               <TouchableOpacity
                 key={index}
                 onPress={() => hanleSelectAction(item)}
+                testID={TESTID.STATES_GRID_ACTION_GRID_ITEM}
               >
                 <Text type="H4" style={styles.textwithline}>
                   {item.text}

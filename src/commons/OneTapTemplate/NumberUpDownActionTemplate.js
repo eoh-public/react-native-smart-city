@@ -9,6 +9,7 @@ import { Colors } from '../../configs';
 import SelectActionCard from '../SelectActionCard';
 import Text from '../Text';
 import { useConfigGlobalState } from '../../iot/states';
+import { TESTID } from '../../configs/Constants';
 
 const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
@@ -78,13 +79,24 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
               Set temperature
             </Text>
             <View style={styles.modalContent}>
-              <TouchableOpacity onPress={onPressDown}>
+              <TouchableOpacity
+                onPress={onPressDown}
+                testID={TESTID.NUMBER_UP_DOWN_ACTION_DOWN}
+              >
                 <IconOutline name="down" size={32} color={Colors.Primary} />
               </TouchableOpacity>
-              <Text type="H2" bold style={styles.textTemperature}>
+              <Text
+                type="H2"
+                bold
+                style={styles.textTemperature}
+                testID={TESTID.NUMBER_UP_DOWN_ACTION_TEXT}
+              >
                 {text_format.replace('{number}', value)}
               </Text>
-              <TouchableOpacity onPress={onPressUp}>
+              <TouchableOpacity
+                onPress={onPressUp}
+                testID={TESTID.NUMBER_UP_DOWN_ACTION_UP}
+              >
                 <IconOutline name="up" size={32} color={Colors.Primary} />
               </TouchableOpacity>
             </View>
@@ -99,7 +111,10 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
                   {t('cancel')}
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={onPressDone}>
+              <TouchableOpacity
+                onPress={onPressDone}
+                testID={TESTID.NUMBER_UP_DOWN_ACTION_DONE}
+              >
                 <Text
                   type="H4"
                   bold

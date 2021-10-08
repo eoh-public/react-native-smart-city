@@ -8,6 +8,7 @@ import styles from './OptionsDropdownActionTemplateStyles';
 import { Colors } from '../../configs';
 import SelectActionCard from '../SelectActionCard';
 import Text from '../Text';
+import { TESTID } from '../../configs/Constants';
 
 const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
@@ -33,7 +34,7 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
         action,
         data: {
           airFlow: {
-            windStrength: options[activeAction].value_text,
+            windStrength: options[activeAction]?.value_text,
           },
         },
         template,
@@ -61,6 +62,7 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
                   <TouchableOpacity
                     style={styles.flexRow}
                     onPress={() => handleOnPressItem(item, index)}
+                    testID={TESTID.OPTIONS_DROPDOWN_ACTION_CHOOSING_ITEM}
                   >
                     <RadioCircle active={index === activeAction} />
                     <Text type="H4" style={styles.textContent}>
@@ -82,11 +84,15 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
                   {t('cancel')}
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={onPressDone}>
+              <TouchableOpacity
+                onPress={onPressDone}
+                testID={TESTID.OPTIONS_DROPDOWN_ACTION_DONE}
+                disabled={activeAction ? false : true}
+              >
                 <Text
                   type="H4"
                   bold
-                  color={Colors.Primary}
+                  color={activeAction ? Colors.Primary : Colors.Disabled}
                   style={styles.textButton}
                 >
                   {t('done')}
