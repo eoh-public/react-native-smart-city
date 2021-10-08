@@ -9,7 +9,7 @@ import styles from './NumberUpDownActionTemplateStyle';
 import { watchMultiConfigs } from '../../iot/Monitor';
 
 const NumberUpDownActionTemplate = ({ actionGroup, doAction, sensor }) => {
-  const { configuration } = actionGroup;
+  const { configuration, title } = actionGroup;
   const {
     action_data,
     max_value,
@@ -82,15 +82,19 @@ const NumberUpDownActionTemplate = ({ actionGroup, doAction, sensor }) => {
 
   return (
     <View style={styles.wrap}>
-      <TouchableOpacity style={styles.downButton} onPress={doActionDown}>
-        <IconOutline name="down" size={32} color={Colors.Primary} />
-      </TouchableOpacity>
+      {!!title && <Text left type="Label" style={styles.title}>{title}</Text>}
 
-      <Text type="H2">{text_format.replace('{number}', value)}</Text>
+      <View style={styles.controlPannel}>
+        <TouchableOpacity style={styles.downButton} onPress={doActionDown}>
+          <IconOutline name="down" size={32} color={Colors.Primary} />
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.upButton} onPress={doActionUp}>
-        <IconOutline name="up" size={32} color={Colors.Primary} />
-      </TouchableOpacity>
+        <Text type="H2">{text_format.replace('{number}', value)}</Text>
+
+        <TouchableOpacity style={styles.upButton} onPress={doActionUp}>
+          <IconOutline name="up" size={32} color={Colors.Primary} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
