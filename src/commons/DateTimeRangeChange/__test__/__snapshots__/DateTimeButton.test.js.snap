@@ -52,7 +52,7 @@ exports[`Test DateTimeButton render DateTimeButton formatType = "date" 1`] = `
       Array [
         Object {
           "color": "#595959",
-          "fontFamily": "antfill",
+          "fontFamily": "antoutline",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "normal",
@@ -61,7 +61,7 @@ exports[`Test DateTimeButton render DateTimeButton formatType = "date" 1`] = `
       ]
     }
   >
-    
+    
   </Text>
 </View>
 `;
@@ -118,7 +118,7 @@ exports[`Test DateTimeButton render DateTimeButton formatType is undefined 1`] =
       Array [
         Object {
           "color": "#595959",
-          "fontFamily": "antfill",
+          "fontFamily": "antoutline",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "normal",
@@ -127,7 +127,7 @@ exports[`Test DateTimeButton render DateTimeButton formatType is undefined 1`] =
       ]
     }
   >
-    
+    
   </Text>
 </View>
 `;
