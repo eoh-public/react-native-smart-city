@@ -157,6 +157,7 @@ const ScriptDetail = ({ route }) => {
       isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
       params
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate, id, name, unit, isMultiUnits]);
 
   const handleScriptAction = useCallback(async () => {

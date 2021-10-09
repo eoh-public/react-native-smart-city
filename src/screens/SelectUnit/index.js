@@ -43,9 +43,9 @@ const SelectUnit = () => {
   }, []);
 
   const handleOnGoBackAndClose = useCallback(() => {
-    if (!!automateId) { 
+    if (automateId) {
       navigate(Routes.ScriptDetail, {
-        id:automateId,
+        id: automateId,
         name: scriptName,
         type: type,
         havePermission: true,
@@ -57,6 +57,7 @@ const SelectUnit = () => {
       dispatch(popAction(2));
       isAutomateTab && goBack();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   const onContinue = useCallback(() => {
@@ -73,6 +74,7 @@ const SelectUnit = () => {
         unit: selectedItem,
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isScript, selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
 
   const renderItem = ({ item = {} }) => {
@@ -108,7 +110,10 @@ const SelectUnit = () => {
 
   const rightComponent = useMemo(
     () => (
-      <TouchableOpacity style={styles.buttonClose} onPress={handleOnGoBackAndClose}>
+      <TouchableOpacity
+        style={styles.buttonClose}
+        onPress={handleOnGoBackAndClose}
+      >
         <Icon name={'close'} size={24} color={Colors.Black} />
       </TouchableOpacity>
     ),

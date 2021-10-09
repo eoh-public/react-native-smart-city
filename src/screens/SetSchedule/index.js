@@ -52,7 +52,7 @@ const SetSchedule = ({ route }) => {
       },
       isAutomateTab,
       isScript,
-      isMultiUnits
+      isMultiUnits,
     });
   }, [
     navigate,
@@ -64,7 +64,7 @@ const SetSchedule = ({ route }) => {
     weekday,
     isAutomateTab,
     isScript,
-    isMultiUnits
+    isMultiUnits,
   ]);
 
   const onSetRepeatOption = useCallback(
@@ -92,6 +92,7 @@ const SetSchedule = ({ route }) => {
   const onClose = useCallback(() => {
     dispatch(popAction(4));
     isAutomateTab && goBack();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAutomateTab]);
 
   return (

@@ -97,6 +97,7 @@ const SelectAction = memo(({ route }) => {
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     actions.action,
     automateId,
@@ -115,7 +116,17 @@ const SelectAction = memo(({ route }) => {
   };
 
   const handleClose = useCallback(() => {
-    if (isCreateNewAction) {
+    if (automateId) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isCreateNewAction,
+      });
+    } else if (isCreateNewAction) {
       dispatch(popAction(2));
     } else if (isScript) {
       dispatch(popAction(3));
@@ -124,7 +135,7 @@ const SelectAction = memo(({ route }) => {
       alert(t('feature_under_development'));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, isCreateNewAction]);
+  }, [route.params]);
 
   const onChecked = useCallback(
     (_, isChecked, id) => {
@@ -149,7 +160,7 @@ const SelectAction = memo(({ route }) => {
       </TouchableOpacity>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [route.params]
   );
 
   const RenderActionItem = ({ data }) => {

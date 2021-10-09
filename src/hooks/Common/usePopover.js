@@ -13,17 +13,24 @@ const usePopover = () => {
     },
     [childRef]
   );
-  
+
   const hidePopover = useCallback(() => {
     childRef.current = null;
     setShowingPopover(false);
   }, [childRef]);
-  
+
   const hidePopoverComplete = useCallback(() => {
     setHidingPopoverComplete(true);
   }, []);
 
-  return { childRef, showingPopover, showPopoverWithRef, hidePopover, hidingPopoverComplete, hidePopoverComplete };
+  return {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+    hidingPopoverComplete,
+    hidePopoverComplete,
+  };
 };
 
 export default usePopover;

@@ -26,6 +26,7 @@ const MultiUnits = () => {
   const { params = {} } = useRoute();
   const { isMultiUnits = false, unitName = '', unit } = params;
   const [data, setData] = useState([]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const tabName = useMemo(() => [t('One-Tap'), t('Scenario')], []);
   const [tabActive, setTabActive] = useState(tabName[0]);
 
