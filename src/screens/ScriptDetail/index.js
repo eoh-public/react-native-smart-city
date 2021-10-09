@@ -45,8 +45,14 @@ const ScriptDetail = ({ route }) => {
   const { navigate, goBack, dispatch } = useNavigation();
   const { params = {} } = route;
   const refMenuAction = useRef();
-  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
-    usePopover();
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+    hidingPopoverComplete,
+    hidePopoverComplete,
+  } = usePopover();
   const t = useTranslations();
   const {
     id,
@@ -126,12 +132,6 @@ const ScriptDetail = ({ route }) => {
 
   const onItemClick = useCallback((item) => {
     item.doAction();
-  }, []);
-
-  const onPressAdd = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getOneTapDetail = useCallback(async () => {
@@ -250,9 +250,6 @@ const ScriptDetail = ({ route }) => {
     () => (
       <View style={styles.rightComponent}>
         {renderButtonStar}
-        <TouchableOpacity onPress={onPressAdd} style={styles.headerButton}>
-          <Icon name={'plus'} size={27} color={Colors.Black} />
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleShowMenuAction}
           ref={refMenuAction}
@@ -326,6 +323,7 @@ const ScriptDetail = ({ route }) => {
       <MenuActionMore
         isVisible={showingPopover}
         hideMore={hidePopover}
+        hideComplete={hidePopoverComplete}
         listMenuItem={listMenuItem}
         childRef={childRef}
         onItemClick={onItemClick}
@@ -333,7 +331,7 @@ const ScriptDetail = ({ route }) => {
         wrapStyle={styles.wrapStyle}
       />
       <AlertAction
-        visible={stateAlertAction.visible}
+        visible={stateAlertAction.visible && hidingPopoverComplete}
         hideModal={hideAlertAction}
         title={stateAlertAction.title}
         message={stateAlertAction.message}

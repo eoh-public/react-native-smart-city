@@ -91,8 +91,8 @@ const TimerActionTemplate = ({ actionGroup, doAction, sensor }) => {
     (hour, minute) => {
       doAction(configuration.action_data, [hour, minute]);
       if (sensor.is_managed_by_backend) {
-        hour &&
-          minute &&
+        hour !== undefined &&
+          minute !== undefined &&
           watchMultiConfigs([
             configuration.config_hour,
             configuration.config_minute,
@@ -144,8 +144,9 @@ const TimerActionTemplate = ({ actionGroup, doAction, sensor }) => {
     if (!isTimerOn) {
       return;
     }
-    doActionTime(-1, -1);
-  }, [doActionTime, isTimerOn]);
+    const { reset_value } = configuration;
+    doActionTime(reset_value, reset_value);
+  }, [doActionTime, isTimerOn, configuration]);
 
   const isTimerOn = useMemo(() => {
     return !!dataTime;
