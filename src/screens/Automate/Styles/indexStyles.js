@@ -2,11 +2,6 @@ import { StyleSheet } from 'react-native';
 import { Colors, Constants } from '../../../configs';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-const marginItem = 12;
-const marginHorizontal = 16;
-const widthItem = (Constants.width - marginHorizontal * 2 - marginItem) / 2;
-const heightItem = (widthItem / 176) * 106;
-
 export default StyleSheet.create({
   wrap: {
     flex: 1,
@@ -66,6 +61,7 @@ export default StyleSheet.create({
   },
   addNewItem: {
     marginTop: 7,
-    height: heightItem,
+    height: 106,
+    width: (Constants.width - 40) / 2,
   },
 });

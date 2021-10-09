@@ -67,10 +67,11 @@ const MultiUnits = () => {
             : AUTOMATE_TYPE.VALUE_CHANGE,
         isAutomateTab: true,
         isMultiUnits: true,
+        unit,
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tabActive]);
+  }, [tabActive, unit]);
 
   const renderTab = useMemo(
     () => (
