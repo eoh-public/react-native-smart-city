@@ -128,6 +128,7 @@ const SelectSensorDevices = memo(({ route }) => {
         unit,
         isMultiUnits,
         isCreateNewAction,
+        isAutomateTab,
       });
     } else {
       dispatch(popAction(2));
