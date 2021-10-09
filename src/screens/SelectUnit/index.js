@@ -22,8 +22,11 @@ const SelectUnit = () => {
     type,
     isAutomateTab,
     isMultiUnits,
+    automateId,
+    scriptName,
     routeName,
     isCreateNewAction,
+    unit,
   } = params;
   const [data, setData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(data[0]);
@@ -39,11 +42,22 @@ const SelectUnit = () => {
     }
   }, []);
 
-  const handleClose = useCallback(() => {
-    dispatch(popAction(2));
-    isAutomateTab && goBack();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAutomateTab]);
+  const handleOnGoBackAndClose = useCallback(() => {
+    if (!!automateId) { 
+      navigate(Routes.ScriptDetail, {
+        id:automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isCreateNewAction,
+      });
+    } else {
+      dispatch(popAction(2));
+      isAutomateTab && goBack();
+    }
+  }, [params]);
 
   const onContinue = useCallback(() => {
     navigate(
@@ -94,12 +108,12 @@ const SelectUnit = () => {
 
   const rightComponent = useMemo(
     () => (
-      <TouchableOpacity style={styles.buttonClose} onPress={handleClose}>
+      <TouchableOpacity style={styles.buttonClose} onPress={handleOnGoBackAndClose}>
         <Icon name={'close'} size={24} color={Colors.Black} />
       </TouchableOpacity>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [params]
   );
 
   useEffect(() => {
@@ -114,6 +128,7 @@ const SelectUnit = () => {
         headerAniStyle={styles.headerAniStyle}
         rightComponent={rightComponent}
         onRefresh={getAllUnits}
+        onGoBack={handleOnGoBackAndClose}
       >
         <View style={styles.wrapContent}>
           <FlatList
