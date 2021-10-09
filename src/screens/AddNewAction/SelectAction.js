@@ -125,6 +125,7 @@ const SelectAction = memo(({ route }) => {
         unit,
         isMultiUnits,
         isCreateNewAction,
+        isAutomateTab,
       });
     } else if (isCreateNewAction) {
       dispatch(popAction(2));
