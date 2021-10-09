@@ -131,12 +131,6 @@ const ScriptDetail = ({ route }) => {
     item.doAction();
   }, []);
 
-  const onPressAdd = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const getOneTapDetail = useCallback(async () => {
     const { success, data } = await axiosGet(API.AUTOMATE.SCRIPT(id));
     success && setData(data?.script_actions || []);
@@ -247,9 +241,6 @@ const ScriptDetail = ({ route }) => {
     () => (
       <View style={styles.rightComponent}>
         {renderButtonStar}
-        <TouchableOpacity onPress={onPressAdd} style={styles.headerButton}>
-          <Icon name={'plus'} size={27} color={Colors.Black} />
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleShowMenuAction}
           ref={refMenuAction}
