@@ -12,13 +12,6 @@ describe('Test BtnRemoveMember', () => {
 
   let wrapper;
 
-  test('render BtnRemoveMember', () => {
-    act(() => {
-      wrapper = create(<BtnRemoveMember member={member} />);
-    });
-    expect(wrapper.toJSON()).toMatchSnapshot();
-  });
-
   test('onPressItem BtnRemoveMember', () => {
     const mockOnPressRemove = jest.fn();
     act(() => {

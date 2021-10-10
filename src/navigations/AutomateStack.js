@@ -9,6 +9,7 @@ import { screenOptions } from './utils';
 import { useTranslations } from '../hooks/Common/useTranslations';
 import { Colors, Theme } from '../configs';
 import Automate from '../screens/Automate';
+import MultiUnits from '../screens/Automate/MultiUnits';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,11 @@ const AutomateStack = memo(() => {
       }}
     >
       <Stack.Screen name={Routes.Automate} component={Automate} />
+      <Stack.Screen
+        name={Routes.MultiUnits}
+        component={MultiUnits}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 });

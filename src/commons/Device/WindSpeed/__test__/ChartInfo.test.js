@@ -15,7 +15,6 @@ describe('Test ChartInfo', () => {
     renderer.act(() => {
       button.props.onPress();
     });
-    expect(wrapper.toJSON()).toMatchSnapshot();
     expect(onPressMock.mock.calls.length).toBe(1);
   });
 });

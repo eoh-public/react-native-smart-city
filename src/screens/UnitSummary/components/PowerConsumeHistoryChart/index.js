@@ -47,7 +47,7 @@ const ConfigHistoryChart = memo(({ configs }) => {
     fetchData();
   }, [startDate, endDate, configs]);
 
-  if (!chartData.length) {
+  if (chartData?.length) {
     return false;
   }
 
