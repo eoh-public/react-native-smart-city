@@ -111,7 +111,7 @@ const Automate = () => {
                 unit_name,
                 unit_id
               )}
-              style={styles.arrowRightButon}
+              style={styles.arrowRightButton}
             >
               <Image source={Images.arrowBack} style={styles.arrowRight} />
             </TouchableOpacity>

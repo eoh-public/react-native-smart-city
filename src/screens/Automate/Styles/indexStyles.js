@@ -20,7 +20,7 @@ export default StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 80 + getBottomSpace(),
   },
-  arrowRightButon: {
+  arrowRightButton: {
     width: 40,
     height: 40,
     justifyContent: 'center',

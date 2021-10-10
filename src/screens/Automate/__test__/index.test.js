@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
+
 import Automate from '../';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import ItemOneTap from '../../../commons/SubUnit/OneTap/ItemOneTap';
+import ItemAddNew from '../../../commons/Device/ItemAddNew';
+import Routes from '../../../utils/Route';
 
 jest.mock('axios');
 const mockedNavigate = jest.fn();
@@ -90,5 +93,20 @@ describe('Test Automate', () => {
       ItemOneTaps[0].props.onPressItem();
     });
     expect(mockedNavigate).toBeCalled();
+    const ItemAddNews = instance.findAllByType(ItemAddNew);
+    expect(ItemAddNews).toHaveLength(1);
+    act(() => {
+      ItemAddNews[0].props.onAddNew('MultiUnit');
+    });
+    expect(mockedNavigate).toBeCalledWith(Routes.UnitStack, {
+      screen: Routes.AddNewAutoSmart,
+      params: {
+        isAutomateTab: true,
+        isMultiUnits: true,
+        isScript: true,
+        type: 'automate',
+        unit: { id: undefined },
+      },
+    });
   });
 });
