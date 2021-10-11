@@ -1,12 +1,12 @@
-import React, { memo, useState, useEffect, useCallback } from 'react';
-import { ScrollView, View } from 'react-native';
+import React, { memo, useState, useEffect, useCallback, useMemo } from 'react';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import Text from '../../commons/Text';
 import NavBar from '../../commons/NavBar';
 import { fetchWithCache } from '../../utils/Apis/axios';
-import { API } from '../../configs';
+import { API, Colors } from '../../configs';
 import Device from './Device';
 import BottomButtonView from '../../commons/BottomButtonView';
 import { HeaderCustom } from '../../commons/Header';
@@ -14,6 +14,7 @@ import Routes from '../../utils/Route';
 import styles from './Styles/SelectSensorDevicesStyles';
 import { AUTOMATE_SELECT } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
+import { Icon } from '@ant-design/react-native';
 
 const SelectSensorDevices = memo(({ route }) => {
   const t = useTranslations();
@@ -24,6 +25,9 @@ const SelectSensorDevices = memo(({ route }) => {
     type,
     isScript,
     scriptName,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = route.params;
 
   const [listStation, setListStation] = useState([]);
@@ -31,7 +35,7 @@ const SelectSensorDevices = memo(({ route }) => {
   const [indexStation, setIndexStation] = useState(0);
   const [station, setStation] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState();
-  const { navigate, dispatch } = useNavigation();
+  const { navigate, dispatch, goBack } = useNavigation();
 
   const onSnapToItem = useCallback(
     (item, index) => {
@@ -83,6 +87,9 @@ const SelectSensorDevices = memo(({ route }) => {
       isScript,
       type,
       scriptName,
+      isAutomateTab,
+      isCreateNewAction,
+      isMultiUnits,
     });
   }, [
     selectedDevice,
@@ -94,16 +101,58 @@ const SelectSensorDevices = memo(({ route }) => {
     type,
     isScript,
     scriptName,
+    isMultiUnits,
+    isAutomateTab,
+    isCreateNewAction,
   ]);
 
   const onClose = useCallback(() => {
-    isScript ? dispatch(popAction(2)) : alert(t('feature_under_development'));
+    if (isCreateNewAction) {
+      goBack();
+    } else if (isScript) {
+      dispatch(popAction(2));
+      isAutomateTab && goBack();
+    } else {
+      alert(t('feature_under_development'));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript]);
+  }, [isScript, isCreateNewAction]);
+
+  const handleOnGoBackAndClose = useCallback(() => {
+    if (automateId) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isCreateNewAction,
+        isAutomateTab,
+      });
+    } else {
+      dispatch(popAction(2));
+      isAutomateTab && goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route.params]);
+
+  const rightComponent = useMemo(
+    () => (
+      <TouchableOpacity
+        style={styles.buttonClose}
+        onPress={handleOnGoBackAndClose}
+      >
+        <Icon name={'close'} size={24} color={Colors.Black} />
+      </TouchableOpacity>
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [route.params]
+  );
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom isShowClose onClose={onClose} />
+      <HeaderCustom onClose={onClose} rightComponent={rightComponent} />
 
       <ScrollView
         style={styles.wrap}

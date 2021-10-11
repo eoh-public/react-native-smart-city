@@ -13,10 +13,10 @@ import RowItem from './components/RowItem';
 import SelectWeekday from './components/SelectWeekday';
 import { useBoolean } from '../../hooks/Common';
 import t, { useTranslations } from '../../hooks/Common/useTranslations';
-
 import styles from './styles/indexStyles';
 import { REPEAT_OPTIONS } from './components/RepeatOptionsPopup';
 import Routes from '../../utils/Route';
+import { popAction } from '../../navigations/utils';
 
 const getDateString = (date) => {
   const today = moment();
@@ -28,8 +28,8 @@ const getDateString = (date) => {
 
 const SetSchedule = ({ route }) => {
   const t = useTranslations();
-  const { type, unit } = route.params;
-  const { navigate } = useNavigation();
+  const { type, unit, isAutomateTab, isScript, isMultiUnits } = route.params;
+  const { navigate, dispatch, goBack } = useNavigation();
   const [repeat, setRepeat] = useState(REPEAT_OPTIONS.ONCE);
   const [time, setTime] = useState(moment().hour(0).minute(0));
   const [date, setDate] = useState(moment());
@@ -50,8 +50,22 @@ const SetSchedule = ({ route }) => {
         date_repeat: date.format('YYYY-MM-DD'),
         weekday_repeat: weekday,
       },
+      isAutomateTab,
+      isScript,
+      isMultiUnits,
     });
-  }, [navigate, type, unit, repeat, time, date, weekday]);
+  }, [
+    navigate,
+    type,
+    unit,
+    repeat,
+    time,
+    date,
+    weekday,
+    isAutomateTab,
+    isScript,
+    isMultiUnits,
+  ]);
 
   const onSetRepeatOption = useCallback(
     (value) => {
@@ -75,10 +89,16 @@ const SetSchedule = ({ route }) => {
     [setDate]
   );
 
+  const onClose = useCallback(() => {
+    dispatch(popAction(4));
+    isAutomateTab && goBack();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAutomateTab]);
+
   return (
     <>
       <View style={styles.container}>
-        <HeaderCustom isShowClose />
+        <HeaderCustom isShowClose onClose={onClose} />
         <ScrollView contentContainerStyle={styles.scollView}>
           <Text type="H2" bold style={styles.title}>
             {t('set_schedule')}

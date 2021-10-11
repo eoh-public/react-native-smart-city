@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import moment from 'moment';
 import DateTimeButton from '../DateTimeButton';
@@ -13,13 +14,17 @@ describe('Test DateTimeButton', () => {
         <DateTimeButton onPress={() => {}} time={time} formatType="date" />
       );
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const TouchableOpacities = instance.findAllByType(TouchableOpacity);
+    expect(TouchableOpacities).toHaveLength(1);
   });
 
   test('render DateTimeButton formatType is undefined', () => {
     act(() => {
       tree = renderer.create(<DateTimeButton onPress={() => {}} time={time} />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const TouchableOpacities = instance.findAllByType(TouchableOpacity);
+    expect(TouchableOpacities).toHaveLength(1);
   });
 });

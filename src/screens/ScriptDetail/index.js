@@ -45,8 +45,14 @@ const ScriptDetail = ({ route }) => {
   const { navigate, goBack, dispatch } = useNavigation();
   const { params = {} } = route;
   const refMenuAction = useRef();
-  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
-    usePopover();
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+    hidingPopoverComplete,
+    hidePopoverComplete,
+  } = usePopover();
   const t = useTranslations();
   const {
     id,
@@ -56,6 +62,9 @@ const ScriptDetail = ({ route }) => {
     unit,
     dateNow = null,
     isCreateScriptSuccess,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = params;
   const [isFavourite, setIsFavourite] = useState(false);
   const [scriptName, setScriptName] = useState(name);
@@ -91,13 +100,24 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const goToActivityLog = useCallback(() => {
+    navigate(Routes.ActivityLog, {
+      id: id,
+      type:
+        type === AUTOMATE_TYPE.ONE_TAP
+          ? `automate.${AUTOMATE_TYPE.ONE_TAP}`
+          : 'automate',
+      share: unit,
+    });
+  }, [navigate, id, unit, type]);
+
   const listMenuItem = useMemo(
     () => [
       { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: null },
+      { text: t('activity_log'), doAction: goToActivityLog },
       { text: t('delete_script'), doAction: onShowDelete(scriptName) },
     ],
-    [t, onShowRename, onShowDelete, scriptName]
+    [t, onShowRename, onShowDelete, goToActivityLog, scriptName]
   );
 
   const onPressFavourite = useCallback(() => {
@@ -110,21 +130,8 @@ const ScriptDetail = ({ route }) => {
     []
   );
 
-  const onItemClick = useCallback(
-    (item) => {
-      if (item.doAction) {
-        item.doAction();
-      } else {
-        alert(t('feature_under_development'));
-      }
-    },
-    [t]
-  );
-
-  const onPressAdd = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onItemClick = useCallback((item) => {
+    item.doAction();
   }, []);
 
   const getOneTapDetail = useCallback(async () => {
@@ -138,14 +145,20 @@ const ScriptDetail = ({ route }) => {
   }, [data]);
 
   const onPressAddAction = useCallback(() => {
-    navigate(Routes.SelectSensorDevices, {
+    const params = {
       unit,
       automateId: id,
       scriptName: name,
       isScript: false,
-      type: AUTOMATE_TYPE.ONE_TAP,
-    });
-  }, [navigate, id, name, unit]);
+      type,
+      isCreateNewAction: true,
+    };
+    navigate(
+      isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
+      params
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, id, name, unit, isMultiUnits]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -158,8 +171,9 @@ const ScriptDetail = ({ route }) => {
   }, [id]);
 
   const onGoBack = useCallback(() => {
-    if (isCreateScriptSuccess) {
+    if (isCreateScriptSuccess || isCreateNewAction) {
       dispatch(popAction(5));
+      isAutomateTab && goBack();
     } else {
       goBack();
     }
@@ -237,9 +251,6 @@ const ScriptDetail = ({ route }) => {
     () => (
       <View style={styles.rightComponent}>
         {renderButtonStar}
-        <TouchableOpacity onPress={onPressAdd} style={styles.headerButton}>
-          <Icon name={'plus'} size={27} color={Colors.Black} />
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleShowMenuAction}
           ref={refMenuAction}
@@ -313,6 +324,7 @@ const ScriptDetail = ({ route }) => {
       <MenuActionMore
         isVisible={showingPopover}
         hideMore={hidePopover}
+        hideComplete={hidePopoverComplete}
         listMenuItem={listMenuItem}
         childRef={childRef}
         onItemClick={onItemClick}
@@ -320,7 +332,7 @@ const ScriptDetail = ({ route }) => {
         wrapStyle={styles.wrapStyle}
       />
       <AlertAction
-        visible={stateAlertAction.visible}
+        visible={stateAlertAction.visible && hidingPopoverComplete}
         hideModal={hideAlertAction}
         title={stateAlertAction.title}
         message={stateAlertAction.message}

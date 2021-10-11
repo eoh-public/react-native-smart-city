@@ -17,6 +17,7 @@ const HeaderCustom = ({
   isDisableRefresh = false,
   titleStyles,
   isShowClose = false,
+  rightComponent,
   onGoBack,
   onClose,
 }) => {
@@ -85,6 +86,7 @@ const HeaderCustom = ({
             <Icon name={'close'} size={24} color={Colors.Black} />
           </TouchableOpacity>
         )}
+        {rightComponent}
       </View>
     </View>
   );

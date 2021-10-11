@@ -162,7 +162,7 @@
     "react-native-parallax-scroll-view": "^0.21.3",
     "react-native-parsed-text": "^0.0.22",
     "react-native-permissions": "^2.1.5",
-    "react-native-popover-view": "^3.0.3",
+    "react-native-popover-view": "^4.0.3",
     "react-native-reanimated": "1.10.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^3.1.1",

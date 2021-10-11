@@ -23,7 +23,6 @@ describe('Test OtpInputList', () => {
           el.props.onChangeText('1');
         });
       });
-      expect(tree.toJSON()).toMatchSnapshot();
       expect(mockFunc).toHaveBeenCalledWith('111111');
     });
   }
@@ -40,6 +39,6 @@ describe('Test OtpInputList', () => {
         el.props.onChangeText('');
       });
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    expect(mockFunc).toHaveBeenCalledWith('111111');
   });
 });
