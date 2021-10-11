@@ -37,10 +37,20 @@ const WrapHeaderScrollable = ({
     }
   }, [onLoadMore]);
 
+  const [contentHeight, setContentHeight] = useState(0);
+
+  const onContentSizeChange = useCallback(
+    (_, height) => {
+      setContentHeight(height);
+    },
+    [setContentHeight]
+  );
+
   return (
     <SafeAreaView style={[styles.container, headerAniStyle]}>
       <HeaderAni
         scrollY={animatedScrollYValue}
+        contentHeight={contentHeight}
         title={title}
         rightComponent={rightComponent}
         headerAniCenterStyle={headerAniCenterStyle}
@@ -55,6 +65,7 @@ const WrapHeaderScrollable = ({
             useNativeDriver: false,
           }
         )}
+        onContentSizeChange={onContentSizeChange}
         style={[styles.scrollView, styleScrollView]}
         contentContainerStyle={[
           styles.contentContainerStyle,
