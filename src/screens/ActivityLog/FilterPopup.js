@@ -2,22 +2,23 @@ import React, { useState, useCallback } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import RadioCircle from '../../commons/RadioCircle';
 import DateTimeRangeChange from '../../commons/DateTimeRangeChange';
 import { useTranslations } from '../../hooks/Common/useTranslations';
+import { useBoolean } from '../../hooks/Common';
 
 import { Colors } from '../../configs';
 import styles from './styles/filterPopupStyles';
 import { TESTID } from '../../configs/Constants';
-import moment from 'moment';
 
-const RowUser = ({ item, isSelected, onSelect }) => {
+const RowMember = ({ member, isSelected, onSelect }) => {
   const handleOnPress = useCallback(() => {
-    onSelect(item.id);
-  }, [onSelect, item]);
+    onSelect(member.id);
+  }, [onSelect, member]);
   return (
     <TouchableOpacity
       style={styles.row}
@@ -27,21 +28,34 @@ const RowUser = ({ item, isSelected, onSelect }) => {
       <RadioCircle active={isSelected} />
       <View style={styles.wrapText}>
         <Text type="H4" color={Colors.Gray9}>
-          {item.name}
+          {member.name
+            ? member.name
+            : member.phone_number
+            ? member.phone_number
+            : member.email}
         </Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-const FilterPopup = ({ isVisible, onHide, members, filters, onApply }) => {
+const FilterPopup = ({
+  isVisible,
+  onHide,
+  onShow,
+  members,
+  filters,
+  onApply,
+}) => {
   const t = useTranslations();
+  const [lockShowing, acquireLockShowing, releaseLockShowing] =
+    useBoolean(false);
   const [selectedUsers, setSelectedUsers] = useState(filters.users);
   const [stateDatePicker, setStateDatePicker] = useState({
-    showModalStart: false,
-    showModalEnd: false,
+    visible: false,
     startDate: filters.date_from,
     endDate: filters.date_to,
+    currentTimeChange: 'start',
   });
 
   const handleOnSelectUser = useCallback(
@@ -64,61 +78,88 @@ const FilterPopup = ({ isVisible, onHide, members, filters, onApply }) => {
   );
 
   const onPickStartDate = useCallback(() => {
-    setStateDatePicker({
-      ...stateDatePicker,
-      showModalStart: true,
-      showModalEnd: false,
-    });
-  }, [stateDatePicker]);
-  const onPickEndDate = useCallback(() => {
-    setStateDatePicker({
-      ...stateDatePicker,
-      showModalStart: false,
-      showModalEnd: true,
-    });
-  }, [stateDatePicker]);
+    onHide();
+    acquireLockShowing();
+    setStateDatePicker((state) => ({
+      ...state,
+      visible: true,
+      currentTimeChange: 'start',
+    }));
+  }, [onHide, acquireLockShowing]);
 
-  const onConfirmStartDate = (date) => {
-    if (moment(date).valueOf() < stateDatePicker.endDate) {
-      setStateDatePicker({
-        ...stateDatePicker,
-        showModalStart: false,
-        startDate: moment(date).valueOf(),
-      });
-    } else {
-      setStateDatePicker({
-        ...stateDatePicker,
-        showModalStart: false,
+  const onPickEndDate = useCallback(() => {
+    onHide();
+    acquireLockShowing();
+    setStateDatePicker((state) => ({
+      ...state,
+      visible: true,
+      currentTimeChange: 'end',
+    }));
+  }, [onHide, acquireLockShowing]);
+
+  const onConfirmStartDate = useCallback((date) => {
+    setStateDatePicker((state) => {
+      if (moment(date).valueOf() < state.endDate) {
+        return {
+          ...state,
+          visible: false,
+          startDate: moment(date).valueOf(),
+        };
+      }
+      return {
+        ...state,
+        visible: false,
         startDate: moment(date).valueOf(),
         endDate: moment(date).add(1, 'days').valueOf(),
-      });
-    }
-  };
+      };
+    });
+  }, []);
 
-  const onConfirmEndDate = (date) => {
-    if (moment(date).valueOf() > stateDatePicker.startDate) {
-      setStateDatePicker({
-        ...stateDatePicker,
-        showModalEnd: false,
-        endDate: moment(date).valueOf(),
-      });
-    } else {
-      setStateDatePicker({
-        ...stateDatePicker,
-        showModalEnd: false,
+  const onConfirmEndDate = useCallback((date) => {
+    setStateDatePicker((state) => {
+      if (moment(date).valueOf() > state.startDate) {
+        return {
+          ...state,
+          visible: false,
+          endDate: moment(date).valueOf(),
+        };
+      }
+      return {
+        ...state,
+        visible: false,
         startDate: moment(date).add(-1, 'days').valueOf(),
         endDate: moment(date).valueOf(),
-      });
-    }
-  };
+      };
+    });
+  }, []);
+
+  const onConfirmDate = useCallback(
+    (date) => {
+      if (stateDatePicker.currentTimeChange === 'start') {
+        onConfirmStartDate(date);
+      } else {
+        onConfirmEndDate(date);
+      }
+      onShow();
+      acquireLockShowing();
+    },
+    [
+      onConfirmStartDate,
+      onConfirmEndDate,
+      stateDatePicker,
+      acquireLockShowing,
+      onShow,
+    ]
+  );
 
   const onPickerCancel = useCallback(() => {
-    setStateDatePicker({
-      ...stateDatePicker,
-      showModalEnd: false,
-      showModalStart: false,
-    });
-  }, [stateDatePicker]);
+    setStateDatePicker((state) => ({
+      ...state,
+      visible: false,
+    }));
+    acquireLockShowing();
+    onShow();
+  }, [acquireLockShowing, onShow]);
 
   const handleOnApply = useCallback(() => {
     onApply({
@@ -131,20 +172,21 @@ const FilterPopup = ({ isVisible, onHide, members, filters, onApply }) => {
 
   const handleOnCancel = useCallback(() => {
     setSelectedUsers(filters.users);
-    setStateDatePicker({
-      ...stateDatePicker,
+    setStateDatePicker((state) => ({
+      ...state,
       startDate: filters.date_from,
       endDate: filters.date_to,
-    });
+    }));
     onHide();
-  }, [setSelectedUsers, setStateDatePicker, stateDatePicker, filters, onHide]);
+  }, [setSelectedUsers, setStateDatePicker, filters, onHide]);
 
   return (
     <>
       <Modal
-        isVisible={isVisible}
+        isVisible={isVisible && !lockShowing}
         onBackButtonPress={handleOnCancel}
         onBackdropPress={handleOnCancel}
+        onModalHide={releaseLockShowing}
         useNativeDriver={true}
         useNativeDriverForBackdrop={true}
         animationIn={'zoomIn'}
@@ -172,13 +214,13 @@ const FilterPopup = ({ isVisible, onHide, members, filters, onApply }) => {
               {t('by_user')}
             </Text>
             <ScrollView>
-              {members.map((item, index) => (
-                <RowUser
+              {members.map((member, index) => (
+                <RowMember
                   key={index}
-                  item={item}
+                  member={member}
                   isSelected={
-                    selectedUsers.includes(item.id) ||
-                    (item.id === 0 && selectedUsers.length === 0)
+                    selectedUsers.includes(member.id) ||
+                    (member.id === 0 && selectedUsers.length === 0)
                   }
                   onSelect={handleOnSelectUser}
                 />
@@ -197,19 +239,16 @@ const FilterPopup = ({ isVisible, onHide, members, filters, onApply }) => {
         </View>
       </Modal>
       <DateTimePickerModal
-        isVisible={stateDatePicker.showModalStart}
-        date={stateDatePicker.startDate}
+        isVisible={stateDatePicker.visible && !lockShowing}
+        date={
+          stateDatePicker.currentTimeChange === 'start'
+            ? new Date(stateDatePicker.startDate)
+            : new Date(stateDatePicker.endDate)
+        }
         mode={'date'}
-        onConfirm={onConfirmStartDate}
+        onConfirm={onConfirmDate}
         onCancel={onPickerCancel}
-        display="spinner"
-      />
-      <DateTimePickerModal
-        isVisible={stateDatePicker.showModalEnd}
-        date={stateDatePicker.endDate}
-        mode={'date'}
-        onConfirm={onConfirmEndDate}
-        onCancel={onPickerCancel}
+        onHide={releaseLockShowing}
         display="spinner"
       />
     </>

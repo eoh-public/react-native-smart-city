@@ -17,6 +17,7 @@ import { getTitleFromTime } from '../../utils/Converter/time';
 import { useBoolean } from '../../hooks/Common';
 import useActivityLog from './hooks';
 import styles from './styles/indexStyles';
+import { TESTID } from '../../configs/Constants';
 
 const keyExtractor = (item) => item.id;
 
@@ -79,7 +80,10 @@ const ActivityLogScreen = ({ route }) => {
 
   const headerRight = useMemo(
     () => (
-      <TouchableOpacity onPress={setShowFilterPopup}>
+      <TouchableOpacity
+        onPress={setShowFilterPopup}
+        testID={TESTID.FILTER_BUTTON}
+      >
         <Icon name={'filter'} size={27} color={Colors.Black} />
       </TouchableOpacity>
     ),
@@ -117,6 +121,7 @@ const ActivityLogScreen = ({ route }) => {
         <FilterPopup
           isVisible={showFilterPopup}
           onHide={setHideFilterPopup}
+          onShow={setShowFilterPopup}
           members={members}
           filters={filters}
           onApply={setFilters}
