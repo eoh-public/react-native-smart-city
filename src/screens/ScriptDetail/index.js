@@ -38,9 +38,12 @@ import FImage from '../../commons/FImage';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
+import withPreventDoubleClick from '../../commons/WithPreventDoubleClick';
 import { AUTOMATE_TYPE } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
 import { TESTID } from '../../configs/Constants';
+
+const PreventDoubleTouch = withPreventDoubleClick(TouchableOpacity);
 
 const ScriptDetail = ({ route }) => {
   const { navigate, goBack, dispatch } = useNavigation();
@@ -262,7 +265,7 @@ const ScriptDetail = ({ route }) => {
 
   const renderButtonStar = useMemo(() => {
     return (
-      <TouchableOpacity
+      <PreventDoubleTouch
         style={[styles.buttonStar, styles.headerButton]}
         onPress={onPressStar}
         testID={TESTID.HEADER_DEVICE_BUTTON_STAR}
@@ -272,7 +275,7 @@ const ScriptDetail = ({ route }) => {
         ) : (
           <IconOutline name="star" size={25} />
         )}
-      </TouchableOpacity>
+      </PreventDoubleTouch>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isStar]);

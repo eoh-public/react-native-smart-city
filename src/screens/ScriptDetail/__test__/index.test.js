@@ -145,9 +145,7 @@ describe('Test ScriptDetail', () => {
     });
     const instance = tree.root;
     const buttonStar = instance.find(
-      (el) =>
-        el.props.testID === TESTID.HEADER_DEVICE_BUTTON_STAR &&
-        el.type === TouchableOpacity
+      (el) => el.props.testID === TESTID.HEADER_DEVICE_BUTTON_STAR
     );
 
     axios.post.mockImplementation(async () => {
@@ -225,6 +223,7 @@ describe('Test ScriptDetail', () => {
       type: AUTOMATE_TYPE.ONE_TAP,
     });
   });
+
   const _testGoToActivityLog = (automateType, activityLogType) => {
     test('test go to activity log', async () => {
       route.params.type = automateType;
