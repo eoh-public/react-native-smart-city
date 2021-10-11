@@ -140,7 +140,7 @@ const ScriptDetail = ({ route }) => {
   }, [id]);
 
   const onPressEdit = useCallback(() => {
-    navigate(Routes.EditActionsList, { data, id, setData });
+    navigate(Routes.EditActionsList, { data, id, setData, unit });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
@@ -180,34 +180,48 @@ const ScriptDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCreateScriptSuccess]);
 
-  const Item = useCallback(({ item, index }) => {
-    return (
-      <View style={styles.wrapItem}>
-        <View style={styles.leftItem}>
-          <Text color={Colors.Gray9} type="H4" semibold>
-            {index + 1 < 10 ? '0' + (index + 1) : index + 1}
-          </Text>
-        </View>
-        <View style={styles.rightItem}>
-          <FImage
-            source={{ uri: item?.sensor_icon_kit }}
-            style={styles.iconItem}
-          />
-          <View style={styles.contentItem}>
-            <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
-              {item?.station_name}
-            </Text>
-            <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
-              {item?.sensor_name}
-            </Text>
-            <Text numberOfLines={1} type="H4" color={Colors.Gray9}>
-              {item?.action_name}
+  const Item = useCallback(
+    ({ item, index }) => {
+      return (
+        <View style={styles.wrapItem}>
+          <View style={styles.leftItem}>
+            <Text color={Colors.Gray9} type="H4" semibold>
+              {index + 1 < 10 ? '0' + (index + 1) : index + 1}
             </Text>
           </View>
+          <View style={styles.rightItem}>
+            <FImage
+              source={{ uri: item?.sensor_icon_kit }}
+              style={styles.iconItem}
+            />
+            <View style={styles.contentItem}>
+              <View style={styles.titleItem}>
+                <Text
+                  numberOfLines={1}
+                  semibold
+                  type="Label"
+                  color={Colors.Gray7}
+                  style={styles.paddingRight4}
+                >
+                  {unit?.name}
+                </Text>
+                <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
+                  {item?.station_name}
+                </Text>
+              </View>
+              <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
+                {item?.sensor_name}
+              </Text>
+              <Text numberOfLines={1} type="H4" color={Colors.Gray9}>
+                {item?.action_name}
+              </Text>
+            </View>
+          </View>
         </View>
-      </View>
-    );
-  }, []);
+      );
+    },
+    [unit.name]
+  );
 
   const ItemAdd = useCallback(({ item, index }) => {
     return (
@@ -276,7 +290,7 @@ const ScriptDetail = ({ route }) => {
     );
     return () => backHandler.remove();
   }, [isCreateScriptSuccess]);
-
+  const isHaveScriptActions = data?.length > 0;
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
@@ -307,7 +321,7 @@ const ScriptDetail = ({ route }) => {
             <Text type="H3" color={Colors.Gray9} semibold>
               {t('active_list')}
             </Text>
-            {havePermission && (
+            {havePermission && isHaveScriptActions && (
               <TouchableOpacity onPress={onPressEdit} style={styles.editButton}>
                 <Text type="Label" hilight>
                   {t('edit')}

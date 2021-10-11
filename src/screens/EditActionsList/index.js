@@ -20,7 +20,7 @@ const EditActionsList = () => {
   const t = useTranslations();
   const { goBack } = useNavigation();
   const { params = {} } = useRoute() || {};
-  const { data = [], id, setData } = params;
+  const { data = [], id, setData, unit } = params;
   const [itemRemove, setItemRemove] = useState({
     id: '',
     actionName: '',
@@ -93,9 +93,20 @@ const EditActionsList = () => {
             style={styles.iconItem}
           />
           <View style={styles.contentItem}>
-            <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
-              {item?.station_name}
-            </Text>
+            <View style={styles.titleItem}>
+              <Text
+                numberOfLines={1}
+                semibold
+                type="Label"
+                color={Colors.Gray7}
+                style={styles.paddingRight4}
+              >
+                {unit?.name}
+              </Text>
+              <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
+                {item?.station_name}
+              </Text>
+            </View>
             <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
               {item?.sensor_name}
             </Text>
