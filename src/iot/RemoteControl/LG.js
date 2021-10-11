@@ -13,6 +13,10 @@ const propertyTimer = [
   'absoluteMinuteToStart',
   'absoluteHourToStop',
   'absoluteMinuteToStop',
+  'relativeHourToStart',
+  'relativeMinuteToStart',
+  'relativeHourToStop',
+  'relativeMinuteToStop',
 ];
 
 function updateConfigValues(device, configValues, name, value) {

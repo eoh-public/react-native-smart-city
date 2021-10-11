@@ -12,6 +12,7 @@ const MenuActionMore = memo(
   ({
     isVisible,
     hideMore,
+    hideComplete,
     listMenuItem,
     childRef,
     onItemClick,
@@ -39,6 +40,7 @@ const MenuActionMore = memo(
         placement="bottom"
         from={childRef}
         onRequestClose={hideMore}
+        onCloseComplete={hideComplete}
         isVisible={isVisible}
         arrowStyle={styles.wrap}
       >

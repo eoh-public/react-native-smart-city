@@ -9,21 +9,6 @@ describe('Test MenuActionList', () => {
   const listItem = [item(1)];
   let wrapper;
 
-  test('create MenuActionList', () => {
-    act(() => {
-      wrapper = create(<MenuActionList title="Title" listItem={listItem} />);
-    });
-    expect(wrapper.toJSON()).toMatchSnapshot();
-  });
-
-  test('create MenuActionList with icon', () => {
-    listItem[0].icon = 'icon';
-    act(() => {
-      wrapper = create(<MenuActionList title="Title" listItem={listItem} />);
-    });
-    expect(wrapper.toJSON()).toMatchSnapshot();
-  });
-
   test('onItemClick MenuActionList', () => {
     const mockOnItemClick = jest.fn();
     const mockHideModal = jest.fn();

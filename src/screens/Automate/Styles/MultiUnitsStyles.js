@@ -1,47 +1,36 @@
 import { StyleSheet } from 'react-native';
-import { Colors, Constants } from '../../../configs';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { Theme, Colors, Constants } from '../../../configs';
 
 export default StyleSheet.create({
-  wrap: {
-    flex: 1,
-    backgroundColor: Colors.White,
+  ...Theme,
+  headerAniStyle: {
+    borderBottomWidth: 0,
   },
-  buttonAdd: {
-    paddingRight: 16,
-  },
-  titleItem: {
+  wrapTab: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 16,
   },
-  contentContainerStyle: {
-    paddingLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 80 + getBottomSpace(),
-  },
-  arrowRightButton: {
-    width: 40,
-    height: 40,
+  tabName: {
+    height: 30,
+    paddingHorizontal: 16,
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  arrowRight: {
-    transform: [
-      {
-        rotate: '180deg',
-      },
-    ],
-    tintColor: Colors.Gray7,
-    width: 8,
-    height: 12,
+  tabNameActive: {
+    backgroundColor: Colors.Gray3,
+  },
+  wrapContent: {
+    paddingHorizontal: 16,
+    paddingBottom: 70 + getBottomSpace(),
   },
   wrapAutomateItem: {
     backgroundColor: Colors.White,
     height: 106,
     width: (Constants.width - 40) / 2,
     borderRadius: 8,
-    marginRight: 8,
     shadowColor: Colors.Shadow,
     shadowOffset: {
       width: 0,
@@ -52,16 +41,16 @@ export default StyleSheet.create({
     elevation: 2,
     marginVertical: 5,
   },
-  wrapUniItem: {
-    marginBottom: 16,
+  wrapItem: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
-  contentContainerStyle2: {
-    paddingLeft: 2,
-    paddingRight: 16,
+  marginRigt8: {
+    marginRight: 8,
   },
   addNewItem: {
     marginTop: 7,
-    height: 106,
     width: (Constants.width - 40) / 2,
+    height: 106,
   },
 });

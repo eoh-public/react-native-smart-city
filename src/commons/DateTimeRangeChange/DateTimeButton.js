@@ -1,22 +1,22 @@
 import React, { memo } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { IconFill } from '@ant-design/icons-react-native';
+import { IconOutline } from '@ant-design/icons-react-native';
 import moment from 'moment';
 
 import Text from '../Text';
 import { Colors } from '../../configs';
 
-const DateTimeButton = memo(({ onPress, time, date, formatType }) => {
+const DateTimeButton = memo(({ onPress, time, date, formatType, style }) => {
   let format = 'DD.MM.YY hh:mm';
   if (formatType === 'date') {
     format = 'DD.MM.YY';
   }
   return (
-    <TouchableOpacity style={styles.dateSelect} onPress={onPress}>
+    <TouchableOpacity style={[styles.dateSelect, style]} onPress={onPress}>
       <Text type={'Label'} color={Colors.Gray8} style={styles.txtTime}>
         {moment(time).format(format)}
       </Text>
-      <IconFill name={'caret-down'} size={16} color={Colors.Gray8} />
+      <IconOutline name={'calendar'} size={16} color={Colors.Gray8} />
     </TouchableOpacity>
   );
 });
