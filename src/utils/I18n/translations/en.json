@@ -737,6 +737,7 @@
   "setting_at": "Setting at",
   "name_your_button": "Name your button",
   "continue": "Continue",
+  "multi_units_automate": "Multi-Units Automate",
   "tap_to_run": "Tap to run",
   "how_to_start": "How to start",
   "set_up {name}": "Setup {name}",
@@ -765,6 +766,7 @@
   "create_smart": "Create Smart",
   "automate": "Automate",
   "automate_scripts": "Automate Scripts",
+  "multi_unit": "Multi Units",
   "edit_device": "Edit Device",
   "device_name": "Device name",
   "rename_successfully": "Rename successfully!",
@@ -772,5 +774,10 @@
   "remove_failed": "Remove failed",
   "message_delete_device": "Are you sure you want to delete device \"{name}\" ?",
   "choose_the_automation_method_you_want": "Choose the automation method you want",
+  "auto_activated": "Auto Activated",
+  "activated_by": "Activated by",
+  "apply": "Apply",
+  "by_date": "By Date",
+  "by_user": "By User",
   "error_please_try_later": "Error! Please try later"
 }

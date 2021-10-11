@@ -108,6 +108,10 @@ const API = {
     GET_ALL_UNITS: () => SCConfig.apiRoot + '/property_manager/units/all_unit/',
     GET_SENSOR_CONFIG: (id) =>
       SCConfig.apiRoot + `/property_manager/sensors/${id}/display_configs/`,
+    GET_MULTI_UNITS: () =>
+      SCConfig.apiRoot + '/property_manager/automate/multi_unit/',
+    ACTIVITY_LOG: (id) =>
+      SCConfig.apiRoot + `/property_manager/automate/${id}/logs/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>

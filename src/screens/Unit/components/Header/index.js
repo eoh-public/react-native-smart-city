@@ -8,7 +8,7 @@ import { useTranslations } from '../../../../hooks/Common/useTranslations';
 import { Colors } from '../../../../configs';
 import Text from '../../../../commons/Text';
 import BackDefault from '../../../../commons/BackDefault';
-import Header from '../../../../commons/Header';
+import Header from '../../../../commons/Header/HeaderCustom';
 import ImageButton from '../../../../commons/ImageButton';
 import { navigate } from '../../../../navigations/utils';
 import Routes from '../../../../utils/Route';

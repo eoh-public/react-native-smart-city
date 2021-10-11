@@ -46,8 +46,14 @@ const ScriptDetail = ({ route }) => {
   const { navigate, goBack, dispatch } = useNavigation();
   const { params = {} } = route;
   const refMenuAction = useRef();
-  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
-    usePopover();
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+    hidingPopoverComplete,
+    hidePopoverComplete,
+  } = usePopover();
   const t = useTranslations();
   const {
     id,
@@ -57,6 +63,9 @@ const ScriptDetail = ({ route }) => {
     unit,
     dateNow = null,
     isCreateScriptSuccess,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = params;
   const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
@@ -90,13 +99,24 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const goToActivityLog = useCallback(() => {
+    navigate(Routes.ActivityLog, {
+      id: id,
+      type:
+        type === AUTOMATE_TYPE.ONE_TAP
+          ? `automate.${AUTOMATE_TYPE.ONE_TAP}`
+          : 'automate',
+      share: unit,
+    });
+  }, [navigate, id, unit, type]);
+
   const listMenuItem = useMemo(
     () => [
       { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: null },
+      { text: t('activity_log'), doAction: goToActivityLog },
       { text: t('delete_script'), doAction: onShowDelete(scriptName) },
     ],
-    [t, onShowRename, onShowDelete, scriptName]
+    [t, onShowRename, onShowDelete, goToActivityLog, scriptName]
   );
 
   const starScript = useCallback(async () => {
@@ -123,21 +143,8 @@ const ScriptDetail = ({ route }) => {
     []
   );
 
-  const onItemClick = useCallback(
-    (item) => {
-      if (item.doAction) {
-        item.doAction();
-      } else {
-        alert(t('feature_under_development'));
-      }
-    },
-    [t]
-  );
-
-  const onPressAdd = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onItemClick = useCallback((item) => {
+    item.doAction();
   }, []);
 
   const getScriptDetail = useCallback(async () => {
@@ -147,19 +154,25 @@ const ScriptDetail = ({ route }) => {
   }, [id]);
 
   const onPressEdit = useCallback(() => {
-    navigate(Routes.EditActionsList, { data, id, setData });
+    navigate(Routes.EditActionsList, { data, id, setData, unit });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const onPressAddAction = useCallback(() => {
-    navigate(Routes.SelectSensorDevices, {
+    const params = {
       unit,
       scriptName,
       automateId: id,
       isScript: false,
-      type: AUTOMATE_TYPE.ONE_TAP,
-    });
-  }, [navigate, id, scriptName, unit]);
+      type,
+      isCreateNewAction: true,
+    };
+    navigate(
+      isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
+      params
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, id, name, unit, isMultiUnits]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -172,42 +185,57 @@ const ScriptDetail = ({ route }) => {
   }, [id]);
 
   const onGoBack = useCallback(() => {
-    if (isCreateScriptSuccess) {
+    if (isCreateScriptSuccess || isCreateNewAction) {
       dispatch(popAction(5));
+      isAutomateTab && goBack();
     } else {
       goBack();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCreateScriptSuccess]);
 
-  const Item = useCallback(({ item, index }) => {
-    return (
-      <View style={styles.wrapItem}>
-        <View style={styles.leftItem}>
-          <Text color={Colors.Gray9} type="H4" semibold>
-            {index + 1 < 10 ? '0' + (index + 1) : index + 1}
-          </Text>
-        </View>
-        <View style={styles.rightItem}>
-          <FImage
-            source={{ uri: item?.sensor_icon_kit }}
-            style={styles.iconItem}
-          />
-          <View style={styles.contentItem}>
-            <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
-              {item?.station_name}
-            </Text>
-            <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
-              {item?.sensor_name}
-            </Text>
-            <Text numberOfLines={1} type="H4" color={Colors.Gray9}>
-              {item?.action_name}
+  const Item = useCallback(
+    ({ item, index }) => {
+      return (
+        <View style={styles.wrapItem}>
+          <View style={styles.leftItem}>
+            <Text color={Colors.Gray9} type="H4" semibold>
+              {index + 1 < 10 ? '0' + (index + 1) : index + 1}
             </Text>
           </View>
+          <View style={styles.rightItem}>
+            <FImage
+              source={{ uri: item?.sensor_icon_kit }}
+              style={styles.iconItem}
+            />
+            <View style={styles.contentItem}>
+              <View style={styles.titleItem}>
+                <Text
+                  numberOfLines={1}
+                  semibold
+                  type="Label"
+                  color={Colors.Gray7}
+                  style={styles.paddingRight4}
+                >
+                  {unit?.name}
+                </Text>
+                <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
+                  {item?.station_name}
+                </Text>
+              </View>
+              <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
+                {item?.sensor_name}
+              </Text>
+              <Text numberOfLines={1} type="H4" color={Colors.Gray9}>
+                {item?.action_name}
+              </Text>
+            </View>
+          </View>
         </View>
-      </View>
-    );
-  }, []);
+      );
+    },
+    [unit.name]
+  );
 
   const ItemAdd = useCallback(({ item, index }) => {
     return (
@@ -253,9 +281,6 @@ const ScriptDetail = ({ route }) => {
     () => (
       <View style={styles.rightComponent}>
         {renderButtonStar}
-        <TouchableOpacity onPress={onPressAdd} style={styles.headerButton}>
-          <Icon name={'plus'} size={27} color={Colors.Black} />
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleShowMenuAction}
           ref={refMenuAction}
@@ -281,7 +306,7 @@ const ScriptDetail = ({ route }) => {
     );
     return () => backHandler.remove();
   }, [isCreateScriptSuccess]);
-
+  const isHaveScriptActions = data?.length > 0;
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
@@ -313,7 +338,7 @@ const ScriptDetail = ({ route }) => {
             <Text type="H3" color={Colors.Gray9} semibold>
               {t('active_list')}
             </Text>
-            {havePermission && (
+            {havePermission && isHaveScriptActions && (
               <TouchableOpacity
                 onPress={onPressEdit}
                 style={styles.editButton}
@@ -334,6 +359,7 @@ const ScriptDetail = ({ route }) => {
       <MenuActionMore
         isVisible={showingPopover}
         hideMore={hidePopover}
+        hideComplete={hidePopoverComplete}
         listMenuItem={listMenuItem}
         childRef={childRef}
         onItemClick={onItemClick}
@@ -341,7 +367,7 @@ const ScriptDetail = ({ route }) => {
         wrapStyle={styles.wrapStyle}
       />
       <AlertAction
-        visible={stateAlertAction.visible}
+        visible={stateAlertAction.visible && hidingPopoverComplete}
         hideModal={hideAlertAction}
         title={stateAlertAction.title}
         message={stateAlertAction.message}

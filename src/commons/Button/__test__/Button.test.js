@@ -6,12 +6,6 @@ import { SvgDirection } from '../../../../assets/images/SmartParking';
 
 describe('Test button component', () => {
   let tree;
-  test('create button auth', () => {
-    act(() => {
-      tree = renderer.create(<Button title="Title" type="auth" />);
-    });
-    expect(tree.toJSON()).toMatchSnapshot();
-  });
 
   test('create button auth a', () => {
     const mockFunc = jest.fn();

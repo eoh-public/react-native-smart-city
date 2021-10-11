@@ -47,6 +47,11 @@ const HeaderAni = memo(
       outputRange: [1, 0.9],
       extrapolate: 'clamp',
     });
+    const titleWidth = scrollY.interpolate({
+      inputRange: [0, 2 * title_height],
+      outputRange: ['90%', '55%'],
+      extrapolate: 'clamp',
+    });
     const headerHeightAnim = scrollY.interpolate({
       inputRange: [0, 2 * title_height],
       outputRange: [heightHeader, default_height + paddingIos],
@@ -74,15 +79,18 @@ const HeaderAni = memo(
         </View>
 
         <Animated.View
-          style={{
-            transform: [
-              { translateY: titleTransformY },
-              { translateX: titleTransformX },
-              { scale: titleScale },
-            ],
-            ...styles.boxText,
-            marginRight: titleMarginRight,
-          }}
+          style={[
+            {
+              transform: [
+                { translateY: titleTransformY },
+                { translateX: titleTransformX },
+                { scale: titleScale },
+              ],
+              ...styles.boxText,
+              marginRight: titleMarginRight,
+            },
+            rightComponent && { width: titleWidth },
+          ]}
         >
           <Text
             type={'H2'}

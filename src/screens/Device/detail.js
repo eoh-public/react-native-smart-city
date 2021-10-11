@@ -109,7 +109,7 @@ const DeviceDetail = ({ account, route }) => {
     ) {
       menuItems.push({
         route: Routes.ActivityLog,
-        data: { sensor },
+        data: { id: sensor.id, type: 'action' },
         text: t('activity_log'),
       });
       if (isOwner) {
@@ -128,7 +128,7 @@ const DeviceDetail = ({ account, route }) => {
     if (isShowSetupEmergencyContact) {
       menuItems.push({
         route: Routes.ActivityLog,
-        data: { sensor },
+        data: { id: sensor.id, type: 'action' },
         text: t('activity_log'),
       });
     }

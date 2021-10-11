@@ -69,7 +69,10 @@ const ItemOneTap = memo(
               </TouchableOpacity>
             )}
           </View>
-          <TouchableOpacity testID={TESTID.GO_DETAIL} onPress={goToDetail}>
+          <TouchableOpacity
+            testID={TESTID.GO_DETAIL}
+            onPress={onPressItem || goToDetail}
+          >
             <Text
               numberOfLines={1}
               semibold
