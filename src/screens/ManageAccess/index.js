@@ -12,14 +12,13 @@ import { IconOutline } from '@ant-design/icons-react-native';
 import styles from './styles/ManageAccessStyles';
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
-import { useRoute } from '@react-navigation/native';
 import useManageAccess from './hooks';
 import Routes from '../../utils/Route';
 import { RowItem } from '../../commons/RowItem';
 
-const ManageAccessScreen = memo(() => {
+const ManageAccessScreen = memo(({ route }) => {
   const t = useTranslations();
-  const { params = {} } = useRoute();
+  const { params = {} } = route;
   const { unit, sensor } = params;
   const { navigate } = useNavigation();
   const isFocused = useIsFocused();

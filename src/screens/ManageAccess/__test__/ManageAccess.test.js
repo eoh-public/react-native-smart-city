@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { create, act } from 'react-test-renderer';
 
 import ManageAccessScreen from '../index';
@@ -9,16 +9,13 @@ import { mockSCStore } from '../../../context/mockStore';
 import { ScrollView } from 'react-native';
 import { RowItem } from '../../../commons/RowItem';
 import Routes from '../../../utils/Route';
-import { useRoute } from '@react-navigation/native';
 
 const mockUseIsFocused = jest.fn();
 const mockedNavigate = jest.fn();
-const mockSetState = jest.fn();
 jest.mock('react', () => {
   return {
     ...jest.requireActual('react'),
     memo: (x) => x,
-    useState: jest.fn((init) => [init, mockSetState]),
   };
 });
 
@@ -30,9 +27,7 @@ jest.mock('@react-navigation/native', () => {
       goBack: jest.fn(),
       navigate: mockedNavigate,
     }),
-    useIsFocused: () => ({
-      useIsFocused: mockUseIsFocused,
-    }),
+    useIsFocused: () => mockUseIsFocused,
   };
 });
 
@@ -46,10 +41,12 @@ const wrapComponent = (route) => (
 
 describe('Test Manage Access', () => {
   let tree;
+  let route;
+
   beforeEach(() => {
     axios.get.mockClear();
     mockedNavigate.mockClear();
-    useRoute.mockReturnValue({
+    route = {
       params: {
         unit: {
           id: 1,
@@ -60,16 +57,16 @@ describe('Test Manage Access', () => {
           name: 'sensor',
         },
       },
-    });
-    mockSetState.mockClear();
+    };
   });
   it('render Manage Access', async () => {
+    mockUseIsFocused.mockImplementation(() => true);
     const response = {
       status: 200,
       data: [
         {
           id: 1,
-          name: {
+          user: {
             id: 1,
             name: 'jason',
             phone_number: '0984524544',
@@ -80,9 +77,11 @@ describe('Test Manage Access', () => {
         },
       ],
     };
-    useState.mockImplementationOnce((init) => [response.data, mockSetState]);
+    axios.get.mockImplementation(async () => {
+      return response;
+    });
     await act(async () => {
-      tree = await create(wrapComponent());
+      tree = await create(wrapComponent(route));
     });
     const instance = tree.root;
     const header = instance.findAllByType(HeaderCustom);
@@ -92,7 +91,7 @@ describe('Test Manage Access', () => {
     const memberButton = instance.findAllByType(RowItem);
     expect(memberButton).toHaveLength(1);
     await act(async () => {
-      memberButton[0].props.onPress();
+      await memberButton[0].props.onPress();
     });
     expect(mockedNavigate).toHaveBeenCalledWith(Routes.GuestInfo, {
       id: 1,

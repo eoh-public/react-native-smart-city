@@ -35,19 +35,34 @@ describe('Test Use Manage Access', () => {
       data: [
         {
           id: 1,
-          name: 'jason',
+          user: {
+            id: 1,
+            name: 'jason',
+            phone_number: '0984524544',
+            email: '123@gmail.com',
+          },
           access_schedule: 'always',
           schedule: 'Always',
         },
         {
           id: 2,
-          name: 'mike',
+          user: {
+            id: 1,
+            name: 'mike',
+            phone_number: '0984524144',
+            email: '1235@gmail.com',
+          },
           access_schedule: 'recurring',
           schedule: 'M/T 02:40 - 08:40 AM',
         },
         {
           id: 3,
-          name: 'david',
+          user: {
+            id: 1,
+            name: 'david',
+            phone_number: '0984524541',
+            email: '1234@gmail.com',
+          },
           access_schedule: 'temporary',
           schedule: '02:40 09/08/2020 - 08:40 09/10/2020',
         },
