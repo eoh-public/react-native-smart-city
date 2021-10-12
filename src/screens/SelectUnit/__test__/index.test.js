@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import { act, create } from 'react-test-renderer';
 import axios from 'axios';
 import SelectUnit from '../';
@@ -7,13 +8,26 @@ import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 
 jest.mock('axios');
-
 const mockSetState = jest.fn();
+const mockDispatch = jest.fn();
+const mockGoBack = jest.fn();
+
 jest.mock('react', () => {
   return {
     ...jest.requireActual('react'),
     memo: (x) => x,
     useState: jest.fn((init) => [init, mockSetState]),
+  };
+});
+
+jest.mock('@react-navigation/native', () => {
+  return {
+    ...jest.requireActual('@react-navigation/native'),
+    useRoute: jest.fn(),
+    useNavigation: () => ({
+      goBack: mockGoBack,
+      dispatch: mockDispatch,
+    }),
   };
 });
 
@@ -32,6 +46,16 @@ describe('Test Select unit screen', () => {
   });
 
   it('Test render', async () => {
+    useRoute.mockReturnValue({
+      params: {
+        isScript: true,
+        type: 'automate',
+        isAutomateTab: true,
+        isMultiUnits: true,
+        routeName: 'test',
+        isCreateNewAction: false,
+      },
+    });
     const response = {
       status: 200,
       data: [
@@ -53,7 +77,7 @@ describe('Test Select unit screen', () => {
     });
     const instance = tree.root;
     const TouchableOpacities = instance.findAllByType(TouchableOpacity);
-    expect(TouchableOpacities).toHaveLength(3);
+    expect(TouchableOpacities).toHaveLength(4);
     await act(async () => {
       await TouchableOpacities[1].props.onPress();
       await TouchableOpacities[2].props.onPress(response.data[0]);
@@ -62,6 +86,16 @@ describe('Test Select unit screen', () => {
   });
 
   it('Test SelectUnit getAllUnits fail', async () => {
+    useRoute.mockReturnValue({
+      params: {
+        isScript: true,
+        type: 'automate',
+        isAutomateTab: true,
+        isMultiUnits: true,
+        routeName: 'test',
+        isCreateNewAction: false,
+      },
+    });
     const response = {
       status: 400,
     };
@@ -75,7 +109,7 @@ describe('Test Select unit screen', () => {
 
     const instance = tree.root;
     const TouchableOpacities = instance.findAllByType(TouchableOpacity);
-    expect(TouchableOpacities).toHaveLength(3);
+    expect(TouchableOpacities).toHaveLength(4);
     await act(async () => {
       await TouchableOpacities[1].props.onPress();
       await TouchableOpacities[2].props.onPress();

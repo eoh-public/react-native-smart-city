@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import { CircleButton } from '../index';
 
@@ -8,6 +9,8 @@ describe('Test circle button', () => {
     act(() => {
       tree = renderer.create(<CircleButton size={5} />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const TouchableOpacities = instance.findAllByType(TouchableOpacity);
+    expect(TouchableOpacities).toHaveLength(1);
   });
 });

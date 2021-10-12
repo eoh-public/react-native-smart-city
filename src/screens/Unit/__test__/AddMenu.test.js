@@ -31,6 +31,13 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+jest.mock('react', () => {
+  return {
+    ...jest.requireActual('react'),
+    memo: (x) => x,
+  };
+});
+
 describe('Test AddMenu Unit', () => {
   let tree;
   test('render AddMenu without route', async () => {
@@ -41,7 +48,40 @@ describe('Test AddMenu Unit', () => {
 
     const instance = tree.root;
     const menuActionAddnew = instance.findAllByType(MenuActionAddnew);
-    expect(menuActionAddnew).toHaveLength(0);
-    expect(mockedNavigate).toHaveBeenCalledTimes(0);
+    expect(menuActionAddnew).toHaveLength(1);
+  });
+
+  test('test hideAddModal', async () => {
+    let unit = { id: 1, name: 'Unit 1' };
+    await act(async () => {
+      tree = create(wrapComponent(unit));
+    });
+
+    const instance = tree.root;
+    const menuActionAddnew = instance.findByType(MenuActionAddnew);
+    act(() => {
+      menuActionAddnew.props.hideModal();
+    });
+    expect(menuActionAddnew.props.visible).toBe(true);
+  });
+
+  test('test onItemClick', async () => {
+    let unit = { id: 1, name: 'Unit 1' };
+    await act(async () => {
+      tree = create(wrapComponent(unit));
+    });
+
+    const instance = tree.root;
+    const menuActionAddnew = instance.findByType(MenuActionAddnew);
+    act(() => {
+      menuActionAddnew.props.onItemClick({
+        route: 'route test',
+        data: 'data test',
+      });
+    });
+
+    expect(menuActionAddnew.props.visible).toBe(true);
+    expect(mockedAfterItemClick).toHaveBeenCalled();
+    expect(mockedNavigate).toHaveBeenCalledWith('route test', 'data test');
   });
 });

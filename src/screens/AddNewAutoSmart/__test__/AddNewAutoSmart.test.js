@@ -65,6 +65,10 @@ describe('test AddNewAutoSmart', () => {
       title: 'select_sensor',
       type: 'value_change',
       unit: { id: 1 },
+      isAutomateTab: undefined,
+      isMultiUnits: undefined,
+      isScript: undefined,
+      routeName: 'SelectSensorDevices',
     });
   });
 
@@ -107,6 +111,10 @@ describe('test AddNewAutoSmart', () => {
     expect(mockNavigate).toHaveBeenCalledWith(Routes.SetSchedule, {
       type: 'schedule',
       unit: route.params.unit,
+      isAutomateTab: undefined,
+      isMultiUnits: undefined,
+      isScript: undefined,
+      routeName: 'SetSchedule',
     });
   });
 });

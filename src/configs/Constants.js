@@ -91,6 +91,8 @@ export const AUTOMATE_TYPE = {
   ONE_TAP: 'one_tap',
   VALUE_CHANGE: 'value_change',
   SCHEDULE: 'schedule',
+  ONE_TAP_ONLY: 'one_tap_only',
+  AUTOMATE: 'automate',
 };
 
 export const AUTOMATE_SELECT = {
@@ -117,6 +119,11 @@ export const AUTOMATES = {
     explanation: 'Short Explanation',
     icon: Schedule,
   },
+};
+
+export const UNIT_TYPES = {
+  MULTI: 'MultiUnit',
+  SINGLE: 'SingleUnit',
 };
 
 export const TESTID = {
@@ -267,6 +274,9 @@ export const TESTID = {
   // Automate
   AUTOMATE_SCRIPT_ACTION: 'AUTOMATE_SCRIPT_ACTION',
   NAME_YOUR_BUTTON: 'NAME_YOUR_BUTTON',
+  BUTTON_ACTIVATE_ONE_TAP: 'BUTTON_ACTIVATE_ONE_TAP',
+  BUTTON_EDIT_SCRIPT_ACTION: 'BUTTON_EDIT_SCRIPT_ACTION',
+  BUTTON_ADD_SCRIPT_ACTION: 'BUTTON_ADD_SCRIPT_ACTION',
 
   // Parking input maunaly spot
   PARKING_SPOT_INFO_BUTTON: 'PARKING_SPOT_INFO_BUTTON',
@@ -538,4 +548,7 @@ export const TESTID = {
   ACCESS_SCHEDULE_SHEET: 'ACCESS_SCHEDULE_SHEET',
   RECURRING_TEXT_BUTTON: 'RECURRING_TEXT_BUTTON',
   TEMPORARY_TEXT_BUTTON: 'TEMPORARY_TEXT_BUTTON',
+
+  // ActivityLog
+  ITEM_USER_FILTER: 'ITEM_USER_FILTER',
 };

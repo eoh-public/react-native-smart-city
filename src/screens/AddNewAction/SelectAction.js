@@ -21,7 +21,7 @@ import { LoadingSelectAction } from './Components';
 
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
-  const { navigate, dispatch } = useNavigation();
+  const { navigate, dispatch, goBack } = useNavigation();
   const {
     unit,
     device,
@@ -29,6 +29,9 @@ const SelectAction = memo(({ route }) => {
     scriptName,
     isScript = false,
     type,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = route.params;
   const [data, setData] = useState([]);
   const [actions, setActions] = useState({
@@ -40,7 +43,7 @@ const SelectAction = memo(({ route }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
-    setIsLoading(true);
+    isScript && setIsLoading(true);
     const { success, data } = await axiosGet(
       isScript
         ? API.AUTOMATE.GET_SENSOR_CONFIG(device.id)
@@ -68,6 +71,9 @@ const SelectAction = memo(({ route }) => {
         },
         type,
         unit,
+        isAutomateTab,
+        isScript,
+        isMultiUnits,
       });
     } else {
       const { success } = await axiosPost(
@@ -85,9 +91,13 @@ const SelectAction = memo(({ route }) => {
           unit,
           dateNow: moment().valueOf(), // TODO will remove dateNow later
           type: type,
+          isAutomateTab,
+          isCreateNewAction,
+          isMultiUnits,
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     actions.action,
     automateId,
@@ -98,6 +108,7 @@ const SelectAction = memo(({ route }) => {
     isScript,
     checkedItem,
     sensorData,
+    isCreateNewAction,
   ]);
 
   const handleOnSelectAction = (action) => {
@@ -105,9 +116,27 @@ const SelectAction = memo(({ route }) => {
   };
 
   const handleClose = useCallback(() => {
-    isScript ? dispatch(popAction(3)) : alert(t('feature_under_development'));
+    if (automateId) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isCreateNewAction,
+        isAutomateTab,
+      });
+    } else if (isCreateNewAction) {
+      dispatch(popAction(2));
+    } else if (isScript) {
+      dispatch(popAction(3));
+      isAutomateTab && goBack();
+    } else {
+      alert(t('feature_under_development'));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, t]);
+  }, [route.params]);
 
   const onChecked = useCallback(
     (_, isChecked, id) => {
@@ -117,7 +146,12 @@ const SelectAction = memo(({ route }) => {
   );
 
   const onPressItem = (item) => () => {
-    navigate(Routes.SetUpSensor, { item, sensorData, setSensorData });
+    navigate(Routes.SetUpSensor, {
+      item,
+      sensorData,
+      setSensorData,
+      isAutomateTab,
+    });
   };
 
   const rightComponent = useMemo(
@@ -127,7 +161,7 @@ const SelectAction = memo(({ route }) => {
       </TouchableOpacity>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [route.params]
   );
 
   const RenderActionItem = ({ data }) => {

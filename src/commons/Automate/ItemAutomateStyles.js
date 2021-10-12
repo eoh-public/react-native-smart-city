@@ -10,13 +10,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
     marginTop: 16,
-    shadowColor: Colors.Shadow,
+    shadowColor: Colors.Gray6,
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowOpacity: 0.5,
-    shadowRadius: 14,
+    shadowRadius: 4,
     elevation: 9,
   },
   active: {
