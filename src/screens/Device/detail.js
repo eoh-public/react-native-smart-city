@@ -1,12 +1,19 @@
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { RefreshControl, ScrollView, View } from 'react-native';
+import React, {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+} from 'react';
+import { View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import moment from 'moment';
 import _ from 'lodash';
 import { get } from 'lodash';
 import { useSelector } from 'react-redux';
-import { IconFill } from '@ant-design/icons-react-native';
+import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Icon } from '@ant-design/react-native';
 
 import { useCountUp } from './hooks/useCountUp';
@@ -14,6 +21,7 @@ import { getData as getLocalData } from '../../utils/Storage';
 import { API, Colors, Device } from '../../configs';
 import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
+import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
 import { ConnectedViewHeader, DisconnectedView } from '../../commons/Device';
 import HistoryChart from '../../commons/Device/HistoryChart';
@@ -41,7 +49,6 @@ import { DEVICE_TYPE, TESTID } from '../../configs/Constants';
 import FooterInfo from '../../commons/Device/FooterInfo';
 import Routes from '../../utils/Route';
 import { sendRemoteCommand } from '../../iot/RemoteControl';
-import HeaderDevice from './HeaderDevice';
 import { usePopover } from '../../hooks/Common';
 import { useConfigGlobalState } from '../../iot/states';
 import { standardizeCameraScreenSize } from '../../utils/Utils';
@@ -464,24 +471,47 @@ const DeviceDetail = ({ account, route }) => {
 
   const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
     usePopover();
+  const refMenuAction = useRef();
+  const handleShowMenuAction = useCallback(() => {
+    showPopoverWithRef(refMenuAction);
+  }, [showPopoverWithRef, refMenuAction]);
+
+  const HeaderRight = useMemo(
+    () => (
+      <View style={styles.headerRight}>
+        <TouchableOpacity
+          style={styles.buttonStar}
+          onPress={isFavourite ? removeFromFavorites : addToFavorites}
+          testID={TESTID.HEADER_DEVICE_BUTTON_STAR}
+        >
+          {isFavourite ? (
+            <IconFill name="star" size={25} color={Colors.Yellow6} />
+          ) : (
+            <IconOutline name="star" size={25} />
+          )}
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleShowMenuAction}
+          ref={refMenuAction}
+          testID={TESTID.HEADER_DEVICE_BUTTON_MORE}
+        >
+          <Icon name={'more'} size={27} color={Colors.Black} />
+        </TouchableOpacity>
+      </View>
+    ),
+    [isFavourite, addToFavorites, removeFromFavorites, handleShowMenuAction]
+  );
 
   return (
     <View style={styles.wrap}>
-      <HeaderDevice
-        isFavourite={isFavourite}
-        addToFavourites={addToFavorites}
-        removeFromFavourites={removeFromFavorites}
-        showPopoverWithRef={showPopoverWithRef}
-      />
-      <ScrollView
-        style={styles.wrap}
-        refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={onRefresh} />
-        }
+      <WrapHeaderScrollable
+        title={title}
+        headerAniStyle={styles.header}
+        rightComponent={HeaderRight}
+        loading={loading}
+        onRefresh={onRefresh}
       >
-        <Text bold type="H2" style={styles.title}>
-          {title}
-        </Text>
         <View style={styles.wrapTemplate}>{renderSensorConnected()}</View>
         {isShowSetupEmergencyContact && canManageSubUnit && (
           <BottomButtonView
@@ -509,7 +539,7 @@ const DeviceDetail = ({ account, route }) => {
           unit={unit}
           station={sensor.station}
         />
-      </ScrollView>
+      </WrapHeaderScrollable>
       {isShowEmergencyResolve && (
         <BottomButtonView
           style={styles.bottomButtonEmergencyResolve}

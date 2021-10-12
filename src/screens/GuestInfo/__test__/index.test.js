@@ -101,6 +101,27 @@ describe('Test GuestInfo', () => {
     );
     expect(accessScheduleItems).toHaveLength(3);
     expect(radioButtons).toHaveLength(3);
+
+    const always = accessScheduleItems[0];
+    const recurring = accessScheduleItems[1];
+    const temporary = accessScheduleItems[2];
+    expect(always.props.isSelected).toBeTruthy();
+    expect(recurring.props.isSelected).toBeFalsy();
+    expect(temporary.props.isSelected).toBeFalsy();
+
+    await act(async () => {
+      await radioButtons[1].props.onPress();
+    });
+    expect(always.props.isSelected).toBeFalsy();
+    expect(recurring.props.isSelected).toBeTruthy();
+    expect(temporary.props.isSelected).toBeFalsy();
+
+    await act(async () => {
+      await radioButtons[2].props.onPress();
+    });
+    expect(always.props.isSelected).toBeFalsy();
+    expect(recurring.props.isSelected).toBeFalsy();
+    expect(temporary.props.isSelected).toBeTruthy();
   });
 
   test('test open and close 2 modal', async () => {
@@ -172,5 +193,37 @@ describe('Test GuestInfo', () => {
       await accessScheduleSheet.props.onHide();
     });
     expect(accessScheduleSheet.props.isVisible).toBeFalsy();
+  });
+
+  test('test save', async () => {
+    data.access_schedule = 'recurring';
+    const response = {
+      status: 200,
+      data: data,
+    };
+    axios.get.mockImplementation(async () => {
+      return response;
+    });
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const saveButton = instance.find(
+      (el) =>
+        el.props.testID === TESTID.SAVE_ACCESS_SCHEDULE &&
+        el.type === TouchableOpacity
+    );
+    axios.put.mockImplementation(async () => {
+      return { status: 200 };
+    });
+    await act(async () => {
+      await saveButton.props.onPress();
+    });
+    expect(axios.put).toHaveBeenCalledWith(API.SHARED_SENSOR.ACCESS(1), {
+      access_schedule: 'recurring',
+      recurring_time_start: '07:00:00',
+      recurring_time_end: '07:00:00',
+      recurring_time_repeat: [0, 1, 2],
+    });
   });
 });
