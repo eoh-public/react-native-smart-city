@@ -46,6 +46,9 @@
     "url": "git+https://github.com/github_account/react-native-smart-city.git",
     "baseUrl": "https://github.com/github_account/react-native-smart-city"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "react-native"
   ],
