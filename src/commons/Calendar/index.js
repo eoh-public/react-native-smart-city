@@ -4,6 +4,7 @@ import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 import BottomSheet from '../BottomSheet';
 import ViewButtonBottom from '../ViewButtonBottom';
+import Text from '../Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Images, Colors } from '../../configs';
 import styles from './styles';
@@ -45,6 +46,7 @@ export default ({
       <Calendar
         style={styles.calendar}
         onDayPress={onDateSelected}
+        current={defaultDate?.format('YYYY-MM-DD')}
         minDate={minDate?.format('YYYY-MM-DD')}
         maxDate={maxDate?.format('YYYY-MM-DD')}
         onMonthChange={(month) => {}}
@@ -64,6 +66,9 @@ export default ({
             source={Images.arrowLeft}
             style={direction !== 'left' && styles.arrowRight}
           />
+        )}
+        renderHeader={(date) => (
+          <Text type="H4">{moment(new Date(date)).format('MMM yyyy')}</Text>
         )}
       />
       <ViewButtonBottom
