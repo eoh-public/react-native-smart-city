@@ -687,7 +687,7 @@
   "chip_name": "Chip name",
   "manage_access": "Manage Access",
   "owners": "Owners",
-  "guest": "Guest",
+  "guests": "Guests",
   "no_guest": "No guest",
   "guest_info": "Guest Information",
   "eoh_account_id": "EoH account ID",
