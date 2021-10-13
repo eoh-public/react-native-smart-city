@@ -56,6 +56,7 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { Card } from '../../commons/CardShadow';
 import { useIsOwnerOfUnit } from '../../hooks/Common';
+import { useIsFocused } from '@react-navigation/native';
 
 const { standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
@@ -64,6 +65,7 @@ const { standardizeHeight } = standardizeCameraScreenSize(
 const DeviceDetail = ({ account, route }) => {
   const t = useTranslations();
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
   const [offsetTitle, setOffsetTitle] = useState(1);
   const [display, setDisplay] = useState({ items: [] });
   const [displayValues, setDisplayValues] = useState([]);
@@ -79,9 +81,10 @@ const DeviceDetail = ({ account, route }) => {
   // eslint-disable-next-line no-unused-vars
   const [configValues, setConfigValues] = useConfigGlobalState('configValues');
 
-  const { unit, sensor, title, isGGHomeConnected } = route.params;
+  const { unit, sensor, isGGHomeConnected } = route.params;
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
+  const [sensorName, setSensorName] = useState(sensor?.name);
 
   const isShowSetupEmergencyContact =
     display.items.filter(
@@ -107,6 +110,23 @@ const DeviceDetail = ({ account, route }) => {
     }
   }, [unit, sensor]);
 
+  const fetchSensorName = useCallback(async () => {
+    const { success, data } = await axiosGet(
+      API.UNIT.UNIT_DETAIL(unit.id),
+      {},
+      true
+    );
+    if (success) {
+      const station = data?.stations.filter(
+        (item) => item.id === sensor.station.id
+      );
+      const sensorDevice = station[0]?.sensors.filter(
+        (item) => item.id === sensor.id
+      );
+      setSensorName(sensorDevice[0]?.name);
+    }
+  }, [sensor, unit]);
+
   const listMenuItemDefault = useMemo(() => [], []);
 
   const listMenuItem = useMemo(() => {
@@ -123,7 +143,7 @@ const DeviceDetail = ({ account, route }) => {
         menuItems.push({
           text: t('edit'),
           route: Routes.EditDevice,
-          data: { unit, sensor },
+          data: { unit, sensor, sensorNewName: sensorName },
         });
         menuItems.push({
           route: Routes.ManageAccess,
@@ -165,6 +185,7 @@ const DeviceDetail = ({ account, route }) => {
     isShowSetupEmergencyContact,
     listMenuItemDefault,
     sensor,
+    sensorName,
     isOwner,
     unit,
     addToFavorites,
@@ -257,6 +278,12 @@ const DeviceDetail = ({ account, route }) => {
   useEffect(() => {
     fetchDataDeviceDetail();
   }, [sensor, fetchDataDeviceDetail]);
+
+  useEffect(() => {
+    if (isFocused) {
+      fetchSensorName();
+    }
+  }, [fetchSensorName, isFocused]);
 
   const onRefresh = useCallback(() => {
     fetchDataDeviceDetail();
@@ -506,7 +533,7 @@ const DeviceDetail = ({ account, route }) => {
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
-        title={title}
+        title={sensorName}
         headerAniStyle={styles.header}
         rightComponent={HeaderRight}
         loading={loading}

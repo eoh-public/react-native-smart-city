@@ -22,9 +22,11 @@ const EditDevice = memo(() => {
   const t = useTranslations();
   const { navigate } = useNavigation();
   const { params = {} } = useRoute();
-  const { unit, sensor } = params;
+  const { unit, sensor, sensorNewName } = params;
   const [inputName, setInputName] = useState('');
-  const [sensorName, setSensorName] = useState(sensor?.name);
+  const [sensorName, setSensorName] = useState(
+    sensorNewName ? sensorNewName : ''
+  );
   const { stateAlertAction, hideAlertAction, onShowRename, onShowDelete } =
     useEditDevice(unit, sensor);
   const renameSensor = useCallback(async () => {
