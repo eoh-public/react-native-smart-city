@@ -34,10 +34,14 @@ export default ({
   const onDone = useCallback(() => {
     onConfirm && onConfirm(dateSelected);
     onCancel && onCancel();
-  }, [onHide, onConfirm, dateSelected]);
+  }, [onCancel, onConfirm, dateSelected]);
 
   return (
-    <BottomSheet isVisible={isVisible} onHide={onHide} onBackdropPress={onCalendarCancel}>
+    <BottomSheet
+      isVisible={isVisible}
+      onHide={onHide}
+      onBackdropPress={onCalendarCancel}
+    >
       <Calendar
         style={styles.calendar}
         onDayPress={onDateSelected}
