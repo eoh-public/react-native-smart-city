@@ -52,7 +52,7 @@ const MediaPlayerFull = ({
   useEffect(() => {
     Animated.timing(rotateAnim, {
       toValue: isFullScreen ? 1 : 0,
-      duration: 700,
+      duration: 400,
       useNativeDriver: false,
     }).start();
     // eslint-disable-next-line react-hooks/exhaustive-deps
