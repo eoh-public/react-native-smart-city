@@ -1,5 +1,6 @@
-import LinearChart from '../index';
 import React from 'react';
+import Svg from 'react-native-svg';
+import LinearChart from '../';
 import renderer, { act } from 'react-test-renderer';
 import { SCProvider } from '../../../../../context';
 import { mockSCStore } from '../../../../../context/mockStore';
@@ -27,6 +28,8 @@ describe('Test LinearChart', () => {
     act(() => {
       wrapper = renderer.create(wrapComponent(chartOptions, datasShow));
     });
-    expect(wrapper.toJSON()).toMatchSnapshot();
+    const instance = wrapper.root;
+    const Svgs = instance.findAllByType(Svg);
+    expect(Svgs).toHaveLength(1);
   });
 });

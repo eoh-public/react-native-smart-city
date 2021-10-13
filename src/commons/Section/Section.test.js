@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 
 import { Section } from './Section';
 
 describe('Section', () => {
+  let tree;
+
   test('Shoud match empty snapshot when type is border', () => {
     const component = (
       <Section type={'border'}>
@@ -14,9 +16,10 @@ describe('Section', () => {
     act(() => {
       tree = renderer.create(component);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(1);
   });
-  let tree;
 
   test('Shoud match empty snapshot when type is shadow', () => {
     const component = (
@@ -28,6 +31,8 @@ describe('Section', () => {
     act(() => {
       tree = renderer.create(component);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(1);
   });
 });

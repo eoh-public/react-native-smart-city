@@ -1,5 +1,6 @@
-import ValueBalloon from '../ValueBalloon';
 import React from 'react';
+import { G } from 'react-native-svg';
+import ValueBalloon from '../ValueBalloon';
 import renderer, { act } from 'react-test-renderer';
 
 describe('Test ValueBalloon', () => {
@@ -9,6 +10,8 @@ describe('Test ValueBalloon', () => {
     act(() => {
       wrapper = renderer.create(<ValueBalloon x={10} y={15} />);
     });
-    expect(wrapper.toJSON()).toMatchSnapshot();
+    const instance = wrapper.root;
+    const Gs = instance.findAllByType(G);
+    expect(Gs).toHaveLength(1);
   });
 });
