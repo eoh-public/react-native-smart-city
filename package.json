@@ -1,7 +1,7 @@
 {
   "name": "@eohjsc/react-native-smart-city",
   "title": "React Native Smart Home",
-  "version": "0.2.27",
+  "version": "0.2.28",
   "description": "TODO",
   "main": "index.js",
   "files": [
@@ -45,6 +45,9 @@
     "type": "git",
     "url": "git+https://github.com/github_account/react-native-smart-city.git",
     "baseUrl": "https://github.com/github_account/react-native-smart-city"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "react-native"

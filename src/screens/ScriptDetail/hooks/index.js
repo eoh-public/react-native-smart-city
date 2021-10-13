@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
+import { Colors } from '../../../configs';
 
 const useStateAlertAction = () => {
   const t = useTranslations();
@@ -9,6 +10,7 @@ const useStateAlertAction = () => {
     message: '',
     leftButton: t('cancel'),
     rightButton: '',
+    rightColor: Colors.Primary,
     isDelete: true,
   });
   const hideAlertAction = useCallback(() => {
@@ -24,6 +26,7 @@ const useStateAlertAction = () => {
         message: '',
         leftButton: t('cancel'),
         rightButton: t('rename'),
+        rightColor: Colors.Primary,
         isDelete: false,
       };
     });
@@ -43,6 +46,7 @@ const useStateAlertAction = () => {
           }),
           leftButton: t('cancel'),
           rightButton: t('remove'),
+          rightColor: Colors.Gray6,
           isDelete: true,
         };
       });
