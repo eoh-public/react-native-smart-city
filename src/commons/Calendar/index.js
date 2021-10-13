@@ -10,8 +10,9 @@ import styles from './styles';
 
 export default ({
   isVisible,
-  onHide,
+  onCancel,
   onConfirm,
+  onHide,
   defaultDate = moment(),
   minDate,
   maxDate,
@@ -26,17 +27,17 @@ export default ({
     [setDateSelected]
   );
 
-  const onCancel = useCallback(() => {
-    onHide && onHide();
-  }, [onHide]);
+  const onCalendarCancel = useCallback(() => {
+    onCancel && onCancel();
+  }, [onCancel]);
 
   const onDone = useCallback(() => {
     onConfirm && onConfirm(dateSelected);
-    onHide && onHide();
+    onCancel && onCancel();
   }, [onHide, onConfirm, dateSelected]);
 
   return (
-    <BottomSheet isVisible={isVisible} onBackdropPress={onCancel}>
+    <BottomSheet isVisible={isVisible} onHide={onHide} onBackdropPress={onCalendarCancel}>
       <Calendar
         style={styles.calendar}
         onDayPress={onDateSelected}
@@ -63,7 +64,7 @@ export default ({
       />
       <ViewButtonBottom
         leftTitle={t('cancel')}
-        onLeftClick={onCancel}
+        onLeftClick={onCalendarCancel}
         rightTitle={t('done')}
         onRightClick={onDone}
       />
