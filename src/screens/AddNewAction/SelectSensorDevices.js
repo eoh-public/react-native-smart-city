@@ -23,7 +23,6 @@ const SelectSensorDevices = memo(({ route }) => {
     automateId,
     title = AUTOMATE_SELECT.SELECT_DEVICES,
     type,
-    isScript,
     scriptName,
     isAutomateTab,
     isCreateNewAction,
@@ -36,6 +35,7 @@ const SelectSensorDevices = memo(({ route }) => {
   const [station, setStation] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState();
   const { navigate, dispatch, goBack } = useNavigation();
+  const isSelectSensor = title === AUTOMATE_SELECT.SELECT_SENSOR;
 
   const onSnapToItem = useCallback(
     (item, index) => {
@@ -46,24 +46,25 @@ const SelectSensorDevices = memo(({ route }) => {
   );
 
   const fetchDetails = useCallback(async () => {
-    let callAPI = API.UNIT.DEVICE_CONTROL(unit.id);
-    if (title === AUTOMATE_SELECT.SELECT_SENSOR) {
-      // TODO will update API later
-      callAPI = API.UNIT.DEVICE_CONTROL(unit.id);
-    }
-    await fetchWithCache(callAPI, {}, (response) => {
-      const { success, data } = response;
-      if (success) {
-        const listMenu = data.map((item, index) => ({
-          text: item.name,
-          station: item,
-          index: index,
-        }));
-        setStation(data);
-        setListMenuItem(listMenu);
-        setListStation(listMenu.concat([{ text: '' }]));
+    await fetchWithCache(
+      isSelectSensor
+        ? API.UNIT.DEVICE_SENSOR(unit.id)
+        : API.UNIT.DEVICE_CONTROL(unit.id),
+      {},
+      (response) => {
+        const { success, data } = response;
+        if (success) {
+          const listMenu = data.map((item, index) => ({
+            text: item.name,
+            station: item,
+            index: index,
+          }));
+          setStation(data);
+          setListMenuItem(listMenu);
+          setListStation(listMenu.concat([{ text: '' }]));
+        }
       }
-    });
+    );
   }, [title, unit.id]);
 
   useEffect(() => {
@@ -84,7 +85,7 @@ const SelectSensorDevices = memo(({ route }) => {
       device: selectedDevice,
       automateId: automateId,
       stationName: station[indexStation]?.name,
-      isScript,
+      isSelectSensor,
       type,
       scriptName,
       isAutomateTab,
@@ -99,7 +100,7 @@ const SelectSensorDevices = memo(({ route }) => {
     navigate,
     unit,
     type,
-    isScript,
+    isSelectSensor,
     scriptName,
     isMultiUnits,
     isAutomateTab,
@@ -109,14 +110,14 @@ const SelectSensorDevices = memo(({ route }) => {
   const onClose = useCallback(() => {
     if (isCreateNewAction) {
       goBack();
-    } else if (isScript) {
+    } else if (isSelectSensor) {
       dispatch(popAction(2));
       isAutomateTab && goBack();
     } else {
       alert(t('feature_under_development'));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, isCreateNewAction]);
+  }, [isSelectSensor, isCreateNewAction]);
 
   const handleOnGoBackAndClose = useCallback(() => {
     if (automateId) {

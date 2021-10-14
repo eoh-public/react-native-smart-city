@@ -72,6 +72,8 @@ const SelectUnit = () => {
         isMultiUnits,
         routeName,
         unit: selectedItem,
+        automateId,
+        scriptName,
       }
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,7 +93,7 @@ const SelectUnit = () => {
         <View style={[styles.notSelected, isSelectedItem && styles.selected]}>
           {isSelectedItem && <View style={styles.childSelected} />}
         </View>
-        <FImage source={icon} style={styles.icon} />
+        <FImage source={{ uri: icon }} style={styles.icon} />
         <View style={styles.wrap}>
           <Text numberOfLines={1} type="H4">
             {name}

@@ -27,7 +27,7 @@ const SelectAction = memo(({ route }) => {
     device,
     automateId,
     scriptName,
-    isScript = false,
+    isSelectSensor = false,
     type,
     isAutomateTab,
     isCreateNewAction,
@@ -43,25 +43,25 @@ const SelectAction = memo(({ route }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
-    isScript && setIsLoading(true);
+    isSelectSensor && setIsLoading(true);
     const { success, data } = await axiosGet(
-      isScript
+      isSelectSensor
         ? API.AUTOMATE.GET_SENSOR_CONFIG(device.id)
         : API.SENSOR.DISPLAY_ACTIONS(device.id),
-      isScript && {},
-      isScript && true
+      isSelectSensor && {},
+      isSelectSensor && true
     );
     if (success) {
-      isScript ? setSensorData(data) : setData(data);
+      isSelectSensor ? setSensorData(data) : setData(data);
     }
     const to = setTimeout(() => {
       setIsLoading(false);
       clearTimeout(to);
     }, 1000);
-  }, [device.id, isScript]);
+  }, [device.id, isSelectSensor]);
 
   const onSave = useCallback(async () => {
-    if (isScript) {
+    if (isSelectSensor) {
       const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
       navigate(Routes.AddNewOneTap, {
         automateData: {
@@ -72,8 +72,10 @@ const SelectAction = memo(({ route }) => {
         type,
         unit,
         isAutomateTab,
-        isScript,
+        isSelectSensor,
         isMultiUnits,
+        automateId,
+        scriptName,
       });
     } else {
       const { success } = await axiosPost(
@@ -89,7 +91,7 @@ const SelectAction = memo(({ route }) => {
           name: scriptName,
           havePermission: true,
           unit,
-          dateNow: moment().valueOf(), // TODO will remove dateNow later
+          saveAt: moment().valueOf(),
           type: type,
           isAutomateTab,
           isCreateNewAction,
@@ -105,7 +107,7 @@ const SelectAction = memo(({ route }) => {
     scriptName,
     type,
     unit,
-    isScript,
+    isSelectSensor,
     checkedItem,
     sensorData,
     isCreateNewAction,
@@ -129,7 +131,7 @@ const SelectAction = memo(({ route }) => {
       });
     } else if (isCreateNewAction) {
       dispatch(popAction(2));
-    } else if (isScript) {
+    } else if (isSelectSensor) {
       dispatch(popAction(3));
       isAutomateTab && goBack();
     } else {
@@ -194,12 +196,12 @@ const SelectAction = memo(({ route }) => {
     () => (
       <BottomButtonView
         style={styles.bottomButtonView}
-        mainTitle={t(isScript ? 'continue' : 'save')}
+        mainTitle={t(isSelectSensor ? 'continue' : 'save')}
         onPressMain={onSave}
         typeMain={actions?.action || !!checkedItem?.id ? 'primary' : 'disabled'}
       />
     ),
-    [onSave, actions, checkedItem, isScript, t]
+    [onSave, actions, checkedItem, isSelectSensor, t]
   );
 
   useEffect(() => {
@@ -213,7 +215,7 @@ const SelectAction = memo(({ route }) => {
         headerAniStyle={styles.headerAniStyle}
         rightComponent={rightComponent}
       >
-        {isScript ? (
+        {isSelectSensor ? (
           isLoading ? (
             <LoadingSelectAction style={styles.container} />
           ) : (

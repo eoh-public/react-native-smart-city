@@ -28,7 +28,15 @@ const getDateString = (date) => {
 
 const SetSchedule = ({ route }) => {
   const t = useTranslations();
-  const { type, unit, isAutomateTab, isScript, isMultiUnits } = route.params;
+  const {
+    type,
+    unit,
+    isAutomateTab,
+    isScript,
+    isMultiUnits,
+    automateId,
+    scriptName,
+  } = route.params;
   const { navigate, dispatch, goBack } = useNavigation();
   const [repeat, setRepeat] = useState(REPEAT_OPTIONS.ONCE);
   const [time, setTime] = useState(moment().hour(0).minute(0));
@@ -53,6 +61,8 @@ const SetSchedule = ({ route }) => {
       isAutomateTab,
       isScript,
       isMultiUnits,
+      automateId,
+      scriptName,
     });
   }, [
     navigate,
@@ -65,6 +75,8 @@ const SetSchedule = ({ route }) => {
     isAutomateTab,
     isScript,
     isMultiUnits,
+    automateId,
+    scriptName,
   ]);
 
   const onSetRepeatOption = useCallback(
@@ -90,8 +102,20 @@ const SetSchedule = ({ route }) => {
   );
 
   const onClose = useCallback(() => {
-    dispatch(popAction(4));
-    isAutomateTab && goBack();
+    if (automateId) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isAutomateTab,
+      });
+    } else {
+      dispatch(popAction(4));
+      isAutomateTab && goBack();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAutomateTab]);
 

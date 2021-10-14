@@ -67,7 +67,6 @@ describe('test AddNewAutoSmart', () => {
       unit: { id: 1 },
       isAutomateTab: undefined,
       isMultiUnits: undefined,
-      isScript: undefined,
       routeName: 'SelectSensorDevices',
     });
   });
