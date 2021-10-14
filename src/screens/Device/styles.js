@@ -11,6 +11,9 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.White,
   },
+  header: {
+    borderBottomWidth: 0,
+  },
   title: {
     marginHorizontal: 16,
   },
@@ -77,5 +80,18 @@ export default StyleSheet.create({
   },
   simpleList: {
     height: '100%',
+  },
+  headerRight: {
+    flexDirection: 'row',
+  },
+  buttonStar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    width: 35,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

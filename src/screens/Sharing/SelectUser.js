@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import { API, Colors, Theme } from '../../configs';
 import AccountList from '../../commons/Auth/AccountList';
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
   wrap: {
     flex: 1,
     backgroundColor: Colors.Gray2,
+    paddingTop: getStatusBarHeight(),
   },
   padding: {
     paddingHorizontal: 16,

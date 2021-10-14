@@ -28,6 +28,7 @@ export default StyleSheet.create({
     borderColor: Colors.Gray4,
   },
   rightItem: {
+    position: 'relative',
     flex: 1,
     marginLeft: 4,
     borderRadius: 4,
@@ -65,10 +66,14 @@ export default StyleSheet.create({
     paddingHorizontal: 70,
   },
   closeButton: {
+    position: 'absolute',
     width: 40,
-    height: 30,
+    height: 40,
     alignItems: 'center',
-    marginRight: -10,
+    justifyContent: 'center',
+    top: 5,
+    right: 6,
+    zIndex: 1,
   },
   wrapChildModal: {
     padding: 16,
@@ -80,5 +85,11 @@ export default StyleSheet.create({
   },
   textHighlight: {
     fontWeight: 'bold',
+  },
+  titleItem: {
+    flexDirection: 'row',
+  },
+  paddingRight4: {
+    paddingRight: 4,
   },
 });

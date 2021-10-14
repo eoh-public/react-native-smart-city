@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Colors, Theme } from '../../configs';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export default StyleSheet.create({
   commonWrap: {
@@ -8,6 +9,7 @@ export default StyleSheet.create({
   wrap: {
     flex: 1,
     backgroundColor: Colors.Gray2,
+    paddingTop: getStatusBarHeight(),
   },
   padding: {
     paddingHorizontal: 16,
