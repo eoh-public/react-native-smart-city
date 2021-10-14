@@ -71,22 +71,6 @@ describe('test AddNewAutoSmart', () => {
     });
   });
 
-  test('render BottomButtonView', async () => {
-    await act(async () => {
-      tree = await create(wrapComponent(route));
-    });
-    const instance = tree.root;
-    const bottomButton = instance.find(
-      (item) =>
-        item.props.testID ===
-        `${TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}${TESTID.BOTTOM_VIEW_MAIN}`
-    );
-    expect(bottomButton).toBeDefined();
-    await act(async () => {
-      await bottomButton.props.onPress();
-    });
-  });
-
   test('test choose Schedule', async () => {
     await act(async () => {
       tree = await create(wrapComponent(route));
@@ -112,7 +96,6 @@ describe('test AddNewAutoSmart', () => {
       unit: route.params.unit,
       isAutomateTab: undefined,
       isMultiUnits: undefined,
-      isScript: undefined,
       routeName: 'SetSchedule',
     });
   });

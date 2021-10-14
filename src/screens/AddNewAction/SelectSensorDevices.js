@@ -12,7 +12,7 @@ import BottomButtonView from '../../commons/BottomButtonView';
 import { HeaderCustom } from '../../commons/Header';
 import Routes from '../../utils/Route';
 import styles from './Styles/SelectSensorDevicesStyles';
-import { AUTOMATE_SELECT } from '../../configs/Constants';
+import { AUTOMATE_SELECT, TESTID } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
 import { Icon } from '@ant-design/react-native';
 
@@ -65,7 +65,7 @@ const SelectSensorDevices = memo(({ route }) => {
         }
       }
     );
-  }, [title, unit.id]);
+  }, [isSelectSensor, unit.id]);
 
   useEffect(() => {
     fetchDetails();
@@ -107,19 +107,7 @@ const SelectSensorDevices = memo(({ route }) => {
     isCreateNewAction,
   ]);
 
-  const onClose = useCallback(() => {
-    if (isCreateNewAction) {
-      goBack();
-    } else if (isSelectSensor) {
-      dispatch(popAction(2));
-      isAutomateTab && goBack();
-    } else {
-      alert(t('feature_under_development'));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSelectSensor, isCreateNewAction]);
-
-  const handleOnGoBackAndClose = useCallback(() => {
+  const onPressClose = useCallback(() => {
     if (automateId) {
       navigate(Routes.ScriptDetail, {
         id: automateId,
@@ -142,7 +130,8 @@ const SelectSensorDevices = memo(({ route }) => {
     () => (
       <TouchableOpacity
         style={styles.buttonClose}
-        onPress={handleOnGoBackAndClose}
+        onPress={onPressClose}
+        testID={TESTID.ICON_CLOSE}
       >
         <Icon name={'close'} size={24} color={Colors.Black} />
       </TouchableOpacity>
@@ -153,7 +142,7 @@ const SelectSensorDevices = memo(({ route }) => {
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom onClose={onClose} rightComponent={rightComponent} />
+      <HeaderCustom rightComponent={rightComponent} />
 
       <ScrollView
         style={styles.wrap}

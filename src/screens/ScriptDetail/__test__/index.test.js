@@ -219,7 +219,6 @@ describe('Test ScriptDetail', () => {
       automateId: route.params.id,
       isCreateNewAction: true,
       scriptName: route.params.name,
-      isScript: false,
       type: AUTOMATE_TYPE.ONE_TAP,
     });
   });

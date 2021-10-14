@@ -18,7 +18,6 @@ const SelectUnit = () => {
   const { navigate, dispatch, goBack } = useNavigation();
   const { params = {} } = useRoute();
   const {
-    isScript,
     type,
     isAutomateTab,
     isMultiUnits,
@@ -65,7 +64,6 @@ const SelectUnit = () => {
       isCreateNewAction || !routeName ? Routes.SelectSensorDevices : routeName,
       {
         ...params,
-        isScript,
         selectedItem,
         type,
         isAutomateTab,
@@ -77,7 +75,7 @@ const SelectUnit = () => {
       }
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
+  }, [selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
 
   const renderItem = ({ item = {} }) => {
     const {

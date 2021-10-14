@@ -48,7 +48,6 @@ describe('Test Select unit screen', () => {
   it('Test render', async () => {
     useRoute.mockReturnValue({
       params: {
-        isScript: true,
         type: 'automate',
         isAutomateTab: true,
         isMultiUnits: true,
@@ -88,7 +87,6 @@ describe('Test Select unit screen', () => {
   it('Test SelectUnit getAllUnits fail', async () => {
     useRoute.mockReturnValue({
       params: {
-        isScript: true,
         type: 'automate',
         isAutomateTab: true,
         isMultiUnits: true,
