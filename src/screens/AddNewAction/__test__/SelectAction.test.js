@@ -11,6 +11,7 @@ import ActionTemplate from '../../../commons/ActionTemplate';
 import NumberUpDownActionTemplate from '../../../commons/OneTapTemplate/NumberUpDownActionTemplate';
 import OptionsDropdownActionTemplate from '../../../commons/OneTapTemplate/OptionsDropdownActionTemplate';
 import StatesGridActionTemplate from '../../../commons/OneTapTemplate/StatesGridActionTemplate';
+import Toast from 'react-native-toast-message';
 
 jest.mock('axios');
 
@@ -74,6 +75,30 @@ describe('Test SelectAction', () => {
     expect(mockedNavigate).toHaveBeenCalled();
   });
 
+  test('test onSave fail not permission', async () => {
+    const response = {
+      status: 404,
+    };
+    axios.post.mockImplementation(async () => {
+      return response;
+    });
+    await act(async () => {
+      tree = renderer.create(wrapComponent(route));
+    });
+    const instance = tree.root;
+
+    const bottomButton = instance.findByType(BottomButtonView);
+    await act(async () => {
+      bottomButton.props.onPressMain();
+    });
+    expect(axios.post).toHaveBeenCalled();
+    expect(Toast.show).toBeCalledWith({
+      type: 'error',
+      position: 'bottom',
+      text1: 'There are some control commands you have not been authorized',
+      visibilityTime: 1000,
+    });
+  });
   test('test fetchData', async () => {
     const response = {
       status: 200,

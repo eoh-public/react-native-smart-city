@@ -21,6 +21,7 @@ import { TitleCheckBox } from '../Sharing/Components';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { popAction } from '../../navigations/utils';
 import { LoadingSelectAction } from './Components';
+import { ToastBottomHelper } from '../../utils/Utils';
 
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
@@ -90,19 +91,20 @@ const SelectAction = memo(({ route }) => {
           unit: unit.id,
         }
       );
-      if (success) {
-        navigate(Routes.ScriptDetail, {
-          id: automateId,
-          name: scriptName,
-          havePermission: true,
-          unit,
-          saveAt: moment().valueOf(),
-          type: type,
-          isAutomateTab,
-          isCreateNewAction,
-          isMultiUnits,
-        });
+      if (!success) {
+        ToastBottomHelper.error(t('not_permission'));
       }
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        havePermission: true,
+        unit,
+        saveAt: moment().valueOf(),
+        type: type,
+        isAutomateTab,
+        isCreateNewAction,
+        isMultiUnits,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [

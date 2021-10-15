@@ -787,5 +787,6 @@
   "text_on": "Bật",
   "text_off": "Tắt",
   "set_temperature": "Thiết lập nhiệt độ",
+  "not_permission": "Có một số lệnh điều khiển bạn chưa được cấp quyền",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

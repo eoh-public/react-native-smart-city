@@ -786,5 +786,6 @@
   "text_on": "On",
   "text_off": "Off",
   "set_temperature": "Set temperature",
+  "not_permission": "There are some control commands you have not been authorized",
   "error_please_try_later": "Error! Please try later"
 }
