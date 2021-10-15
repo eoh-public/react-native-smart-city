@@ -60,7 +60,6 @@ const MultiUnits = () => {
     navigate(Routes.UnitStack, {
       screen: Routes.AddNewAutoSmart,
       params: {
-        isScript: true,
         type:
           tabActive === t('One-Tap')
             ? AUTOMATE_TYPE.ONE_TAP_ONLY

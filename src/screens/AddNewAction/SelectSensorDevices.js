@@ -12,7 +12,7 @@ import BottomButtonView from '../../commons/BottomButtonView';
 import { HeaderCustom } from '../../commons/Header';
 import Routes from '../../utils/Route';
 import styles from './Styles/SelectSensorDevicesStyles';
-import { AUTOMATE_SELECT } from '../../configs/Constants';
+import { AUTOMATE_SELECT, TESTID } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
 import { Icon } from '@ant-design/react-native';
 
@@ -23,7 +23,6 @@ const SelectSensorDevices = memo(({ route }) => {
     automateId,
     title = AUTOMATE_SELECT.SELECT_DEVICES,
     type,
-    isScript,
     scriptName,
     isAutomateTab,
     isCreateNewAction,
@@ -36,6 +35,7 @@ const SelectSensorDevices = memo(({ route }) => {
   const [station, setStation] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState();
   const { navigate, dispatch, goBack } = useNavigation();
+  const isSelectSensor = title === AUTOMATE_SELECT.SELECT_SENSOR;
 
   const onSnapToItem = useCallback(
     (item, index) => {
@@ -46,25 +46,26 @@ const SelectSensorDevices = memo(({ route }) => {
   );
 
   const fetchDetails = useCallback(async () => {
-    let callAPI = API.UNIT.DEVICE_CONTROL(unit.id);
-    if (title === AUTOMATE_SELECT.SELECT_SENSOR) {
-      // TODO will update API later
-      callAPI = API.UNIT.DEVICE_CONTROL(unit.id);
-    }
-    await fetchWithCache(callAPI, {}, (response) => {
-      const { success, data } = response;
-      if (success) {
-        const listMenu = data.map((item, index) => ({
-          text: item.name,
-          station: item,
-          index: index,
-        }));
-        setStation(data);
-        setListMenuItem(listMenu);
-        setListStation(listMenu.concat([{ text: '' }]));
+    await fetchWithCache(
+      isSelectSensor
+        ? API.UNIT.DEVICE_SENSOR(unit.id)
+        : API.UNIT.DEVICE_CONTROL(unit.id),
+      {},
+      (response) => {
+        const { success, data } = response;
+        if (success) {
+          const listMenu = data.map((item, index) => ({
+            text: item.name,
+            station: item,
+            index: index,
+          }));
+          setStation(data);
+          setListMenuItem(listMenu);
+          setListStation(listMenu.concat([{ text: '' }]));
+        }
       }
-    });
-  }, [title, unit.id]);
+    );
+  }, [isSelectSensor, unit.id]);
 
   useEffect(() => {
     fetchDetails();
@@ -84,7 +85,7 @@ const SelectSensorDevices = memo(({ route }) => {
       device: selectedDevice,
       automateId: automateId,
       stationName: station[indexStation]?.name,
-      isScript,
+      isSelectSensor,
       type,
       scriptName,
       isAutomateTab,
@@ -99,26 +100,14 @@ const SelectSensorDevices = memo(({ route }) => {
     navigate,
     unit,
     type,
-    isScript,
+    isSelectSensor,
     scriptName,
     isMultiUnits,
     isAutomateTab,
     isCreateNewAction,
   ]);
 
-  const onClose = useCallback(() => {
-    if (isCreateNewAction) {
-      goBack();
-    } else if (isScript) {
-      dispatch(popAction(2));
-      isAutomateTab && goBack();
-    } else {
-      alert(t('feature_under_development'));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, isCreateNewAction]);
-
-  const handleOnGoBackAndClose = useCallback(() => {
+  const onPressClose = useCallback(() => {
     if (automateId) {
       navigate(Routes.ScriptDetail, {
         id: automateId,
@@ -141,7 +130,8 @@ const SelectSensorDevices = memo(({ route }) => {
     () => (
       <TouchableOpacity
         style={styles.buttonClose}
-        onPress={handleOnGoBackAndClose}
+        onPress={onPressClose}
+        testID={TESTID.ICON_CLOSE}
       >
         <Icon name={'close'} size={24} color={Colors.Black} />
       </TouchableOpacity>
@@ -152,7 +142,7 @@ const SelectSensorDevices = memo(({ route }) => {
 
   return (
     <View style={styles.wrap}>
-      <HeaderCustom onClose={onClose} rightComponent={rightComponent} />
+      <HeaderCustom rightComponent={rightComponent} />
 
       <ScrollView
         style={styles.wrap}
