@@ -752,8 +752,8 @@
   "message_delete_script": "Are you sure you want to delete script \"{scriptName}\"?",
   "rename_automate": "Rename automate",
   "edit_sub_unit": "Edit Sub-unit",
-  "no_sub_unit_yet":"No sub-unit yet.",
-  "tap_+_to_add_new_sub_unit":"Tap + to add new sub-unit.",
+  "no_sub_unit_yet": "No sub-unit yet.",
+  "tap_+_to_add_new_sub_unit": "Tap + to add new sub-unit.",
   "go_to_automate_scripts": "Go to automate scripts",
   "Script": "Script",
   "One-Tap": "One-Tap",
@@ -781,5 +781,10 @@
   "apply": "Apply",
   "by_date": "By Date",
   "by_user": "By User",
+  "options": "Options",
+  "mode": "Mode",
+  "text_on": "On",
+  "text_off": "Off",
+  "set_temperature": "Set temperature",
   "error_please_try_later": "Error! Please try later"
 }

@@ -31,7 +31,11 @@ const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
 
   return (
     <View>
-      <SelectActionCard onPress={onPress} action={actionName} title={title} />
+      <SelectActionCard
+        onPress={onPress}
+        action={actionName}
+        title={title ? title : t('mode')}
+      />
 
       <Modal
         isVisible={visible}

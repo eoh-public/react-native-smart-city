@@ -126,11 +126,13 @@ const SelectAction = memo(({ route }) => {
       case 'on_off_button_action_template':
       case 'one_button_action_template':
       case 'three_button_action_template':
+      case 'OnOffSimpleActionTemplate':
         index = newActions.findIndex((item) => {
           return (
             item.template === 'on_off_button_action_template' ||
             item.template === 'one_button_action_template' ||
-            item.template === 'three_button_action_template'
+            item.template === 'three_button_action_template' ||
+            item.template === 'OnOffSimpleActionTemplate'
           );
         });
         break;
@@ -299,6 +301,7 @@ const RenderActionItem = ({ data, onSelectAction }) => {
       case 'on_off_button_action_template':
       case 'one_button_action_template':
       case 'three_button_action_template':
+      case 'OnOffSimpleActionTemplate':
         actionTemplate.push(item);
         break;
       case 'OptionsDropdownActionTemplate':

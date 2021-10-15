@@ -7,6 +7,7 @@ import styles from './ActionTemplateStyles';
 import OnOffButtonAction from './OnOffButtonAction';
 import OneButtonAction from './OneButtonAction';
 import ThreeButtonAction from './ThreeButtonAction';
+import OnOffSimpleAction from './OnOffSimpleAction';
 import SelectActionCard from '../SelectActionCard';
 
 const ActionTemplate = memo(({ data, onSelectAction }) => {
@@ -43,6 +44,10 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
           case 'three_button_action_template':
             return (
               <ThreeButtonAction {...item} onPress={onPressSelectAction} />
+            );
+          case 'OnOffSimpleActionTemplate':
+            return (
+              <OnOffSimpleAction {...item} onPress={onPressSelectAction} />
             );
           default:
             break;

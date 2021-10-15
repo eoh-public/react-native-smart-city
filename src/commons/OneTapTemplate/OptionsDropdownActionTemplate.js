@@ -44,7 +44,11 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
 
   return (
     <View>
-      <SelectActionCard onPress={onPress} action={actionName} title={title} />
+      <SelectActionCard
+        onPress={onPress}
+        action={actionName}
+        title={title ? title : t('options')}
+      />
 
       <Modal
         isVisible={visible}
@@ -54,7 +58,7 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
         <View style={styles.popoverStyle}>
           <View>
             <Text type="H4" bold style={styles.textwithline}>
-              {title}
+              {title ? title : t('options')}
             </Text>
             <View style={styles.wrapContent}>
               {options.map((item, index) => (

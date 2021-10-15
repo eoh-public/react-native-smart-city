@@ -62,7 +62,11 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
 
   return (
     <>
-      <SelectActionCard onPress={onPress} action={actionName} title={title} />
+      <SelectActionCard
+        onPress={onPress}
+        action={actionName}
+        title={title ? title : t('temperature')}
+      />
 
       <Modal
         isVisible={visible}
@@ -72,7 +76,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
         <View style={styles.popoverStyle}>
           <View>
             <Text type="H4" bold style={styles.textwithline}>
-              {title}
+              {t('set_temperature')}
             </Text>
             <View style={styles.modalContent}>
               <TouchableOpacity
