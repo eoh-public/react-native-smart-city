@@ -23,7 +23,6 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
   const handleOnPressItem = useCallback(
     (item, index) => {
       setActiveAction(index);
-      setActionName(item.text);
     },
     [setActiveAction]
   );
@@ -39,6 +38,7 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
         },
         template,
       });
+    setActionName(options[activeAction]?.text);
     setVisible(false);
   }, [onSelectAction, setVisible, activeAction, action, template, options]);
 
