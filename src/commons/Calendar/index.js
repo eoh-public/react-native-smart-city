@@ -4,14 +4,16 @@ import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 import BottomSheet from '../BottomSheet';
 import ViewButtonBottom from '../ViewButtonBottom';
+import Text from '../Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Images, Colors } from '../../configs';
 import styles from './styles';
 
 export default ({
   isVisible,
-  onHide,
+  onCancel,
   onConfirm,
+  onHide,
   defaultDate = moment(),
   minDate,
   maxDate,
@@ -26,20 +28,25 @@ export default ({
     [setDateSelected]
   );
 
-  const onCancel = useCallback(() => {
-    onHide && onHide();
-  }, [onHide]);
+  const onCalendarCancel = useCallback(() => {
+    onCancel && onCancel();
+  }, [onCancel]);
 
   const onDone = useCallback(() => {
     onConfirm && onConfirm(dateSelected);
-    onHide && onHide();
-  }, [onHide, onConfirm, dateSelected]);
+    onCancel && onCancel();
+  }, [onCancel, onConfirm, dateSelected]);
 
   return (
-    <BottomSheet isVisible={isVisible} onBackdropPress={onCancel}>
+    <BottomSheet
+      isVisible={isVisible}
+      onHide={onHide}
+      onBackdropPress={onCalendarCancel}
+    >
       <Calendar
         style={styles.calendar}
         onDayPress={onDateSelected}
+        current={defaultDate?.format('YYYY-MM-DD')}
         minDate={minDate?.format('YYYY-MM-DD')}
         maxDate={maxDate?.format('YYYY-MM-DD')}
         onMonthChange={(month) => {}}
@@ -60,10 +67,13 @@ export default ({
             style={direction !== 'left' && styles.arrowRight}
           />
         )}
+        renderHeader={(date) => (
+          <Text type="H4">{moment(new Date(date)).format('MMM yyyy')}</Text>
+        )}
       />
       <ViewButtonBottom
         leftTitle={t('cancel')}
-        onLeftClick={onCancel}
+        onLeftClick={onCalendarCancel}
         rightTitle={t('done')}
         onRightClick={onDone}
       />

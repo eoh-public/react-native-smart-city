@@ -157,14 +157,14 @@ const SetSchedule = ({ route }) => {
         mode="time"
         isVisible={showTimePicker}
         defaultValue={time.valueOf()}
-        onHide={setHideTimePicker}
+        onCancel={setHideTimePicker}
         onPicked={onTimePicked}
       />
       <Calendar
         isVisible={showCalendar}
         defaultDate={date}
         minDate={moment()}
-        onHide={setHideCalendar}
+        onCancel={setHideCalendar}
         onConfirm={onDatePicked}
       />
     </>
