@@ -5,19 +5,14 @@ import styles from './OnOffButtonActionStyles';
 
 const OnOffButtonAction = ({ configuration, onPress, template }) => {
   const { text_on, text_off, action_on, action_off } = configuration;
-  const onPressActionOn = useCallback(
-    () => {
-      onPress &&
-        onPress({
-          name: text_on,
-          action: action_on,
-          template,
-        });
-    },
-    [onPress, text_on],
-    action_on,
-    template
-  );
+  const onPressActionOn = useCallback(() => {
+    onPress &&
+      onPress({
+        name: text_on,
+        action: action_on,
+        template,
+      });
+  }, [onPress, text_on, action_on, template]);
 
   const onPressActionOff = useCallback(() => {
     onPress &&
