@@ -6,13 +6,7 @@ import React, {
   useEffect,
   memo,
 } from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Image,
-  BackHandler,
-  Alert,
-} from 'react-native';
+import { View, TouchableOpacity, Image, BackHandler } from 'react-native';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Icon } from '@ant-design/react-native';
 
@@ -38,15 +32,25 @@ import FImage from '../../commons/FImage';
 import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
+import withPreventDoubleClick from '../../commons/WithPreventDoubleClick';
 import { AUTOMATE_TYPE } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
+import { TESTID } from '../../configs/Constants';
+
+const PreventDoubleTouch = withPreventDoubleClick(TouchableOpacity);
 
 const ScriptDetail = ({ route }) => {
   const { navigate, goBack, dispatch } = useNavigation();
   const { params = {} } = route;
   const refMenuAction = useRef();
-  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
-    usePopover();
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+    hidingPopoverComplete,
+    hidePopoverComplete,
+  } = usePopover();
   const t = useTranslations();
   const {
     id,
@@ -54,10 +58,13 @@ const ScriptDetail = ({ route }) => {
     type,
     havePermission,
     unit,
-    dateNow = null,
+    saveAt,
     isCreateScriptSuccess,
+    isAutomateTab,
+    isCreateNewAction,
+    isMultiUnits,
   } = params;
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
   const [inputName, setInputName] = useState(name);
   const [stateAlertAction, hideAlertAction, onShowRename, onShowDelete] =
@@ -71,9 +78,7 @@ const ScriptDetail = ({ route }) => {
         name: inputName,
       }
     );
-    if (success) {
-      setScriptName(script.name);
-    }
+    success && setScriptName(script.name);
     hideAlertAction();
   }, [id, inputName, hideAlertAction]);
 
@@ -91,18 +96,43 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const goToActivityLog = useCallback(() => {
+    navigate(Routes.ActivityLog, {
+      id: id,
+      type:
+        type === AUTOMATE_TYPE.ONE_TAP
+          ? `automate.${AUTOMATE_TYPE.ONE_TAP}`
+          : 'automate',
+      share: unit,
+    });
+  }, [navigate, id, unit, type]);
+
   const listMenuItem = useMemo(
     () => [
       { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: null },
+      { text: t('activity_log'), doAction: goToActivityLog },
       { text: t('delete_script'), doAction: onShowDelete(scriptName) },
     ],
-    [t, onShowRename, onShowDelete, scriptName]
+    [t, onShowRename, onShowDelete, goToActivityLog, scriptName]
   );
 
-  const onPressFavourite = useCallback(() => {
-    setIsFavourite(!isFavourite);
-  }, [isFavourite]);
+  const starScript = useCallback(async () => {
+    const { success } = await axiosPost(API.AUTOMATE.STAR_SCRIPT(id));
+    success && setIsStar(true);
+  }, [id]);
+
+  const unstarScript = useCallback(async () => {
+    const { success } = await axiosPost(API.AUTOMATE.UNSTAR_SCRIPT(id));
+    success && setIsStar(false);
+  }, [id]);
+
+  const onPressStar = useCallback(() => {
+    if (isStar) {
+      unstarScript();
+    } else {
+      starScript();
+    }
+  }, [isStar, starScript, unstarScript]);
 
   const handleShowMenuAction = useCallback(
     () => showPopoverWithRef(refMenuAction),
@@ -110,42 +140,34 @@ const ScriptDetail = ({ route }) => {
     []
   );
 
-  const onItemClick = useCallback(
-    (item) => {
-      if (item.doAction) {
-        item.doAction();
-      } else {
-        alert(t('feature_under_development'));
-      }
-    },
-    [t]
-  );
-
-  const onPressAdd = useCallback(() => {
-    // eslint-disable-next-line no-alert
-    alert(t('feature_under_development'));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onItemClick = useCallback((item) => {
+    item.doAction();
   }, []);
 
-  const getOneTapDetail = useCallback(async () => {
+  const getScriptDetail = useCallback(async () => {
     const { success, data } = await axiosGet(API.AUTOMATE.SCRIPT(id));
     success && setData(data?.script_actions || []);
+    success && setIsStar(data?.is_star);
   }, [id]);
 
   const onPressEdit = useCallback(() => {
-    navigate(Routes.EditActionsList, { data, id, setData });
+    navigate(Routes.EditActionsList, { data, id, setData, unit });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const onPressAddAction = useCallback(() => {
-    navigate(Routes.SelectSensorDevices, {
+    const params = {
       unit,
+      scriptName,
       automateId: id,
-      scriptName: name,
-      isScript: false,
-      type: AUTOMATE_TYPE.ONE_TAP,
-    });
-  }, [navigate, id, name, unit]);
+      type,
+      isCreateNewAction: true,
+    };
+    navigate(
+      isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
+      params
+    );
+  }, [unit, scriptName, id, type, navigate, isMultiUnits]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -157,9 +179,22 @@ const ScriptDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  const handleUpdateAutomate = useCallback(async () => {
+    navigate(Routes.AddNewAutoSmart, {
+      type: AUTOMATE_TYPE.AUTOMATE,
+      automateId: id,
+      unit,
+      isAutomateTab,
+      isMultiUnits,
+      scriptName: name,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const onGoBack = useCallback(() => {
-    if (isCreateScriptSuccess) {
+    if (isCreateScriptSuccess || isCreateNewAction) {
       dispatch(popAction(5));
+      isAutomateTab && goBack();
     } else {
       goBack();
     }
@@ -180,9 +215,20 @@ const ScriptDetail = ({ route }) => {
             style={styles.iconItem}
           />
           <View style={styles.contentItem}>
-            <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
-              {item?.station_name}
-            </Text>
+            <View style={styles.titleItem}>
+              <Text
+                numberOfLines={1}
+                semibold
+                type="Label"
+                color={Colors.Gray7}
+                style={styles.paddingRight4}
+              >
+                {item?.unit_name}
+              </Text>
+              <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
+                {item?.station_name}
+              </Text>
+            </View>
             <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
               {item?.sensor_name}
             </Text>
@@ -195,51 +241,53 @@ const ScriptDetail = ({ route }) => {
     );
   }, []);
 
-  const ItemAdd = useCallback(({ item, index }) => {
-    return (
-      <View style={styles.wrapItem}>
-        <View style={styles.leftItemAdd}>
-          <Text style={styles.number} type="H4" semibold color={Colors.Gray7}>
-            {index + 1 < 10 ? '0' + (index + 1) : index + 1}
-          </Text>
+  const ItemAdd = useCallback(
+    ({ item, index }) => {
+      return (
+        <View style={styles.wrapItem}>
+          <View style={styles.leftItemAdd}>
+            <Text style={styles.number} type="H4" semibold color={Colors.Gray7}>
+              {index + 1 < 10 ? '0' + (index + 1) : index + 1}
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={onPressAddAction}
+            style={[styles.rightItemAdd]}
+            testID={TESTID.BUTTON_ADD_SCRIPT_ACTION}
+          >
+            <Add />
+            <Text type="H4" color={Colors.Gray8} style={styles.addAction}>
+              {t('add_action')}
+            </Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          onPress={onPressAddAction}
-          style={[styles.rightItemAdd]}
-        >
-          <Add />
-          <Text type="H4" color={Colors.Gray8} style={styles.addAction}>
-            {t('add_action')}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
+      );
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    [scriptName]
+  );
 
   const renderButtonStar = useMemo(() => {
     return (
-      <TouchableOpacity
+      <PreventDoubleTouch
         style={[styles.buttonStar, styles.headerButton]}
-        onPress={onPressFavourite}
+        onPress={onPressStar}
+        testID={TESTID.HEADER_DEVICE_BUTTON_STAR}
       >
-        {isFavourite ? (
+        {isStar ? (
           <IconFill name="star" size={25} color={Colors.Yellow6} />
         ) : (
           <IconOutline name="star" size={25} />
         )}
-      </TouchableOpacity>
+      </PreventDoubleTouch>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFavourite]);
+  }, [isStar]);
 
   const rightComponent = useMemo(
     () => (
       <View style={styles.rightComponent}>
         {renderButtonStar}
-        <TouchableOpacity onPress={onPressAdd} style={styles.headerButton}>
-          <Icon name={'plus'} size={27} color={Colors.Black} />
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleShowMenuAction}
           ref={refMenuAction}
@@ -250,13 +298,17 @@ const ScriptDetail = ({ route }) => {
       </View>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isFavourite]
+    [isStar]
   );
 
   useEffect(() => {
-    getOneTapDetail();
+    setScriptName(name);
+  }, [name]);
+
+  useEffect(() => {
+    getScriptDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, dateNow]); // TODO will remove dateNow later
+  }, [id, saveAt]);
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
@@ -265,7 +317,7 @@ const ScriptDetail = ({ route }) => {
     );
     return () => backHandler.remove();
   }, [isCreateScriptSuccess]);
-
+  const isHaveScriptActions = data?.length > 0;
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
@@ -280,13 +332,14 @@ const ScriptDetail = ({ route }) => {
           </Text>
           <ItemAutomate
             type={type}
-            onPress={() => Alert.alert(t('feature_under_development'))}
+            onPress={handleUpdateAutomate}
             disabledOnPress={!havePermission}
           />
           {type === AUTOMATE_TYPE.ONE_TAP && (
             <TouchableOpacity
               onPress={handleScriptAction}
               style={styles.activeButton}
+              testID={TESTID.BUTTON_ACTIVATE_ONE_TAP}
             >
               <Image source={Images.activeButton} />
             </TouchableOpacity>
@@ -296,8 +349,12 @@ const ScriptDetail = ({ route }) => {
             <Text type="H3" color={Colors.Gray9} semibold>
               {t('active_list')}
             </Text>
-            {havePermission && (
-              <TouchableOpacity onPress={onPressEdit} style={styles.editButton}>
+            {havePermission && isHaveScriptActions && (
+              <TouchableOpacity
+                onPress={onPressEdit}
+                style={styles.editButton}
+                testID={TESTID.BUTTON_EDIT_SCRIPT_ACTION}
+              >
                 <Text type="Label" hilight>
                   {t('edit')}
                 </Text>
@@ -313,6 +370,7 @@ const ScriptDetail = ({ route }) => {
       <MenuActionMore
         isVisible={showingPopover}
         hideMore={hidePopover}
+        hideComplete={hidePopoverComplete}
         listMenuItem={listMenuItem}
         childRef={childRef}
         onItemClick={onItemClick}
@@ -320,7 +378,7 @@ const ScriptDetail = ({ route }) => {
         wrapStyle={styles.wrapStyle}
       />
       <AlertAction
-        visible={stateAlertAction.visible}
+        visible={stateAlertAction.visible && hidingPopoverComplete}
         hideModal={hideAlertAction}
         title={stateAlertAction.title}
         message={stateAlertAction.message}

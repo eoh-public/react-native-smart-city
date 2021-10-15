@@ -28,6 +28,8 @@ const API = {
       SCConfig.apiRoot + `/property_manager/units/${id}/automate/`,
     DEVICE_CONTROL: (id) =>
       SCConfig.apiRoot + `/property_manager/units/${id}/device_control/`,
+    DEVICE_SENSOR: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/device_sensor/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>
@@ -100,10 +102,20 @@ const API = {
     ADD_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/add_script_action/`,
     CREATE_AUTOMATE: () => SCConfig.apiRoot + '/property_manager/automate/',
+    UPDATE_AUTOMATE: (automateId) =>
+      SCConfig.apiRoot + `/property_manager/automate/${automateId}/`,
+    STAR_SCRIPT: (id) =>
+      SCConfig.apiRoot + `/property_manager/automate/${id}/star_script/`,
+    UNSTAR_SCRIPT: (id) =>
+      SCConfig.apiRoot + `/property_manager/automate/${id}/unstar_script/`,
     GET_AUTOMATES: () => SCConfig.apiRoot + '/accounts/automates/',
     GET_ALL_UNITS: () => SCConfig.apiRoot + '/property_manager/units/all_unit/',
     GET_SENSOR_CONFIG: (id) =>
       SCConfig.apiRoot + `/property_manager/sensors/${id}/display_configs/`,
+    GET_MULTI_UNITS: () =>
+      SCConfig.apiRoot + '/property_manager/automate/multi_unit/',
+    ACTIVITY_LOG: (id) =>
+      SCConfig.apiRoot + `/property_manager/automate/${id}/logs/`,
   },
   GOOGLE_HOME: {
     CHECK_SEND_EMAIL: () =>

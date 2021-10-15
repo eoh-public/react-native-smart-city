@@ -5,6 +5,8 @@ import moment from 'moment';
 import Text from '../../Text';
 import { API, Colors } from '../../../configs';
 import OneTap from '../../../../assets/images/OneTap.svg';
+import ValueChange from '../../../../assets/images/ValueChange.svg';
+import Schedule from '../../../../assets/images/Schedule.svg';
 import CheckCircle from '../../../../assets/images/CheckCircle.svg';
 import FImage from '../../FImage';
 import { timeDifference } from '../../../utils/Converter/time';
@@ -46,11 +48,15 @@ const ItemOneTap = memo(
 
     const displayIcon = () => {
       const iconKit = script?.icon_kit;
-      return iconKit ? (
-        <FImage source={{ uri: iconKit }} style={styles.iconSensor} />
-      ) : (
-        <OneTap />
-      );
+      if (iconKit) {
+        return <FImage source={{ uri: iconKit }} style={styles.iconSensor} />;
+      } else if (type === AUTOMATE_TYPE.ONE_TAP) {
+        return <OneTap />;
+      } else if (type === AUTOMATE_TYPE.VALUE_CHANGE) {
+        return <ValueChange />;
+      } else {
+        return <Schedule />;
+      }
     };
     const activateAt = activate_at
       ? timeDifference(new Date(), moment(activate_at), true)
@@ -69,7 +75,10 @@ const ItemOneTap = memo(
               </TouchableOpacity>
             )}
           </View>
-          <TouchableOpacity testID={TESTID.GO_DETAIL} onPress={goToDetail}>
+          <TouchableOpacity
+            testID={TESTID.GO_DETAIL}
+            onPress={onPressItem || goToDetail}
+          >
             <Text
               numberOfLines={1}
               semibold

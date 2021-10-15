@@ -24,8 +24,7 @@ import styles from './styles/indexStyles';
 
 const GuestInfo = ({ route }) => {
   const t = useTranslations();
-  const { params = {} } = route;
-  const { id } = params;
+  const { id } = route.params;
   const { goBack } = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
   const [guest, setGuest] = useState();
@@ -86,9 +85,7 @@ const GuestInfo = ({ route }) => {
       ...accessSchedule,
     });
     setIsLoading(false);
-    if (success) {
-      goBack();
-    }
+    success && goBack();
   }, [id, goBack, accessSchedule, prepareDataForUpdate]);
 
   useEffect(() => {

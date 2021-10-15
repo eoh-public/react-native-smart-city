@@ -52,4 +52,11 @@ export default StyleSheet.create({
     borderRadius: 4,
     backgroundColor: Colors.Primary,
   },
+  bottomButtonView: {
+    paddingTop: 24,
+    paddingBottom: 32,
+    backgroundColor: Colors.White,
+    borderColor: Colors.ShadownTransparent,
+    borderTopWidth: 1,
+  },
 });

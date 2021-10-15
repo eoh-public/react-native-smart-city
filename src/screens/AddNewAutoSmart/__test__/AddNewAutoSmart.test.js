@@ -65,22 +65,9 @@ describe('test AddNewAutoSmart', () => {
       title: 'select_sensor',
       type: 'value_change',
       unit: { id: 1 },
-    });
-  });
-
-  test('render BottomButtonView', async () => {
-    await act(async () => {
-      tree = await create(wrapComponent(route));
-    });
-    const instance = tree.root;
-    const bottomButton = instance.find(
-      (item) =>
-        item.props.testID ===
-        `${TESTID.PREFIX.BUTTON_ADD_AUTO_SMART}${TESTID.BOTTOM_VIEW_MAIN}`
-    );
-    expect(bottomButton).toBeDefined();
-    await act(async () => {
-      await bottomButton.props.onPress();
+      isAutomateTab: undefined,
+      isMultiUnits: undefined,
+      routeName: 'SelectSensorDevices',
     });
   });
 
@@ -107,6 +94,9 @@ describe('test AddNewAutoSmart', () => {
     expect(mockNavigate).toHaveBeenCalledWith(Routes.SetSchedule, {
       type: 'schedule',
       unit: route.params.unit,
+      isAutomateTab: undefined,
+      isMultiUnits: undefined,
+      routeName: 'SetSchedule',
     });
   });
 });

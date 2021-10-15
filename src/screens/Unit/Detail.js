@@ -83,7 +83,7 @@ const UnitDetail = ({ route }) => {
         }
       });
       rawUnitData.stations.push({
-        isScript: true,
+        isScenario: true,
         name: t('Scenario'),
       });
     },
@@ -239,14 +239,13 @@ const UnitDetail = ({ route }) => {
           unit={unit}
         />
       );
-    } else if (station.isScript) {
+    } else if (station.isScenario) {
       return (
         <SubUnitAutomate
           isOwner={isOwner}
           type={AUTOMATE_TYPE.VALUE_CHANGE}
           automates={script}
           unit={unit}
-          isScript
         />
       );
     } else if (station) {

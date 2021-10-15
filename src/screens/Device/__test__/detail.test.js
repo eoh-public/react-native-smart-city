@@ -16,6 +16,7 @@ import { ConnectedViewHeader } from '../../../commons/Device';
 import { getTranslate } from '../../../utils/I18n';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
+import Routes from '../../../utils/Route';
 
 const mockedNavigate = jest.fn();
 const mockedDispatch = jest.fn();
@@ -730,7 +731,6 @@ describe('test DeviceDetail', () => {
     axios.post.mockImplementation(async () => {
       return response;
     });
-
     const buttonStar = instance.find(
       (el) => el.props.testID === TESTID.HEADER_DEVICE_BUTTON_STAR
     );
@@ -769,5 +769,56 @@ describe('test DeviceDetail', () => {
     expect(axios.post).toHaveBeenCalledWith(
       API.SENSOR.REMOVE_FROM_FAVOURITES(unit_id, station_id, sensor.id)
     );
+  });
+
+  test('Go to ActivityLog', async () => {
+    const responseDisplay = {
+      status: 200,
+      data: {
+        items: [
+          {
+            configuration: {
+              template: 'OnOffSimpleActionTemplate',
+              configuration: {
+                config: 5,
+                icon: 'up',
+                is_on_value: [],
+              },
+              title: 'Turn on / off',
+            },
+            id: 18,
+            order: 2,
+            template: 'action',
+            type: 'action',
+          },
+        ],
+      },
+    };
+
+    const responseDisplayValueV2 = {
+      status: 200,
+      data: {
+        configs: [],
+        is_connected: true,
+        last_updated: '2021-01-24T12:00:00.000Z',
+      },
+    };
+
+    mockAxios(responseDisplay, responseDisplayValueV2);
+
+    await act(async () => {
+      tree = await create(wrapComponent(account, route));
+    });
+    const instance = tree.root;
+    const menu = instance.findByType(MenuActionMore);
+    const gotoActivityLog = menu.props.listMenuItem[1];
+
+    await act(async () => {
+      await menu.props.onItemClick(gotoActivityLog);
+    });
+    expect(mockedNavigate).toHaveBeenCalledWith(Routes.ActivityLog, {
+      id: route.params.sensor.id,
+      type: 'action',
+    });
   });
 });

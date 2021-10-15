@@ -17,9 +17,10 @@ import Routes from '../../utils/Route';
 const AddNewAutoSmart = memo(({ route }) => {
   const t = useTranslations();
   const { navigate, goBack } = useNavigation();
-  const { type, unit, isScript } = route.params;
+  const { type, unit, isAutomateTab, isMultiUnits, automateId, scriptName } =
+    route.params;
   const typeAutoSmart = {
-    automate: [
+    [AUTOMATE_TYPE.AUTOMATE]: [
       {
         type: AUTOMATE_TYPE.ONE_TAP,
         route: Routes.AddNewOneTap,
@@ -36,7 +37,7 @@ const AddNewAutoSmart = memo(({ route }) => {
         route: Routes.SetSchedule,
       },
     ],
-    value_change: [
+    [AUTOMATE_TYPE.VALUE_CHANGE]: [
       {
         type: AUTOMATE_TYPE.VALUE_CHANGE,
         route: Routes.SelectSensorDevices,
@@ -49,21 +50,44 @@ const AddNewAutoSmart = memo(({ route }) => {
         route: Routes.SetSchedule,
       },
     ],
+    [AUTOMATE_TYPE.ONE_TAP_ONLY]: [
+      {
+        type: AUTOMATE_TYPE.ONE_TAP,
+        route: Routes.AddNewOneTap,
+      },
+    ],
   };
   const [data] = useState(typeAutoSmart[type]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const handleOnContinue = useCallback(() => {
     const automate = data[selectedIndex];
-    if (automate?.route) {
-      navigate(automate.route, {
-        type: automate.type,
-        unit: unit,
-        ...(automate.data || {}),
-        isScript,
-      });
+    const params = {
+      type: automate?.type,
+      unit: unit,
+      ...(automate?.data || {}),
+      isAutomateTab,
+      isMultiUnits,
+      routeName: automate?.route,
+      automateId,
+      scriptName,
+    };
+
+    if (automate.type === AUTOMATE_TYPE.VALUE_CHANGE && isMultiUnits) {
+      navigate(Routes.SelectUnit, params);
+    } else {
+      navigate(automate.route, params);
     }
-  }, [navigate, selectedIndex, data, unit, isScript]);
+  }, [
+    navigate,
+    selectedIndex,
+    data,
+    unit,
+    isAutomateTab,
+    isMultiUnits,
+    automateId,
+    scriptName,
+  ]);
 
   const handleSelectIndex = (index) => {
     if (index !== selectedIndex) {
@@ -74,16 +98,16 @@ const AddNewAutoSmart = memo(({ route }) => {
   };
 
   const onClose = useCallback(() => {
-    isScript ? goBack() : alert(t('feature_under_development'));
+    goBack();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript]);
+  }, []);
 
   return (
     <View style={styles.wrap}>
       <HeaderCustom isShowClose onClose={onClose} />
       <View style={styles.container}>
         <Text semibold type={'H2'} style={styles.titleCreate}>
-          {t('create_smart')}
+          {automateId ? t('update_smart') : t('create_smart')}
         </Text>
         <Text type={'Body'} style={styles.titleChoose}>
           {t('choose_the_automation_method_you_want')}

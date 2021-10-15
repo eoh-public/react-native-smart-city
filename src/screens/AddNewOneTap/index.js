@@ -10,22 +10,34 @@ import { HeaderCustom } from '../../commons/Header';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
-import { axiosPost } from '../../utils/Apis/axios';
+import { axiosPost, axiosPut } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
+import { popAction } from '../../navigations/utils';
 
 const AddNewOneTap = memo(({ route }) => {
-  const { type, unit, automateData = {} } = route.params;
+  const {
+    type,
+    unit,
+    automateData = {},
+    isAutomateTab,
+    isMultiUnits,
+    automateId,
+    scriptName,
+  } = route.params;
   const t = useTranslations();
-  const { navigate } = useNavigation();
-  const [name, setName] = useState('');
+  const { navigate, dispatch, goBack } = useNavigation();
+  const [name, setName] = useState(scriptName ? scriptName : '');
 
   const handleContinue = useCallback(async () => {
-    const { success, data } = await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), {
-      unit: unit.id,
+    const params = {
+      unit: isMultiUnits ? null : unit.id,
       type: type,
       name: name,
       ...automateData,
-    });
+    };
+    const { success, data } = automateId
+      ? await axiosPut(API.AUTOMATE.UPDATE_AUTOMATE(automateId), params)
+      : await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), params);
     if (success) {
       navigate(Routes.ScriptDetail, {
         unit: unit,
@@ -34,13 +46,44 @@ const AddNewOneTap = memo(({ route }) => {
         type: type,
         havePermission: true,
         isCreateScriptSuccess: true,
+        isAutomateTab: automateId ? false : isAutomateTab,
+        isMultiUnits,
       });
     }
-  }, [type, name, unit, automateData, navigate]);
+  }, [
+    isMultiUnits,
+    unit,
+    type,
+    name,
+    automateData,
+    automateId,
+    navigate,
+    isAutomateTab,
+  ]);
 
   const onChangeName = useCallback((text) => {
     setName(text);
   }, []);
+
+  const onClose = useCallback(() => {
+    if (automateId) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isAutomateTab,
+      });
+    } else if (isAutomateTab) {
+      dispatch(popAction(5));
+      goBack();
+    } else {
+      goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAutomateTab]);
 
   return (
     <SafeAreaView
@@ -50,7 +93,7 @@ const AddNewOneTap = memo(({ route }) => {
           : styles.containerIOS
       }
     >
-      <HeaderCustom isShowClose />
+      <HeaderCustom isShowClose onClose={onClose} />
       <ScrollView>
         <Text
           testID={TESTID.ADD_NEW_DEVICE_ADD}

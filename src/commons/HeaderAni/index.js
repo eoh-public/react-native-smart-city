@@ -5,8 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import Text from '../../commons/Text';
-import { Colors } from '../../configs';
+import { Colors, Constants } from '../../configs';
 
+const screenHeight = Constants.height;
 const default_height = 44;
 const paddingIos = getStatusBarHeight() + 10;
 export const title_height = 44;
@@ -15,6 +16,7 @@ export const heightHeader = default_height + title_height + paddingIos;
 const HeaderAni = memo(
   ({
     scrollY,
+    contentHeight,
     onLeft,
     title,
     rightComponent,
@@ -30,26 +32,37 @@ const HeaderAni = memo(
       }
     }, [goBack, onLeft]);
 
+    const endOffset =
+      contentHeight >= screenHeight + 2 * title_height
+        ? 2 * title_height
+        : contentHeight >= screenHeight + title_height
+        ? contentHeight - screenHeight
+        : 0;
     const headerX = headerAniCenterStyle ? 75 : 16;
 
-    const titleTransformY = scrollY.interpolate({
-      inputRange: [0, 2 * title_height],
-      outputRange: [0, -title_height],
-      extrapolate: 'clamp',
-    });
     const titleTransformX = scrollY.interpolate({
-      inputRange: [0, 2 * title_height],
+      inputRange: [0, endOffset],
       outputRange: [0, headerX],
       extrapolate: 'clamp',
     });
     const titleScale = scrollY.interpolate({
-      inputRange: [0, 2 * title_height],
+      inputRange: [0, endOffset],
       outputRange: [1, 0.9],
       extrapolate: 'clamp',
     });
-    const headerHeightAnim = scrollY.interpolate({
+    const titleWidth = scrollY.interpolate({
       inputRange: [0, 2 * title_height],
-      outputRange: [heightHeader, default_height + paddingIos],
+      outputRange: ['90%', '70%'],
+      extrapolate: 'clamp',
+    });
+    const wrapHeaderTransformY = scrollY.interpolate({
+      inputRange: [0, endOffset],
+      outputRange: [0, -title_height],
+      extrapolate: 'clamp',
+    });
+    const headerTransformY = scrollY.interpolate({
+      inputRange: [0, endOffset],
+      outputRange: [0, title_height],
       extrapolate: 'clamp',
     });
 
@@ -63,26 +76,36 @@ const HeaderAni = memo(
         style={[
           checkHeaderAniCenterStyle,
           headerStyle,
-          { height: headerHeightAnim },
+          endOffset !== 0 && {
+            transform: [{ translateY: wrapHeaderTransformY }],
+          },
         ]}
       >
-        <View style={styles.header}>
+        <Animated.View
+          style={[
+            styles.header,
+            endOffset !== 0 && {
+              transform: [{ translateY: headerTransformY }],
+            },
+          ]}
+        >
           <TouchableOpacity style={styles.btnBack} onPress={onPressLeft}>
             <Icon name={'left'} size={27} color={Colors.Gray9} />
           </TouchableOpacity>
           <View styles={styles.wrapRightComponent}>{rightComponent}</View>
-        </View>
+        </Animated.View>
 
         <Animated.View
-          style={{
-            transform: [
-              { translateY: titleTransformY },
-              { translateX: titleTransformX },
-              { scale: titleScale },
-            ],
-            ...styles.boxText,
-            marginRight: titleMarginRight,
-          }}
+          style={[
+            endOffset !== 0 && {
+              transform: [
+                { translateX: titleTransformX },
+                { scale: titleScale },
+              ],
+            },
+            { ...styles.boxText, marginRight: titleMarginRight },
+            rightComponent && { width: titleWidth },
+          ]}
         >
           <Text
             type={'H2'}
@@ -131,7 +154,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 100,
+    height: heightHeader,
     zIndex: 3,
     paddingTop: paddingIos,
   },
@@ -142,18 +165,9 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 100,
+    height: heightHeader,
     zIndex: 3,
     paddingTop: paddingIos,
-  },
-  content: {
-    position: 'absolute',
-    width: '100%',
-    height: heightHeader,
-    backgroundColor: Colors.Gray2,
-    borderWidth: 0.5,
-    borderColor: Colors.Border,
-    zIndex: -1,
   },
   boxText: {
     height: title_height,
