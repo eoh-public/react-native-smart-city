@@ -49,8 +49,6 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
             return (
               <OnOffSimpleAction {...item} onPress={onPressSelectAction} />
             );
-          default:
-            break;
         }
       });
     },
