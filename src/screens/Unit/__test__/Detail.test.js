@@ -27,6 +27,13 @@ const wrapComponent = (route, account) => (
   </SCProvider>
 );
 
+jest.mock('react', () => {
+  return {
+    ...jest.requireActual('react'),
+    memo: (x) => x,
+  };
+});
+
 jest.mock('react-redux', () => {
   return {
     ...jest.requireActual('react-redux'),
@@ -357,7 +364,7 @@ describe('Test UnitDetail', () => {
     });
 
     const summaryViews = tree.root.findAllByType(Summaries);
-    expect(summaryViews).toHaveLength(0);
+    expect(summaryViews).toHaveLength(1);
   });
 
   test('when unit has google home action then connect to lg thinq', async () => {
@@ -408,12 +415,13 @@ describe('Test UnitDetail', () => {
     // TODO Called but can not expect
     // expect(axios.get).toHaveBeenCalledWith(API.IOT.LG.DEVICE_STATUS(2));
   });
+
   test('render subunit automate', async () => {
     const unitData = {
       stations: [
         {
-          isScript: true,
-          name: 'Script',
+          isScenario: true,
+          name: 'Scenario',
         },
       ],
     };
@@ -427,6 +435,7 @@ describe('Test UnitDetail', () => {
     const automateViews = instance.findAllByType(SubUnitAutomate);
     expect(automateViews).toHaveLength(1);
   });
+
   test('render subunit camera devices', async () => {
     const unitData = {
       stations: [

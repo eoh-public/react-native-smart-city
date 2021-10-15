@@ -18,7 +18,6 @@ const SelectUnit = () => {
   const { navigate, dispatch, goBack } = useNavigation();
   const { params = {} } = useRoute();
   const {
-    isScript,
     type,
     isAutomateTab,
     isMultiUnits,
@@ -65,17 +64,18 @@ const SelectUnit = () => {
       isCreateNewAction || !routeName ? Routes.SelectSensorDevices : routeName,
       {
         ...params,
-        isScript,
         selectedItem,
         type,
         isAutomateTab,
         isMultiUnits,
         routeName,
         unit: selectedItem,
+        automateId,
+        scriptName,
       }
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
+  }, [selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
 
   const renderItem = ({ item = {} }) => {
     const {
@@ -91,7 +91,11 @@ const SelectUnit = () => {
         <View style={[styles.notSelected, isSelectedItem && styles.selected]}>
           {isSelectedItem && <View style={styles.childSelected} />}
         </View>
-        <FImage source={icon} style={styles.icon} />
+        <FImage
+          source={{ uri: icon }}
+          style={styles.icon}
+          resizeMode={'cover'}
+        />
         <View style={styles.wrap}>
           <Text numberOfLines={1} type="H4">
             {name}
@@ -100,7 +104,7 @@ const SelectUnit = () => {
             {`${t(
               is_owner ? 'owner_unit' : 'shared_unit'
             )} - ${number_sensor} ${t(
-              number_sensor > 0 ? 'sensor_devices' : 'sensor_device'
+              number_sensor > 1 ? 'sensor_devices' : 'sensor_device'
             )}`}
           </Text>
         </View>

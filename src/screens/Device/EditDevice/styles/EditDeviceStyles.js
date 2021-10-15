@@ -40,16 +40,16 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.Red,
   },
-  textInput: {
-    margin: 16,
-    marginTop: 0,
+  textInputStyle: {
     borderWidth: 0,
-    paddingLeft: 0,
-    paddingTop: 0,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     borderBottomColor: Colors.Primary,
     fontSize: 16,
-    lineHeight: 24,
-    color: Colors.Gray9,
+    marginLeft: 16,
+    marginRight: 16,
+    paddingHorizontal: 0,
+  },
+  textInputWrapStyle: {
+    marginTop: 0,
   },
 });

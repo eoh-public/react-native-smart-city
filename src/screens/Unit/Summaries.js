@@ -62,11 +62,8 @@ const Summaries = memo(({ unit }) => {
   );
 
   useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
-
-    return () => {
-      AppState.removeEventListener('change', handleAppStateChange);
-    };
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+    return () => subscription.remove();
   }, [handleAppStateChange]);
 
   useEffect(() => {
@@ -85,8 +82,8 @@ const Summaries = memo(({ unit }) => {
     <>
       {!unitSummaries || !unitSummaries.length ? null : (
         <ScrollView horizontal={true}>
-          {unitSummaries.map((item) => (
-            <SummaryItem item={item} goToSummary={goToSummary} />
+          {unitSummaries.map((item, index) => (
+            <SummaryItem key={index} item={item} goToSummary={goToSummary} />
           ))}
         </ScrollView>
       )}
