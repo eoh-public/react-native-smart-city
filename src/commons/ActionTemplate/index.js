@@ -15,17 +15,17 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
   const [visible, setVisible] = useState(false);
   const onClose = () => setVisible(false);
   const onPress = () => setVisible(true);
-  const [actionName, setActionName] = useState(null);
+  const [actionName, setActionName] = useState();
 
   const onPressSelectAction = useCallback(
     (action) => {
       setVisible(false);
-      setActionName(action.name);
+      setActionName(action?.name);
       onSelectAction &&
         onSelectAction({
-          action: action.action,
+          action: action?.action,
           data: null,
-          template: action.template,
+          template: action?.template,
         });
     },
     [onSelectAction]
@@ -62,7 +62,7 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
       <SelectActionCard
         onPress={onPress}
         action={actionName}
-        title={data[0].title === 'Power' ? t('power') : t('action')}
+        title={t(data[0]?.title === 'Power' ? 'power' : 'action')}
       />
 
       <Modal

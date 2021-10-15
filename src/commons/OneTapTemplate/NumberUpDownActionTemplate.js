@@ -43,7 +43,8 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
       setValue(value + 1);
     }
   }, [value, max_value]);
-  const onPressDone = () => {
+
+  const onPressDone = useCallback(() => {
     setActionName(text_format.replace('{number}', value));
     onSelectAction &&
       onSelectAction({
@@ -58,7 +59,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
         template,
       });
     onClose();
-  };
+  }, [text_format, value, action, template, onSelectAction]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import styles from './OnOffButtonActionStyles';
@@ -39,4 +39,4 @@ const OnOffButtonAction = ({ configuration, onPress, template }) => {
   );
 };
 
-export default OnOffButtonAction;
+export default memo(OnOffButtonAction);
