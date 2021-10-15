@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
@@ -23,6 +23,8 @@ import Text from '../../commons/Text';
 import { TESTID } from '../../configs/Constants';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { useEmeragencyContacts } from './hooks/useEmergencyContacts';
+import Animated from 'react-native-reanimated';
+import useKeyboardAnimated from '../../hooks/Explore/useKeyboardAnimated';
 import styles from './EditSubUnitStyles';
 
 const EditSubUnit = ({ route }) => {
@@ -157,6 +159,13 @@ const EditSubUnit = ({ route }) => {
     });
   }, [group, navigation, unit.id]);
 
+  const [transY] = useKeyboardAnimated(-16);
+  const animatedStyle = Platform.select({
+    ios: {
+      marginBottom: transY,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.wraper}>
@@ -233,7 +242,7 @@ const EditSubUnit = ({ route }) => {
         onBackdropPress={setHideEdit}
         style={styles.modalContainer}
       >
-        <View style={styles.popoverStyle}>
+        <Animated.View style={[styles.popoverStyle, animatedStyle]}>
           <View style={styles.modalWrapper}>
             <View style={styles.modalHeader}>
               <Text semibold style={styles.modalHeaderText}>
@@ -255,7 +264,7 @@ const EditSubUnit = ({ route }) => {
               onRightClick={goRename}
             />
           </View>
-        </View>
+        </Animated.View>
       </Modal>
       <AlertAction
         visible={showModalRemoveSubUnit}
@@ -266,6 +275,7 @@ const EditSubUnit = ({ route }) => {
         rightButtonTitle={t('remove')}
         leftButtonClick={hideRemoveSubUnitModal}
         rightButtonClick={onRemoveSubUnit}
+        animatedStyle={animatedStyle}
       />
     </View>
   );

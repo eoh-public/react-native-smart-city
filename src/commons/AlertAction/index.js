@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 import Text from '../../commons/Text';
 import ViewButtonBottom from '../ViewButtonBottom';
 import { Colors, Device } from '../../configs';
+import Animated from 'react-native-reanimated';
 
 const AlertAction = ({
   visible,
@@ -19,6 +20,7 @@ const AlertAction = ({
   rightButtonStyle,
   children,
   testIDPrefix = '',
+  animatedStyle,
 }) => {
   return (
     <Modal
@@ -29,7 +31,7 @@ const AlertAction = ({
       useNativeDriverForBackdrop={true}
       style={styles.container}
     >
-      <View style={styles.popoverStyle}>
+      <Animated.View style={[styles.popoverStyle, animatedStyle]}>
         <View style={styles.modalWrapper}>
           <View style={styles.modalHeader}>
             <Text semibold style={styles.modalHeaderText}>
@@ -52,7 +54,7 @@ const AlertAction = ({
             testIDPrefix={testIDPrefix}
           />
         </View>
-      </View>
+      </Animated.View>
     </Modal>
   );
 };
