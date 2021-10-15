@@ -8,6 +8,9 @@ import { mockSCStore } from '../../../context/mockStore';
 import BottomButtonView from '../../../commons/BottomButtonView';
 import { TESTID } from '../../../configs/Constants';
 import ActionTemplate from '../../../commons/ActionTemplate';
+import NumberUpDownActionTemplate from '../../../commons/OneTapTemplate/NumberUpDownActionTemplate';
+import OptionsDropdownActionTemplate from '../../../commons/OneTapTemplate/OptionsDropdownActionTemplate';
+import StatesGridActionTemplate from '../../../commons/OneTapTemplate/StatesGridActionTemplate';
 
 jest.mock('axios');
 
@@ -115,25 +118,53 @@ describe('Test SelectAction', () => {
         },
       },
       {
-        title: '',
-        template: 'on_off_button_action_template',
+        title: 'Fan Speed',
+        template: 'OptionsDropdownActionTemplate',
         configuration: {
-          action_off: '94ae262d-46e3-42ff-9d10-516831ecc830',
-          icon_off: 'poweroff',
-          text_off: 'OFF',
-          action_on: '94ae262d-46e3-42ff-9d10-516831ecc830',
-          icon_on: 'poweroff',
-          text_on: 'ON',
-          config: 941,
+          config: 1019,
+          action: '05195362-75de-4db5-9e5e-98fef9d4910c',
+          options: [
+            {
+              text: 'Auto',
+              value_int: 1,
+              value_text: 'auto',
+            },
+            {
+              text: 'Level1',
+              value_int: 2,
+              value_text: 'level1',
+            },
+          ],
+          icon: 'up',
+          icon_kit: 43,
         },
       },
       {
         title: '',
-        template: 'one_button_action_template',
+        template: 'NumberUpDownActionTemplate',
         configuration: {
-          action: '94ae262d-46e3-42ff-9d10-516831ecc830',
-          icon: 'up',
-          text: 'UP',
+          keep_track_config: true,
+          config: 1023,
+          action: 'b498234c-6c1a-452d-a1d1-87a314c20528',
+          min_value: 16,
+          max_value: 30,
+          text_format: '{number} \u00b0C',
+        },
+      },
+      {
+        title: '',
+        template: 'StatesGridActionTemplate',
+        configuration: {
+          options: [
+            {
+              config: 1024,
+              is_on_value: 1,
+              action: '800ff454-4e2a-4a38-bad6-1bded728193e',
+              icon: 'up-circle',
+              icon_kit: 41,
+              text: 'Auto',
+            },
+          ],
         },
       },
     ];
@@ -142,12 +173,24 @@ describe('Test SelectAction', () => {
       tree = renderer.create(wrapComponent(route));
     });
     const instance = tree.root;
-    const renderActionItem = instance.findAll(
+    const renderActionItem = instance.find(
       (el) => el.props.testID === TESTID.ACTION_ITEM
     );
     const actionTemplate = instance.findByType(ActionTemplate);
+    const numberUpDownActionTemplate = instance.findByType(
+      NumberUpDownActionTemplate
+    );
+    const optionsDropdownActionTemplate = instance.findByType(
+      OptionsDropdownActionTemplate
+    );
+    const statesGridActionTemplate = instance.findByType(
+      StatesGridActionTemplate
+    );
 
-    expect(renderActionItem[0].props.data.length).toBe(3);
+    expect(renderActionItem.props.data.length).toBe(4);
     expect(actionTemplate).toBeDefined();
+    expect(numberUpDownActionTemplate).toBeDefined();
+    expect(optionsDropdownActionTemplate).toBeDefined();
+    expect(statesGridActionTemplate).toBeDefined();
   });
 });
