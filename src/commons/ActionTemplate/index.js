@@ -57,7 +57,7 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
       <SelectActionCard
         onPress={onPress}
         action={actionName}
-        title={t('action')}
+        title={data[0].title === 'Power' ? t('power') : t('action')}
       />
 
       <Modal

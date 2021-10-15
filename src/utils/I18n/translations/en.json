@@ -742,6 +742,7 @@
   "how_to_start": "How to start",
   "set_up {name}": "Setup {name}",
   "action": "Action",
+  "power": "Power",
   "actions_list": "Actions list",
   "delette_action": "Delete action?",
   "message_delete_action": "Are you sure you want to delete action of \n{actionName} in {stationName}?",

@@ -744,6 +744,7 @@
   "how_to_start": "Cách khởi động",
   "set_up {name}": "Thiết lập {name}",
   "action": "Hành động",
+  "power": "Nguồn điện",
   "actions_list": "Dánh sách hành động",
   "delette_action": "Xoá hành động ?",
   "message_delete_action": "Bạn có chắc chắn muốn xóa hành động của {actionName} trong {stationName} không ?",
