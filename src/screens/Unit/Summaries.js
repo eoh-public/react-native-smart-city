@@ -62,11 +62,11 @@ const Summaries = memo(({ unit }) => {
   );
 
   useEffect(() => {
-    const subscription = AppState.addEventListener(
-      'change',
-      handleAppStateChange
-    );
-    return () => subscription.remove();
+    AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', handleAppStateChange);
+    };
   }, [handleAppStateChange]);
 
   useEffect(() => {
