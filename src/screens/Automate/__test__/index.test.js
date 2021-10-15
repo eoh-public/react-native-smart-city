@@ -103,7 +103,6 @@ describe('Test Automate', () => {
       params: {
         isAutomateTab: true,
         isMultiUnits: true,
-        isScript: true,
         type: 'automate',
         unit: { id: undefined },
       },

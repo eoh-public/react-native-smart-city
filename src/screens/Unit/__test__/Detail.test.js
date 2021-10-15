@@ -412,8 +412,8 @@ describe('Test UnitDetail', () => {
     const unitData = {
       stations: [
         {
-          isScript: true,
-          name: 'Script',
+          isScenario: true,
+          name: 'Scenario',
         },
       ],
     };

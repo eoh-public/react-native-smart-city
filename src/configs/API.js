@@ -28,6 +28,8 @@ const API = {
       SCConfig.apiRoot + `/property_manager/units/${id}/automate/`,
     DEVICE_CONTROL: (id) =>
       SCConfig.apiRoot + `/property_manager/units/${id}/device_control/`,
+    DEVICE_SENSOR: (id) =>
+      SCConfig.apiRoot + `/property_manager/units/${id}/device_sensor/`,
   },
   SUB_UNIT: {
     REMOVE_SUB_UNIT: (unitId, id) =>
@@ -100,6 +102,8 @@ const API = {
     ADD_SCRIPT_ACTION: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/add_script_action/`,
     CREATE_AUTOMATE: () => SCConfig.apiRoot + '/property_manager/automate/',
+    UPDATE_AUTOMATE: (automateId) =>
+      SCConfig.apiRoot + `/property_manager/automate/${automateId}/`,
     STAR_SCRIPT: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/star_script/`,
     UNSTAR_SCRIPT: (id) =>

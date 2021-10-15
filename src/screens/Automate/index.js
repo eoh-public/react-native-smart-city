@@ -51,7 +51,6 @@ const Automate = () => {
         type: item?.type,
         havePermission: idUser === item?.user,
         unit: { id },
-        isScript: false,
         isAutomateTab: true,
         isMultiUnits: type === UNIT_TYPES.MULTI,
       },
@@ -62,7 +61,6 @@ const Automate = () => {
     navigate(Routes.UnitStack, {
       screen: Routes.AddNewAutoSmart,
       params: {
-        isScript: true,
         unit: { id },
         type: AUTOMATE_TYPE.AUTOMATE,
         isAutomateTab: true,
