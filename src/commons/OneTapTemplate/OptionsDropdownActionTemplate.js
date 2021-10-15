@@ -91,7 +91,7 @@ const OptionsDropdownActionTemplate = memo(({ data, onSelectAction }) => {
               <TouchableOpacity
                 onPress={onPressDone}
                 testID={TESTID.OPTIONS_DROPDOWN_ACTION_DONE}
-                disabled={activeAction ? false : true}
+                disabled={!activeAction}
               >
                 <Text
                   type="H4"

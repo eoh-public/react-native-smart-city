@@ -1,18 +1,18 @@
-import { Colors } from '../../configs';
 import moment from 'moment';
 import React, { useState, useCallback, useEffect } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
+
 import { HeaderCustom } from '../../commons/Header';
 import styles from './Styles';
 import { useRoute } from '@react-navigation/core';
-import MediaPlayerDetail from '../../commons/MediaPlayerDetail';
-import { ModalFullVideo, ModalCustom } from '../../commons/Modal';
-import Images from '../../configs/Images';
+import { ModalCustom } from '../../commons/Modal';
+import { Colors, Images } from '../../configs';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import Text from '../../commons/Text';
 import Timer from './Timer';
 import { useStatusBarPreview } from '../../hooks/Common/useStatusBar';
+import MediaPlayerFull from '../../commons/MediaPlayerDetail/MediaPlayerFull';
 
 let dateTemp = moment().format('YYYY-MM-DD');
 const arrDayTemp = dateTemp.split('-');
@@ -22,8 +22,6 @@ const PlayBackCamera = () => {
   const { params = {} } = useRoute();
   const { item = {}, thumbnail } = params;
   const [selected, setSelected] = useState(dateTemp);
-  const [isFullScreen, setIsFullScreen] = useState(false);
-  const [dataFullScreen, setDataFullScreen] = useState();
   const [isShowDate, setIsShowDate] = useState(false);
   const [hour, setHour] = useState({
     h: '00',
@@ -36,15 +34,6 @@ const PlayBackCamera = () => {
     }${arrDayTemp[2]}T000000Z`
   );
   const [paused, setPaused] = useState(true);
-
-  const handleFullScreen = (data) => {
-    setIsFullScreen(true);
-    setDataFullScreen(data);
-  };
-
-  const onClose = useCallback(() => {
-    setIsFullScreen(false);
-  }, []);
 
   const onOpenDateModal = useCallback(() => {
     setIsShowDate(true);
@@ -114,21 +103,14 @@ const PlayBackCamera = () => {
   return (
     <View style={styles.wrap}>
       <HeaderCustom title={t('video_detail')} />
-      <View style={styles.wrapCamera}>
-        <MediaPlayerDetail
-          uri={uri}
-          thumbnail={thumbnail}
-          style={styles.camera}
-          wrapStyles={styles.wrapStyles}
-          resizeMode={'cover'}
-          cameraName={item?.configuration?.name}
-          amount={1}
-          isShowFullScreenIcon
-          handleFullScreen={handleFullScreen}
-          isPaused={paused}
-        />
-      </View>
-
+      <MediaPlayerFull
+        uri={uri}
+        isPaused={paused}
+        thumbnail={thumbnail}
+        isShowFullScreenIcon
+        cameraName={item?.configuration?.name}
+        amount={1}
+      />
       <View style={styles.container}>
         <View style={styles.row}>
           <TouchableOpacity
@@ -170,14 +152,6 @@ const PlayBackCamera = () => {
           />
         </View>
       </View>
-
-      <ModalFullVideo
-        isVisible={isFullScreen}
-        data={dataFullScreen}
-        modalStyles={styles.modal}
-        onClose={onClose}
-        uri={uri}
-      />
 
       <ModalCustom isVisible={isShowDate} style={styles.modal}>
         <View style={styles.wrapDate}>

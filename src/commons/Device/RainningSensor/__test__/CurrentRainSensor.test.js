@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import CurrentRainSensor from '../CurrentRainSensor';
 
@@ -18,7 +19,9 @@ describe('Test CurrentRainSensor', () => {
     act(() => {
       tree = renderer.create(<CurrentRainSensor data={data} />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(2);
   });
 
   test('render CurrentRainSensor raining: true', () => {
@@ -35,13 +38,17 @@ describe('Test CurrentRainSensor', () => {
     act(() => {
       tree = renderer.create(<CurrentRainSensor data={data} />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(2);
   });
 
   test('render CurrentRainSensor data empty', () => {
     act(() => {
       tree = renderer.create(<CurrentRainSensor data={[]} />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(2);
   });
 });

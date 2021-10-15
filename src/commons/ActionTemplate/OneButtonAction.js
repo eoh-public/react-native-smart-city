@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import styles from './OneButtonActionStyles';
@@ -24,4 +24,4 @@ const OneButtonAction = ({ configuration, onPress, template }) => {
     </>
   );
 };
-export default OneButtonAction;
+export default memo(OneButtonAction);

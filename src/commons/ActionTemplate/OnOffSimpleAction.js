@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import styles from './OnOffSimpleActionStyles';
 
 const OnOffSimpleAction = ({ configuration, onPress, template }) => {
-const t = useTranslations();
+  const t = useTranslations();
   const { action_on, action_off } = configuration;
   const onPressActionOn = () => {
     onPress &&
@@ -34,11 +34,11 @@ const t = useTranslations();
       </TouchableOpacity>
       <TouchableOpacity onPress={onPressActionOff}>
         <Text type="H4" style={styles.textwithline}>
-            {t('text_off')}
+          {t('text_off')}
         </Text>
       </TouchableOpacity>
     </>
   );
 };
 
-export default OnOffSimpleAction;
+export default memo(OnOffSimpleAction);

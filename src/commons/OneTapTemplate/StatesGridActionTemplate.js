@@ -6,8 +6,10 @@ import styles from './StatesGridActionTemplateStyles';
 import SelectActionCard from '../SelectActionCard';
 import Text from '../Text';
 import { TESTID } from '../../configs/Constants';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
+  const t = useTranslations();
   const [visible, setVisible] = useState(false);
   const [actionName, setActionName] = useState(null);
   const onClose = () => setVisible(false);
@@ -34,7 +36,7 @@ const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
       <SelectActionCard
         onPress={onPress}
         action={actionName}
-        title={title ? title : t('mode')}
+        title={title || t('mode')}
       />
 
       <Modal

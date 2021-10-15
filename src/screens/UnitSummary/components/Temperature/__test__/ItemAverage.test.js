@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { act, create } from 'react-test-renderer';
 
 import ItemAverage from '../ItemAverage';
@@ -9,6 +10,8 @@ describe('Test ItemAverage', () => {
     act(() => {
       tree = create(<ItemAverage />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(1);
   });
 });
