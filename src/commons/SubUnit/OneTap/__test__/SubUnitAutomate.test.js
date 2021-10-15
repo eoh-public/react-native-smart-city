@@ -192,4 +192,38 @@ describe('test Item', () => {
       unit: undefined,
     });
   });
+  test('render SubUnitAutomate script schedule', async () => {
+    data.isOwner = false;
+    data.type = 'schedule';
+    data.automates = [
+      {
+        id: 1,
+        user: 6,
+        type: 'schedule',
+        activate_at: null,
+        script: {
+          name: 'Rain',
+          icon: '',
+          icon_kit: '',
+        },
+      },
+    ];
+    const response = {
+      status: 200,
+    };
+
+    axios.post.mockImplementation(async () => {
+      return response;
+    });
+
+    await act(async () => {
+      tree = await create(wrapComponent(data));
+    });
+
+    const goDetail = tree.root.findAll(
+      (el) =>
+        el.props.testID === TESTID.GO_DETAIL && el.type === TouchableOpacity
+    );
+    expect(goDetail).toHaveLength(1);
+  });
 });

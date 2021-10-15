@@ -1,42 +1,44 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
-import styles from './OnOffButtonActionStyles';
+import { useTranslations } from '../../hooks/Common/useTranslations';
+import styles from './OnOffSimpleActionStyles';
 
-const OnOffButtonAction = ({ configuration, onPress, template }) => {
-  const { text_on, text_off, action_on, action_off } = configuration;
-  const onPressActionOn = useCallback(() => {
+const OnOffSimpleAction = ({ configuration, onPress, template }) => {
+  const t = useTranslations();
+  const { action_on, action_off } = configuration;
+  const onPressActionOn = () => {
     onPress &&
       onPress({
-        name: text_on,
+        name: t('text_on'),
         action: action_on,
         template,
       });
-  }, [onPress, text_on, action_on, template]);
+  };
 
-  const onPressActionOff = useCallback(() => {
+  const onPressActionOff = () => {
     onPress &&
       onPress({
-        name: text_off,
+        name: t('text_off'),
         action: action_off,
         template,
       });
-  }, [onPress, text_off, action_off, template]);
+  };
 
   return (
     <>
       <TouchableOpacity onPress={onPressActionOn}>
         <Text type="H4" style={styles.textwithline}>
-          {text_on}
+          {t('text_on')}
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={onPressActionOff}>
         <Text type="H4" style={styles.textwithline}>
-          {text_off}
+          {t('text_off')}
         </Text>
       </TouchableOpacity>
     </>
   );
 };
 
-export default memo(OnOffButtonAction);
+export default memo(OnOffSimpleAction);

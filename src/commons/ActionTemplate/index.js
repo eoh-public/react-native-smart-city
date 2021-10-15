@@ -7,18 +7,26 @@ import styles from './ActionTemplateStyles';
 import OnOffButtonAction from './OnOffButtonAction';
 import OneButtonAction from './OneButtonAction';
 import ThreeButtonAction from './ThreeButtonAction';
+import OnOffSimpleAction from './OnOffSimpleAction';
 import SelectActionCard from '../SelectActionCard';
 
-const ActionTemplate = memo(({ data, onSelectAction, action }) => {
+const ActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
   const [visible, setVisible] = useState(false);
   const onClose = () => setVisible(false);
   const onPress = () => setVisible(true);
+  const [actionName, setActionName] = useState();
 
   const onPressSelectAction = useCallback(
     (action) => {
       setVisible(false);
-      onSelectAction && onSelectAction({ ...action });
+      setActionName(action?.name);
+      onSelectAction &&
+        onSelectAction({
+          action: action?.action,
+          data: null,
+          template: action?.template,
+        });
     },
     [onSelectAction]
   );
@@ -37,8 +45,10 @@ const ActionTemplate = memo(({ data, onSelectAction, action }) => {
             return (
               <ThreeButtonAction {...item} onPress={onPressSelectAction} />
             );
-          default:
-            break;
+          case 'OnOffSimpleActionTemplate':
+            return (
+              <OnOffSimpleAction {...item} onPress={onPressSelectAction} />
+            );
         }
       });
     },
@@ -49,8 +59,8 @@ const ActionTemplate = memo(({ data, onSelectAction, action }) => {
     <>
       <SelectActionCard
         onPress={onPress}
-        action={action?.name}
-        title={t('action')}
+        action={actionName}
+        title={t(data[0]?.title === 'Power' ? 'power' : 'action')}
       />
 
       <Modal

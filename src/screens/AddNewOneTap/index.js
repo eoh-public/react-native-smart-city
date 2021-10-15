@@ -13,6 +13,7 @@ import { useTranslations } from '../../hooks/Common/useTranslations';
 import { axiosPost, axiosPut } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 import { popAction } from '../../navigations/utils';
+import { ToastBottomHelper } from '../../utils/Utils';
 
 const AddNewOneTap = memo(({ route }) => {
   const {
@@ -49,6 +50,8 @@ const AddNewOneTap = memo(({ route }) => {
         isAutomateTab: automateId ? false : isAutomateTab,
         isMultiUnits,
       });
+    } else {
+      ToastBottomHelper.error(t('error_please_try_later'));
     }
   }, [
     isMultiUnits,
@@ -59,6 +62,7 @@ const AddNewOneTap = memo(({ route }) => {
     automateId,
     navigate,
     isAutomateTab,
+    t,
   ]);
 
   const onChangeName = useCallback((text) => {

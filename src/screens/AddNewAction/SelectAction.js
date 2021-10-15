@@ -7,6 +7,9 @@ import { useTranslations } from '../../hooks/Common/useTranslations';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import ActionTemplate from '../../commons/ActionTemplate';
+import NumberUpDownActionTemplate from '../../commons/OneTapTemplate/NumberUpDownActionTemplate';
+import OptionsDropdownActionTemplate from '../../commons/OneTapTemplate/OptionsDropdownActionTemplate';
+import StatesGridActionTemplate from '../../commons/OneTapTemplate/StatesGridActionTemplate';
 import { axiosGet, axiosPost } from '../../utils/Apis/axios';
 import { API, Images } from '../../configs';
 import { TESTID } from '../../configs/Constants';
@@ -18,6 +21,7 @@ import { TitleCheckBox } from '../Sharing/Components';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { popAction } from '../../navigations/utils';
 import { LoadingSelectAction } from './Components';
+import { ToastBottomHelper } from '../../utils/Utils';
 
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
@@ -34,10 +38,7 @@ const SelectAction = memo(({ route }) => {
     isMultiUnits,
   } = route.params;
   const [data, setData] = useState([]);
-  const [actions, setActions] = useState({
-    name: '',
-    action: '',
-  });
+  const [actions, setActions] = useState([]);
   const [sensorData, setSensorData] = useState([]);
   const [checkedItem, setCheckedItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -78,30 +79,36 @@ const SelectAction = memo(({ route }) => {
         scriptName,
       });
     } else {
+      let list_action = [...actions];
+      list_action = list_action.map((item) => ({
+        action: item.action,
+        data: item.data,
+      }));
       const { success } = await axiosPost(
         API.AUTOMATE.ADD_SCRIPT_ACTION(automateId),
         {
-          action: actions.action,
+          list_action,
           unit: unit.id,
         }
       );
-      if (success) {
-        navigate(Routes.ScriptDetail, {
-          id: automateId,
-          name: scriptName,
-          havePermission: true,
-          unit,
-          saveAt: moment().valueOf(),
-          type: type,
-          isAutomateTab,
-          isCreateNewAction,
-          isMultiUnits,
-        });
+      if (!success) {
+        ToastBottomHelper.error(t('not_permission'));
       }
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        havePermission: true,
+        unit,
+        saveAt: moment().valueOf(),
+        type: type,
+        isAutomateTab,
+        isCreateNewAction,
+        isMultiUnits,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    actions.action,
+    actions,
     automateId,
     navigate,
     scriptName,
@@ -114,7 +121,39 @@ const SelectAction = memo(({ route }) => {
   ]);
 
   const handleOnSelectAction = (action) => {
-    setActions({ ...action });
+    let newActions = [...actions];
+    let index = -1;
+
+    switch (action.template) {
+      case 'on_off_button_action_template':
+      case 'one_button_action_template':
+      case 'three_button_action_template':
+      case 'OnOffSimpleActionTemplate':
+        index = newActions.findIndex((item) => {
+          return (
+            item.template === 'on_off_button_action_template' ||
+            item.template === 'one_button_action_template' ||
+            item.template === 'three_button_action_template' ||
+            item.template === 'OnOffSimpleActionTemplate'
+          );
+        });
+        break;
+
+      case 'OptionsDropdownActionTemplate':
+      case 'NumberUpDownActionTemplate':
+      case 'StatesGridActionTemplate':
+        index = newActions.findIndex(
+          (item) => item.template === action.template
+        );
+        break;
+    }
+
+    if (index < 0) {
+      newActions.push(action);
+    } else {
+      newActions[index] = action;
+    }
+    setActions(newActions);
   };
 
   const handleClose = useCallback(() => {
@@ -166,39 +205,15 @@ const SelectAction = memo(({ route }) => {
     [route.params]
   );
 
-  const RenderActionItem = ({ data }) => {
-    const actionTemplate = [];
-
-    data.forEach((item) => {
-      switch (item.template) {
-        case 'on_off_button_action_template':
-        case 'one_button_action_template':
-        case 'three_button_action_template':
-          actionTemplate.push(item);
-          break;
-      }
-    });
-
-    return (
-      <>
-        {actionTemplate.length > 0 && (
-          <ActionTemplate
-            action={actions}
-            data={actionTemplate}
-            onSelectAction={handleOnSelectAction}
-          />
-        )}
-      </>
-    );
-  };
-
   const renderBottomButtonView = useMemo(
     () => (
       <BottomButtonView
         style={styles.bottomButtonView}
         mainTitle={t(isSelectSensor ? 'continue' : 'save')}
         onPressMain={onSave}
-        typeMain={actions?.action || !!checkedItem?.id ? 'primary' : 'disabled'}
+        typeMain={
+          actions.length > 0 || !!checkedItem?.id ? 'primary' : 'disabled'
+        }
       />
     ),
     [onSave, actions, checkedItem, isSelectSensor, t]
@@ -262,12 +277,79 @@ const SelectAction = memo(({ route }) => {
             })
           )
         ) : (
-          <RenderActionItem data={data} testID={TESTID.ACTION_ITEM} />
+          <RenderActionItem
+            data={data}
+            onSelectAction={handleOnSelectAction}
+            testID={TESTID.ACTION_ITEM}
+          />
         )}
       </WrapHeaderScrollable>
       {renderBottomButtonView}
     </View>
   );
 });
+
+const RenderActionItem = ({ data, onSelectAction }) => {
+  if (!data) {
+    return null;
+  }
+  const actionTemplate = [];
+  let optionsDropdownActionTemplate = {};
+  let numberUpDownActionTemplate = {};
+  let statesGridActionTemplate = {};
+
+  data.forEach((item) => {
+    switch (item.template) {
+      case 'on_off_button_action_template':
+      case 'one_button_action_template':
+      case 'three_button_action_template':
+      case 'OnOffSimpleActionTemplate':
+        actionTemplate.push(item);
+        break;
+      case 'OptionsDropdownActionTemplate':
+        optionsDropdownActionTemplate = { ...item };
+        break;
+      case 'NumberUpDownActionTemplate':
+        numberUpDownActionTemplate = { ...item };
+        break;
+      case 'StatesGridActionTemplate':
+        statesGridActionTemplate = { ...item };
+        break;
+    }
+  });
+
+  const handleOnSelectAction = (action) => {
+    onSelectAction && onSelectAction(action);
+  };
+
+  return (
+    <>
+      {actionTemplate.length > 0 && (
+        <ActionTemplate
+          data={actionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+      {Object.keys(numberUpDownActionTemplate).length > 0 && (
+        <NumberUpDownActionTemplate
+          data={numberUpDownActionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+      {Object.keys(optionsDropdownActionTemplate).length > 0 && (
+        <OptionsDropdownActionTemplate
+          data={optionsDropdownActionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+      {Object.keys(statesGridActionTemplate).length > 0 && (
+        <StatesGridActionTemplate
+          data={statesGridActionTemplate}
+          onSelectAction={handleOnSelectAction}
+        />
+      )}
+    </>
+  );
+};
 
 export default SelectAction;
