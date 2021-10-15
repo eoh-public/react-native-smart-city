@@ -408,6 +408,7 @@ describe('Test UnitDetail', () => {
     // TODO Called but can not expect
     // expect(axios.get).toHaveBeenCalledWith(API.IOT.LG.DEVICE_STATUS(2));
   });
+
   test('render subunit automate', async () => {
     const unitData = {
       stations: [
@@ -427,6 +428,7 @@ describe('Test UnitDetail', () => {
     const automateViews = instance.findAllByType(SubUnitAutomate);
     expect(automateViews).toHaveLength(1);
   });
+
   test('render subunit camera devices', async () => {
     const unitData = {
       stations: [

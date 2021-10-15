@@ -126,11 +126,11 @@ const UnitDetail = ({ route }) => {
   );
 
   useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
-
-    return () => {
-      AppState.removeEventListener('change', handleAppStateChange);
-    };
+    const subscription = AppState.addEventListener(
+      'change',
+      handleAppStateChange
+    );
+    return () => subscription.remove();
   }, [handleAppStateChange]);
 
   const handleGoogleHomeConnect = useCallback(
