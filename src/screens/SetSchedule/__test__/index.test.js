@@ -9,6 +9,11 @@ import RepeatOptionsPopup from '../components/RepeatOptionsPopup';
 import Calendar from '../../../commons/Calendar';
 import BottomButtonView from '../../../commons/BottomButtonView';
 import Routes from '../../../utils/Route';
+import { REPEAT_OPTIONS } from '../components/RepeatOptionsPopup';
+import SelectWeekday from '../components/SelectWeekday';
+import { HeaderCustom } from '../../../commons/Header';
+import { popAction } from '../../../navigations/utils';
+import moment from 'moment';
 
 const wrapComponent = (route) => (
   <SCProvider initState={mockSCStore({})}>
@@ -24,11 +29,15 @@ jest.mock('react', () => {
 });
 
 const mockNavigate = jest.fn();
+const mockGoBack = jest.fn();
+const mockDispatch = jest.fn();
 jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
     useNavigation: () => ({
       navigate: mockNavigate,
+      goBack: mockGoBack,
+      dispatch: mockDispatch,
     }),
   };
 });
@@ -39,11 +48,14 @@ describe('Test SetSchedule', () => {
     params: {
       type: 'schedule',
       unit: { id: 1 },
+      isAutomateTab: true,
     },
   };
 
   beforeEach(() => {
     mockNavigate.mockClear();
+    mockGoBack.mockClear();
+    mockDispatch.mockClear();
     Date.now = jest.fn(() => new Date('2021-01-24T12:00:00.000Z'));
   });
 
@@ -56,6 +68,7 @@ describe('Test SetSchedule', () => {
     const timePicker = instance.findByType(WheelDateTimePicker);
     const popup = instance.findByType(RepeatOptionsPopup);
     const calendar = instance.findByType(Calendar);
+    const header = instance.findByType(HeaderCustom);
 
     await act(async () => {
       await rowItems[0].props.onPress();
@@ -71,6 +84,60 @@ describe('Test SetSchedule', () => {
       await rowItems[2].props.onPress();
     });
     expect(calendar.props.isVisible).toBeTruthy();
+
+    await act(async () => {
+      await header.props.onClose();
+    });
+    expect(mockDispatch).toBeCalledWith(popAction(4));
+    expect(mockGoBack).toBeCalled();
+  });
+
+  test('test repeat options popup', async () => {
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const popup = instance.findByType(RepeatOptionsPopup);
+    let rowItems = instance.findAllByType(RowItem);
+    expect(rowItems).toHaveLength(3);
+
+    await act(async () => {
+      await popup.props.onSetRepeat(REPEAT_OPTIONS.EVERYDAY);
+    });
+    rowItems = instance.findAllByType(RowItem);
+    expect(rowItems).toHaveLength(2);
+
+    await act(async () => {
+      await popup.props.onSetRepeat(REPEAT_OPTIONS.EVERYWEEK);
+    });
+    const selectWeekday = instance.findByType(SelectWeekday);
+    rowItems = instance.findAllByType(RowItem);
+    expect(rowItems).toHaveLength(2);
+    expect(selectWeekday).toBeDefined();
+  });
+
+  test('test pick date and time', async () => {
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const timePicker = instance.findByType(WheelDateTimePicker);
+    const calendar = instance.findByType(Calendar);
+    const rowItems = instance.findAllByType(RowItem);
+
+    const time = moment().hour(0).minute(0);
+    const date = moment();
+    expect(rowItems[0].props.value).toBe(time.format('HH:mm'));
+    expect(rowItems[2].props.value).toBe(date.format('[Today], D MMMM YYYY '));
+
+    time.hour(10).minute(30);
+    date.add(1, 'days');
+    await act(async () => {
+      await timePicker.props.onPicked(time);
+      await calendar.props.onConfirm(date);
+    });
+    expect(rowItems[0].props.value).toBe(time.format('HH:mm'));
+    expect(rowItems[2].props.value).toBe(date.format('ddd, D MMMM YYYY'));
   });
 
   test('test save', async () => {
@@ -92,6 +159,9 @@ describe('Test SetSchedule', () => {
         date_repeat: '2021-01-24',
         weekday_repeat: [],
       },
+      isAutomateTab: true,
+      isScript: undefined,
+      isMultiUnits: undefined,
     });
   });
 });

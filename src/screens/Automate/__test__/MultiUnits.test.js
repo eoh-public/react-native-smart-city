@@ -141,7 +141,6 @@ describe('Test MultiUnits', () => {
     expect(mockedNavigate).toBeCalledWith(Routes.UnitStack, {
       screen: Routes.AddNewAutoSmart,
       params: {
-        isScript: true,
         type: AUTOMATE_TYPE.VALUE_CHANGE,
         isAutomateTab: true,
         isMultiUnits: true,
@@ -216,7 +215,6 @@ describe('Test MultiUnits', () => {
     expect(mockedNavigate).toBeCalledWith(Routes.UnitStack, {
       screen: Routes.AddNewAutoSmart,
       params: {
-        isScript: true,
         type: AUTOMATE_TYPE.ONE_TAP_ONLY,
         isAutomateTab: true,
         isMultiUnits: true,
