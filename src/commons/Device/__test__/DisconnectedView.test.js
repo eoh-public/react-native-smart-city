@@ -1,5 +1,6 @@
-import { DisconnectedView } from '../DisconnectedView';
 import React from 'react';
+import { View } from 'react-native';
+import { DisconnectedView } from '../DisconnectedView';
 import renderer, { act } from 'react-test-renderer';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
@@ -18,7 +19,9 @@ describe('Test DisconnectedView', () => {
     act(() => {
       tree = renderer.create(wrapComponent(sensor));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(10);
   });
 
   test('render DisconnectedView icon sensor', () => {
@@ -26,7 +29,9 @@ describe('Test DisconnectedView', () => {
     act(() => {
       tree = renderer.create(wrapComponent(sensor));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(10);
   });
 
   test('render DisconnectedView icon barrier', () => {
@@ -34,7 +39,9 @@ describe('Test DisconnectedView', () => {
     act(() => {
       tree = renderer.create(wrapComponent(sensor));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(10);
   });
 
   test('render DisconnectedView icon wind', () => {
@@ -42,7 +49,9 @@ describe('Test DisconnectedView', () => {
     act(() => {
       tree = renderer.create(wrapComponent(sensor));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(10);
   });
 
   test('render DisconnectedView icon test', () => {
@@ -50,6 +59,8 @@ describe('Test DisconnectedView', () => {
     act(() => {
       tree = renderer.create(wrapComponent(sensor));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(10);
   });
 });

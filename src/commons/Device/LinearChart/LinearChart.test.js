@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import LinearChart from '../LinearChart';
 
@@ -19,6 +20,8 @@ describe('Test LinearChart', () => {
     act(() => {
       tree = renderer.create(<LinearChart datas={datas} />);
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(2);
   });
 });

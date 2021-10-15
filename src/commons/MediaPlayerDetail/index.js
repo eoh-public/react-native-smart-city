@@ -7,7 +7,7 @@ import { useTranslations } from '../../hooks/Common/useTranslations';
 import PauseIcon from '../../../assets/images/Common/Pause.svg';
 import { Colors, Constants, Images } from '../../configs';
 import { colorOpacity } from '../../utils/Converter/color';
-import styles from './MediaPlayerDetailStyles';
+import styles from './Styles/MediaPlayerDetailStyles';
 import FImage from '../../commons/FImage';
 import { TESTID } from '../../configs/Constants';
 
@@ -151,7 +151,10 @@ const MediaPlayerDetail = memo(
         {isShowFullScreenIcon && (
           <TouchableOpacity
             onPress={onFullScreen}
-            style={styles.iconFullScreen}
+            style={[
+              styles.iconFullScreen,
+              (amount === 4 || amount === 6) && styles.iconFullScreen2,
+            ]}
             testID={TESTID.SUB_UNIT_FULL_CAMERA}
           >
             <Image source={Images.fullscreen} />
