@@ -386,6 +386,7 @@ const ScriptDetail = ({ route }) => {
         leftButtonClick={hideAlertAction}
         rightButtonTitle={stateAlertAction.rightButton}
         rightButtonClick={handleRenameOrDelete}
+        rightButtonStyle={{ color: stateAlertAction.rightColor }}
       >
         {!stateAlertAction.isDelete && (
           <_TextInput

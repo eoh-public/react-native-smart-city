@@ -41,7 +41,7 @@ const UnitDetail = ({ route }) => {
   const [oneTap, setOneTap] = useState([]);
   const [script, setScript] = useState([]);
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
-  const [station, setStation] = useState([]);
+  const [station, setStation] = useState({});
   const [indexStation, setIndexStation] = useState(0);
   const [showAdd, setShowAdd, setHideAdd] = useBoolean();
   const [isFullScreen, setIsFullScreen] = useState(false);

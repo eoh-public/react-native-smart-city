@@ -4,7 +4,6 @@ import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 import BottomSheet from '../BottomSheet';
 import ViewButtonBottom from '../ViewButtonBottom';
-import Text from '../Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { Images, Colors } from '../../configs';
 import styles from './styles';
@@ -66,9 +65,6 @@ export default ({
             source={Images.arrowLeft}
             style={direction !== 'left' && styles.arrowRight}
           />
-        )}
-        renderHeader={(date) => (
-          <Text type="H4">{moment(new Date(date)).format('MMM yyyy')}</Text>
         )}
       />
       <ViewButtonBottom

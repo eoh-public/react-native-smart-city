@@ -44,6 +44,7 @@ const CameraDevice = ({ station, handleFullScreen, goToPlayBack }) => {
 
       {station.camera_devices.map((device) => (
         <View
+          key={device.id}
           style={[
             styles.boxImage,
             { width: standardizeWidth, height: standardizeHeight },
