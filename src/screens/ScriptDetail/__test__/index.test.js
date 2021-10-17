@@ -7,7 +7,7 @@ import ScriptDetail from '..';
 import MenuActionMore from '../../../commons/MenuActionMore';
 import AlertAction from '../../../commons/AlertAction';
 import _TextInput from '../../../commons/Form/TextInput';
-import { AUTOMATE_TYPE, TESTID } from '../../../configs/Constants';
+import { AUTOMATE_SELECT, AUTOMATE_TYPE, TESTID } from '../../../configs/Constants';
 import { API } from '../../../configs';
 import { TouchableOpacity } from 'react-native';
 import Routes from '../../../utils/Route';
@@ -219,6 +219,7 @@ describe('Test ScriptDetail', () => {
       automateId: route.params.id,
       isCreateNewAction: true,
       scriptName: route.params.name,
+      title: AUTOMATE_SELECT.SELECT_DEVICES,
       type: AUTOMATE_TYPE.ONE_TAP,
     });
   });
