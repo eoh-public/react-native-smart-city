@@ -737,7 +737,7 @@
   "setting_at": "Setting at",
   "name_your_button": "Name your button",
   "continue": "Continue",
-  "multi_units_automate": "Multi-Units Automate",
+  "multi_units_automate": "Multi-Units Smart",
   "tap_to_run": "Tap to run",
   "how_to_start": "How to start",
   "set_up {name}": "Setup {name}",
@@ -767,7 +767,7 @@
   "create_smart": "Create Smart",
   "update_smart": "Update Smart",
   "automate": "Automate",
-  "automate_scripts": "Automate Scripts",
+  "smart": "Smart",
   "multi_unit": "Multi Units",
   "edit_device": "Edit Device",
   "device_name": "Device name",
@@ -787,5 +787,7 @@
   "text_off": "Off",
   "set_temperature": "Set temperature",
   "not_permission": "There are some control commands you have not been authorized",
+  "you_do_not_have_permission_to_access": "You do not have permission to access {doAction}.",
+  "you_do_not_have_permission_to": "You do not have permission to {doAction}.",
   "error_please_try_later": "Error! Please try later"
 }

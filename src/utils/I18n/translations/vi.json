@@ -93,7 +93,7 @@
   "text_humidity": "Độ ẩm",
   "text_uv_index": "Chỉ số UV",
   "text_visibility": "Tầm nhìn",
-  "multi_units_automate": "Tự động hóa nhiều đơn vị",
+  "multi_units_automate": "Đa địa điểm thông minh",
   "text_air_quality": "Chất lượng k.khí",
   "text_shared_with_me": "Địa điểm được chia sẻ",
   "text_all_locations": "Tất cả",
@@ -768,7 +768,7 @@
   "create_smart": "Tạo thông minh",
   "update_smart": "Cập nhật thông minh",
   "automate": "Tự động",
-  "automate_scripts": "Kịch bản tự động",
+  "smart": "Thông minh",
   "edit_device": "Chỉnh sửa thiết bị",
   "device_name": "Tên thiết bị",
   "rename_successfully": "Đổi tên thành công!",
@@ -788,5 +788,7 @@
   "text_off": "Tắt",
   "set_temperature": "Thiết lập nhiệt độ",
   "not_permission": "Có một số lệnh điều khiển bạn chưa được cấp quyền",
+  "you_do_not_have_permission_to_access": "Bạn không được phép truy cập {doAction}.",
+  "you_do_not_have_permission_to": "Bạn không được phép {doAction}.",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }
