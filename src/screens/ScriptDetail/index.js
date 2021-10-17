@@ -33,7 +33,7 @@ import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
 import withPreventDoubleClick from '../../commons/WithPreventDoubleClick';
-import { AUTOMATE_TYPE } from '../../configs/Constants';
+import { AUTOMATE_SELECT, AUTOMATE_TYPE } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
 import { TESTID } from '../../configs/Constants';
 
@@ -67,8 +67,13 @@ const ScriptDetail = ({ route }) => {
   const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
   const [inputName, setInputName] = useState(name);
-  const [stateAlertAction, hideAlertAction, onShowRename, onShowDelete] =
-    useStateAlertAction();
+  const [
+    stateAlertAction,
+    hideAlertAction,
+    onShowRename,
+    onShowActivityLog,
+    onShowDelete,
+  ] = useStateAlertAction();
   const [data, setData] = useState([]);
 
   const renameScript = useCallback(async () => {
@@ -96,24 +101,29 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
-  const goToActivityLog = useCallback(() => {
-    navigate(Routes.ActivityLog, {
-      id: id,
-      type:
-        type === AUTOMATE_TYPE.ONE_TAP
-          ? `automate.${AUTOMATE_TYPE.ONE_TAP}`
-          : 'automate',
-      share: unit,
-    });
-  }, [navigate, id, unit, type]);
-
   const listMenuItem = useMemo(
     () => [
-      { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: goToActivityLog },
-      { text: t('delete_script'), doAction: onShowDelete(scriptName) },
+      { text: t('rename'), doAction: onShowRename(havePermission) },
+      {
+        text: t('activity_log'),
+        doAction: onShowActivityLog(havePermission, id, type, unit),
+      },
+      {
+        text: t('delete_script'),
+        doAction: onShowDelete(scriptName, havePermission),
+      },
     ],
-    [t, onShowRename, onShowDelete, goToActivityLog, scriptName]
+    [
+      t,
+      onShowRename,
+      havePermission,
+      onShowActivityLog,
+      id,
+      type,
+      unit,
+      onShowDelete,
+      scriptName,
+    ]
   );
 
   const starScript = useCallback(async () => {
@@ -162,6 +172,7 @@ const ScriptDetail = ({ route }) => {
       automateId: id,
       type,
       isCreateNewAction: true,
+      title: AUTOMATE_SELECT.SELECT_DEVICES,
     };
     navigate(
       isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
@@ -189,7 +200,7 @@ const ScriptDetail = ({ route }) => {
       scriptName: name,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [name]);
 
   const onGoBack = useCallback(() => {
     if (isCreateScriptSuccess || isCreateNewAction) {
@@ -388,7 +399,7 @@ const ScriptDetail = ({ route }) => {
         rightButtonClick={handleRenameOrDelete}
         rightButtonStyle={{ color: stateAlertAction.rightColor }}
       >
-        {!stateAlertAction.isDelete && (
+        {!stateAlertAction.isDelete && havePermission && (
           <_TextInput
             onChange={(text) => setInputName(text)}
             defaultValue={scriptName}
