@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Colors } from '../../../configs';
 
@@ -21,7 +21,10 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 32,
-    paddingBottom: getBottomSpace() + 10,
+    paddingBottom: Platform.select({
+      ios: getBottomSpace() + 10,
+      android: 120,
+    }),
   },
   wrapItem: {
     marginBottom: 32,
