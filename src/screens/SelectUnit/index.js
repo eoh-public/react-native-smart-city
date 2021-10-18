@@ -12,6 +12,7 @@ import BottomButtonView from '../../commons/BottomButtonView';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { popAction } from '../../navigations/utils';
 import Routes from '../../utils/Route';
+import { TESTID } from '../../configs/Constants';
 
 const SelectUnit = () => {
   const t = useTranslations();
@@ -26,6 +27,7 @@ const SelectUnit = () => {
     routeName,
     isCreateNewAction,
     unit,
+    title,
   } = params;
   const [data, setData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(data[0]);
@@ -64,6 +66,7 @@ const SelectUnit = () => {
       isCreateNewAction || !routeName ? Routes.SelectSensorDevices : routeName,
       {
         ...params,
+        title,
         selectedItem,
         type,
         isAutomateTab,
@@ -75,7 +78,7 @@ const SelectUnit = () => {
       }
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedItem, type, isAutomateTab, isMultiUnits, routeName]);
+  }, [selectedItem, type, isAutomateTab, isMultiUnits, routeName, title]);
 
   const renderItem = ({ item = {} }) => {
     const {
@@ -87,7 +90,11 @@ const SelectUnit = () => {
     } = item;
     const isSelectedItem = selectedItem?.id === id;
     return (
-      <TouchableOpacity onPress={onPressItem(item)} style={styles.wrapItem}>
+      <TouchableOpacity
+        onPress={onPressItem(item)}
+        style={styles.wrapItem}
+        testID={TESTID.ITEM_UNIT}
+      >
         <View style={[styles.notSelected, isSelectedItem && styles.selected]}>
           {isSelectedItem && <View style={styles.childSelected} />}
         </View>

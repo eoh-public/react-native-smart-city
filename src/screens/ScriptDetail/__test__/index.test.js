@@ -7,7 +7,11 @@ import ScriptDetail from '..';
 import MenuActionMore from '../../../commons/MenuActionMore';
 import AlertAction from '../../../commons/AlertAction';
 import _TextInput from '../../../commons/Form/TextInput';
-import { AUTOMATE_SELECT, AUTOMATE_TYPE, TESTID } from '../../../configs/Constants';
+import {
+  AUTOMATE_SELECT,
+  AUTOMATE_TYPE,
+  TESTID,
+} from '../../../configs/Constants';
 import { API } from '../../../configs';
 import { TouchableOpacity } from 'react-native';
 import Routes from '../../../utils/Route';
