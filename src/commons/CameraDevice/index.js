@@ -57,7 +57,6 @@ const CameraDevice = ({ station, handleFullScreen, goToPlayBack }) => {
             }}
             key={`camera-device-${device.id}`}
             cameraName={device.configuration.name}
-            isShowFullScreenIcon
             handleFullScreen={handleFullScreen}
             goToPlayBack={goToPlayBack(device, { uri: station?.background })}
           />
