@@ -143,7 +143,7 @@ const DeviceDetail = ({ account, route }) => {
         menuItems.push({
           text: t('edit'),
           route: Routes.EditDevice,
-          data: { unit, sensor, sensorNewName: sensorName },
+          data: { sensor, sensorNewName: sensorName },
         });
         menuItems.push({
           route: Routes.ManageAccess,

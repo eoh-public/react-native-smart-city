@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
-export default (unit, sensor, inputName) => {
+export default () => {
   const t = useTranslations();
   const [stateAlertAction, setStateAlertAction] = useState({
     visible: false,

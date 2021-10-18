@@ -14,21 +14,20 @@ import { axiosPatch, axiosDelete } from '../../../utils/Apis/axios';
 import API from '../../../configs/API';
 import { useNavigation } from '@react-navigation/native';
 import { ToastBottomHelper } from '../../../utils/Utils';
-import Routes from '../../../utils/Route';
 
 import useEditDevice from './hooks';
 
 const EditDevice = memo(() => {
   const t = useTranslations();
-  const { navigate } = useNavigation();
+  const navigation = useNavigation();
   const { params = {} } = useRoute();
-  const { unit, sensor, sensorNewName } = params;
+  const { sensor, sensorNewName } = params;
   const [inputName, setInputName] = useState('');
   const [sensorName, setSensorName] = useState(
     sensorNewName ? sensorNewName : ''
   );
   const { stateAlertAction, hideAlertAction, onShowRename, onShowDelete } =
-    useEditDevice(unit, sensor);
+    useEditDevice();
   const renameSensor = useCallback(async () => {
     const { success, data } = await axiosPatch(
       API.SENSOR.RENAME_SENSOR(sensor?.id),
@@ -50,17 +49,11 @@ const EditDevice = memo(() => {
     const { success } = await axiosDelete(API.SENSOR.REMOVE_SENSOR(sensor?.id));
 
     if (success) {
-      navigate(Routes.UnitStack, {
-        screen: Routes.UnitDetail,
-        params: {
-          unitId: unit.id,
-          unitData: unit,
-        },
-      });
+      navigation.pop(2);
     } else {
       ToastBottomHelper.error(t('remove_failed'));
     }
-  }, [hideAlertAction, sensor.id, navigate, unit, t]);
+  }, [hideAlertAction, sensor.id, navigation, t]);
 
   const handleRenameOrDelete = useCallback(async () => {
     if (stateAlertAction.isDelete) {
