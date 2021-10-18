@@ -29,7 +29,7 @@ import { AUTOMATE_TYPE } from '../../configs/Constants';
 
 const UnitDetail = ({ route }) => {
   const t = useTranslations();
-  const { unitId, unitData } = route.params;
+  const { unitId, unitData, isOneTap } = route.params;
   const isFocused = useIsFocused();
   const { stateData, setAction } = useContext(SCContext);
   const { navigate } = useNavigation();
@@ -47,8 +47,12 @@ const UnitDetail = ({ route }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [dataFullScreen, setDataFullScreen] = useState();
 
-  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
-    usePopover();
+  const {
+    childRef,
+    showingPopover,
+    showPopoverWithRef,
+    hidePopover,
+  } = usePopover();
 
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 
@@ -207,6 +211,10 @@ const UnitDetail = ({ route }) => {
       setListStation(listMenu.concat([{ text: '' }]));
     }
   }, [unit, indexStation, isGGHomeConnected]);
+
+  useEffect(() => {
+    isOneTap && setIndexStation(1);
+  }, [isOneTap]);
 
   const onSnapToItem = useCallback(
     (item, index) => {
