@@ -95,7 +95,7 @@ const Automate = () => {
         })
       : navigate(Routes.UnitStack, {
           screen: Routes.UnitDetail,
-          params: { unitId },
+          params: { unitId, isOneTap: true },
         });
   };
 
