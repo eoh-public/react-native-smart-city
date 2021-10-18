@@ -85,8 +85,8 @@ const Summaries = memo(({ unit }) => {
     <>
       {!unitSummaries || !unitSummaries.length ? null : (
         <ScrollView horizontal={true}>
-          {unitSummaries.map((item) => (
-            <SummaryItem item={item} goToSummary={goToSummary} />
+          {unitSummaries.map((item, index) => (
+            <SummaryItem key={index} item={item} goToSummary={goToSummary} />
           ))}
         </ScrollView>
       )}

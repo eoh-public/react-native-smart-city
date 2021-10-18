@@ -32,9 +32,9 @@ test('test FilterPopup', async () => {
   let props = {
     isVisible: true,
     members: [
-      { id: 0, name: 'all' },
-      { id: 1, name: 'name 1' },
-      { id: 2, name: 'name 2' },
+      { id: 0, name: 'all', phone_number: null, email: null },
+      { id: 1, name: null, phone_number: '123', email: null },
+      { id: 2, name: null, phone_number: null, email: 'email' },
     ],
     filters: {
       users: [],
@@ -109,60 +109,6 @@ test('test FilterPopup', async () => {
   expect(radioCircles[2].props.active).toBeFalsy();
 });
 
-test('test date picker', async () => {
-  let tree;
-  let props = {
-    isVisible: true,
-    members: [],
-    filters: {
-      users: [],
-    },
-    onHide: jest.fn(),
-    onApply: jest.fn(),
-  };
-
-  await act(async () => {
-    tree = await create(wrapComponent(props));
-  });
-  const instance = tree.root;
-  const dateTimeRangeChange = instance.findByType(DateTimeRangeChange);
-  const datePicker = instance.findAllByType(DateTimePickerModal);
-
-  const _testDatePicker = async (index) => {
-    await act(async () => {
-      if (index === 0) {
-        await dateTimeRangeChange.props.onStart();
-      } else {
-        await dateTimeRangeChange.props.onEnd();
-      }
-    });
-    expect(datePicker[index].props.isVisible).toBeTruthy();
-
-    await act(async () => {
-      await datePicker[index].props.onCancel();
-    });
-    expect(datePicker[index].props.isVisible).toBeFalsy();
-
-    await act(async () => {
-      if (index === 0) {
-        await dateTimeRangeChange.props.onStart();
-      } else {
-        await dateTimeRangeChange.props.onEnd();
-      }
-    });
-    expect(datePicker[index].props.isVisible).toBeTruthy();
-
-    const time = moment();
-    await act(async () => {
-      await datePicker[index].props.onConfirm(time);
-    });
-    expect(datePicker[index].props.isVisible).toBeFalsy();
-  };
-
-  await _testDatePicker(0);
-  await _testDatePicker(1);
-});
-
 test('test date picker pick valid and invalid date', async () => {
   let tree;
   let dateTo = moment('2021-09-09T10:00:00.000Z');
@@ -177,6 +123,7 @@ test('test date picker pick valid and invalid date', async () => {
     },
     onHide: jest.fn(),
     onApply: jest.fn(),
+    onShow: jest.fn(),
   };
 
   await act(async () => {
@@ -184,16 +131,20 @@ test('test date picker pick valid and invalid date', async () => {
   });
   const instance = tree.root;
   const dateTimeRangeChange = instance.findByType(DateTimeRangeChange);
-  const datePicker = instance.findAllByType(DateTimePickerModal);
+  const datePicker = instance.findByType(DateTimePickerModal);
 
   expect(dateTimeRangeChange.props.startTime).toBe(dateFrom.valueOf());
   expect(dateTimeRangeChange.props.endTime).toBe(dateTo.valueOf());
 
-  const _pickDateAndTest = async (index) => {
+  const _pickDateAndTest = async (timeChange) => {
     await act(async () => {
-      await datePicker[index].props.onConfirm(
-        index === 0 ? moment(dateFrom) : moment(dateTo)
-      );
+      if (timeChange === 'start') {
+        await dateTimeRangeChange.props.onStart();
+        await datePicker.props.onConfirm(moment(dateFrom));
+      } else {
+        await dateTimeRangeChange.props.onEnd();
+        await datePicker.props.onConfirm(moment(dateTo));
+      }
     });
     expect(dateTimeRangeChange.props.startTime).toBe(dateFrom.valueOf());
     expect(dateTimeRangeChange.props.endTime).toBe(dateTo.valueOf());
@@ -201,19 +152,19 @@ test('test date picker pick valid and invalid date', async () => {
 
   // pick valid dateFrom
   dateFrom = moment(dateFrom).add(-1, 'days');
-  await _pickDateAndTest(0);
+  await _pickDateAndTest('start');
 
   // pick valid dateTo
   dateTo = moment(dateTo).add(1, 'days');
-  await _pickDateAndTest(1);
+  await _pickDateAndTest('end');
 
   // pick invalid dateFrom
   dateFrom = moment(dateTo);
   dateTo = moment(dateFrom).add(1, 'days');
-  await _pickDateAndTest(0);
+  await _pickDateAndTest('start');
 
   // pick invalid dateTo
   dateTo = moment(dateFrom);
   dateFrom = moment(dateTo).add(-1, 'days');
-  await _pickDateAndTest(1);
+  await _pickDateAndTest('end');
 });

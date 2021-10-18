@@ -1,5 +1,5 @@
 import React from 'react';
-import { SectionList, Text } from 'react-native';
+import { SectionList, Text, TouchableOpacity } from 'react-native';
 import { create } from 'react-test-renderer';
 import { act } from '@testing-library/react-hooks';
 import ActivityLog from '../';
@@ -7,7 +7,10 @@ import { Constants } from '../../../configs';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 import ItemLog from '../ItemLog';
-import { AUTOMATE_TYPE } from '../../../configs/Constants';
+import DateTimeRangeChange from '../../../commons/DateTimeRangeChange';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import Modal from 'react-native-modal';
+import { AUTOMATE_TYPE, TESTID } from '../../../configs/Constants';
 import axios from 'axios';
 
 const mockUseSelector = jest.fn();
@@ -84,5 +87,61 @@ describe('Test Activity log', () => {
     const instance = tree.root;
     const items = instance.findAllByType(ItemLog);
     expect(items).toHaveLength(1);
+  });
+
+  it('test open and close 2 modal', async () => {
+    axios.get.mockImplementation(async () => {
+      return { status: 400 };
+    });
+    await act(async () => {
+      tree = await create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const dateTimeRangeChange = instance.findByType(DateTimeRangeChange);
+    const filterPopup = instance.findByType(Modal);
+    const datePicker = instance.findByType(DateTimePickerModal);
+    const filterButton = instance.find(
+      (el) =>
+        el.props.testID === TESTID.FILTER_BUTTON && el.type === TouchableOpacity
+    );
+    // open popup
+    expect(filterPopup.props.isVisible).toBeFalsy();
+    await act(async () => {
+      await filterButton.props.onPress();
+    });
+    expect(filterPopup.props.isVisible).toBeTruthy();
+    // pick start date
+    await act(async () => {
+      await dateTimeRangeChange.props.onStart();
+      await filterPopup.props.onModalHide();
+    });
+    expect(filterPopup.props.isVisible).toBeFalsy();
+    expect(datePicker.props.isVisible).toBeTruthy();
+    // cancel
+    await act(async () => {
+      await datePicker.props.onCancel();
+      await datePicker.props.onHide();
+    });
+    expect(filterPopup.props.isVisible).toBeTruthy();
+    expect(datePicker.props.isVisible).toBeFalsy();
+    // open popup
+    await act(async () => {
+      await filterButton.props.onPress();
+    });
+    expect(filterPopup.props.isVisible).toBeTruthy();
+    // pick end date
+    await act(async () => {
+      await dateTimeRangeChange.props.onEnd();
+      await filterPopup.props.onModalHide();
+    });
+    expect(filterPopup.props.isVisible).toBeFalsy();
+    expect(datePicker.props.isVisible).toBeTruthy();
+    // confirm
+    await act(async () => {
+      await datePicker.props.onConfirm();
+      await datePicker.props.onHide();
+    });
+    expect(filterPopup.props.isVisible).toBeTruthy();
+    expect(datePicker.props.isVisible).toBeFalsy();
   });
 });

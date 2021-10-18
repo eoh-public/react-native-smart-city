@@ -6,13 +6,7 @@ import React, {
   useEffect,
   memo,
 } from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Image,
-  BackHandler,
-  Alert,
-} from 'react-native';
+import { View, TouchableOpacity, Image, BackHandler } from 'react-native';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Icon } from '@ant-design/react-native';
 
@@ -39,7 +33,7 @@ import Routes from '../../utils/Route';
 import { ToastBottomHelper } from '../../utils/Utils';
 import ItemAutomate from '../../commons/Automate/ItemAutomate';
 import withPreventDoubleClick from '../../commons/WithPreventDoubleClick';
-import { AUTOMATE_TYPE } from '../../configs/Constants';
+import { AUTOMATE_SELECT, AUTOMATE_TYPE } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
 import { TESTID } from '../../configs/Constants';
 
@@ -64,7 +58,7 @@ const ScriptDetail = ({ route }) => {
     type,
     havePermission,
     unit,
-    dateNow = null,
+    saveAt,
     isCreateScriptSuccess,
     isAutomateTab,
     isCreateNewAction,
@@ -73,8 +67,13 @@ const ScriptDetail = ({ route }) => {
   const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
   const [inputName, setInputName] = useState(name);
-  const [stateAlertAction, hideAlertAction, onShowRename, onShowDelete] =
-    useStateAlertAction();
+  const [
+    stateAlertAction,
+    hideAlertAction,
+    onShowRename,
+    onShowActivityLog,
+    onShowDelete,
+  ] = useStateAlertAction();
   const [data, setData] = useState([]);
 
   const renameScript = useCallback(async () => {
@@ -102,24 +101,29 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
-  const goToActivityLog = useCallback(() => {
-    navigate(Routes.ActivityLog, {
-      id: id,
-      type:
-        type === AUTOMATE_TYPE.ONE_TAP
-          ? `automate.${AUTOMATE_TYPE.ONE_TAP}`
-          : 'automate',
-      share: unit,
-    });
-  }, [navigate, id, unit, type]);
-
   const listMenuItem = useMemo(
     () => [
-      { text: t('rename'), doAction: onShowRename },
-      { text: t('activity_log'), doAction: goToActivityLog },
-      { text: t('delete_script'), doAction: onShowDelete(scriptName) },
+      { text: t('rename'), doAction: onShowRename(havePermission) },
+      {
+        text: t('activity_log'),
+        doAction: onShowActivityLog(havePermission, id, type, unit),
+      },
+      {
+        text: t('delete_script'),
+        doAction: onShowDelete(scriptName, havePermission),
+      },
     ],
-    [t, onShowRename, onShowDelete, goToActivityLog, scriptName]
+    [
+      t,
+      onShowRename,
+      havePermission,
+      onShowActivityLog,
+      id,
+      type,
+      unit,
+      onShowDelete,
+      scriptName,
+    ]
   );
 
   const starScript = useCallback(async () => {
@@ -166,16 +170,15 @@ const ScriptDetail = ({ route }) => {
       unit,
       scriptName,
       automateId: id,
-      isScript: false,
       type,
       isCreateNewAction: true,
+      title: AUTOMATE_SELECT.SELECT_DEVICES,
     };
     navigate(
       isMultiUnits ? Routes.SelectUnit : Routes.SelectSensorDevices,
       params
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navigate, id, name, unit, isMultiUnits]);
+  }, [unit, scriptName, id, type, navigate, isMultiUnits]);
 
   const handleScriptAction = useCallback(async () => {
     const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
@@ -187,6 +190,18 @@ const ScriptDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  const handleUpdateAutomate = useCallback(async () => {
+    navigate(Routes.AddNewAutoSmart, {
+      type: AUTOMATE_TYPE.AUTOMATE,
+      automateId: id,
+      unit,
+      isAutomateTab,
+      isMultiUnits,
+      scriptName: name,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [name]);
+
   const onGoBack = useCallback(() => {
     if (isCreateScriptSuccess || isCreateNewAction) {
       dispatch(popAction(5));
@@ -197,71 +212,71 @@ const ScriptDetail = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCreateScriptSuccess]);
 
-  const Item = useCallback(
-    ({ item, index }) => {
-      return (
-        <View style={styles.wrapItem}>
-          <View style={styles.leftItem}>
-            <Text color={Colors.Gray9} type="H4" semibold>
-              {index + 1 < 10 ? '0' + (index + 1) : index + 1}
-            </Text>
-          </View>
-          <View style={styles.rightItem}>
-            <FImage
-              source={{ uri: item?.sensor_icon_kit }}
-              style={styles.iconItem}
-            />
-            <View style={styles.contentItem}>
-              <View style={styles.titleItem}>
-                <Text
-                  numberOfLines={1}
-                  semibold
-                  type="Label"
-                  color={Colors.Gray7}
-                  style={styles.paddingRight4}
-                >
-                  {unit?.name}
-                </Text>
-                <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
-                  {item?.station_name}
-                </Text>
-              </View>
-              <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
-                {item?.sensor_name}
-              </Text>
-              <Text numberOfLines={1} type="H4" color={Colors.Gray9}>
-                {item?.action_name}
-              </Text>
-            </View>
-          </View>
-        </View>
-      );
-    },
-    [unit.name]
-  );
-
-  const ItemAdd = useCallback(({ item, index }) => {
+  const Item = useCallback(({ item, index }) => {
     return (
       <View style={styles.wrapItem}>
-        <View style={styles.leftItemAdd}>
-          <Text style={styles.number} type="H4" semibold color={Colors.Gray7}>
+        <View style={styles.leftItem}>
+          <Text color={Colors.Gray9} type="H4" semibold>
             {index + 1 < 10 ? '0' + (index + 1) : index + 1}
           </Text>
         </View>
-        <TouchableOpacity
-          onPress={onPressAddAction}
-          style={[styles.rightItemAdd]}
-          testID={TESTID.BUTTON_ADD_SCRIPT_ACTION}
-        >
-          <Add />
-          <Text type="H4" color={Colors.Gray8} style={styles.addAction}>
-            {t('add_action')}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.rightItem}>
+          <FImage
+            source={{ uri: item?.sensor_icon_kit }}
+            style={styles.iconItem}
+          />
+          <View style={styles.contentItem}>
+            <View style={styles.titleItem}>
+              <Text
+                numberOfLines={1}
+                semibold
+                type="Label"
+                color={Colors.Gray7}
+                style={styles.paddingRight4}
+              >
+                {item?.unit_name}
+              </Text>
+              <Text numberOfLines={1} type="Label" color={Colors.Gray7}>
+                {item?.station_name}
+              </Text>
+            </View>
+            <Text numberOfLines={1} type="H4" color={Colors.Gray9} semibold>
+              {item?.sensor_name}
+            </Text>
+            <Text numberOfLines={1} type="H4" color={Colors.Gray9}>
+              {item?.action_name}
+            </Text>
+          </View>
+        </View>
       </View>
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const ItemAdd = useCallback(
+    ({ item, index }) => {
+      return (
+        <View style={styles.wrapItem}>
+          <View style={styles.leftItemAdd}>
+            <Text style={styles.number} type="H4" semibold color={Colors.Gray7}>
+              {index + 1 < 10 ? '0' + (index + 1) : index + 1}
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={onPressAddAction}
+            style={[styles.rightItemAdd]}
+            testID={TESTID.BUTTON_ADD_SCRIPT_ACTION}
+          >
+            <Add />
+            <Text type="H4" color={Colors.Gray8} style={styles.addAction}>
+              {t('add_action')}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      );
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [scriptName]
+  );
 
   const renderButtonStar = useMemo(() => {
     return (
@@ -298,9 +313,13 @@ const ScriptDetail = ({ route }) => {
   );
 
   useEffect(() => {
+    setScriptName(name);
+  }, [name]);
+
+  useEffect(() => {
     getScriptDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, dateNow]); // TODO will remove dateNow later
+  }, [id, saveAt]);
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
@@ -324,7 +343,7 @@ const ScriptDetail = ({ route }) => {
           </Text>
           <ItemAutomate
             type={type}
-            onPress={() => Alert.alert(t('feature_under_development'))}
+            onPress={handleUpdateAutomate}
             disabledOnPress={!havePermission}
           />
           {type === AUTOMATE_TYPE.ONE_TAP && (
@@ -378,8 +397,9 @@ const ScriptDetail = ({ route }) => {
         leftButtonClick={hideAlertAction}
         rightButtonTitle={stateAlertAction.rightButton}
         rightButtonClick={handleRenameOrDelete}
+        rightButtonStyle={{ color: stateAlertAction.rightColor }}
       >
-        {!stateAlertAction.isDelete && (
+        {!stateAlertAction.isDelete && havePermission && (
           <_TextInput
             onChange={(text) => setInputName(text)}
             defaultValue={scriptName}

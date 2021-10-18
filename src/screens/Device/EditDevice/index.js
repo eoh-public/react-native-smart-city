@@ -1,5 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Platform } from 'react-native';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
 import { HeaderCustom } from '../../../commons/Header';
 import { IconOutline } from '@ant-design/icons-react-native';
@@ -14,6 +14,7 @@ import { axiosPatch, axiosDelete } from '../../../utils/Apis/axios';
 import API from '../../../configs/API';
 import { useNavigation } from '@react-navigation/native';
 import { ToastBottomHelper } from '../../../utils/Utils';
+import useKeyboardAnimated from '../../../hooks/Explore/useKeyboardAnimated';
 
 import useEditDevice from './hooks';
 
@@ -63,6 +64,12 @@ const EditDevice = memo(() => {
     }
   }, [stateAlertAction.isDelete, deleteSensor, renameSensor]);
 
+  const [transY] = useKeyboardAnimated(-16);
+  const animatedStyle = Platform.select({
+    ios: {
+      marginBottom: transY,
+    },
+  });
   return (
     <View style={styles.wrap}>
       <HeaderCustom title={t('edit_device')} isShowSeparator />
@@ -113,12 +120,15 @@ const EditDevice = memo(() => {
         leftButtonClick={hideAlertAction}
         rightButtonTitle={stateAlertAction.rightButton}
         rightButtonClick={handleRenameOrDelete}
+        animatedStyle={animatedStyle}
       >
         {!stateAlertAction.isDelete && (
           <_TextInput
             onChange={(text) => setInputName(text)}
             defaultValue={sensorName}
-            textInputStyle={styles.textInput}
+            textInputStyle={styles.textInputStyle}
+            wrapStyle={styles.textInputWrapStyle}
+            selectionColor={Colors.Primary}
           />
         )}
       </AlertAction>

@@ -9,6 +9,9 @@ import Device from '../Device';
 import BottomButtonView from '../../../commons/BottomButtonView';
 import NavBar from '../../../commons/NavBar';
 import API from '../../../configs/API';
+import { TESTID } from '../../../configs/Constants';
+import { TouchableOpacity } from 'react-native';
+import Routes from '../../../utils/Route';
 
 jest.mock('axios');
 
@@ -49,6 +52,8 @@ describe('Test SelectSensorDevices', () => {
 
   beforeEach(() => {
     axios.get.mockClear();
+    mockedNavigate.mockClear();
+    mockSetState.mockClear();
   });
 
   test('fetch Device success', async () => {
@@ -187,5 +192,31 @@ describe('Test SelectSensorDevices', () => {
     });
 
     expect(mockSetIndexStation).toBeCalledWith(0);
+  });
+  test('test onPressClose user already has an automateId', async () => {
+    await act(async () => {
+      tree = renderer.create(wrapComponent(route));
+    });
+    const instance = tree.root;
+    const iconClose = instance.findAll(
+      (el) =>
+        el.props.testID === TESTID.ICON_CLOSE && el.type === TouchableOpacity
+    );
+    expect(iconClose).toHaveLength(1);
+
+    await act(async () => {
+      iconClose[0].props.onPress();
+    });
+
+    expect(mockedNavigate).toHaveBeenCalledWith(Routes.ScriptDetail, {
+      havePermission: true,
+      id: 1,
+      isAutomateTab: undefined,
+      isCreateNewAction: undefined,
+      isMultiUnits: undefined,
+      name: 'scriptName test',
+      type: undefined,
+      unit: { id: 1, name: 'Unit test' },
+    });
   });
 });

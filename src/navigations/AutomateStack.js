@@ -26,7 +26,7 @@ const AutomateStack = memo(() => {
       screenOptions={{
         ...screenOptions,
         headerShown: true,
-        title: t('automate_scripts'),
+        title: t('smart'),
         headerLeft: () => (
           <TouchableOpacity style={Theme.menuIcon} onPress={toggleDrawer}>
             <Icon name={'menu'} color={Colors.Black} />

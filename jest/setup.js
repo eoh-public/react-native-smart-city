@@ -38,4 +38,3 @@ jest.mock('@react-navigation/native', () => {
 });
 
 jest.mock('react-native-alert-async');
-jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');

@@ -17,7 +17,8 @@ import Routes from '../../utils/Route';
 const AddNewAutoSmart = memo(({ route }) => {
   const t = useTranslations();
   const { navigate, goBack } = useNavigation();
-  const { type, unit, isScript, isAutomateTab, isMultiUnits } = route.params;
+  const { type, unit, isAutomateTab, isMultiUnits, automateId, scriptName } =
+    route.params;
   const typeAutoSmart = {
     [AUTOMATE_TYPE.AUTOMATE]: [
       {
@@ -65,22 +66,27 @@ const AddNewAutoSmart = memo(({ route }) => {
       type: automate?.type,
       unit: unit,
       ...(automate?.data || {}),
-      isScript,
       isAutomateTab,
       isMultiUnits,
       routeName: automate?.route,
+      automateId,
+      scriptName,
     };
-    if (automate?.route) {
-      navigate(isMultiUnits ? Routes.SelectUnit : automate.route, params);
+
+    if (automate.type === AUTOMATE_TYPE.VALUE_CHANGE && isMultiUnits) {
+      navigate(Routes.SelectUnit, params);
+    } else {
+      navigate(automate.route, params);
     }
   }, [
     navigate,
     selectedIndex,
     data,
     unit,
-    isScript,
     isAutomateTab,
     isMultiUnits,
+    automateId,
+    scriptName,
   ]);
 
   const handleSelectIndex = (index) => {
@@ -92,16 +98,16 @@ const AddNewAutoSmart = memo(({ route }) => {
   };
 
   const onClose = useCallback(() => {
-    isScript ? goBack() : alert(t('feature_under_development'));
+    goBack();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript]);
+  }, []);
 
   return (
     <View style={styles.wrap}>
       <HeaderCustom isShowClose onClose={onClose} />
       <View style={styles.container}>
         <Text semibold type={'H2'} style={styles.titleCreate}>
-          {t('create_smart')}
+          {automateId ? t('update_smart') : t('create_smart')}
         </Text>
         <Text type={'Body'} style={styles.titleChoose}>
           {t('choose_the_automation_method_you_want')}

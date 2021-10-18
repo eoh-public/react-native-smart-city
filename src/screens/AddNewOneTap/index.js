@@ -10,9 +10,10 @@ import { HeaderCustom } from '../../commons/Header';
 import BottomButtonView from '../../commons/BottomButtonView';
 import Text from '../../commons/Text';
 import { useTranslations } from '../../hooks/Common/useTranslations';
-import { axiosPost } from '../../utils/Apis/axios';
+import { axiosPost, axiosPut } from '../../utils/Apis/axios';
 import Routes from '../../utils/Route';
 import { popAction } from '../../navigations/utils';
+import { ToastBottomHelper } from '../../utils/Utils';
 
 const AddNewOneTap = memo(({ route }) => {
   const {
@@ -20,20 +21,24 @@ const AddNewOneTap = memo(({ route }) => {
     unit,
     automateData = {},
     isAutomateTab,
-    isScript,
     isMultiUnits,
+    automateId,
+    scriptName,
   } = route.params;
   const t = useTranslations();
   const { navigate, dispatch, goBack } = useNavigation();
-  const [name, setName] = useState('');
+  const [name, setName] = useState(scriptName ? scriptName : '');
 
   const handleContinue = useCallback(async () => {
-    const { success, data } = await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), {
+    const params = {
       unit: isMultiUnits ? null : unit.id,
       type: type,
       name: name,
       ...automateData,
-    });
+    };
+    const { success, data } = automateId
+      ? await axiosPut(API.AUTOMATE.UPDATE_AUTOMATE(automateId), params)
+      : await axiosPost(API.AUTOMATE.CREATE_AUTOMATE(), params);
     if (success) {
       navigate(Routes.ScriptDetail, {
         unit: unit,
@@ -42,20 +47,22 @@ const AddNewOneTap = memo(({ route }) => {
         type: type,
         havePermission: true,
         isCreateScriptSuccess: true,
-        isAutomateTab,
-        isScript,
+        isAutomateTab: automateId ? false : isAutomateTab,
         isMultiUnits,
       });
+    } else {
+      ToastBottomHelper.error(t('error_please_try_later'));
     }
   }, [
+    isMultiUnits,
+    unit,
     type,
     name,
-    unit,
     automateData,
+    automateId,
     navigate,
     isAutomateTab,
-    isScript,
-    isMultiUnits,
+    t,
   ]);
 
   const onChangeName = useCallback((text) => {
@@ -63,14 +70,24 @@ const AddNewOneTap = memo(({ route }) => {
   }, []);
 
   const onClose = useCallback(() => {
-    if (isScript) {
+    if (automateId) {
+      navigate(Routes.ScriptDetail, {
+        id: automateId,
+        name: scriptName,
+        type: type,
+        havePermission: true,
+        unit,
+        isMultiUnits,
+        isAutomateTab,
+      });
+    } else if (isAutomateTab) {
       dispatch(popAction(5));
-      isAutomateTab && goBack();
+      goBack();
     } else {
       goBack();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScript, isAutomateTab]);
+  }, [isAutomateTab]);
 
   return (
     <SafeAreaView

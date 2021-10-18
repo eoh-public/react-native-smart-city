@@ -3,6 +3,7 @@ import { create, act } from 'react-test-renderer';
 import { SCProvider } from '../../../../../context';
 import { mockSCStore } from '../../../../../context/mockStore';
 import UvIndex from '../index';
+import { Section } from '../../../../../commons';
 
 const wrapComponent = (data) => (
   <SCProvider initState={mockSCStore({})}>
@@ -31,7 +32,9 @@ describe('Test UvIndex', () => {
     act(() => {
       tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Sections = instance.findAllByType(Section);
+    expect(Sections).toHaveLength(2);
   });
 
   test('render UvIndex with negative uv_value', async () => {
@@ -39,7 +42,9 @@ describe('Test UvIndex', () => {
     act(() => {
       tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Sections = instance.findAllByType(Section);
+    expect(Sections).toHaveLength(2);
   });
 
   test('render UvIndex with high uv_value', async () => {
@@ -47,7 +52,9 @@ describe('Test UvIndex', () => {
     act(() => {
       tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Sections = instance.findAllByType(Section);
+    expect(Sections).toHaveLength(2);
   });
 
   test('render UvIndex with advices', async () => {
@@ -55,7 +62,9 @@ describe('Test UvIndex', () => {
     act(() => {
       tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Sections = instance.findAllByType(Section);
+    expect(Sections).toHaveLength(2);
   });
 
   test('render UvIndex without advices', async () => {
@@ -63,7 +72,9 @@ describe('Test UvIndex', () => {
     act(() => {
       tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Sections = instance.findAllByType(Section);
+    expect(Sections).toHaveLength(2);
   });
 
   test('render UvIndex with undefined uv_value', async () => {
@@ -71,6 +82,8 @@ describe('Test UvIndex', () => {
     act(() => {
       tree = create(wrapComponent(data));
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Sections = instance.findAllByType(Section);
+    expect(Sections).toHaveLength(2);
   });
 });

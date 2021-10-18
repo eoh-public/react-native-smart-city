@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
@@ -17,6 +18,8 @@ describe('Test Today', () => {
     act(() => {
       tree = renderer.create(wrapComponent());
     });
-    expect(tree.toJSON()).toMatchSnapshot();
+    const instance = tree.root;
+    const Views = instance.findAllByType(View);
+    expect(Views).toHaveLength(1);
   });
 });
