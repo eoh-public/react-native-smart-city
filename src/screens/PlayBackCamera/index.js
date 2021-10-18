@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
@@ -15,26 +15,22 @@ import { useStatusBarPreview } from '../../hooks/Common/useStatusBar';
 import MediaPlayerFull from '../../commons/MediaPlayerDetail/MediaPlayerFull';
 
 let dateTemp = moment().format('YYYY-MM-DD');
-const arrDayTemp = dateTemp.split('-');
 
 const PlayBackCamera = () => {
+  const hourTemp = useMemo(() => moment().format('HH:mm:ss'), []);
+  const arrHourTemp = useMemo(() => hourTemp.split(':'), [hourTemp]);
   const t = useTranslations();
   const { params = {} } = useRoute();
   const { item = {}, thumbnail } = params;
   const [selected, setSelected] = useState(dateTemp);
   const [isShowDate, setIsShowDate] = useState(false);
   const [hour, setHour] = useState({
-    h: '00',
-    m: '00',
-    s: '00',
+    h: arrHourTemp[0],
+    m: arrHourTemp[1],
+    s: arrHourTemp[2],
   });
-  const [uri, setUri] = useState(
-    `${(item?.configuration?.playback || '').split('=')[0]}${arrDayTemp[0]}=${
-      arrDayTemp[1]
-    }${arrDayTemp[2]}T000000Z`
-  );
+  const [uri, setUri] = useState(item?.configuration?.uri);
   const [paused, setPaused] = useState(true);
-
   const onOpenDateModal = useCallback(() => {
     setIsShowDate(true);
   }, []);
@@ -62,17 +58,37 @@ const PlayBackCamera = () => {
   }, [selected]);
 
   const onChangeValue = (value) => {
+    const currentTime =
+      parseFloat(arrHourTemp[0]) +
+      parseFloat(arrHourTemp[1] / 60) +
+      parseFloat(arrHourTemp[2] / 3600);
     setPaused(true);
     const t1 = value / 96;
     const t2 = t1.toString().split('.');
     const t3 = parseFloat('0.' + t2[1]) * 60;
     const t4 = t3.toString().split('.');
     const t5 = parseInt(parseFloat('0.' + t4[1]) * 60, 10);
+    const h = t2[0] < 10 ? '0' + t2[0] : t2[0];
+    const m = t4[0] < 10 ? '0' + t4[0] : t4[0];
+    const s = t5 < 10 ? '0' + t5 : t5;
     setHour({
-      h: t2[0] < 10 ? '0' + t2[0] : t2[0],
-      m: t4[0] < 10 ? '0' + t4[0] : t4[0],
-      s: t5 < 10 ? '0' + t5 : t5,
+      h,
+      m,
+      s,
     });
+    if (value + 0.5 > currentTime * 96) {
+      setUri(item?.configuration?.uri);
+    } else {
+      const playback = item?.configuration?.playback || '';
+      const date = selected.split('-');
+      setUri(
+        `${playback.split('=')[0]}=${date[0]}${date[1]}${date[2]}T${h}${m}${s}Z`
+      );
+    }
+    const to = setTimeout(() => {
+      setPaused(false);
+      clearTimeout(to);
+    }, 300);
   };
 
   useEffect(() => {
@@ -84,14 +100,7 @@ const PlayBackCamera = () => {
       }${hour.s}Z`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hour, selected]);
-
-  useEffect(() => {
-    const to = setTimeout(() => {
-      setPaused(false);
-    }, 300);
-    return () => clearTimeout(to);
-  }, [uri]);
+  }, [selected]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -138,6 +147,12 @@ const PlayBackCamera = () => {
         >{`${hour.h}:${hour.m}:${hour.s}`}</Text>
         <View style={styles.timer}>
           <Timer
+            value={
+              (parseFloat(arrHourTemp[0]) +
+                parseFloat(arrHourTemp[1] / 60) +
+                parseFloat(arrHourTemp[2] / 3600)) *
+              96
+            }
             minimum={0}
             maximum={144}
             segmentSpacing={14}
