@@ -21,7 +21,7 @@ const SelectSensorDevices = memo(({ route }) => {
   const {
     unit,
     automateId,
-    title = AUTOMATE_SELECT.SELECT_DEVICES,
+    title = AUTOMATE_SELECT.SELECT_DEVICE,
     type,
     scriptName,
     isAutomateTab,

@@ -322,7 +322,7 @@
   "add_new_device_message_no_unit": "You cannot add new device. You have to add a new unit first.",
   "add_member": "Add member",
   "add_new_member_message_no_unit": "You cannot add new member. You have to add a new unit first.",
-  "select_devices": "Select Devices",
+  "select_device": "Select Device",
   "select_sensor": "Select Sensor",
   "sharing_select_devices_hint": "Select devices and what you want to share in details with this member",
   "members": "Members",

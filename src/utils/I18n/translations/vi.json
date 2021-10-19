@@ -361,7 +361,7 @@
   "add_new_device_message_no_unit": "Để thêm thiết bị mới, trước tiên bạn cần tạo một địa điểm.",
   "add_member": "Thêm thành viên",
   "add_new_member_message_no_unit": "Để thêm thành viên mới, trước tiên bạn cần tạo một điạ điểm.",
-  "select_devices": "Lựa chọn thiết bị",
+  "select_device": "Lựa chọn thiết bị",
   "select_sensor": "Lựa chọn cảm biến",
   "sharing_select_devices_hint": "Lựa chọn thiết bị mà bạn muốn chia sẻ quyền điều khiển",
   "members": "Thành viên",
