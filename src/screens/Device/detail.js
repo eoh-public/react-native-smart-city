@@ -56,7 +56,6 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { Card } from '../../commons/CardShadow';
 import { useIsOwnerOfUnit } from '../../hooks/Common';
-import { useIsFocused } from '@react-navigation/native';
 
 const { standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
@@ -65,7 +64,6 @@ const { standardizeHeight } = standardizeCameraScreenSize(
 const DeviceDetail = ({ account, route }) => {
   const t = useTranslations();
   const navigation = useNavigation();
-  const isFocused = useIsFocused();
   const [offsetTitle, setOffsetTitle] = useState(1);
   const [display, setDisplay] = useState({ items: [] });
   const [displayValues, setDisplayValues] = useState([]);
@@ -110,23 +108,6 @@ const DeviceDetail = ({ account, route }) => {
     }
   }, [unit, sensor]);
 
-  const fetchSensorName = useCallback(async () => {
-    const { success, data } = await axiosGet(
-      API.UNIT.UNIT_DETAIL(unit.id),
-      {},
-      true
-    );
-    if (success) {
-      const station = data?.stations.filter(
-        (item) => item.id === sensor.station.id
-      );
-      const sensorDevice = station[0]?.sensors.filter(
-        (item) => item.id === sensor.id
-      );
-      setSensorName(sensorDevice[0]?.name);
-    }
-  }, [sensor, unit]);
-
   const listMenuItemDefault = useMemo(() => [], []);
 
   const listMenuItem = useMemo(() => {
@@ -143,7 +124,11 @@ const DeviceDetail = ({ account, route }) => {
         menuItems.push({
           text: t('edit'),
           route: Routes.EditDevice,
-          data: { sensor, sensorNewName: sensorName },
+          data: {
+            sensor,
+            setSensorNameDetail: setSensorName,
+            sensorNameDetail: sensorName,
+          },
         });
         menuItems.push({
           route: Routes.ManageAccess,
@@ -185,6 +170,7 @@ const DeviceDetail = ({ account, route }) => {
     isShowSetupEmergencyContact,
     listMenuItemDefault,
     sensor,
+    setSensorName,
     sensorName,
     isOwner,
     unit,
@@ -278,12 +264,6 @@ const DeviceDetail = ({ account, route }) => {
   useEffect(() => {
     fetchDataDeviceDetail();
   }, [sensor, fetchDataDeviceDetail]);
-
-  useEffect(() => {
-    if (isFocused) {
-      fetchSensorName();
-    }
-  }, [fetchSensorName, isFocused]);
 
   const onRefresh = useCallback(() => {
     fetchDataDeviceDetail();

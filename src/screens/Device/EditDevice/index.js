@@ -22,11 +22,9 @@ const EditDevice = memo(() => {
   const t = useTranslations();
   const navigation = useNavigation();
   const { params = {} } = useRoute();
-  const { sensor, sensorNewName } = params;
+  const { sensor, setSensorNameDetail, sensorNameDetail } = params;
   const [inputName, setInputName] = useState('');
-  const [sensorName, setSensorName] = useState(
-    sensorNewName ? sensorNewName : ''
-  );
+  const [sensorName, setSensorName] = useState(sensorNameDetail || '');
   const { stateAlertAction, hideAlertAction, onShowRename, onShowDelete } =
     useEditDevice();
   const renameSensor = useCallback(async () => {
@@ -38,12 +36,20 @@ const EditDevice = memo(() => {
     );
     if (success) {
       setSensorName(data?.name);
+      setSensorNameDetail(data?.name);
       ToastBottomHelper.success(t('rename_successfully'));
     } else {
       ToastBottomHelper.error(t('rename_failed'));
     }
     hideAlertAction();
-  }, [sensor.id, inputName, hideAlertAction, t]);
+  }, [
+    sensor.id,
+    inputName,
+    hideAlertAction,
+    setSensorName,
+    setSensorNameDetail,
+    t,
+  ]);
 
   const deleteSensor = useCallback(async () => {
     hideAlertAction();
