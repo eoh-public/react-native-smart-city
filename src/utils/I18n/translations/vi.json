@@ -527,7 +527,7 @@
   "connected_to_phone_number": "Đã kết nối với tài khoản",
   "change_default": "Chỉnh sửa",
   "remove_payment_method": "Xoá hình thức thanh toán",
-  "remove_payment_method_confirm": "Bạn có muốn xoá %{payment_brand} khỏi hình thức thanh toán?",
+  "remove_payment_method_confirm": "Bạn có muốn xoá {payment_brand} khỏi hình thức thanh toán?",
   "change_default_payment_method": "Thay đổi hình thức thanh toán",
   "change_default_payment_method_confirm": "Bạn có muốn đặt %{payment_brand} làm hình thức thanh toán mặc định?",
   "set_as_default": "Đặt làm mặc định",
