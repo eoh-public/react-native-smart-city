@@ -74,7 +74,6 @@ const AllCamera = () => {
             amount={amount}
             handleFullScreen={handleFullScreen}
             goToPlayBack={goToPlayBack(item, thumbnail)}
-            isShowFullScreenIcon
           />
         )}
       </View>
