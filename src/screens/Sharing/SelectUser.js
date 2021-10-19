@@ -73,7 +73,7 @@ const SelectUser = ({ route }) => {
   }, [navigation]);
 
   return (
-    <SafeAreaView style={styles.wrap}>
+    <SafeAreaView style={styles.wrapContainer}>
       <TouchableWithoutFeedback
         onPress={Keyboard.dismiss}
         accessible={false}
@@ -150,10 +150,14 @@ const SelectUser = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  wrap: {
+  wrapContainer: {
     flex: 1,
     backgroundColor: Colors.Gray2,
     paddingTop: getStatusBarHeight(),
+  },
+  wrap: {
+    flex: 1,
+    backgroundColor: Colors.Gray2,
   },
   padding: {
     paddingHorizontal: 16,

@@ -123,7 +123,7 @@ describe('Test ScriptDetail', () => {
     const instance = tree.root;
     const menu = instance.findByType(MenuActionMore);
     const alertAction = instance.findByType(AlertAction);
-    const deleteItem = menu.props.listMenuItem[2];
+    const deleteItem = menu.props.listMenuItem[3];
 
     await act(async () => {
       await menu.props.onItemClick(deleteItem);
@@ -161,12 +161,32 @@ describe('Test ScriptDetail', () => {
     expect(axios.post).toHaveBeenCalledWith(API.AUTOMATE.STAR_SCRIPT(1));
 
     axios.post.mockClear();
-
     axios.post.mockImplementation(async () => {
       return { status: 204 };
     });
     await act(async () => {
       await buttonStar.props.onPress();
+    });
+    expect(axios.post).toHaveBeenCalledWith(API.AUTOMATE.UNSTAR_SCRIPT(1));
+
+    const menu = instance.findByType(MenuActionMore);
+    const addFavorite = menu.props.listMenuItem[1];
+    axios.post.mockClear();
+    axios.post.mockImplementation(async () => {
+      return { status: 200 };
+    });
+    await act(async () => {
+      await menu.props.onItemClick(addFavorite);
+    });
+    expect(axios.post).toHaveBeenCalledWith(API.AUTOMATE.STAR_SCRIPT(1));
+
+    const removeFavorite = menu.props.listMenuItem[1];
+    axios.post.mockClear();
+    axios.post.mockImplementation(async () => {
+      return { status: 204 };
+    });
+    await act(async () => {
+      await menu.props.onItemClick(removeFavorite);
     });
     expect(axios.post).toHaveBeenCalledWith(API.AUTOMATE.UNSTAR_SCRIPT(1));
   });
@@ -236,7 +256,7 @@ describe('Test ScriptDetail', () => {
       });
       const instance = tree.root;
       const menu = instance.findByType(MenuActionMore);
-      const gotoActivityLog = menu.props.listMenuItem[1];
+      const gotoActivityLog = menu.props.listMenuItem[2];
 
       await act(async () => {
         await menu.props.onItemClick(gotoActivityLog);

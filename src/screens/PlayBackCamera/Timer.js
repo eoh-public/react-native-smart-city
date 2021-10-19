@@ -5,6 +5,7 @@ import Text from '../../commons/Text';
 import styles from './Styles/TimerStyles';
 
 let time = -1;
+let isFirstTime = true;
 
 const Timer = ({
   width = Constants.width,
@@ -22,6 +23,7 @@ const Timer = ({
   stepHeight = 40,
   normalColor = Colors.Gray7,
   normalHeight = 20,
+  value,
 }) => {
   const scrollViewRef = useRef();
   const [scrollX] = useState(new Animated.Value(0));
@@ -68,15 +70,28 @@ const Timer = ({
 
   useEffect(() => {
     const scrollListener = scrollX.addListener(({ value }) => {
-      onChangeValue && onChangeValue(value);
+      !isFirstTime && onChangeValue && onChangeValue(value);
     });
     return () => scrollX.removeListener(scrollListener);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFirstTime]);
+
+  useEffect(() => {
+    return () => {
+      time = -1;
+      isFirstTime = true;
+    };
   }, []);
 
   useEffect(() => {
-    return () => (time = -1);
-  }, []);
+    if (isFirstTime) {
+      const to = setTimeout(() => {
+        scrollViewRef?.current.scrollTo({ x: value });
+        clearTimeout(to);
+        isFirstTime = false;
+      }, 400);
+    }
+  }, [value, scrollViewRef]);
 
   return (
     <View>

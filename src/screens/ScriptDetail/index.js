@@ -101,9 +101,31 @@ const ScriptDetail = ({ route }) => {
     }
   }, [stateAlertAction.isDelete, deleteScript, renameScript]);
 
+  const starScript = useCallback(async () => {
+    const { success } = await axiosPost(API.AUTOMATE.STAR_SCRIPT(id));
+    success && setIsStar(true);
+  }, [id]);
+
+  const unstarScript = useCallback(async () => {
+    const { success } = await axiosPost(API.AUTOMATE.UNSTAR_SCRIPT(id));
+    success && setIsStar(false);
+  }, [id]);
+
+  const onPressStar = useCallback(() => {
+    if (isStar) {
+      unstarScript();
+    } else {
+      starScript();
+    }
+  }, [isStar, starScript, unstarScript]);
+
   const listMenuItem = useMemo(
     () => [
       { text: t('rename'), doAction: onShowRename(havePermission) },
+      {
+        text: isStar ? t('remove_favorite') : t('add_favorite'),
+        doAction: isStar ? unstarScript : starScript,
+      },
       {
         text: t('activity_log'),
         doAction: onShowActivityLog(havePermission, id, type, unit),
@@ -123,26 +145,11 @@ const ScriptDetail = ({ route }) => {
       unit,
       onShowDelete,
       scriptName,
+      isStar,
+      starScript,
+      unstarScript,
     ]
   );
-
-  const starScript = useCallback(async () => {
-    const { success } = await axiosPost(API.AUTOMATE.STAR_SCRIPT(id));
-    success && setIsStar(true);
-  }, [id]);
-
-  const unstarScript = useCallback(async () => {
-    const { success } = await axiosPost(API.AUTOMATE.UNSTAR_SCRIPT(id));
-    success && setIsStar(false);
-  }, [id]);
-
-  const onPressStar = useCallback(() => {
-    if (isStar) {
-      unstarScript();
-    } else {
-      starScript();
-    }
-  }, [isStar, starScript, unstarScript]);
 
   const handleShowMenuAction = useCallback(
     () => showPopoverWithRef(refMenuAction),

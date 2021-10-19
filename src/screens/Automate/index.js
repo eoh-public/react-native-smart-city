@@ -30,17 +30,34 @@ const Automate = () => {
   const [automatesData, setAutomatesData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const prepareData = useCallback((rawData) => {
+    rawData.forEach((item) => {
+      item.automates = item.automates.sort((a, b) => {
+        const aIsStar = a.script.is_star;
+        const bIsStar = b.script.is_star;
+        if ((aIsStar && bIsStar) || (!aIsStar && !bIsStar)) {
+          return 0;
+        } else if (aIsStar && !bIsStar) {
+          return -1;
+        } else if (!aIsStar && bIsStar) {
+          return 1;
+        }
+      });
+    });
+  }, []);
+
   const getAutomates = useCallback(async () => {
     setIsLoading(true);
     const { success, data } = await axiosGet(API.AUTOMATE.GET_AUTOMATES());
     if (success && data && data.length) {
+      prepareData(data);
       setAutomatesData(data);
     }
     const timeout = setTimeout(() => {
       setIsLoading(false);
       clearTimeout(timeout);
     }, 1000);
-  }, []);
+  }, [prepareData]);
 
   const onPressItem = (item, id, type) => () => {
     navigate(Routes.UnitStack, {
@@ -78,7 +95,7 @@ const Automate = () => {
         })
       : navigate(Routes.UnitStack, {
           screen: Routes.UnitDetail,
-          params: { unitId },
+          params: { unitId, isOneTap: true },
         });
   };
 
