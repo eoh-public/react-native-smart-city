@@ -1,6 +1,6 @@
 name: Check lint and coverage
 on:
-  push:
+  pull_request:
     branches:
       - main
 jobs:
@@ -29,7 +29,7 @@ jobs:
         run: yarn run check_coverage_config
   test_mr:
     needs: [check_lint, check_coverage]
-    name: Check coverage
+    name: Test mr
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
