@@ -19,6 +19,7 @@ const ButtonPopup = ({
   onPressMain,
   onPressSecondary,
   onPressThird,
+  onHide,
   bodyStyle,
   hideClose,
   typeMain,
@@ -31,6 +32,7 @@ const ButtonPopup = ({
       isVisible={visible}
       onBackButtonPress={onClose}
       onBackdropPress={onClose}
+      onModalHide={onHide}
       useNativeDriver={true}
       useNativeDriverForBackdrop={true}
       testID={TESTID.MODAL_BUTTON_POPUP}

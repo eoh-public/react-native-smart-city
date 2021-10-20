@@ -55,7 +55,7 @@ import { standardizeCameraScreenSize } from '../../utils/Utils';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { Card } from '../../commons/CardShadow';
-import { useIsOwnerOfUnit } from '../../hooks/Common';
+import { useIsOwnerOfUnit, useBoolean } from '../../hooks/Common';
 
 const { standardizeHeight } = standardizeCameraScreenSize(
   Device.screenWidth - 32
@@ -83,6 +83,7 @@ const DeviceDetail = ({ account, route }) => {
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
   const [sensorName, setSensorName] = useState(sensor?.name);
+  const [lockShowing, acquireLockShowing, releaseLockShowing] = useBoolean();
 
   const isShowSetupEmergencyContact =
     display.items.filter(
@@ -241,7 +242,7 @@ const DeviceDetail = ({ account, route }) => {
     showAlertSent,
     onCloseAlertSent,
     onViewDetails,
-  } = useEmergencyButton(fetchDataDeviceDetail);
+  } = useEmergencyButton(fetchDataDeviceDetail, acquireLockShowing);
 
   const {
     showPopupResolveSuccess,
@@ -250,7 +251,11 @@ const DeviceDetail = ({ account, route }) => {
     onPressResolveSituation,
     stateAlertResolve,
     hideAlertResolve,
-  } = useAlertResolveEmergency(lastEvent, fetchDataDeviceDetail);
+  } = useAlertResolveEmergency(
+    lastEvent,
+    fetchDataDeviceDetail,
+    acquireLockShowing
+  );
 
   const { countUpStr } = useCountUp(lastEvent.reportedAt);
 
@@ -531,18 +536,20 @@ const DeviceDetail = ({ account, route }) => {
           />
         )}
         <AlertSendConfirm
-          showAlertConfirm={showAlertConfirm}
+          showAlertConfirm={showAlertConfirm && !lockShowing}
           countDown={countDown}
           onCancelConfirmAlert={onCancelConfirmAlert}
           onSendNowAlert={onSendNowAlert}
+          onHide={releaseLockShowing}
           unit={unit}
           station={sensor.station}
         />
 
         <AlertSent
-          showAlertSent={showAlertSent}
+          showAlertSent={showAlertSent && !lockShowing}
           onClose={onCloseAlertSent}
           onPressMain={onViewDetails}
+          onHide={releaseLockShowing}
           unit={unit}
           station={sensor.station}
         />
@@ -558,7 +565,7 @@ const DeviceDetail = ({ account, route }) => {
         />
       )}
       <AlertAction
-        visible={stateAlertResolve.visible}
+        visible={stateAlertResolve.visible && !lockShowing}
         hideModal={hideAlertResolve}
         title={stateAlertResolve.title}
         message={stateAlertResolve.message}
@@ -566,13 +573,15 @@ const DeviceDetail = ({ account, route }) => {
         leftButtonClick={hideAlertResolve}
         rightButtonTitle={stateAlertResolve.rightButton}
         rightButtonClick={onPressResolveSituation}
+        onHide={releaseLockShowing}
       />
       <ButtonPopup
         testID={TESTID.BUTTON_POPUP_RESOLVED}
-        visible={showPopupResolveSuccess}
+        visible={showPopupResolveSuccess && !lockShowing}
         mainTitle={t('ok')}
         onPressMain={onCloseShowPopupResolveSuccess}
         onClose={onCloseShowPopupResolveSuccess}
+        onHide={releaseLockShowing}
         typeMain="cancel"
       >
         <View style={styles.locationName}>

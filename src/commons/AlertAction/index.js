@@ -18,6 +18,7 @@ const AlertAction = ({
   rightButtonTitle,
   rightButtonClick,
   rightButtonStyle,
+  onHide,
   children,
   testIDPrefix = '',
   animatedStyle,
@@ -27,6 +28,7 @@ const AlertAction = ({
       isVisible={visible}
       onBackButtonPress={hideModal}
       onBackdropPress={hideModal}
+      onModalHide={onHide}
       useNativeDriver={true}
       useNativeDriverForBackdrop={true}
       style={styles.container}

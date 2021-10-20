@@ -12,6 +12,7 @@ const AlertSent = ({
   onPressSecondary,
   onPressMain,
   onPressThird,
+  onHide,
   unit,
   station,
   isDashboard,
@@ -48,6 +49,7 @@ const AlertSent = ({
       onPressSecondary={onPressSecondary}
       onPressMain={onPressMain}
       onPressThird={onPressThird}
+      onHide={onHide}
       bodyStyle={styles.buttonPopupBody}
       typeMain={data.typeMain}
       typeSecondary={data.typeSecondary}

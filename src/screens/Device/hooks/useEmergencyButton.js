@@ -8,7 +8,7 @@ import { useCountDown } from '../../../hooks/EmergencyButton';
 
 const initTimeCountDown = 5;
 
-const useEmergencyButton = (fetchDataDeviceDetail) => {
+const useEmergencyButton = (fetchDataDeviceDetail, acquireLockShowing) => {
   const [deviceId, setDeviceId] = useState({});
   const [showAlertSent, setShowAlertSent] = useState(false);
   const [showAlertConfirm, setShowAlertConfirm] = useState(false);
@@ -28,17 +28,16 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
       }
     );
     if (success) {
+      acquireLockShowing();
       setShowAlertConfirm(false);
-      setTimeout(() => {
-        setShowAlertSent(true);
-      }, 300);
+      setShowAlertSent(true);
       await fetchDataDeviceDetail();
     } else {
       setShowAlertConfirm(false);
       ToastBottomHelper.error(message);
     }
     clearTimeout(timeoutEmergencyId);
-  }, [deviceId, fetchDataDeviceDetail, timeoutEmergencyId]);
+  }, [deviceId, fetchDataDeviceDetail, acquireLockShowing, timeoutEmergencyId]);
 
   const onCancelConfirmAlert = useCallback(() => {
     setShowAlertConfirm(false);
@@ -79,7 +78,11 @@ const useEmergencyButton = (fetchDataDeviceDetail) => {
   };
 };
 
-export const useAlertResolveEmergency = (lastEvent, fetchDataDeviceDetail) => {
+export const useAlertResolveEmergency = (
+  lastEvent,
+  fetchDataDeviceDetail,
+  acquireLockShowing
+) => {
   const t = useTranslations();
   const [showPopupResolveSuccess, setShowPopupResolveSuccess] = useState(false);
   const [stateAlertResolve, setStateAlertResolve] = useState({
@@ -117,16 +120,21 @@ export const useAlertResolveEmergency = (lastEvent, fetchDataDeviceDetail) => {
       API.EMERGENCY_BUTTON.RESOLVE(lastEvent.id)
     );
     if (success) {
+      acquireLockShowing();
       hideAlertResolve();
-      setTimeout(() => {
-        setShowPopupResolveSuccess(true);
-      }, 300);
+      setShowPopupResolveSuccess(true);
       fetchDataDeviceDetail();
     } else {
       hideAlertResolve();
       ToastBottomHelper.error(t('alert_resolve_error'));
     }
-  }, [lastEvent.id, hideAlertResolve, fetchDataDeviceDetail, t]);
+  }, [
+    lastEvent.id,
+    hideAlertResolve,
+    fetchDataDeviceDetail,
+    acquireLockShowing,
+    t,
+  ]);
 
   return {
     showPopupResolveSuccess,

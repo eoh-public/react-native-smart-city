@@ -111,6 +111,7 @@ describe('test DeviceDetail', () => {
     const useLayoutEffectSpy = jest.spyOn(React, 'useLayoutEffect');
     useLayoutEffectSpy.mockImplementation(() => setState);
     axios.get.mockClear();
+    axios.post.mockClear();
   });
 
   afterEach(() => {
@@ -288,23 +289,17 @@ describe('test DeviceDetail', () => {
       seconds: 5,
     });
 
-    const response = {
-      status: 200,
-      data: {},
-      success: true,
-    };
     axios.post.mockImplementation(async () => {
-      return response;
+      return { status: 200 };
     });
-
     await act(async () => {
       await alertSendConfirm.props.onSendNowAlert();
     });
     await act(async () => {
-      await jest.runOnlyPendingTimers();
+      await alertSendConfirm.props.onHide();
     });
+    expect(alertSendConfirm.props.showAlertConfirm).toEqual(false);
     expect(alertSent.props.showAlertSent).toEqual(true);
-    // expect(clearTimeout).toHaveBeenCalledTimes(1); // current not working
   });
 
   test('ButtonPopup onClick', async () => {
@@ -320,21 +315,14 @@ describe('test DeviceDetail', () => {
     const alertAction = instance.findByType(AlertAction);
     expect(buttonPopup.props.visible).toEqual(false);
 
-    const responseResolve = {
-      status: 200,
-      sucess: true,
-    };
-
     axios.put.mockImplementationOnce(async () => {
-      return responseResolve;
+      return { status: 200 };
     });
-
     await act(async () => {
       await alertAction.props.rightButtonClick();
+      await alertAction.props.onHide();
     });
-    await act(async () => {
-      await jest.runOnlyPendingTimers();
-    });
+
     expect(buttonPopup.props.visible).toEqual(true);
     expect(buttonPopup.props.mainTitle).toEqual(getTranslate('en', 'ok'));
     await act(async () => {

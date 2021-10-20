@@ -11,6 +11,7 @@ const AlertSendConfirm = ({
   countDown,
   onCancelConfirmAlert,
   onSendNowAlert,
+  onHide,
   unit,
   station,
 }) => {
@@ -24,6 +25,7 @@ const AlertSendConfirm = ({
       onClose={onCancelConfirmAlert}
       onPressSecondary={onCancelConfirmAlert}
       onPressMain={onSendNowAlert}
+      onHide={onHide}
       bodyStyle={styles.buttonPopupBody}
     >
       <View style={styles.firstInfo}>
