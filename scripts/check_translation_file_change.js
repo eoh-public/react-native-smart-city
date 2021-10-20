@@ -3,7 +3,7 @@ const { exec } = require('child_process');
 
 const checkTranslationChange = (name) => {
   exec(
-    `git diff origin/master:src/utils/I18n/translations/${name} src/utils/I18n/translations/${name}`,
+    `git diff origin/main:src/utils/I18n/translations/${name} src/utils/I18n/translations/${name}`,
     // eslint-disable-next-line promise/prefer-await-to-callbacks
     (err, stdout, stderr) => {
       if (err) {
