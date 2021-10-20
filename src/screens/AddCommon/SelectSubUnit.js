@@ -50,7 +50,7 @@ const AddCommonSelectSubUnit = ({ route }) => {
     isFocused && fetchDetails();
   }, [fetchDetails, isFocused]);
 
-  const subUnits = useMemo(() => unit.stations, [unit]);
+  const subUnits = useMemo(() => unit.stations || [], [unit]);
 
   const onPressNext = useCallback(() => {
     switch (addType) {
