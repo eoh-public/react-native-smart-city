@@ -9,7 +9,7 @@ on:
 jobs:
   check_lint:
     name: Check lint
-    runs-on: [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Check yarn usage
@@ -21,7 +21,7 @@ jobs:
   check_coverage:
     needs: check_lint
     name: Check coverage
-    runs-on: [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: check translations
