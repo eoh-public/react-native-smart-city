@@ -14,20 +14,19 @@ import { axiosPatch, axiosDelete } from '../../../utils/Apis/axios';
 import API from '../../../configs/API';
 import { useNavigation } from '@react-navigation/native';
 import { ToastBottomHelper } from '../../../utils/Utils';
-import Routes from '../../../utils/Route';
 import useKeyboardAnimated from '../../../hooks/Explore/useKeyboardAnimated';
 
 import useEditDevice from './hooks';
 
 const EditDevice = memo(() => {
   const t = useTranslations();
-  const { navigate } = useNavigation();
+  const navigation = useNavigation();
   const { params = {} } = useRoute();
-  const { unit, sensor } = params;
+  const { sensor, setSensorNameDetail, sensorNameDetail } = params;
   const [inputName, setInputName] = useState('');
-  const [sensorName, setSensorName] = useState(sensor?.name);
+  const [sensorName, setSensorName] = useState(sensorNameDetail || '');
   const { stateAlertAction, hideAlertAction, onShowRename, onShowDelete } =
-    useEditDevice(unit, sensor);
+    useEditDevice();
   const renameSensor = useCallback(async () => {
     const { success, data } = await axiosPatch(
       API.SENSOR.RENAME_SENSOR(sensor?.id),
@@ -37,29 +36,31 @@ const EditDevice = memo(() => {
     );
     if (success) {
       setSensorName(data?.name);
+      setSensorNameDetail(data?.name);
       ToastBottomHelper.success(t('rename_successfully'));
     } else {
       ToastBottomHelper.error(t('rename_failed'));
     }
     hideAlertAction();
-  }, [sensor.id, inputName, hideAlertAction, t]);
+  }, [
+    sensor.id,
+    inputName,
+    hideAlertAction,
+    setSensorName,
+    setSensorNameDetail,
+    t,
+  ]);
 
   const deleteSensor = useCallback(async () => {
     hideAlertAction();
     const { success } = await axiosDelete(API.SENSOR.REMOVE_SENSOR(sensor?.id));
 
     if (success) {
-      navigate(Routes.UnitStack, {
-        screen: Routes.UnitDetail,
-        params: {
-          unitId: unit.id,
-          unitData: unit,
-        },
-      });
+      navigation.pop(2);
     } else {
       ToastBottomHelper.error(t('remove_failed'));
     }
-  }, [hideAlertAction, sensor.id, navigate, unit, t]);
+  }, [hideAlertAction, sensor.id, navigation, t]);
 
   const handleRenameOrDelete = useCallback(async () => {
     if (stateAlertAction.isDelete) {

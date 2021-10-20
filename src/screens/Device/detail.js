@@ -79,9 +79,10 @@ const DeviceDetail = ({ account, route }) => {
   // eslint-disable-next-line no-unused-vars
   const [configValues, setConfigValues] = useConfigGlobalState('configValues');
 
-  const { unit, sensor, title, isGGHomeConnected } = route.params;
+  const { unit, sensor, isGGHomeConnected } = route.params;
   const [isFavourite, setIsFavourite] = useState(sensor.is_favourite);
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
+  const [sensorName, setSensorName] = useState(sensor?.name);
 
   const isShowSetupEmergencyContact =
     display.items.filter(
@@ -123,7 +124,11 @@ const DeviceDetail = ({ account, route }) => {
         menuItems.push({
           text: t('edit'),
           route: Routes.EditDevice,
-          data: { unit, sensor },
+          data: {
+            sensor,
+            setSensorNameDetail: setSensorName,
+            sensorNameDetail: sensorName,
+          },
         });
         menuItems.push({
           route: Routes.ManageAccess,
@@ -165,6 +170,8 @@ const DeviceDetail = ({ account, route }) => {
     isShowSetupEmergencyContact,
     listMenuItemDefault,
     sensor,
+    setSensorName,
+    sensorName,
     isOwner,
     unit,
     addToFavorites,
@@ -506,7 +513,7 @@ const DeviceDetail = ({ account, route }) => {
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
-        title={title}
+        title={sensorName}
         headerAniStyle={styles.header}
         rightComponent={HeaderRight}
         loading={loading}
