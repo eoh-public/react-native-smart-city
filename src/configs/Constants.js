@@ -96,7 +96,7 @@ export const AUTOMATE_TYPE = {
 };
 
 export const AUTOMATE_SELECT = {
-  SELECT_DEVICES: 'select_devices',
+  SELECT_DEVICE: 'select_device',
   SELECT_SENSOR: 'select_sensor',
 };
 

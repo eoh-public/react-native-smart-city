@@ -7,7 +7,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingLeft: 7,
+    paddingLeft: 21,
     paddingRight: 16,
     paddingBottom: 6,
     paddingTop: getStatusBarHeight(),
@@ -19,7 +19,6 @@ export default StyleSheet.create({
     height: 18,
   },
   button: {
-    width: 35,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
