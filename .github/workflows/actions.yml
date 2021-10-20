@@ -1,6 +1,6 @@
 name: Check lint and coverage
 on:
-  pull_request:
+  push:
     branches:
       - main
 jobs:
@@ -27,3 +27,11 @@ jobs:
         run: git fetch origin main
       - name: check coverage
         run: yarn run check_coverage_config
+  test_mr:
+    needs: [check_lint, check_coverage]
+    name: Check coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check jest
+        run: yarn run jest
