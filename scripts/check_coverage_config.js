@@ -2,7 +2,7 @@
 const { exec } = require('child_process');
 
 exec(
-  'git diff origin/master:jest.config.js jest.config.js',
+  'git diff origin/main:jest.config.js jest.config.js',
   // eslint-disable-next-line promise/prefer-await-to-callbacks
   (err, stdout, stderr) => {
     if (err) {
