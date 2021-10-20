@@ -34,7 +34,7 @@ const useDataMember = (unitId) => {
     [dataMembers, t, unitId]
   );
   const leaveUnit = useCallback(
-    (unitName) => async () => {
+    async (unitName) => {
       await axiosDelete(API.SHARE.UNITS_MEMBER_DETAIL(unitId, 'me'));
       ToastBottomHelper.success(t('sharing_you_left', { name: unitName }));
       setDataMembers([]);
