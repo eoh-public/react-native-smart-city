@@ -1,10 +1,11 @@
 name: Check lint and coverage
 on:
-  pull_request:
+  push:
     branches:
       - main
 jobs:
   check_lint:
+    if: "!contains(github.event.commits[0].message, '[skip-check]')"
     name: Check lint
     runs-on: ubuntu-latest
     steps:
