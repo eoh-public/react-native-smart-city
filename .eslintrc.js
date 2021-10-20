@@ -51,7 +51,7 @@ module.exports = {
     'promise/prefer-await-to-callbacks': 2,
     'promise/no-return-wrap': 2,
   },
-  ignorePatterns: ['assets/**/*.js', 'coverage/**/*.js', "src/libs/**/*.js"],
+  ignorePatterns: ['assets/**/*.js', 'coverage/**/*.js', 'src/libs/**/*.js'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
