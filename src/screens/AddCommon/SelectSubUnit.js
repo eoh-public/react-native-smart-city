@@ -1,6 +1,6 @@
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native';
 
 import { API } from '../../configs';
@@ -50,7 +50,7 @@ const AddCommonSelectSubUnit = ({ route }) => {
     isFocused && fetchDetails();
   }, [fetchDetails, isFocused]);
 
-  const subUnits = unit.stations || [];
+  const subUnits = useMemo(() => unit.stations, [unit]);
 
   const onPressNext = useCallback(() => {
     switch (addType) {

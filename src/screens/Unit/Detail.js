@@ -47,12 +47,8 @@ const UnitDetail = ({ route }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [dataFullScreen, setDataFullScreen] = useState();
 
-  const {
-    childRef,
-    showingPopover,
-    showPopoverWithRef,
-    hidePopover,
-  } = usePopover();
+  const { childRef, showingPopover, showPopoverWithRef, hidePopover } =
+    usePopover();
 
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
 
