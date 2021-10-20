@@ -24,13 +24,14 @@ jest.mock('react', () => {
   };
 });
 
-const mockNavigate = jest.fn();
+const mockPop = jest.fn();
+const mockSetSensorDetail = jest.fn();
 jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
     useRoute: jest.fn(),
     useNavigation: () => ({
-      navigate: mockNavigate,
+      pop: mockPop,
     }),
   };
 });
@@ -43,17 +44,14 @@ describe('Test EditDevice', () => {
   beforeEach(() => {
     axios.patch.mockClear();
     axios.delete.mockClear();
-    mockNavigate.mockClear();
     useRoute.mockReturnValue({
       params: {
-        unit: {
-          id: 1,
-          name: 'unit',
-        },
         sensor: {
           id: 1,
           name: 'sensor',
         },
+        setSensorNameDetail: mockSetSensorDetail,
+        sensorNameDetail: 'sensor',
       },
     });
   });
@@ -123,6 +121,6 @@ describe('Test EditDevice', () => {
     });
     expect(axios.delete).toHaveBeenCalledWith(API.SENSOR.REMOVE_SENSOR(1));
     expect(alertAction.props.visible).toBeFalsy();
-    expect(mockNavigate).toHaveBeenCalled();
+    expect(mockPop).toHaveBeenCalled();
   });
 });
