@@ -7,7 +7,7 @@ exec(
   (err, stdout, stderr) => {
     if (err) {
       console.log(err);
-      return;
+      process.exit(1);
     }
     const configs = ['branches', 'lines', 'functions', 'statements'];
     let error = '';
