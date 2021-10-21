@@ -98,8 +98,6 @@ describe('test Item', () => {
       id: 1,
       name: 'Joshua Ray',
       type: 'one_tap',
-      unit: undefined,
-      textCondition: null,
     });
 
     const handleScriptAction = instance.findAll(
@@ -159,9 +157,6 @@ describe('test Item', () => {
         user: 6,
         type: 'value_change',
         activate_at: null,
-        condition: '>',
-        config: 'Temperature',
-        value: 29,
         script: {
           name: 'Rain',
           icon: '',
@@ -195,7 +190,6 @@ describe('test Item', () => {
       name: 'Rain',
       type: 'value_change',
       unit: undefined,
-      textCondition: 'Temperature higher than 29',
     });
   });
   test('render SubUnitAutomate script schedule', async () => {

@@ -63,7 +63,6 @@ const ScriptDetail = ({ route }) => {
     isAutomateTab,
     isCreateNewAction,
     isMultiUnits,
-    textCondition = '',
   } = params;
   const [isStar, setIsStar] = useState(false);
   const [scriptName, setScriptName] = useState(name);
@@ -353,7 +352,6 @@ const ScriptDetail = ({ route }) => {
             type={type}
             onPress={handleUpdateAutomate}
             disabledOnPress={!havePermission}
-            textCondition={textCondition}
           />
           {type === AUTOMATE_TYPE.ONE_TAP && (
             <TouchableOpacity
