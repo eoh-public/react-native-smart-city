@@ -795,5 +795,6 @@
   "higher_than": "cao hơn",
   "lower_than": "thấp hơn",
   "equal": "bằng",
+  "please_choose_condition_before_continue": "Vui lòng chọn điều kiện trước khi tiếp tục!",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

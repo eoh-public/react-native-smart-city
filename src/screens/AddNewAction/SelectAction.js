@@ -22,9 +22,11 @@ import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { popAction } from '../../navigations/utils';
 import { LoadingSelectAction } from './Components';
 import { ToastBottomHelper } from '../../utils/Utils';
+import { useIsFocused } from '@react-navigation/native';
 
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
+  const isFocused = useIsFocused();
   const { navigate, dispatch, goBack } = useNavigation();
   const {
     unit,
@@ -42,6 +44,7 @@ const SelectAction = memo(({ route }) => {
   const [sensorData, setSensorData] = useState([]);
   const [checkedItem, setCheckedItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isHasValueItem, setIsHasValueItem] = useState(false);
 
   const fetchData = useCallback(async () => {
     isSelectSensor && setIsLoading(true);
@@ -63,21 +66,25 @@ const SelectAction = memo(({ route }) => {
 
   const onSave = useCallback(async () => {
     if (isSelectSensor) {
-      const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
-      navigate(Routes.AddNewOneTap, {
-        automateData: {
-          condition: itemTemp?.conditionValue || '<',
-          value: itemTemp?.value,
-          config: itemTemp?.id,
-        },
-        type,
-        unit,
-        isAutomateTab,
-        isSelectSensor,
-        isMultiUnits,
-        automateId,
-        scriptName,
-      });
+      if (isHasValueItem) {
+        const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
+        navigate(Routes.AddNewOneTap, {
+          automateData: {
+            condition: itemTemp?.conditionValue || '<',
+            value: itemTemp?.value,
+            config: itemTemp?.id,
+          },
+          type,
+          unit,
+          isAutomateTab,
+          isSelectSensor,
+          isMultiUnits,
+          automateId,
+          scriptName,
+        });
+      } else {
+        ToastBottomHelper.error('please_choose_condition_before_continue');
+      }
     } else {
       let list_action = [...actions];
       list_action = list_action.map((item) => ({
@@ -182,9 +189,14 @@ const SelectAction = memo(({ route }) => {
   const onChecked = useCallback(
     (_, isChecked, id) => {
       setCheckedItem(isChecked ? sensorData.find((i) => i?.id === id) : {});
+      setIsHasValueItem(!!sensorData.find((i) => i?.id === id).value || false);
     },
     [sensorData]
   );
+  const onCheckedCondition = useCallback(() => {
+    const itemCondition = sensorData.find((i) => i.id === checkedItem?.id);
+    setIsHasValueItem(!!itemCondition?.value || false);
+  }, [sensorData, checkedItem]);
 
   const onPressItem = (item) => () => {
     navigate(Routes.SetUpSensor, {
@@ -222,6 +234,12 @@ const SelectAction = memo(({ route }) => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  useEffect(() => {
+    if (isFocused) {
+      onCheckedCondition();
+    }
+  }, [onCheckedCondition, isFocused]);
 
   return (
     <View style={styles.wrap}>

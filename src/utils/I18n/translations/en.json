@@ -794,5 +794,6 @@
   "higher_than": "higher than",
   "lower_than": "lower than",
   "equal": "equal",
+  "please_choose_condition_before_continue": "Please choose condition before continue!",
   "error_please_try_later": "Error! Please try later"
 }

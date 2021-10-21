@@ -89,6 +89,6 @@ describe('Test TimerActionTemplate without config value', () => {
       await dateTimePicker.props.onConfirm();
     });
     expect(dateTimePicker.props.isVisible).toBeFalsy();
-    expect(mockDoAction).toHaveBeenCalledWith(action_data, [17, 0]);
+    expect(mockDoAction).toHaveBeenCalledWith(action_data, [11, 0]);
   });
 });
