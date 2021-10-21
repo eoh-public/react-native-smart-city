@@ -10,6 +10,7 @@ const ItemAutomate = ({
   isSelected = false,
   onPress = () => {},
   disabledOnPress = false,
+  textCondition,
 }) => {
   const item = AUTOMATES[type];
   const Icon = item?.icon;
@@ -28,7 +29,7 @@ const ItemAutomate = ({
             {item?.title}
           </Text>
           <Text type="Label" color={Colors.Gray8} numberOfLines={1}>
-            {item?.explanation}
+            {textCondition || item?.explanation}
           </Text>
         </View>
       </View>

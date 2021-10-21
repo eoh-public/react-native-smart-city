@@ -90,7 +90,7 @@ describe('Test AllCamera screen', () => {
     });
     const instance = tree.root;
     const TouchableOpacities = instance.findAllByType(TouchableOpacity);
-    expect(TouchableOpacities).toHaveLength(12);
+    expect(TouchableOpacities).toHaveLength(11);
     const ModalFullVideos = instance.findAllByType(ModalFullVideo);
     expect(ModalFullVideos).toHaveLength(1);
     act(() => {

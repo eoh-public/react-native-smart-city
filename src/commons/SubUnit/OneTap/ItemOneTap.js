@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import moment from 'moment';
@@ -22,9 +22,25 @@ import { AUTOMATE_TYPE, TESTID } from '../../../configs/Constants';
 const ItemOneTap = memo(
   ({ isOwner, automate, unit, wrapSyles, onPressItem }) => {
     const { navigate } = useNavigation();
-    const { id, type, user, script, activate_at } = automate;
+    const { id, type, user, script, activate_at, condition, config, value } =
+      automate;
     const t = useTranslations();
     const idUser = useGetIdUser();
+
+    const textCondition = useMemo(() => {
+      if (type === AUTOMATE_TYPE.VALUE_CHANGE) {
+        let _condition;
+        if (condition === '>') {
+          _condition = 'higher_than';
+        } else if (condition === '<') {
+          _condition = 'lower_than';
+        } else if (condition === '=') {
+          _condition = 'equal';
+        }
+        return `${config} ${t(_condition)} ${value}`;
+      }
+      return null;
+    }, [condition, config, t, type, value]);
 
     const goToDetail = useCallback(() => {
       navigate(Routes.ScriptDetail, {
@@ -33,8 +49,19 @@ const ItemOneTap = memo(
         type: type,
         havePermission: isOwner || user === idUser,
         unit,
+        textCondition,
       });
-    }, [isOwner, user, idUser, navigate, id, script, type, unit]);
+    }, [
+      isOwner,
+      user,
+      idUser,
+      navigate,
+      id,
+      script,
+      type,
+      unit,
+      textCondition,
+    ]);
 
     const handleScriptAction = useCallback(async () => {
       const { success } = await axiosPost(API.AUTOMATE.ACTION_ONE_TAP(id));
