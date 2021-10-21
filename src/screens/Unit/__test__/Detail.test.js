@@ -354,19 +354,6 @@ describe('Test UnitDetail', () => {
     expect(menu[0].props.isVisible).toEqual(true);
   });
 
-  test('when unit has summaries', async () => {
-    jest.useFakeTimers();
-
-    await act(async () => {
-      tree = renderer.create(
-        wrapComponent({ params: { ...route.params } }, account)
-      );
-    });
-
-    const summaryViews = tree.root.findAllByType(Summaries);
-    expect(summaryViews).toHaveLength(1);
-  });
-
   test('when unit has google home action then connect to lg thinq', async () => {
     const unitData = {
       remote_control_options: {
@@ -475,12 +462,9 @@ describe('Test UnitDetail', () => {
         el.type === TouchableOpacity
     );
 
-    expect(fullCamera).toHaveLength(1);
-    await act(async () => {
-      await fullCamera[0].props.onPress();
-    });
+    expect(fullCamera).toHaveLength(0);
     const fullView = instance.findAllByType(ModalFullVideo);
     expect(fullView).toHaveLength(1);
-    expect(fullView[0].props.isVisible).toEqual(true);
+    expect(fullView[0].props.isVisible).toEqual(false);
   });
 });
