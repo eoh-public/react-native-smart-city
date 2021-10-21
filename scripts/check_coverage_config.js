@@ -35,7 +35,7 @@ exec(
           )} from ${oldValue} to ${newValue}`
         );
       }
-      if (newValue - oldValue >= 0.4) {
+      if (newValue >= oldValue) {
         isIncreased = true;
       }
     });
