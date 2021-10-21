@@ -45,6 +45,20 @@ const MediaPlayerFull = ({
     setIsFullScreen(!isFullScreen);
   }, [isFullScreen]);
 
+  const renderCamera = useMemo(() => {
+    return (
+      <VLCPlayer
+        autoAspectRatio={true}
+        videoAspectRatio={
+          isFullScreen ? `${Constants.height}:${Constants.width}` : '15:9'
+        }
+        source={{ uri }}
+        style={styles.video}
+        resizeMode={'cover'}
+      />
+    );
+  }, [isFullScreen, uri]);
+
   useEffect(() => {
     setPaused(isPaused);
   }, [isPaused]);
@@ -106,15 +120,7 @@ const MediaPlayerFull = ({
             />
           </View>
         ) : (
-          <VLCPlayer
-            autoAspectRatio={true}
-            videoAspectRatio={
-              isFullScreen ? `${Constants.height}:${Constants.width}` : '15:9'
-            }
-            source={{ uri }}
-            style={styles.video}
-            resizeMode={'cover'}
-          />
+          renderCamera
         )}
         <View style={styles.buttonView}>
           <View style={styles.buttonPause}>
