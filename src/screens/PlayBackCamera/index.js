@@ -91,6 +91,7 @@ const PlayBackCamera = () => {
   };
 
   useEffect(() => {
+    setPaused(true);
     const date = selected.split('-');
     const playback = item?.configuration?.playback || '';
     if (
@@ -106,6 +107,10 @@ const PlayBackCamera = () => {
         }${hour.s}Z`
       );
     }
+    const to = setTimeout(() => {
+      setPaused(false);
+      clearTimeout(to);
+    }, 300);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
