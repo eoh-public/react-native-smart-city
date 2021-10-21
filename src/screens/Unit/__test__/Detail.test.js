@@ -7,11 +7,9 @@ import ParallaxScrollView from '../../../libs/react-native-parallax-scroll-view'
 import { BleManager } from 'react-native-ble-plx';
 import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
-
 import UnitDetail from '../Detail';
 import { API } from '../../../configs';
 import ShortDetailSubUnit from '../../../commons/SubUnit/ShortDetail';
-import Summaries from '../Summaries';
 import { TESTID } from '../../../configs/Constants';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
