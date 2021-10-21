@@ -4,7 +4,7 @@ import DraggableFlatList from 'react-native-draggable-flatlist';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ParsedText from 'react-native-parsed-text';
 
-import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
+import { HeaderCustom } from '../../commons/Header';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import Text from '../../commons/Text';
 import styles from './Styles/indexStyles';
@@ -132,24 +132,21 @@ const EditActionsList = () => {
 
   return (
     <View style={styles.wrap}>
-      <WrapHeaderScrollable
-        title={t('edit_actions_list')}
-        headerAniStyle={styles.headerAniStyle}
-      >
-        <View style={styles.wrapContent}>
-          <Text type="Body" color={Colors.Gray8}>
-            {t('des_edit_actions_list')}
-          </Text>
-          <DraggableFlatList
-            data={actionsList}
-            renderItem={renderItem}
-            keyExtractor={(item) => `draggable-item-${item.key}`}
-            onDragEnd={({ data }) => setActionList(data)}
-            extraData={actionsList}
-            containerStyle={styles.containerStyle}
-          />
-        </View>
-      </WrapHeaderScrollable>
+      <HeaderCustom title={t('edit_actions_list')} />
+      <View style={styles.wrapContent}>
+        <Text type="Body" color={Colors.Gray8}>
+          {t('des_edit_actions_list')}
+        </Text>
+        <DraggableFlatList
+          showsVerticalScrollIndicator={false}
+          data={actionsList}
+          renderItem={renderItem}
+          keyExtractor={(item) => `draggable-item-${item.key}`}
+          onDragEnd={({ data }) => setActionList(data)}
+          extraData={actionsList}
+          containerStyle={styles.containerStyle}
+        />
+      </View>
       <View style={styles.wrapBottom}>
         <TouchableOpacity onPress={onPressCancel}>
           <Text type="H4" hilight semibold>
