@@ -2,6 +2,8 @@ name: Check lint and coverage
 
 on:
   pull_request:
+    branches:
+      - main
 jobs:
   check_lint:
     name: Check lint
