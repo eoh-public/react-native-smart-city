@@ -792,5 +792,6 @@
   "not_permission": "Có một số lệnh điều khiển bạn chưa được cấp quyền",
   "you_do_not_have_permission_to_access": "Bạn không được phép truy cập {doAction}.",
   "you_do_not_have_permission_to": "Bạn không được phép {doAction}.",
+  "please_choose_condition_before_continue": "Vui lòng chọn điều kiện trước khi tiếp tục!",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

@@ -61,9 +61,9 @@ const SelectAction = memo(({ route }) => {
     }, 1000);
   }, [device.id, isSelectSensor]);
 
-  const onSave = useCallback(async () => {
-    if (isSelectSensor) {
-      const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
+  const checkConditionToContinue = useCallback(() => {
+    const itemTemp = sensorData?.find((i) => i.id === checkedItem?.id);
+    if (itemTemp?.value) {
       navigate(Routes.AddNewOneTap, {
         automateData: {
           condition: itemTemp?.conditionValue || '<',
@@ -78,6 +78,25 @@ const SelectAction = memo(({ route }) => {
         automateId,
         scriptName,
       });
+    } else {
+      ToastBottomHelper.error(t('please_choose_condition_before_continue'));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    sensorData,
+    navigate,
+    type,
+    unit,
+    isSelectSensor,
+    automateId,
+    scriptName,
+    checkedItem,
+    t,
+  ]);
+
+  const onSave = useCallback(async () => {
+    if (isSelectSensor) {
+      await checkConditionToContinue();
     } else {
       let list_action = [...actions];
       list_action = list_action.map((item) => ({

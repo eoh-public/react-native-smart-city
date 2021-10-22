@@ -791,5 +791,6 @@
   "not_permission": "There are some control commands you have not been authorized",
   "you_do_not_have_permission_to_access": "You do not have permission to access {doAction}.",
   "you_do_not_have_permission_to": "You do not have permission to {doAction}.",
+  "please_choose_condition_before_continue": "Please choose condition before continue!",
   "error_please_try_later": "Error! Please try later"
 }
