@@ -44,7 +44,7 @@ const SelectAction = memo(({ route }) => {
   const [sensorData, setSensorData] = useState([]);
   const [checkedItem, setCheckedItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isHasValueItem, setIsHasValueItem] = useState(false);
+  const [hasValueItem, setHasValueItem] = useState(false);
 
   const fetchData = useCallback(async () => {
     isSelectSensor && setIsLoading(true);
@@ -64,27 +64,43 @@ const SelectAction = memo(({ route }) => {
     }, 1000);
   }, [device.id, isSelectSensor]);
 
+  const checkConditionToContinue = useCallback(() => {
+    if (hasValueItem) {
+      const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
+      navigate(Routes.AddNewOneTap, {
+        automateData: {
+          condition: itemTemp?.conditionValue || '<',
+          value: itemTemp?.value,
+          config: itemTemp?.id,
+        },
+        type,
+        unit,
+        isAutomateTab,
+        isSelectSensor,
+        isMultiUnits,
+        automateId,
+        scriptName,
+      });
+    } else {
+      ToastBottomHelper.error(t('please_choose_condition_before_continue'));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    hasValueItem,
+    sensorData,
+    navigate,
+    type,
+    unit,
+    isSelectSensor,
+    automateId,
+    scriptName,
+    checkedItem,
+    t,
+  ]);
+
   const onSave = useCallback(async () => {
     if (isSelectSensor) {
-      if (isHasValueItem) {
-        const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
-        navigate(Routes.AddNewOneTap, {
-          automateData: {
-            condition: itemTemp?.conditionValue || '<',
-            value: itemTemp?.value,
-            config: itemTemp?.id,
-          },
-          type,
-          unit,
-          isAutomateTab,
-          isSelectSensor,
-          isMultiUnits,
-          automateId,
-          scriptName,
-        });
-      } else {
-        ToastBottomHelper.error('please_choose_condition_before_continue');
-      }
+      await checkConditionToContinue();
     } else {
       let list_action = [...actions];
       list_action = list_action.map((item) => ({
@@ -119,6 +135,7 @@ const SelectAction = memo(({ route }) => {
     automateId,
     navigate,
     scriptName,
+    hasValueItem,
     type,
     unit,
     isSelectSensor,
@@ -189,13 +206,13 @@ const SelectAction = memo(({ route }) => {
   const onChecked = useCallback(
     (_, isChecked, id) => {
       setCheckedItem(isChecked ? sensorData.find((i) => i?.id === id) : {});
-      setIsHasValueItem(!!sensorData.find((i) => i?.id === id).value || false);
+      setHasValueItem(!!sensorData.find((i) => i?.id === id).value || false);
     },
     [sensorData]
   );
   const onCheckedCondition = useCallback(() => {
     const itemCondition = sensorData.find((i) => i.id === checkedItem?.id);
-    setIsHasValueItem(!!itemCondition?.value || false);
+    setHasValueItem(!!itemCondition?.value || false);
   }, [sensorData, checkedItem]);
 
   const onPressItem = (item) => () => {
