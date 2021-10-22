@@ -50,7 +50,9 @@ const MediaPlayerFull = ({
       <VLCPlayer
         autoAspectRatio={true}
         videoAspectRatio={
-          isFullScreen ? `${Constants.height}:${Constants.width}` : '15:9'
+          isFullScreen
+            ? `${Constants.height}:${Constants.width}`
+            : `${Constants.width}:224`
         }
         source={{ uri }}
         style={styles.video}
