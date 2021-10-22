@@ -22,11 +22,9 @@ import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import { popAction } from '../../navigations/utils';
 import { LoadingSelectAction } from './Components';
 import { ToastBottomHelper } from '../../utils/Utils';
-import { useIsFocused } from '@react-navigation/native';
 
 const SelectAction = memo(({ route }) => {
   const t = useTranslations();
-  const isFocused = useIsFocused();
   const { navigate, dispatch, goBack } = useNavigation();
   const {
     unit,
@@ -44,7 +42,6 @@ const SelectAction = memo(({ route }) => {
   const [sensorData, setSensorData] = useState([]);
   const [checkedItem, setCheckedItem] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [hasValueItem, setHasValueItem] = useState(false);
 
   const fetchData = useCallback(async () => {
     isSelectSensor && setIsLoading(true);
@@ -65,8 +62,8 @@ const SelectAction = memo(({ route }) => {
   }, [device.id, isSelectSensor]);
 
   const checkConditionToContinue = useCallback(() => {
-    if (hasValueItem) {
-      const itemTemp = sensorData.find((i) => i.id === checkedItem?.id);
+    const itemTemp = sensorData?.find((i) => i.id === checkedItem?.id);
+    if (itemTemp?.value) {
       navigate(Routes.AddNewOneTap, {
         automateData: {
           condition: itemTemp?.conditionValue || '<',
@@ -86,7 +83,6 @@ const SelectAction = memo(({ route }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    hasValueItem,
     sensorData,
     navigate,
     type,
@@ -135,7 +131,6 @@ const SelectAction = memo(({ route }) => {
     automateId,
     navigate,
     scriptName,
-    hasValueItem,
     type,
     unit,
     isSelectSensor,
@@ -206,14 +201,9 @@ const SelectAction = memo(({ route }) => {
   const onChecked = useCallback(
     (_, isChecked, id) => {
       setCheckedItem(isChecked ? sensorData.find((i) => i?.id === id) : {});
-      setHasValueItem(!!sensorData.find((i) => i?.id === id).value || false);
     },
     [sensorData]
   );
-  const onCheckedCondition = useCallback(() => {
-    const itemCondition = sensorData.find((i) => i.id === checkedItem?.id);
-    setHasValueItem(!!itemCondition?.value || false);
-  }, [sensorData, checkedItem]);
 
   const onPressItem = (item) => () => {
     navigate(Routes.SetUpSensor, {
@@ -251,12 +241,6 @@ const SelectAction = memo(({ route }) => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  useEffect(() => {
-    if (isFocused) {
-      onCheckedCondition();
-    }
-  }, [onCheckedCondition, isFocused]);
 
   return (
     <View style={styles.wrap}>
