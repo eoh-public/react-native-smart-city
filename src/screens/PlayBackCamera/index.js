@@ -5,7 +5,7 @@ import { Calendar } from 'react-native-calendars';
 
 import { HeaderCustom } from '../../commons/Header';
 import styles from './Styles';
-import { useRoute } from '@react-navigation/core';
+import { useRoute } from '@react-navigation/native';
 import { ModalCustom } from '../../commons/Modal';
 import { Colors, Images } from '../../configs';
 import { useTranslations } from '../../hooks/Common/useTranslations';
@@ -17,6 +17,7 @@ import MediaPlayerFull from '../../commons/MediaPlayerDetail/MediaPlayerFull';
 let dateTemp = moment().format('YYYY-MM-DD');
 
 const PlayBackCamera = () => {
+  const now = useMemo(() => moment().format('YYYY-MM-DD'), []);
   const hourTemp = useMemo(() => moment().format('HH:mm:ss'), []);
   const arrHourTemp = useMemo(() => hourTemp.split(':'), [hourTemp]);
   const t = useTranslations();
@@ -46,10 +47,12 @@ const PlayBackCamera = () => {
   }, [selected]);
 
   const onAddDate = useCallback(() => {
-    const date = moment(selected).add(1, 'days').format('YYYY-MM-DD');
-    setSelected(date);
-    dateTemp = date;
-  }, [selected]);
+    if (selected !== now) {
+      const date = moment(selected).add(1, 'days').format('YYYY-MM-DD');
+      setSelected(date);
+      dateTemp = date;
+    }
+  }, [selected, now]);
 
   const onSubtractDate = useCallback(() => {
     const date = moment(selected).subtract(1, 'days').format('YYYY-MM-DD');
@@ -57,7 +60,7 @@ const PlayBackCamera = () => {
     dateTemp = date;
   }, [selected]);
 
-  const onChangeValue = (value) => {
+  const onChangeValue = (value, selected) => {
     const currentTime =
       parseFloat(arrHourTemp[0]) +
       parseFloat(arrHourTemp[1] / 60) +
@@ -71,12 +74,8 @@ const PlayBackCamera = () => {
     const h = t2[0] < 10 ? '0' + t2[0] : t2[0];
     const m = t4[0] < 10 ? '0' + t4[0] : t4[0];
     const s = t5 < 10 ? '0' + t5 : t5;
-    setHour({
-      h,
-      m,
-      s,
-    });
-    if (value + 0.5 > currentTime * 96) {
+    setHour({ h, m, s });
+    if (value + 0.5 > currentTime * 96 && selected === now) {
       setUri(item?.configuration?.uri);
     } else {
       const playback = item?.configuration?.playback || '';
@@ -92,13 +91,26 @@ const PlayBackCamera = () => {
   };
 
   useEffect(() => {
+    setPaused(true);
     const date = selected.split('-');
     const playback = item?.configuration?.playback || '';
-    setUri(
-      `${playback.split('=')[0]}=${date[0]}${date[1]}${date[2]}T${hour.h}${
-        hour.m
-      }${hour.s}Z`
-    );
+    if (
+      selected === now &&
+      parseInt(moment().format('HH:mm:ss'), 10) <=
+        parseInt(`${hour.h}:${hour.m}:${hour.s}`, 10)
+    ) {
+      setUri(item?.configuration?.uri);
+    } else {
+      setUri(
+        `${playback.split('=')[0]}=${date[0]}${date[1]}${date[2]}T${hour.h}${
+          hour.m
+        }${hour.s}Z`
+      );
+    }
+    const to = setTimeout(() => {
+      setPaused(false);
+      clearTimeout(to);
+    }, 300);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
@@ -108,6 +120,10 @@ const PlayBackCamera = () => {
       isShowDate ? Colors.BlackTransparent4 : Colors.TextTransparent
     );
   }, [isShowDate]);
+
+  useEffect(() => {
+    return () => (dateTemp = moment().format('YYYY-MM-DD'));
+  }, []);
 
   return (
     <View style={styles.wrap}>
@@ -164,6 +180,7 @@ const PlayBackCamera = () => {
             normalColor={Colors.Gray7}
             indicatorHeight={40}
             onChangeValue={onChangeValue}
+            selected={selected}
           />
         </View>
       </View>

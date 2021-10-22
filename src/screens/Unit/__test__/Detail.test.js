@@ -11,7 +11,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import UnitDetail from '../Detail';
 import { API } from '../../../configs';
 import ShortDetailSubUnit from '../../../commons/SubUnit/ShortDetail';
-import Summaries from '../Summaries';
 import { TESTID } from '../../../configs/Constants';
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';

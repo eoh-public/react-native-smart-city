@@ -24,6 +24,7 @@ const Timer = ({
   normalColor = Colors.Gray7,
   normalHeight = 20,
   value,
+  selected,
 }) => {
   const scrollViewRef = useRef();
   const [scrollX] = useState(new Animated.Value(0));
@@ -70,11 +71,11 @@ const Timer = ({
 
   useEffect(() => {
     const scrollListener = scrollX.addListener(({ value }) => {
-      !isFirstTime && onChangeValue && onChangeValue(value);
+      !isFirstTime && onChangeValue && onChangeValue(value, selected);
     });
     return () => scrollX.removeListener(scrollListener);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFirstTime]);
+  }, [isFirstTime, selected]);
 
   useEffect(() => {
     return () => {
