@@ -224,7 +224,6 @@ export const UnitStack = memo((props) => {
         component={ScriptDetail}
         options={{
           headerShown: false,
-          gestureEnabled: false,
         }}
       />
       <Stack.Screen
