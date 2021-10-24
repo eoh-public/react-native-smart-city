@@ -12,6 +12,7 @@ const ModalCustom = (props) => {
       animationInTiming={500}
       animationOutTiming={500}
       backdropColor={Colors.BlackTransparent5}
+      hideModalContentWhileAnimating
       {...props}
     >
       {props.children}

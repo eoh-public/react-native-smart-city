@@ -192,6 +192,7 @@ const FilterPopup = ({
         animationIn={'zoomIn'}
         animationOut={'zoomOut'}
         style={styles.wrapPopup}
+        hideModalContentWhileAnimating
       >
         <View style={styles.popup}>
           <>

@@ -87,7 +87,7 @@ const PlayBackCamera = () => {
     const to = setTimeout(() => {
       setPaused(false);
       clearTimeout(to);
-    }, 300);
+    }, 100);
   };
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const PlayBackCamera = () => {
     const to = setTimeout(() => {
       setPaused(false);
       clearTimeout(to);
-    }, 300);
+    }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
