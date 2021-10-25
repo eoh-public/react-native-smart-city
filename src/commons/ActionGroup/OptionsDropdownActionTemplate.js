@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, ScrollView } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { Colors } from '../../configs';
 
@@ -117,29 +117,31 @@ const OptionsDropdownActionTemplate = ({ actionGroup, doAction, sensor }) => {
         rightButtonClick={onDone}
       >
         <View style={styles.wrapRename}>
-          {!action_data && (
-            <Text
-              color={Colors.Gray6}
-              style={styles.writeNotAvailable}
-              testID={TESTID.OPTIONS_DROPDOWN_ACTION_WRITE_NOT_AVAILABLE}
-            >
-              {t('write_not_available')}
-            </Text>
-          )}
-          {options.map((item, index) => (
-            <View key={index} style={styles.rowContainer}>
-              <RadioCircle active={selectedIndex === index} />
-              <TouchableOpacity
-                testID={TESTID.OPTIONS_DROPDOWN_ACTION_CHOOSING_ITEM}
-                style={styles.row}
-                onPress={() => {
-                  setSelectedIndex(index);
-                }}
+          <ScrollView style={styles.scrollView}>
+            {!action_data && (
+              <Text
+                color={Colors.Gray6}
+                style={styles.writeNotAvailable}
+                testID={TESTID.OPTIONS_DROPDOWN_ACTION_WRITE_NOT_AVAILABLE}
               >
-                <Text style={styles.text}>{item.text}</Text>
-              </TouchableOpacity>
-            </View>
-          ))}
+                {t('write_not_available')}
+              </Text>
+            )}
+            {options.map((item, index) => (
+              <View key={index} style={styles.rowContainer}>
+                <RadioCircle active={selectedIndex === index} />
+                <TouchableOpacity
+                  testID={TESTID.OPTIONS_DROPDOWN_ACTION_CHOOSING_ITEM}
+                  style={styles.row}
+                  onPress={() => {
+                    setSelectedIndex(index);
+                  }}
+                >
+                  <Text style={styles.text}>{item.text}</Text>
+                </TouchableOpacity>
+              </View>
+            ))}
+          </ScrollView>
         </View>
       </AlertAction>
     </View>
