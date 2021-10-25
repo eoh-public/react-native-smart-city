@@ -11,6 +11,7 @@ import Explore from './src/screens/Explore';
 import { AddLGDeviceStack } from './src/navigations/AddLGDeviceStack';
 import { initSCConfig } from './src/configs';
 import AutomateStack from './src/navigations/AutomateStack';
+import NotificationStack from './src/navigations/NotificationStack';
 
 export {
   AddSubUnitStack,
@@ -27,4 +28,5 @@ export {
   AddLGDeviceStack,
   initSCConfig,
   AutomateStack,
+  NotificationStack
 };
