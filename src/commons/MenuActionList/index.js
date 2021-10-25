@@ -1,11 +1,11 @@
 import React, { memo, useCallback } from 'react';
 import { FlatList, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
-import Modal from 'react-native-modal';
 
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 import { TESTID } from '../../configs/Constants';
+import { ModalCustom } from '../Modal';
 
 const keyExtractor = (item) => item.id.toString();
 
@@ -37,7 +37,7 @@ const MenuActionList = memo(
     );
 
     return (
-      <Modal
+      <ModalCustom
         isVisible={visible}
         onBackButtonPress={hideModal}
         onBackdropPress={hideModal}
@@ -60,7 +60,7 @@ const MenuActionList = memo(
             />
           </View>
         </View>
-      </Modal>
+      </ModalCustom>
     );
   }
 );

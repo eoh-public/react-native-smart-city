@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { View, TouchableOpacity, Image, Platform } from 'react-native';
-import Modal from 'react-native-modal';
 import Animated from 'react-native-reanimated';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
@@ -26,6 +25,7 @@ import { TESTID } from '../../configs/Constants';
 import { IconOutline } from '@ant-design/icons-react-native';
 import styles from './ManageUnitStyles';
 import { useNavigation } from '@react-navigation/native';
+import { ModalCustom } from '../../commons/Modal';
 
 const ButtonWrapper = ({
   onPress,
@@ -239,7 +239,7 @@ const ManageUnit = ({ route }) => {
           {t('remove_unit')}
         </Text>
       </TouchableOpacity>
-      <Modal
+      <ModalCustom
         isVisible={showEdit}
         onBackButtonPress={setHideEdit}
         onBackdropPress={setHideEdit}
@@ -271,7 +271,7 @@ const ManageUnit = ({ route }) => {
             />
           </View>
         </Animated.View>
-      </Modal>
+      </ModalCustom>
       <AlertAction
         visible={showRemove}
         hideModal={setHideRemove}

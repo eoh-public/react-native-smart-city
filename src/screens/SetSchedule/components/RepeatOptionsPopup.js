@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import Modal from 'react-native-modal';
 
 import Text from '../../../commons/Text';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
 
 import styles from '../styles/RepeatOptionsPopupStyles';
 import { Colors } from '../../../configs';
+import { ModalCustom } from '../../../commons/Modal';
 
 export const REPEAT_OPTIONS = {
   ONCE: 'once',
@@ -34,7 +34,7 @@ const RepeatOptionsPopup = ({ isVisible, onHide, onSetRepeat }) => {
   );
 
   return (
-    <Modal
+    <ModalCustom
       isVisible={isVisible}
       onBackButtonPress={onHide}
       onBackdropPress={onHide}
@@ -49,7 +49,7 @@ const RepeatOptionsPopup = ({ isVisible, onHide, onSetRepeat }) => {
           <ItemRepeatOption item={item} key={index} />
         ))}
       </View>
-    </Modal>
+    </ModalCustom>
   );
 };
 

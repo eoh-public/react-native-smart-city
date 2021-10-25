@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useState, useMemo } from 'react';
 import { View, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Modal from 'react-native-modal';
 import { axiosGet } from '../../utils/Apis/axios';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
@@ -17,6 +16,7 @@ import {
 import styles from './styles';
 import TabHeader from './TabHeader';
 import { useSCContextSelector } from '../../context';
+import { ModalCustom } from '../../commons/Modal';
 
 const Shared = () => {
   useBlockBackAndroid();
@@ -163,7 +163,7 @@ const Shared = () => {
           />
         )}
       </View>
-      <Modal
+      <ModalCustom
         isVisible={showModal}
         onBackButtonPress={setHideModal}
         onBackdropPress={setHideModal}
@@ -197,7 +197,7 @@ const Shared = () => {
             </View>
           </View>
         </View>
-      </Modal>
+      </ModalCustom>
     </View>
   );
 };

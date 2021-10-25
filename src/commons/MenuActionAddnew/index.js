@@ -1,11 +1,11 @@
 import React, { memo, useCallback } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import Modal from 'react-native-modal';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 
 import { Colors } from '../../configs';
 import Text from '../Text';
 import ImageButton from '../ImageButton';
+import { ModalCustom } from '../Modal';
 
 const keyExtractor = (item) => item.id.toString();
 const MenuActionAddnew = memo(
@@ -40,7 +40,7 @@ const MenuActionAddnew = memo(
     );
 
     return (
-      <Modal
+      <ModalCustom
         isVisible={visible}
         onBackButtonPress={hideModal}
         onBackdropPress={hideModal}
@@ -62,7 +62,7 @@ const MenuActionAddnew = memo(
             />
           </View>
         </View>
-      </Modal>
+      </ModalCustom>
     );
   }
 );

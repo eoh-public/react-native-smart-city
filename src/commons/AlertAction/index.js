@@ -32,6 +32,7 @@ const AlertAction = ({
       useNativeDriver={true}
       useNativeDriverForBackdrop={true}
       style={styles.container}
+      hideModalContentWhileAnimating
     >
       <Animated.View style={[styles.popoverStyle, animatedStyle]}>
         <View style={styles.modalWrapper}>
