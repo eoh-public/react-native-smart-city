@@ -49,7 +49,7 @@ const ManageAccessScreen = memo(({ route }) => {
       >
         <View style={styles.container}>
           <Text semibold style={styles.titleGuest}>
-            {t('guest')}
+            {t('guests')}
           </Text>
           <View>
             {isLoading ? (
