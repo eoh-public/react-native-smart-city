@@ -4,7 +4,6 @@ import useForceUpdate from './useForceUpdate';
 import useKeyboardShow from './useKeyboardShow';
 import usePopover from './usePopover';
 import useTitleHeader from './useTitleHeader';
-import useControllList from './useControllList';
 import { useBlockBackAndroid } from './useBlockBackAndroid';
 import { useIsOwnerOfUnit } from './useIsOwnerOfUnit';
 import { useStatusBar } from './useStatusBar';
@@ -17,7 +16,6 @@ export {
   useKeyboardShow,
   usePopover,
   useTitleHeader,
-  useControllList,
   useBlockBackAndroid,
   useIsOwnerOfUnit,
   useStatusBar,

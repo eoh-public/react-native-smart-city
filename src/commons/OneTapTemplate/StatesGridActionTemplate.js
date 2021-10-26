@@ -1,12 +1,12 @@
 import React, { memo, useState, useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import Modal from 'react-native-modal';
 
 import styles from './StatesGridActionTemplateStyles';
 import SelectActionCard from '../SelectActionCard';
 import Text from '../Text';
 import { TESTID } from '../../configs/Constants';
 import { useTranslations } from '../../hooks/Common/useTranslations';
+import { ModalCustom } from '../Modal';
 
 const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
@@ -39,7 +39,7 @@ const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
         title={title || t('mode')}
       />
 
-      <Modal
+      <ModalCustom
         isVisible={visible}
         onBackButtonPress={onClose}
         onBackdropPress={onClose}
@@ -59,7 +59,7 @@ const StatesGridActionTemplate = memo(({ data, onSelectAction }) => {
             ))}
           </View>
         </View>
-      </Modal>
+      </ModalCustom>
     </View>
   );
 });

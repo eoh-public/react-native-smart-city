@@ -49,4 +49,7 @@ export default StyleSheet.create({
   writeNotAvailable: {
     marginLeft: 16,
   },
+  scrollView: {
+    height: 350,
+  },
 });

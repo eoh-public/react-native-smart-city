@@ -1,7 +1,6 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
-import Modal from 'react-native-modal';
 
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import styles from './NumberUpDownActionTemplateStyles';
@@ -10,6 +9,7 @@ import SelectActionCard from '../SelectActionCard';
 import Text from '../Text';
 import { useConfigGlobalState } from '../../iot/states';
 import { TESTID } from '../../configs/Constants';
+import { ModalCustom } from '../Modal';
 
 const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
@@ -69,7 +69,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
         title={title ? title : t('temperature')}
       />
 
-      <Modal
+      <ModalCustom
         isVisible={visible}
         onBackButtonPress={onClose}
         onBackdropPress={onClose}
@@ -128,7 +128,7 @@ const NumberUpDownActionTemplate = memo(({ data, onSelectAction }) => {
             </View>
           </View>
         </View>
-      </Modal>
+      </ModalCustom>
     </>
   );
 });

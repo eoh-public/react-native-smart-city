@@ -201,4 +201,44 @@ describe('Test Select unit screen', () => {
       ],
     });
   });
+
+  it('Test handleOnGoBackAndClose', async () => {
+    useRoute.mockReturnValue({
+      params: {
+        automateId: 1,
+        isCreateNewAction: true,
+        scriptName: '1',
+        title: 'select_devices',
+        type: 'value_change',
+        unit: { id: 1 },
+      },
+    });
+
+    await act(async () => {
+      tree = await create(wrapComponent());
+    });
+
+    const instance = tree.root;
+
+    const iconClose = instance.findAll(
+      (el) =>
+        el.props.testID === TESTID.ICON_CLOSE && el.type === TouchableOpacity
+    );
+
+    expect(iconClose).toHaveLength(1);
+    await act(async () => {
+      await iconClose[0].props.onPress();
+    });
+    expect(mockNavigate).toBeCalledWith(Routes.ScriptDetail, {
+      id: 1,
+      havePermission: true,
+      isCreateNewAction: true,
+      isMultiUnits: undefined,
+      name: '1',
+      type: 'value_change',
+      unit: {
+        id: 1,
+      },
+    });
+  });
 });

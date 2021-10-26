@@ -15,6 +15,7 @@ import {
 import { API } from '../../../configs';
 import { TouchableOpacity } from 'react-native';
 import Routes from '../../../utils/Route';
+import WrapHeaderScrollable from '../../../commons/Sharing/WrapHeaderScrollable';
 
 const wrapComponent = (route) => (
   <SCProvider initState={mockSCStore({})}>
@@ -238,6 +239,28 @@ describe('Test ScriptDetail', () => {
     await act(async () => {
       await button.props.onPress();
     });
+    expect(mockNavigate).toHaveBeenCalledWith(Routes.SelectSensorDevices, {
+      unit: route.params.unit,
+      automateId: route.params.id,
+      isCreateNewAction: true,
+      scriptName: route.params.name,
+      title: AUTOMATE_SELECT.SELECT_DEVICES,
+      type: AUTOMATE_TYPE.ONE_TAP,
+    });
+  });
+
+  test('test onPress onGoBack', async () => {
+    await act(() => {
+      tree = create(wrapComponent(route));
+    });
+    const instance = tree.root;
+
+    const WrapHeaderScrollables = instance.findAllByType(WrapHeaderScrollable);
+    expect(WrapHeaderScrollables).toHaveLength(1);
+    await act(async () => {
+      await WrapHeaderScrollables[0].props.onGoBack();
+    });
+
     expect(mockNavigate).toHaveBeenCalledWith(Routes.SelectSensorDevices, {
       unit: route.params.unit,
       automateId: route.params.id,

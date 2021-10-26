@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Dimensions, View, TouchableOpacity, StyleSheet } from 'react-native';
 import Popover from 'react-native-popover-view';
-import Modal from 'react-native-modal';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { useTranslations } from '../../../../hooks/Common/useTranslations';
 
@@ -13,6 +12,7 @@ import ImageButton from '../../../../commons/ImageButton';
 import { navigate } from '../../../../navigations/utils';
 import Routes from '../../../../utils/Route';
 import AddMemberIcon from '../../../../../assets/images/Popover/Dashboard/AddMember.svg';
+import { ModalCustom } from '../../../../commons/Modal';
 
 const { width: widthScreen } = Dimensions.get('window');
 
@@ -45,7 +45,7 @@ const HeaderComponent = ({
 
   return (
     <View style={[style && style, styles.justifyCenter]}>
-      <Modal
+      <ModalCustom
         isVisible={showModal}
         onBackButtonPress={hideModal}
         onBackdropPress={hideModal}
@@ -70,7 +70,7 @@ const HeaderComponent = ({
             </View>
           </View>
         </View>
-      </Modal>
+      </ModalCustom>
       <Popover
         popoverStyle={styles.menuStyle}
         placement="bottom"

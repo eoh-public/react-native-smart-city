@@ -6,7 +6,6 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import Animated from 'react-native-reanimated';
 import { useTranslations } from '../../../hooks/Common/useTranslations';
 
@@ -35,6 +34,7 @@ import WrapHeaderScrollable from '../../../commons/Sharing/WrapHeaderScrollable'
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { useIsOwnerOfUnit } from '../../../hooks/Common';
 import { TESTID } from '../../../configs/Constants';
+import { ModalCustom } from '../../../commons/Modal';
 
 const ManageUnit = ({ route }) => {
   const t = useTranslations();
@@ -151,7 +151,7 @@ const ManageUnit = ({ route }) => {
           {t('remove_unit')}
         </Text>
       </TouchableOpacity>
-      <Modal
+      <ModalCustom
         isVisible={showEdit}
         onBackButtonPress={setHideEdit}
         onBackdropPress={setHideEdit}
@@ -180,7 +180,7 @@ const ManageUnit = ({ route }) => {
             />
           </View>
         </Animated.View>
-      </Modal>
+      </ModalCustom>
       <AlertAction
         visible={showRemove}
         hideModal={setHideRemove}

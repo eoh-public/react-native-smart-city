@@ -2,7 +2,6 @@ import React, { memo, useCallback, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import QualityIndicatorItem from './WaterQualitySensor/QualityIndicatorsItem';
 import AlertStatusMachine from './WaterPurifierStatus/AlertStatusMachine';
-import Modal from 'react-native-modal';
 import { useBoolean } from '../../hooks/Common';
 import Text from '../Text';
 import Routes from '../../utils/Route';
@@ -10,6 +9,7 @@ import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Colors, Constants } from '../../configs';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { TESTID } from '../../configs/Constants';
+import { ModalCustom } from '../Modal';
 
 const marginHorizontal = 20;
 const widthItem = (Constants.width - marginHorizontal * 2) / 2;
@@ -101,7 +101,7 @@ const FlatListItems = memo(({ data, style, title, offsetTitle }) => {
         </TouchableOpacity>
       )}
 
-      <Modal
+      <ModalCustom
         isVisible={showInfo}
         onBackButtonPress={setHideInfo}
         onBackdropPress={setHideInfo}
@@ -116,7 +116,7 @@ const FlatListItems = memo(({ data, style, title, offsetTitle }) => {
             {t('filter_water_purifier_description_2')}
           </Text>
         </View>
-      </Modal>
+      </ModalCustom>
     </View>
   );
 });

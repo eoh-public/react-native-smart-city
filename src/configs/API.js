@@ -108,7 +108,7 @@ const API = {
       SCConfig.apiRoot + `/property_manager/automate/${id}/star_script/`,
     UNSTAR_SCRIPT: (id) =>
       SCConfig.apiRoot + `/property_manager/automate/${id}/unstar_script/`,
-    GET_AUTOMATES: () => SCConfig.apiRoot + '/accounts/automates/',
+    GET_SMART: () => SCConfig.apiRoot + '/property_manager/automate/smart/',
     GET_ALL_UNITS: () => SCConfig.apiRoot + '/property_manager/units/all_unit/',
     GET_SENSOR_CONFIG: (id) =>
       SCConfig.apiRoot + `/property_manager/sensors/${id}/display_configs/`,

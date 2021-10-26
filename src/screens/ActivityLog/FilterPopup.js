@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
-import Modal from 'react-native-modal';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
@@ -14,6 +13,7 @@ import { useBoolean } from '../../hooks/Common';
 import { Colors } from '../../configs';
 import styles from './styles/filterPopupStyles';
 import { TESTID } from '../../configs/Constants';
+import { ModalCustom } from '../../commons/Modal';
 
 const RowMember = ({ member, isSelected, onSelect }) => {
   const handleOnPress = useCallback(() => {
@@ -182,7 +182,7 @@ const FilterPopup = ({
 
   return (
     <>
-      <Modal
+      <ModalCustom
         isVisible={isVisible && !lockShowing}
         onBackButtonPress={handleOnCancel}
         onBackdropPress={handleOnCancel}
@@ -192,7 +192,6 @@ const FilterPopup = ({
         animationIn={'zoomIn'}
         animationOut={'zoomOut'}
         style={styles.wrapPopup}
-        hideModalContentWhileAnimating
       >
         <View style={styles.popup}>
           <>
@@ -238,7 +237,7 @@ const FilterPopup = ({
             onPressMain={handleOnApply}
           />
         </View>
-      </Modal>
+      </ModalCustom>
       <DateTimePickerModal
         isVisible={stateDatePicker.visible && !lockShowing}
         date={

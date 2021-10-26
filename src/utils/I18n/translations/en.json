@@ -794,5 +794,8 @@
   "you_do_not_have_permission_to": "You do not have permission to {doAction}.",
   "please_choose_condition_before_continue": "Please choose condition before continue!",
   "accept_invitation": "Accept invitation",
+  "write_not_available":"Write not available",
+  "invalid_phone_number_or_email": "Invalid phone number or email",
+  "phone_number_or_email": "Phone number or email",
   "error_please_try_later": "Error! Please try later"
 }
