@@ -1,6 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
 import { View } from 'react-native';
-import Modal from 'react-native-modal';
 
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import styles from './ActionTemplateStyles';
@@ -9,6 +8,7 @@ import OneButtonAction from './OneButtonAction';
 import ThreeButtonAction from './ThreeButtonAction';
 import OnOffSimpleAction from './OnOffSimpleAction';
 import SelectActionCard from '../SelectActionCard';
+import { ModalCustom } from '../Modal';
 
 const ActionTemplate = memo(({ data, onSelectAction }) => {
   const t = useTranslations();
@@ -63,7 +63,7 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
         title={t(data[0]?.title === 'Power' ? 'power' : 'action')}
       />
 
-      <Modal
+      <ModalCustom
         isVisible={visible}
         onBackButtonPress={onClose}
         onBackdropPress={onClose}
@@ -71,7 +71,7 @@ const ActionTemplate = memo(({ data, onSelectAction }) => {
         <View style={styles.popoverStyle}>
           <View style={styles.modalHeader}>{renderAction(data)}</View>
         </View>
-      </Modal>
+      </ModalCustom>
     </>
   );
 });

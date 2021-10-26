@@ -1,11 +1,11 @@
 import React from 'react';
-import Modal from 'react-native-modal';
 import { View, StyleSheet } from 'react-native';
 
 import Text from '../Text';
 
 import { Colors } from '../../configs';
 import TextButton from '../TextButton';
+import { ModalCustom } from '../Modal';
 
 class Alert extends React.Component {
   static _ref = null;
@@ -96,14 +96,18 @@ class Alert extends React.Component {
   render() {
     const { buttons, show } = this.state;
     return (
-      <Modal animationIn={'zoomIn'} animationOut={'zoomOut'} isVisible={show}>
+      <ModalCustom
+        animationIn={'zoomIn'}
+        animationOut={'zoomOut'}
+        isVisible={show}
+      >
         <View style={[styles.wrap, styles.contentPadding]}>
           {this.renderContent()}
         </View>
         <View style={[styles.wrap, styles.buttonsPadding]}>
           {!!buttons?.length && this.renderButtons()}
         </View>
-      </Modal>
+      </ModalCustom>
     );
   }
 }

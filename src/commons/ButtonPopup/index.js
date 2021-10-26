@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import Modal from 'react-native-modal';
 import { Icon } from '@ant-design/react-native';
 
 import { Colors, Device } from '../../configs';
 import { TESTID } from '../../configs/Constants';
 
 import BottomButtonView from '../BottomButtonView';
+import { ModalCustom } from '../Modal';
 
 const ButtonPopup = ({
   rowButton = true,
@@ -28,7 +28,7 @@ const ButtonPopup = ({
   semiboldSecond,
 }) => {
   return (
-    <Modal
+    <ModalCustom
       isVisible={visible}
       onBackButtonPress={onClose}
       onBackdropPress={onClose}
@@ -70,7 +70,7 @@ const ButtonPopup = ({
           )}
         </View>
       </View>
-    </Modal>
+    </ModalCustom>
   );
 };
 

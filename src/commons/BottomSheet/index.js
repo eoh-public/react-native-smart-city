@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View } from 'react-native';
-import Modal from 'react-native-modal';
+import { ModalCustom } from '../Modal';
 import Text from '../Text';
 import styles from './styles';
 
@@ -12,7 +12,7 @@ const BottomSheet = ({
   children,
 }) => {
   return (
-    <Modal
+    <ModalCustom
       isVisible={isVisible}
       onBackButtonPress={onBackdropPress}
       onBackdropPress={onBackdropPress}
@@ -34,7 +34,7 @@ const BottomSheet = ({
           {children}
         </View>
       </View>
-    </Modal>
+    </ModalCustom>
   );
 };
 

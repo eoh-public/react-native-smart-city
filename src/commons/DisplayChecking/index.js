@@ -4,9 +4,9 @@ import { View, TouchableOpacity } from 'react-native';
 import { Colors } from '../../configs';
 import Text from '../../commons/Text';
 import { IconOutline } from '@ant-design/icons-react-native';
-import Modal from 'react-native-modal';
 import Loading from '../../commons/Explore/ActivityIndicator';
 import styles from './styles';
+import { ModalCustom } from '../Modal';
 
 const LoadingMessage = memo(({ visible, onClose, message }) => {
   return (
@@ -30,13 +30,13 @@ const LoadingMessage = memo(({ visible, onClose, message }) => {
 
 const LoadingMessageWithModal = memo(({ visible, onClose, message }) => {
   return (
-    <Modal
+    <ModalCustom
       isVisible={visible}
       onBackButtonPress={onClose}
       onBackdropPress={onClose}
     >
       <LoadingMessage visible={true} message={message} />
-    </Modal>
+    </ModalCustom>
   );
 });
 

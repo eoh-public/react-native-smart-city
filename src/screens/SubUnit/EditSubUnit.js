@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { View, TouchableOpacity, Image, Platform } from 'react-native';
-import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useTranslations } from '../../hooks/Common/useTranslations';
@@ -26,6 +25,7 @@ import { useEmeragencyContacts } from './hooks/useEmergencyContacts';
 import Animated from 'react-native-reanimated';
 import useKeyboardAnimated from '../../hooks/Explore/useKeyboardAnimated';
 import styles from './EditSubUnitStyles';
+import { ModalCustom } from '../../commons/Modal';
 
 const EditSubUnit = ({ route }) => {
   const { unit, station } = route.params;
@@ -235,7 +235,7 @@ const EditSubUnit = ({ route }) => {
           </TouchableOpacity>
         </View>
       </View>
-      <Modal
+      <ModalCustom
         testID={TESTID.MANAGE_SUB_UNIT_MODAL}
         isVisible={showEdit}
         onBackButtonPress={setHideEdit}
@@ -265,7 +265,7 @@ const EditSubUnit = ({ route }) => {
             />
           </View>
         </Animated.View>
-      </Modal>
+      </ModalCustom>
       <AlertAction
         visible={showModalRemoveSubUnit}
         hideModal={hideRemoveSubUnitModal}
