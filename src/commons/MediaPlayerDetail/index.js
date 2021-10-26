@@ -116,9 +116,24 @@ const MediaPlayerDetail = memo(
                   ? '5:3'
                   : '10:9'
               }
-              source={{ uri }}
+              source={{
+                initType: 2,
+                hwDecoderEnabled: 1,
+                hwDecoderForced: 1,
+                uri,
+                initOptions: [
+                  '--no-audio',
+                  '--rtsp-tcp',
+                  '--network-caching=150',
+                  '--rtsp-caching=150',
+                  '--no-stats',
+                  '--tcp-caching=150',
+                  '--realrtsp-caching=150',
+                ],
+              }}
               style={[styles.player, style]}
               resizeMode={resizeMode}
+              isLive={true}
             />
           )}
 
