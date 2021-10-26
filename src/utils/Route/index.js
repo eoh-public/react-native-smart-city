@@ -113,7 +113,7 @@ const Routes = {
   MultiUnits: 'MultiUnits',
   EditDevice: 'EditDevice',
   SetSchedule: 'SetSchedule',
-  Notification: 'Notification'
+  Notification: 'Notification',
 };
 
 export default Routes;

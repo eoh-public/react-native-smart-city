@@ -28,5 +28,5 @@ export {
   AddLGDeviceStack,
   initSCConfig,
   AutomateStack,
-  NotificationStack
+  NotificationStack,
 };

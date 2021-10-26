@@ -27,15 +27,20 @@ const WrapHeaderScrollable = ({
   headerAniStyle,
   headerAniCenterStyle,
   onGoBack,
+  disableLoadMore = false,
 }) => {
   const animatedScrollYValue = useRef(new Animated.Value(0)).current;
   const [loadingMore, setLoadingMore] = useState(false);
   const loadMore = useCallback(() => {
-    if (onLoadMore) {
-      setLoadingMore(true);
-      onLoadMore(() => setLoadingMore(false));
+    if (!disableLoadMore) {
+      if (onLoadMore) {
+        setLoadingMore(true);
+        onLoadMore(() => setLoadingMore(false));
+      }
+    } else {
+      setLoadingMore(false);
     }
-  }, [onLoadMore]);
+  }, [onLoadMore, disableLoadMore]);
 
   const [contentHeight, setContentHeight] = useState(0);
 

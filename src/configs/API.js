@@ -169,6 +169,13 @@ const API = {
         `/connection_manager/lg_thinq/device_status/${sensorId}/`,
     },
   },
+  NOTIFICATION: {
+    LIST_ALL_NOTIFICATIONS: (page, type) =>
+      SCConfig.apiRoot +
+      `/notifications/notifications/?page=${page}&type=${type}`,
+    SET_READ: (id) =>
+      SCConfig.apiRoot + `/notifications/notifications/${id}/set_read/`,
+  },
   EXTERNAL: {
     GOOGLE_MAP: {
       AUTO_COMPLETE:

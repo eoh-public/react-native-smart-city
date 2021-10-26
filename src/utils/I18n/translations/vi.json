@@ -655,6 +655,7 @@
   "text_notification_content_system_cancel_emergency_situation_%{spot}": "Chúng tôi rất tiếc vì đặt chỗ %{spot} đã bị huỷ vì một tình huống khẩn cấp. Bạn sẽ nhận được phiếu giảm giá cho lần đỗ xe tiếp theo. ",
   "text_notification_content_booking_successfully_%{spot}": "Đặt chỗ %{spot} đã được xác nhận.",
   "text_notification_content_parking_completed_%{spot}": "Đặt chỗ %{spot} đã hoàn tất. Vui lòng giúp chúng tôi đánh giá về dịch vụ đỗ xe nhé.",
+  "text_notification_content_invite_member": "**%{unit_owner_name}** mời bạn đến địa điểm **%{unit_name}**.",
   "this_spot_does_not_exsit": "Vị trí đỗ này không tồn tại",
   "please_scan_again_or_contact_the_parking_manager": "Vui lòng quét lại hoặc liên hệ với người quản lý bãi đậu xe",
   "this_spot_does_not_support_to_scan": "Vị trí đỗ này không hỗ trợ quét",
@@ -793,5 +794,6 @@
   "you_do_not_have_permission_to_access": "Bạn không được phép truy cập {doAction}.",
   "you_do_not_have_permission_to": "Bạn không được phép {doAction}.",
   "please_choose_condition_before_continue": "Vui lòng chọn điều kiện trước khi tiếp tục!",
+  "accept_invitation": "Chấp nhận lời mời",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }

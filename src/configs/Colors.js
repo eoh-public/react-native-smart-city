@@ -113,6 +113,7 @@ export const Colors = {
 
   //Range Volcano:
   Volcano3: '#FFBB96',
+  Summer: '#FFB24A',
 
   //lime
   Lime6: '#A0D911',
