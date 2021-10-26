@@ -4,6 +4,7 @@ import Text from '../Text';
 import { Colors } from '../../configs';
 import styles from './ItemAutomateStyles';
 import { AUTOMATES } from '../../configs/Constants';
+import { useTranslations } from '../../hooks/Common/useTranslations';
 
 const ItemAutomate = ({
   type,
@@ -11,7 +12,9 @@ const ItemAutomate = ({
   onPress = () => {},
   disabledOnPress = false,
 }) => {
+  const t = useTranslations();
   const item = AUTOMATES[type];
+  const itemOneTap = AUTOMATES[type] === AUTOMATES.one_tap;
   const Icon = item?.icon;
   return (
     <TouchableOpacity
@@ -28,7 +31,9 @@ const ItemAutomate = ({
             {item?.title}
           </Text>
           <Text type="Label" color={Colors.Gray8} numberOfLines={1}>
-            {item?.explanation}
+            {isSelected && itemOneTap
+              ? t('quick_button_create_at_dashboard')
+              : item?.explanation}
           </Text>
         </View>
       </View>

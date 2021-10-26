@@ -795,5 +795,6 @@
   "write_not_available":"Write not available",
   "invalid_phone_number_or_email": "Invalid phone number or email",
   "phone_number_or_email": "Phone number or email",
+  "quick_button_create_at_dashboard": "Quick button create at dashboard",
   "error_please_try_later": "Error! Please try later"
 }
