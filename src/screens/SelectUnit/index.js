@@ -124,6 +124,7 @@ const SelectUnit = () => {
       <TouchableOpacity
         style={styles.buttonClose}
         onPress={handleOnGoBackAndClose}
+        testID={TESTID.ICON_CLOSE}
       >
         <Icon name={'close'} size={24} color={Colors.Black} />
       </TouchableOpacity>

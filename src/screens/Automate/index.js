@@ -18,7 +18,7 @@ import Loading from './Components/Loading';
 import ItemAddNew from '../../commons/Device/ItemAddNew';
 import { useTranslations } from '../../hooks/Common/useTranslations';
 import { useGetIdUser } from '../../hooks/Common';
-import { AUTOMATE_TYPE, UNIT_TYPES } from '../../configs/Constants';
+import { AUTOMATE_TYPE, TESTID, UNIT_TYPES } from '../../configs/Constants';
 
 const keyExtractor = (item) => item.id;
 
@@ -48,7 +48,7 @@ const Automate = () => {
 
   const getAutomates = useCallback(async () => {
     setIsLoading(true);
-    const { success, data } = await axiosGet(API.AUTOMATE.GET_AUTOMATES());
+    const { success, data } = await axiosGet(API.AUTOMATE.GET_SMART());
     if (success && data && data.length) {
       prepareData(data);
       setAutomatesData(data);
@@ -59,14 +59,14 @@ const Automate = () => {
     }, 1000);
   }, [prepareData]);
 
-  const onPressItem = (item, id, type) => () => {
+  const onPressItem = (item, id, type, isOwner) => () => {
     navigate(Routes.UnitStack, {
       screen: Routes.ScriptDetail,
       params: {
         id: item?.id,
         name: item?.script?.name,
         type: item?.type,
-        havePermission: idUser === item?.user,
+        havePermission: isOwner || idUser === item?.user,
         unit: { id },
         isAutomateTab: true,
         isMultiUnits: type === UNIT_TYPES.MULTI,
@@ -101,15 +101,23 @@ const Automate = () => {
 
   const renderItem = useCallback(
     ({ item = {} }) => {
-      const { type = '', unit_name = '', automates = [], unit_id } = item;
-
+      const {
+        type = '',
+        unit_name = '',
+        owner_unit_id,
+        automates = [],
+        unit_id,
+      } = item;
+      const isOwner = owner_unit_id
+        ? owner_unit_id === idUser
+        : type === UNIT_TYPES.MULTI;
       const renderItemAutomate = ({ item }) => {
         return (
           <ItemOneTap
-            isOwner={true}
+            isOwner={isOwner}
             automate={item}
             wrapSyles={styles.wrapAutomateItem}
-            onPressItem={onPressItem(item, unit_id, type)}
+            onPressItem={onPressItem(item, unit_id, type, isOwner)}
           />
         );
       };
@@ -127,6 +135,7 @@ const Automate = () => {
                 unit_id
               )}
               style={styles.arrowRightButton}
+              testID={TESTID.ICON_ARROW_RIGHT}
             >
               <Image source={Images.arrowBack} style={styles.arrowRight} />
             </TouchableOpacity>
