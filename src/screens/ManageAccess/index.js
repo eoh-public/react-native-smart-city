@@ -74,8 +74,8 @@ const ManageAccessScreen = memo(({ route }) => {
                       }
                       text={
                         item.user?.name ||
-                        item.user?.email ||
-                        item.user?.phone_number
+                        item.user?.phone_number ||
+                        item.user?.email
                       }
                       subtext={item.schedule}
                       onPress={() => goToGuestInfo(item.id)}

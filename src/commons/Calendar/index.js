@@ -28,8 +28,9 @@ export default ({
   );
 
   const onCalendarCancel = useCallback(() => {
+    setDateSelected(defaultDate);
     onCancel && onCancel();
-  }, [onCancel]);
+  }, [onCancel, defaultDate]);
 
   const onDone = useCallback(() => {
     onConfirm && onConfirm(dateSelected);

@@ -16,6 +16,7 @@ import { mockSCStore } from '../../../context/mockStore';
 import SubUnitAutomate from '../../../commons/SubUnit/OneTap';
 import CameraDevice from '../../../commons/CameraDevice';
 import { ModalFullVideo } from '../../../commons/Modal';
+import SubUnitFavorites from '../../../commons/SubUnit/Favorites';
 
 const mockDispatch = jest.fn();
 
@@ -172,6 +173,7 @@ describe('Test UnitDetail', () => {
 
     expect(axios.get).toHaveBeenCalledWith(summaryUnitApiUrl, {});
   });
+
   test('not fetch unit summary if not focus', async () => {
     useIsFocused.mockImplementation(() => false);
     axios.get.mockImplementation((url) => {
@@ -464,5 +466,24 @@ describe('Test UnitDetail', () => {
     const fullView = instance.findAllByType(ModalFullVideo);
     expect(fullView).toHaveLength(1);
     expect(fullView[0].props.isVisible).toEqual(false);
+  });
+
+  test('render subunit favorites', async () => {
+    const unitData = {
+      stations: [
+        {
+          isFavorites: true,
+          name: 'Favorites',
+        },
+      ],
+    };
+    await act(async () => {
+      tree = await renderer.create(
+        wrapComponent({ params: { ...route.params, unitData } }, account)
+      );
+    });
+    const instance = tree.root;
+    const favorites = instance.findAllByType(SubUnitFavorites);
+    expect(favorites).toHaveLength(1);
   });
 });

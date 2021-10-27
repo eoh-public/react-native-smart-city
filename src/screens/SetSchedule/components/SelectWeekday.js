@@ -52,6 +52,7 @@ const SelectWeekday = ({ weekday, setWeekday }) => {
       <View style={styles.row}>
         {WEEKDAY_ITEMS.map((item, index) => (
           <WeekdayItem
+            key={index}
             item={item}
             index={index}
             isSelected={weekday.includes(`${index}`)}
