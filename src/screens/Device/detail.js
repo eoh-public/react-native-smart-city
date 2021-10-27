@@ -20,7 +20,10 @@ import { useCountUp } from './hooks/useCountUp';
 import { getData as getLocalData } from '../../utils/Storage';
 import { API, Colors, Device } from '../../configs';
 import { axiosGet, axiosPost } from '../../utils/Apis/axios';
-import { scanBluetoothDevices } from '../../iot/RemoteControl/Bluetooth';
+import {
+  isDeviceConnected,
+  scanBluetoothDevices,
+} from '../../iot/RemoteControl/Bluetooth';
 import WrapHeaderScrollable from '../../commons/Sharing/WrapHeaderScrollable';
 import ActionGroup, { getActionComponent } from '../../commons/ActionGroup';
 import { ConnectedViewHeader, DisconnectedView } from '../../commons/Device';
@@ -84,6 +87,11 @@ const DeviceDetail = ({ account, route }) => {
   const { isOwner } = useIsOwnerOfUnit(unit.user_id);
   const [sensorName, setSensorName] = useState(sensor?.name);
   const [lockShowing, acquireLockShowing, releaseLockShowing] = useBoolean();
+
+  const isDeviceConnectedViaBle = useMemo(
+    () => isDeviceConnected(sensor?.remote_control_options?.bluetooth?.address),
+    [sensor]
+  );
 
   const isShowSetupEmergencyContact =
     display.items.filter(
@@ -377,7 +385,7 @@ const DeviceDetail = ({ account, route }) => {
   // replace isConnected=True to see template
   const renderSensorConnected = () => {
     if (!!sensor && !sensor.is_other_device) {
-      if (isConnected) {
+      if (isDeviceConnectedViaBle || isConnected) {
         return (
           <>
             <ConnectedViewHeader
