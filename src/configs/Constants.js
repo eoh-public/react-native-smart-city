@@ -1,6 +1,6 @@
 import { Platform, Dimensions, StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import OneTap from '../../assets/images/OneTap.svg';
+import OneTap from '../../assets/images/OneTap@1x.svg';
 import ValueChange from '../../assets/images/ValueChange.svg';
 import Schedule from '../../assets/images/Schedule.svg';
 

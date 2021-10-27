@@ -796,5 +796,6 @@
   "write_not_available":"Ghi không sẵn dùng",
   "invalid_phone_number_or_email": "Số điện thoại hoặc email không hợp lệ",
   "phone_number_or_email": "Số điện thoại hoặc email",
+  "quick_button_create_at_dashboard": "Tạo nút nhanh trên bảng điều khiển",
   "error_please_try_later": "Lỗi! Vui lòng thử lại sau"
 }
