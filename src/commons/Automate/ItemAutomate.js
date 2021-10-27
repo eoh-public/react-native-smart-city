@@ -14,7 +14,7 @@ const ItemAutomate = ({
 }) => {
   const t = useTranslations();
   const item = AUTOMATES[type];
-  const itemOneTap = AUTOMATES[type] === AUTOMATES.one_tap;
+  const isItemOneTap = AUTOMATES[type] === AUTOMATES.one_tap;
   const Icon = item?.icon;
   return (
     <TouchableOpacity
@@ -31,7 +31,7 @@ const ItemAutomate = ({
             {item?.title}
           </Text>
           <Text type="Label" color={Colors.Gray8} numberOfLines={1}>
-            {isSelected && itemOneTap
+            {isSelected && isItemOneTap
               ? t('quick_button_create_at_dashboard')
               : item?.explanation}
           </Text>
