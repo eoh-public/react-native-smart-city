@@ -7,10 +7,13 @@ describe('test Timer', () => {
   let tree;
   it('Test render', async () => {
     await act(() => {
-      tree = create(<Timer />);
+      tree = create(<Timer value={100} />);
     });
     const instance = tree.root;
     const Animateds = instance.findAllByType(Animated.ScrollView);
     expect(Animateds).toHaveLength(1);
+    act(() => {
+      tree.unmount();
+    });
   });
 });
