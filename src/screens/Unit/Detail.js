@@ -25,6 +25,7 @@ import { ModalFullVideo } from '../../commons/Modal';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../utils/Route';
 import SubUnitAutomate from '../../commons/SubUnit/OneTap';
+import SubUnitFavorites from '../../commons/SubUnit/Favorites';
 import { AUTOMATE_TYPE } from '../../configs/Constants';
 
 const UnitDetail = ({ route }) => {
@@ -40,6 +41,10 @@ const UnitDetail = ({ route }) => {
   const [listStation, setListStation] = useState([]);
   const [oneTap, setOneTap] = useState([]);
   const [script, setScript] = useState([]);
+  const [favorites, setFavorites] = useState({
+    devices: [],
+    automates: [],
+  });
   const [isGGHomeConnected, setIsGGHomeConnected] = useState(false);
   const [station, setStation] = useState({});
   const [indexStation, setIndexStation] = useState(0);
@@ -67,21 +72,22 @@ const UnitDetail = ({ route }) => {
         isOneTap: true,
         name: t('One-Tap'),
       });
-      const favorites = {
-        isFakeStation: true,
+      rawUnitData.stations.unshift({
         isFavorites: true,
         name: t('favorites'),
-        sensors: [],
-      };
-      rawUnitData.stations.unshift(favorites);
+      });
+      let favoriteDevices = [];
       rawUnitData.stations.forEach((stationItem) => {
         if (stationItem.sensors) {
-          const favoriteDevices = stationItem.sensors.filter(
-            (sensorItem) => sensorItem.is_favourite
+          favoriteDevices = favoriteDevices.concat(
+            stationItem.sensors.filter((sensorItem) => sensorItem.is_favourite)
           );
-          favorites.sensors = favorites.sensors.concat(favoriteDevices);
         }
       });
+      setFavorites((prevData) => ({
+        ...prevData,
+        devices: favoriteDevices,
+      }));
       rawUnitData.stations.push({
         isScenario: true,
         name: t('Scenario'),
@@ -107,6 +113,10 @@ const UnitDetail = ({ route }) => {
       if (success) {
         setOneTap(data.filter((item) => item.type === AUTOMATE_TYPE.ONE_TAP));
         setScript(data.filter((item) => item.type !== AUTOMATE_TYPE.ONE_TAP));
+        setFavorites((prevData) => ({
+          ...prevData,
+          automates: data.filter((item) => item.script.is_star),
+        }));
       }
     });
   }, [unitId]);
@@ -226,6 +236,11 @@ const UnitDetail = ({ route }) => {
   };
 
   const renderDetailSubUnit = () => {
+    if (station.isFavorites) {
+      return (
+        <SubUnitFavorites unit={unit} isOwner={isOwner} favorites={favorites} />
+      );
+    }
     if (station.camera_devices) {
       return (
         <CameraDevice

@@ -54,9 +54,24 @@ const MediaPlayerFull = ({
             ? `${Constants.height}:${Constants.width}`
             : `${Constants.width}:224`
         }
-        source={{ uri }}
+        source={{
+          initType: 2,
+          hwDecoderEnabled: 1,
+          hwDecoderForced: 1,
+          uri,
+          initOptions: [
+            '--no-audio',
+            '--rtsp-tcp',
+            '--network-caching=150',
+            '--rtsp-caching=150',
+            '--no-stats',
+            '--tcp-caching=150',
+            '--realrtsp-caching=150',
+          ],
+        }}
         style={styles.video}
         resizeMode={'cover'}
+        isLive={true}
       />
     );
   }, [isFullScreen, uri]);

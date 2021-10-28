@@ -6,7 +6,13 @@ import React, {
   useEffect,
   memo,
 } from 'react';
-import { View, TouchableOpacity, Image, BackHandler } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  BackHandler,
+  Platform,
+} from 'react-native';
 import { IconFill, IconOutline } from '@ant-design/icons-react-native';
 import { Icon } from '@ant-design/react-native';
 
@@ -36,6 +42,7 @@ import withPreventDoubleClick from '../../commons/WithPreventDoubleClick';
 import { AUTOMATE_SELECT, AUTOMATE_TYPE } from '../../configs/Constants';
 import { popAction } from '../../navigations/utils';
 import { TESTID } from '../../configs/Constants';
+import useKeyboardAnimated from '../../hooks/Explore/useKeyboardAnimated';
 
 const PreventDoubleTouch = withPreventDoubleClick(TouchableOpacity);
 
@@ -75,6 +82,13 @@ const ScriptDetail = ({ route }) => {
     onShowDelete,
   ] = useStateAlertAction();
   const [data, setData] = useState([]);
+
+  const [transY] = useKeyboardAnimated(-16);
+  const animatedStyle = Platform.select({
+    ios: {
+      marginBottom: transY,
+    },
+  });
 
   const renameScript = useCallback(async () => {
     const { success, data: script } = await axiosPatch(
@@ -405,6 +419,7 @@ const ScriptDetail = ({ route }) => {
         rightButtonTitle={stateAlertAction.rightButton}
         rightButtonClick={handleRenameOrDelete}
         rightButtonStyle={{ color: stateAlertAction.rightColor }}
+        animatedStyle={animatedStyle}
       >
         {!stateAlertAction.isDelete && havePermission && (
           <_TextInput
