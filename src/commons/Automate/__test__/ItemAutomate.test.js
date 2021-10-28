@@ -2,14 +2,13 @@ import React from 'react';
 import { act, create } from 'react-test-renderer';
 import Text from '../../Text';
 import ItemAutomate from '../ItemAutomate';
-import { TouchableOpacity } from 'react-native';
 
 import { SCProvider } from '../../../context';
 import { mockSCStore } from '../../../context/mockStore';
 
 const wrapComponent = (type) => (
   <SCProvider initState={mockSCStore({})}>
-    <ItemAutomate type={type}/>
+    <ItemAutomate type={type} />
   </SCProvider>
 );
 
