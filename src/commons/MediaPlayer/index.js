@@ -137,7 +137,7 @@ const MediaPlayer = memo(({ uri, previewUri, thumbnail, style }) => {
           <>
             <VLCPlayer
               autoAspectRatio={true}
-              videoAspectRatio="21:9"
+              videoAspectRatio="19:9"
               source={{ uri }}
               style={[styles.player, style]}
               paused={paused}
