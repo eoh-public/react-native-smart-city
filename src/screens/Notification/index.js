@@ -56,12 +56,23 @@ const Notification = memo(() => {
     }
   }, [maxPageNotification, fetchNotifications]);
 
+  const onRefresh = useCallback(async () => {
+    page = 1;
+    const { success, data } = await axiosGet(
+      API.NOTIFICATION.LIST_ALL_NOTIFICATIONS(1, '')
+    );
+    if (success) {
+      setNotifications(data.results);
+    }
+  }, []);
+
   return (
     <View style={styles.wrap}>
       <WrapHeaderScrollable
         title={t('notifications')}
         rightComponent={rightComponent}
         onLoadMore={handleOnLoadMore}
+        onRefresh={onRefresh}
         disableLoadMore={page >= maxPageNotification}
       >
         {notifications.map((item, index) => (
