@@ -105,6 +105,10 @@ export const getDeviceByName = (name) => {
   return bluetoothDevices[name];
 };
 
+export const isDeviceConnected = (deviceName) => {
+  return needToScanDevices.some((i) => i === deviceName);
+};
+
 export const subcribeCharacteristicNotify = async (device, onListener) => {
   return await device.monitorCharacteristicForService(
     BLE.BLE_REMOTE_SERVICE_UUID,
