@@ -245,9 +245,9 @@ const NotificationItem = memo(({ item }) => {
           <Text
             color={Colors.Gray7}
             type="Label"
-            style={[styles.time, textInviteMember && styles.border]}
+            style={[styles.time]}
           >
-            {textInviteMember || timeFormat}
+            {timeFormat}
           </Text>
         </View>
       </View>
