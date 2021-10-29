@@ -242,11 +242,7 @@ const NotificationItem = memo(({ item }) => {
           <Text type="Body" color={Colors.Gray9}>
             {content}
           </Text>
-          <Text
-            color={Colors.Gray7}
-            type="Label"
-            style={[styles.time]}
-          >
+          <Text color={Colors.Gray7} type="Label" style={[styles.time]}>
             {timeFormat}
           </Text>
         </View>
