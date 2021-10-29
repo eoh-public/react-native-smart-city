@@ -15,6 +15,7 @@ import { useStatusBarPreview } from '../../hooks/Common/useStatusBar';
 import MediaPlayerFull from '../../commons/MediaPlayerDetail/MediaPlayerFull';
 
 let dateTemp = moment().format('YYYY-MM-DD');
+let isFirstTime = true;
 
 const PlayBackCamera = () => {
   const now = useMemo(() => moment().format('YYYY-MM-DD'), []);
@@ -61,33 +62,37 @@ const PlayBackCamera = () => {
   }, [selected]);
 
   const onChangeValue = (value, selected) => {
-    const currentTime =
-      parseFloat(arrHourTemp[0]) +
-      parseFloat(arrHourTemp[1] / 60) +
-      parseFloat(arrHourTemp[2] / 3600);
-    setPaused(true);
-    const t1 = value / 96;
-    const t2 = t1.toString().split('.');
-    const t3 = parseFloat('0.' + t2[1]) * 60;
-    const t4 = t3.toString().split('.');
-    const t5 = parseInt(parseFloat('0.' + t4[1]) * 60, 10);
-    const h = t2[0] < 10 ? '0' + t2[0] : t2[0];
-    const m = t4[0] < 10 ? '0' + t4[0] : t4[0];
-    const s = t5 < 10 ? '0' + t5 : t5;
-    setHour({ h, m, s });
-    if (value + 0.5 > currentTime * 96 && selected === now) {
-      setUri(item?.configuration?.uri);
-    } else {
-      const playback = item?.configuration?.playback || '';
-      const date = selected.split('-');
-      setUri(
-        `${playback.split('=')[0]}=${date[0]}${date[1]}${date[2]}T${h}${m}${s}Z`
-      );
+    if (!isFirstTime) {
+      const currentTime =
+        parseFloat(arrHourTemp[0]) +
+        parseFloat(arrHourTemp[1] / 60) +
+        parseFloat(arrHourTemp[2] / 3600);
+      setPaused(true);
+      const t1 = value / 96;
+      const t2 = t1.toString().split('.');
+      const t3 = parseFloat('0.' + t2[1]) * 60;
+      const t4 = t3.toString().split('.');
+      const t5 = parseInt(parseFloat('0.' + t4[1]) * 60, 10);
+      const h = t2[0] < 10 ? '0' + t2[0] : t2[0];
+      const m = t4[0] < 10 ? '0' + t4[0] : t4[0];
+      const s = t5 < 10 ? '0' + t5 : t5;
+      setHour({ h, m, s });
+      if (value + 0.5 > currentTime * 96 && selected === now) {
+        setUri(item?.configuration?.uri);
+      } else {
+        const playback = item?.configuration?.playback || '';
+        const date = selected.split('-');
+        setUri(
+          `${playback.split('=')[0]}=${date[0]}${date[1]}${
+            date[2]
+          }T${h}${m}${s}Z`
+        );
+      }
+      const to = setTimeout(() => {
+        setPaused(false);
+        clearTimeout(to);
+      }, 100);
     }
-    const to = setTimeout(() => {
-      setPaused(false);
-      clearTimeout(to);
-    }, 100);
   };
 
   useEffect(() => {
@@ -122,7 +127,14 @@ const PlayBackCamera = () => {
   }, [isShowDate]);
 
   useEffect(() => {
-    return () => (dateTemp = moment().format('YYYY-MM-DD'));
+    const to = setTimeout(() => {
+      isFirstTime = false;
+      clearTimeout(to);
+    }, 2000);
+    return () => {
+      dateTemp = moment().format('YYYY-MM-DD');
+      isFirstTime = true;
+    };
   }, []);
 
   return (
