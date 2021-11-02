@@ -27,6 +27,7 @@ const WrapHeaderScrollable = ({
   headerAniStyle,
   headerAniCenterStyle,
   onGoBack,
+  disableLoadMore = false,
 }) => {
   const animatedScrollYValue = useRef(new Animated.Value(0)).current;
   const [loadingMore, setLoadingMore] = useState(false);
@@ -85,7 +86,7 @@ const WrapHeaderScrollable = ({
           y: -heightHeader,
         }}
         showsVerticalScrollIndicator={false}
-        onMomentumScrollEnd={loadMore}
+        onMomentumScrollEnd={!disableLoadMore && loadMore}
       >
         {!!subTitle && (
           <Text type={'Body'} color={Colors.Gray8} style={styles.subTitle}>
@@ -93,7 +94,7 @@ const WrapHeaderScrollable = ({
           </Text>
         )}
         {children}
-        {loadingMore && (
+        {loadingMore && !disableLoadMore && (
           <View style={styles.bottomLoading}>
             <ActivityIndicator size="small" color={Colors.Black} />
           </View>
