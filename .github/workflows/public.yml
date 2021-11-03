@@ -20,4 +20,4 @@ jobs:
       - run: git config --global user.name "Bang Dao"
       - run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}config
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
