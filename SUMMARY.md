@@ -7,3 +7,5 @@
     * [Active new gateway](developer-mode/user-guide/active-new-gateway.md)
     * [How to install ESP32 board](developer-mode/user-guide/how-to-install-esp32-board.md)
     * [Add new device](developer-mode/user-guide/add-new-device.md)
+  * [What is a Device Template?](developer-mode/what-is-a-device-template.md)
+  * [Device Activation Method](developer-mode/device-activation-method.md)
