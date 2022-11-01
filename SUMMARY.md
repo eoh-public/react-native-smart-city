@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Era IoT Platform](README.md)
+* [E.Ra - IoT Platform](README.md)
 * [Giới thiệu về Era IoT Platform](gioi-thieu-ve-era-iot-platform.md)
 * [Cách tiếp cận](cach-tiep-can.md)
 * [User Mode](user-mode.md)
