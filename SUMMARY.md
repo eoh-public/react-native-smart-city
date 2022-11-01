@@ -1,7 +1,7 @@
 # Table of contents
 
-* [E.Ra - IoT Platform](README.md)
-* [Giới thiệu về E.ra IoT Platform](gioi-thieu-ve-e.ra-iot-platform.md)
+* [Giới thiệu về E.Ra - IoT Platform](README.md)
+* [Giới thiệu về EoH](gioi-thieu-ve-eoh.md)
 * [Cách tiếp cận](cach-tiep-can.md)
 * [User Mode](user-mode.md)
 * [Developer Mode](developer-mode/README.md)
