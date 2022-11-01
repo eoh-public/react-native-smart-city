@@ -1,6 +1,9 @@
 # Table of contents
 
 * [Era IoT Platform](README.md)
+* [Giới thiệu về Era IoT Platform](gioi-thieu-ve-era-iot-platform.md)
+* [Cách tiếp cận](cach-tiep-can.md)
+* [User Mode](user-mode.md)
 * [Developer Mode](developer-mode/README.md)
   * [How to Start](developer-mode/how-to-start.md)
   * [User Guide](developer-mode/user-guide/README.md)
@@ -10,3 +13,6 @@
   * [What is a Device Template?](developer-mode/what-is-a-device-template.md)
   * [Device Activation Method](developer-mode/device-activation-method.md)
   * [Setup Web Dashboard](developer-mode/setup-web-dashboard.md)
+* [Giải Pháp IoT](giai-phap-iot/README.md)
+  * [Cho Doanh Nghiệp](giai-phap-iot/cho-doanh-nghiep.md)
+  * [Cho User](giai-phap-iot/cho-user.md)
