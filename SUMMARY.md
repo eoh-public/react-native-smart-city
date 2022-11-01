@@ -9,3 +9,4 @@
     * [Add new device](developer-mode/user-guide/add-new-device.md)
   * [What is a Device Template?](developer-mode/what-is-a-device-template.md)
   * [Device Activation Method](developer-mode/device-activation-method.md)
+  * [Setup Web Dashboard](developer-mode/setup-web-dashboard.md)
