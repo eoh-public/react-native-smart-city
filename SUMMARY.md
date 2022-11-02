@@ -15,6 +15,7 @@
   * [What is a Device Template?](developer-mode/what-is-a-device-template.md)
   * [Device Activation Method](developer-mode/device-activation-method.md)
   * [Setup Web Dashboard](developer-mode/setup-web-dashboard.md)
+  * [Widget](developer-mode/widget.md)
 * [Giải Pháp IoT](giai-phap-iot/README.md)
   * [Cho Doanh Nghiệp](giai-phap-iot/cho-doanh-nghiep.md)
   * [Cho User](giai-phap-iot/cho-user.md)
