@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Giới thiệu về E.Ra - IoT Platform](README.md)
-* [Giới thiệu về EoH](gioi-thieu-ve-eoh.md)
 * [Cách tiếp cận](cach-tiep-can.md)
 * [User Mode](user-mode.md)
 * [Developer Mode](developer-mode/README.md)
@@ -16,6 +15,6 @@
   * [Device Activation Method](developer-mode/device-activation-method.md)
   * [Setup Web Dashboard](developer-mode/setup-web-dashboard.md)
   * [Widget](developer-mode/widget.md)
-* [Giải Pháp IoT](giai-phap-iot/README.md)
-  * [Cho Doanh Nghiệp](giai-phap-iot/cho-doanh-nghiep.md)
-  * [Cho User](giai-phap-iot/cho-user.md)
+* [Giải Pháp IoT mẫu](giai-phap-iot-mau/README.md)
+  * [Cho Doanh Nghiệp](giai-phap-iot-mau/cho-doanh-nghiep.md)
+  * [Cho User](giai-phap-iot-mau/cho-user.md)
