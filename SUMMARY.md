@@ -8,7 +8,7 @@
   * [User Guide](developer-mode/user-guide/README.md)
     * [Cài đặt ứng dụng](developer-mode/user-guide/cai-dat-ung-dung.md)
     * [Active new gateway](developer-mode/user-guide/active-new-gateway/README.md)
-      * [How to install ESP32 board](developer-mode/user-guide/active-new-gateway/how-to-install-esp32-board/README.md)
+      * [How to install ESP32 board](developer-mode/user-guide/active-new-gateway/how-to-install-esp32-board.md)
         * [Tạo mới gateway](developer-mode/user-guide/active-new-gateway/how-to-install-esp32-board/tao-moi-gateway.md)
     * [Add new device](developer-mode/user-guide/add-new-device.md)
     * [Create End device](developer-mode/user-guide/create-end-device.md)
