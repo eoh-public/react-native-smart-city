@@ -29,6 +29,6 @@ Truy cập CH Play/ App store, tìm kiếm ứng dụng “E-Ra" hoặc quét m�
 * Tại màn hình **Create an account,** nhập thông tin gồm Tên, Email, Số điện thoại, Mật khẩu và Xác nhận mật khẩu -> nhấn nút “Sign up"
 * Nhập mã xác nhận được gửi từ EoH, sau đó nhấn nút “Verify"
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 **\*Lưu ý:** Cần nhập đúng số điện thoại bạn đang sử dụng, hệ thống sẽ gửi mã xác nhận  qua tin nhắn đến số điện thoại đã nhập.

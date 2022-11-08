@@ -1,10 +1,10 @@
 # Table of contents
 
-* [Giới thiệu về E.Ra - IoT Platform](README.md)
+* [Giới thiệu về E-Ra - IoT Platform](README.md)
 * [Cách tiếp cận](cach-tiep-can.md)
 * [User Mode](user-mode.md)
 * [Developer Mode](developer-mode/README.md)
-  * [Cài đặt ứng dung·](developer-mode/cai-dat-ung-dung.md)
+  * [Cài đặt ứng dung·](developer-mode/how-to-start.md)
   * [User Guide](developer-mode/user-guide/README.md)
     * [Active new gateway](developer-mode/user-guide/active-new-gateway/README.md)
       * [How to install ESP32 board](developer-mode/user-guide/active-new-gateway/how-to-install-esp32-board.md)
