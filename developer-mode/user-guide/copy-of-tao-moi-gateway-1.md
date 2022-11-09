@@ -5,7 +5,7 @@ description: >-
   cổng kết nối với các thiết bị khác nhau.
 ---
 
-# Tạo mới gateway
+# Copy of Tạo mới gateway
 
 **Bước 1:** Tạo mới Dashboard để hiển thị các device của gateway bạn muốn trải nghiệm
 
