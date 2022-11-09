@@ -1,6 +1,10 @@
-# Add new device
+# Thêm mới device vào gateway
 
-ADD Zigbee device :&#x20;
+## 1. Thêm mới "Internal device"
+
+
+
+## 2. Thêm mới "Zigbee device"&#x20;
 
 Chọn phương thức add device. Trước khi add mới một device bạn phải chọn Sub-Unit nơi đặt để device của bạn.
 
@@ -14,5 +18,7 @@ Chọn phương thức add device. Trước khi add mới một device bạn ph�
 
 
 
-Add device Modbus:
+## 3. Thêm mới "Modbus device"
+
+
 
