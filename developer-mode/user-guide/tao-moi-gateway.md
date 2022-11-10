@@ -33,6 +33,8 @@ Chú thích
 
 <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
+_Lưu ý: Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi tiến hành nạp code._ [_https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads_](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads) _bạn có thể vào đây để tải lại driver nếu máy chưa tìm thấy được cổng COM._
+
 * Gateway Activation\
   Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hiện đoạn code đã nạp thành công --> Ấn Go to gateway để hoàn thành tạo mới\
   ![](<../../.gitbook/assets/image (2).png>)     ![](<../../.gitbook/assets/image (11).png>)
