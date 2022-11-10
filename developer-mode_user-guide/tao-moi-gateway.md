@@ -7,9 +7,13 @@ description: >-
 
 # Tạo mới gateway
 
+**Chuẩn bị: Trước khi tiến hành tạo mới , cần dowload phần mềm để tiến hành nạp code theo phương thức**  Arduino" hoặc "PlatformIO" theo file hướng dẫn dưới đây
+
+{% file src="../.gitbook/assets/ERa-Huongdan.pdf" %}
+
 **Bước 1:** Tạo mới Dashboard để hiển thị các device của gateway bạn muốn trải nghiệm
 
-<figure><img src="../../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
 
 Chú thích:\
 1.Chọn mục All Dashboard\
@@ -18,7 +22,7 @@ Chú thích:\
 
 **Bước 2:** Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
-<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 Chú thích
 
@@ -26,21 +30,17 @@ Chú thích
 * Install Library: Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 * Code:\
   \-  Nhập thông tin wiffi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-  ![](../../.gitbook/assets/image.png)     ![](<../../.gitbook/assets/image (3).png>)\
+  ![](../.gitbook/assets/image.png)     ![](<../.gitbook/assets/image (3).png>)\
   \
   \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code, đồng thời trên thiết bị ESP32 ấn nút boot liên tục đến khi hệ thống nhận và chạy % đầu tiền thì thả ra\
-  ![](<../../.gitbook/assets/image (7).png>)      <img src="../../.gitbook/assets/image (8).png" alt="" data-size="original"> -&#x20;
+  ![](<../.gitbook/assets/image (7).png>)      <img src="../.gitbook/assets/image (8).png" alt="" data-size="original"> -&#x20;
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 _Lưu ý: Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi tiến hành nạp code._ [_https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads_](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads) _bạn có thể vào đây để tải lại driver nếu máy chưa tìm thấy được cổng COM._
 
 * Gateway Activation\
   Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hiện đoạn code đã nạp thành công --> Ấn Go to gateway để hoàn thành tạo mới\
-  ![](<../../.gitbook/assets/image (2).png>)     ![](<../../.gitbook/assets/image (11).png>)
+  ![](<../.gitbook/assets/image (2).png>)     ![](<../.gitbook/assets/image (11).png>)
 * Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
-  ![](<../../.gitbook/assets/image (9).png>) \
-  \
-  Tài liệu hướng dẫn nạp code&#x20;
-
-{% file src="../../.gitbook/assets/ERa-Huongdan.pdf" %}
+  ![](<../.gitbook/assets/image (9).png>)&#x20;

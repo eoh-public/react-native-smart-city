@@ -2,7 +2,7 @@
 description: Hệ thống hỗ trợ trải nghiệm IOT trên cả 2 nền tảng Web và Mobile
 ---
 
-# Cài đặt ứng dung·
+# Cài đặt và đăng ký tài khoản
 
 ## Phiên bản web
 

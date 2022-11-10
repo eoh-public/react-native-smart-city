@@ -2,16 +2,16 @@
 description: >-
   The developer is a special user who has access to all the functionality
   required to configure the platform for use by end-users (also called as
-  clients or end-customers). This is usually someone who b
+  clients or end-customers). This is usually someone who
 ---
 
-# Developer Mode
+# Developer Mode\_User guide
 
 
 
 **Developer can:**
 
-* Create and configure Device Templates in an EOH IOT Dashboard
+* Create and configure Gateway in an EOH IOT Dashboard
 * Create and configure web dashboard UI
 * Create and configure mobile dashboard UI
 * Add new devices to the account
