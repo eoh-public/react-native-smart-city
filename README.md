@@ -22,8 +22,8 @@ EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp
 
 ### Developer Mode
 
-{% content-ref url="developer-mode/how-to-start.md" %}
-[how-to-start.md](developer-mode/how-to-start.md)
+{% content-ref url="developer-mode/cai-dat-va-dang-ky-tai-khoan.md" %}
+[cai-dat-va-dang-ky-tai-khoan.md](developer-mode/cai-dat-va-dang-ky-tai-khoan.md)
 {% endcontent-ref %}
 
 {% content-ref url="developer-mode/user-guide/" %}

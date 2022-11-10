@@ -5,7 +5,7 @@
 * [User Mode](user-mode.md)
 * [Developer Mode](developer-mode/README.md)
   * [Hướng dẫn cắm mạch ESP32](developer-mode/huong-dan-cam-mach-esp32.md)
-  * [Cài đặt ứng dung·](developer-mode/how-to-start.md)
+  * [Cài đặt và đăng ký tài khoản](developer-mode/cai-dat-va-dang-ky-tai-khoan.md)
   * [Tạo mới gateway](developer-mode/tao-moi-gateway.md)
   * [User Guide](developer-mode/user-guide/README.md)
     * [Thêm mới device vào gateway](developer-mode/user-guide/them-moi-device-vao-gateway.md)
