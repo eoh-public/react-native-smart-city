@@ -6,7 +6,7 @@ description: Hệ thống hỗ trợ trải nghiệm IOT trên cả 2 nền tả
 
 ## Phiên bản web
 
-**Bước 1:** Đăng ký tài khoản bằng số điện thoại hoặc đăng nhập trực tiếp bằng các nền tảng google, facebook, apple ID trên ứng dụng web [https://app.e-ra.io/](https://app.e-ra.io/) hoặc mobile [EOH App for iOS or Android](https://eohio.atlassian.net/wiki/spaces/PF/pages/421527555/EOH+Developer+mode+White+paper).\
+**Bước 1:** Đăng ký tài khoản bằng số điện thoại hoặc đăng nhập trực tiếp bằng các nền tảng google, facebook, apple ID trên ứng dụng web [https://app.e-ra.io/](https://app.e-ra.io/)\
 **Bước 2:** Bật tính năng "Deverloper mode"
 
 <figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
