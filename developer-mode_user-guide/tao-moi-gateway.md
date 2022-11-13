@@ -11,6 +11,12 @@ description: >-
 
 {% file src="../.gitbook/assets/ERa-Huongdan.pdf" %}
 
+**Bước add bằng Arduino** \
+Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK. \
+****https://dl.espressif.com/dl/package\_esp32\_index.json\
+\
+Sau khi hoàn thành các bước trong file hướng dẫn. Tới bước nạp code vào phần mềm, làm theo hướng dẫn dưới đây.
+
 **Bước 1:** Tạo mới Dashboard để hiển thị các device của gateway bạn muốn trải nghiệm
 
 <figure><img src="../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
