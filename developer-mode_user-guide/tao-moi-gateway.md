@@ -36,7 +36,7 @@ Chú thích
 * Install Library: Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 * Code:\
   \-  Nhập thông tin wiffi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-  ![](<../.gitbook/assets/image (8).png>)     ![](<../.gitbook/assets/image (3).png>)\
+  ![](<../.gitbook/assets/image (8).png>)     ![](<../.gitbook/assets/image (3) (2).png>)\
   \
   \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code, đồng thời trên thiết bị ESP32 ấn nút boot liên tục đến khi hệ thống nhận và chạy % đầu tiền thì thả ra\
   ![](<../.gitbook/assets/image (7).png>)      <img src="../.gitbook/assets/image (8) (1).png" alt="" data-size="original"> -&#x20;

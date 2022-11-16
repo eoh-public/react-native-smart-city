@@ -4,9 +4,9 @@
 
 1.ESP32 modul
 
-* Sơ đồ chân module ESP32 :
+* Sơ đồ chân module ESP32 
 
-<figure><img src="../.gitbook/assets/Picture1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Lưu ý :&#x20;
 
