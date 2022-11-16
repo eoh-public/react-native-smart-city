@@ -2,7 +2,6 @@
 
 * [Giới thiệu về E-Ra - IoT Platform](README.md)
 * [Cách tiếp cận](cach-tiep-can.md)
-* [User Mode](user-mode.md)
 * [Developer Mode\_User guide](developer-mode\_user-guide/README.md)
   * [Hướng dẫn cắm mạch ESP32](developer-mode\_user-guide/huong-dan-cam-mach-esp32.md)
   * [Cài đặt và đăng ký tài khoản](developer-mode\_user-guide/cai-dat-va-dang-ky-tai-khoan.md)
@@ -14,6 +13,7 @@
   * [What is a Device Template?](developer-mode\_user-guide/what-is-a-device-template.md)
   * [Device Activation Method](developer-mode\_user-guide/device-activation-method.md)
   * [Widget](developer-mode\_user-guide/widget.md)
+* [User Mode](user-mode.md)
 * [Giải Pháp IoT mẫu](giai-phap-iot-mau/README.md)
   * [Cho Doanh Nghiệp](giai-phap-iot-mau/cho-doanh-nghiep.md)
   * [Cho User](giai-phap-iot-mau/cho-user.md)

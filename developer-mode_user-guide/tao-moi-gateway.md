@@ -36,10 +36,10 @@ Chú thích
 * Install Library: Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 * Code:\
   \-  Nhập thông tin wiffi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-  ![](../.gitbook/assets/image.png)     ![](<../.gitbook/assets/image (3).png>)\
+  ![](<../.gitbook/assets/image (8).png>)     ![](<../.gitbook/assets/image (3).png>)\
   \
   \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code, đồng thời trên thiết bị ESP32 ấn nút boot liên tục đến khi hệ thống nhận và chạy % đầu tiền thì thả ra\
-  ![](<../.gitbook/assets/image (7).png>)      <img src="../.gitbook/assets/image (8).png" alt="" data-size="original"> -&#x20;
+  ![](<../.gitbook/assets/image (7).png>)      <img src="../.gitbook/assets/image (8) (1).png" alt="" data-size="original"> -&#x20;
 
 <figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
@@ -47,6 +47,6 @@ _Lưu ý: Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi ti
 
 * Gateway Activation\
   Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hiện đoạn code đã nạp thành công --> Ấn Go to gateway để hoàn thành tạo mới\
-  ![](<../.gitbook/assets/image (2).png>)     ![](<../.gitbook/assets/image (11).png>)
+  ![](<../.gitbook/assets/image (2) (2).png>)     ![](<../.gitbook/assets/image (11).png>)
 * Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
   ![](<../.gitbook/assets/image (9).png>)&#x20;
