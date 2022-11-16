@@ -1,12 +1,12 @@
-# Hướng dẫn cắm mạch ESP32
+# Đấu nối thiết bị ngoại vi cho ESP32
 
-{% file src="../.gitbook/assets/Hướng dẫn lắp mạch ESp32.pdf" %}
+{% file src="../../.gitbook/assets/Hướng dẫn lắp mạch ESp32.pdf" %}
 
 1.ESP32 modul
 
 * Sơ đồ chân module ESP32 
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Lưu ý :&#x20;
 
@@ -20,7 +20,7 @@ Tham khảo thêm:&#x20;
 
 &#x20; \- Cấu tạo Breakboard:&#x20;
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 \- Có thể dùng đồng hồ vạn năng để kiểm tra các chân trên Breakboard có nối với nhau hay không.&#x20;
 
@@ -40,7 +40,7 @@ Tham khảo thêm:&#x20;
 
 &#x20; 3.1.1.Cấu tạo nút ấn:&#x20;
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 &#x20; 3.1.2.Cách đấu nối nút ấn:&#x20;
 
@@ -52,7 +52,7 @@ Tham khảo thêm:&#x20;
 
 &#x20;     \+ 1 điện trở 330Ω, 1 điện trở 10KΩ.&#x20;
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 3.2.Đèn led (on/off/dimming):&#x20;
 
@@ -62,7 +62,7 @@ Tham khảo thêm:&#x20;
 
 &#x20;       \+ 1 led: SP-IO36-A0 (PWM).&#x20;
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 3.3.Biến trở:&#x20;
 
@@ -74,4 +74,4 @@ Tham khảo thêm:&#x20;
 
 &#x20;       \+ 1 biến trở 500KΩ: SN-IO39-A3.&#x20;
 
-![](<../.gitbook/assets/image (10).png>)
+![](<../../.gitbook/assets/image (10).png>)
