@@ -38,8 +38,8 @@ EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp
 [device-activation-method.md](developer-mode\_user-guide/device-activation-method.md)
 {% endcontent-ref %}
 
-{% content-ref url="developer-mode_user-guide/setup-web-dashboard.md" %}
-[setup-web-dashboard.md](developer-mode\_user-guide/setup-web-dashboard.md)
+{% content-ref url="developer-mode_user-guide/cau-hinh-hien-thi-widget-trong-unit.md" %}
+[cau-hinh-hien-thi-widget-trong-unit.md](developer-mode\_user-guide/cau-hinh-hien-thi-widget-trong-unit.md)
 {% endcontent-ref %}
 
 {% content-ref url="developer-mode_user-guide/widget.md" %}
