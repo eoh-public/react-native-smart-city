@@ -5,7 +5,7 @@ Lưu ý:
 * Xem sơ đồ chân của Raspberry Pi tại [đây](https://pinout.xyz/pinout/wiringpi)&#x20;
 * Tài khoản mặc định của Raspberry Pi:&#x20;
 
-![](<../../.gitbook/assets/image (40).png>)
+![](<../../.gitbook/assets/image (19).png>)
 
 Hướng dẫn:&#x20;
 
@@ -35,7 +35,7 @@ Bước 7: Run ERa bằng terminal (thay YourAuthToken bằng ERa token – Lấ
 $ sudo ./era --token=YourAuthToken
 ```
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption><p>Connect Era thành công</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption><p>Connect Era thành công</p></figcaption></figure>
 
 <mark style="color:red;">Lưu ý:</mark>&#x20;
 
