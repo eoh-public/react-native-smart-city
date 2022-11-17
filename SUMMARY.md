@@ -8,7 +8,7 @@
   * [Chuẩn bị Firmware](developer-mode\_user-guide/chuan-bi-firmware.md)
     * [ESP32, STM32](developer-mode\_user-guide/chuan-bi-firmware/esp32-stm32.md)
     * [Raspberry Pi](developer-mode\_user-guide/chuan-bi-firmware/raspberry-pi.md)
-  * [Thêm gateway bằng nạp code từ Firmware](developer-mode\_user-guide/them-gateway-bang-nap-code-tu-firmware.md)
+  * [Nạp code\_Add gateway](developer-mode\_user-guide/nap-code\_add-gateway.md)
   * [Thêm mới device vào gateway](developer-mode\_user-guide/them-moi-device-vao-gateway.md)
   * [Cấu hình hiển thị widget trong Unit](developer-mode\_user-guide/cau-hinh-hien-thi-widget-trong-unit.md)
   * [Create End device](developer-mode\_user-guide/create-end-device.md)
