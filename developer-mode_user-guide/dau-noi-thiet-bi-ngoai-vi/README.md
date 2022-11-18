@@ -10,4 +10,4 @@
 
 #### 3. Đấu nối thiết bị ngoại vi cho Raspberry Pi
 
-{% file src="../../.gitbook/assets/[IU] Huong dan Raspberry Pi 3 Model B+.pdf" %}
+{% file src="../../.gitbook/assets/[IU] Huong dan Raspberry Pi 3 Model B+ (1).pdf" %}

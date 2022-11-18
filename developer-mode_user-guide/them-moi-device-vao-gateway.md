@@ -8,7 +8,7 @@ description: >-
 
 
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 * Info: Thông tin cơ bản của 1 gateway
 * Input/Output pins: Tạo mới device và mapping các chân pin được gắn trên board (STM32, ESP32, Raspberry Pi 3)
@@ -18,7 +18,7 @@ description: >-
 
 ## 1.  Info
 
-<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 1. Ấn để chỉnh sửa gateway
 2. Xem thông tin board&#x20;
@@ -27,7 +27,7 @@ description: >-
 
 ## 2. Input/Output pins
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 
 

@@ -1,4 +1,4 @@
-# Setup Web Dashboard
+# Quản lý widget trong Unit
 
 Now we need to setup a dashboard template to interact with our device and visualize data from it.
 

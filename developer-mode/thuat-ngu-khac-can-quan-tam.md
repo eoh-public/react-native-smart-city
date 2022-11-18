@@ -13,5 +13,7 @@
 
     <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-    ![](<../.gitbook/assets/image (8).png>)
+
+
+    <figure><img src="../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 

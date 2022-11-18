@@ -63,7 +63,7 @@ Bảng Registry hiện ra sau đấy chọn version mới nhất và “Add to P
 
 Popup “Add project dependency” -> tiến hành chọn project và click “Add”
 
-<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong bảng Registry -> Examples -> chọn example tương ứng của từng board -> copy nội dung của example
 
@@ -87,7 +87,7 @@ Paste nội dung của example vào file main.cpp
 
 <mark style="color:red;">Dùng module WiFi</mark>
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass wifi(pass).&#x20;
 
@@ -101,7 +101,7 @@ Nhấn vào dấu :heavy\_check\_mark: dưới thanh taskbar để tiến hành 
 
 #### 1.2.4. Upload code
 
-<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37) (1).png" alt=""><figcaption></figcaption></figure>
 
 Mở file platformio.ini của project và tiến hành thay đổi upload\_port sang cổng COM (Window OS) hoặc “/dev/ttyUSB” (Unix-Based OS) của mạch nạp. <mark style="color:red;">(Bỏ qua bước này nếu dùng STM32)</mark>
 
@@ -113,7 +113,7 @@ Mở file platformio.ini của project và tiến hành thay đổi upload\_port
 
 Vào chế độ bootloader (chế độ upload code) trước khi tiến hành upload chương trình bằng cách:&#x20;
 
-<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Mở serial monitor (click vào biểu tượng như hình trên).&#x20;
 * Nhấn giữ nút BOOT đồng thời nhấn và nhả nút RST/EN trên board ESP32.
@@ -182,7 +182,7 @@ Vào File -> Examples -> ERa -> ESP32 -> Basic
 
 :white\_check\_mark: **Đối với board ESP32**
 
-<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10) (3).png" alt=""><figcaption></figcaption></figure>
 
 Thay đổi ERA\_AUTH\_TOKEN thành token của project, tên wifi(ssid) và pass wifi(pass).
 
@@ -198,7 +198,7 @@ Thay đổi ERA\_AUTH\_TOKEN thành token của project, tên wifi(ssid) và pas
 
 <mark style="color:red;">Dùng module Wifi</mark>
 
-<figure><img src="../../.gitbook/assets/image (2) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass wifi(pass).&#x20;
 
