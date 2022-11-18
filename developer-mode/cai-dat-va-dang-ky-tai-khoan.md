@@ -9,7 +9,7 @@ description: Hệ thống hỗ trợ trải nghiệm IOT trên cả 2 nền tả
 **Bước 1:** Đăng ký tài khoản bằng số điện thoại hoặc đăng nhập trực tiếp bằng các nền tảng google, facebook, apple ID trên ứng dụng web [https://app.e-ra.io/](https://app.e-ra.io/)\
 **Bước 2:** Bật tính năng "Deverloper mode"
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Chọn profile để mở trang setup
 2. Bật tính năng deverloper mode
@@ -21,7 +21,7 @@ description: Hệ thống hỗ trợ trải nghiệm IOT trên cả 2 nền tả
 
 Truy cập CH Play/ App store, tìm kiếm ứng dụng “E-Ra" hoặc quét mã QR bên dưới-> Chọn ứng dụng E-Ra , sau đó nhấn nút “Cài đặt"&#x20;
 
-![](<../.gitbook/assets/image (2) (1) (1).png>)![](<../.gitbook/assets/image (3) (1).png>)
+![](<../.gitbook/assets/image (2) (1) (1).png>)![](<../.gitbook/assets/image (3) (1) (1).png>)
 
 **Bước 2: Đăng ký tài khoản**
 

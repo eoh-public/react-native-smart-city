@@ -22,28 +22,28 @@ EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp
 
 ### Developer Mode
 
-{% content-ref url="developer-mode_user-guide/cai-dat-va-dang-ky-tai-khoan.md" %}
-[cai-dat-va-dang-ky-tai-khoan.md](developer-mode\_user-guide/cai-dat-va-dang-ky-tai-khoan.md)
+{% content-ref url="developer-mode/cai-dat-va-dang-ky-tai-khoan.md" %}
+[cai-dat-va-dang-ky-tai-khoan.md](developer-mode/cai-dat-va-dang-ky-tai-khoan.md)
 {% endcontent-ref %}
 
 {% content-ref url="broken-reference" %}
 [Broken link](broken-reference)
 {% endcontent-ref %}
 
-{% content-ref url="developer-mode_user-guide/what-is-a-device-template.md" %}
-[what-is-a-device-template.md](developer-mode\_user-guide/what-is-a-device-template.md)
+{% content-ref url="developer-mode/what-is-a-device-template.md" %}
+[what-is-a-device-template.md](developer-mode/what-is-a-device-template.md)
 {% endcontent-ref %}
 
-{% content-ref url="developer-mode_user-guide/device-activation-method.md" %}
-[device-activation-method.md](developer-mode\_user-guide/device-activation-method.md)
+{% content-ref url="developer-mode/device-activation-method.md" %}
+[device-activation-method.md](developer-mode/device-activation-method.md)
 {% endcontent-ref %}
 
-{% content-ref url="developer-mode_user-guide/cau-hinh-hien-thi-widget-trong-unit.md" %}
-[cau-hinh-hien-thi-widget-trong-unit.md](developer-mode\_user-guide/cau-hinh-hien-thi-widget-trong-unit.md)
+{% content-ref url="developer-mode/quan-ly-widget-trong-unit.md" %}
+[quan-ly-widget-trong-unit.md](developer-mode/quan-ly-widget-trong-unit.md)
 {% endcontent-ref %}
 
-{% content-ref url="developer-mode_user-guide/widget.md" %}
-[widget.md](developer-mode\_user-guide/widget.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 ### Giải pháp IoT mẫu
