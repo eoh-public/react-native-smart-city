@@ -27,7 +27,7 @@ description: >-
 
 ## 2. Input/Output pins
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (4).png" alt=""><figcaption></figcaption></figure>
 
 Tạo mới device trong gateway. Tại đây người dùng mapping chân pin của mình gắn với hoạt động từng config read, config write, action của device đó
 
@@ -41,12 +41,12 @@ Tạo mới device trong gateway. Tại đây người dùng mapping chân pin c
 * Config read: Là các chân pin của device có chức năng đọc được giữ liệu và hiển thị trên widget\
   Ví dụ Giá trị nhiệt độ, độ ẩm,...
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 * Config write: Là các chân pin của device có chức năng ghi được giữ liệu và liên kết với action để điều khiển thiết bị\
   Ví dụ: Điều khiển đèn
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 * Action: Nhập các hoạt động điều khiển
 

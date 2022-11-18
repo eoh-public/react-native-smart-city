@@ -105,7 +105,7 @@ Nhấn vào dấu :heavy\_check\_mark: dưới thanh taskbar để tiến hành 
 
 Mở file platformio.ini của project và tiến hành thay đổi upload\_port sang cổng COM (Window OS) hoặc “/dev/ttyUSB” (Unix-Based OS) của mạch nạp. <mark style="color:red;">(Bỏ qua bước này nếu dùng STM32)</mark>
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (3).png" alt=""><figcaption></figcaption></figure>
 
 * Nhấn vào dấu --> dưới thanh taskbar để tiến hành upload chương trình.&#x20;
 
@@ -126,7 +126,7 @@ Tiến hành upload chương trình&#x20;
 
 ### 1.3. Arduino IDE
 
-<figure><img src="../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (36) (1).png" alt=""><figcaption></figcaption></figure>
 
 Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải bản Arduino IDE(Legacy) tương thích với hệ điều hành.&#x20;
 
@@ -172,7 +172,7 @@ Vào Tools -> Manage Libraries
 
 Tìm “ERa EoH” sau đấy chọn version mới nhất và tiến hành install.
 
-<figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (29) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào File -> Examples -> ERa -> ESP32 -> Basic
 

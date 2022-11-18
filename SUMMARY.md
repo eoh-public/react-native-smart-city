@@ -12,6 +12,7 @@
     * [Raspberry Pi](developer-mode\_user-guide/chuan-bi-firmware/raspberry-pi.md)
   * [Nạp code board (gateway)vào web](developer-mode\_user-guide/nap-code/README.md)
     * [ESP32, STM32\_Nạp code bằng Arduino](developer-mode\_user-guide/nap-code/esp32-stm32\_nap-code-bang-arduino.md)
+    * [Raspberry Pi Pinout](developer-mode/nap-code-board-gateway-vao-web/raspberry-pi-pinout.md)
   * [Quản lý và cấu hình gateway](developer-mode\_user-guide/them-moi-device-vao-gateway.md)
   * [Quản lý Unit](developer-mode/quan-ly-unit.md)
   * [Sử dụng widget 1 cách hiệu quả](developer-mode/su-dung-widget-1-cach-hieu-qua.md)

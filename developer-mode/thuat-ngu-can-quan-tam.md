@@ -1,4 +1,4 @@
-# Thuật ngữ khác cần quan tâm
+# Thuật ngữ cần quan tâm
 
 1. **Unit:** Là 1 địa điểm mà các thiết bị IOT đang hỗ trợ và tại Unit sẽ có tất cả các widget của các device đã lắp đặt\
    Ví dụ: 1 tên 1 căn hộ trong khu chung cư&#x20;
@@ -11,7 +11,7 @@
     Ví dụ: Trong end device đèn 1 sẽ cần hiển thị những widget nào cần mong muốn\
 
 
-    <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
 
 
