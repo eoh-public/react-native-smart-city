@@ -1,6 +1,8 @@
-# Raspberry Pi Pinout
+# Raspberry Pi
 
-Bước 1: Ghim dây nguồn, dây HDMI, chuột và bàn phím
+Bước 1: Ghim dây nguồn, dây HDMI, chuột và bàn phím vào gatway Raspberry Pi
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Bước 2: Mở Terminal của Raspberry\
 
@@ -47,7 +49,7 @@ Bước 8: Terminal của Raspberry tiếp tục chạy lệnh Token được si
 $ sudo ./era --token=1er43
 ```
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
 
 Bước 9: Bấm Next Step để tiến hành nạp codem đợi 30-60 giây
 

@@ -8,7 +8,7 @@ description: >-
 
 
 
-<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 * Info: Thông tin cơ bản của 1 gateway
 * Input/Output pins: Tạo mới device và mapping các chân pin được gắn trên board (STM32, ESP32, Raspberry Pi 3)
@@ -18,7 +18,7 @@ description: >-
 
 ## 1.  Info
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 1. Ấn để chỉnh sửa gateway
 2. Xem thông tin board&#x20;
@@ -27,7 +27,7 @@ description: >-
 
 ## 2. Input/Output pins
 
-<figure><img src="../.gitbook/assets/image (10) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10) (4).png" alt=""><figcaption></figcaption></figure>
 
 Tạo mới device trong gateway. Tại đây người dùng mapping chân pin của mình gắn với hoạt động từng config read, config write, action của device đó
 
@@ -41,16 +41,16 @@ Tạo mới device trong gateway. Tại đây người dùng mapping chân pin c
 * Config read: Là các chân pin của device có chức năng đọc được giữ liệu và hiển thị trên widget\
   Ví dụ Giá trị nhiệt độ, độ ẩm,...
 
-<figure><img src="../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 * Config write: Là các chân pin của device có chức năng ghi được giữ liệu và liên kết với action để điều khiển thiết bị\
   Ví dụ: Điều khiển đèn
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 * Action: Nhập các hoạt động điều khiển
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. Zigbee devices
 
