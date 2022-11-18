@@ -12,6 +12,6 @@ Nếu bạn muốn làm chủ sản phẩm, tự bản thân mình thiết kế 
 
 Nếu bạn đang cần các ý tưởng, giải pháp mẫu để hiểu rõ hơn cách phát triển một dự án IoT cũng như cách E-Ra - IoT Platform hoạt động cho các giải pháp thông minh. Bạn có thể tham khảo những bộ giải pháp cơ bản nhưng đầy đủ và bắt tay nhanh vào bước phát triển sản phẩm của cá nhân.
 
-{% content-ref url="video-huong-dan-co-ban/" %}
-[video-huong-dan-co-ban](video-huong-dan-co-ban/)
+{% content-ref url="video-huong-dan-co-ban.md" %}
+[video-huong-dan-co-ban.md](video-huong-dan-co-ban.md)
 {% endcontent-ref %}

@@ -17,6 +17,4 @@
   * [Sử dụng widget 1 cách hiệu quả](developer-mode/su-dung-widget-1-cach-hieu-qua.md)
   * [Device Activation Method](developer-mode\_user-guide/device-activation-method.md)
 * [User Mode](user-mode.md)
-* [Video hướng dẫn cơ bản](video-huong-dan-co-ban/README.md)
-  * [Cho Doanh Nghiệp](video-huong-dan-co-ban/cho-doanh-nghiep.md)
-  * [Cho User](video-huong-dan-co-ban/cho-user.md)
+* [Video hướng dẫn cơ bản](video-huong-dan-co-ban.md)
