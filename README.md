@@ -1,58 +1,26 @@
 # Giới thiệu về E-Ra - IoT Platform
 
-### Sơ lược về E-Ra - IoT Platform
+## Sơ lược về E-Ra - IoT Platform
 
 E-Ra - IoT Platform là nền tảng IoT mở do EoH phát triển, cho phép các nhà phát triển phần mềm và thiết bị IoT có thể theo dõi kết quả dự án trên giao diện đẹp mắt, đồng nhất và chuyên nghiệp. Ngoài ra với bộ thư viện được EoH phát triển sẽ giúp cho các nhà phát thiển dễ dàng hơn trong việc kết nối các thiết bị IoT và quản lý chúng dễ như trở bàn tay.
 
-### Giới thiệu về EoH
+## Giới thiệu về EoH
 
 EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp hỗ trợ và đồng hành cùng các nhà phát triển, nhà cung cấp các giải pháp thông minh cho nhiều ngành mũi nhọn khác nhau.
 
-### Cách tiếp cận E-Ra - IoT Platform
+### **IoT Smart Solutions for a Smart Life**
 
-{% content-ref url="cach-tiep-can.md" %}
-[cach-tiep-can.md](cach-tiep-can.md)
-{% endcontent-ref %}
+Ứng dụng EoH cho phép người dùng dễ dàng kết nối, quản lý và điều khiển nhiều thiết bị IoT từ các nhà sản xuất khác nhau. Ứng dụng của chúng tôi cũng cung cấp quyền truy cập vào nhiều dịch vụ như nhà thông minh, bãi đậu xe thông minh, v.v.!
 
-### User Mode
+### **One App Connects All**
 
-{% content-ref url="user-mode.md" %}
-[user-mode.md](user-mode.md)
-{% endcontent-ref %}
+Khả năng kết nối, kiểm soát và quản lý liền mạch trên nhiều thiết bị và địa điểm.
 
-### Developer Mode
+### **Multiple Protocols Supported**
 
-{% content-ref url="developer-mode_user-guide/cai-dat-va-dang-ky-tai-khoan.md" %}
-[cai-dat-va-dang-ky-tai-khoan.md](developer-mode\_user-guide/cai-dat-va-dang-ky-tai-khoan.md)
-{% endcontent-ref %}
+Tự hào đại diện cho công nghệ “Plug & Play” độc quyền của chúng tôi dành cho Cổng kết nối IoT đã được cấp bằng sáng chế từ USPTO vào ngày 13 tháng 10 năm 2020.
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
+### **Full Range of Market Penetration**
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-{% content-ref url="developer-mode_user-guide/device-activation-method.md" %}
-[device-activation-method.md](developer-mode\_user-guide/device-activation-method.md)
-{% endcontent-ref %}
-
-{% content-ref url="developer-mode_user-guide/cau-hinh-hien-thi-widget-trong-unit.md" %}
-[cau-hinh-hien-thi-widget-trong-unit.md](developer-mode\_user-guide/cau-hinh-hien-thi-widget-trong-unit.md)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-### Giải pháp IoT mẫu
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
+Tận hưởng cuộc sống thông minh hơn với khả năng truy cập vào các dịch vụ đa dạng trên mạng lưới hệ thống của chúng tôi, từ F\&B thông minh, Nhà thông minh, Y tế thông minh, v.v.!
 
