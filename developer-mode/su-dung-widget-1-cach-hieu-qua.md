@@ -8,21 +8,28 @@ Các widget này chỉ cần mapping datastreams (config read) để nhận nh�
 
 Widget này có thể sử dụng cho tất cả các device bật, tắt với tín hiệu như 0,1. Đây là widget được sử dụng phổ biến nhất cho dạng điều khiển 1 hành động bất kỳ
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (6).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.2. 3 Buttons Action
 
-Widget này có thể sử dụng cho tất cả các device bật, tắt với tín hiệu như 0,1. Đây là widget được sử dụng phổ biến nhất cho dạng điều khiển 1 hành động bất kỳ
+Widget này có thể sử dụng điều khiển 3 action trong cùng 1 widget\
+Ví dụ: Device Cổng gate hoặc rèm(đóng, dừng, mở),..&#x20;
 
 <figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.3. State Grid
 
+Widget này có thể sử dụng điều khiển nhiều action trong cùng 1 widget\
+Ví dụ: Bật tắt nhiều đèn, điều khiển các chế độ khác nhau của máy lạnh,...
 
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.4. Number Action
 
+Widget này có thể sử dụng điều khiển nhiều action trong cùng 1 widget\
+Ví dụ: Bật tắt nhiều đèn, điều khiển các chế độ khác nhau của máy lạnh,...
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.5. Slide Range
 
