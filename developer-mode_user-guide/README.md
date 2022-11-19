@@ -16,7 +16,7 @@ description: >-
 * Hiển thị và các điều khiển nhiều widget thuộc các gateway khác nhau trong cùng 1 unit
 * Đồng bộ hóa điều khiển trên ứng dụng web và mobile
 * Dễ dàng sửu dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
-  Unit-->sub-unit -\_> End device
+  Unit-->sub-unit --> End device
 
 **Bật Developer Mode.**
 
