@@ -2,15 +2,15 @@
 
 ## Sơ lược về E-Ra - IoT Platform
 
-E-Ra - IoT Platform là nền tảng IoT mở do EoH phát triển, cho phép các nhà phát triển phần mềm và thiết bị IoT có thể theo dõi kết quả dự án trên giao diện đẹp mắt, đồng nhất và chuyên nghiệp. Ngoài ra với bộ thư viện được EoH phát triển sẽ giúp cho các nhà phát thiển dễ dàng hơn trong việc kết nối các thiết bị IoT và quản lý chúng dễ như trở bàn tay.
+E-Ra - IoT Platform là nền tảng IoT mở do EoH phát triển, cho phép các nhà phát triển phần mềm và thiết bị IoT có thể theo dõi kết quả dự án trên giao diện đẹp mắt, đồng nhất và chuyên nghiệp. Ngoài ra với bộ thư viện được EoH phát triển sẽ giúp cho các nhà phát triển dễ dàng hơn trong việc kết nối các thiết bị IoT và quản lý chúng dễ như trở bàn tay.
 
 ## Giới thiệu về EoH
 
-EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp hỗ trợ và đồng hành cùng các nhà phát triển, nhà cung cấp các giải pháp thông minh cho nhiều ngành mũi nhọn khác nhau.
+EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp hỗ trợ và đồng hành cùng các nhà phát triển, các nhà cung cấp các giải pháp thông minh cho nhiều ngành mũi nhọn khác nhau.
 
 ### **IoT Smart Solutions for a Smart Life**
 
-Ứng dụng EoH cho phép người dùng dễ dàng kết nối, quản lý và điều khiển nhiều thiết bị IoT từ các nhà sản xuất khác nhau. Ứng dụng của chúng tôi cũng cung cấp quyền truy cập vào nhiều dịch vụ như nhà thông minh, bãi đậu xe thông minh, v.v.!
+Ứng dụng EoH cho phép người dùng dễ dàng kết nối, quản lý và điều khiển nhiều thiết bị IoT từ các nhà sản xuất khác nhau. Ứng dụng của chúng tôi cũng cung cấp quyền truy cập vào nhiều dịch vụ như nhà thông minh, bãi đậu xe thông minh, V.v..!
 
 ### **One App Connects All**
 
@@ -22,5 +22,5 @@ Tự hào đại diện cho công nghệ “Plug & Play” độc quyền của 
 
 ### **Full Range of Market Penetration**
 
-Tận hưởng cuộc sống thông minh hơn với khả năng truy cập vào các dịch vụ đa dạng trên mạng lưới hệ thống của chúng tôi, từ F\&B thông minh, Nhà thông minh, Y tế thông minh, v.v.!
+Tận hưởng cuộc sống thông minh hơn với khả năng truy cập vào các dịch vụ đa dạng trên mạng lưới hệ thống của chúng tôi, từ F\&B thông minh, Nhà thông minh, Y tế thông minh, V.v..!
 
