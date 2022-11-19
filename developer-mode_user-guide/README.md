@@ -16,12 +16,12 @@ description: >-
 *   Hiển thị và các điều khiển nhiều widget thuộc các gateway khác nhau trong cùng 1 unit\
 
 
-    <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (3) (6).png" alt=""><figcaption></figcaption></figure>
 * Đồng bộ hóa điều khiển trên ứng dụng web và mobile
 * Dễ dàng sử dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
   Unit-->Sub-Unit --> End device
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 **Bật Developer Mode.**
 

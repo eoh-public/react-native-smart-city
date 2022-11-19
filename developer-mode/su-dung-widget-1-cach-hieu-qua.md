@@ -8,7 +8,7 @@ Các widget này chỉ cần mapping datastreams (config read) để nhận nh�
 
 Widget này có thể sử dụng cho tất cả các device bật, tắt với tín hiệu như 0,1. Đây là widget được sử dụng phổ biến nhất cho dạng điều khiển 1 hành động bất kỳ
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.2. 3 Buttons Action
 
@@ -22,21 +22,21 @@ Ví dụ: Device Cổng gate hoặc rèm(đóng, dừng, mở),..&#x20;
 Widget này có thể sử dụng điều khiển nhiều action trong cùng 1 widget\
 Ví dụ: Bật tắt nhiều đèn, điều khiển các chế độ khác nhau của máy lạnh,...
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.4. Number Action
 
 Widget này có thể sử dụng điều khiển nhiều action  nhanh giá trị lên xuống\
 Ví dụ: điều khiển nhiệt độ máy lạnh, điều khiển đèn (truyền nhanh trạng thái 0,1),...
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (6).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.5. Slide Range
 
 Widget này có thể sử dụng điều khiển tăng giảm giá trị \
 Ví dụ: điều khiển độ sáng của đèn dimming
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (4).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.6. Options Dropdown Action
 

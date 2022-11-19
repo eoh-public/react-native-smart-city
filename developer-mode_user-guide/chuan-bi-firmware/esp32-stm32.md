@@ -190,7 +190,7 @@ Thay đổi ERA\_AUTH\_TOKEN thành token của project, tên wifi(ssid) và pas
 
 <mark style="color:red;">Dùng module Gsm (SIM)</mark>
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Chọn APN nhà mạng đang dùng.&#x20;
 * Chọn modem SIM đang dùng.&#x20;

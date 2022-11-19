@@ -24,7 +24,7 @@ description: >-
 
 ## 2. Input/Output pins
 
-<figure><img src="../.gitbook/assets/image (10) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tạo mới device trong gateway. Tại đây người dùng mapping chân pin của mình gắn với hoạt động từng config read, config write, action của device đó
 
@@ -60,7 +60,7 @@ Tính năng đang phát triển
 
 Ấn vào setup để tiến hành tạo mới device bằng phương pháp modbus
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 Tạo mới device trong gateway. Tại đây người dùng nhập các thông tin cơ bản của modbus
 

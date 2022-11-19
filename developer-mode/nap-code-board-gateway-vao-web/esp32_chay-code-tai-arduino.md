@@ -13,14 +13,9 @@ Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm �
 \
 Sau khi hoàn thành các bước trong file hướng dẫn. Tới bước nạp code vào phần mềm, làm theo hướng dẫn dưới đây.
 
-**Bước 1:** Tạo mới Dashboard để hiển thị các device của gateway bạn muốn trải nghiệm
+**Bước 1:** Tạo mới Unit để chứa thông tin hiển thị của gateway bạn muốn trải nghiệm
 
-<figure><img src="../../.gitbook/assets/image (2) (3) (1).png" alt=""><figcaption></figcaption></figure>
-
-Chú thích:\
-1.Chọn mục All Dashboard\
-2\. Chọn Create dashboard\
-3\. Nhập thông tin và hoàn thành tạo mới
+![](<../../.gitbook/assets/image (2).png>)
 
 **Bước 2:** Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
@@ -28,7 +23,7 @@ Chú thích:\
 
 Chú thích
 
-* Hardware: Nhập thông tin cơ bản của gateway nạp vào hệ thống và Dashboard (unit) hiển thị
+* Hardware: Nhập thông tin cơ bản của gateway nạp vào hệ thống và Unit hiển thị
 * Install Library: Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 * Code:\
   \-  Nhập thông tin wiffi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
@@ -45,5 +40,5 @@ _Lưu ý: Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi ti
   Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hiện đoạn code đã nạp thành công --> Ấn Go to gateway để hoàn thành tạo mới\
   **Thời gian chờ kết nối từ 30s-60s**\
   ![](<../../.gitbook/assets/image (2) (2) (2).png>)     ![](<../../.gitbook/assets/image (11) (1).png>)
-* Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
+* Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của E-Ra. Gateway mới tạo sẽ hiện online\
   ![](<../../.gitbook/assets/image (9) (1) (1).png>)&#x20;
