@@ -63,7 +63,7 @@ Bảng Registry hiện ra sau đấy chọn version mới nhất và “Add to P
 
 Popup “Add project dependency” -> tiến hành chọn project và click “Add”
 
-<figure><img src="../../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong bảng Registry -> Examples -> chọn example tương ứng của từng board -> copy nội dung của example
 
@@ -120,7 +120,7 @@ Vào chế độ bootloader (chế độ upload code) trước khi tiến hành 
 
 &#x20;
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tiến hành upload chương trình&#x20;
 

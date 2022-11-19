@@ -6,7 +6,7 @@ description: Hệ thống hỗ trợ trải nghiệm IOT trên cả 2 nền tả
 
 **Bước 1:** Đường link trải nghiệp web [https://app.e-ra.io/  ](https://app.e-ra.io/)và mobile app bằng cách truy cập CH Play/ App store, tìm kiếm ứng dụng “E-Ra" hoặc quét mã QR bên dưới-> Chọn ứng dụng E-Ra , sau đó nhấn nút “Cài đặt"&#x20;
 
-![](<../.gitbook/assets/image (2) (1) (1).png>)![](<../.gitbook/assets/image (3) (1) (1).png>)
+![](<../.gitbook/assets/image (2) (1) (1).png>)![](<../.gitbook/assets/image (3) (1) (1) (1).png>)
 
 **Bước 2: Đăng ký tài khoản**
 
