@@ -1,19 +1,18 @@
-# Raspberry Pi
+# Raspberry Pi\_Chạy code tại Terminal
 
 **Bước 1:** Ghim dây nguồn, dây HDMI, chuột và bàn phím vào gatway Raspberry Pi
 
 <figure><img src="../../.gitbook/assets/image (2) (4).png" alt=""><figcaption></figcaption></figure>
 
-**Bước 2:** Mở Terminal của Raspberry\
+**Bước 2:** Khi hoàn thành cắm dây cửa sổ màn hình sẽ tự mở Terminal của Raspberry đẻ tiến hành chạy các lệnh code
 
+<figure><img src="../../.gitbook/assets/image (10) (5).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-
-**Bước 3:** Mở link [http://wiringpi.com/download-and-install/](http://wiringpi.com/download-and-install/)
+**Bước 3:** Trên web, ấn thêm mới gateway và chọn loại board Raspberry Pi --> Tại bước install Library  mở link **** [http://wiringpi.com/download-and-install/](http://wiringpi.com/download-and-install/)
 
 <figure><img src="../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 4:** Trong Terminal của Raspberry chạy lệnh&#x20;
 
@@ -55,7 +54,7 @@ $ sudo ./era --token=1er43
 
 **Bước 9:** Bấm Next Step để tiến hành nạp codem đợi 30-60 giây
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 10:** Ấn go to gateway để hoàn tất add gateway
 
@@ -63,4 +62,4 @@ $ sudo ./era --token=1er43
 
 <figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>

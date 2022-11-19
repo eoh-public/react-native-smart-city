@@ -28,7 +28,7 @@ Truy cập [Visual Studio Code - Code Editing. Redefined](https://code.visualstu
 
 #### 1.2.2. Tạo project
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Trong VS Code chọn PlatformIO&#x20;
 * PlatformIO: Quick Access -> PIO Home -> Open&#x20;
@@ -153,7 +153,7 @@ ESP8266: [http://arduino.esp8266.com/stable/package\_esp8266com\_index.json](htt
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm ESP32 -> nhấn install để thêm package Boards ESP32 vào Arduino IDE
 
@@ -206,7 +206,7 @@ Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass
 
 **Đối với board STM32 vui lòng cài đặt thêm thư viện bỗ trợ ở mục 2.2**.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (22) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Port -> Chọn cổng COM của mạch nạp. <mark style="color:red;">(Bỏ qua bước này nếu dùng STM32)</mark>
 
@@ -235,7 +235,7 @@ Yêu cầu cài đặt thêm thư viện STM32duino FreeRTOS by stm32duino, và 
 
 <figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption><p>TinyGSM trên Arduino IDE</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11) (2).png" alt=""><figcaption><p>TinyGSM trên Arduino IDE</p></figcaption></figure>
 
 ### 2.3. ESP8266
 
@@ -243,4 +243,4 @@ Yêu cầu cài đặt thêm thư viện Preferences by vshymanskyy
 
 <figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption><p>Preferences trên PlatfromIO</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption><p>Preferences trên Arduino IDE</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12) (2).png" alt=""><figcaption><p>Preferences trên Arduino IDE</p></figcaption></figure>

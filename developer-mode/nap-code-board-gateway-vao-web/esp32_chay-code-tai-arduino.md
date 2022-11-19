@@ -5,7 +5,7 @@ description: >-
   cổng kết nối với các thiết bị khác nhau.
 ---
 
-# ESP32\_Arduino
+# ESP32\_Chạy code tại Arduino
 
 **Bước add bằng Arduino** \
 Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK. \
@@ -46,4 +46,4 @@ _Lưu ý: Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi ti
   **Thời gian chờ kết nối từ 30s-60s**\
   ![](<../../.gitbook/assets/image (2) (2) (2).png>)     ![](<../../.gitbook/assets/image (11) (1).png>)
 * Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
-  ![](<../../.gitbook/assets/image (9) (1).png>)&#x20;
+  ![](<../../.gitbook/assets/image (9) (1) (1).png>)&#x20;
