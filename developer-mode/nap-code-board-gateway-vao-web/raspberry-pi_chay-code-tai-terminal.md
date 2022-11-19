@@ -10,7 +10,7 @@
 
 **Bước 3:** Trên web, ấn thêm mới gateway và chọn loại board Raspberry Pi --> Tại bước install Library  mở link **** [http://wiringpi.com/download-and-install/](http://wiringpi.com/download-and-install/)
 
-<figure><img src="../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (36) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
@@ -42,7 +42,7 @@ $ cd era-lib/linux
 $ make clean all target=raspberry
 ```
 
-<figure><img src="../../.gitbook/assets/image (19) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 8:** Terminal của Raspberry tiếp tục chạy lệnh Token được sinh ra theo từng gateway
 

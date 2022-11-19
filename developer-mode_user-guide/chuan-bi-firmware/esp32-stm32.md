@@ -126,7 +126,7 @@ Tiến hành upload chương trình&#x20;
 
 ### 1.3. Arduino IDE
 
-<figure><img src="../../.gitbook/assets/image (36) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (36) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải bản Arduino IDE(Legacy) tương thích với hệ điều hành.&#x20;
 
@@ -231,7 +231,7 @@ Yêu cầu cài đặt thêm thư viện STM32duino FreeRTOS by stm32duino, và 
 
 <figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption><p>STM32duino FreeRTOS trên PlatformIO</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption><p>TinyGSM trên PlatformIO</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (41) (1).png" alt=""><figcaption><p>TinyGSM trên PlatformIO</p></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
 

@@ -6,17 +6,17 @@
 Có thể thu nhỏ menu để tăng diện tích giám sát.\
 Tại đây bạn có thể điều khiển hoặc giám sát các giá trị 1 cách tức thời và nhanh chóng
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 **Bước 3:** Ấn vào Edit Unit để thêm mới widget hoặc sắp xếp lại vị trí bằng cách kéo di chuyển widget
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 Các widget hỗ trợ được đển ở góc trái màn hình
 
 **Bước 4:** Mapping giá trị config vào widget đã lựa chọn bằng cách rê chuột tới widget cần cấu hình và ấn vào icon răng cưa
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 Ấn vào để tiến hành mapping theo từng widget. Widget hỗ trợ cho việc giám sát cụ thể
 
