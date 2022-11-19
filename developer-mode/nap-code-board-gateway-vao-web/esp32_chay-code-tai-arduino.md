@@ -35,9 +35,9 @@ Chú thích
   ![](<../../.gitbook/assets/image (8) (1).png>)     ![](<../../.gitbook/assets/image (3) (2).png>)\
   \
   \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code, đồng thời trên thiết bị ESP32 ấn nút boot liên tục đến khi hệ thống nhận và chạy % đầu tiền thì thả ra\
-  ![](<../../.gitbook/assets/image (7) (1).png>)      <img src="../../.gitbook/assets/image (8) (1) (1).png" alt="" data-size="original"> -&#x20;
+  ![](<../../.gitbook/assets/image (7) (1) (1).png>)      <img src="../../.gitbook/assets/image (8) (1) (1).png" alt="" data-size="original"> -&#x20;
 
-<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 _Lưu ý: Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi tiến hành nạp code._ [_https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads_](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads) _bạn có thể vào đây để tải lại driver nếu máy chưa tìm thấy được cổng COM._
 

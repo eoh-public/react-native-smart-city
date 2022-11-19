@@ -20,7 +20,7 @@
 sudo apt-get install wiringpi
 ```
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (13) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 5:** Terminal của Raspberry chạy lệnh để kiểm tra xem wirePi được cài đặt chưa
 

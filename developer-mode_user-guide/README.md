@@ -1,32 +1,28 @@
 ---
 description: >-
-  The developer is a special user who has access to all the functionality
-  required to configure the platform for use by end-users (also called as
-  clients or end-customers). This is usually someone who
+  Tính năng mở rộng này cho phép người dùng là developer truy cập và cho phép
+  cấu hình tất cả các thông số kỹ thuật cũng như cách hiển thị của mình một cách
+  nhanh chóng và điểm mạnh ở đây là No-Code
 ---
 
 # Developer Mode
 
 
 
-**Developer can:**
+**Developer có thể:**
 
-* Create and configure Gateway in an EOH IOT Dashboard
-* Create and configure web dashboard UI
-* Create and configure mobile dashboard UI
-* Add new devices to the account
-* Publish Templates to EOH IOT Dashboard to manage.
-* Use other features accordingly to the chosen in the plan.
+* Tạo và cấu gateway (ESP32, STM32-Gsm, Raspberry Pi) tại ứng dụng web của E-Ra
+* Tạo và cấu hình các config&#x20;
+* Hiển thị và các điều khiển nhiều widget thuộc các gateway khác nhau trong cùng 1 unit
+* Đồng bộ hóa điều khiển trên ứng dụng web và mobile
+* Dễ dàng sửu dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
+  Unit-->sub-unit -\_> End device
 
+**Bật Developer Mode.**
 
-
-
-
-**How to Enable the Developer Mode.**
-
-1. In the EOH App or EOH IOT Web Dashboard.
-2. Navigate to the My Account / Personal info in the left menu.
-3. Check that **Developer Mode** switch is set to ON.
+1. Đăng ký hoặc đăng nhập tài khoản lần đầu tiên
+2. Ấn vào Deverloper thanh thanh menu để tiến hành trải nghiệm
+3. Kiểm tra đã bật chế độ dev mode tại acount , bật On "Deverloper Mode"
 
 <figure><img src="../.gitbook/assets/Screen Shot 2022-07-22 at 14.08.29.png" alt=""><figcaption></figcaption></figure>
 
