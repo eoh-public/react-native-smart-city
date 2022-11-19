@@ -42,7 +42,7 @@ $ cd era-lib/linux
 $ make clean all target=raspberry
 ```
 
-<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (19) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 8:** Terminal của Raspberry tiếp tục chạy lệnh Token được sinh ra theo từng gateway
 

@@ -86,11 +86,11 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 * Config write: Là các device có chức năng ghi được giữ liệu và liên kết với action để điều khiển thiết bị\
   Ví dụ: Với thiết bị của bộ điều khiển
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 * Action: Nhập các action của device đó
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ví dụ: Với thiết bị của bộ điều khiển
 

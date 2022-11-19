@@ -1,26 +1,25 @@
-# Quản lý widget trong Unit
+# Quản lý Unit
 
-Now we need to setup a dashboard template to interact with our device and visualize data from it.
+**Bước 1:** Tạo mới Unit (Nếu chưa có)
 
-1/ Navigate to the Template you created before.
+**Bước 2:** Ấn vào Unit cần giám sát để giám sát nhanh các Widget của Unit bạn quản lý.\
+Có thể thu nhỏ menu để tăng diện tích giám sát.\
+Tại đây bạn có thể điều khiển hoặc giám sát các giá trị 1 cách tức thời và nhanh chóng
 
-2/ Go to Dashboard Tab and drag-n-drop these widgets to the canvas: Swith, label , chart, button…etc
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
-3/ Drag and drop them to
+**Bước 3:** Ấn vào Edit Unit để thêm mới widget hoặc sắp xếp lại vị trí bằng cách kéo di chuyển widget
 
-&#x20;
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-After widgets are added you can apply the following **actions**:
+Các widget hỗ trợ được đển ở góc trái màn hình
 
-* **Re-Arrange** – drag the widgets to a position you want so you can form desired dashboard view
-* **Delete** – permanently deletes the widget. Hover the widget and navigate to top right, click bin pictogram.
-* **Clone** – clones the selected widget (also it can be applied to the configured widget). Hover the widget and navigate to top right, click clone pictogram.
-* **Configure** – opens widget configuration window.
+**Bước 4:** Mapping giá trị config vào widget đã lựa chọn bằng cách rê chuột tới widget cần cấu hình và ấn vào icon răng cưa
 
-**IMPORTANT!** At this stage you have set up a dashboard _template_ only and it will not yet connect to your actual devices. You will need to save the template and apply it to actual devices.
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-In order to see actual data and interact with your device, you need to go to your devices: Search -> My Devices -> Device
+Ấn vào để tiến hành mapping theo từng widget. Widget hỗ trợ cho việc giám sát cụ thể
 
-&#x20;
-
-The User can be config for a single widget added.
+{% content-ref url="su-dung-widget-1-cach-hieu-qua.md" %}
+[su-dung-widget-1-cach-hieu-qua.md](su-dung-widget-1-cach-hieu-qua.md)
+{% endcontent-ref %}
