@@ -26,7 +26,7 @@ Ví dụ: Bật tắt nhiều đèn, điều khiển các chế độ khác nhau
 
 ### 1.4. Number Action
 
-Widget này có thể sử dụng điều khiển nhiều action  nhanh giá trị lên xuống\
+Widget này có thể sử dụng điều khiển nhiều action nhanh giá trị lên xuống\
 Ví dụ: điều khiển nhiệt độ máy lạnh, điều khiển đèn (truyền nhanh trạng thái 0,1),...
 
 <figure><img src="../.gitbook/assets/image (1) (6).png" alt=""><figcaption></figcaption></figure>
@@ -73,7 +73,7 @@ Ví dụ: giám sát công xuất, pH,...
 ### 2.4. Circle
 
 Widget này có thể sử dụng hiển thị rõ được những ngưỡng cảnh báo, trang thái một cách sinh động  mà không cần phải đoán với giá trị hiện lên báo hiện 1 sự kiện như thế nào\
-Ví dụ: Chất lượng nước, chấy lượng không khí (tốt, trung bình, thấp,...), hoặc trạng thái cửa mở/đóng,..&#x20;
+Ví dụ: Chất lượng nước, chất lượng không khí (tốt, trung bình, thấp,...), hoặc trạng thái cửa mở/đóng,...&#x20;
 
 <figure><img src="../.gitbook/assets/image (24) (2).png" alt=""><figcaption></figcaption></figure>
 
