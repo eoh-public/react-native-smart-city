@@ -75,7 +75,7 @@ Ví dụ: giám sát công xuất, pH,...
 Widget này có thể sử dụng hiển thị rõ được những ngưỡng cảnh báo, trang thái một cách sinh động  mà không cần phải đoán với giá trị hiện lên báo hiện 1 sự kiện như thế nào\
 Ví dụ: Chất lượng nước, chấy lượng không khí (tốt, trung bình, thấp,...), hoặc trạng thái cửa mở/đóng,..&#x20;
 
-<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (24) (2).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.5. Compass
 
@@ -88,4 +88,4 @@ Widget chuyên cho hiển thị dạng hướng gió và tốc độ gió cho c�
 Widget này có thể hiển thị các video đã được quy đổi "http://demo.mp4" để chiếu trên widget của mình. Chỉ cần coppy URL đã được quy đổi vào widget\
 ví dụ: [https://gist.github.com/jsturgis/3b19447b304616f18657](https://gist.github.com/jsturgis/3b19447b304616f18657)
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13) (3).png" alt=""><figcaption></figcaption></figure>
