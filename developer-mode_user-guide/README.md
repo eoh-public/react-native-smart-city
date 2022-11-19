@@ -13,10 +13,15 @@ description: >-
 
 * Tạo và cấu gateway (ESP32, STM32-Gsm, Raspberry Pi) tại ứng dụng web của E-Ra
 * Tạo và cấu hình các config&#x20;
-* Hiển thị và các điều khiển nhiều widget thuộc các gateway khác nhau trong cùng 1 unit
+*   Hiển thị và các điều khiển nhiều widget thuộc các gateway khác nhau trong cùng 1 unit\
+
+
+    <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 * Đồng bộ hóa điều khiển trên ứng dụng web và mobile
-* Dễ dàng sửu dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
-  Unit-->sub-unit --> End device
+* Dễ dàng sử dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
+  Unit-->Sub-Unit --> End device
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 **Bật Developer Mode.**
 

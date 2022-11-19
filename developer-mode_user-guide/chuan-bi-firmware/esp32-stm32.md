@@ -198,7 +198,7 @@ Thay đổi ERA\_AUTH\_TOKEN thành token của project, tên wifi(ssid) và pas
 
 <mark style="color:red;">Dùng module Wifi</mark>
 
-<figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2) (3).png" alt=""><figcaption></figcaption></figure>
 
 Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass wifi(pass).&#x20;
 
