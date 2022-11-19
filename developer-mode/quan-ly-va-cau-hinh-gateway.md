@@ -29,14 +29,14 @@ description: >-
 Tạo mới device trong gateway. Tại đây người dùng mapping chân pin của mình gắn với hoạt động từng config read, config write, action của device đó
 
 * Ditital: tín hiệu được phân tách theo thời gian. Nó sử dụng các số 0 và 1 rời rạc để biểu diễn thông tin\
-  ví dụ đèn, nút nhấn,trạng thái cửa..
-* Analog:  tín hiệu được truyền liên tục (không ngắt quãng) thay đổi theo thời gian\
-  ví dụ nhiệt độ, độ ẩm
+  Ví dụ: đèn, nút nhấn,trạng thái cửa..
+* Analog: tín hiệu được truyền liên tục (không ngắt quãng) thay đổi theo thời gian\
+  Ví dụ: nhiệt độ, độ ẩm
 
 **Ví dụ: Mapping 1 device đèn với chân pin là GIPO15**
 
 * Config read: Là các chân pin của device có chức năng đọc được giữ liệu và hiển thị trên widget\
-  Ví dụ Giá trị nhiệt độ, độ ẩm,...
+  Ví dụ: Giá trị nhiệt độ, độ ẩm,...
 
 <figure><img src="../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
@@ -92,7 +92,7 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 
 <figure><img src="../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
 
-ví dụ: Với thiết bị của bộ điều khiển
+Ví dụ: Với thiết bị của bộ điều khiển
 
 <figure><img src="../.gitbook/assets/image (4) (3).png" alt=""><figcaption></figcaption></figure>
 
