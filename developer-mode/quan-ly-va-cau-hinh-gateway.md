@@ -4,7 +4,7 @@ description: >-
   device và các config, action đi kèm.
 ---
 
-# Quản lý và cấu hình gateway
+# Quản lý gateway
 
 
 
