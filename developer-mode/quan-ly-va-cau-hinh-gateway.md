@@ -50,7 +50,7 @@ Tạo mới device trong gateway. Tại đây người dùng mapping chân pin c
   0N: 1\
   OFF: 0&#x20;
 
-<figure><img src="../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. Zigbee devices
 
@@ -90,7 +90,7 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 
 * Action: Nhập các action của device đó
 
-<figure><img src="../.gitbook/assets/image (1) (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
 
 ví dụ: Với thiết bị của bộ điều khiển
 

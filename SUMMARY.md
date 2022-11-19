@@ -16,5 +16,3 @@
   * [Quản lý gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
   * [Sử dụng widget 1 cách hiệu quả](developer-mode/su-dung-widget-1-cach-hieu-qua.md)
 * [Q\&A](q-and-a.md)
-* [Video hướng dẫn cơ bản](video-huong-dan-co-ban/README.md)
-  * [Device Activation Method](video-huong-dan-co-ban/device-activation-method.md)

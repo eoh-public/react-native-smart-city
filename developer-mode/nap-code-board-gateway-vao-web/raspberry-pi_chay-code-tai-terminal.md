@@ -50,11 +50,11 @@ $ make clean all target=raspberry
 $ sudo ./era --token=1er43
 ```
 
-<figure><img src="../../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 9:** Bấm Next Step để tiến hành nạp codem đợi 30-60 giây
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 10:** Ấn go to gateway để hoàn tất add gateway
 
