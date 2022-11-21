@@ -16,6 +16,7 @@
   * [Quản lý Unit](developer-mode/quan-ly-unit.md)
   * [Quản lý Gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
   * [Quản lý Widgets Hiệu quả](developer-mode/quan-ly-widgets-hieu-qua.md)
-* [Giải pháp mẫu](giai-phap-mau/README.md)
+* [Giải pháp mẫu](giai-phap-mau.md)
   * [Giải pháp an toàn và bảo mật](giai-phap-mau/giai-phap-an-toan-va-bao-mat.md)
+  * [Giải pháp Wifi công cộng](giai-phap-mau/giai-phap-wifi-cong-cong.md)
 * [Q\&A](q-and-a.md)
