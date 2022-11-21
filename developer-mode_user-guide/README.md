@@ -1,8 +1,7 @@
 ---
 description: >-
-  Tính năng mở rộng này cho phép người dùng là developer truy cập, cho phép cấu
-  hình tất cả các thông số kỹ thuật cũng như cách hiển thị của mình một cách
-  nhanh chóng, và điểm mạnh ở đây là No-Code
+  Tính năng này cho phép người dùng truy cập, cấu hình tất cả các thông số kỹ
+  thuật cũng như cách hiển thị một cách dễ dàng (No-code), nhanh chóng.
 ---
 
 # Developer Mode
