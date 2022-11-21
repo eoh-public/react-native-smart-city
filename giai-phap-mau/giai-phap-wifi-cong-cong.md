@@ -21,3 +21,6 @@ Dùng để chạy các hệ thống IoT
 ### Thiết bị&#x20;
 
 Điểm truy cập
+
+Router
+

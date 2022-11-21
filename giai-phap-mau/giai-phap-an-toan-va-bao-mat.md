@@ -4,7 +4,7 @@ description: Giải pháp thông minh cho cuộc sống thông minh
 
 # Giải pháp an toàn và bảo mật
 
-### ![](<../.gitbook/assets/Safety-and-Security-Solution\_App (1).png>)
+### ![](../.gitbook/assets/Safety-and-Security-Solution\_App.png)
 
 ### Thông tin giải pháp
 
@@ -25,6 +25,12 @@ Chia sẻ và quản lý quyền truy cập
 ### Các thiết bị hỗ trợ
 
 Camera An ninh
+
+Khoá thông minh
+
+Cảm biến cửa
+
+
 
 
 
