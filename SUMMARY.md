@@ -16,4 +16,5 @@
   * [Quản lý Unit](developer-mode/quan-ly-unit.md)
   * [Quản lý Gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
   * [Quản lý Widgets Hiệu quả](developer-mode/quan-ly-widgets-hieu-qua.md)
+* [Giải pháp mẫu](giai-phap-mau.md)
 * [Q\&A](q-and-a.md)
