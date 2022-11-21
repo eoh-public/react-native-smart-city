@@ -20,6 +20,6 @@ Các widget hỗ trợ được đển ở góc trái màn hình
 
 Ấn vào để tiến hành mapping theo từng widget. Widget hỗ trợ cho việc giám sát cụ thể
 
-{% content-ref url="su-dung-widget-1-cach-hieu-qua.md" %}
-[su-dung-widget-1-cach-hieu-qua.md](su-dung-widget-1-cach-hieu-qua.md)
+{% content-ref url="quan-ly-widgets-hieu-qua.md" %}
+[quan-ly-widgets-hieu-qua.md](quan-ly-widgets-hieu-qua.md)
 {% endcontent-ref %}

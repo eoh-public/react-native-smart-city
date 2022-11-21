@@ -14,6 +14,6 @@
     * [STM32\_GSM](developer-mode/nap-code-board-gateway-vao-web/stm32\_gsm.md)
     * [Raspberry Pi\_Chạy code tại Terminal](developer-mode/nap-code-board-gateway-vao-web/raspberry-pi\_chay-code-tai-terminal.md)
   * [Quản lý Unit](developer-mode/quan-ly-unit.md)
-  * [Quản lý gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
-  * [Sử dụng widget 1 cách hiệu quả](developer-mode/su-dung-widget-1-cach-hieu-qua.md)
+  * [Quản lý Gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
+  * [Quản lý Widgets Hiệu quả](developer-mode/quan-ly-widgets-hieu-qua.md)
 * [Q\&A](q-and-a.md)
