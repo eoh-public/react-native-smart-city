@@ -14,5 +14,19 @@ Chúng tôi cung cấp cho người quản lý một ứng dụng để quản l
 
 ### Các đặt trưng của giải pháp
 
+Tối ưu doanh thu từ bãi đậu xe
+
+Công cụ định giá động (Dynamic Pricing Tools)
+
+Phân tích nâng cao
+
+### Các thiết bị
+
+Cảm biến bãi đậu xe thông minh
+
+Cột đèn đỗ xe thông minh
+
+Camera giám sát
+
 
 
