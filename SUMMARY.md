@@ -20,4 +20,5 @@
   * [Giải pháp an toàn và bảo mật](giai-phap-mau/giai-phap-an-toan-va-bao-mat.md)
   * [Giải pháp Wifi công cộng](giai-phap-mau/giai-phap-wifi-cong-cong.md)
   * [Giải pháp thành phố thông minh](giai-phap-mau/giai-phap-thanh-pho-thong-minh.md)
+* [Giám sát chất lượng nước](giam-sat-chat-luong-nuoc.md)
 * [Q\&A](q-and-a.md)
