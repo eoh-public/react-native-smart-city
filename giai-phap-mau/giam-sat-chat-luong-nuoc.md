@@ -19,3 +19,10 @@ Cấp nước tinh khiết
 Nhiều tham số
 
 Theo dõi hoạt động của bộ lọc
+
+### Các thiết bị
+
+Máy lọc nước
+
+Cảm biến chất lượng nước
+
