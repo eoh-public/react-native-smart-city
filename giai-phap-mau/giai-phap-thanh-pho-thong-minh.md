@@ -12,11 +12,11 @@ Chúng tôi có cảm biến đỗ xe và cột đèn để đảm bảo ngườ
 
 Chúng tôi cung cấp cho người quản lý một ứng dụng để quản lý, đặt giá và giám sát tất cả các điểm đỗ xe – cung cấp một ứng dụng hoàn chỉnh thực sự.
 
-### Các đặt trưng của giải pháp
+### Các đặc trưng của giải pháp
 
 Tối ưu doanh thu từ bãi đậu xe
 
-Công cụ định giá động (Dynamic Pricing Tools)
+Công cụ định giá linh động (Dynamic Pricing Tools)
 
 Phân tích nâng cao
 

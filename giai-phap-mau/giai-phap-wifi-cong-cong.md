@@ -10,7 +10,7 @@ Wi-Fi công cộng có thể được tìm thấy ở những nơi công cộng 
 
 Người dùng có thể sử dụng Wi-Fi miễn phí bằng cách đăng nhập tài khoản EoH của họ trên Ứng dụng EoH.
 
-### Các đặt trưng của giải pháp
+### Các đặc trưng của giải pháp
 
 Chức năng ngoài trời
 

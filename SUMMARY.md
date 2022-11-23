@@ -21,4 +21,5 @@
   * [Giải pháp Wifi công cộng](giai-phap-mau/giai-phap-wifi-cong-cong.md)
   * [Giám sát chất lượng nước](giai-phap-mau/giam-sat-chat-luong-nuoc.md)
   * [Giải pháp thành phố thông minh](giai-phap-mau/giai-phap-thanh-pho-thong-minh.md)
+  * [Đèn chiếu sáng đường phố thông minh](giai-phap-mau/den-chieu-sang-duong-pho-thong-minh.md)
 * [Q\&A](q-and-a.md)

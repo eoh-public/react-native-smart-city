@@ -14,7 +14,7 @@ Cho dù là hỏa hoạn, trộm cắp, rò rỉ gas hoặc các tình huống k
 
 Các hệ thống báo cháy tích hợp của chúng tôi bao gồm đầu báo khói, đầu báo CO, v.v., cung cấp một hệ thống hiệu quả có thể xác định nguồn báo động và tự động gọi cho các cơ quan có liên quan để giải quyết vấn đề. Từ camera an ninh cảnh báo tự động đến cổng, cửa thông minh kiểm soát và chia sẻ quyền ra vào.&#x20;
 
-### Các đặt trưng của giải pháp
+### Các đặc trưng của giải pháp
 
 Quản lý từ xa
 

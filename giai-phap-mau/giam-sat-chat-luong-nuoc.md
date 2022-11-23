@@ -12,7 +12,7 @@ Hệ thống của chúng tôi bao gồm một số cảm biến để đo các 
 
 Giải pháp của chúng tôi có thể được sử dụng cho nhà ở, công nghiệp, v.v.
 
-### Các đặt trưng
+### Các đặc trưng của giải pháp
 
 Cấp nước tinh khiết
 
