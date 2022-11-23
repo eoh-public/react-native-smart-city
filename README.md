@@ -4,6 +4,16 @@
 
 E-Ra - IoT Platform là nền tảng IoT mở do EoH phát triển, cho phép các nhà phát triển phần mềm và thiết bị IoT có thể theo dõi kết quả dự án trên giao diện đẹp mắt, đồng nhất và chuyên nghiệp. Ngoài ra với bộ thư viện được EoH phát triển sẽ giúp cho các nhà phát triển dễ dàng hơn trong việc kết nối các thiết bị IoT và quản lý chúng dễ như trở bàn tay.
 
+## Phần cứng hỗ trợ
+
+* Module ESP32
+* Module STM32 (F4 series)
+* Module Raspberry
+
+{% content-ref url="huong-dan-su-dung/linh-kien-can-chuan-bi.md" %}
+[linh-kien-can-chuan-bi.md](huong-dan-su-dung/linh-kien-can-chuan-bi.md)
+{% endcontent-ref %}
+
 ## Giới thiệu về EoH
 
 EoH là công ty công nghệ, chuyên về phát triển nền tảng IoT giúp hỗ trợ và đồng hành cùng các nhà phát triển, các nhà cung cấp các giải pháp thông minh cho nhiều ngành mũi nhọn khác nhau.
