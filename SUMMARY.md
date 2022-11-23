@@ -23,4 +23,5 @@
   * [Giải pháp thành phố thông minh](giai-phap-mau/giai-phap-thanh-pho-thong-minh.md)
   * [Đèn chiếu sáng đường phố thông minh](giai-phap-mau/den-chieu-sang-duong-pho-thong-minh.md)
   * [Giám sát chất lượng không khí ngoài trời](giai-phap-mau/giam-sat-chat-luong-khong-khi-ngoai-troi.md)
+  * [Giải pháp quản lý tiện ích](giai-phap-mau/giai-phap-quan-ly-tien-ich.md)
 * [Q\&A](q-and-a.md)
