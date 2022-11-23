@@ -10,8 +10,8 @@ E-Ra - IoT Platform là nền tảng IoT mở do EoH phát triển, cho phép c�
 * Module STM32 (F4 series)
 * Module Raspberry
 
-{% content-ref url="huong-dan-su-dung/linh-kien-can-chuan-bi.md" %}
-[linh-kien-can-chuan-bi.md](huong-dan-su-dung/linh-kien-can-chuan-bi.md)
+{% content-ref url="developer-mode/linh-kien-can-chuan-bi.md" %}
+[linh-kien-can-chuan-bi.md](developer-mode/linh-kien-can-chuan-bi.md)
 {% endcontent-ref %}
 
 ## Giới thiệu về EoH

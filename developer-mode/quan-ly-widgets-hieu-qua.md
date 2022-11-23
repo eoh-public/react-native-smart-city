@@ -1,4 +1,4 @@
-# Sử dụng widget 1 cách hiệu quả
+# Quản lý Widgets Hiệu quả
 
 ## 1.Widget dùng để điều khiển
 
