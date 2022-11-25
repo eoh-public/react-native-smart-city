@@ -27,4 +27,5 @@
   * [Kịch bản thông minh](giai-phap-mau/kich-ban-thong-minh.md)
   * [Giám sát chất lượng không khí trong nhà](giai-phap-mau/giam-sat-chat-luong-khong-khi-trong-nha.md)
   * [Đồ da dụng thông minh](giai-phap-mau/do-da-dung-thong-minh.md)
+  * [Loa thông minh](giai-phap-mau/loa-thong-minh.md)
 * [Q\&A](q-and-a.md)
