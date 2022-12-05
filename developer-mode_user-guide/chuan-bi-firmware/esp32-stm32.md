@@ -141,7 +141,7 @@ Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải b�
 
 Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK.&#x20;
 
-ESP32: [https://dl.espressif.com/dl/package\_esp32\_index.json](https://dl.espressif.com/dl/package\_esp32\_index.json),&#x20;
+ESP32:[ , ](https://github.com/espressif/arduino-esp32/raw/gh-pages/package\_esp32\_dev\_index.json)[https://github.com/espressif/arduino-esp32/raw/gh-pages/package\_esp32\_dev\_index.json](https://github.com/espressif/arduino-esp32/raw/gh-pages/package\_esp32\_dev\_index.json)
 
 STM32: [https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicroelectronics\_index.json](https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicroelectronics\_index.json),&#x20;
 
