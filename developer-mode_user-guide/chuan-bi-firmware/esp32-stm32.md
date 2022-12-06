@@ -243,4 +243,4 @@ Yêu cầu cài đặt thêm thư viện Preferences by vshymanskyy
 
 <figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption><p>Preferences trên PlatfromIO</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (12) (2).png" alt=""><figcaption><p>Preferences trên Arduino IDE</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12) (2) (1).png" alt=""><figcaption><p>Preferences trên Arduino IDE</p></figcaption></figure>

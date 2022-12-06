@@ -36,14 +36,14 @@ Ví dụ: điều khiển nhiệt độ máy lạnh, điều khiển đèn (truy
 Widget này có thể sử dụng điều khiển tăng giảm giá trị \
 Ví dụ: điều khiển độ sáng của đèn dimming
 
-<figure><img src="../.gitbook/assets/image (5) (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (4).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.6. Options Dropdown Action
 
 Widget này có thể sử dụng điều khiển với 1 action thì điều khiển những trạng thái gì\
 Ví dụ: Khi action : On của Quạt, thì tốc độ quay sẽ 1,2,3,4,...
 
-<figure><img src="../.gitbook/assets/image (6) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 ## 2. Widget dùng để hiện giá trị.&#x20;
 
@@ -61,14 +61,14 @@ Ví dụ: Nhiệt độ, độ ẩm, chất lượng không khí,...
 Widget này dùng để hiển thị lịch sử của dãy giá trị đã truyền lên của config theo thời gian, từ đó xem được biến động của dữ liệu\
 Ví dụ: Lịch sử nhiệt độ, độ ẩm, thời điểm bật/tắt đèn,...
 
-<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.3. Gauge
 
 Widget này có thể sử dụng hiển thị giá trị đọc được từ config của device 1 các trực quan về biến động gần tới ngưỡng max để chú ý\
 Ví dụ: giám sát công xuất, pH,...
 
-<figure><img src="../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.4. Circle
 
@@ -81,7 +81,7 @@ Ví dụ: Chất lượng nước, chất lượng không khí (tốt, trung bì
 
 Widget chuyên cho hiển thị dạng hướng gió và tốc độ gió cho cảm biến thời tiết
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (5).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. View Video
 

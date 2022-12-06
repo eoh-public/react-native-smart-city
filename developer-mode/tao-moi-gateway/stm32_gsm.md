@@ -25,7 +25,7 @@ Nhập thông tin cơ bản của gateway nạp vào hệ thống và Dashboard 
 
 **Bước 3:** **Code**\
 \-  chọn Apn và Modem của gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-&#x20;  ![](<../../.gitbook/assets/image (9).png>)        ![](<../../.gitbook/assets/image (3) (1).png>)\
+&#x20;  ![](../../.gitbook/assets/image.png)        ![](<../../.gitbook/assets/image (3) (5).png>)\
 \
 \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code.\
 
@@ -37,7 +37,7 @@ Khi hệ thống chạy thì nútGo to gateway hiệ xanh --> Ấn vào để ho
 **Thời gian chờ kết nối từ 30s-60s**\
 &#x20;  &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1) (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 *   Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
 

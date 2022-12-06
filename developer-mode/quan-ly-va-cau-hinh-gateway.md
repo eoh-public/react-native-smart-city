@@ -50,7 +50,7 @@ Tạo mới device trong gateway. Tại đây người dùng mapping chân pin c
   0N: 1\
   OFF: 0&#x20;
 
-<figure><img src="../.gitbook/assets/image (7) (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. Zigbee devices
 
@@ -64,7 +64,7 @@ Tính năng đang phát triển
 
 Tạo mới device trong gateway. Tại đây người dùng nhập các thông tin cơ bản của modbus
 
-<figure><img src="../.gitbook/assets/image (9) (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
 
 * Conection time: Device sẽ báo trạng thái "OFFLINE" khi thời gian giữ 2 lần nhận tín hiệu xa hơn thời gian setup (giây)
 * Address: Địa chỉ của device modbus. Mỗi model sẽ có 1 địa chỉ mật định được cung cấp trong bộ thông số kỹ thuật

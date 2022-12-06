@@ -10,13 +10,13 @@ Tại đây bạn có thể điều khiển hoặc giám sát các giá trị 1 
 
 **Bước 3:** Ấn vào Edit Unit để thêm mới widget hoặc sắp xếp lại vị trí bằng cách kéo di chuyển widget
 
-<figure><img src="../.gitbook/assets/image (4) (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Các widget hỗ trợ được đển ở góc trái màn hình
 
 **Bước 4:** Mapping giá trị config vào widget đã lựa chọn bằng cách rê chuột tới widget cần cấu hình và ấn vào icon răng cưa
 
-<figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Ấn vào để tiến hành mapping theo từng widget. Widget hỗ trợ cho việc giám sát cụ thể
 
