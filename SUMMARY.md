@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Giới thiệu về E-Ra - IoT Platform](README.md)
+* [Hướng dẫn trải nghiệm E-Ra không cần thiết bị](huong-dan-trai-nghiem-e-ra-khong-can-thiet-bi.md)
 * [Hướng dẫn sử dụng](huong-dan-su-dung/README.md)
   * [Thuật ngữ cần quan tâm](developer-mode/thuat-ngu-can-quan-tam.md)
   * [Linh kiện cần chuẩn bị](developer-mode/linh-kien-can-chuan-bi.md)
@@ -16,7 +17,6 @@
   * [Quản lý Unit](developer-mode/quan-ly-unit.md)
   * [Quản lý Gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
   * [Quản lý Widgets Hiệu quả](developer-mode/quan-ly-widgets-hieu-qua.md)
-* [Thêm gateway vào E-ra không cần phần cứng](them-gateway-vao-e-ra-khong-can-phan-cung.md)
 * [Ứng dụng thực tế](ung-dung-thuc-te/README.md)
   * [Giải pháp an toàn và bảo mật](ung-dung-thuc-te/giai-phap-an-toan-va-bao-mat.md)
   * [Giải pháp Wifi công cộng](ung-dung-thuc-te/giai-phap-wifi-cong-cong.md)
