@@ -15,3 +15,5 @@ description: Người dùng có thể chọn mua và sử dụng một trong 3 m
 **3. Danh sách linh kiện cho module Raspberry**
 
 {% file src="../.gitbook/assets/[P]-E-Ra device list for Raspberry.pdf" %}
+
+**4. Danh sách linh kiện cho module ESP8266**
