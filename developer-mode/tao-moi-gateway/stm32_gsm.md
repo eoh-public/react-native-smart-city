@@ -12,7 +12,7 @@ Nhập thông tin cơ bản của gateway nạp vào hệ thống và Dashboard 
 
 *
 
-    <figure><img src="../../.gitbook/assets/image (1) (2) (3).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 2: Install Library**\
 &#x20;Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
@@ -37,7 +37,7 @@ Khi hệ thống chạy thì nútGo to gateway hiệ xanh --> Ấn vào để ho
 **Thời gian chờ kết nối từ 30s-60s**\
 &#x20;  &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (7).png" alt=""><figcaption></figcaption></figure>
 
 *   Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
 

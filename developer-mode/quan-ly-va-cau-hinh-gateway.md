@@ -75,7 +75,7 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 
 **-Ví dụ: Mapping 1 device là bộ điều khiển với địa chỉ là 17**
 
-<figure><img src="../.gitbook/assets/image (5) (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Config read: Là các device có chức năng đọc được giữ liệu và hiển thị trên widget\
   Ví dụ Giá trị nhiệt độ, độ ẩm,...\

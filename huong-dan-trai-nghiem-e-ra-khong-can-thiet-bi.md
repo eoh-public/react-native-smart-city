@@ -24,7 +24,7 @@ description: HƯỚNG DẪN ERA TRÊN WOKWI
 
 * Vào app dashboard tạo gateway (board ESP32) với Wifi SSID: <mark style="color:red;">Wokwi-GUEST</mark> và Wifi Password <mark style="color:red;">để trống</mark>.
 
-<figure><img src=".gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Copy nội dung code “Add gateway” và paste vào file sketch.ino trong project Wokwi -> Nhấn Save để lưu project.
 * <img src=".gitbook/assets/image (3).png" alt="" data-size="line">Nhấn vào để chạy chương trình \
