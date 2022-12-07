@@ -8,7 +8,7 @@
   * [Hướng dẫn đấu nối thiết bị ngoại vi](developer-mode/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
   * [Cài đặt và đăng ký tài khoản](developer-mode\_user-guide/cai-dat-va-dang-ky-tai-khoan.md)
   * [Chuẩn bị Firmware](developer-mode\_user-guide/chuan-bi-firmware.md)
-    * [ESP32, STM32](developer-mode\_user-guide/chuan-bi-firmware/esp32-stm32.md)
+    * [ESP32, STM32, ESP 8266](huong-dan-su-dung/chuan-bi-firmware/esp32-stm32-esp-8266.md)
     * [Raspberry Pi](developer-mode\_user-guide/chuan-bi-firmware/raspberry-pi.md)
   * [Tạo mới gateway](developer-mode/tao-moi-gateway/README.md)
     * [ESP32\_Chạy code tại Arduino](developer-mode/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)

@@ -1,8 +1,6 @@
-# ESP32, STM32
+# ESP32, STM32, ESP 8266
 
-
-
-## 1. Chuẩn bị firmware&#x20;
+1\. Chuẩn bị firmware&#x20;
 
 ### 1.1. Cài đặt driver&#x20;
 
@@ -168,9 +166,9 @@ Trong Boards Manager, tìm ESP32 -> nhấn install để thêm package Boards ES
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-Tìm “ERa EoH” sau đấy chọn version mới nhất và tiến hành install.
+Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
 <figure><img src="../../.gitbook/assets/image (29) (1).png" alt=""><figcaption></figcaption></figure>
 

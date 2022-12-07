@@ -61,7 +61,7 @@ Ví dụ: Nhiệt độ, độ ẩm, chất lượng không khí,...
 Widget này dùng để hiển thị lịch sử của dãy giá trị đã truyền lên của config theo thời gian, từ đó xem được biến động của dữ liệu\
 Ví dụ: Lịch sử nhiệt độ, độ ẩm, thời điểm bật/tắt đèn,...
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (4).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.3. Gauge
 

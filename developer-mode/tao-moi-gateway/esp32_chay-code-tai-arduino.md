@@ -27,8 +27,8 @@ Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 **Bước 2: Install Library**\
 Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 
-{% content-ref url="../../developer-mode_user-guide/chuan-bi-firmware/esp32-stm32.md" %}
-[esp32-stm32.md](../../developer-mode\_user-guide/chuan-bi-firmware/esp32-stm32.md)
+{% content-ref url="../../huong-dan-su-dung/chuan-bi-firmware/esp32-stm32-esp-8266.md" %}
+[esp32-stm32-esp-8266.md](../../huong-dan-su-dung/chuan-bi-firmware/esp32-stm32-esp-8266.md)
 {% endcontent-ref %}
 
 <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
