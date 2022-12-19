@@ -9,6 +9,7 @@ E-Ra được ra đời là quá trình tích lũy kinh nghiệm hơn 5 năm tri
 ## Phần cứng hỗ trợ
 
 * Module ESP32
+* Module Esp8266
 * Module STM32 (F4 series)
 * Module Raspberry Pi 1,2,3,4, hoặc zero series
 
