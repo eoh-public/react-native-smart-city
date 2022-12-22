@@ -25,7 +25,7 @@ Nhập thông tin cơ bản của gateway nạp vào hệ thống và Dashboard 
 
 **Bước 3:** **Code**\
 \-  chọn Apn và Modem của gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-&#x20;  ![](../../.gitbook/assets/image.png)        ![](<../../.gitbook/assets/image (3) (5).png>)\
+&#x20;  ![](<../../.gitbook/assets/image (2).png>)        ![](<../../.gitbook/assets/image (3) (5).png>)\
 \
 \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code.\
 

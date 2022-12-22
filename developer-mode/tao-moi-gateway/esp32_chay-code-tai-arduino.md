@@ -15,7 +15,7 @@ Sau khi hoàn thành các bước trong file hướng dẫn. Tới bước nạp
 
 **Chuẩn bị:**  Tạo mới Unit để chứa thông tin hiển thị của gateway bạn muốn trải nghiệm
 
-![](<../../.gitbook/assets/image (2).png>)
+![](<../../.gitbook/assets/image (2) (2).png>)
 
 Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
