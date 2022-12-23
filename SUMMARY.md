@@ -6,6 +6,7 @@
   * [Thuật ngữ cần quan tâm](developer-mode/thuat-ngu-can-quan-tam.md)
   * [Linh kiện cần chuẩn bị](developer-mode/linh-kien-can-chuan-bi.md)
   * [Hướng dẫn đấu nối thiết bị ngoại vi](developer-mode/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
+  * [Video demo trải nghiệm E-ra](huong-dan-su-dung/video-demo-trai-nghiem-e-ra.md)
   * [Cài đặt và đăng ký tài khoản](developer-mode\_user-guide/cai-dat-va-dang-ky-tai-khoan.md)
   * [Chuẩn bị Firmware](developer-mode\_user-guide/chuan-bi-firmware.md)
     * [ESP32, STM32, ESP 8266](huong-dan-su-dung/chuan-bi-firmware/esp32-stm32-esp-8266.md)
