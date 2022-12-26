@@ -28,9 +28,19 @@ Trong quá trình trải nghiệm E-Ra, nếu mình cần hỗ trợ có thể l
 
 <details>
 
-<summary><strong>E-Ra có hỗ trợ cho RTL8720 không?</strong></summary>
+<summary><strong>E-Ra hiện đang hỗ trợ các phần cứng nào?</strong></summary>
 
-Hiện tại E-Ra chưa hỗ trợ RTL8720.
+Các phần cứng E-Ra đang hỗ trợ gồm:
+
+\+ ESP32
+
+\+ ESP8266
+
+\+ STM32 (F4 Series)
+
+\+ Raspberry Pi
+
+\*Hiện tại E-Ra chưa hỗ trợ RTL8720.
 
 </details>
 
