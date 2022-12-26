@@ -61,3 +61,12 @@ Trong quá trình sử dụng nếu cần hỗ trợ có thể liên hệ với 
 🔵E-Ra Facebook Group: [https://www.facebook.com/groups/567625788148920/](https://www.facebook.com/groups/567625788148920/)
 
 </details>
+
+<details>
+
+<summary>"Mình đang lập trình giao tiếp Modbus RTU giữa ESP32 và PLC Delta DVP12SE. Và hiện đang để ESP32 là Master và PLC làm slave. Mình đang tạo code cấu hình làm slave trên PLC như này đã đủ chưa? Có cần tạo code check sum trên PLC khi ESP32 gửi request xuống không?"</summary>
+
+Tham khảo chi tiết tại bài viết: [https://www.facebook.com/groups/567625788148920/permalink/671374087774089/](https://www.facebook.com/groups/567625788148920/permalink/671374087774089/)
+
+</details>
+
