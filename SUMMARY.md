@@ -15,6 +15,7 @@
     * [ESP32\_Chạy code tại Arduino](developer-mode/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)
     * [STM32\_GSM](developer-mode/tao-moi-gateway/stm32\_gsm.md)
     * [Raspberry Pi\_Chạy code tại Terminal](developer-mode/tao-moi-gateway/raspberry-pi\_chay-code-tai-terminal.md)
+  * [Hướng dẫn dùng VIRTUAL PIN](huong-dan-su-dung/huong-dan-dung-virtual-pin.md)
   * [Quản lý Unit](developer-mode/quan-ly-unit.md)
   * [Quản lý Gateway](developer-mode/quan-ly-va-cau-hinh-gateway.md)
   * [Quản lý Widgets Hiệu quả](developer-mode/quan-ly-widgets-hieu-qua.md)
