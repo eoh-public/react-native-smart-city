@@ -80,3 +80,10 @@ Tham khảo chi tiết tại bài viết: [https://www.facebook.com/groups/56762
 
 </details>
 
+<details>
+
+<summary>How to change UART pin?</summary>
+
+[https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin](https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin)
+
+</details>
