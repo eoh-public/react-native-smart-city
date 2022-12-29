@@ -12,7 +12,7 @@ description: Người dùng tự tích hợp từ bước cơ bản tới khi ga
 
 * Từ trang chủ Wokwi -> Click vào avatar và chọn My project.
 
-<figure><img src="../.gitbook/assets/image (4) (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 * Click vào New project -> chọn ESP32.
 
@@ -27,7 +27,7 @@ description: Người dùng tự tích hợp từ bước cơ bản tới khi ga
 <figure><img src="../.gitbook/assets/image (12) (2).png" alt=""><figcaption></figcaption></figure>
 
 * Copy nội dung code “Add gateway” và paste vào file sketch.ino trong project Wokwi -> Nhấn Save để lưu project.
-* <img src="../.gitbook/assets/image (3) (3).png" alt="" data-size="line">Nhấn vào để chạy chương trình \
+* <img src="../.gitbook/assets/image (3).png" alt="" data-size="line">Nhấn vào để chạy chương trình \
   <mark style="color:red;">Lưu ý:</mark> \ <mark style="color:red;">Trong quá trình trải nghiệm không ẩn tab wokwi mà phải thu nhỏ để 1 góc màn hình. Nếu đóng gateway ảo vừa tạo sẽ bị mất kết nối và không trải nghiệm tiếp được</mark>
 
 <figure><img src="../.gitbook/assets/image (7) (3).png" alt=""><figcaption></figcaption></figure>
