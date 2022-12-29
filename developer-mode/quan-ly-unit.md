@@ -22,7 +22,7 @@ Các widget hỗ trợ được đển ở góc trái màn hình
 
 **Bước 5:** Setting widget
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 **Note:** \
 1\. Tên widget dùng để phân biệt các widget với nhau trong cùng 1 unit trong ứng dụng web\

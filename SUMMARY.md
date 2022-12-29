@@ -1,7 +1,10 @@
 # Table of contents
 
 * [Giới thiệu về E-Ra - IoT Platform](README.md)
-* [Hướng dẫn trải nghiệm E-Ra không cần thiết bị](huong-dan-trai-nghiem-e-ra-khong-can-thiet-bi.md)
+* [Trải nghiệm E-Ra với Wokwi](trai-nghiem-e-ra-voi-wokwi/README.md)
+  * [Giới thiệu về Wokwi](trai-nghiem-e-ra-voi-wokwi/gioi-thieu-ve-wokwi.md)
+  * [Tích hợp mới wokwi vào E-Ra](trai-nghiem-e-ra-voi-wokwi/tich-hop-moi-wokwi-vao-e-ra.md)
+  * [Tận dụng thư viện Wokwi sẵn có](trai-nghiem-e-ra-voi-wokwi/tan-dung-thu-vien-wokwi-san-co.md)
 * [Hướng dẫn sử dụng](huong-dan-su-dung/README.md)
   * [Thuật ngữ cần quan tâm](developer-mode/thuat-ngu-can-quan-tam.md)
   * [Linh kiện cần chuẩn bị](developer-mode/linh-kien-can-chuan-bi.md)
