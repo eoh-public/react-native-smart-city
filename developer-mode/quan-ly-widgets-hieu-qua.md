@@ -29,7 +29,7 @@ Ví dụ: Bật tắt nhiều đèn, điều khiển các chế độ khác nhau
 Widget này có thể sử dụng điều khiển nhiều action nhanh giá trị lên xuống\
 Ví dụ: điều khiển nhiệt độ máy lạnh, điều khiển đèn (truyền nhanh trạng thái 0,1),...
 
-<figure><img src="../.gitbook/assets/image (1) (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (6).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.5. Slide Range
 

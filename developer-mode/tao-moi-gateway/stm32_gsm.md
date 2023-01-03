@@ -37,7 +37,7 @@ Khi hệ thống chạy thì nútGo to gateway hiệ xanh --> Ấn vào để ho
 **Thời gian chờ kết nối từ 30s-60s**\
 &#x20;  &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1) (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 *   Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
 
