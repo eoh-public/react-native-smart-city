@@ -12,34 +12,34 @@ Nhập thông tin cơ bản của gateway nạp vào hệ thống và Dashboard 
 
 *
 
-    <figure><img src="../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 2: Install Library**\
 &#x20;Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 
-{% content-ref url="../../huong-dan-su-dung/chuan-bi-firmware/esp32-stm32-esp-8266.md" %}
-[esp32-stm32-esp-8266.md](../../huong-dan-su-dung/chuan-bi-firmware/esp32-stm32-esp-8266.md)
+{% content-ref url="../../chuan-bi-firmware/esp32-stm32-esp-8266.md" %}
+[esp32-stm32-esp-8266.md](../../chuan-bi-firmware/esp32-stm32-esp-8266.md)
 {% endcontent-ref %}
 
-<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 3:** **Code**\
 \-  chọn Apn và Modem của gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-&#x20;  ![](<../../.gitbook/assets/image (2).png>)        ![](<../../.gitbook/assets/image (3) (5).png>)\
+&#x20;  ![](<../../../.gitbook/assets/image (2).png>)        ![](<../../../.gitbook/assets/image (3) (5).png>)\
 \
 \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code.\
 
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 4: Gateway Activation**\
 Khi hệ thống chạy thì nútGo to gateway hiệ xanh --> Ấn vào để hoàn thành tạo mới\
 **Thời gian chờ kết nối từ 30s-60s**\
 &#x20;  &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 *   Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
 
 
-    <figure><img src="../../.gitbook/assets/image (10) (6).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../../.gitbook/assets/image (10) (6).png" alt=""><figcaption></figcaption></figure>

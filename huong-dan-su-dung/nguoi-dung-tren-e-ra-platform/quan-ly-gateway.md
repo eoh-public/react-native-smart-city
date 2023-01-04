@@ -8,7 +8,7 @@ description: >-
 
 
 
-<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 * Info: Thông tin cơ bản của 1 gateway
 * Input/Output pins: Tạo mới device và mapping các chân pin được gắn trên board (STM32, ESP32, Raspberry Pi 3)
@@ -18,13 +18,13 @@ description: >-
 
 ## 1.  Info
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
 * Conection time: Gateway sẽ báo trạng thái "OFFLINE" khi thời gian giữ 2 lần nhận tín hiệu xa hơn thời gian setup (giây)
 
 ## 2. Input/Output pins
 
-<figure><img src="../.gitbook/assets/image (10) (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10) (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tạo mới device trong gateway. Tại đây người dùng mapping chân pin của mình gắn với hoạt động từng config read, config write, action của device đó
 
@@ -38,19 +38,19 @@ Tạo mới device trong gateway. Tại đây người dùng mapping chân pin c
 * Config read: Là các chân pin của device có chức năng đọc được giữ liệu và hiển thị trên widget\
   Ví dụ: Giá trị nhiệt độ, độ ẩm,...
 
-<figure><img src="../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 * Config write: Là các chân pin của device có chức năng ghi được giữ liệu và liên kết với action để điều khiển thiết bị\
   Ví dụ: Điều khiển đèn
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Action: Nhập các action của device đó \
   ví dụ: Với thiết bị đèn chân pin **GIPO15** ở trên tại config write ghi giữ liệu 0 và 1 tương ứng với action tạo ra ở đây\
   0N: 1\
   OFF: 0&#x20;
 
-<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. Zigbee devices
 
@@ -60,11 +60,11 @@ Tính năng đang phát triển
 
 Ấn vào setup để tiến hành tạo mới device bằng phương pháp modbus
 
-<figure><img src="../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 Tạo mới device trong gateway. Tại đây người dùng nhập các thông tin cơ bản của modbus
 
-<figure><img src="../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
 
 * Conection time: Device sẽ báo trạng thái "OFFLINE" khi thời gian giữ 2 lần nhận tín hiệu xa hơn thời gian setup (giây)
 * Address: Địa chỉ của device modbus. Mỗi model sẽ có 1 địa chỉ mật định được cung cấp trong bộ thông số kỹ thuật
@@ -75,24 +75,24 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 
 **-Ví dụ: Mapping 1 device là bộ điều khiển với địa chỉ là 17**
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Config read: Là các device có chức năng đọc được giữ liệu và hiển thị trên widget\
   Ví dụ Giá trị nhiệt độ, độ ẩm,...\
   Dưới đây là hình mình họa của đọc trạng thái của bộ điều khiển
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 * Config write: Là các device có chức năng ghi được giữ liệu và liên kết với action để điều khiển thiết bị\
   Ví dụ: Với thiết bị của bộ điều khiển
 
-<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 * Action: Nhập các action của device đó
 
-<figure><img src="../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (5).png" alt=""><figcaption></figcaption></figure>
 
 Ví dụ: Với thiết bị của bộ điều khiển
 
-<figure><img src="../.gitbook/assets/image (4) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (3).png" alt=""><figcaption></figcaption></figure>
 

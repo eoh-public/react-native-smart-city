@@ -1,6 +1,8 @@
 # ESP32, STM32, ESP 8266
 
-1\. Chuẩn bị firmware&#x20;
+##
+
+## 1. Chuẩn bị Firmware
 
 ### 1.1. Cài đặt driver&#x20;
 
@@ -91,7 +93,7 @@ Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass
 
 <mark style="color:red;">**Lưu ý**</mark>
 
-Đối với board STM32 vui lòng cài đặt thêm thư viện bỗ trợ ở mục 3.2.&#x20;
+Đối với board STM32 vui lòng cài đặt thêm thư viện bỗ trợ ở mục 2.2.&#x20;
 
 <figure><img src="../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 

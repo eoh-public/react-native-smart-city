@@ -1,4 +1,4 @@
-# Hướng dẫn dùng VIRTUAL PIN
+# Sử dụng VIRTUAL PIN
 
 ## 1. Virtual pin là gì
 
@@ -48,6 +48,6 @@ Dùng pin V1 để gửi thời gian chạy (uptime) của gateway lên server.&
 
 Dùng pin V2 để gửi nhiệt độ chip ESP32 lên server.&#x20;
 
-<mark style="color:red;">Chi tiết API Virtual pin vui lòng truy cập vào trang wiki sau:</mark>&#x20;
+_Chi tiết API Virtual pin vui lòng truy cập vào trang wiki_ [_**tại đây**_ ](https://github.com/eoh-jsc/era-lib/wiki/Virtual-Pins)_****_
 
-<mark style="color:red;">https://github.com/eoh-jsc/era-lib/wiki/Virtual-Pins</mark>&#x20;
+<mark style="color:red;"></mark>
