@@ -17,8 +17,8 @@ Nhập thông tin cơ bản của gateway nạp vào hệ thống và Dashboard 
 **Bước 2: Install Library**\
 &#x20;Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
 
-{% content-ref url="../../chuan-bi-firmware/esp32-stm32-esp-8266.md" %}
-[esp32-stm32-esp-8266.md](../../chuan-bi-firmware/esp32-stm32-esp-8266.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 <figure><img src="../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
