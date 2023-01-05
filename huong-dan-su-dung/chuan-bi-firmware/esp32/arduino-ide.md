@@ -19,7 +19,7 @@ Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải b�
 * Mở Arduino IDE&#x20;
 * Vào File -> Preferences&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (59) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK.&#x20;
 

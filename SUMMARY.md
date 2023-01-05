@@ -54,3 +54,5 @@
   * [Giám sát sức khoẻ từ xa](giai-phap-mau/giam-sat-suc-khoe-tu-xa.md)
   * [Hệ thống tưới tự động](giai-phap-mau/he-thong-tuoi-tu-dong.md)
 * [Q\&A](q-and-a.md)
+* [E-Ra Workshop](e-ra-workshop/README.md)
+  * [Topic 1](e-ra-workshop/topic-1.md)

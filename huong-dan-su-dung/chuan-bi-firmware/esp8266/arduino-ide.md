@@ -25,11 +25,11 @@ Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm �
 
 ESP8266: [http://arduino.esp8266.com/stable/package\_esp8266com\_index.json](http://arduino.esp8266.com/stable/package\_esp8266com\_index.json) <mark style="color:red;"></mark>&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (54) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (60) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm ESP8266 -> nhấn install để thêm package Boards ESP8266 vào Arduino IDE
 
@@ -48,7 +48,7 @@ Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version
 Tại Tools -> Manage Libraries tiếp tục Tìm “<mark style="color:red;">Preferences by vshymansky</mark>” sau đấy chọn version mới nhất và tiến hành install. \
 
 
-<figure><img src="../../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (56) (1).png" alt=""><figcaption></figcaption></figure>
 
 Cắm nguồn board ESP8266 vào máy tính để kết nối port
 
