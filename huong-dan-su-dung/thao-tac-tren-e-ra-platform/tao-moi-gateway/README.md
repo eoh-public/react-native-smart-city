@@ -26,8 +26,8 @@ Tại phần cài đặt Thư Viện, E-ra platform hiện đang hỗ trợ ngư
 
 Sau khi cài đặt thư viện hỗ trợ, bấm vào **Bước kế tiếp,** và tuỳ theo loại board sẽ có một số thao tác khác nhau:
 
-{% content-ref url="esp32_chay-code-tai-arduino.md" %}
-[esp32\_chay-code-tai-arduino.md](esp32\_chay-code-tai-arduino.md)
+{% content-ref url="esp32_-arduino.md" %}
+[esp32\_-arduino.md](esp32\_-arduino.md)
 {% endcontent-ref %}
 
 {% content-ref url="stm32_gsm.md" %}

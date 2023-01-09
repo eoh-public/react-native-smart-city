@@ -46,7 +46,7 @@ Các widget hỗ trợ được đển ở góc trái màn hình
 
 **Note:** \
 1\. Tên widget dùng để phân biệt các widget với nhau trong cùng 1 unit trong ứng dụng web\
-2\. Lựa chọn sub-unit và end-device muốn hiển thị hoặc tạo nhanh sub-unit và end device để hiển thị trong mobile app để dễ quản lý\
+2\. **Lựa chọn sub-unit và end-device muốn hiển thị hoặc tạo nhanh sub-unit và end device** để hiển thị trong mobile app để dễ quản lý\
 3\. Chọn datastream nhận trạng thái\
 4\. Chọn các action để điều khiển trạng thái\
 \

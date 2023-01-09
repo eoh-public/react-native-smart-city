@@ -5,13 +5,7 @@ description: >-
   cổng kết nối với các thiết bị khác nhau.
 ---
 
-# ESP32\_Chạy code tại Arduino
-
-**Bước add bằng Arduino** \
-Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK. \
-****https://dl.espressif.com/dl/package\_esp32\_index.json\
-\
-Sau khi hoàn thành các bước trong file hướng dẫn. Tới bước nạp code vào phần mềm, làm theo hướng dẫn dưới đây.
+# ESP32\_ Arduino
 
 **Chuẩn bị:**  Tạo mới Unit để chứa thông tin hiển thị của gateway bạn muốn trải nghiệm
 
@@ -24,12 +18,14 @@ Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
 <figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-**Bước 2: Install Library**\
-Cài đặt thư viện để nạp code board vào bằng " Arduino" hoặc "PlatformIO" theo hướng dẫn chi tiết dưới đây
+**Bước 2: Install Library**
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="../../../developer-mode_user-guide/chuan-bi-firmware.md" %}
+[chuan-bi-firmware.md](../../../developer-mode\_user-guide/chuan-bi-firmware.md)
 {% endcontent-ref %}
+
+Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Arduino"  --> Ấn Next step để tiếp tục\
+
 
 <figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
@@ -64,3 +60,9 @@ Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hi
     &#x20;
 
     <figure><img src="../../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+    Xem video hướng dẫn cụ thể tại đây&#x20;
+
+{% content-ref url="../../video-demo-trai-nghiem-e-ra.md" %}
+[video-demo-trai-nghiem-e-ra.md](../../video-demo-trai-nghiem-e-ra.md)
+{% endcontent-ref %}
