@@ -45,8 +45,8 @@ Ví dụ đấu nối thành công cho 1 giải pháp mẫu [https://wokwi.com/p
 
 * Thêm kinh kiện đã đấu nối vào phần mềm vị trí input/ouput pins
 
-{% content-ref url="../huong-dan-su-dung/thao-tac-tren-e-ra-platform/quan-ly-gateway.md" %}
-[quan-ly-gateway.md](../huong-dan-su-dung/thao-tac-tren-e-ra-platform/quan-ly-gateway.md)
+{% content-ref url="../huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway_cau-hinh-thong-so/" %}
+[gateway\_cau-hinh-thong-so](../huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/)
 {% endcontent-ref %}
 
 * Hiển thị Widget để trải nghiệm với chân pin vừa tạo để điều khiển

@@ -2,7 +2,7 @@
 description: Tips dành cho người dùng trải nghiệm các tiện ích trên E-ra Platform
 ---
 
-# Người dùng trên E-ra Platform
+# Thao tác trên E-ra Platform
 
 {% content-ref url="cai-dat-va-dang-ky-tai-khoan.md" %}
 [cai-dat-va-dang-ky-tai-khoan.md](cai-dat-va-dang-ky-tai-khoan.md)
@@ -16,8 +16,8 @@ description: Tips dành cho người dùng trải nghiệm các tiện ích trê
 [tao-moi-gateway](tao-moi-gateway/)
 {% endcontent-ref %}
 
-{% content-ref url="quan-ly-gateway.md" %}
-[quan-ly-gateway.md](quan-ly-gateway.md)
+{% content-ref url="gateway_cau-hinh-thong-so/" %}
+[gateway\_cau-hinh-thong-so](gateway\_cau-hinh-thong-so/)
 {% endcontent-ref %}
 
 {% content-ref url="su-dung-virtual-pin.md" %}
