@@ -1,11 +1,4 @@
----
-description: >-
-  Để bắt đầu một Project IoT với thiết bị hoàn toàn mới được phát triển bởi các
-  cá nhân và tổ chức nhà phát triển, người dùng sẽ phải Active lên gateway làm
-  cổng kết nối với các thiết bị khác nhau.
----
-
-# ESP32\_ Arduino
+# STM32-Wifi\_Arduino
 
 **Chuẩn bị:**  Tạo mới Unit để chứa thông tin hiển thị của gateway bạn muốn trải nghiệm
 
@@ -14,7 +7,7 @@ description: >-
 Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
 **Bước 1 : Hardware**\
-&#x20;Nhập thông tin cơ bản của gateway nạp vào hệ thống. Chọn board ESP32
+&#x20;Nhập thông tin cơ bản của gateway nạp vào hệ thống. Chọn board STM32-Wifi
 
 <figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
@@ -52,7 +45,7 @@ Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Ardui
 
 <figure><img src="../../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-_<mark style="color:red;">Lưu ý:</mark> Tiến hành cài đặt đầy đủ Driver cho ESP32 trước khi tiến hành nạp code hoặc bạn có thể_ [_vào đây_](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) _để tải lại driver nếu máy chưa tìm thấy được cổng COM._
+_<mark style="color:red;">Lưu ý:</mark> Tiến hành cài đặt đầy đủ Driver cho STM32 trước khi tiến hành nạp code hoặc bạn có thể_ cài [ST-link](https://www.st.com/en/development-tools/stsw-link009.html) _để tải lại driver nếu máy chưa tìm thấy được cổng COM._
 
 **Bước 4: Gateway Activation**\
 Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hiện đoạn code đã nạp thành công --> Ấn Go to gateway để hoàn thành tạo mới\

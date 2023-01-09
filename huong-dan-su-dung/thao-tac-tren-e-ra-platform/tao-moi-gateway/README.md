@@ -30,8 +30,8 @@ Sau khi cài đặt thư viện hỗ trợ, bấm vào **Bước kế tiếp,** 
 [esp32\_chay-code-tai-arduino.md](esp32\_chay-code-tai-arduino.md)
 {% endcontent-ref %}
 
-{% content-ref url="stm32_gsm.md" %}
-[stm32\_gsm.md](stm32\_gsm.md)
+{% content-ref url="stm32_gsm_arduino.md" %}
+[stm32\_gsm\_arduino.md](stm32\_gsm\_arduino.md)
 {% endcontent-ref %}
 
 {% content-ref url="raspberry-pi_chay-code-tai-terminal.md" %}

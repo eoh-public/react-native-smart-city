@@ -63,3 +63,9 @@ $ sudo ./era --token=1er43
 <figure><img src="../../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/image (8) (2) (2).png" alt=""><figcaption></figcaption></figure>
+
+Xem video hướng dẫn cụ thể tại đây&#x20;
+
+{% content-ref url="../../video-demo-trai-nghiem-e-ra.md" %}
+[video-demo-trai-nghiem-e-ra.md](../../video-demo-trai-nghiem-e-ra.md)
+{% endcontent-ref %}
