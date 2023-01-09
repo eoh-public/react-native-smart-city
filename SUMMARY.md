@@ -26,7 +26,7 @@
     * [Tạo mới gateway](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/README.md)
       * [ESP32\_ Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)
       * [ESP8266\_Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/esp8266\_arduino.md)
-      * [STM32\_GSM\_Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32\_gsm\_arduino.md)
+      * [STM32\_GSM\_Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32\_gsm.md)
       * [STM32-Wifi\_Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32-wifi\_arduino.md)
       * [Raspberry Pi\_Chạy code tại Terminal](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/raspberry-pi\_chay-code-tai-terminal.md)
     * [Quản lý Gateway](huong-dan-su-dung/thao-tac-tren-e-ra-platform/quan-ly-gateway.md)

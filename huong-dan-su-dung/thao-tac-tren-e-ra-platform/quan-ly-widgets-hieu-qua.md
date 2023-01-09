@@ -22,7 +22,7 @@ Ví dụ: Device Cổng gate hoặc rèm(đóng, dừng, mở),..&#x20;
 Widget này có thể sử dụng điều khiển nhiều action trong cùng 1 widget\
 Ví dụ: Bật tắt nhiều đèn, điều khiển các chế độ khác nhau của máy lạnh,...
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (4).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.4. Number Action
 
@@ -36,7 +36,7 @@ Ví dụ: điều khiển nhiệt độ máy lạnh, điều khiển đèn (truy
 Widget này có thể sử dụng điều khiển tăng giảm giá trị \
 Ví dụ: điều khiển độ sáng của đèn dimming
 
-<figure><img src="../../.gitbook/assets/image (5) (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 1.6. Options Dropdown Action
 
