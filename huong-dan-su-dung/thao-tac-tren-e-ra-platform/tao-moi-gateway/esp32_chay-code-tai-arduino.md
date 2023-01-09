@@ -14,7 +14,7 @@ description: >-
 Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
 **Bước 1 : Hardware**\
-&#x20;Nhập thông tin cơ bản của gateway nạp vào hệ thống&#x20;
+&#x20;Nhập thông tin cơ bản của gateway nạp vào hệ thống. Chọn board ESP32
 
 <figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 

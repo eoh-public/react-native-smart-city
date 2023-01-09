@@ -24,7 +24,7 @@
     * [Cài đặt và đăng ký tài khoản](huong-dan-su-dung/thao-tac-tren-e-ra-platform/cai-dat-va-dang-ky-tai-khoan.md)
     * [Tạo mới & Quản lý Unit](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-and-quan-ly-unit.md)
     * [Tạo mới gateway](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/README.md)
-      * [ESP32\_ Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32\_-arduino.md)
+      * [ESP32\_ Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)
       * [STM32\_GSM](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32\_gsm.md)
       * [Raspberry Pi\_Chạy code tại Terminal](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/raspberry-pi\_chay-code-tai-terminal.md)
     * [Quản lý Gateway](huong-dan-su-dung/thao-tac-tren-e-ra-platform/quan-ly-gateway.md)
