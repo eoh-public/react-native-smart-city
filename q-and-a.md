@@ -84,6 +84,7 @@ Tham khảo chi tiết tại bài viết: [https://www.facebook.com/groups/56762
 
 <summary>How to change UART pin?</summary>
 
+Tham khảo chi tiết tại bài viết: \
 [https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin](https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin)
 
 </details>

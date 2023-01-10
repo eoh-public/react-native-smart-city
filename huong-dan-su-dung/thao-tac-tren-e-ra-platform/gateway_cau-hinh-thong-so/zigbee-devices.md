@@ -20,7 +20,7 @@ description: Era hỗ trợ trải nghiệm được khi Module Zigbee kết n�
 
 SmartRF Flash Programmer V1: tải tại [đây](https://www.ti.com/tool/FLASH-PROGRAMMER#downloads).&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (6).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. Hướng dẫn
 

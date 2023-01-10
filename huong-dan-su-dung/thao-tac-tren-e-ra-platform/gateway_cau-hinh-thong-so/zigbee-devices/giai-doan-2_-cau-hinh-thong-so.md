@@ -6,7 +6,7 @@
 
 Click " New zigbee device" để tạo mới device trong gateway. Tại đây người dùng chọn vị trí sub unit muốn hiển thị cụ thể khi hiển thị trong mobile app.
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 Ấn "**Next**" để tiến hành mở mạng zigbee để thiết bị&#x20;
 

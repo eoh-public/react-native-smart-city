@@ -43,6 +43,7 @@
       * [Giai đoạn 1: Chuẩn bị và nạp Board và hệ thống điều khiển](huong-dan-su-dung/thao-tac-tren-e-ra-platform/trai-nghiem-sp32-tren-e-ra/giai-doan-1-chuan-bi-va-nap-board-va-he-thong-dieu-khien.md)
       * [Giai đoạn 2: Thiết lập và cấu hình widget và thiết bị](huong-dan-su-dung/thao-tac-tren-e-ra-platform/trai-nghiem-sp32-tren-e-ra/giai-doan-2-thiet-lap-va-cau-hinh-widget-va-thiet-bi.md)
   * [Video demo trải nghiệm E-ra](huong-dan-su-dung/video-demo-trai-nghiem-e-ra.md)
+* [Public API ERa hỗ trợ](public-api-era-ho-tro.md)
 * [Ứng dụng thực tế](ung-dung-thuc-te/README.md)
   * [Giải pháp an toàn và bảo mật](giai-phap-mau/giai-phap-an-toan-va-bao-mat.md)
   * [Giải pháp Wifi công cộng](giai-phap-mau/giai-phap-wifi-cong-cong.md)
