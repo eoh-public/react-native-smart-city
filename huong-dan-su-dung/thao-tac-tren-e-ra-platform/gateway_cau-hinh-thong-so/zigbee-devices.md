@@ -1,6 +1,12 @@
+---
+description: Era hỗ trợ trải nghiệm được khi Module Zigbee kết nối với ESP32 và Raspberry
+---
+
 # Giai đoạn 1: Nạp code cho mạch zigbee
 
 ## 1. Yêu cầu phần cứng
+
+**Era hỗ trợ trải nghiệm được khi Module Zigbee kết nối với ESP32 và Raspberry**
 
 * Mạch nạp CC Debugger.
 
@@ -58,6 +64,4 @@ B10: Chọn file hex Flash image -> Erase, program and verify -> Perform actions
 
 <figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-B11: Kết nối với ESP32 hoặc Raspberry rồi tiến hành khởi chạy ERa.&#x20;
-
-Xem tiếp tại [đây](https://era-open-iot-platform.gitbook.io/documentation/huong-dan-su-dung/huong-dan-trai-nghiem-sp32-tren-e-ra/giai-doan-1-chuan-bi-va-nap-board-va-he-thong-dieu-khien)&#x20;
+Bước 1: Tiến hình thêm mới thiết bị device zigbee tại [đây](zigbee-devices/giai-doan-2\_-cau-hinh-thong-so.md)&#x20;
