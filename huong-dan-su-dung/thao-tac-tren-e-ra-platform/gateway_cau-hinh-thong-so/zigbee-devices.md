@@ -64,4 +64,4 @@ B10: Chọn file hex Flash image -> Erase, program and verify -> Perform actions
 
 <figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-Bước 1: Tiến hình thêm mới thiết bị device zigbee tại [đây](zigbee-devices/giai-doan-2\_-cau-hinh-thong-so.md)&#x20;
+Bước 11: Tiến hình thêm mới thiết bị device zigbee tại [đây](zigbee-devices/giai-doan-2\_-cau-hinh-thong-so.md)&#x20;
