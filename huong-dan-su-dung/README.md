@@ -4,7 +4,7 @@ description: >-
   thuật cũng như cách hiển thị một cách dễ dàng (No-code), nhanh chóng.
 ---
 
-# Developer Mode
+# Hướng dẫn sử dụng
 
 
 
@@ -20,7 +20,7 @@ description: >-
 * Dễ dàng sử dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
   Unit-->Sub-Unit --> End device
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14) (3).png" alt=""><figcaption></figcaption></figure>
 
 **Bật Developer Mode.**
 

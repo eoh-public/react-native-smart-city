@@ -39,7 +39,7 @@ Trong Boards Manager, tìm ESP8266 -> nhấn install để thêm package Boards 
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 

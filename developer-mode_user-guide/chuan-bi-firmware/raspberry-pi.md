@@ -5,7 +5,7 @@ Lưu ý:
 * Xem sơ đồ chân của Raspberry Pi tại [đây](https://pinout.xyz/pinout/wiringpi)&#x20;
 * Tài khoản mặc định của Raspberry Pi:&#x20;
 
-![](<../../.gitbook/assets/image (19) (1).png>)
+![](<../../.gitbook/assets/image (19) (1) (1).png>)
 
 Hướng dẫn:&#x20;
 

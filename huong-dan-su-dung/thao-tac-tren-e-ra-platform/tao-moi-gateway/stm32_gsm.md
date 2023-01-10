@@ -24,7 +24,7 @@ Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Ardui
 
 **Bước 3: Code - Cập nhật token mới**\
 \-  **\[Trên giao diện E-ra]** chọn Apn và Modem của gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-&#x20;  ![](<../../../.gitbook/assets/image (2) (1).png>)        ![](<../../../.gitbook/assets/image (3) (5).png>)\
+&#x20;  ![](<../../../.gitbook/assets/image (2) (1) (4).png>)        ![](<../../../.gitbook/assets/image (3) (5).png>)\
 \
 \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code.
 
@@ -36,7 +36,7 @@ _<mark style="color:red;">Lưu ý:</mark> Tiến hành cài đặt đầy đủ 
 Khi hệ thống chạy thì nút Go to gateway hiện xanh --> Ấn vào để hoàn thành tạo mới\
 **Thời gian chờ kết nối từ 30s-60s**
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 *   Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của EOH. Gateway mới tạo sẽ hiện online\
 

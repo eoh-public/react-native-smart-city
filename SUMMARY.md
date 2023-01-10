@@ -32,7 +32,7 @@
     * [Gateway\_Cấu hình thông số](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/README.md)
       * [Info](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/info.md)
       * [Input/Output pins](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/input-output-pins.md)
-      * [Zigbee devices](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/zigbee-devices.md)
+      * [Giai đoạn 1: Nạp code cho mạch zigbee](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/giai-doan-1-nap-code-cho-mach-zigbee.md)
       * [Modbus devices](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/modbus-devices.md)
       * [Datastream](huong-dan-su-dung/thao-tac-tren-e-ra-platform/gateway\_cau-hinh-thong-so/datastream.md)
     * [Sử dụng VIRTUAL PIN](huong-dan-su-dung/thao-tac-tren-e-ra-platform/su-dung-virtual-pin.md)

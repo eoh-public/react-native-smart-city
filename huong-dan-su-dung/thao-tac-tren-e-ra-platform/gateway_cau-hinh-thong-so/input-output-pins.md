@@ -26,4 +26,4 @@ Tạo mới device trong gateway. Tại đây người dùng mapping chân pin c
   0N: 1\
   OFF: 0&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1) (2).png" alt=""><figcaption></figcaption></figure>
