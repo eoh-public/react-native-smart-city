@@ -20,7 +20,7 @@ Nhập thông tin cơ bản của gateway, chọn board STM32\_GSMnạp vào h�
 Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Arduino"  --> Ấn Next step để tiếp tục\
 
 
-<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13) (4).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 3: Code - Cập nhật token mới**\
 \-  **\[Trên giao diện E-ra]** chọn Apn và Modem của gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\

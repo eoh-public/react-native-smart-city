@@ -20,13 +20,13 @@ description: Era hỗ trợ trải nghiệm được khi Module Zigbee kết n�
 
 SmartRF Flash Programmer V1: tải tại [đây](https://www.ti.com/tool/FLASH-PROGRAMMER#downloads).&#x20;
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. Hướng dẫn
 
 B1: Truy cập vào link github sau [Github](https://github.com/eoh-jsc/era-lib/releases/latest).&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 B2: Click và tải file zip có tên sau: ERa\_Coordinator\_xxx.zip.&#x20;
 
@@ -62,6 +62,6 @@ B9: Chọn Erase -> Perform actions -> Read IEEE để unlock chip và đọc IE
 
 B10: Chọn file hex Flash image -> Erase, program and verify -> Perform actions để upload chương trình -> Đợi quá trình upload chương trình thành công.
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>
 
 Bước 11: Tiến hình thêm mới thiết bị device zigbee tại [đây](zigbee-devices/giai-doan-2\_-cau-hinh-thong-so.md)&#x20;

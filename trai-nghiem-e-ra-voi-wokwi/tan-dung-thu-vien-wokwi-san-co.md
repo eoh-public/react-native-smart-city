@@ -16,7 +16,7 @@
 
 <figure><img src="../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
-1.<img src="../.gitbook/assets/image (3).png" alt="" data-size="line">Nhấn vào để chạy chương trình\
+1.<img src="../.gitbook/assets/image (3) (3).png" alt="" data-size="line">Nhấn vào để chạy chương trình\
 2\. <img src="../.gitbook/assets/image (59).png" alt="" data-size="line">Nhấn vào để gắn giả lập 1 thiết bị mới để trải nghiệm thêm.  Cách đấu nối thiết bị ngoại vi cho board ESP32 này tương tự như đấu nối thiết bị thật
 
 {% content-ref url="../developer-mode/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}

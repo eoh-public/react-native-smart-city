@@ -72,7 +72,7 @@ Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùn
 
 <mark style="color:red;">Dùng module Wifi</mark>
 
-<figure><img src="../../../.gitbook/assets/image (2) (2) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (2) (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass wifi(pass).&#x20;
 

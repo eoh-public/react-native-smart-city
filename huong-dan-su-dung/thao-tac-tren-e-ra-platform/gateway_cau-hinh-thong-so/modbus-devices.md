@@ -36,5 +36,5 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 
 Ví dụ: Với thiết bị của bộ điều khiển
 
-<figure><img src="../../../.gitbook/assets/image (4) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (3) (2).png" alt=""><figcaption></figcaption></figure>
 

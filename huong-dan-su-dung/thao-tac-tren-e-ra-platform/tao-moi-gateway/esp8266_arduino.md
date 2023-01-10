@@ -2,7 +2,7 @@
 
 **Chuẩn bị:**  Tạo mới Unit để chứa thông tin hiển thị của gateway bạn muốn trải nghiệm
 
-![](<../../../.gitbook/assets/image (2) (2).png>)
+![](<../../../.gitbook/assets/image (2) (2) (3).png>)
 
 Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 
@@ -20,7 +20,7 @@ Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Arduino"  --> Ấn Next step để tiếp tục\
 
 
-<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13) (4).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 3: Code - Cập nhật token mới**\
 \-  **\[Trên giao diện E-ra]** Nhập thông tin wifi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino".

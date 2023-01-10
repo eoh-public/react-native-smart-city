@@ -54,7 +54,7 @@ Bảng Registry hiện ra sau đấy chọn version mới nhất và “Add to P
 
 Popup “Add project dependency” -> tiến hành chọn project và click “Add”
 
-<figure><img src="../../../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (3) (2).png" alt=""><figcaption></figcaption></figure>
 
 Cài đặt thêm thư viện STM32duino FreeRTOS by stm32duino, và TinyGSM by vshymanskyy.
 

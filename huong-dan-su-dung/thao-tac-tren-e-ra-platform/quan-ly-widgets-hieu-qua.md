@@ -54,7 +54,7 @@ Các widget này chỉ cần mapping datastreams (config read) để đọc giá
 Widget này có thể sử dụng hiển thị giá trị đọc được từ config của device. 1 widget có thể hiển thị được nhiều bảng giá trị cùng 1 lúc\
 Ví dụ: Nhiệt độ, độ ẩm, chất lượng không khí,...
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.2. Line Chart
 
