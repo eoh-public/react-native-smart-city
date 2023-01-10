@@ -62,6 +62,6 @@ Cắm nguồn board ESP32 vào máy tính để kết nối port
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/" %}
-[tao-moi-gateway](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/)
+{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32_chay-code-tai-arduino.md" %}
+[esp32\_chay-code-tai-arduino.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)
 {% endcontent-ref %}

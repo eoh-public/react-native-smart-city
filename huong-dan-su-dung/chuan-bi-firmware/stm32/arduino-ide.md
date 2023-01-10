@@ -78,6 +78,10 @@ Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/" %}
-[tao-moi-gateway](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/)
+{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32-wifi_arduino.md" %}
+[stm32-wifi\_arduino.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32-wifi\_arduino.md)
+{% endcontent-ref %}
+
+{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32_gsm.md" %}
+[stm32\_gsm.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32\_gsm.md)
 {% endcontent-ref %}

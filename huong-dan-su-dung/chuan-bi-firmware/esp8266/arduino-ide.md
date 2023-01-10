@@ -60,6 +60,6 @@ Cắm nguồn board ESP8266 vào máy tính để kết nối port
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/" %}
-[tao-moi-gateway](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/)
+{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp8266_arduino.md" %}
+[esp8266\_arduino.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp8266\_arduino.md)
 {% endcontent-ref %}

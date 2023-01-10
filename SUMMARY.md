@@ -22,7 +22,7 @@
     * [Raspberry Pi](developer-mode\_user-guide/chuan-bi-firmware/raspberry-pi.md)
   * [Thao tác trên E-ra Platform](huong-dan-su-dung/thao-tac-tren-e-ra-platform/README.md)
     * [Cài đặt và đăng ký tài khoản](huong-dan-su-dung/thao-tac-tren-e-ra-platform/cai-dat-va-dang-ky-tai-khoan.md)
-    * [Tạo mới & Quản lý Unit](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-and-quan-ly-unit.md)
+    * [Tạo mới Unit](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-unit.md)
     * [Tạo mới gateway](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/README.md)
       * [ESP32\_ Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)
       * [ESP8266\_Arduino](huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/esp8266\_arduino.md)

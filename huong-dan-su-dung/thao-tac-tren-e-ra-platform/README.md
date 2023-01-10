@@ -8,8 +8,8 @@ description: Tips dành cho người dùng trải nghiệm các tiện ích trê
 [cai-dat-va-dang-ky-tai-khoan.md](cai-dat-va-dang-ky-tai-khoan.md)
 {% endcontent-ref %}
 
-{% content-ref url="tao-moi-and-quan-ly-unit.md" %}
-[tao-moi-and-quan-ly-unit.md](tao-moi-and-quan-ly-unit.md)
+{% content-ref url="tao-moi-unit.md" %}
+[tao-moi-unit.md](tao-moi-unit.md)
 {% endcontent-ref %}
 
 {% content-ref url="tao-moi-gateway/" %}
