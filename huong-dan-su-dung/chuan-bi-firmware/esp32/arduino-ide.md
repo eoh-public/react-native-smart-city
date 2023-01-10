@@ -27,7 +27,7 @@ ESP32:[ , ](https://github.com/espressif/arduino-esp32/raw/gh-pages/package\_esp
 
 <mark style="color:red;">Thêm đường dẫn tương ứng của từng board, mỗi đường dẫn cách nhau bằng dấu “,”</mark>&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (21) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Board:… -> Boards Manager …
 
@@ -46,7 +46,7 @@ Trong Boards Manager, tìm ESP32 -> nhấn install để thêm package Boards ES
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
@@ -54,11 +54,11 @@ Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version
 
 Cắm nguồn board ESP32 vào máy tính để kết nối port
 
-<figure><img src="../../../.gitbook/assets/image (68).png" alt=""><figcaption><p><br></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (68) (1).png" alt=""><figcaption><p><br></p></figcaption></figure>
 
 Ấn vào dropdown để chọn board và port -> Chọn Board **" ESP32 Dev Module"** và  Chọn cổng Ports của mạch nạp ESP32
 
-<figure><img src="../../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (55) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 

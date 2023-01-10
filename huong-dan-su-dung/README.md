@@ -20,7 +20,7 @@ description: >-
 * Dễ dàng sử dụng mobile app trong việc giám sát bằng cách chia cấu trúc nhỏ thành \
   Unit-->Sub-Unit --> End device
 
-<figure><img src="../.gitbook/assets/image (14) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 **Bật Developer Mode.**
 

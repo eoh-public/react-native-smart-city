@@ -5,7 +5,7 @@
 **Bước 2:** Vào "Nhà phát triển"--> Chọn menu "Tất cả địa điểm" --> Ấn vào button " Tạo trải nghiệm Wokwi" \
 
 
-<figure><img src="../.gitbook/assets/image (61).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (61) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 3:** Ấn vào "Trải nghiệm Wokwi" hoặc coppy link  wokwi tự sinh ra để tiến hành trải nghiệm\
 
@@ -29,5 +29,5 @@
 
 **Bước 6**: Vào menu " Tất cả địa điểm" để trải nghiệm trên cái widget đã tạo sẳn, hoặc tạo mới widget mới
 
-<figure><img src="../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (53) (1).png" alt=""><figcaption></figcaption></figure>
 

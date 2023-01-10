@@ -9,7 +9,7 @@ Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 **Bước 1 : Hardware**\
 &#x20;Nhập thông tin cơ bản của gateway nạp vào hệ thống. Chọn board ESP8266
 
-<figure><img src="../../../.gitbook/assets/image (10) (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 2: Install Library**
 
@@ -25,11 +25,11 @@ Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Ardui
 **Bước 3: Code - Cập nhật token mới**\
 \-  **\[Trên giao diện E-ra]** Nhập thông tin wifi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino".
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (8).png" alt=""><figcaption></figcaption></figure>
 
 **\[Trên giao diện Ardunio]** nhấn phím tắt Ctrl A đoạn và paste đoạn code vừa copy vào thay thế.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (6).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/image (10) (3).png" alt=""><figcaption></figcaption></figure>
 

@@ -39,7 +39,7 @@ Trong Boards Manager, tìm ESP8266 -> nhấn install để thêm package Boards 
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
@@ -52,11 +52,11 @@ Tại Tools -> Manage Libraries tiếp tục Tìm “<mark style="color:red;">Pr
 
 Cắm nguồn board ESP8266 vào máy tính để kết nối port
 
-<figure><img src="../../../.gitbook/assets/image (68).png" alt=""><figcaption><p><br></p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (68) (1).png" alt=""><figcaption><p><br></p></figcaption></figure>
 
 Ấn vào dropdown để chọn board và port -> Chọn Board **" Generic ESP8266 Module"** và  Chọn cổng Ports của mạch nạp ESP8266
 
-<figure><img src="../../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (64) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 

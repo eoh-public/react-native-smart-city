@@ -32,7 +32,7 @@ STM32: [https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicr
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (58) (2).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm STM32 -> nhấn install để thêm package STM32 MCU based boards vào Arduino IDE
 
@@ -44,7 +44,7 @@ Trong Boards Manager, tìm STM32 -> nhấn install để thêm package STM32 MCU
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
