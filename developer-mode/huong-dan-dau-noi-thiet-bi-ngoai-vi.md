@@ -1,10 +1,6 @@
 # Hướng dẫn đấu nối thiết bị ngoại vi
 
-**WARNING**
-
-* <mark style="color:orange;">Không được để nguồn >3.3VDC chạm vào bất kì chân GPIO nào 1 cách trực tiếp.</mark>
-* <mark style="color:orange;">Không cấp tín hiệu vào chân Input với mức điện áp > 3.3VDC.</mark>
-* <mark style="color:orange;">Không được dùng chân GPIO điều khiển trực tiếp tải lớn hơn dòng chịu dựng trên chân GPIO của hãng ( ví dụ: < 30mA với ESP32; < 10mA với STM và Raspberry).</mark>
+####
 
 #### 1. Đấu nối thiết bị ngoại vi cho ESP32
 
@@ -12,7 +8,7 @@
 
 #### 2. Đấu nối thiết bị ngoại vi cho STM32
 
-{% file src="../.gitbook/assets/[IU] Huong dan STM32 (2).pdf" %}
+{% file src="../.gitbook/assets/[IU] Huong dan STM32.pdf" %}
 
 #### 3. Đấu nối thiết bị ngoại vi cho Raspberry Pi
 
