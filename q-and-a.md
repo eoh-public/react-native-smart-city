@@ -88,3 +88,13 @@ Tham khảo chi tiết tại bài viết: \
 [https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin](https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin)
 
 </details>
+
+<details>
+
+<summary>WARNING khi sử dụng thiết bị đấu nối là gì?</summary>
+
+1. Không được để nguồn >3.3VDC chạm vào bất kì chân GPIO nào 1 cách trực tiếp.
+2. Không cấp tín hiệu vào chân Input với mức điện áp > 3.3VDC.
+3. Không được dùng chân GPIO điều khiển trực tiếp tải lớn hơn dòng chịu dựng trên chân GPIO của hãng ( ví dụ: < 30mA với ESP32; < 10mA với STM và Raspberry).
+
+</details>
