@@ -32,8 +32,6 @@ Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Ardui
 **Bước 3: Code - Cập nhật token mới**\
 \-  **\[Trên giao diện E-ra]** Nhập thông tin wifi tại vị trí bạn đang add gateway và Sao chép code ở bên phải  " Arduino".
 
-Việc kết nối sẽ phụ thuộc vào phần cứng hỗ trợ loại nào tuy nhiên hầu hết các board thông dụng trên thị trường hiện nay như esp32 và esp8266 chỉ hỗ trợ wifi 2.4GHz.
-
 <figure><img src="../../../.gitbook/assets/image (1) (8).png" alt=""><figcaption></figcaption></figure>
 
 **\[Trên giao diện Ardunio]** nhấn phím tắt Ctrl A đoạn và paste đoạn code vừa copy vào thay thế.
