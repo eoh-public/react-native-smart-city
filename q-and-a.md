@@ -46,6 +46,16 @@ Các phần cứng E-Ra đang hỗ trợ gồm:
 
 <details>
 
+<summary>E-Ra có ưu điểm gì so với Blynk?</summary>
+
+E-Ra tiền thân 5 năm trước là nền tảng IoT thực hiện cho các dự án công nghiệp. Vì vậy những tính năng cơ bản mà Blynk có thì E-Ra cũng hỗ trợ. Ngoài ra, E-Ra còn hỗ trợ các tính năng No-Code như kết nối với các thiết bị chuẩn ngõ ra Modbus RTU thì chỉ cần Config để giao tiếp, rất nhanh. Còn Blynk là phải Code khá nhiều và cần có kiến thức chuyên sâu để code thành công.&#x20;
+
+Ngoài ra, E-Ra còn hỗ trợ các chuẩn giao tiếp Zigbee (các thiết bị Smart home), RS485. Và E-Ra đang tập trung hết vào 1 server nên nếu cần user có thể link được nhiều board phần cứng lại với nhau!
+
+</details>
+
+<details>
+
 <summary><strong>E-Ra có Virtual Pins: V0, V1,...V255 giống như Blynk không?</strong></summary>
 
 Hiện E-Ra đã chính thức hỗ trợ Virtual Pins. Bạn có thể tham khảo các thông tin sau:
@@ -86,5 +96,15 @@ Tham khảo chi tiết tại bài viết: [https://www.facebook.com/groups/56762
 
 Tham khảo chi tiết tại bài viết: \
 [https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin](https://github.com/eoh-jsc/era-lib/wiki/How-to-change-UART-pin)
+
+</details>
+
+<details>
+
+<summary>WARNING khi sử dụng thiết bị đấu nối là gì?</summary>
+
+1. Không được để nguồn >3.3VDC chạm vào bất kì chân GPIO nào 1 cách trực tiếp.
+2. Không cấp tín hiệu vào chân Input với mức điện áp > 3.3VDC.
+3. Không được dùng chân GPIO điều khiển trực tiếp tải lớn hơn dòng chịu dựng trên chân GPIO của hãng ( ví dụ: < 30mA với ESP32; < 10mA với STM và Raspberry).
 
 </details>
