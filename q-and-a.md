@@ -108,11 +108,3 @@ Tham khảo chi tiết tại bài viết: \
 3. Không được dùng chân GPIO điều khiển trực tiếp tải lớn hơn dòng chịu dựng trên chân GPIO của hãng ( ví dụ: < 30mA với ESP32; < 10mA với STM và Raspberry).
 
 </details>
-
-<details>
-
-<summary>Wifi sẽ hỗ trợ tần số nào 2.4GHz hay 5GHz?</summary>
-
-Việc kết nối sẽ phụ thuộc vào phần cứng hỗ trợ loại nào tuy nhiên hầu hết các board thông dụng trên thị trường hiện nay như esp32 và esp8266 chỉ hỗ trợ wifi 2.4GHz.
-
-</details>
