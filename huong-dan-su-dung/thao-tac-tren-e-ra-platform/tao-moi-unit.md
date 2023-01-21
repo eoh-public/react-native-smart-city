@@ -1,4 +1,4 @@
-# Tạo mới & Quản lý Unit
+# Tạo mới Unit
 
 ## 1. Tạo mới Unit
 
@@ -30,7 +30,7 @@ Tại đây bạn có thể điều khiển hoặc giám sát các giá trị 1 
 
 **Bước 3:** Ấn vào Edit Unit để thêm mới widget hoặc sắp xếp lại vị trí bằng cách kéo di chuyển widget
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 Các widget hỗ trợ được đển ở góc trái màn hình
 
@@ -42,7 +42,7 @@ Các widget hỗ trợ được đển ở góc trái màn hình
 
 **Bước 5:** Setting widget
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Note:** \
 1\. Tên widget dùng để phân biệt các widget với nhau trong cùng 1 unit trong ứng dụng web\
@@ -52,6 +52,6 @@ Các widget hỗ trợ được đển ở góc trái màn hình
 \
 
 
-{% content-ref url="quan-ly-widgets-hieu-qua.md" %}
-[quan-ly-widgets-hieu-qua.md](quan-ly-widgets-hieu-qua.md)
+{% content-ref url="su-dung-widget-box-hieu-qua/" %}
+[su-dung-widget-box-hieu-qua](su-dung-widget-box-hieu-qua/)
 {% endcontent-ref %}

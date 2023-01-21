@@ -23,7 +23,7 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
   Ví dụ Giá trị nhiệt độ, độ ẩm,...\
   Dưới đây là hình mình họa của đọc trạng thái của bộ điều khiển
 
-<figure><img src="../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Config write: Là các device có chức năng ghi được giữ liệu và liên kết với action để điều khiển thiết bị\
   Ví dụ: Với thiết bị của bộ điều khiển

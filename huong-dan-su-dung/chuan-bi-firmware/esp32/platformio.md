@@ -22,13 +22,13 @@ Truy cập [Visual Studio Code - Code Editing. Redefined](https://code.visualstu
 
 ### 4. Tạo project
 
-<figure><img src="../../../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 * Trong VS Code chọn PlatformIO&#x20;
 * PlatformIO: Quick Access -> PIO Home -> Open&#x20;
 * Chọn New Project để tạo project mới -> Xuất hiện popup Project Wizard như hình dưới&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (31) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Project Wizard: vui lòng nhập tên Project, chọn Board, Framework, Location lưu project và tiến hành tạo Project
 
@@ -36,7 +36,7 @@ Trong Project Wizard: vui lòng nhập tên Project, chọn Board, Framework, Lo
 
 ### 5. Thêm thư viện vào Project
 
-<figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (26) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Trong PlatformIO Home chọn Libraries&#x20;
 * Tìm “Era EoH”&#x20;
@@ -46,7 +46,7 @@ Trong Project Wizard: vui lòng nhập tên Project, chọn Board, Framework, Lo
 
 Bảng Registry hiện ra sau đấy chọn version mới nhất và “Add to Project”
 
-<figure><img src="../../../.gitbook/assets/image (24) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Popup “Add project dependency” -> tiến hành chọn project và click “Add”
 

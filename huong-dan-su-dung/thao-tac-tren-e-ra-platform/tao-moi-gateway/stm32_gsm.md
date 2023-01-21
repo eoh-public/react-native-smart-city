@@ -24,11 +24,11 @@ Sau khi đã chuẩn bị firmware đầy đủ thì chọn hình thức " Ardui
 
 **Bước 3: Code - Cập nhật token mới**\
 \-  **\[Trên giao diện E-ra]** chọn Apn và Modem của gateway và Sao chép code ở bên phải  " Arduino" hoặc "PlatformIO" . Ấn vào nút check để hệ thống nhận diện được token mới\
-&#x20;  ![](<../../../.gitbook/assets/image (2) (1).png>)        ![](<../../../.gitbook/assets/image (3) (5).png>)\
+&#x20;  ![](<../../../.gitbook/assets/image (2) (1) (1).png>)        ![](<../../../.gitbook/assets/image (3) (5).png>)\
 \
 \- Sau khi hiện done compilling thì tiến hành ấn nút " -->" bên cạnh nút check để tiến hành nạp code.
 
-<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24) (1).png" alt=""><figcaption></figcaption></figure>
 
 _<mark style="color:red;">Lưu ý:</mark> Tiến hành cài đặt đầy đủ Driver cho STM32 trước khi tiến hành nạp code hoặc bạn có thể_ cài [ST-link](https://www.st.com/en/development-tools/stsw-link009.html) _để tải lại driver nếu máy chưa tìm thấy được cổng COM._
 

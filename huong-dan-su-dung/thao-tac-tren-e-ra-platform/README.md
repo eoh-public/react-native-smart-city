@@ -24,6 +24,6 @@ description: Tips dành cho người dùng trải nghiệm các tiện ích trê
 [su-dung-virtual-pin.md](su-dung-virtual-pin.md)
 {% endcontent-ref %}
 
-{% content-ref url="quan-ly-widgets-hieu-qua.md" %}
-[quan-ly-widgets-hieu-qua.md](quan-ly-widgets-hieu-qua.md)
+{% content-ref url="su-dung-widget-box-hieu-qua/" %}
+[su-dung-widget-box-hieu-qua](su-dung-widget-box-hieu-qua/)
 {% endcontent-ref %}

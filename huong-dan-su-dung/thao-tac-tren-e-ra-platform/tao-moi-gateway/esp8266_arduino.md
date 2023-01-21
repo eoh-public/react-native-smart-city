@@ -9,7 +9,7 @@ Thêm mới 1 gateway vào hệ thống tại menu "All gateway"
 **Bước 1 : Hardware**\
 &#x20;Nhập thông tin cơ bản của gateway nạp vào hệ thống. Chọn board ESP8266
 
-<figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 2: Install Library**
 
@@ -52,7 +52,7 @@ _<mark style="color:red;">Lưu ý:</mark> Tiến hành cài đặt đầy đủ 
 **Bước 4: Gateway Activation**\
 Khi hệ thống chạy xong 100% và hiện chữ "leaving..." và trên web hiện đoạn code đã nạp thành công --> Ấn Go to gateway để hoàn thành tạo mới\
 **Thời gian chờ kết nối từ 30s-60s**\
-![](<../../../.gitbook/assets/image (2) (2) (2).png>)     ![](<../../../.gitbook/assets/image (11) (1).png>)
+![](<../../../.gitbook/assets/image (2) (2) (2).png>)     ![](<../../../.gitbook/assets/image (11) (1) (1).png>)
 
 *   Gateway mới tạo có trên ứng dụng và có thể trải nghiệm giải pháp IOT của E-Ra. Gateway mới tạo sẽ hiện online\
     &#x20;

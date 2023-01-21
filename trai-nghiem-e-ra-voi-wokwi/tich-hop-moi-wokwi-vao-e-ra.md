@@ -8,7 +8,7 @@ description: Người dùng tự tích hợp từ bước cơ bản tới khi ga
 
 * Tạo tài khoản và đăng nhập vào [Wokwi](https://wokwi.com/).&#x20;
 
-<figure><img src="../.gitbook/assets/image (6) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Từ trang chủ Wokwi -> Click vào avatar và chọn My project.
 
@@ -16,7 +16,7 @@ description: Người dùng tự tích hợp từ bước cơ bản tới khi ga
 
 * Click vào New project -> chọn ESP32.
 
-<figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (2) (2).png" alt=""><figcaption></figcaption></figure>
 
 * Click vào Library Manager -> “+” -> Search Era -> Chọn Era để add thử viện vào project.
 

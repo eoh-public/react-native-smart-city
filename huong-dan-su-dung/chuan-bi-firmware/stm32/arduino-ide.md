@@ -40,17 +40,17 @@ Trong Boards Manager, tìm STM32 -> nhấn install để thêm package STM32 MCU
 
 ### 4. Thêm thư viện vào Arduino IDE
 
-<figure><img src="../../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (25) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
 ****
 
-<figure><img src="../../../.gitbook/assets/image (30).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (30) (1).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/image (11) (2).png" alt=""><figcaption><p>TinyGSM trên Arduino IDE</p></figcaption></figure>
 
@@ -64,7 +64,7 @@ Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùn
 
 <mark style="color:red;">Dùng module Gsm (SIM)</mark>
 
-<figure><img src="../../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (23) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Chọn APN nhà mạng đang dùng.&#x20;
 * Chọn modem SIM đang dùng.&#x20;
