@@ -22,8 +22,8 @@ Ví dụ: Nhiệt độ, độ ẩm, chất lượng không khí,...
 * Với video thông thường đã được quy đổi "http://demo.mp4", người dùng chỉ cần coppy và nhập vào URL của widget để hoàn thành cấu hình\
   ví dụ: [https://gist.github.com/jsturgis/3b19447b304616f18657](https://gist.github.com/jsturgis/3b19447b304616f18657)
 * Stream Camera\
-  \- Với các hãng Camera có public uri. --> Camera sẽ được giám sát reatime trên cả web và app Era\
-  \- Camera chỉ có rtsp, thì chỉ hỗ trợ reatime trên app Era
+  \- Với các hãng Camera có public uri --> Camera sẽ được giám sát reatime trên cả web và app Era\
+  \- Với các hãng Camera chỉ xuất định dạng rtsp -->  Camera sẽ chỉ giám sát reatime trên app Era
 
 <figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
