@@ -58,6 +58,6 @@ Kết nối module Modbus với board Raspberry Pi theo sơ đồ chân bên dư
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/raspberry-pi_chay-code-tai-terminal.md" %}
-[raspberry-pi\_chay-code-tai-terminal.md](../../huong-dan-su-dung/thao-tac-tren-e-ra-platform/tao-moi-gateway/raspberry-pi\_chay-code-tai-terminal.md)
+{% content-ref url="../../huong-dan-su-dung/thao-tac-tren-web-e-ra-platform/tao-moi-gateway/raspberry-pi_chay-code-tai-terminal.md" %}
+[raspberry-pi\_chay-code-tai-terminal.md](../../huong-dan-su-dung/thao-tac-tren-web-e-ra-platform/tao-moi-gateway/raspberry-pi\_chay-code-tai-terminal.md)
 {% endcontent-ref %}

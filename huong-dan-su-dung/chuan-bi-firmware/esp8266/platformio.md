@@ -8,13 +8,13 @@ Với ESP8266: [CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp
 
 ### 2. Visual Studio Code&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (43) (1).png" alt=""><figcaption></figcaption></figure>
 
 Truy cập [Visual Studio Code - Code Editing. Redefined](https://code.visualstudio.com/) và tải bản VS Code tương thích với hệ điều hành.&#x20;
 
 ### 3. PlatformIO
 
-<figure><img src="../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (39) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Mở VS Code chọn Extensions&#x20;
 * Tìm PlatformIO IDE&#x20;
@@ -36,13 +36,13 @@ Trong Project Wizard: vui lòng nhập tên Project, chọn Board, Framework, Lo
 
 ### 5. Thêm thư viện vào Project
 
-<figure><img src="../../../.gitbook/assets/image (26) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (26) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Trong PlatformIO Home chọn Libraries&#x20;
 * Tìm “Era EoH”&#x20;
 * Chọn “ERa by EoH Ltd”&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (38) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bảng Registry hiện ra sau đấy chọn version mới nhất và “Add to Project”
 
@@ -92,7 +92,7 @@ Mở file platformio.ini của project và tiến hành thay đổi upload\_port
 
 Vào chế độ bootloader (chế độ upload code) trước khi tiến hành upload chương trình bằng cách:&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (20) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Mở serial monitor (click vào biểu tượng như hình trên).&#x20;
 * Nhấn giữ nút BOOT đồng thời nhấn và nhả nút RST/EN trên board ESP8266
@@ -101,6 +101,6 @@ Vào chế độ bootloader (chế độ upload code) trước khi tiến hành 
 
 **Mở wed để tạo mới gateway ESP8266 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/" %}
-[tao-moi-gateway](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/)
+{% content-ref url="../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/" %}
+[tao-moi-gateway](../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/)
 {% endcontent-ref %}

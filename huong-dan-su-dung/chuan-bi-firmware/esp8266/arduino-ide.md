@@ -19,17 +19,17 @@ Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải b�
 * Mở Arduino IDE&#x20;
 * Vào File -> Preferences&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (66) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK.&#x20;
 
 ESP8266: [http://arduino.esp8266.com/stable/package\_esp8266com\_index.json](http://arduino.esp8266.com/stable/package\_esp8266com\_index.json) <mark style="color:red;"></mark>&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (54) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (54) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../../.gitbook/assets/image (60) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (60) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm ESP8266 -> nhấn install để thêm package Boards ESP8266 vào Arduino IDE
 
@@ -43,7 +43,7 @@ Vào Tools -> Manage Libraries
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
-<figure><img src="../../../.gitbook/assets/image (29) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tại Tools -> Manage Libraries tiếp tục Tìm “<mark style="color:red;">Preferences by vshymansky</mark>” sau đấy chọn version mới nhất và tiến hành install. \
 
@@ -60,6 +60,6 @@ Cắm nguồn board ESP8266 vào máy tính để kết nối port
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp8266_arduino.md" %}
-[esp8266\_arduino.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp8266\_arduino.md)
+{% content-ref url="../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/esp8266_arduino.md" %}
+[esp8266\_arduino.md](../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/esp8266\_arduino.md)
 {% endcontent-ref %}

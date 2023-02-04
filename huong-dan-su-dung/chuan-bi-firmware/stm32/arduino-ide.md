@@ -20,7 +20,7 @@ Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải b�
 *   Vào File -> Preferences \
 
 
-    <figure><img src="../../../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../../.gitbook/assets/image (67) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK.&#x20;
 
@@ -28,11 +28,11 @@ STM32: [https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicr
 
 <mark style="color:red;">Thêm đường dẫn tương ứng của từng board, mỗi đường dẫn cách nhau bằng dấu “,”</mark>&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (63) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../../.gitbook/assets/image (58) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (58) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm STM32 -> nhấn install để thêm package STM32 MCU based boards vào Arduino IDE
 
@@ -56,7 +56,7 @@ Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version
 
 ###
 
-<figure><img src="../../../.gitbook/assets/image (29) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùng Wifi)
 
@@ -78,10 +78,10 @@ Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32-wifi_arduino.md" %}
-[stm32-wifi\_arduino.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32-wifi\_arduino.md)
+{% content-ref url="../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/stm32-wifi_arduino.md" %}
+[stm32-wifi\_arduino.md](../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/stm32-wifi\_arduino.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32_gsm.md" %}
-[stm32\_gsm.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/stm32\_gsm.md)
+{% content-ref url="../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/stm32_gsm_arduino.md" %}
+[stm32\_gsm\_arduino.md](../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/stm32\_gsm\_arduino.md)
 {% endcontent-ref %}

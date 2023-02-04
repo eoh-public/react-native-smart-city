@@ -8,13 +8,13 @@ Với STM32: [ST-link](https://www.st.com/en/development-tools/stsw-link009.html
 
 ### 2. Visual Studio Code&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (43) (1).png" alt=""><figcaption></figcaption></figure>
 
 Truy cập [Visual Studio Code - Code Editing. Redefined](https://code.visualstudio.com/) và tải bản VS Code tương thích với hệ điều hành.&#x20;
 
 ### 3. PlatformIO
 
-<figure><img src="../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (39) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Mở VS Code chọn Extensions&#x20;
 * Tìm PlatformIO IDE&#x20;
@@ -40,13 +40,13 @@ Trong Project Wizard: vui lòng nhập tên Project, chọn Board, Framework, Lo
 
 ### 5. Thêm thư viện vào Project
 
-<figure><img src="../../../.gitbook/assets/image (26) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (26) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * Trong PlatformIO Home chọn Libraries&#x20;
 * Tìm “Era EoH”&#x20;
 * Chọn “ERa by EoH Ltd”&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (38) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bảng Registry hiện ra sau đấy chọn version mới nhất và “Add to Project”
 
@@ -88,7 +88,7 @@ Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass
 
 Đối với board STM32 vui lòng cài đặt thêm thư viện bỗ trợ ở mục 2.2.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (44) (1).png" alt=""><figcaption></figcaption></figure>
 
 Nhấn vào dấu :heavy\_check\_mark: dưới thanh taskbar để tiến hành build chương trình.
 
@@ -99,6 +99,6 @@ Nhấn vào dấu :heavy\_check\_mark: dưới thanh taskbar để tiến hành 
 * Nhấn vào dấu --> dưới thanh taskbar để tiến hành upload chương trình. \
   **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/" %}
-[tao-moi-gateway](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/)
+{% content-ref url="../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/" %}
+[tao-moi-gateway](../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/)
 {% endcontent-ref %}

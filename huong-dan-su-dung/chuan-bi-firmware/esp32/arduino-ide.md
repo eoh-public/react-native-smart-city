@@ -27,11 +27,11 @@ ESP32:[ , ](https://github.com/espressif/arduino-esp32/raw/gh-pages/package\_esp
 
 <mark style="color:red;">Thêm đường dẫn tương ứng của từng board, mỗi đường dẫn cách nhau bằng dấu “,”</mark>&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (21) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (21) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (16) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm ESP32 -> nhấn install để thêm package Boards ESP32 vào Arduino IDE
 
@@ -50,7 +50,7 @@ Vào Tools -> Manage Libraries
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
-<figure><img src="../../../.gitbook/assets/image (29) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Cắm nguồn board ESP32 vào máy tính để kết nối port
 
@@ -62,6 +62,6 @@ Cắm nguồn board ESP32 vào máy tính để kết nối port
 
 **Mở wed để tạo mới gateway ESP32 vào E-ra**
 
-{% content-ref url="../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32_chay-code-tai-arduino.md" %}
-[esp32\_chay-code-tai-arduino.md](../../thao-tac-tren-e-ra-platform/tao-moi-gateway/esp32\_chay-code-tai-arduino.md)
+{% content-ref url="../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/esp32_-arduino.md" %}
+[esp32\_-arduino.md](../../thao-tac-tren-web-e-ra-platform/tao-moi-gateway/esp32\_-arduino.md)
 {% endcontent-ref %}
