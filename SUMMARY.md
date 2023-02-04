@@ -49,7 +49,7 @@
     * [Tạo mới New Unit](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-new-unit.md)
     * [Tạo mới Sub-Unit](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-sub-unit.md)
     * [Tạo mới device](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/README.md)
-      * [Giai đoạn 1: Chuẩn bị device mẫu và liên hệ Era cấp QR code](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md)
+      * [Giai đoạn 1: Chuẩn bị device mẫu và liên hệ Era support cấp QR code](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md)
       * [Giai đoạn 2: Add device bằng công nghệ Plug\&Play](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/giai-doan-2-add-device-bang-cong-nghe-plug-and-play/README.md)
         * [Add Gateway](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/giai-doan-2-add-device-bang-cong-nghe-plug-and-play/add-gateway.md)
         * [Add Wifi Device](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/giai-doan-2-add-device-bang-cong-nghe-plug-and-play/add-wifi-device.md)

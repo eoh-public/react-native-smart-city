@@ -14,8 +14,8 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
 **Bước 4:** Scan QR code đã được cung cấp từ đội support của E-Ra
 
-{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md" %}
-[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md)
+{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md" %}
+[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md)
 {% endcontent-ref %}
 
 &#x20;     ![](<../../../../.gitbook/assets/image (60).png>)           ![](<../../../../.gitbook/assets/image (29).png>)

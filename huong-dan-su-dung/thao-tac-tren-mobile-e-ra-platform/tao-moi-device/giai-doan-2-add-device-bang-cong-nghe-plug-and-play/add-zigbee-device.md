@@ -1,7 +1,7 @@
 # Add Zigbee Device
 
-{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md" %}
-[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md)
+{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md" %}
+[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md)
 {% endcontent-ref %}
 
 **Bước 1:** Nhấn vào nút Thêm mới (biểu tượng dấu cộng ở góc phải màn hình) tại Unit cụ thể hoặc ngoài màn hình
