@@ -1,5 +1,9 @@
 # Add Zigbee Device
 
+{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md" %}
+[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md)
+{% endcontent-ref %}
+
 **Bước 1:** Nhấn vào nút Thêm mới (biểu tượng dấu cộng ở góc phải màn hình) tại Unit cụ thể hoặc ngoài màn hình
 
 ![](<../../../../.gitbook/assets/image (66).png>)    ![](<../../../../.gitbook/assets/image (6).png>)   ![](<../../../../.gitbook/assets/image (73).png>)
@@ -16,7 +20,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 **Bước 4.** Chọn Sub Unit cụ thể cho device\
 ****![](<../../../../.gitbook/assets/image (11).png>)****\
 **Bước 5:** Chọn gateway để kết nối với thiết bị và kiểm tra tất cả nguồn đã được bật.\
-Bước này chú ý ấn mở nguồn trên từng thiết bị để tiến hành join vào mạng zigbee
+<mark style="color:orange;">Bước này chú ý ấn mở nguồn trên từng thiết bị để tiến hành join vào mạng zigbee</mark>
 
 <figure><img src="../../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Device này không cần gateway đi kèm mà chính nó là 1 gateway và là device như
+  máy lọc nước robot,...
+---
+
 # Add Wifi Device
 
 **Bước 1:** Nhấn vào nút Thêm mới (biểu tượng dấu cộng ở góc phải màn hình) tại Unit cụ thể hoặc ngoài màn hình
@@ -15,7 +21,11 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
 **Bước 4.** Chọn Sub Unit cụ thể cho device\
 ****![](<../../../../.gitbook/assets/image (11).png>)****\
-**Bước 5:** Scan QR code đã được cung cấp từ đội support của E-Ra
+**Bước 5:** Scan QR code đã được cung cấp từ đội support của E-Ra.&#x20;
+
+{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md" %}
+[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md)
+{% endcontent-ref %}
 
 &#x20;     ![](<../../../../.gitbook/assets/image (60).png>)           ![](<../../../../.gitbook/assets/image (29).png>)
 

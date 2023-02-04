@@ -43,4 +43,9 @@ E-Ra app hiện đang hỗ trợ 4 loại device thông dụng có thể add nha
 
 {% embed url="https://forum.eoh.io/" %}
 
-Khi cần hỗ trợ khác, hãy liên hệ với chúng tôi theo số (+84) 906998291 hoặc địa chỉ email: marketing@eoh.io
+Khi cần hỗ trợ khác, hãy liên hệ với chúng tôi theo số (+84) 906998291 hoặc địa chỉ email: marketing@eoh.io\
+
+
+{% content-ref url="giai-doan-2-add-device-bang-cong-nghe-plug-and-play/" %}
+[giai-doan-2-add-device-bang-cong-nghe-plug-and-play](giai-doan-2-add-device-bang-cong-nghe-plug-and-play/)
+{% endcontent-ref %}

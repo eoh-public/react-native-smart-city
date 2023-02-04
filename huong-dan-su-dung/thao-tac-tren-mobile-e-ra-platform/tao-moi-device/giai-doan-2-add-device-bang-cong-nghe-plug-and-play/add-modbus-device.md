@@ -15,7 +15,13 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
 **Bước 4.** Chọn Sub Unit cụ thể cho device và tắt nguồn thiết bị đang cần thêm mới hiện tại\
 ****![](<../../../../.gitbook/assets/image (11).png>)    ![](<../../../../.gitbook/assets/image (53).png>)****\
+****
+
 **Bước 5:** Scan QR code đã được cung cấp từ đội support của E-Ra
+
+{% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md" %}
+[giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md](../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-cap-qr-code.md)
+{% endcontent-ref %}
 
 &#x20;     ![](<../../../../.gitbook/assets/image (60).png>)       ![](<../../../../.gitbook/assets/image (29).png>)
 
