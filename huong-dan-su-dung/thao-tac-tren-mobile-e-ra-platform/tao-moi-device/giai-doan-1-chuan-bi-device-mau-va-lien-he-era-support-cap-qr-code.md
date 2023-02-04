@@ -1,11 +1,8 @@
-# Giai đoạn 1: Chuẩn bị device mẫu và liên hệ Era cấp QR code
+# Giai đoạn 1: Chuẩn bị device mẫu và liên hệ Era support cấp QR code
 
 ## I. Tạo con mẫu trên Web E-Ra
 
-**Điều kiện:**\
-1\. Tài khoản đang tạo sẽ là chủ sở hữu của Gateway, device và Unit\
-2\. Chỉ thao tác và thêm mới device vào gateway và Unit là tài khoản đó đang là chủ sở hữu\
-3\. Với mỗi model sẽ tạo hoàn tất 1 lần trên Web E-Ra \
+<mark style="color:orange;">**Lưu ý:**</mark>\ <mark style="color:orange;">1. Tài khoản đang tạo sẽ là chủ sở hữu của Gateway, Device</mark>\ <mark style="color:orange;">2. Chỉ thao tác thêm mới Device vào trong Gateway và Unit mà bạn đang là chủ sở hữu.</mark>\ <mark style="color:orange;">3. Cấu hình mẫu 1 device trên web E-Ra và liên hệ</mark> <mark style="color:orange;"></mark><mark style="color:orange;">**support E-Ra xuất QR code**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">để add nhanh trên mobile app bằng công nghệ Plug& Play cho các thiết bị cùng model (ngoại trừ zigbee device có thể add nhanh không cần QR code).</mark>\
 Ví dụ: Trong nhà có 10 thiết bị đèn, chỉ cần tạo 1 con chuẩn với cách hiển thị mong muốn, sau đó sẽ dùng mobile app để add device nhanh chóng trên mobile bằng công nghệ Plug \&Play
 
 ![](<../../../.gitbook/assets/image (27).png>)
