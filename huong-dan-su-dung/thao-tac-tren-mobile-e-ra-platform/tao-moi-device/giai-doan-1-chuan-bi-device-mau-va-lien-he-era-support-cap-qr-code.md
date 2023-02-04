@@ -22,7 +22,7 @@ E-Ra app hiện đang hỗ trợ 4 loại device thông dụng có thể add nha
 [modbus-devices.md](../../thao-tac-tren-web-e-ra-platform/gateway\_cau-hinh-thong-so/modbus-devices.md)
 {% endcontent-ref %}
 
-* **Loại 4: Add Zigbee: Quét như Web Era**
+* **Loại 4: Add Zigbee: Kết nối không dây như Web Era**
 
 {% content-ref url="../../thao-tac-tren-web-e-ra-platform/gateway_cau-hinh-thong-so/zigbee-devices/" %}
 [zigbee-devices](../../thao-tac-tren-web-e-ra-platform/gateway\_cau-hinh-thong-so/zigbee-devices/)

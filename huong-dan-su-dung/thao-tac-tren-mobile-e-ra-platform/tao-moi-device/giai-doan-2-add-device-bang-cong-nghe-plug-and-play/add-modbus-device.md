@@ -9,7 +9,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
 ![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2).png>)
 
-**Bước 3:** Lựa chọn loại add Gateway và ấn Next\
+**Bước 3:** Lựa chọn loại add Modbus device và ấn Next\
 \
 ![](<../../../../.gitbook/assets/image (21).png>)
 
