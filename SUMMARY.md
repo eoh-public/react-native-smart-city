@@ -85,3 +85,4 @@
 * [Q\&A](q-and-a.md)
 * [E-Ra Workshop](e-ra-workshop/README.md)
   * [Topic 1 - Giải Pháp Điều Khiển Đèn Và Giám Sát Nhiệt Độ, Độ Ẩm](e-ra-workshop/topic-1-giai-phap-dieu-khien-den-va-giam-sat-nhiet-do-do-am.md)
+* [Topic 2 - Giải pháp Điều khiển và đo độ sáng đèn LED qua Virtual PIN](topic-2-giai-phap-dieu-khien-va-do-do-sang-den-led-qua-virtual-pin.md)
