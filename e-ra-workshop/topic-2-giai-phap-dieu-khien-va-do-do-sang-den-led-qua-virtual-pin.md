@@ -30,6 +30,10 @@ ERA\_WRITE(V0) {\
 &#x20;   ledcWrite(ledChannel, value);  \
 }
 
+####
+
+####
+
 #### Đo độ sáng đèn LED qua Virtual PIN
 
 int sensor = 34;
