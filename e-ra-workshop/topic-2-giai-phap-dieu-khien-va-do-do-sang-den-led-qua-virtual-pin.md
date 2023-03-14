@@ -47,9 +47,9 @@ ERA_WRITE(V0) {
 ```
 /* This function print uptime every second */
 void timerEvent() {
-    ERA_LOG("Timer", "Uptime: %d", ERaMillis() / 1000L);
-    int value = analogRead(34);
-    ERa.virtualWrite(V1, value);
+    ERA_LOG("Timer", "Uptime: %d", ERaMillis() / 1000L);
+    int value = analogRead(34);
+    ERa.virtualWrite(V1, value);
 }
 ```
 {% endtab %}
