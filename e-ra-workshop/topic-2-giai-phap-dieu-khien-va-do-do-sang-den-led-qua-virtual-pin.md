@@ -12,23 +12,29 @@ description: Phát triển Giải pháp Điều khiển Đèn & Đo Độ sáng 
 {% tab title="Đoạn Code hỗ trợ " %}
 #### Điều khiển đèn LED qua Virtual PIN
 
-int led = 2;\
-int freq = 5000;\
-int ledChannel = 0;\
+```
+int led = 2;
+int freq = 5000;
+int ledChannel = 0;
 int resolution = 8;
+```
 
-&#x20;
 
-ledcSetup(ledChannel, freq, resolution);\
+
+```
+ledcSetup(ledChannel, freq, resolution);
 ledcAttachPin(led, ledChannel);
+```
 
-&#x20;
 
-ERA\_WRITE(V0) {\
-&#x20;   /\* Get value from Virtual Pin 0 and write Pin 2 \*/\
-&#x20;   uint8\_t value = param.getInt();\
-&#x20;   ledcWrite(ledChannel, value);  \
+
+```
+ERA_WRITE(V0) {
+    /* Get value from Virtual Pin 0 and write Pin 2 */
+    uint8_t value = param.getInt();
+    ledcWrite(ledChannel, value);  
 }
+```
 
 ####
 
@@ -38,17 +44,14 @@ ERA\_WRITE(V0) {\
 
 &#x20;
 
-/\* This function print uptime every second \*/&#x20;
-
+```
+/* This function print uptime every second */
 void timerEvent() {
-
-&#x20;   ERA\_LOG("Timer", "Uptime: %d", ERaMillis() / 1000L);
-
-&#x20;   int value = analogRead(34);    &#x20;
-
-&#x20;   ERa.virtualWrite(V1, value);
-
+    ERA_LOG("Timer", "Uptime: %d", ERaMillis() / 1000L);
+    int value = analogRead(34);
+    ERa.virtualWrite(V1, value);
 }
+```
 {% endtab %}
 {% endtabs %}
 
