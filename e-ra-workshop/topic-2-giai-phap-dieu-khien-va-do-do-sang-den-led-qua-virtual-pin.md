@@ -36,17 +36,18 @@ ERA\_WRITE(V0) {\
 
 #### Đo độ sáng đèn LED qua Virtual PIN
 
-int sensor = 34;
-
 &#x20;
 
-void timerEvent() {\
+/\* This function print uptime every second \*/&#x20;
+
+void timerEvent() {
+
 &#x20;   ERA\_LOG("Timer", "Uptime: %d", ERaMillis() / 1000L);
 
-&#x20;
+&#x20;   int value = analogRead(34);    &#x20;
 
-&#x20;   int value = analogRead(sensor);\
-&#x20;   ERa.virtualWrite(V1, value);\
+&#x20;   ERa.virtualWrite(V1, value);
+
 }
 {% endtab %}
 {% endtabs %}
