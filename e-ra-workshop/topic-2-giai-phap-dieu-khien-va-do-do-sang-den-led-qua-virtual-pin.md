@@ -12,7 +12,7 @@ description: Phát triển Giải pháp Điều khiển Đèn & Đo Độ sáng 
 {% tab title="Đoạn Code hỗ trợ " %}
 #### Điều khiển đèn LED qua Virtual PIN
 
-![](<../.gitbook/assets/image (1).png>)
+![](../.gitbook/assets/image.png)
 
 ```
 int led = 2;
@@ -44,7 +44,7 @@ ERA_WRITE(V0) {
 
 #### Đo độ sáng đèn LED qua Virtual PIN
 
-
+![](<../.gitbook/assets/image (2).png>)
 
 ```
 /* This function print uptime every second */

@@ -11,7 +11,7 @@
 **Bước 2:** Nhấn vào Device icon và tiến hành thêm mới theo công nghệ Plug\&Play của Era. \
 Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
-![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2).png>)
+![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2) (1).png>)
 
 **Bước 3:** Lựa chọn loại add Zigbee device và ấn Next\
 \

@@ -7,7 +7,7 @@
 **Bước 2:** Nhấn vào Device icon và tiến hành thêm mới theo công nghệ Plug\&Play của Era. \
 Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
-![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2).png>)
+![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2) (1).png>)
 
 **Bước 3:** Lựa chọn loại add Gateway và ấn Next\
 ![](<../../../../.gitbook/assets/image (45).png>)
@@ -21,7 +21,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 &#x20;     ![](<../../../../.gitbook/assets/image (60).png>)           ![](<../../../../.gitbook/assets/image (29).png>)
 
 **Bước 5:** Bật thiết bị và đợi để tìm wifi của thiết bị\
-![](../../../../.gitbook/assets/image.png)                ![](<../../../../.gitbook/assets/image (26).png>)
+![](<../../../../.gitbook/assets/image (3).png>)                ![](<../../../../.gitbook/assets/image (26).png>)
 
 **Bước 6:**  Nhập wifi và đợi thiết bị kết nối
 

@@ -7,7 +7,7 @@
 **Bước 2:** Nhấn vào Device icon và tiến hành thêm mới theo công nghệ Plug\&Play của Era. \
 Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
-![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2).png>)
+![](<../../../../.gitbook/assets/image (52).png>)        ![](<../../../../.gitbook/assets/image (2) (1).png>)
 
 **Bước 3:** Lựa chọn loại add Modbus device và ấn Next\
 \
@@ -39,5 +39,5 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 **Bước 8: Tao mới device thành công trong Unit và Sub-unit đã chọn**\
 ****Người dùng có thể kiểm tra kết quả tạo mới thành công từ con mẫu theo QR code bằng cách vào vào đúng Units và Sub-Unit đã chọn để kiểm tra dữ liệu.&#x20;
 
-<figure><img src="../../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 

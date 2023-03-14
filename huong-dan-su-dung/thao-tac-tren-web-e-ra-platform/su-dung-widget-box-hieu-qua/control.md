@@ -21,7 +21,7 @@ Widget này có thể sử dụng cho tất cả các device bật, tắt với 
 Widget này có thể sử dụng điều khiển 3 action trong cùng 1 widget\
 Ví dụ: Device Cổng gate hoặc rèm(đóng, dừng, mở),..&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. State grid
 

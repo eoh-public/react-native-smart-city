@@ -40,7 +40,7 @@ Widget chuyên cho hiển thị dạng hướng gió và tốc độ gió cho c�
 Widget này có thể sử dụng hiển thị rõ được những ngưỡng cảnh báo, trang thái một cách sinh động  mà không cần phải đoán với giá trị hiện lên báo hiện 1 sự kiện như thế nào\
 Ví dụ: Chất lượng nước, chất lượng không khí (tốt, trung bình, thấp,...), hoặc trạng thái cửa mở/đóng,...&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 ## 5. Gauge
 
