@@ -58,6 +58,18 @@ ERA_WRITE(V0) {
 }
 ```
 {% endtab %}
+
+{% tab title="Nội Dung E-Ra Workshop" %}
+## Tài liệu Thuyết trình
+
+{% file src="../.gitbook/assets/E-Ra Workshop_Topic 2 Presentation.pdf" %}
+Tài liệu E-Ra Workshop - Topic 2
+{% endfile %}
+
+## Video E-Ra Workshop
+
+
+{% endtab %}
 {% endtabs %}
 
 
