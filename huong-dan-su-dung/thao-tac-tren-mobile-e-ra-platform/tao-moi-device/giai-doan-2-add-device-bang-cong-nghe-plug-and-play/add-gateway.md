@@ -25,7 +25,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
 **Bước 6:**  Nhập wifi và đợi thiết bị kết nối
 
-<figure><img src="../../../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (20) (3).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 7: Hoàn tất tạo gateway thành công cho Unit**\
 ****Người dùng có thể kiểm tra trạng thái hoạt động gateway và các cấu hình đã copy từ con mẫu theo QR code bằng cách vào All gateway tại Unit đã thêm vào \

@@ -10,13 +10,19 @@ description: Phát triển Giải pháp Điều khiển Đèn & Đo Độ sáng 
 {% endtab %}
 
 {% tab title="Đoạn Code hỗ trợ " %}
-
+E-ra điều khiển độ sáng Led
 
 ![](../.gitbook/assets/image.png)
 
-####
 
-![](<../.gitbook/assets/image (2).png>)
+
+E-ra đọc giá trị ánh sáng
+
+![](<../.gitbook/assets/image (1).png>)
+
+
+
+Source code
 
 ```
 int led = 2;
@@ -29,14 +35,20 @@ ERaTimer timer;
 /* This function print uptime every second */
 void timerEvent() {
     ERA_LOG("Timer", "Uptime: %d", ERaMillis() / 1000L);
+    
     int value = analogRead(34);
-    ERa.virtualWrite(V1, value);
+    ERa.virtualWrite(V1, 4095 - value); // Reverse
+}
+
+ERA_WRITE(V0) {
+    /* Get value from Virtual Pin 0 and write Pin 2. */
+    uint8_t value = param.getInt();
+    ledcWrite(ledChannel, value*255/100); // Range 0 - 255
 }
 
 void setup() {
     /* Setup debug console */
     Serial.begin(115200);
-
     ERa.begin(ssid, pass);
 
     /* Setup timer called function every second */
@@ -48,14 +60,9 @@ void setup() {
 
 void loop() {
     ERa.run();
-    timer.run();
+    timer.run();    
 }
 
-ERA_WRITE(V0) {
-    /* Get value from Virtual Pin 0 and write Pin 2 */
-    uint8_t value = param.getInt();
-    ledcWrite(ledChannel, value);  
-}
 ```
 {% endtab %}
 

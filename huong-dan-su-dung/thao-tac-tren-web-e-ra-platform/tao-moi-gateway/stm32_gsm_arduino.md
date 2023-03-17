@@ -9,7 +9,7 @@ Thêm mới 1 gateway vào hệ thống tại menu "All gateway" \
 **Bước 1: Hardware:** \
 Nhập thông tin cơ bản của gateway, chọn board STM32\_GSMnạp vào hệ thống và unit hiển thị
 
-<figure><img src="../../../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (2) (2).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 2: Install Library**
 

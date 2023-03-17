@@ -17,7 +17,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 
 **Bước 3:** Lựa chọn loại add Wifi device và ấn Next\
 \
-![](<../../../../.gitbook/assets/image (1).png>)
+![](<../../../../.gitbook/assets/image (1) (2).png>)
 
 **Bước 4.** Chọn Sub Unit cụ thể cho device\
 ****![](<../../../../.gitbook/assets/image (11).png>)****\
