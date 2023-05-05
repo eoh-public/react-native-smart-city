@@ -8,7 +8,7 @@
 
 <figure><img src="../../../.gitbook/assets/image (10) (5).png" alt=""><figcaption></figcaption></figure>
 
-**Bước 3:** Trên web, ấn thêm mới gateway và chọn loại board Raspberry Pi --> Tại bước install Library  mở link **** [http://wiringpi.com/download-and-install/](http://wiringpi.com/download-and-install/)
+**Bước 3:** Trên web, ấn thêm mới gateway và chọn loại board Raspberry Pi --> Tại bước install Library  mở link  [http://wiringpi.com/download-and-install/](http://wiringpi.com/download-and-install/)
 
 <figure><img src="../../../.gitbook/assets/image (36) (1).png" alt=""><figcaption></figcaption></figure>
 

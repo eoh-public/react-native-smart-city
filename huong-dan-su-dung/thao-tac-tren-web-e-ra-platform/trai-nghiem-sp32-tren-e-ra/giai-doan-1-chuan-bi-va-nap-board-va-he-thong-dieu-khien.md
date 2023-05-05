@@ -2,7 +2,7 @@
 
 _**Bước 1:**_ Vào màn hình <mark style="color:green;">**Nhà Phát Triển**</mark>
 
-_**Bước 2:** _ Vào **Tất cả địa điểm**, chọn Địa điểm điều khiển thiết bị từ danh sách có sẵn&#x20;
+_**Bước 2:**_ Vào **Tất cả địa điểm**, chọn Địa điểm điều khiển thiết bị từ danh sách có sẵn&#x20;
 
 <figure><img src="../../../.gitbook/assets/Screen Shot 2022-12-29 at 14.12.41.png" alt=""><figcaption></figcaption></figure>
 

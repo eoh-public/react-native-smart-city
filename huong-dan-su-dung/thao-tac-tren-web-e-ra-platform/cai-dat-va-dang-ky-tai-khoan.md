@@ -14,4 +14,3 @@ description: Hệ thống hỗ trợ trải nghiệm IOT trên cả 2 nền tả
 * Tại màn hình **Create an account,** nhập thông tin gồm Tên, Email, Số điện thoại, Mật khẩu và Xác nhận mật khẩu -> nhấn nút “Sign up"
 * Nhập mã xác nhận được gửi đến số điện thoại dùng để đăng ký tài khoản E-Ra, sau đó nhấn nút “Verify"
 
-****

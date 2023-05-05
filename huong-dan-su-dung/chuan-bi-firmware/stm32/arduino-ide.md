@@ -48,7 +48,7 @@ Vào Tools -> Manage Libraries
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
-****
+
 
 <figure><img src="../../../.gitbook/assets/image (30) (1).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
 
@@ -60,7 +60,7 @@ Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version
 
 Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùng Wifi)
 
-****:white\_check\_mark:**Đối với board STM32:**
+:white\_check\_mark:**Đối với board STM32:**
 
 <mark style="color:red;">Dùng module Gsm (SIM)</mark>
 

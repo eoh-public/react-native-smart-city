@@ -14,8 +14,8 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 ![](<../../../../.gitbook/assets/image (21).png>)
 
 **Bước 4.** Chọn Sub Unit cụ thể cho device và tắt nguồn thiết bị đang cần thêm mới hiện tại\
-****![](<../../../../.gitbook/assets/image (11).png>)    ![](<../../../../.gitbook/assets/image (53).png>)****\
-****
+![](<../../../../.gitbook/assets/image (11).png>)    ![](<../../../../.gitbook/assets/image (53).png>)\
+
 
 **Bước 5:** Scan QR code đã được cung cấp từ đội support của E-Ra
 
@@ -26,7 +26,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 &#x20;     ![](<../../../../.gitbook/assets/image (60).png>)       ![](<../../../../.gitbook/assets/image (29).png>)
 
 **Bước 6:** Chọn gateway để kết nối với thiết bị\
-****![](<../../../../.gitbook/assets/image (18).png>)****
+![](<../../../../.gitbook/assets/image (18).png>)
 
 **Bước 7:**  Đợi thiết bị kết nối và lúc này bật nguồn thiết bị cần kết nối lại để hoàn tất quá trình
 
@@ -37,7 +37,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 &#x20;![](<../../../../.gitbook/assets/image (17).png>)
 
 **Bước 8: Tao mới device thành công trong Unit và Sub-unit đã chọn**\
-****Người dùng có thể kiểm tra kết quả tạo mới thành công từ con mẫu theo QR code bằng cách vào vào đúng Units và Sub-Unit đã chọn để kiểm tra dữ liệu.&#x20;
+Người dùng có thể kiểm tra kết quả tạo mới thành công từ con mẫu theo QR code bằng cách vào vào đúng Units và Sub-Unit đã chọn để kiểm tra dữ liệu.&#x20;
 
 <figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 

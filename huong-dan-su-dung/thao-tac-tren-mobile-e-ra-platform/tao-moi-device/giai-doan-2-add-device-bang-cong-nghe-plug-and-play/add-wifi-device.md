@@ -20,7 +20,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 ![](<../../../../.gitbook/assets/image (1) (2).png>)
 
 **Bước 4.** Chọn Sub Unit cụ thể cho device\
-****![](<../../../../.gitbook/assets/image (11).png>)****\
+![](<../../../../.gitbook/assets/image (11).png>)\
 **Bước 5:** Scan QR code đã được cung cấp từ đội support của E-Ra.&#x20;
 
 {% content-ref url="../giai-doan-1-chuan-bi-device-mau-va-lien-he-era-support-cap-qr-code.md" %}
@@ -37,7 +37,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 <figure><img src="../../../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 8: Hoàn tất tạo wifi device thành công trong Unit và Sub-unit đã chọn**\
-****Người dùng có thể kiểm tra kết quả tạo mới thành công từ con mẫu theo QR code bằng cách vào vào đúng Units và Sub-Unit đã chọn để kiểm tra dữ liệu.&#x20;
+Người dùng có thể kiểm tra kết quả tạo mới thành công từ con mẫu theo QR code bằng cách vào vào đúng Units và Sub-Unit đã chọn để kiểm tra dữ liệu.&#x20;
 
 <figure><img src="../../../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 

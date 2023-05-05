@@ -48,6 +48,5 @@ Dùng pin V1 để gửi thời gian chạy (uptime) của gateway lên server.&
 
 Dùng pin V2 để gửi nhiệt độ chip ESP32 lên server.&#x20;
 
-_Chi tiết API Virtual pin vui lòng truy cập vào trang wiki_ [_**tại đây**_ ](https://github.com/eoh-jsc/era-lib/wiki/Virtual-Pins)_****_
+_Chi tiết API Virtual pin vui lòng truy cập vào trang wiki_ [_**tại đây**_ ](https://github.com/eoh-jsc/era-lib/wiki/Virtual-Pins)
 
-<mark style="color:red;"></mark>

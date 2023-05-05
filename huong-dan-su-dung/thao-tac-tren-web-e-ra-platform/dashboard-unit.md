@@ -1,10 +1,10 @@
-# Tạo mới Unit
+# Dashboard Unit
 
 ## 1. Tạo mới Unit
 
 _**Bước 1:**_ Vào màn hình <mark style="color:green;">**Nhà Phát Triển**</mark>
 
-_**Bước 2:** _ Vào **Tất cả địa điểm**, chọn Địa điểm điều khiển thiết bị từ danh sách có sẵn&#x20;
+_**Bước 2:**_ Vào **Tất cả địa điểm**, chọn Địa điểm điều khiển thiết bị từ danh sách có sẵn&#x20;
 
 Nếu chưa có địa điểm phù hợp Click vào nút **Tạo địa điểm** và nhập các thông tin về địa điểm cần tạo
 
@@ -18,7 +18,7 @@ Nếu chưa có địa điểm phù hợp Click vào nút **Tạo địa điểm
 
 </div>
 
-_****_
+
 
 ## 2. Quản lý Unit
 

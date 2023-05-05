@@ -82,7 +82,7 @@
   * [Giải pháp khẩn cấp](giai-phap-mau/giai-phap-khan-cap.md)
   * [Giám sát sức khoẻ từ xa](giai-phap-mau/giam-sat-suc-khoe-tu-xa.md)
   * [Hệ thống tưới tự động](giai-phap-mau/he-thong-tuoi-tu-dong.md)
-* [Referral Code](referral-code.md)
+* [Giới thiệu E-Ra - Nhận ưu đãi thả ga!](gioi-thieu-e-ra-nhan-uu-dai-tha-ga.md)
 * [Q\&A](q-and-a.md)
 * [E-Ra Workshop](e-ra-workshop/README.md)
   * [Topic 1 - Giải Pháp Điều Khiển Đèn Và Giám Sát Nhiệt Độ, Độ Ẩm](e-ra-workshop/topic-1-giai-phap-dieu-khien-den-va-giam-sat-nhiet-do-do-am.md)
