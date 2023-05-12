@@ -12,13 +12,13 @@ description: Phát triển Giải pháp Điều khiển Đèn & Đo Độ sáng 
 {% tab title="Đoạn Code hỗ trợ " %}
 E-ra điều khiển độ sáng Led
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (25).png>)
 
 
 
 E-ra đọc giá trị ánh sáng
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (10).png>)
 
 
 

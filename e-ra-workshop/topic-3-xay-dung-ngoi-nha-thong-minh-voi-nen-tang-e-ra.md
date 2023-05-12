@@ -8,7 +8,7 @@ description: >-
 
 {% tabs %}
 {% tab title="Hướng dẫn cài đặt phần mềm" %}
-{% file src="../.gitbook/assets/E-Ra Workshop_Topic 2_Software Installation Guide.pdf" %}
+{% file src="../.gitbook/assets/E-Ra Workshop_Topic 3_Software Installation Guide.pdf" %}
 {% endtab %}
 
 {% tab title="Đoạn Code hỗ trợ " %}
@@ -72,7 +72,9 @@ void loop() {
 
 ### Điều khiển, theo dõi thùng rác thông minh
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (1).png>)
+
+![](<../.gitbook/assets/image (2).png>)
 
 **Source code**&#x20;
 
@@ -167,8 +169,8 @@ timer.setInterval(100L, srfEvent);
 {% tab title="Nội Dung E-Ra Workshop" %}
 ## Tài liệu Thuyết trình
 
-{% file src="../.gitbook/assets/E-Ra Workshop_Topic 2 Presentation.pdf" %}
-Tài liệu E-Ra Workshop - Topic 2
+{% file src="../.gitbook/assets/E-Ra Workshop_Topic 3_Presentation.pdf" %}
+Tài liệu E-Ra Workshop - Topic 3
 {% endfile %}
 
 ## Video E-Ra Workshop
