@@ -75,7 +75,9 @@ Tài liệu E-Ra Workshop - Topic 2
 
 ## Video E-Ra Workshop
 
-
+{% embed url="https://youtu.be/XuTbz_fvgOg" %}
+E-Ra Workshop Topic 2
+{% endembed %}
 {% endtab %}
 {% endtabs %}
 

@@ -72,9 +72,9 @@ void loop() {
 
 ### Điều khiển, theo dõi thùng rác thông minh
 
-![](<../.gitbook/assets/image (1) (11).png>)
+![](<../.gitbook/assets/image (1) (1).png>)
 
-![](<../.gitbook/assets/image (2) (5).png>)
+![](<../.gitbook/assets/image (2) (1).png>)
 
 **Source code**&#x20;
 

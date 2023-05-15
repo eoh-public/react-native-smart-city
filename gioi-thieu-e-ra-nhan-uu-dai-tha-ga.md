@@ -27,8 +27,6 @@ Bắt đầu từ ngày 14/05/2023 cho đến khi có thông báo mới của Eo
 
 Bước 1: Truy cập [dashboard E-Ra](https://app.e-ra.io/) >> [E-Ra Referral](https://app.e-ra.io/account/referral)&#x20;
 
-![](<.gitbook/assets/image (2).png>)
-
 Bước 2: Sao chép link giới thiệu trong ‘Referral link’ hoặc mã giới thiệu trong ‘Referral code’ rồi gửi cho bạn bè.
 
 ### C.2. Đối với NĐGT

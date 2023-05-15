@@ -15,7 +15,7 @@
 
 **Bước 3:** Copy Auth Token
 
-![](<.gitbook/assets/image (1) (1) (1).png>)
+![](<.gitbook/assets/image (1) (1) (1) (2).png>)
 
 ## 2. Danh sách API:&#x20;
 

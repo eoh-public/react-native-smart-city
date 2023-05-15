@@ -30,7 +30,7 @@ Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm 
 * Action: Nhập các action của device đó\
   Với "Control payload" nhập đúng với cấu trúc: {"key":0} cho hành động tắt, {"key":1} cho hành động bật
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../../.gitbook/assets/image (15) (2).png" alt=""><figcaption></figcaption></figure>
 
