@@ -166,7 +166,7 @@ timer.setInterval(100L, srfEvent);
 ```
 {% endtab %}
 
-{% tab title="Đoạn code hỗ trợ Full" %}
+{% tab title="Full code hỗ trợ" %}
 **Source code**
 
 Đặt dưới `ERaTimer timer;`
