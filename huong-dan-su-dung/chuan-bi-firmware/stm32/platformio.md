@@ -68,7 +68,7 @@ Trong bảng Registry -> Examples -> chọn example tương ứng của từng b
 
 Paste nội dung của example vào file main.cpp
 
-<table data-header-hidden><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td> </td><td>STM32 </td><td>ESP32 </td></tr><tr><td>Example </td><td><p>Gsm (nếu dùng SIM) </p><p>Wifi (nếu dùng Wifi) </p></td><td>Basic </td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="215"></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td> </td><td>STM32 </td><td>ESP32 </td></tr><tr><td>Example </td><td><p>Gsm (nếu dùng SIM) </p><p>Wifi (nếu dùng Wifi) </p></td><td>Basic </td></tr></tbody></table>
 
 <mark style="color:red;">Dùng module Gsm (SIM)</mark>
 

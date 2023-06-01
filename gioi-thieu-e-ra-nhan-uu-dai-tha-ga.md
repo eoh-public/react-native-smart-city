@@ -19,7 +19,7 @@ Người được giới thiệu (NĐGT)
 
 ## B. Thời gian áp dụng chương trình
 
-Bắt đầu từ ngày 14/05/2023 cho đến khi có thông báo mới của EoH.
+Bắt đầu từ ngày 01/06/2023 cho đến khi có thông báo mới của EoH.
 
 ## C. Hướng dẫn tham gia
 
@@ -27,25 +27,37 @@ Bắt đầu từ ngày 14/05/2023 cho đến khi có thông báo mới của Eo
 
 Bước 1: Truy cập [dashboard E-Ra](https://app.e-ra.io/) >> [E-Ra Referral](https://app.e-ra.io/account/referral)&#x20;
 
-Bước 2: Sao chép link giới thiệu trong ‘Referral link’ hoặc mã giới thiệu trong ‘Referral code’ rồi gửi cho bạn bè.
+<figure><img src=".gitbook/assets/Referral 1.PNG" alt=""><figcaption></figcaption></figure>
+
+Bước 2: Sao chép link giới thiệu trong phần **‘Liên kết giới thiệu’** hoặc mã trong phần **'Mã giới thiệu'** rồi gửi cho bạn bè.
+
+<figure><img src=".gitbook/assets/Referral 2.png" alt=""><figcaption></figcaption></figure>
 
 ### C.2. Đối với NĐGT
 
 **Cách 1: Nếu NĐGT nhận được link giới thiệu**&#x20;
 
-Bước 1: Truy cập vào link đã được chia sẻ
+**Bước 1:** Truy cập vào link đã được NGT chia sẻ
 
-Bước 2: Đăng kí tài khoản E-Ra
+**Bước 2:** Đăng kí tài khoản E-Ra
 
-Bước 3: Chọn và thanh toán một trong các gói có trả phí (Standard, Premium, Business)
+<figure><img src=".gitbook/assets/Referral 3.png" alt="" width="357"><figcaption></figcaption></figure>
+
+**Bước 3:** Chọn và thanh toán một trong các gói có trả phí (Standard, Premium, Business)
+
+<figure><img src=".gitbook/assets/Referral 5 (1).PNG" alt=""><figcaption></figcaption></figure>
 
 **Cách 2: Nếu NĐGT nhận được mã giới thiệu**
 
-Bước 1: Truy cập [dashboard E-Ra](https://app.e-ra.io/)
+**Bước 1:** Truy cập [dashboard E-Ra](https://app.e-ra.io/)
 
-Bước 2: Đăng kí tài khoản E-Ra và _nhập mã giới thiệu trong phần đăng kí_
+**Bước 2:** Đăng kí tài khoản E-Ra và _nhập mã giới thiệu trong phần đăng kí_
 
-Bước 3: Chọn và thanh toán một trong các gói có trả phí (Standard, Premium, Business)
+<figure><img src=".gitbook/assets/Referral 4 (1).png" alt="" width="375"><figcaption></figcaption></figure>
+
+**Bước 3:** Chọn và thanh toán một trong các gói có trả phí (Standard, Premium, Business)
+
+<figure><img src=".gitbook/assets/Referral 5.PNG" alt=""><figcaption></figcaption></figure>
 
 #### &#x20;Sau khi NĐGT hoàn tất thanh toán, NGT sẽ nhận được ưu đãi
 
