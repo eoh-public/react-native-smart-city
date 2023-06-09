@@ -8,6 +8,6 @@
 [topic-2-giai-phap-dieu-khien-va-do-do-sang-den-led-qua-virtual-pin.md](topic-2-giai-phap-dieu-khien-va-do-do-sang-den-led-qua-virtual-pin.md)
 {% endcontent-ref %}
 
-{% content-ref url="topic-3-xay-dung-ngoi-nha-thong-minh-voi-nen-tang-e-ra.md" %}
-[topic-3-xay-dung-ngoi-nha-thong-minh-voi-nen-tang-e-ra.md](topic-3-xay-dung-ngoi-nha-thong-minh-voi-nen-tang-e-ra.md)
+{% content-ref url="topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md" %}
+[topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md](topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md)
 {% endcontent-ref %}

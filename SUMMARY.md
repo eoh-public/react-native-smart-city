@@ -87,4 +87,4 @@
 * [E-Ra Workshop](e-ra-workshop/README.md)
   * [Topic 1 - Giải Pháp Điều Khiển Đèn Và Giám Sát Nhiệt Độ, Độ Ẩm](e-ra-workshop/topic-1-giai-phap-dieu-khien-den-va-giam-sat-nhiet-do-do-am.md)
   * [Topic 2 - Giải pháp Điều khiển và đo độ sáng đèn LED qua Virtual PIN](e-ra-workshop/topic-2-giai-phap-dieu-khien-va-do-do-sang-den-led-qua-virtual-pin.md)
-  * [Topic 3 - Xây dựng ngôi nhà thông minh với nền tảng E-Ra](e-ra-workshop/topic-3-xay-dung-ngoi-nha-thong-minh-voi-nen-tang-e-ra.md)
+  * [Topic 3 - Xây dựng ngôi nhà thông minh với bộ kit Ohstem](e-ra-workshop/topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md)
