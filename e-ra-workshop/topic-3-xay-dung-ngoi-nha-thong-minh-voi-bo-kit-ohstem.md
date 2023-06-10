@@ -10,7 +10,7 @@ description: >-
 
 {% tabs %}
 {% tab title="Hướng dẫn cài đặt phần mềm" %}
-### Cài đặt Arduino và thư viện
+### Cài đặt Arduino và thư viện Esp32 / Era eoh
 
 {% file src="../.gitbook/assets/E-Ra Workshop_Topic 3_Software Installation Guide.pdf" %}
 
@@ -28,7 +28,7 @@ Chọn install thư viện thứ 2 **DHT20 by **_**Rob**_** Tillaart**
 {% endtab %}
 
 {% tab title="Full code hỗ trợ" %}
-**Source code**
+### **Source code**
 
 Đặt dưới `ERaTimer timer;`
 
