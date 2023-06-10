@@ -4,11 +4,21 @@ description: >-
   quạt, điều khiển, theo dõi thùng rác thông minh
 ---
 
-# Topic 3 - Xây dựng ngôi nhà thông minh với nền tảng E-Ra
+# Topic 3 - Xây dựng ngôi nhà thông minh với bộ kit Ohstem
+
+
 
 {% tabs %}
 {% tab title="Hướng dẫn cài đặt phần mềm" %}
+### Cài đặt Arduino và thư viện
+
 {% file src="../.gitbook/assets/E-Ra Workshop_Topic 3_Software Installation Guide.pdf" %}
+
+### Cài đặt thư viện DHT20 nhiệt độ, độ ẩm
+
+![](<../.gitbook/assets/image (74).png>)
+
+![](<../.gitbook/assets/image (75).png>)
 {% endtab %}
 
 {% tab title="Full code hỗ trợ" %}
