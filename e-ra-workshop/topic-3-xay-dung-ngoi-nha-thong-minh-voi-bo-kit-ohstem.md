@@ -16,7 +16,13 @@ description: >-
 
 ### Cài đặt thư viện DHT20 nhiệt độ, độ ẩm
 
+Sketch > Include Library > **Manage Libraries**
+
 ![](<../.gitbook/assets/image (74).png>)
+
+Trong mục search, điền vào **dht20**
+
+Chọn install thư viện thứ 2 **DHT20 by **_**Rob**_** Tillaart**
 
 ![](<../.gitbook/assets/image (75).png>)
 {% endtab %}
