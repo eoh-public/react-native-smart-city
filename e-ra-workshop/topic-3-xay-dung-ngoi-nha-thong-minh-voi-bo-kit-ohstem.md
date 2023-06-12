@@ -24,13 +24,13 @@ Trong mục search, điền vào **dht20**
 
 Chọn install thư viện thứ 2 **DHT20 by **_**Rob**_** Tillaart**
 
-![](<../.gitbook/assets/image (75).png>)
+![](<../.gitbook/assets/image (75) (1).png>)
 {% endtab %}
 
 {% tab title="Full code hỗ trợ" %}
 ### **Source code**
 
-Đặt dưới `ERaTimer timer;`
+Tìm và đặt dưới ![](<../.gitbook/assets/image (2).png>)
 
 ```
 #include <DHT20.h>
