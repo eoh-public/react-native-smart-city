@@ -39,5 +39,5 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 **Bước 8: Tao mới device thành công trong Unit và Sub-unit đã chọn**\
 Người dùng có thể kiểm tra kết quả tạo mới thành công từ con mẫu theo QR code bằng cách vào vào đúng Units và Sub-Unit đã chọn để kiểm tra dữ liệu.&#x20;
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 

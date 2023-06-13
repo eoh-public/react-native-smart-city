@@ -14,7 +14,7 @@ Click " New zigbee device" để tạo mới device trong gateway. Tại đây n
 
 Hệ thống sau khi hoàn thành kết nối sẽ hiện các thông tin được trả ra từ thiết bị, người dùng có thể cập nhật lại tên thiết bị hoặc thời gian (giây) báo thiết bị mất kết nối sau lần kết nối gần nhất.
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 Sau khi hoàn thành thêm mới device, người dùng sẽ tiến hành thêm mới các config hoặc action của device đó
 

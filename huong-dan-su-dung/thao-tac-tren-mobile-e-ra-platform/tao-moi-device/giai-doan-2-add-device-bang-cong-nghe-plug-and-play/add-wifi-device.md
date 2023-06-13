@@ -30,7 +30,7 @@ Chọn Unit nếu tạo mới ngay từ Tab Dashboard
 &#x20;     ![](<../../../../.gitbook/assets/image (60).png>)           ![](<../../../../.gitbook/assets/image (29).png>)
 
 **Bước 6:** Bật thiết bị và đợi để tìm wifi của thiết bị\
-![](<../../../../.gitbook/assets/image (3).png>)                ![](<../../../../.gitbook/assets/image (26).png>)
+![](<../../../../.gitbook/assets/image (3) (1).png>)                ![](<../../../../.gitbook/assets/image (26).png>)
 
 **Bước 7:**  Nhập wifi và đợi thiết bị kết nối
 
