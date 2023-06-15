@@ -1,10 +1,10 @@
 # MQTT Server integration
 
+## API
+
 **GATEWAY\_TOKEN** là mã định danh của mỗi gateway
 
 
-
-## API
 
 **Create user**
 
