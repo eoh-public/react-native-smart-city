@@ -17,7 +17,7 @@ METHOD: post
 HEADER
 - Content-Type: application/json
 - Authorization: Basic Auth
-  username: ""
+  username = ""
   password = MQTT_API_KEY
 
 BODY
@@ -40,7 +40,7 @@ METHOD: post
 HEADER
 - Content-Type: application/json
 - Authorization: Basic Auth
-  username: ""
+  username = ""
   password = MQTT_API_KEY
 
 BODY
@@ -65,7 +65,7 @@ METHOD: delete
 HEADER
 - Content-Type: application/json
 - Authorization: Basic Auth
-  username: ""
+  username = ""
   password = MQTT_API_KEY
 ```
 
