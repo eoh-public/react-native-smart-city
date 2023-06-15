@@ -7,6 +7,7 @@
   * [Tận dụng thư viện Wokwi sẵn có](trai-nghiem-e-ra-voi-wokwi/tan-dung-thu-vien-wokwi-san-co.md)
 * [Hướng dẫn sử dụng](huong-dan-su-dung/README.md)
   * [Thuật ngữ cần quan tâm](developer-mode/thuat-ngu-can-quan-tam.md)
+  * [MQTT Server integration](huong-dan-su-dung/mqtt-server-integration.md)
   * [Linh kiện cần chuẩn bị](developer-mode/linh-kien-can-chuan-bi.md)
   * [Hướng dẫn đấu nối thiết bị ngoại vi](developer-mode/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
   * [Chuẩn bị Firmware](developer-mode\_user-guide/chuan-bi-firmware.md)
