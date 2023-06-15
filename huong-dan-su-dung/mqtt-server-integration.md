@@ -1,8 +1,6 @@
 # MQTT Server integration
 
-##
-
-**IMEI** là mã định danh của mỗi gateway
+**GATEWAY\_TOKEN** là mã định danh của mỗi gateway
 
 
 
@@ -10,8 +8,10 @@
 
 **Create user**
 
+_Tạo mqtt user và password._
+
 ```markup
-URL: http://domain.com/api/user
+URL: https://domain.com/api/user
 METHOD: post
 
 HEADER
@@ -22,8 +22,8 @@ HEADER
 
 BODY
 {
-   "username": IMEI,
-   "password": IMEI,
+   "username": GATEWAY_TOKEN,
+   "password": GATEWAY_TOKEN,
 }
 ```
 
@@ -31,8 +31,10 @@ BODY
 
 **Create acl**
 
+_Tạo quyền điều khiển ghi và đọc cho username với pattern là eoh/chip/GATEWAY\_TOKEN/# sẽ truy cập được toàn bộ thông tin của_ GATEWAY\_TOKEN _đó._
+
 ```
-URL: http://domain.com/api/acl
+URL: https://domain.com/api/acl
 METHOD: post
 
 HEADER
@@ -43,8 +45,8 @@ HEADER
 
 BODY
 {
-    "username": IMEI,
-    "pattern": "eoh/chip/IMEI/#",
+    "username": GATEWAY_TOKEN,
+    "pattern": "eoh/chip/GATEWAY_TOKEN/#",
     "read": true,
     "write": true
 }
@@ -54,8 +56,10 @@ BODY
 
 **Delete user**
 
+_Xóa mqtt user_
+
 ```
-URL: http://domain.com/api/user/IMEI
+URL: https://domain.com/api/user/GATEWAY_TOKEN
 METHOD: delete
 
 HEADER
