@@ -6,7 +6,7 @@
 
 
 
-**Create user**
+<mark style="color:orange;">**Create user**</mark>
 
 _Tạo mqtt user và password._
 
@@ -18,18 +18,18 @@ HEADER
 - Content-Type: application/json
 - Authorization: Basic Auth
   username: ""
-  password = mqtt_api_key
+  password = MQTT_API_KEY
 
 BODY
 {
    "username": GATEWAY_TOKEN,
-   "password": GATEWAY_TOKEN,
+   "password": "password",
 }
 ```
 
 
 
-**Create acl**
+<mark style="color:orange;">**Create acl**</mark>
 
 _Tạo quyền điều khiển ghi và đọc cho username với pattern là eoh/chip/GATEWAY\_TOKEN/# sẽ truy cập được toàn bộ thông tin của_ GATEWAY\_TOKEN _đó._
 
@@ -41,7 +41,7 @@ HEADER
 - Content-Type: application/json
 - Authorization: Basic Auth
   username: ""
-  password = mqtt_api_key
+  password = MQTT_API_KEY
 
 BODY
 {
@@ -54,7 +54,7 @@ BODY
 
 
 
-**Delete user**
+<mark style="color:orange;">**Delete user**</mark>
 
 _Xóa mqtt user_
 
@@ -66,6 +66,6 @@ HEADER
 - Content-Type: application/json
 - Authorization: Basic Auth
   username: ""
-  password = mqtt_api_key
+  password = MQTT_API_KEY
 ```
 
