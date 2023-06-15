@@ -1,5 +1,11 @@
 # MQTT Server integration
 
+##
+
+**IMEI** là mã định danh của mỗi gateway
+
+
+
 ## API
 
 **Create user**
