@@ -62,7 +62,7 @@
     * [Smart](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/smart.md)
     * [Notification](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/notification.md)
     * [Side Menu](huong-dan-su-dung/thao-tac-tren-mobile-e-ra-platform/side-menu.md)
-  * [MQTT Server integration](huong-dan-su-dung/mqtt-server-integration.md)
+  * [Tích hợp MQTT Server](huong-dan-su-dung/tich-hop-mqtt-server.md)
 * [Public API ERa hỗ trợ](public-api-era-ho-tro.md)
 * [Ứng dụng thực tế](ung-dung-thuc-te/README.md)
   * [Giải pháp an toàn và bảo mật](giai-phap-mau/giai-phap-an-toan-va-bao-mat.md)
