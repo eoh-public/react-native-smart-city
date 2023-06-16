@@ -4,7 +4,7 @@
 
 **GATEWAY\_TOKEN** là mã định danh của mỗi gateway.
 
-**MQTT\_API\_TOKEN** là mã bí mật của mqtt server, có mã này thì mới có quyền gọi các api bên dưới.
+**MQTT\_API\_KEY** là mã bí mật của mqtt server, có mã này thì mới có quyền gọi các api bên dưới.
 
 
 
