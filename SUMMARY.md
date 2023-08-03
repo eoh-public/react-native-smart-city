@@ -5,6 +5,7 @@
   * [Giới thiệu về Wokwi](trai-nghiem-e-ra-voi-wokwi/gioi-thieu-ve-wokwi.md)
   * [Tích hợp mới wokwi vào E-Ra](trai-nghiem-e-ra-voi-wokwi/tich-hop-moi-wokwi-vao-e-ra.md)
   * [Tận dụng thư viện Wokwi sẵn có](trai-nghiem-e-ra-voi-wokwi/tan-dung-thu-vien-wokwi-san-co.md)
+* [Dự án dành riêng cho các trường Đại học](du-an-danh-rieng-cho-cac-truong-dai-hoc.md)
 * [Hướng dẫn sử dụng](huong-dan-su-dung/README.md)
   * [Thuật ngữ cần quan tâm](developer-mode/thuat-ngu-can-quan-tam.md)
   * [Linh kiện cần chuẩn bị](developer-mode/linh-kien-can-chuan-bi.md)
