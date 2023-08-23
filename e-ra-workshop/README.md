@@ -11,3 +11,8 @@
 {% content-ref url="topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md" %}
 [topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md](topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md)
 {% endcontent-ref %}
+
+{% content-ref url="xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md" %}
+[xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md](xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md)
+{% endcontent-ref %}
+
