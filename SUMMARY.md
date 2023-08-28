@@ -94,3 +94,4 @@
   * [Topic 2 - Giải pháp Điều khiển và đo độ sáng đèn LED qua Virtual PIN](e-ra-workshop/topic-2-giai-phap-dieu-khien-va-do-do-sang-den-led-qua-virtual-pin.md)
   * [Topic 3 - Xây dựng ngôi nhà thông minh với bộ kit Ohstem](e-ra-workshop/topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md)
   * [Xây dựng Nông trại Thông minh trên Nền tảng E-Ra](e-ra-workshop/xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md)
+  * [Tiếp cận IoT trong công nghiệp](e-ra-workshop/tiep-can-iot-trong-cong-nghiep.md)
