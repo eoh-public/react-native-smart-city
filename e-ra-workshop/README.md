@@ -16,3 +16,6 @@
 [xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md](xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md)
 {% endcontent-ref %}
 
+{% content-ref url="tiep-can-iot-trong-cong-nghiep.md" %}
+[tiep-can-iot-trong-cong-nghiep.md](tiep-can-iot-trong-cong-nghiep.md)
+{% endcontent-ref %}
