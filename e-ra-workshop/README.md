@@ -12,10 +12,10 @@
 [topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md](topic-3-xay-dung-ngoi-nha-thong-minh-voi-bo-kit-ohstem.md)
 {% endcontent-ref %}
 
-{% content-ref url="xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md" %}
-[xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md](xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md)
+{% content-ref url="topic-4-xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md" %}
+[topic-4-xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md](topic-4-xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md)
 {% endcontent-ref %}
 
-{% content-ref url="tiep-can-iot-trong-cong-nghiep.md" %}
-[tiep-can-iot-trong-cong-nghiep.md](tiep-can-iot-trong-cong-nghiep.md)
+{% content-ref url="topic-5-tiep-can-iot-trong-cong-nghiep.md" %}
+[topic-5-tiep-can-iot-trong-cong-nghiep.md](topic-5-tiep-can-iot-trong-cong-nghiep.md)
 {% endcontent-ref %}
