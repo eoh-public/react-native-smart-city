@@ -9,6 +9,10 @@ description: >-
 {% tabs %}
 {% tab title="Hướng Dẫn Cài Đặt Phần Mềm" %}
 {% file src="../.gitbook/assets/E-Ra Workshop_Topic 1_Software Installation Guide (2).pdf" %}
+
+{% embed url="https://youtu.be/mWG3SLdxtjo" %}
+Video hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
+{% endembed %}
 {% endtab %}
 
 {% tab title="Nội Dung E-Ra Workshop" %}

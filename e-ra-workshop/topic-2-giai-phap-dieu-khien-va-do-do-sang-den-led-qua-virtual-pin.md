@@ -7,6 +7,10 @@ description: Phát triển Giải pháp Điều khiển Đèn & Đo Độ sáng 
 {% tabs %}
 {% tab title="Hướng dẫn cài đặt phần mềm" %}
 {% file src="../.gitbook/assets/E-Ra Workshop_Topic 2_Software Installation Guide.pdf" %}
+
+{% embed url="https://youtu.be/mWG3SLdxtjo" %}
+Video hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
+{% endembed %}
 {% endtab %}
 
 {% tab title="Đoạn Code hỗ trợ " %}

@@ -14,6 +14,10 @@ description: >-
 
 {% file src="../.gitbook/assets/E-Ra Workshop Software Installation Guide (1).pdf" %}
 
+{% embed url="https://youtu.be/mWG3SLdxtjo" %}
+Video Hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
+{% endembed %}
+
 ### Cài đặt thư viện DHT20 nhiệt độ, độ ẩm
 
 Sketch > Include Library > **Manage Libraries**

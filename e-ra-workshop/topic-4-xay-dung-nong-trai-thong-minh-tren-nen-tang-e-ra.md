@@ -4,7 +4,7 @@ description: >-
   mưa, độ ẩm đất và cảnh báo với còi, điều khiển bơm
 ---
 
-# Xây dựng Nông trại Thông minh trên Nền tảng E-Ra
+# Topic 4 - Xây dựng Nông trại Thông minh trên Nền tảng E-Ra
 
 
 
@@ -13,6 +13,10 @@ description: >-
 ### Cài đặt Arduino và thư viện Esp32 / Era eoh
 
 {% file src="../.gitbook/assets/E-Ra Workshop Software Installation Guide.pdf" %}
+
+{% embed url="https://youtu.be/mWG3SLdxtjo" %}
+Video hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
+{% endembed %}
 
 ### Cài đặt thư viện DHT20 nhiệt độ, độ ẩm
 
