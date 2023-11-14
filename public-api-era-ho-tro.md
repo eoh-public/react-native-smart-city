@@ -3,6 +3,7 @@
 **Ghi chú**
 
 * API E-ra [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
+* Document API E-ra [https://backend.eoh.io/redoc/](https://backend.eoh.io/redoc/)
 * Trigger action chỉ dành cho các widget là action
 * Response data sẽ trả nhiều field hơn so với những ví dụ, cho nên chỉ tập trung nhưng field ví dụ.
 
