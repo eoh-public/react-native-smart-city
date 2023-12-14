@@ -13,6 +13,7 @@
     * [1. Tiếp cận mô hình Smart Home với E-Ra](cac-du-an-danh-rieng-cho-cac-truong-dai-hoc/bai-viet-khoa-hoc/1.-tiep-can-mo-hinh-smart-home-voi-e-ra.md)
     * [2. Tiếp cận mô hình Smart Farm với E-Ra](cac-du-an-danh-rieng-cho-cac-truong-dai-hoc/bai-viet-khoa-hoc/2.-tiep-can-mo-hinh-smart-farm-voi-e-ra.md)
     * [3. So sánh các phương thức truyền dữ liệu đến máy chủ từ IoT Gateway](cac-du-an-danh-rieng-cho-cac-truong-dai-hoc/bai-viet-khoa-hoc/3.-so-sanh-cac-phuong-thuc-truyen-du-lieu-den-may-chu-tu-iot-gateway.md)
+    * [4. Lợi thế sử dụng lõi IoT E-Ra trong IoT hóa công nghiệp](cac-du-an-danh-rieng-cho-cac-truong-dai-hoc/bai-viet-khoa-hoc/4.-loi-the-su-dung-loi-iot-e-ra-trong-iot-hoa-cong-nghiep.md)
 * [Hướng dẫn sử dụng](huong-dan-su-dung/README.md)
   * [Thuật ngữ cần quan tâm](developer-mode/thuat-ngu-can-quan-tam.md)
   * [Linh kiện cần chuẩn bị](developer-mode/linh-kien-can-chuan-bi.md)
