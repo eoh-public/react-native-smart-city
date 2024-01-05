@@ -3,7 +3,23 @@
 
 
 {% tabs %}
-{% tab title="Source code" %}
+{% tab title="Make chip online" %}
+#### Chạy code thông qua ssh
+
+thay **xxx** với **ip** tương ứng\
+thay **TOKEN** với **gateway** **token** tương ứng
+
+```
+ssh linaro@xxx
+cd era-lib/linux
+```
+
+```
+sudo ./era --token=TOKEN --host=mqtt1.eoh.io
+```
+{% endtab %}
+
+{% tab title="Tinker nhận dữ liệu từ YoloUno và gửi lên E-Ra" %}
 #### Code đọc dữ liệu từ YoloUno và gửi lên E-Ra, thông qua Virtual Pin V0 / V1 / V2.
 
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
