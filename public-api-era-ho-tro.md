@@ -13,11 +13,11 @@
 
 **Bước 2:** Chọn profile
 
-![](<.gitbook/assets/image (5) (1).png>)
+![](<.gitbook/assets/image (74).png>)
 
 **Bước 3:** Copy Auth Token
 
-![](<.gitbook/assets/image (1) (1) (1) (2).png>)
+![](<.gitbook/assets/image (68).png>)
 
 ## 2. Danh sách API:&#x20;
 

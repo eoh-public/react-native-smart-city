@@ -6,7 +6,7 @@ description: >-
 
 # Gateway\_Cấu hình thông số
 
-<figure><img src="../../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (296).png" alt=""><figcaption></figcaption></figure>
 
 * Info: Thông tin cơ bản của 1 gateway
 * Input/Output pins: Tạo mới device và mapping các chân pin được gắn trên board (STM32, ESP32, Raspberry Pi 3)

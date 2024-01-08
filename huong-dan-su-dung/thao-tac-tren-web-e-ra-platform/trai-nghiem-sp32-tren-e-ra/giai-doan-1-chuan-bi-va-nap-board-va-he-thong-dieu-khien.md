@@ -32,7 +32,7 @@ Nhập các thông tin cần có cho Gateway, rồi bấm vào nút **Bước k�
 
 <div>
 
-<figure><img src="../../../.gitbook/assets/Screen Shot 2022-12-29 at 15.07.04.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screen Shot 2022-12-29 at 15.07.04 (1).png" alt=""><figcaption></figcaption></figure>
 
  
 

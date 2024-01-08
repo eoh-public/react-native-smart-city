@@ -1,10 +1,20 @@
 # Day 2: giám sát dữ liệu với Tinker board
 
+1. Tìm địa chỉ ip
+2. Online Tinker board thông qua ssh
+3. Cập nhật code mới, gửi dữ liệu lên E-Ra
 
+
+
+Khởi động **Tinker board,** mở màn hình và gõ lệnh
+
+```
+sudo ifconfig
+```
 
 {% tabs %}
-{% tab title="Make chip online" %}
-#### Chạy code thông qua ssh
+{% tab title="Online Tinker" %}
+#### Truy cập board thông qua ssh
 
 _thay **xxx** với **ip** tương ứng_
 
@@ -23,11 +33,9 @@ sudo ./era --token=TOKEN --host=mqtt1.eoh.io
 {% tab title="Tinker nhận dữ liệu từ YoloUno và gửi lên E-Ra" %}
 #### Code đọc dữ liệu từ YoloUno và gửi lên E-Ra, thông qua Virtual Pin V0 / V1 / V2.
 
+_tải và giải nén Tinker\_2024.rar, được thư mục Tinker\_2024_
+
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
-
-_Note: giải nén Tinker\_2024.rar_
-
-
 
 #### Gửi file code vào Tinker board thông qua sftp
 
@@ -44,7 +52,7 @@ put ERaConsole.cpp User/src
 
 
 
-#### Chạy code thông qua ssh
+#### Chạy code - thông qua ssh
 
 _thay **xxx** với **ip** tương ứng_
 

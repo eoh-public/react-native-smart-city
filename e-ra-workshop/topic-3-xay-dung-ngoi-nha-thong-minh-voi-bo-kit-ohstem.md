@@ -12,7 +12,7 @@ description: >-
 {% tab title="Hướng dẫn cài đặt phần mềm" %}
 ### Cài đặt Arduino và thư viện Esp32 / Era eoh
 
-{% file src="../.gitbook/assets/E-Ra Workshop Software Installation Guide (1).pdf" %}
+{% file src="../.gitbook/assets/E-Ra Workshop Software Installation Guide.pdf" %}
 
 {% embed url="https://youtu.be/mWG3SLdxtjo" %}
 Video Hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
@@ -22,19 +22,19 @@ Video Hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
 
 Sketch > Include Library > **Manage Libraries**
 
-![](<../.gitbook/assets/image (74).png>)
+![](<../.gitbook/assets/image (322).png>)
 
 Trong mục search, điền vào **dht20**
 
 Chọn install thư viện thứ 2 **DHT20 by **_**Rob**_** Tillaart**
 
-![](<../.gitbook/assets/image (75) (1).png>)
+![](<../.gitbook/assets/image (350).png>)
 {% endtab %}
 
 {% tab title="Full code hỗ trợ" %}
 ### **Source code**
 
-Tìm và đặt dưới ![](<../.gitbook/assets/image (2).png>)
+Tìm và đặt dưới ![](<../.gitbook/assets/image (204).png>)
 
 ```
 #include <DHT20.h>

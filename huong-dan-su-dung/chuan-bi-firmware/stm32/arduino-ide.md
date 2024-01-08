@@ -8,19 +8,19 @@ Với STM32: [ST-link](https://www.st.com/en/development-tools/stsw-link009.html
 
 ### 2.  Arduino IDE
 
-<figure><img src="../../../.gitbook/assets/image (36) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (156).png" alt=""><figcaption></figcaption></figure>
 
 Truy cập [Software | Arduino](https://www.arduino.cc/en/software) và tải bản Arduino IDE(Legacy) tương thích với hệ điều hành.&#x20;
 
 ### 3. Add Boards Manager STM32 cho Arduino IDE
 
-<figure><img src="../../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
 * Mở Arduino IDE&#x20;
 *   Vào File -> Preferences \
 
 
-    <figure><img src="../../../.gitbook/assets/image (67) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../../.gitbook/assets/image (198).png" alt=""><figcaption></figcaption></figure>
 
 Trong Popup Preference, tìm đến “Additional Boards Manager URLs” thêm đường dẫn sau và nhấn OK.&#x20;
 
@@ -28,11 +28,11 @@ STM32: [https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicr
 
 <mark style="color:red;">Thêm đường dẫn tương ứng của từng board, mỗi đường dẫn cách nhau bằng dấu “,”</mark>&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (63) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (138).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Board:… -> Boards Manager …
 
-<figure><img src="../../../.gitbook/assets/image (58) (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (148).png" alt=""><figcaption></figcaption></figure>
 
 Trong Boards Manager, tìm STM32 -> nhấn install để thêm package STM32 MCU based boards vào Arduino IDE
 
@@ -40,23 +40,23 @@ Trong Boards Manager, tìm STM32 -> nhấn install để thêm package STM32 MCU
 
 ### 4. Thêm thư viện vào Arduino IDE
 
-<figure><img src="../../../.gitbook/assets/image (25) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (100).png" alt=""><figcaption></figcaption></figure>
 
 Vào Tools -> Manage Libraries
 
-<figure><img src="../../../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (301).png" alt=""><figcaption></figcaption></figure>
 
 Tìm “<mark style="color:red;">Era Enabler</mark>” sau đấy chọn version mới nhất và tiến hành install.
 
 
 
-<figure><img src="../../../.gitbook/assets/image (30) (1).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (132).png" alt=""><figcaption><p>STM32duino FreeRTOS trên Arduino IDE</p></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (11) (2).png" alt=""><figcaption><p>TinyGSM trên Arduino IDE</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (117).png" alt=""><figcaption><p>TinyGSM trên Arduino IDE</p></figcaption></figure>
 
 ###
 
-<figure><img src="../../../.gitbook/assets/image (29) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (176).png" alt=""><figcaption></figcaption></figure>
 
 Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùng Wifi)
 
@@ -64,7 +64,7 @@ Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùn
 
 <mark style="color:red;">Dùng module Gsm (SIM)</mark>
 
-<figure><img src="../../../.gitbook/assets/image (23) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (323).png" alt=""><figcaption></figcaption></figure>
 
 * Chọn APN nhà mạng đang dùng.&#x20;
 * Chọn modem SIM đang dùng.&#x20;
@@ -72,7 +72,7 @@ Vào File -> Examples -> ERa -> STM32 -> Gsm (Nếu dùng SIM), Wifi (Nếu dùn
 
 <mark style="color:red;">Dùng module Wifi</mark>
 
-<figure><img src="../../../.gitbook/assets/image (2) (2) (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (116).png" alt=""><figcaption></figcaption></figure>
 
 Thay đổi thông số ERA\_AUTH\_TOKEN của project, tên wifi(ssid) và pass wifi(pass).&#x20;
 

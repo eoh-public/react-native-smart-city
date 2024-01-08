@@ -2,7 +2,7 @@
 
 **Bước 1:** Truy cập CH Play/ App store, tìm kiếm ứng dụng “E-Ra" hoặc quét mã QR bên dưới-> Chọn ứng dụng E-Ra , sau đó nhấn nút “Cài đặt"&#x20;
 
-![](<../../.gitbook/assets/image (2) (1) (1) (1) (1).png>)![](<../../.gitbook/assets/image (3) (1) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (338).png>)![](<../../.gitbook/assets/image (207).png>)
 
 **Bước 2: Đăng ký tài khoản**
 

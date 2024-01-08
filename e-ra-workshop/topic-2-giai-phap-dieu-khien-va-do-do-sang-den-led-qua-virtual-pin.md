@@ -16,13 +16,13 @@ Video hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
 {% tab title="Đoạn Code hỗ trợ " %}
 E-ra điều khiển độ sáng Led
 
-![](<../.gitbook/assets/image (25).png>)
+![](<../.gitbook/assets/image (286).png>)
 
 
 
 E-ra đọc giá trị ánh sáng
 
-![](<../.gitbook/assets/image (1) (10).png>)
+![](<../.gitbook/assets/image (284).png>)
 
 
 
