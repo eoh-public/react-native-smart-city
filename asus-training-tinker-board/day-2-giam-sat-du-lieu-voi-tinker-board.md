@@ -12,7 +12,8 @@
 sudo ifconfig wlan0
 ```
 
-_thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange;"><</mark><mark style="color:orange;">**token>**</mark> tương ứng_\
+_thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange;"><</mark><mark style="color:orange;">**token>**</mark> tương ứng cho bước 2 và 3_
+
 
 
 {% tabs %}
