@@ -6,7 +6,7 @@
 
 
 
-**Cấp nguồn / khởi động **<mark style="color:orange;">**Tinker**</mark>**, mở màn hình và **<mark style="color:orange;">**gõ lệnh**</mark>
+**1. Cấp nguồn / khởi động **<mark style="color:orange;">**Tinker**</mark>**, mở màn hình và **<mark style="color:orange;">**gõ lệnh**</mark>
 
 ```
 sudo ifconfig wlan0
@@ -15,7 +15,7 @@ sudo ifconfig wlan0
 
 
 {% tabs %}
-{% tab title="Online Tinker" %}
+{% tab title="2. Online Tinker" %}
 #### Truy cập <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
 
 ```
@@ -25,7 +25,7 @@ sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 {% endtab %}
 
-{% tab title="Code chuẩn bị sẵn và Online Tinker" %}
+{% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
 #### Code đọc dữ liệu từ <mark style="color:orange;">YoloUno</mark> và <mark style="color:orange;">gửi lên E-Ra</mark>, thông qua <mark style="color:orange;">Virtual Pin</mark> V0 / V1 / V2.
 
 _tải và giải nén Tinker\_2024.rar, được thư mục Tinker\_2024_
