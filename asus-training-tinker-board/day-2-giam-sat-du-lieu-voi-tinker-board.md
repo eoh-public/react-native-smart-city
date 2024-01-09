@@ -6,7 +6,7 @@
 
 
 
-Cấp nguồn / khởi động <mark style="color:orange;">**Tinker**</mark>**,** mở màn hình và <mark style="color:orange;">gõ lệnh</mark>
+**Cấp nguồn / khởi động **<mark style="color:orange;">**Tinker**</mark>**, mở màn hình và **<mark style="color:orange;">**gõ lệnh**</mark>
 
 ```
 sudo ifconfig wlan0
