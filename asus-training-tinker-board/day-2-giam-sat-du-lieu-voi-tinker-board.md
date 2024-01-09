@@ -1,85 +1,88 @@
 # Day 2: giám sát dữ liệu với Tinker board
 
-1. Tìm địa chỉ ip
+1. Tìm địa chỉ ip Tinker board
 2. Online Tinker board thông qua ssh
 3. Cập nhật code mới, gửi dữ liệu lên E-Ra
 
 
 
-Khởi động **Tinker board,** mở màn hình và gõ lệnh
+Cấp nguồn / khởi động <mark style="color:orange;">**Tinker**</mark>**,** mở màn hình và <mark style="color:orange;">gõ lệnh</mark>
 
 ```
-sudo ifconfig
+sudo ifconfig wlan0
 ```
+
+
 
 {% tabs %}
 {% tab title="Online Tinker" %}
-#### Truy cập board thông qua ssh
-
-_thay **xxx** với **ip** tương ứng_
+#### Truy cập <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
 
 ```
-ssh linaro@xxx
+ssh linaro@<ip>
 cd era-lib/linux
-```
-
-_thay **TOKEN** với **gateway**_ _**token** tương ứng_
-
-```
-sudo ./era --token=TOKEN --host=mqtt1.eoh.io
+sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 {% endtab %}
 
-{% tab title="Tinker nhận dữ liệu từ YoloUno và gửi lên E-Ra" %}
-#### Code đọc dữ liệu từ YoloUno và gửi lên E-Ra, thông qua Virtual Pin V0 / V1 / V2.
+{% tab title="Code chuẩn bị sẵn và Online Tinker" %}
+#### Code đọc dữ liệu từ <mark style="color:orange;">YoloUno</mark> và <mark style="color:orange;">gửi lên E-Ra</mark>, thông qua <mark style="color:orange;">Virtual Pin</mark> V0 / V1 / V2.
 
 _tải và giải nén Tinker\_2024.rar, được thư mục Tinker\_2024_
 
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
 
-#### Gửi file code vào Tinker board thông qua sftp
+#### Cập nhật file <mark style="color:orange;">code chuẩn bị sẵn</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
 
-_thay **xxx** với **ip** tương ứng_
-
+{% code overflow="wrap" %}
 ```
-sftp linaro@xxx
+sftp linaro@<ip>
 lcd ~/Downloads/Tinker_2024
 cd era-lib/linux
+
 put main.cpp
 put ERaConsole.h User/inc
 put ERaConsole.cpp User/src
 ```
+{% endcode %}
 
 
 
-#### Chạy code - thông qua ssh
+#### Truy cập <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
 
-_thay **xxx** với **ip** tương ứng_
-
-```
-ssh linaro@xxx
+<pre><code>ssh linaro@<a data-footnote-ref href="#user-content-fn-1">&#x3C;ip></a>
 cd era-lib/linux
-```
+</code></pre>
 
-_build lại với đoạn code mới_
+<mark style="color:orange;">build</mark> lại với đoạn <mark style="color:orange;">code mới</mark>
 
 ```
 make clean all target=tinker
 ```
 
-_thay **TOKEN** với **gateway token** tương ứng_
-
 ```
-sudo ./era --token=TOKEN --host=mqtt1.eoh.io
+sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 {% endtab %}
 {% endtabs %}
 
+_- thay **\<ip>** tương ứng_\
+_- thay <**token>** tương ứng_
 
 
 
+_<mark style="color:orange;">**Ví dụ:**</mark>_
+
+```
+ssh linaro@<ip>
+ssh linaro@192.168.1.2
+```
+
+```
+sudo ./era --token=<token> --host=mqtt1.eoh.io
+sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
+```
 
 
 
-
-
+[^1]: 
