@@ -12,6 +12,7 @@
 sudo ifconfig wlan0
 ```
 
+_thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange;"><</mark><mark style="color:orange;">**token>**</mark> tương ứng_\
 
 
 {% tabs %}
@@ -65,9 +66,6 @@ sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 {% endtab %}
 {% endtabs %}
-
-_- thay **\<ip>** tương ứng_\
-_- thay <**token>** tương ứng_
 
 
 
