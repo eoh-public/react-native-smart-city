@@ -1,8 +1,8 @@
 # Day 2: giám sát dữ liệu với Tinker board
 
 1. Tìm địa chỉ ip và token Tinker board
-2. Online Tinker board thông qua ssh
-3. Cập nhật code mới, gửi dữ liệu lên E-Ra
+2. Online Tinker thông qua ssh
+3. Online Tinker với code mới
 
 \-----------------------------------------------------
 
@@ -55,7 +55,7 @@ sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
 ```
 {% endtab %}
 
-{% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
+{% tab title="3. Online Tinker với code mới" %}
 Code đọc dữ liệu từ <mark style="color:orange;">**YoloUno**</mark> và <mark style="color:orange;">**gửi lên E-Ra**</mark>, thông qua <mark style="color:orange;">**Virtual**</mark> <mark style="color:orange;">**Pin**</mark> V0, V1, V2
 
 _tải và giải nén Tinker\_2024.rar, được thư mục <mark style="color:orange;">Tinker\_2024</mark>_
