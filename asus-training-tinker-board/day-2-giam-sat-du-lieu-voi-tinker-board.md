@@ -1,6 +1,6 @@
 # Day 2: giám sát dữ liệu với Tinker board
 
-1. Tìm địa chỉ ip Tinker board
+1. Tìm địa chỉ ip và token Tinker board
 2. Online Tinker board thông qua ssh
 3. Cập nhật code mới, gửi dữ liệu lên E-Ra
 
@@ -8,29 +8,35 @@
 
 
 
-**1. Tìm địa chỉ ip Tinker board**
+**1. Tìm địa chỉ ip và token Tinker board**
 
-Khởi động <mark style="color:orange;">**Tinker**</mark>, mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>) và <mark style="color:orange;">**copy / paste lệnh**</mark>
+**Tìm IP:** \
+_Khởi động <mark style="color:orange;">**Tinker**</mark>, mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>) và_ _<mark style="color:orange;">**copy / paste lệnh**</mark>_
 
 ```
 sudo ifconfig wlan0
 ```
 
+**Tìm Token:**\
+_Vào web_ _<mark style="color:orange;">**https://app.e-ra.io/dev-mode/gateways**</mark> >_ _<mark style="color:orange;">**Gateway của mình**</mark>_ _>_ _<mark style="color:orange;">**Copy authtoken**</mark>_
 
 
-_thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange;"><</mark><mark style="color:orange;">**token>**</mark> tương ứng cho bước 2 và 3_
 
 {% tabs %}
 {% tab title="2. Online Tinker (ssh)" %}
 ```
 ssh linaro@<ip>
+```
+
+```
 cd era-lib/linux
+```
+
+```
 sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 
-* Tìm <mark style="color:orange;">**gateway token**</mark>
-* Copy lệnh ra <mark style="color:orange;">**notepad**</mark>\
-  Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
+* Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
 * <mark style="color:orange;">**Copy / paste từng lệnh**</mark>
 {% endtab %}
 
@@ -41,31 +47,31 @@ _tải và giải nén Tinker\_2024.rar, được thư mục Tinker\_2024_
 
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
 
-#### Cập nhật file <mark style="color:orange;">code chuẩn bị sẵn</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
+#### Cập nhật file <mark style="color:orange;">code chuẩn</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
+
+```
+sftp linaro@<ip>
+```
 
 {% code overflow="wrap" %}
 ```
-sftp linaro@<ip>
 lcd ~/Downloads/Tinker_2024
 cd era-lib/linux
-
 put main.cpp
 put ERaConsole.h User/inc
 put ERaConsole.cpp User/src
 ```
 {% endcode %}
 
-
-
 #### Truy cập <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
 
 <pre><code>ssh linaro@<a data-footnote-ref href="#user-content-fn-1">&#x3C;ip></a>
-cd era-lib/linux
 </code></pre>
 
-<mark style="color:orange;">build</mark> lại với đoạn <mark style="color:orange;">code mới</mark>
+<mark style="color:orange;">**build**</mark> <mark style="color:orange;">**code mới**</mark>
 
 ```
+cd era-lib/linux
 make clean all target=tinker
 ```
 
