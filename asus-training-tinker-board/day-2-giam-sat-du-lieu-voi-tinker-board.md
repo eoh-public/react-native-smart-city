@@ -39,6 +39,20 @@ sudo ./era --token=<token> --host=mqtt1.eoh.io
 * Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>
 * <mark style="color:orange;">**Copy / paste**</mark> từng <mark style="color:orange;">**lệnh**</mark>
 * Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
+
+
+
+_<mark style="color:orange;">**Ví dụ:**</mark>_
+
+```
+ssh linaro@<ip>
+ssh linaro@192.168.1.2
+```
+
+```
+sudo ./era --token=<token> --host=mqtt1.eoh.io
+sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
+```
 {% endtab %}
 
 {% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
@@ -81,20 +95,6 @@ sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 {% endtab %}
 {% endtabs %}
-
-
-
-_<mark style="color:orange;">**Ví dụ:**</mark>_
-
-```
-ssh linaro@<ip>
-ssh linaro@192.168.1.2
-```
-
-```
-sudo ./era --token=<token> --host=mqtt1.eoh.io
-sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
-```
 
 
 
