@@ -21,8 +21,8 @@ sudo ifconfig wlan0
 _thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange;"><</mark><mark style="color:orange;">**token>**</mark> tương ứng cho bước 2 và 3_
 
 {% tabs %}
-{% tab title="2. Online Tinker" %}
-#### Truy cập <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
+{% tab title="2. Online Tinker (ssh)" %}
+Mở <mark style="color:orange;">**terminal**</mark> <mark style="color:orange;">**trên**</mark> <mark style="color:orange;">**laptop**</mark>, thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark>, <mark style="color:orange;">copy / paste lệnh</mark>
 
 ```
 ssh linaro@<ip>
