@@ -4,17 +4,19 @@
 2. Online Tinker board thông qua ssh
 3. Cập nhật code mới, gửi dữ liệu lên E-Ra
 
+\---------------------------------------------------------------------------------------------------------------------
 
+**1. Tìm địa chỉ ip Tinker board**
 
-**1. Cấp nguồn / khởi động **<mark style="color:orange;">**Tinker**</mark>**, mở màn hình và **<mark style="color:orange;">**gõ lệnh**</mark>
+Khởi động <mark style="color:orange;">**Tinker**</mark>, truy cập <mark style="color:orange;">**LXTerminal**</mark> và <mark style="color:orange;">**gõ lệnh**</mark>
 
 ```
 sudo ifconfig wlan0
 ```
 
+
+
 _thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange;"><</mark><mark style="color:orange;">**token>**</mark> tương ứng cho bước 2 và 3_
-
-
 
 {% tabs %}
 {% tab title="2. Online Tinker" %}
