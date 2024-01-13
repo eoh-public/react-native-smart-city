@@ -58,15 +58,19 @@ sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
 {% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
 #### Code đọc dữ liệu từ <mark style="color:orange;">YoloUno</mark> và <mark style="color:orange;">gửi lên E-Ra</mark>, thông qua <mark style="color:orange;">Virtual Pin</mark> V0 / V1 / V2.
 
-_tải và giải nén Tinker\_2024.rar, được thư mục Tinker\_2024_
+_tải và giải nén Tinker\_2024.rar, được thư mục <mark style="color:orange;">Tinker\_2024</mark>_
 
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
 
-#### Cập nhật file <mark style="color:orange;">code mới</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
+
+
+#### Cập nhật <mark style="color:orange;">code mới</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
 
 ```
 sftp linaro@<ip>
 ```
+
+_Thay <mark style="color:orange;">đường dẫn</mark> đến thư mục <mark style="color:orange;">Tinker\_2024</mark> tương ứng trên máy_
 
 {% code overflow="wrap" %}
 ```
@@ -78,7 +82,9 @@ put ERaConsole.cpp User/src
 ```
 {% endcode %}
 
-#### Truy cập <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
+
+
+#### <mark style="color:orange;">Online Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
 
 <pre><code>ssh linaro@<a data-footnote-ref href="#user-content-fn-1">&#x3C;ip></a>
 </code></pre>
