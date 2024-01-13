@@ -22,13 +22,16 @@ _thay <mark style="color:orange;">**\<ip>**</mark> và <mark style="color:orange
 
 {% tabs %}
 {% tab title="2. Online Tinker (ssh)" %}
-Mở <mark style="color:orange;">**terminal**</mark> <mark style="color:orange;">**trên**</mark> <mark style="color:orange;">**laptop**</mark>, thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark>, <mark style="color:orange;">copy / paste lệnh</mark>
-
 ```
 ssh linaro@<ip>
 cd era-lib/linux
 sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
+
+* Tìm <mark style="color:orange;">**gateway token**</mark>
+* Copy lệnh ra <mark style="color:orange;">**notepad**</mark>\
+  Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
+* <mark style="color:orange;">**Copy / paste từng lệnh**</mark>
 {% endtab %}
 
 {% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
