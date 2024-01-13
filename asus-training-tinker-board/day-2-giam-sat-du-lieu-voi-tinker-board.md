@@ -10,7 +10,7 @@
 
 **1. Tìm địa chỉ ip Tinker board**
 
-Khởi động <mark style="color:orange;">**Tinker**</mark>, truy cập <mark style="color:orange;">**LXTerminal**</mark> và <mark style="color:orange;">**gõ lệnh**</mark>
+Khởi động <mark style="color:orange;">**Tinker**</mark>, mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">Systen Tools</mark> > <mark style="color:orange;">LXTerminal</mark>) và <mark style="color:orange;">**gõ lệnh**</mark>
 
 ```
 sudo ifconfig wlan0
