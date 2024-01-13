@@ -36,8 +36,9 @@ cd era-lib/linux
 sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 
+* Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>
+* <mark style="color:orange;">**Copy / paste**</mark> từng <mark style="color:orange;">**lệnh**</mark>
 * Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
-* <mark style="color:orange;">**Copy / paste từng lệnh**</mark>
 {% endtab %}
 
 {% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
@@ -47,7 +48,7 @@ _tải và giải nén Tinker\_2024.rar, được thư mục Tinker\_2024_
 
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
 
-#### Cập nhật file <mark style="color:orange;">code chuẩn</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
+#### Cập nhật file <mark style="color:orange;">code mới</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
 
 ```
 sftp linaro@<ip>
