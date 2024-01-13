@@ -56,7 +56,7 @@ sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
 {% endtab %}
 
 {% tab title="3. Code chuẩn bị sẵn và Online Tinker" %}
-#### Code đọc dữ liệu từ <mark style="color:orange;">YoloUno</mark> và <mark style="color:orange;">gửi lên E-Ra</mark>, thông qua <mark style="color:orange;">Virtual Pin</mark> V0 / V1 / V2.
+Code đọc dữ liệu từ <mark style="color:orange;">**YoloUno**</mark> và <mark style="color:orange;">**gửi lên E-Ra**</mark>, thông qua <mark style="color:orange;">**Virtual**</mark> <mark style="color:orange;">**Pin**</mark> V0, V1, V2
 
 _tải và giải nén Tinker\_2024.rar, được thư mục <mark style="color:orange;">Tinker\_2024</mark>_
 
@@ -81,6 +81,8 @@ put ERaConsole.h User/inc
 put ERaConsole.cpp User/src
 ```
 {% endcode %}
+
+Thoát <mark style="color:orange;">**sftp.**</mark>
 
 
 
