@@ -18,7 +18,7 @@ sudo ifconfig wlan0
 ```
 
 **Tìm Token:**\
-_Vào web_ _<mark style="color:orange;">**https://app.e-ra.io/dev-mode/gateways**</mark> >_ _<mark style="color:orange;">**Gateway của mình**</mark>_ _>_ _<mark style="color:orange;">**Copy authtoken**</mark>_
+_Vào web_ [_**https://app.e-ra.io/dev-mode/gateways**_](https://app.e-ra.io/dev-mode/gateways) _>_ _<mark style="color:orange;">**Gateway của mình**</mark>_ _>_ _<mark style="color:orange;">**Copy authtoken**</mark>_
 
 
 
@@ -56,11 +56,11 @@ sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
 {% endtab %}
 
 {% tab title="3. Online Tinker với code mới" %}
-Code đọc dữ liệu từ <mark style="color:orange;">**YoloUno**</mark> và <mark style="color:orange;">**gửi lên E-Ra**</mark>, thông qua <mark style="color:orange;">**Virtual**</mark> <mark style="color:orange;">**Pin**</mark> V0, V1, V2
-
-_tải và giải nén Tinker\_2024.rar, được thư mục <mark style="color:orange;">Tinker\_2024</mark>_
+_Tải và giải nén Tinker\_2024.rar, được thư mục <mark style="color:orange;">**Tinker\_2024**</mark>_
 
 {% file src="../.gitbook/assets/Tinker_2024.rar" %}
+Code đọc dữ liệu từ <mark style="color:orange;">**YoloUno**</mark> và <mark style="color:orange;">**gửi lên E-Ra**</mark> thông qua <mark style="color:orange;">**Virtual**</mark> <mark style="color:orange;">**Pin**</mark>
+{% endfile %}
 
 
 
