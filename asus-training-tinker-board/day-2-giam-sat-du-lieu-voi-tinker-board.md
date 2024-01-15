@@ -51,7 +51,7 @@ _<mark style="color:orange;">**Ví dụ:**</mark>_
 
 ```
 ssh linaro@<ip>
-ssh linaro@192.168.1.2
+ssh linaro@192.168.1.72
 ```
 
 ```
