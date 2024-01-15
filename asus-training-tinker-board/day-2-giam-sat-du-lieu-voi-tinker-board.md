@@ -4,26 +4,29 @@
 2. Online Tinker thông qua ssh
 3. Online Tinker với code mới
 
-\-----------------------------------------------------
+\----------------------------------------------------
 
-
-
-**1. Tìm địa chỉ ip và token Tinker board**
-
+{% tabs %}
+{% tab title="1. Tìm IP và Token" %}
 **Tìm IP:** \
-_Khởi động <mark style="color:orange;">**Tinker**</mark>, mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>) và_ _<mark style="color:orange;">**copy / paste lệnh**</mark>_
+_Khởi động <mark style="color:orange;">**Tinker,**</mark> Mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>)_\
+_<mark style="color:orange;">**Copy / paste lệnh**</mark>_
 
 ```
 sudo ifconfig wlan0
 ```
 
+<figure><img src="../.gitbook/assets/get-ip-edit.png" alt=""><figcaption></figcaption></figure>
+
+
+
 **Tìm Token:**\
 _Vào web_ [_**https://app.e-ra.io/dev-mode/gateways**_](https://app.e-ra.io/dev-mode/gateways) _>_ _<mark style="color:orange;">**Gateway của mình**</mark>_ _>_ _<mark style="color:orange;">**Copy authtoken**</mark>_
 
+<figure><img src="../.gitbook/assets/tinker-authtoken-off.png" alt=""><figcaption></figcaption></figure>
+{% endtab %}
 
-
-{% tabs %}
-{% tab title="2. Online Tinker (ssh)" %}
+{% tab title="2. Online Tinker" %}
 ```
 ssh linaro@<ip>
 ```
@@ -39,7 +42,7 @@ sudo ./era --token=<token> --host=mqtt1.eoh.io
 * Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>\
   **mac: **<mark style="color:orange;">**Cmd + Space**</mark> > <mark style="color:orange;">**gõ "terminal"**</mark> > <mark style="color:orange;">**enter**</mark>\
   **win: **<mark style="color:orange;">**Start menu**</mark> > <mark style="color:orange;">**gõ "cmd"**</mark> > <mark style="color:orange;">**enter**</mark>
-* <mark style="color:orange;">**Copy / paste**</mark> các <mark style="color:orange;">**lệnh trên**</mark>
+* <mark style="color:orange;">**Copy / Paste**</mark> các <mark style="color:orange;">**lệnh trên**</mark>
 * Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
 
 
@@ -84,6 +87,8 @@ cp ERaConsole.cpp ~/era-lib/linux/User/inc
 cd ~/era-lib/linux
 make clean all target=tinker
 ```
+
+
 
 <mark style="color:orange;">**Online**</mark>** Tinker**
 
