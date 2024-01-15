@@ -37,7 +37,7 @@ sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 
 * Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>
-* <mark style="color:orange;">**Copy / paste**</mark> từng <mark style="color:orange;">**lệnh**</mark>
+* <mark style="color:orange;">**Copy / paste**</mark> các <mark style="color:orange;">**lệnh trên**</mark>
 * Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
 
 
@@ -56,54 +56,38 @@ sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
 {% endtab %}
 
 {% tab title="3. Online Tinker với code mới" %}
-_Tải và giải nén Tinker\_2024.rar, được thư mục <mark style="color:orange;">**Tinker\_2024**</mark>_
+<mark style="color:orange;">**Offline**</mark>** Tinker:**
 
-{% file src="../.gitbook/assets/Tinker_2024.rar" %}
-Code đọc dữ liệu từ <mark style="color:orange;">**YoloUno**</mark> và <mark style="color:orange;">**gửi lên E-Ra**</mark> thông qua <mark style="color:orange;">**Virtual**</mark> <mark style="color:orange;">**Pin**</mark>
-{% endfile %}
+Thoát lệnh đang chạy với <mark style="color:orange;">**Ctrl + C**</mark>
 
 
 
-#### Cập nhật <mark style="color:orange;">code mới</mark> vào <mark style="color:orange;">Tinker</mark> thông qua <mark style="color:orange;">sftp</mark>
+<mark style="color:orange;">**Download**</mark>** code mới**
 
 ```
-sftp linaro@<ip>
+cd ~
+git clone https://github.com/eoh-jsc/eoh-asus-training.git
+cd eoh-asus-training
+
+cp main.cpp ~/era-lib/linux
+cp ERaConsole.h ~/era-lib/linux/User/inc
+cp ERaConsole.cpp ~/era-lib/linux/User/inc
+cd ~
 ```
 
-_Thay <mark style="color:orange;">đường dẫn</mark> đến thư mục <mark style="color:orange;">Tinker\_2024</mark> tương ứng trên máy_
-
-{% code overflow="wrap" %}
-```
-lcd ~/Downloads/Tinker_2024
-cd era-lib/linux
-put main.cpp
-put ERaConsole.h User/inc
-put ERaConsole.cpp User/src
-```
-{% endcode %}
-
-Thoát <mark style="color:orange;">**sftp.**</mark>
 
 
-
-#### <mark style="color:orange;">Online Tinker</mark> thông qua <mark style="color:orange;">ssh</mark>
-
-<pre><code>ssh linaro@<a data-footnote-ref href="#user-content-fn-1">&#x3C;ip></a>
-</code></pre>
-
-<mark style="color:orange;">**build**</mark> <mark style="color:orange;">**code mới**</mark>
+<mark style="color:orange;">**Build**</mark>** code mới**
 
 ```
 cd era-lib/linux
 make clean all target=tinker
 ```
 
+<mark style="color:orange;">**Online**</mark>** Tinker**
+
 ```
 sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 {% endtab %}
 {% endtabs %}
-
-
-
-[^1]: 
