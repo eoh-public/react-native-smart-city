@@ -9,7 +9,8 @@
 {% tabs %}
 {% tab title="1. Tìm IP và Token" %}
 **Tìm IP:** \
-_Khởi động <mark style="color:orange;">**Tinker,**</mark> Mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>)_\
+_Khởi động <mark style="color:orange;">**Tinker**</mark>_\
+_Mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>)_\
 _<mark style="color:orange;">**Copy / paste lệnh**</mark>_
 
 ```
