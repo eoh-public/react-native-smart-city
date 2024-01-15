@@ -77,7 +77,7 @@ cd eoh-asus-training
 
 cp main.cpp ~/era-lib/linux
 cp ERaConsole.h ~/era-lib/linux/User/inc
-cp ERaConsole.cpp ~/era-lib/linux/User/inc
+cp ERaConsole.cpp ~/era-lib/linux/User/src
 ```
 
 
