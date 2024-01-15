@@ -36,7 +36,9 @@ cd era-lib/linux
 sudo ./era --token=<token> --host=mqtt1.eoh.io
 ```
 
-* Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>
+* Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>\
+  **mac: **<mark style="color:orange;">**Cmd + Space**</mark> > <mark style="color:orange;">**gõ "terminal"**</mark> > <mark style="color:orange;">**enter**</mark>\
+  **win: **<mark style="color:orange;">**Start menu**</mark> > <mark style="color:orange;">**gõ "cmd"**</mark> > <mark style="color:orange;">**enter**</mark>
 * <mark style="color:orange;">**Copy / paste**</mark> các <mark style="color:orange;">**lệnh trên**</mark>
 * Thay <mark style="color:orange;">**ip**</mark> và <mark style="color:orange;">**token**</mark> tương ứng
 
@@ -62,7 +64,7 @@ Thoát lệnh đang chạy với <mark style="color:orange;">**Ctrl + C**</mark>
 
 
 
-<mark style="color:orange;">**Download**</mark>** code mới**
+<mark style="color:orange;">**Download**</mark>** và **<mark style="color:orange;">**Update**</mark>** code mới**
 
 ```
 cd ~
@@ -72,7 +74,6 @@ cd eoh-asus-training
 cp main.cpp ~/era-lib/linux
 cp ERaConsole.h ~/era-lib/linux/User/inc
 cp ERaConsole.cpp ~/era-lib/linux/User/inc
-cd ~
 ```
 
 
@@ -80,7 +81,7 @@ cd ~
 <mark style="color:orange;">**Build**</mark>** code mới**
 
 ```
-cd era-lib/linux
+cd ~/era-lib/linux
 make clean all target=tinker
 ```
 
