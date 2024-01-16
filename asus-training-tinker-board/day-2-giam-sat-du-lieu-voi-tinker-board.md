@@ -37,7 +37,7 @@ cd era-lib/linux
 ```
 
 ```
-sudo ./era --token=<token> --host=mqtt1.eoh.io
+sudo ./era --token=<token>
 ```
 
 * Mở <mark style="color:orange;">**Terminal**</mark> trên <mark style="color:orange;">**laptop**</mark>\
@@ -56,8 +56,8 @@ ssh linaro@192.168.1.72
 ```
 
 ```
-sudo ./era --token=<token> --host=mqtt1.eoh.io
-sudo ./era --token=111111-1111-1111-1111-11111111 --host=mqtt1.eoh.io
+sudo ./era --token=<token>
+sudo ./era --token=111111-1111-1111-1111-11111111
 ```
 {% endtab %}
 
@@ -94,7 +94,7 @@ make clean all target=tinker
 <mark style="color:orange;">**Online**</mark>** Tinker**
 
 ```
-sudo ./era --token=<token> --host=mqtt1.eoh.io
+sudo ./era --token=<token>
 ```
 {% endtab %}
 {% endtabs %}
