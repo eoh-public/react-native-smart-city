@@ -102,4 +102,4 @@
   * [Topic 4 - Xây dựng Nông trại Thông minh trên Nền tảng E-Ra](e-ra-workshop/topic-4-xay-dung-nong-trai-thong-minh-tren-nen-tang-e-ra.md)
   * [Topic 5 - Tiếp cận IoT trong công nghiệp](e-ra-workshop/topic-5-tiep-can-iot-trong-cong-nghiep.md)
 * [Asus training: Tinker board](asus-training-tinker-board/README.md)
-  * [Day 2: giám sát dữ liệu với Tinker board](asus-training-tinker-board/day-2-giam-sat-du-lieu-voi-tinker-board.md)
+  * [Day 2: Giám sát dữ liệu với Tinker board](asus-training-tinker-board/day-2-giam-sat-du-lieu-voi-tinker-board.md)
