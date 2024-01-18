@@ -1,2 +1,0 @@
-# Asus training: Tinker board
-
