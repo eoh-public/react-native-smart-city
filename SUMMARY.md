@@ -103,3 +103,4 @@
   * [Topic 5 - Tiếp cận IoT trong công nghiệp](e-ra-workshop/topic-5-tiep-can-iot-trong-cong-nghiep.md)
 * [Asus training: Tinker board](asus-training-tinker-board/README.md)
   * [Day 2: Giám sát dữ liệu với Tinker board](asus-training-tinker-board/day-2-giam-sat-du-lieu-voi-tinker-board.md)
+  * [Kích hoạt service chạy nền ERa trên ASUS Tinker board](asus-training-tinker-board/kich-hoat-service-chay-nen-era-tren-asus-tinker-board.md)
