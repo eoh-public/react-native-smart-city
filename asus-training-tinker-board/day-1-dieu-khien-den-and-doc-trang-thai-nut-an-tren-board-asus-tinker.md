@@ -6,6 +6,10 @@
 Slide E-Ra Training Day 1
 {% endfile %}
 
+{% embed url="https://youtu.be/1b2NhXP8saw" %}
+Video E-Ra Training Day 1
+{% endembed %}
+
 **Hướng dẫn cài đặt ASUS Tinker OS:**
 
 {% content-ref url="../huong-dan-su-dung/chuan-bi-firmware/asus-tinker-board.md" %}
