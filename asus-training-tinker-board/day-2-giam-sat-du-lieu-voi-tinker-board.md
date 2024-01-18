@@ -1,4 +1,12 @@
-# Day 2: giám sát dữ liệu với Tinker board
+# Day 2: Giám sát dữ liệu với Tinker board
+
+**Bài giảng:**
+
+{% file src="../.gitbook/assets/Training Day2_NTTU IoT Contest 2024.pdf" %}
+Slide E-Ra Training Day 2
+{% endfile %}
+
+**Hướng dẫn thao tác lệnh:**
 
 1. Tìm địa chỉ ip và token Tinker board
 2. Online Tinker thông qua ssh
