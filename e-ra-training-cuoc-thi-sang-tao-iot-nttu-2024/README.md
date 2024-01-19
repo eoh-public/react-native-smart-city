@@ -11,12 +11,12 @@ description: >-
 [huong-dan-su-dung-e-ra](../huong-dan-su-dung-e-ra/)
 {% endcontent-ref %}
 
-{% content-ref url="day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md" %}
-[day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md](day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md)
+{% content-ref url="day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md" %}
+[day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md](day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md)
 {% endcontent-ref %}
 
-{% content-ref url="day-2-giam-sat-du-lieu-voi-tinker-board.md" %}
-[day-2-giam-sat-du-lieu-voi-tinker-board.md](day-2-giam-sat-du-lieu-voi-tinker-board.md)
+{% content-ref url="day-2-giam-sat-du-lieu-voi-asus-tinker-board.md" %}
+[day-2-giam-sat-du-lieu-voi-asus-tinker-board.md](day-2-giam-sat-du-lieu-voi-asus-tinker-board.md)
 {% endcontent-ref %}
 
 {% content-ref url="day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md" %}
