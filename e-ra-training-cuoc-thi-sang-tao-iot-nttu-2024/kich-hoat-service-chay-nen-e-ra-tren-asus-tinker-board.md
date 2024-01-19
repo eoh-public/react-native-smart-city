@@ -26,7 +26,7 @@ _**Copy / paste** lệnh sau:_
 cd ~/era-lib/linux/Startup/
 ```
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Đưa con trỏ về thư mục Startup</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Đưa con trỏ vào thư mục Startup</p></figcaption></figure>
 
 Chỉnh sửa file **token.txt** trong thư **Startup** bằng lệnh sau:
 
