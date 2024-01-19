@@ -104,4 +104,5 @@
 * [E-Ra Training: Cuộc thi Sáng tạo IoT NTTU 2024](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/README.md)
   * [Day 1: Điều khiển đèn & Đọc trạng thái nút ấn trên board ASUS Tinker](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md)
   * [Day 2: Giám sát dữ liệu với Tinker board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-2-giam-sat-du-lieu-voi-tinker-board.md)
+  * [Day 3: Kết nối thiết bị Modbus với E-Ra](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md)
   * [Kích hoạt service chạy nền E-Ra trên ASUS Tinker board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
