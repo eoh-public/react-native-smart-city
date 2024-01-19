@@ -1,10 +1,18 @@
-# Day 2: Giám sát dữ liệu với Tinker board
+# Day 2: Giám sát dữ liệu với ASUS Tinker Board
 
 **Bài giảng:**
 
 {% file src="../.gitbook/assets/Training Day2_NTTU IoT Contest 2024.pdf" %}
 Slide E-Ra Training Day 2
 {% endfile %}
+
+{% file src="../.gitbook/assets/Hướng dẫn lập trình với Yolo Uno.pdf" %}
+Slide Hướng dẫn lập trình với Yolo UNO
+{% endfile %}
+
+{% embed url="https://youtu.be/gXeIzrBDHGM" %}
+Video E-Ra Training Day 2
+{% endembed %}
 
 **Hướng dẫn thao tác lệnh:**
 
