@@ -106,3 +106,4 @@
   * [Day 2: Giám sát dữ liệu với Tinker board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-2-giam-sat-du-lieu-voi-tinker-board.md)
   * [Day 3: Kết nối thiết bị Modbus với E-Ra](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md)
   * [Kích hoạt service chạy nền E-Ra trên ASUS Tinker board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
+  * [Một số lưu ý khi build code trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md)
