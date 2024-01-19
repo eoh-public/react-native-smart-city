@@ -12,7 +12,7 @@ Vào mục "Tất cả gateways" và chọn gateway muốn lấy token:
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-Trong mục "Thông tin" của gateway tìm đến "Mã"xác thực" rồi tiến hành copy mã token:
+Trong mục "Thông tin" của gateway tìm đến "Mã xác thực" rồi tiến hành copy mã token:
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
