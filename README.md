@@ -13,12 +13,12 @@ E-Ra được ra đời là quá trình tích lũy kinh nghiệm hơn 5 năm tri
 * Module STM32 (F4 series)
 * Module Raspberry Pi 1,2,3,4, hoặc zero series
 
-{% content-ref url="huong-dan-su-dung/linh-kien-can-chuan-bi.md" %}
-[linh-kien-can-chuan-bi.md](huong-dan-su-dung/linh-kien-can-chuan-bi.md)
+{% content-ref url="huong-dan-su-dung-e-ra/linh-kien-can-chuan-bi.md" %}
+[linh-kien-can-chuan-bi.md](huong-dan-su-dung-e-ra/linh-kien-can-chuan-bi.md)
 {% endcontent-ref %}
 
-{% content-ref url="huong-dan-su-dung/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}
-[huong-dan-dau-noi-thiet-bi-ngoai-vi.md](huong-dan-su-dung/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
+{% content-ref url="huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}
+[huong-dan-dau-noi-thiet-bi-ngoai-vi.md](huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
 {% endcontent-ref %}
 
 ## Giới thiệu về EoH

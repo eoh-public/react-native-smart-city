@@ -12,6 +12,6 @@ Video E-Ra Training Day 1
 
 **Hướng dẫn cài đặt ASUS Tinker OS:**
 
-{% content-ref url="../huong-dan-su-dung/chuan-bi-firmware/asus-tinker-board.md" %}
-[asus-tinker-board.md](../huong-dan-su-dung/chuan-bi-firmware/asus-tinker-board.md)
+{% content-ref url="../huong-dan-su-dung-e-ra/chuan-bi-firmware/asus-tinker-board.md" %}
+[asus-tinker-board.md](../huong-dan-su-dung-e-ra/chuan-bi-firmware/asus-tinker-board.md)
 {% endcontent-ref %}

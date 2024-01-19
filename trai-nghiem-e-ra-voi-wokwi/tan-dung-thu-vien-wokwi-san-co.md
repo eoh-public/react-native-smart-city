@@ -19,8 +19,8 @@
 1.<img src="../.gitbook/assets/image (106).png" alt="" data-size="line">Nhấn vào để chạy chương trình\
 2\. <img src="../.gitbook/assets/image (195).png" alt="" data-size="line">Nhấn vào để gắn giả lập 1 thiết bị mới để trải nghiệm thêm.  Cách đấu nối thiết bị ngoại vi cho board ESP32 này tương tự như đấu nối thiết bị thật
 
-{% content-ref url="../huong-dan-su-dung/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}
-[huong-dan-dau-noi-thiet-bi-ngoai-vi.md](../huong-dan-su-dung/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
+{% content-ref url="../huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}
+[huong-dan-dau-noi-thiet-bi-ngoai-vi.md](../huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
 {% endcontent-ref %}
 
 **Bước 5:** Khi trên màn hình Wokwi hiện đếm thời gian thì bên Gateway tự sinh ra (F5) sẽ hiện online. Khi hiện online thì đã hoàn thành xong bước kết nối và tiến hành trải nghiệm

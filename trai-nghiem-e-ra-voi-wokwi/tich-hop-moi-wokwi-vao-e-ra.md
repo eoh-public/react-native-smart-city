@@ -35,8 +35,8 @@ description: Người dùng tự tích hợp từ bước cơ bản tới khi ga
 * Kết nối thành công gateway
 * Thêm linh kiện để test tại icon "+" .  Cách đối nối thiết bị ngoại vi cho board ESP32 này tương tự như cách đấu nối dây thực tế&#x20;
 
-{% content-ref url="../huong-dan-su-dung/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}
-[huong-dan-dau-noi-thiet-bi-ngoai-vi.md](../huong-dan-su-dung/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
+{% content-ref url="../huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md" %}
+[huong-dan-dau-noi-thiet-bi-ngoai-vi.md](../huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
 {% endcontent-ref %}
 
 <figure><img src="../.gitbook/assets/image (294).png" alt=""><figcaption></figcaption></figure>
@@ -45,12 +45,12 @@ Ví dụ đấu nối thành công cho 1 giải pháp mẫu [https://wokwi.com/p
 
 * Thêm kinh kiện đã đấu nối vào phần mềm vị trí input/ouput pins
 
-{% content-ref url="../huong-dan-su-dung/thao-tac-tren-web-e-ra-platform/gateway_cau-hinh-thong-so/" %}
-[gateway\_cau-hinh-thong-so](../huong-dan-su-dung/thao-tac-tren-web-e-ra-platform/gateway\_cau-hinh-thong-so/)
+{% content-ref url="../huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/gateway_cau-hinh-thong-so/" %}
+[gateway\_cau-hinh-thong-so](../huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/gateway\_cau-hinh-thong-so/)
 {% endcontent-ref %}
 
 * Hiển thị Widget để trải nghiệm với chân pin vừa tạo để điều khiển
 
-{% content-ref url="../huong-dan-su-dung/thao-tac-tren-web-e-ra-platform/dashboard-unit.md" %}
-[dashboard-unit.md](../huong-dan-su-dung/thao-tac-tren-web-e-ra-platform/dashboard-unit.md)
+{% content-ref url="../huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/dashboard-unit.md" %}
+[dashboard-unit.md](../huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/dashboard-unit.md)
 {% endcontent-ref %}
