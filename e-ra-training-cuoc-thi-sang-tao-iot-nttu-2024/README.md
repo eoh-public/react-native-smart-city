@@ -14,3 +14,11 @@ description: >-
 {% content-ref url="day-2-giam-sat-du-lieu-voi-tinker-board.md" %}
 [day-2-giam-sat-du-lieu-voi-tinker-board.md](day-2-giam-sat-du-lieu-voi-tinker-board.md)
 {% endcontent-ref %}
+
+{% content-ref url="day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md" %}
+[day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md](day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md)
+{% endcontent-ref %}
+
+{% content-ref url="kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md" %}
+[kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md](kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
+{% endcontent-ref %}
