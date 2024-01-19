@@ -26,3 +26,9 @@ description: >-
 {% content-ref url="kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md" %}
 [kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md](kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
 {% endcontent-ref %}
+
+
+
+{% content-ref url="mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md" %}
+[mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md](mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md)
+{% endcontent-ref %}
