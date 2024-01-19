@@ -7,6 +7,10 @@ description: >-
 
 # E-Ra Training: Cuộc thi Sáng tạo IoT NTTU 2024
 
+{% content-ref url="../huong-dan-su-dung/" %}
+[huong-dan-su-dung](../huong-dan-su-dung/)
+{% endcontent-ref %}
+
 {% content-ref url="day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md" %}
 [day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md](day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-board-asus-tinker.md)
 {% endcontent-ref %}
