@@ -28,6 +28,16 @@ _**Dành cho các thí sinh tham gia Cuộc thi:**_
 4. _**Hình thức báo cáo đề tài:**_
    * _Trình diễn sản phẩm_
    * _Thuyết trình về mục đích, giải pháp áp dụng, kết quả và ứng dụng của sản phẩm_
+5.  _**Thời gian:**_
+
+    | _**Nội dung**_                                | _**Thời gian**_                                      |
+    | --------------------------------------------- | ---------------------------------------------------- |
+    | _1. Lễ phát động Cuộc thi_                    | _01/11/2023_                                         |
+    | _2. Đăng ký tham gia_                         | _Đến hết ngày 30/12/2023_                            |
+    | _3. Tập huấn trực tiếp_                       | _16, 17, 19/01/2024_                                 |
+    | _4. Tập huấn trực tuyến_                      | _Thường xuyên tại kênh Discord dành cho các đội thi_ |
+    | _5. Vòng sơ loại (chọn 10 đội vào chung kết)_ | _09/03/2024_                                         |
+    | _6. Vòng chung kết_                           | _30/03/2024_                                         |
 {% endhint %}
 
 {% content-ref url="../huong-dan-su-dung-e-ra/" %}
