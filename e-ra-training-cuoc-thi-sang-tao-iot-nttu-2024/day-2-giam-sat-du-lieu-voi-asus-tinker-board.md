@@ -1,4 +1,4 @@
-# Day 2: Giám sát dữ liệu với ASUS Tinker Board
+# Day 2: Giám sát dữ liệu Hệ thống cảm biến với ASUS Tinker Board kết hợp với bộ Kit Yolo UNO
 
 **Bài giảng:**
 
