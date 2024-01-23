@@ -15,8 +15,8 @@ description: >-
 [day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md](day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md)
 {% endcontent-ref %}
 
-{% content-ref url="day-2-giam-sat-du-lieu-voi-asus-tinker-board.md" %}
-[day-2-giam-sat-du-lieu-voi-asus-tinker-board.md](day-2-giam-sat-du-lieu-voi-asus-tinker-board.md)
+{% content-ref url="day-2-giam-sat-du-lieu-he-thong-cam-bien-voi-asus-tinker-board-ket-hop-voi-bo-kit-yolo-uno.md" %}
+[day-2-giam-sat-du-lieu-he-thong-cam-bien-voi-asus-tinker-board-ket-hop-voi-bo-kit-yolo-uno.md](day-2-giam-sat-du-lieu-he-thong-cam-bien-voi-asus-tinker-board-ket-hop-voi-bo-kit-yolo-uno.md)
 {% endcontent-ref %}
 
 {% content-ref url="day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md" %}
@@ -26,8 +26,6 @@ description: >-
 {% content-ref url="kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md" %}
 [kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md](kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
 {% endcontent-ref %}
-
-
 
 {% content-ref url="mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md" %}
 [mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md](mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md)
