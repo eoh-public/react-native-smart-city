@@ -19,3 +19,15 @@
 ```
 ~/era-lib/linux/User/src
 ```
+
+3. Để build E-Ra trên ASUS Tinker Board cần đưa con trỏ về thư mục:
+
+```
+~/era-lib/linux
+```
+
+Sau đấy dùng lệnh sau để build chương trình:
+
+```
+make clean all target=tinker
+```
