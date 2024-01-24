@@ -26,7 +26,7 @@
 ~/era-lib/linux
 ```
 
-Sau đấy dùng lệnh sau để build chương trình:
+Sử dụng lệnh sau để build chương trình:
 
 ```
 make clean all target=tinker
