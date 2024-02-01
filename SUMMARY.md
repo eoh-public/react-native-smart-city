@@ -30,6 +30,7 @@
       * [PlatformIO](huong-dan-su-dung-e-ra/chuan-bi-firmware/stm32/platformio.md)
     * [Raspberry Pi](huong-dan-su-dung-e-ra/chuan-bi-firmware/raspberry-pi.md)
     * [ASUS Tinker Board](huong-dan-su-dung-e-ra/chuan-bi-firmware/asus-tinker-board.md)
+  * [Thay đổi Wifi - Wifi Config](huong-dan-su-dung-e-ra/thay-doi-wifi-wifi-config.md)
   * [Thao tác trên Web E-ra Platform](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/README.md)
     * [Cài đặt và đăng ký tài khoản](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/cai-dat-va-dang-ky-tai-khoan.md)
     * [Dashboard Unit](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/dashboard-unit.md)
