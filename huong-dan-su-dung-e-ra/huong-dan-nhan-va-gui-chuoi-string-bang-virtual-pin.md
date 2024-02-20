@@ -2,7 +2,7 @@
 
 1. **Nhận chuỗi từ ERa:**
 
-Để nhận chuỗi từ **ERa** gửi xuống cần dùng hàm sau:
+Để lấy chuỗi từ **ERa** gửi xuống cần dùng hàm sau:
 
 ```arduino
 param.getString();
@@ -17,9 +17,9 @@ ERA_WRITE(vPin) {
 
 **Lưu ý:**
 
-Hàm _**param.getString()**_ trả về kiểu dữ liệu _**c-style(const char\*)**_
+Hàm _**param.getString()**_ trả về kiểu dữ liệu **C**_**-style strings (const char\*)**_
 
-_**Ví dụ (Nhận chuỗi bằng chân V0):**_
+_**Ví dụ (Nhận chuỗi bằng V0):**_
 
 ```arduino
 ERA_WRITE(V0) {
@@ -28,7 +28,7 @@ ERA_WRITE(V0) {
         return;
     }
 
-    // 1. Lấy chuỗi c-style
+    // 1. Lấy chuỗi C-style strings
     const char* cstr = param.getString();
     // 2. Lấy chuỗi bằng ERaString
     ERaString estr = param.getString();
@@ -53,8 +53,8 @@ ERA_WRITE(V0) {
 Ngoài ra nếu chuỗi là dạng **JSON**, có thể dùng hàm sau để parse dữ liệu:
 
 ```arduino
-param.toJSON();
 // Hàm này sẽ trả về kiểu dữ liệu ERaJson
+param.toJSON();
 ```
 
 **Ví dụ (Khi nhận chuỗi là dạng JSON):**
@@ -93,7 +93,7 @@ ERA_WRITE(V0) {
 
 2. **Gửi chuỗi lên ERa**
 
-Đồi với kiểu dữ liệu **c-style(char\* và const char\*)** và **ERaString** có thể gửi trực tiếp:
+Đồi với kiểu dữ liệu **C-style strings (char\* và const char\*)** và **ERaString** có thể gửi trực tiếp:
 
 **Ví dụ:**
 
@@ -101,7 +101,7 @@ ERA_WRITE(V0) {
 // Gửi trực tiếp chuỗi lên ERa
 ERa.virtualWrite(V0, "Hi, I'm ERa");
 
-// Gửi chuỗi lên ERa bằng c-style(const char*)
+// Gửi chuỗi lên ERa bằng C-style strings (const char*)
 const char* value = "Hi, I'm ERa";
 ERa.virtualWrite(V0, value);
 
@@ -110,7 +110,7 @@ ERaString estr = "Hi, I'm ERa";
 ERa.virtualWrite(V0, estr);
 ```
 
-Đối với kiểu dữ liệu **Arduino String** và **std string** cần chuyển sang **c-style string** bằng hàm **c\_str()** trước khi gửi lên **ERa**.
+Đối với kiểu dữ liệu **Arduino String** và **std string** cần chuyển sang **C-style strings** bằng hàm **c\_str()** trước khi gửi lên **ERa**.
 
 **Ví dụ:**
 
@@ -151,6 +151,8 @@ Tạo hàm callback khi nhận được chuỗi gửi từ **ERa**:
 void terminalCallback() {
     // Ví dụ khi từ ERa gửi chuỗi "Hi"
     // Chip sẽ phản hồi lại "Hello! Thank you for using ERa."
+
+    // Kiểm tra nếu nhận được chuỗi "Hi"
     if (estr == "Hi") {
         // Đưa chuỗi "Hello! " vào buffer gửi
         terminal.print("Hello! ");
@@ -162,7 +164,7 @@ void terminalCallback() {
 }
 ```
 
-Khởi tạo Terminal bằng dòng code sau:
+Khởi tạo Terminal bằngdòng code sau:
 
 ```arduino
 // Khởi tạo Terminal box widget với hàm callback: terminalCallback
