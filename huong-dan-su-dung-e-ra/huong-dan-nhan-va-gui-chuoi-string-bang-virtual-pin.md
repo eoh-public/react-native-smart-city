@@ -125,3 +125,13 @@ ERa.virtualWrite(V0, sstr.c_str());
 ```
 
 3. **Thư viện bỗ trợ cho Terminal Box Widget**
+
+Thêm thư viện bằng dòng include sau:
+
+````cpp
+```arduino
+#include <Widgets/ERaWidgets.hpp>
+```
+````
+
+Khai báo Terminal Box như sau:
