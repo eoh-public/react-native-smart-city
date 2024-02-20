@@ -4,13 +4,13 @@
 
 Để nhận chuỗi từ **ERa** gửi xuống cần dùng hàm sau:
 
-```cpp
+```arduino
 param.getString();
 ```
 
 Bên trong hàm callback:
 
-```cpp
+```arduino
 ERA_WRITE(vPin) {
 }
 ```
@@ -21,7 +21,7 @@ Hàm _**param.getString()**_ trả về kiểu dữ liệu _**c-style(const char
 
 _**Ví dụ (Nhận chuỗi bằng chân V0):**_
 
-```cpp
+```arduino
 ERA_WRITE(V0) {
     // Kiểm tra có phải chuỗi hay không
     if (param.isString()) {
@@ -52,14 +52,14 @@ ERA_WRITE(V0) {
 
 Ngoài ra nếu chuỗi là dạng **JSON**, có thể dùng hàm sau để parse dữ liệu:
 
-```cpp
+```arduino
 param.toJSON();
 // Hàm này sẽ trả về kiểu dữ liệu ERaJson
 ```
 
 **Ví dụ (Khi nhận chuỗi là dạng JSON):**
 
-```cpp
+```arduino
 ERA_WRITE(V0) {
     // Kiểm tra có phải chuỗi hay không
     if (param.isString()) {
@@ -97,7 +97,7 @@ ERA_WRITE(V0) {
 
 **Ví dụ:**
 
-```cpp
+```arduino
 // Gửi trực tiếp chuỗi lên ERa
 ERa.virtualWrite(V0, "Hi, I'm ERa");
 
@@ -114,7 +114,7 @@ ERa.virtualWrite(V0, estr);
 
 **Ví dụ:**
 
-```cpp
+```arduino
 // Gửi chuỗi lên ERa bằng Arduino String
 String astr = "Hi, I'm ERa";
 ERa.virtualWrite(V0, astr.c_str());
@@ -128,10 +128,45 @@ ERa.virtualWrite(V0, sstr.c_str());
 
 Thêm thư viện bằng dòng include sau:
 
-````cpp
 ```arduino
+#include <ERa.hpp>
 #include <Widgets/ERaWidgets.hpp>
 ```
-````
 
-Khai báo Terminal Box như sau:
+Khai báo **Terminal Box** như sau:
+
+```cpp
+// Tạo biến ERaString để lưu chuỗi nhận được khi gửi từ ERa
+ERaString estr;
+// Tạo terminal box trong đó:
+// V1 là from datastream
+// V2 là to datastream
+ERaWidgetTerminalBox terminal(estr, V1, V2);
+```
+
+Tạo hàm callback khi nhận được chuỗi gửi từ **ERa**:
+
+```arduino
+// Hàm này sẽ được gọi khi nhận được chuỗi từ ERa gửi xuống
+void terminalCallback() {
+    // Ví dụ khi từ ERa gửi chuỗi "Hi"
+    // Chip sẽ phản hồi lại "Hello! Thank you for using ERa."
+    if (estr == "Hi") {
+        // Đưa chuỗi "Hello! " vào buffer gửi
+        terminal.print("Hello! ");
+    }
+    // Đưa chuỗi "Thank you for using ERa." vào buffer gửi
+    terminal.print("Thank you for using ERa.");
+    // Gửi chuỗi trong buffer lên ERa
+    terminal.flush();
+}
+```
+
+Khởi tạo Terminal bằng dòng code sau:
+
+```arduino
+// Khởi tạo Terminal box widget với hàm callback: terminalCallback
+terminal.begin(terminalCallback); 
+// Đặt hàm trên trước dòng
+// ERa.begin(ssid, pass);
+```
