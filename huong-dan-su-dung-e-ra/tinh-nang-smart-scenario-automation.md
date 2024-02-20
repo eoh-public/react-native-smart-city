@@ -48,7 +48,7 @@ Chọn vào tính năng muốn cấu hình
 
 ##
 
-## 2. Hướng dẫn cấu hình trên Web Dashboard
+## 2. Hướng dẫn Cấu hình trên Web Dashboard
 
 \- Chọn vào Tab LIST trên thanh điều hướng
 
