@@ -26,7 +26,7 @@ _**Ví dụ (Nhận chuỗi bằng V0):**_
 ```arduino
 ERA_WRITE(V0) {
     // Kiểm tra có phải chuỗi hay không
-    if (param.isString()) {
+    if (!param.isString()) {
         return;
     }
 
@@ -64,7 +64,7 @@ param.toJSON();
 ```arduino
 ERA_WRITE(V0) {
     // Kiểm tra có phải chuỗi hay không
-    if (param.isString()) {
+    if (!param.isString()) {
         return;
     }
 
