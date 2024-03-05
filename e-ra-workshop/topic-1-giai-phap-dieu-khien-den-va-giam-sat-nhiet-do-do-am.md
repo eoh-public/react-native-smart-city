@@ -7,12 +7,26 @@ description: >-
 # Topic 1 - Giải Pháp Điều Khiển Đèn Và Giám Sát Nhiệt Độ, Độ Ẩm
 
 {% tabs %}
-{% tab title="Hướng Dẫn Cài Đặt Phần Mềm" %}
+{% tab title="Hướng Dẫn Tổng Quan" %}
+## Hướng dẫn Cài đặt Phần mềm Thực hành
+
 {% file src="../.gitbook/assets/E-Ra Workshop_Topic 1_Software Installation Guide (2).pdf" %}
+File Hướng dẫn Cài đặt Phần mềm Thực hành E-Ra Workshop
+{% endfile %}
 
 {% embed url="https://youtu.be/mWG3SLdxtjo" %}
 Video hướng dẫn Cài đặt phần mềm thực hành E-Ra Workshop
 {% endembed %}
+
+## Hướng dẫn Chuẩn bị Thiết bị Thực hành
+
+{% file src="../.gitbook/assets/ERa device list for ESP32.pdf" %}
+Danh sách Thiết bị cần chuẩn bị
+{% endfile %}
+
+{% file src="../.gitbook/assets/Hướng dẫn đổi địa chỉ và tần số baud cảm biến MD02.pdf" %}
+Hướng dẫn đổi địa chỉ và tần số Baud cho cảm biến MD02
+{% endfile %}
 {% endtab %}
 
 {% tab title="Nội Dung E-Ra Workshop" %}
