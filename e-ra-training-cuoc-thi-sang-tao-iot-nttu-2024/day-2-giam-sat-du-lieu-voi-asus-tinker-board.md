@@ -155,6 +155,13 @@ void timerEvent() {
 }
 ```
 
+<mark style="color:orange;">**Build**</mark> code mới
+
+```
+cd ~/era-lib/linux
+make clean all target=tinker
+```
+
 2. **Với Yolo UNO**
 
 <figure><img src="../.gitbook/assets/image (371).png" alt=""><figcaption></figcaption></figure>
