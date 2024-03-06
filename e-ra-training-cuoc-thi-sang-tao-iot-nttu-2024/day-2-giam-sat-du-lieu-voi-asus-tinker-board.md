@@ -115,6 +115,8 @@ sudo ./era --token=<token>
 {% endtab %}
 
 {% tab title="4. Custom" %}
+1. **Với ASUS Tinker Board**
+
 <mark style="color:orange;">**Download**</mark>** và **<mark style="color:orange;">**Update**</mark>** code mới**
 
 ```
@@ -138,11 +140,23 @@ void setup() {
     // Thư viện sẽ tự động gửi 27.6 lên V0 E-Ra
     console.addCommand(V0, "T");
     //...
-} 
+}
 ```
 
 ```cpp
-// r
+// Trong hàm timerEvent
+void timerEvent() {
+    // ...
+    // Mỗi một giây, Tinker Board sẽ gửi mã lệnh "T"
+    // Yêu cầu Yolo gửi giá trị nhiệt độ
+    // Với thời gian chờ là 100ms
+    console.request("T", 100UL);
+    // ...
+}
 ```
+
+2. **Với Yolo UNO**
+
+<figure><img src="../.gitbook/assets/image (371).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
