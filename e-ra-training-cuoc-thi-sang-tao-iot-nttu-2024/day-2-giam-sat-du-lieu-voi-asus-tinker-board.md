@@ -114,7 +114,7 @@ sudo ./era --token=<token>
 ```
 {% endtab %}
 
-{% tab title="4. Custom" %}
+{% tab title="4. Tùy biến" %}
 1. **Với ASUS Tinker Board**
 
 <mark style="color:orange;">**Download**</mark>** và **<mark style="color:orange;">**Update**</mark>** code mới**
