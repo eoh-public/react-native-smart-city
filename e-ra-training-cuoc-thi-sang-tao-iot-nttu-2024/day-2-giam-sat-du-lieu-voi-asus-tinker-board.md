@@ -113,4 +113,36 @@ make clean all target=tinker
 sudo ./era --token=<token>
 ```
 {% endtab %}
+
+{% tab title="4. Custom" %}
+<mark style="color:orange;">**Download**</mark>** và **<mark style="color:orange;">**Update**</mark>** code mới**
+
+```
+cd ~
+git clone https://github.com/eoh-jsc/eoh-asus-training.git
+cd eoh-asus-training
+
+cp main.cpp ~/era-lib/linux
+cp ERaConsole.h ~/era-lib/linux/User/inc
+cp ERaConsole.cpp ~/era-lib/linux/User/src
+```
+
+Trong file <mark style="color:orange;">**main.cpp**</mark>
+
+```cpp
+// Trong hàm setup
+void setup() {
+    //...
+    // Đăng ký chân V0 với mã lệnh "T"
+    // Ví dụ: Khi Yolo gửi "!1:T:27.6#"
+    // Thư viện sẽ tự động gửi 27.6 lên V0 E-Ra
+    console.addCommand(V0, "T");
+    //...
+} 
+```
+
+```cpp
+// r
+```
+{% endtab %}
 {% endtabs %}
