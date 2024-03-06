@@ -155,6 +155,11 @@ void timerEvent() {
 }
 ```
 
+```cpp
+// Để lấy giá trị dùng hàm sau
+float temperature = console.getValue("T");
+```
+
 <mark style="color:orange;">**Build**</mark> code mới
 
 ```
