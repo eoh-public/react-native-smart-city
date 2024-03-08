@@ -4,7 +4,7 @@
 
 **Vui lòng cập nhật ERa library lên phiên bản > 1.2.0**
 
-### **I.1. Nhận chuỗi từ ERa:**
+### **I.1. Nhận chuỗi từ ERa**
 
 Để lấy chuỗi từ **ERa** gửi xuống cần dùng hàm sau:
 
