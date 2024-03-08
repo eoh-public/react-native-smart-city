@@ -1,8 +1,10 @@
 # Hướng dẫn nhận và gửi chuỗi string bằng Virtual Pin
 
+## I. Hướng dẫn Firmware
+
 **Vui lòng cập nhật ERa library lên phiên bản > 1.2.0**
 
-1. **Nhận chuỗi từ ERa:**
+### **I.1. Nhận chuỗi từ ERa:**
 
 Để lấy chuỗi từ **ERa** gửi xuống cần dùng hàm sau:
 
@@ -93,7 +95,7 @@ ERA_WRITE(V0) {
 }
 ```
 
-2. **Gửi chuỗi lên ERa**
+### **I.2. Gửi chuỗi lên ERa**
 
 Đồi với kiểu dữ liệu **C-style strings (char\* và const char\*)** và **ERaString** có thể gửi trực tiếp:
 
@@ -126,7 +128,7 @@ string sstr = "Hi, I'm ERa";
 ERa.virtualWrite(V0, sstr.c_str());
 ```
 
-3. **Thư viện bỗ trợ cho Terminal Box Widget**
+### **I.3. Thư viện bỗ trợ cho Terminal Box Widget**
 
 Thêm thư viện bằng dòng include sau:
 
