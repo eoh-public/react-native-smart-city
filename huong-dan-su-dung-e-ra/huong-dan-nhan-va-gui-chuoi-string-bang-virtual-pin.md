@@ -259,7 +259,7 @@ Tạo Widget Text Box: Vào phần Widget box bên trái màn hình chọn Widge
 
 Sau đó sẽ xuất hiện 1 bảng Setting widget để tiến hành cấu hình như sau:
 
-Cấu hình tên, khu vực và device display xem lại ở phần 2.4.8.
+Cấu hình tên, khu vực và device display xem lại ở phần [2.4.8.](https://e-ra-iot-wiki.gitbook.io/documentation/huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform)
 
 Cấu hình Select datastream.
 
@@ -301,7 +301,7 @@ Tạo Widget Terminal Box: Vào phần Widget box bên trái màn hình chọn W
 
 Sau đó sẽ xuất hiện 1 bảng Setting widget để tiến hành cấu hình như sau:
 
-Cấu hình tên, khu vực và device display xem lại ở phần 2.4.8
+Cấu hình tên, khu vực và device display xem lại ở phần [2.4.8](https://e-ra-iot-wiki.gitbook.io/documentation/huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform)
 
 Cấu hình Select from datastream.
 
