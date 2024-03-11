@@ -1,3 +1,9 @@
+---
+description: >-
+  Vui lòng cập nhật E-Ra App (iOS/Android) lên phiên bản V3.0.4 hoặc mới hơn để
+  sử dụng tính năng này nhé!
+---
+
 # Hướng dẫn nhận và gửi chuỗi string bằng Virtual Pin
 
 ## I. Hướng dẫn Lập trình (Firmware)
