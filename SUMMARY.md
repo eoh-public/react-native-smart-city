@@ -106,5 +106,6 @@
   * [Day 1: Điều khiển đèn & Đọc trạng thái nút ấn trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md)
   * [Day 2: Giám sát dữ liệu Hệ thống cảm biến với ASUS Tinker Board kết hợp với bộ Kit Yolo UNO](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-2-giam-sat-du-lieu-voi-asus-tinker-board.md)
   * [Day 3: Kết nối thiết bị Modbus với E-Ra](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-3-ket-noi-thiet-bi-modbus-voi-e-ra.md)
+  * [Hướng dẫn sử dụng HardwareSerial trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/huong-dan-su-dung-hardwareserial-tren-asus-tinker-board.md)
   * [Kích hoạt service chạy nền E-Ra trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
   * [Một số lưu ý khi build code trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md)
