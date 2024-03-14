@@ -6,6 +6,10 @@ description: >-
 
 # Hướng dẫn nhận và gửi chuỗi string bằng Virtual Pin
 
+{% embed url="https://youtu.be/htTE9G2ixgQ" %}
+Video Hướng dẫn nhận và gửi chuỗi String qua Nền tảng IoT E-Ra bằng Virtual Pin
+{% endembed %}
+
 ## I. Hướng dẫn Lập trình (Firmware)
 
 **Vui lòng cập nhật ERa library lên phiên bản > 1.2.0**
