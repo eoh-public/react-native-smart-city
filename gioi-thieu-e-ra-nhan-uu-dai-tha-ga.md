@@ -69,19 +69,19 @@ NGT sẽ nhận được ưu đãi là được cộng thêm 1 tháng sử dụn
 
 _Lưu ý: Ưu đãi không được quy đổi ra tiền mặt hoặc cho/tặng người khác._
 
-### D.2. Đối với KOLs
+### D.2. Đối với Cộng Tác Viên (CTV)
 
-Mỗi KOLs sẽ nhận được số % ưu đãi tương ứng với số lượt giới thiệu thành công.
+Mỗi CTV sẽ nhận được % hoa hồng tương ứng với số lượt giới thiệu thành công.
 
 Chính sách chung (\*): 
 
-Từ **21 – 50** lượt: ưu đãi **10%** trên lần trả phí đầu tiên của mỗi NĐGT
+Từ **21 – 50** lượt: nhận **10% hoa hồng** trên lần trả phí đầu tiên của mỗi NĐGT
 
-Từ **51 - 100** lượt: ưu đãi **15%** trên lần trả phí đầu tiên của mỗi NĐGT
+Từ **51 - 100** lượt: nhận **15% hoa hồng** trên lần trả phí đầu tiên của mỗi NĐGT
 
-Từ **101** lượt trở lên: ưu đãi **20%** trên lần trả phí đầu tiên của mỗi NĐGT
+Từ **101** lượt trở lên: nhận **20% hoa hồng** trên lần trả phí đầu tiên của mỗi NĐGT
 
-(\*) với mỗi KOLs chính sách có thể thay đổi về điều kiện số lượng người giới thiệu để phù hợp hơn
+(\*) với mỗi CTV chính sách có thể thay đổi về điều kiện số lượng người giới thiệu để phù hợp hơn
 
 
 
