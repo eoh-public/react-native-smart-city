@@ -65,23 +65,23 @@ Bước 2: Sao chép link giới thiệu trong phần **‘Liên kết giới th
 
 ### D.1. Đối với người dùng E-Ra&#x20;
 
-NGT sẽ nhận được ưu đãi là được cộng thêm 1 tháng sử dụng nền tảng E-Ra dựa trên gói đăng kí hiện tại của NGT.
+**NGT** sẽ nhận được **ưu đãi** là được cộng thêm **1 tháng sử dụng Nền tảng IoT E-Ra** dựa trên gói đăng ký hiện tại của **NGT**.
 
 _Lưu ý: Ưu đãi không được quy đổi ra tiền mặt hoặc cho/tặng người khác._
 
 ### D.2. Đối với Cộng Tác Viên (CTV)
 
-Mỗi CTV sẽ nhận được % hoa hồng tương ứng với số lượt giới thiệu thành công.
+Mỗi **CTV** sẽ nhận được **% hoa hồng** tương ứng với **số lượt giới thiệu thành công**.
 
 Chính sách chung (\*): 
 
-Từ **21 – 50** lượt: nhận **10% hoa hồng** trên lần trả phí đầu tiên của mỗi NĐGT
+Từ **21 – 50** lượt: nhận **10% hoa hồng** trên lần trả phí đầu tiên của mỗi **NĐGT**
 
-Từ **51 - 100** lượt: nhận **15% hoa hồng** trên lần trả phí đầu tiên của mỗi NĐGT
+Từ **51 - 100** lượt: nhận **15% hoa hồng** trên lần trả phí đầu tiên của mỗi **NĐGT**
 
-Từ **101** lượt trở lên: nhận **20% hoa hồng** trên lần trả phí đầu tiên của mỗi NĐGT
+Từ **101** lượt trở lên: nhận **20% hoa hồng** trên lần trả phí đầu tiên của mỗi **NĐGT**
 
-(\*) với mỗi CTV chính sách có thể thay đổi về điều kiện số lượng người giới thiệu để phù hợp hơn
+(\*) với **mỗi CTV** chính sách có thể thay đổi về điều kiện số lượng người giới thiệu để phù hợp hơn
 
 
 
