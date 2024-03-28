@@ -1,4 +1,4 @@
-# Giai đoạn 2: Thiết lập và cấu hình wiget và thiết bị
+# Giai đoạn 2: Thiết lập và cấu hình widget và thiết bị
 
 _**Bước 1:**_ Cấu hình các thông số cho thiết bị_,_ chi tiết [tại đây](https://era-open-iot-platform.gitbook.io/documentation/huong-dan-su-dung/quan-ly-gateway)
 
