@@ -6,6 +6,8 @@ File hướng dẫn tính năng Wifi Config
 
 ## 1. Yêu cầu trong firmware.
 
+<mark style="color:red;">**Lưu ý: Sử dụng phiên bản stable của ESP32 (v2.0.x) để ổn định trong quá trình sử dụng.**</mark>
+
 \- ERa library version từ v1.1.2
 
 \- Example: ESP32 -> ESP32\_WiFi\_Basic.

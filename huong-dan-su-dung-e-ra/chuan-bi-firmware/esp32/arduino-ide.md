@@ -35,6 +35,8 @@ Vào Tools -> Board:… -> Boards Manager …
 
 Trong Boards Manager, tìm ESP32 -> nhấn install để thêm package Boards ESP32 vào Arduino IDE
 
+<mark style="color:red;">**Sử dụng phiên bản stable của ESP32 (v2.0.x) để ổn định trong quá trình sử dụng.**</mark>
+
 |          | ESP32  | STM32                   |
 | -------- | ------ | ----------------------- |
 | Search   | ESP32  | STM32                   |
