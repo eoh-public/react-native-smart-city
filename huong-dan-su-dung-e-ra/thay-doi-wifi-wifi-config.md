@@ -1,4 +1,6 @@
-# Thay đổi Wifi - Wifi Config
+# Thay đổi WiFi - WiFi Config
+
+
 
 {% file src="../.gitbook/assets/ERa-Config-WiFi-V1.pdf" %}
 File hướng dẫn tính năng Wifi Config
@@ -6,7 +8,7 @@ File hướng dẫn tính năng Wifi Config
 
 ## 1. Yêu cầu trong firmware.
 
-<mark style="color:red;">**Lưu ý: Sử dụng phiên bản stable của ESP32 (v2.0.x) để ổn định trong quá trình sử dụng.**</mark>
+<mark style="color:red;">**Lưu ý: Cài đặt phiên bản stable của ESP32 (v2.x.x) để ổn định trong quá trình sử dụng.**</mark>
 
 \- ERa library version từ v1.1.2
 

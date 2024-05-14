@@ -39,7 +39,7 @@ Trong Project Wizard: vui lòng nhập tên Project, chọn Board, Framework, Lo
 <figure><img src="../../../.gitbook/assets/image (164).png" alt=""><figcaption></figcaption></figure>
 
 * Trong PlatformIO Home chọn Libraries&#x20;
-* Tìm “Era EoH”&#x20;
+* Tìm “ERa EoH”&#x20;
 * Chọn “ERa by EoH Ltd”&#x20;
 
 <figure><img src="../../../.gitbook/assets/image (341).png" alt=""><figcaption></figcaption></figure>
