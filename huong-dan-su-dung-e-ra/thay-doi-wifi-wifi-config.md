@@ -8,11 +8,14 @@ File hướng dẫn tính năng Wifi Config
 
 ## 1. Yêu cầu trong firmware.
 
-<mark style="color:red;">**Lưu ý: Cài đặt phiên bản stable của ESP32 (v2.x.x) để ổn định trong quá trình sử dụng.**</mark>
+<mark style="color:red;">**Lưu ý: Với ESP32 cài đặt phiên bản stable v2.x.x để ổn định trong quá trình sử dụng.**</mark>
 
 \- ERa library version từ v1.1.2
 
-\- Example: ESP32 -> ESP32\_WiFi\_Basic.
+\- Example:
+
+* **ESP32**: _ESP32 -> ESP32\_WiFi\_Basic_ hoặc _ESP32\_PlugNPlay_.
+* **ESP8266**: _ESP8266 -> ESP8266\_WiFi\_Basic_ hoặc _ESP8266\_PlugNPlay_.
 
 Tìm và thay thế mã Token và WiFi mặc định của Gateway:
 
@@ -46,7 +49,7 @@ _<mark style="color:orange;">**Chú thích:**</mark>_
 
 **Cách 1:** Nhấn và giữ nút nhấn đã cấu hình ở trong firmware như bên trên > 5s.
 
-**Cách 2:** Nếu gateway không kết nối WiFi trong 1-2 phút, ESP32 sẽ vào chế độ “WiFi Config”.
+**Cách 2:** Nếu gateway không kết nối WiFi trong 1-2 phút, ESP32/ESP8266 sẽ vào chế độ “WiFi Config”.
 
 
 
