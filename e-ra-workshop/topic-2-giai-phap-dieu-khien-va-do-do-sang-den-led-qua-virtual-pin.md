@@ -28,7 +28,7 @@ E-ra đọc giá trị ánh sáng
 
 Source code
 
-```
+```cpp
 int led = 2;
 int freq = 5000;
 int ledChannel = 0;
@@ -47,7 +47,11 @@ void timerEvent() {
 ERA_WRITE(V0) {
     /* Get value from Virtual Pin 0 and write Pin 2. */
     uint8_t value = param.getInt();
-    ledcWrite(ledChannel, value*255/100); // Range 0 - 255
+#if (ESP_IDF_VERSION_MAJOR > 4)
+    ledcWrite(led, value * 255 / 100); // Range 0 - 255
+#else
+    ledcWrite(ledChannel, value * 255 / 100); // Range 0 - 255
+#endif
 }
 
 void setup() {
@@ -58,8 +62,12 @@ void setup() {
     /* Setup timer called function every second */
     timer.setInterval(1000L, timerEvent);
 
+#if (ESP_IDF_VERSION_MAJOR > 4)
+    ledcAttach(led, freq, resolution);
+#else
     ledcSetup(ledChannel, freq, resolution);
     ledcAttachPin(led, ledChannel);
+#endif
 }
 
 void loop() {
