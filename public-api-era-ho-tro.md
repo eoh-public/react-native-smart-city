@@ -15,9 +15,11 @@
 
 **Bước 3:** Copy AUTHTOKEN&#x20;
 
+<mark style="color:red;">(Lưu ý thông tin AUTHTOKEN là thông tin quan trọng không được để lộ ra bên ngoài)</mark>
+
 ![](<.gitbook/assets/image (68).png>)
 
-## 2. **Hướng dẫn gọi API trên** [swagger](https://backend.eoh.io/swagger/):&#x20;
+## 2. **Hướng dẫn cài đặt A**uthorizations **trên** [swagger](https://backend.eoh.io/swagger/):&#x20;
 
 Bước 1: Xem danh sách API của EoH tại [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
 
@@ -25,112 +27,51 @@ Bước 2: Điền mã AUTHTOKEN
 
 <figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 17.49.02.png" alt=""><figcaption></figcaption></figure>
 
-Bước 3: Thực thi một API có trên [swagger](https://backend.eoh.io/swagger/)
+Bước 3: Như vậy là xong, bây giờ bạn có thể thực hành gọi các API có trong [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
 
-<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 18.03.30.png" alt=""><figcaption></figcaption></figure>
+## 3. **Hướng dẫn thực hành gọi một số API trên EoH**
 
-### **2.1. API lấy unit của user:**
+#### 3.1 Thực hành gọi API `/chip_manager/configs/` . Để lấy danh sách config bạn đang có.
 
-* URL: [https://backend.eoh.io/api/property\_manager/units/mine/](https://backend.eoh.io/api/property\_manager/units/mine/)
-* METHOD: **GET**
-* HEADERS: {**Authorization: Token**}
-* RESPONS\_STATUS\_CODE: 200
-* RESPONSE\_DATA:
+* B1. Tìm đến API \`chip\_manager/configs/\`. Sau đó nhấn vào "Try it out"
 
-```
-{
-  id: unit_id,
-  name: "Unit Name",
-  stations: [
-    {
-      id: subunit_id,
-      name: "Sub-unit Name",
-      devices: [
-        {
-          id: end_device_id,
-          name: "end device led 1",
-        },
-      ],
-    },
-  ],
-}
-```
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 22.19.59.png" alt=""><figcaption></figcaption></figure>
 
-<mark style="color:red;">--></mark> <mark style="color:red;"></mark><mark style="color:red;">**Lấy end\_device\_id**</mark>
+* B2. Nhấn vào "Execute"
 
-### **2.2. API lấy widget dựa vào end device id**
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 22.26.03.png" alt=""><figcaption></figcaption></figure>
 
-* URL: [https://backend.eoh.io/api/property\_manager/devices/\<end\_device\_id>/display/](https://backend.eoh.io/api/property\_manager/devices/%3Cend\_device\_id%3E/display/)
-* METHOD: **GET**
-* HEADERS: {**Authorization: Token**}
-* RESPONS\_STATUS\_CODE: 200
-* RESPONSE\_DATA
+* B3. Bạn sẽ nhận được dữ liệu từ API \`chip\_manager/configs/\` trả về, nó bao gồm khá nhiều thông tin của config vị dụ như id, name, unit, scale, ....
 
-```
-{
-  Items: [
-    {
-      id: widget_id,
-      order: 0,
-      template: "action",
-      type: "action",
-      configuration: {
-        id: action_display_id,
-        template: "on_off_button_action_template",
-        title: "",
-        configuration: {
-          action_on: "key_on",
-          action_off: "key_off",
-          text_on: "ON",
-          text_off: "OFF",
-        },
-      },
-    },
-  ];
-}
-```
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 22.29.23.png" alt=""><figcaption></figcaption></figure>
 
-<mark style="color:red;">--></mark> <mark style="color:red;"></mark><mark style="color:red;">**Lấy action\_on hoặc action off**</mark>
+* B4. Sử dụng API `/chip_manager/configs/{id}/current_value/` Để nhận giá trị hiện tại của config.  Từ B3 ở trên API \`/chip\_manager/configs/\` đã trả về thông tin config id, ở đây mình lấy config id = 21973 làm ví dụ.
 
-### **2.3. API điều khiển thiết bị dựa vào action key**
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 22.32.38.png" alt=""><figcaption></figcaption></figure>
 
-* URL: [https://backend.eoh.io/api/chip\_manager/trigger\_action/](https://backend.eoh.io/api/chip\_manager/trigger\_action/)
-* METHOD: POST
-* &#x20; BODY: &#x20;
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 22.38.29.png" alt=""><figcaption></figcaption></figure>
 
-```
-{
-"key": "key_on",
-"source": "internet"
-}
+*   B5. Như vậy là xong từ việc gọi  API `/chip_manager/configs/{id}/current_value/`&#x20;
 
-```
+    chúng ta đã có giá trị hiện tại của config current\_value\_only": 0&#x20;
 
-* HEADERS: {**Authorization: Token**}
-* RESPONS\_STATUS\_CODE: 200
-* RESPONSE\_DATA: &#x20;
+#### **3.2 Thực hành điều khiển thiết bị thông qua API**
 
-```
-{
-  result: "ok",
-};
-```
+Để điều khiển được thiết bạn cần có `action key`
 
-### 2.4. API Lấy giá trị của datastream
+* B1. Gọi API **\`**/property\_manager/units/mine/\`. Để lấy thông tin device id.
 
-* &#x20;URL: [https://backend.eoh.io/api/chip\_manager/configs/\<config\_id>/current\_value/](https://backend.eoh.io/api/chip\_manager/configs/%3Cconfig\_id%3E/current\_value/)
-* METHOD: GET
-* HEADERS: {Authorization: Token}
-* RESPONS\_STATUS\_CODE: 200
-* RESPONSE\_DATA:&#x20;
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 23.14.43.png" alt=""><figcaption></figcaption></figure>
 
-```
-{
-  current_value_only: 0,
-};
-```
+* B2 Sau khi có device id bạn sử dụng API \`/property\_manager/devices/{device\_id}/display/\` . Để lấy action key&#x20;
 
-## &#x20;3. Ví dụ
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 23.19.14.png" alt=""><figcaption></figcaption></figure>
+
+* B3 Sau khi có action key bạn sử dụng API \`/chip\_manager/trigger\_action/\` để điều khiển thiết bị.
+
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 23.23.32.png" alt=""><figcaption></figcaption></figure>
+
+## &#x20;4. Một vài ví dụ khác
 
 ### **Bước 1: Gọi api lấy unit của user:**
 
