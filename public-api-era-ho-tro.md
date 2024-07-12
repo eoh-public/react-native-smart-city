@@ -4,22 +4,30 @@
 
 * API E-ra [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
 * Document API E-ra [https://backend.eoh.io/redoc/](https://backend.eoh.io/redoc/)
-* Trigger action chỉ dành cho các widget là action
-* Response data sẽ trả nhiều field hơn so với những ví dụ, cho nên chỉ tập trung nhưng field ví dụ.
 
-## 1. Hướng dẫn lấy Token
+## 1. Hướng dẫn lấy mã AUTHTOKEN
 
 **Bước 1:** Đăng nhập app.e-ra.io
 
-**Bước 2:** Chọn profile
+**Bước 2:** Nhấp vào ảnh đại diện >> Chọn profile
 
 ![](<.gitbook/assets/image (74).png>)
 
-**Bước 3:** Copy Auth Token
+**Bước 3:** Copy AUTHTOKEN&#x20;
 
 ![](<.gitbook/assets/image (68).png>)
 
-## 2. Danh sách API:&#x20;
+## 2. **Hướng dẫn gọi API trên** [swagger](https://backend.eoh.io/swagger/):&#x20;
+
+Bước 1: Xem danh sách API của EoH tại [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
+
+Bước 2: Điền mã AUTHTOKEN
+
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 17.49.02.png" alt=""><figcaption></figcaption></figure>
+
+Bước 3: Thực thi một API có trên [swagger](https://backend.eoh.io/swagger/)
+
+<figure><img src=".gitbook/assets/Screenshot 2024-07-12 at 18.03.30.png" alt=""><figcaption></figcaption></figure>
 
 ### **2.1. API lấy unit của user:**
 
