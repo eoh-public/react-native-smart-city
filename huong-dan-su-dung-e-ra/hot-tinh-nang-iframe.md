@@ -4,7 +4,7 @@ description: New Update 07/2024
 
 # \*HOT\* Tính Năng iFrame
 
-## Hướng dẫn Tính năng iFrame
+Hướng dẫn Tính năng iFrame
 
 _**B1: Đăng nhập tài khoản Github tại:**_ https://[github.com](https://github.com)
 
@@ -152,16 +152,16 @@ _**B7: Cấu hình cập nhật trạng thái công tắc iFrame**_
 
 \-Dashboard Units -> Hướng dẫn sử dụng E-Ra -> Edit Dashboard -> menu Widget Box bên trái phía dưới cùng -> click kéo thả IFrame With ConFig ra trang Dashboard.
 
-<figure><img src="../.gitbook/assets/image (393).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (394).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 \- Click chọn biểu tượng bánh răng (setting widget) bên góc phải trên cùng widget iFrame With ConFig -> cấu hình như hình -> OK.
 
-<figure><img src="../.gitbook/assets/image (395).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (396).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 \- Chọn Done -> Xem kết quả cập nhật trạng thái sau khi điều khiển nút nhấn.
 
-<figure><img src="../.gitbook/assets/image (397).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>

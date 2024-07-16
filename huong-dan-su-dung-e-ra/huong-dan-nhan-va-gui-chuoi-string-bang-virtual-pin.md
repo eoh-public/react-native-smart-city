@@ -197,11 +197,11 @@ Bước 2: Chọn vào tab Input/Output pins.
 
 Bước 3: Chọn vào nút setup để bật chế độ Input/Output Pins trên gateway.
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 Bước 4: Chọn nút Confirm để xác nhận việc khởi tạo tính năng Input/Output pins.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vậy là quá trình khởi tạo Input/Output pins trên gateway đã thành công tiến đến bước cấu hình config read, write, action để điều khiển thiết bị.
 
@@ -209,57 +209,57 @@ Vậy là quá trình khởi tạo Input/Output pins trên gateway đã thành c
 
 Tạo Device mới có tên Text Box: All gateways → Chọn gateway → Input/Output pins → New Input/Output pins.
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên Device: Text Box → Create.
 
 Tương tự tạo Device mới có tên Terminal Box.
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Nhấn vào Device Text Box vừa được tạo.
 
 Đế cấu hình chân ảo cho Device Text Box: chọn mục Virtual Pin → New Virtual Pin.
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên cho config: String; Pin: V0; Value type: String → nhấn Done.
 
-<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tạo hành động cho Text Box: Chọn mục Action → New Action.
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên cho Action để gửi chuỗi xuống: Down; Pin: V0; Value: 0 → nhấn Save.
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 Nhấn vào Device Terminal Box ở bên mục Input/Output pin.
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
 Cấu hình ghi chân ảo cho Device Terminal Box: chọn mục Virtual Pin → New Virtual Pin.
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên cho config: From String; Pin: V1; Value type: String → nhấn Done.
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tiếp tục tạo config thứ 2: To String; Pin: V2; Value type: String → nhấn Done.
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tạo hành động cho Terminal Box: Chọn mục Action → New Action.
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên cho Action để gửi chuỗi xuống (của Virtual From String): Down From String; Pin: V1; Value: 0 → nhấn Save.
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### II.3.       Cấu hình gửi chuỗi với Text Box
 
