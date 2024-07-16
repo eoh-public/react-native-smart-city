@@ -15,6 +15,7 @@
     * [3. So sánh các phương thức truyền dữ liệu đến máy chủ từ IoT Gateway](cac-du-an-danh-rieng-cho-cac-truong-dai-hoc/bai-viet-khoa-hoc/3.-so-sanh-cac-phuong-thuc-truyen-du-lieu-den-may-chu-tu-iot-gateway.md)
     * [4. Lợi thế sử dụng lõi IoT E-Ra trong IoT hóa công nghiệp](cac-du-an-danh-rieng-cho-cac-truong-dai-hoc/bai-viet-khoa-hoc/4.-loi-the-su-dung-loi-iot-e-ra-trong-iot-hoa-cong-nghiep.md)
 * [Hướng dẫn sử dụng E-Ra](huong-dan-su-dung-e-ra/README.md)
+  * [\*HOT\* Tính Năng iFrame](huong-dan-su-dung-e-ra/hot-tinh-nang-iframe.md)
   * [Thuật ngữ cần quan tâm](huong-dan-su-dung-e-ra/thuat-ngu-can-quan-tam.md)
   * [Linh kiện cần chuẩn bị](huong-dan-su-dung-e-ra/linh-kien-can-chuan-bi.md)
   * [Hướng dẫn đấu nối thiết bị ngoại vi](huong-dan-su-dung-e-ra/huong-dan-dau-noi-thiet-bi-ngoai-vi.md)
