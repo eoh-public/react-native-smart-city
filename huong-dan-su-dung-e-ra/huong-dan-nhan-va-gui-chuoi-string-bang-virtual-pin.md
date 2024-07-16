@@ -197,11 +197,11 @@ Bước 2: Chọn vào tab Input/Output pins.
 
 Bước 3: Chọn vào nút setup để bật chế độ Input/Output Pins trên gateway.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 Bước 4: Chọn nút Confirm để xác nhận việc khởi tạo tính năng Input/Output pins.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vậy là quá trình khởi tạo Input/Output pins trên gateway đã thành công tiến đến bước cấu hình config read, write, action để điều khiển thiết bị.
 
@@ -209,25 +209,25 @@ Vậy là quá trình khởi tạo Input/Output pins trên gateway đã thành c
 
 Tạo Device mới có tên Text Box: All gateways → Chọn gateway → Input/Output pins → New Input/Output pins.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên Device: Text Box → Create.
 
 Tương tự tạo Device mới có tên Terminal Box.
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Nhấn vào Device Text Box vừa được tạo.
 
 Đế cấu hình chân ảo cho Device Text Box: chọn mục Virtual Pin → New Virtual Pin.
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Đặt tên cho config: String; Pin: V0; Value type: String → nhấn Done.
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 Tạo hành động cho Text Box: Chọn mục Action → New Action.
 

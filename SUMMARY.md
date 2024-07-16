@@ -51,6 +51,7 @@
       * [Datastream](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/gateway\_cau-hinh-thong-so/datastream.md)
     * [Sử dụng VIRTUAL PIN](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/su-dung-virtual-pin.md)
     * [Sử dụng Widget box hiệu quả](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/su-dung-widget-box-hieu-qua/README.md)
+      * [Cấu hình Donut Chart](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/su-dung-widget-box-hieu-qua/cau-hinh-donut-chart.md)
       * [Control](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/su-dung-widget-box-hieu-qua/control.md)
       * [Display](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/su-dung-widget-box-hieu-qua/display.md)
     * [Trải nghiệm ESP32 trên E-Ra](huong-dan-su-dung-e-ra/thao-tac-tren-web-e-ra-platform/trai-nghiem-sp32-tren-e-ra/README.md)

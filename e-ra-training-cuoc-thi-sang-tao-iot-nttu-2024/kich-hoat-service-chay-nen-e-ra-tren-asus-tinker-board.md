@@ -10,11 +10,11 @@ Truy cập vào E-Ra Dashboard:
 
 Vào mục "Tất cả gateways" và chọn gateway muốn lấy token:
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Vào gateway</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>Vào gateway</p></figcaption></figure>
 
 Trong mục "Thông tin" của gateway tìm đến "Mã xác thực" rồi tiến hành copy mã token:
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>Copy mã xác thực</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption><p>Copy mã xác thực</p></figcaption></figure>
 
 2. Kích hoạt service chạy nền E-Ra trên Tinker board
 
@@ -26,7 +26,7 @@ _**Copy / paste** lệnh sau:_
 cd ~/era-lib/linux/Startup/
 ```
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption><p>Đưa con trỏ vào thư mục Startup</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption><p>Đưa con trỏ vào thư mục Startup</p></figcaption></figure>
 
 Chỉnh sửa file **token.txt** trong thư **Startup** bằng lệnh sau:
 
@@ -34,11 +34,11 @@ Chỉnh sửa file **token.txt** trong thư **Startup** bằng lệnh sau:
 sudo nano token.txt
 ```
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption><p>Chỉnh sửa file token.txt</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption><p>Chỉnh sửa file token.txt</p></figcaption></figure>
 
 Xóa nội dung trong file **token.txt** và paste token đã copy ở trên vào
 
-<figure><img src="../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption><p>Xóa nội dung trong file token.txt</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption><p>Xóa nội dung trong file token.txt</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption><p>Paste token</p></figcaption></figure>
 

@@ -16,7 +16,7 @@ Chọn vào tính năng muốn cấu hình
 
 \- **Automation** cấu hình chạy tự động theo thời gian hoặc theo giá trị thay đổi từ thiết bị.
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### **Cấu hình Smart - Scenario**
 
@@ -32,7 +32,7 @@ Chọn vào tính năng muốn cấu hình
 
 \- Cấu hình điều kiện.
 
-<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 &#x20;        \+ Cấu hình Value Change: cấu hình để lấy giá trị từ thiết bị (nút nhấn, trạng thái đèn, giá trị cảm biến) để kích hoạt kịch bản tự động.
 
@@ -76,18 +76,18 @@ Chọn vào tính năng muốn cấu hình
 
 \- Chọn tab automation sau đó bấm vào nút tạo, đặt tên chọn unit và chọn loại điều kiện mà bạn mong muốn sử dụng.
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 \- Chọn Sub-unit và chọn Device để lấy điều kiện.
 
 \- Chọn điều khiện và đặt mức kích hoạt cho điều kiện.
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 \- Sau khi hoàn tất đặt điều kiện bấm nút Save để lưu lại kịch bản Automation.
 
 \- Tiếp tục tạo các action giống với tạo Scenario.
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 _**Chú ý:** Kịch bản hoặc automation sẽ bị reset về trạng thái ban đầu sau khi thực hiện chỉnh sửa._
