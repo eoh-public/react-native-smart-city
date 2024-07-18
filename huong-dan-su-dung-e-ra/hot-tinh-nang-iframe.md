@@ -24,7 +24,7 @@ _**B3: Tạo một 1 file trạng thái công tắc switch.html**_
 
 _<mark style="background-color:orange;">(có thể tìm thêm các nguồn source code hoặc chỉnh sửa file code để có kết quả mong muốn)</mark>_
 
-\- Tạo 1 Text Document mới: File Explorer-> vào folder Document (hoặc folder bất kỳ) -> Click chuột phải  -> New-> Text Document -> thêm code công tắc vào file và lưu lại với tên và đuôi mở rộng như sau: switch.html.
+\- Tạo 1 Text Document mới: File Explorer-> vào folder Document (hoặc folder bất kỳ) -> Click chuột phải  -> New-> Text Document -> New Text Document.txt xuất hiện -> thêm code công tắc vào file và lưu lại với _**tên và đuôi mở rộng**_ như sau: switch.html  ![](<../.gitbook/assets/IFrame\_6.2 - Copy.JPG>)
 
 <figure><img src="../.gitbook/assets/image (386).png" alt=""><figcaption></figcaption></figure>
 
