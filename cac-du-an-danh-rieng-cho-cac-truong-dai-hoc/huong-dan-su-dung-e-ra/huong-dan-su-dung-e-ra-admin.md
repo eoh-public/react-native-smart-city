@@ -52,7 +52,7 @@ Vào mục ‘’Tổ chức’’(1) -> Thêm người dùng (2) -> Tải file 
 
 <figure><img src="../../.gitbook/assets/Picture 111111.png" alt=""><figcaption><p>(4)</p></figcaption></figure>
 
-III/ XÓA NGƯỜI DÙNG
+**III/ XÓA NGƯỜI DÙNG**
 
 Vào mục ‘’Tổ chức’’ (1) -> Chọn vào ô vuông tương ứng với người dùng muốn xóa (2) -> Nhấn ô “Xóa khỏi tổ chức’’(3) -> Hoàn thành thao tác.
 
