@@ -2,7 +2,7 @@
 
 **Ghi chú**
 
-* API E-ra [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
+* Swagger API E-ra [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/)
 * Document API E-ra [https://backend.eoh.io/redoc/](https://backend.eoh.io/redoc/)
 
 ## 1. Hướng dẫn lấy mã AUTHTOKEN
@@ -37,9 +37,9 @@ B3: Như vậy là xong, bây giờ bạn có thể thực hành gọi các API 
 
 #### <mark style="color:red;">Cần cài đặt</mark> <mark style="color:red;"></mark><mark style="color:red;">**A**</mark><mark style="color:red;">uthorizations trước khi thực hành.</mark>
 
-Các hướng dẫn dưới đây có sử dụng các thuật ngữ như 'config', 'end device', v.v. Để hiểu rõ hơn về các thuật ngữ này, bạn có thể truy cập vào[<mark style="color:red;">https://e-ra-iot-wiki.gitbook.io/documentation/huong-dan-su-dung-e-ra/thuat-ngu-can-quan-tam</mark>](https://e-ra-iot-wiki.gitbook.io/documentation/huong-dan-su-dung-e-ra/thuat-ngu-can-quan-tam)
+Các hướng dẫn dưới đây có sử dụng các thuật ngữ như 'config', 'end device', v.v. Để hiểu rõ hơn về các thuật ngữ này, bạn có thể truy cập vào [<mark style="color:red;">https://e-ra-iot-wiki.gitbook.io/documentation/huong-dan-su-dung-e-ra/thuat-ngu-can-quan-tam</mark>](https://e-ra-iot-wiki.gitbook.io/documentation/huong-dan-su-dung-e-ra/thuat-ngu-can-quan-tam)
 
-#### 3.1 Thực hành gọi API lây giá trị hiện tại của config trên swagger
+#### 3.1 Thực hành gọi API lấy giá trị hiện tại của config trên swagger
 
 * B1. Truy cập vào [https://backend.eoh.io/swagger/](https://backend.eoh.io/swagger/). Tìm đến API GET \`chip\_manager/configs/\`. Để lấy danh sách config bạn đang có. Sau đó nhấn vào "Try it out"
 
@@ -65,11 +65,11 @@ Các hướng dẫn dưới đây có sử dụng các thuật ngữ như 'confi
 
 Một cách khác là sử dụng công cụ dòng lệnh CURL.&#x20;
 
-B1: Hãy kiểm tra xem CURL đã được cài đặt trên máy của bạn chưa bằng cách chạy lệnh \`curl --version\` trên terminal. Nếu không có thông báo lỗi nào xuất hiện, điều đó có nghĩa là CURL đã được cài đặt thành công. Ngược lại bạn có cần tìm kiếm hướng dẫn cài đặt CURL trên mạng.
+B1: Hãy kiểm tra xem CURL đã được cài đặt trên máy của bạn chưa bằng cách chạy lệnh \`curl --version\` trên terminal. Nếu không có thông báo lỗi nào xuất hiện, điều đó có nghĩa là CURL đã được cài đặt thành công. Ngược lại bạn cần tìm kiếm hướng dẫn cài đặt CURL trên mạng.
 
 <figure><img src=".gitbook/assets/Screenshot 2024-07-26 at 10.56.17.png" alt=""><figcaption></figcaption></figure>
 
-B2: Bạn copy dòng lệnh curl trên swagger và chạy trên terminal của bạn.
+B2: Bạn copy dòng lệnh curl trên swagger và chạy nó trên terminal của bạn.
 
 <figure><img src=".gitbook/assets/Screenshot 2024-07-26 at 10.44.35.png" alt=""><figcaption></figcaption></figure>
 
