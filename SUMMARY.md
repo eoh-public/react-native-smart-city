@@ -108,6 +108,7 @@
   * [Topic 5 - Tiếp cận IoT trong công nghiệp](e-ra-workshop/topic-5-tiep-can-iot-trong-cong-nghiep.md)
 * [E-Ra Talk](e-ra-talk/README.md)
   * [Phân Tích Giải Pháp Điều Khiển Thiết Bị Từ Trình Duyệt](e-ra-talk/phan-tich-giai-phap-dieu-khien-thiet-bi-tu-trinh-duyet.md)
+  * [Ứng Dụng Arduino - ESP32 Để Kết Nối PLC Công Nghiệp S7-1200 Lên Nền Tảng IoT E-Ra](e-ra-talk/ung-dung-arduino-esp32-de-ket-noi-plc-cong-nghiep-s7-1200-len-nen-tang-iot-e-ra.md)
 * [E-Ra Training: Cuộc thi Sáng tạo IoT NTTU 2024](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/README.md)
   * [Day 1: Điều khiển đèn & Đọc trạng thái nút ấn trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-1-dieu-khien-den-and-doc-trang-thai-nut-an-tren-asus-tinker-board.md)
   * [Day 2: Giám sát dữ liệu Hệ thống cảm biến với ASUS Tinker Board kết hợp với bộ Kit Yolo UNO](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/day-2-giam-sat-du-lieu-voi-asus-tinker-board.md)
