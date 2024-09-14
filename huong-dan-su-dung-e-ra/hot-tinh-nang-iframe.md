@@ -4,10 +4,6 @@ description: New Update 07/2024
 
 # \*HOT\* Tính Năng iFrame
 
-Dưới đây là phiên bản được chỉnh sửa để nội dung dễ hiểu và chuyên nghiệp hơn:
-
-***
-
 ### Hướng dẫn sử dụng tính năng iFrame
 
 #### Bước 1: Đăng nhập vào tài khoản GitHub
