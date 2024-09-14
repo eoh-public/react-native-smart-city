@@ -4,137 +4,252 @@ description: New Update 07/2024
 
 # \*HOT\* Tính Năng iFrame
 
-Hướng dẫn Tính năng iFrame
+Dưới đây là phiên bản được chỉnh sửa để nội dung dễ hiểu và chuyên nghiệp hơn:
 
-_**B1: Đăng nhập tài khoản Github tại:**_ https://[github.com](https://github.com)
+***
 
-<figure><img src="../.gitbook/assets/image (383).png" alt=""><figcaption></figcaption></figure>
+### Hướng dẫn sử dụng tính năng iFrame
 
-_**B2: Tạo một Repository mới**_
+#### Bước 1: Đăng nhập vào tài khoản GitHub
 
-\- Click chọn biểu tượng account góc phải trên cùng -> chọn Your repositories -> New.
+Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài khoản của bạn.
 
-<figure><img src="../.gitbook/assets/image (384).png" alt=""><figcaption></figcaption></figure>
+#### Bước 2: Tạo một Repository mới
 
-\- Tiếp đến, điền Repository name\*, Description (optional) chọn Public, tick chọn Add a README file -> Create repository.
+* Truy cập vào [GitHub Repository](https://github.com/new) để tạo một repository mới.
+* Điền thông tin:
+  * **Repository name** (tên repository) _bắt buộc_.
+  * **Description** (mô tả) _tùy chọn_.
+  * Chọn **Public**.
+  * Chọn **Add a README file**.
+  * Nhấn **Create repository** để hoàn tất.
 
-<figure><img src="../.gitbook/assets/image (385).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-14 at 21.01.47.png" alt=""><figcaption></figcaption></figure>
 
-_**B3: Tạo một 1 file trạng thái công tắc switch.html**_
+#### Bước 3: Tạo file HTML
 
-_<mark style="background-color:orange;">(có thể tìm thêm các nguồn source code hoặc chỉnh sửa file code để có kết quả mong muốn)</mark>_
+* Tạo một file HTML có tên là `switch.html` với nội dung sau:
 
-\- Tạo 1 Text Document mới: File Explorer-> vào folder Document (hoặc folder bất kỳ) -> Click chuột phải  -> New-> Text Document -> New Text Document.txt xuất hiện -> thêm code công tắc vào file và lưu lại với _**tên và đuôi mở rộng**_ như sau: switch.html  ![](<../.gitbook/assets/IFrame\_6.2 - Copy.JPG>)
-
-<figure><img src="../.gitbook/assets/image (386).png" alt=""><figcaption></figcaption></figure>
-
-\- Code:
-
-```
+````html
+```html
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
- 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
- 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
- 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
- 
-input:checked + .slider {
-  background-color: #2196F3;
-}
- 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
- 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
- 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
- 
-.slider.round:before {
-  border-radius: 50%;
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+        .container {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            font-size: 17px;
+            position: relative;
+            display: inline-block;
+            width: 5em;
+            height: 2.5em;
+            user-select: none;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch .cb {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .toggle {
+            position: absolute;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            background-color: #373737;
+            border-radius: 0.1em;
+            transition: 0.4s;
+            text-transform: uppercase;
+            font-weight: 700;
+            overflow: hidden;
+            box-shadow: -0.3em 0 0 0 #373737, -0.3em 0.3em 0 0 #373737,
+                0.3em 0 0 0 #373737, 0.3em 0.3em 0 0 #373737, 0 0.3em 0 0 #373737;
+        }
+
+        .toggle>.left {
+            position: absolute;
+            display: flex;
+            width: 50%;
+            height: 88%;
+            background-color: #f3f3f3;
+            color: #373737;
+            left: 0;
+            bottom: 0;
+            align-items: center;
+            justify-content: center;
+            transform-origin: right;
+            transform: rotateX(10deg);
+            transform-style: preserve-3d;
+            transition: all 150ms;
+        }
+
+        .left::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgb(206, 206, 206);
+            transform-origin: center left;
+            transform: rotateY(90deg);
+        }
+
+        .left::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgb(112, 112, 112);
+            transform-origin: center bottom;
+            transform: rotateX(90deg);
+        }
+
+        .toggle>.right {
+            position: absolute;
+            display: flex;
+            width: 50%;
+            height: 88%;
+            background-color: #f3f3f3;
+            color: rgb(206, 206, 206);
+            right: 1px;
+            bottom: 0;
+            align-items: center;
+            justify-content: center;
+            transform-origin: left;
+            transform: rotateX(10deg) rotateY(-45deg);
+            transform-style: preserve-3d;
+            transition: all 150ms;
+        }
+
+        .right::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgb(206, 206, 206);
+            transform-origin: center right;
+            transform: rotateY(-90deg);
+        }
+
+        .right::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgb(112, 112, 112);
+            transform-origin: center bottom;
+            transform: rotateX(90deg);
+        }
+
+        .switch input:checked+.toggle>.left {
+            transform: rotateX(10deg) rotateY(45deg);
+            color: rgb(206, 206, 206);
+        }
+
+        .switch input:checked+.toggle>.right {
+            transform: rotateX(10deg) rotateY(0deg);
+            color: #487bdb;
+        }
+    </style>
 </head>
+
 <body>
- 
-<label class="switch">
-  <input type="checkbox" id="the_switch">
-  <span class="slider round"></span>
-</label>
-<script src="https://www.unpkg.com/@eohjsc/era-widget@1.0.14/src/index.js"></script>
-<script>
-  const eraWidget = new EraWidget();
-  let config = null;
-  eraWidget.onConfiguration((configuration) => {
-    config = configuration.realtime_configs[0];
-  })
-  eraWidget.onValues((values) => {
-    const input = document.getElementById('the_switch');
-    input.checked = values[config.id].value;
-  });
-  eraWidget.ready()
-</script>
+    <div class="container">
+        <label class="switch">
+            <input id="the_switch" class="cb" type="checkbox" />
+            <span class="toggle">
+                <span class="left">off</span>
+                <span class="right">on</span>
+            </span>
+        </label>
+    </div>
+    <script src="https://www.unpkg.com/@eohjsc/era-widget@1.1.3/src/index.js"></script>
+    <script>
+        const theSwitch = document.getElementById('the_switch');
+        let configLed = null, newStatusLed = null, actions = [];
+
+        const eraWidget = new EraWidget();
+        eraWidget.init({
+            needRealtimeConfigs: true,
+            needHistoryConfigs: true,
+            needActions: true,
+            maxRealtimeConfigsCount: 3,
+            maxHistoryConfigsCount: 1,
+            maxActionsCount: 2,
+            minRealtimeConfigsCount: 0,
+            minHistoryConfigsCount: 0,
+            minActionsCount: 0,
+            onConfiguration: (configuration) => {
+                // console.log('configuration', configuration) // Use console.log when you need to debug
+                configLed = configuration.realtime_configs[0];
+                actions = configuration.actions;
+            },
+            onValues: (values) => {
+                // console.log('values', values) // Use console.log when you need to debug
+                const stateLed = values[configLed.id].value;
+                if (newStatusLed !== stateLed) {
+                    newStatusLed = stateLed;
+                    theSwitch.checked = stateLed;
+                }
+            },
+        });
+
+        // Trigger actions based on the switch state
+        theSwitch.addEventListener('click', () => {
+            if (newStatusLed === 1) {
+                eraWidget.triggerAction(actions[1]?.action, null); // Trigger 'Off' action
+            } else {
+                eraWidget.triggerAction(actions[0]?.action, null); // Trigger 'On' action
+            }
+        });
+    </script>
 </body>
+
 </html>
 ```
+````
 
 
 
-_**B4: Đưa File công tắc lên github (sử dùng Public)**_
+#### Bước 4: Đưa file lên GitHub
 
-\- Ở trang Era-Widget -> Add file -> Upload files -> kéo thả file công tắc đã tạo ở B3 vào -> Commit changes.
+\- Tải file `switch.html` lên repository mà bạn vừa tạo.
+
+Ở trang Era-Widget -> Add file -> Upload files -> kéo thả file công tắc đã tạo ở B3 vào -> Commit changes.
 
 <figure><img src="../.gitbook/assets/image (387).png" alt=""><figcaption></figcaption></figure>
 
-_**B5: Enable Github Page**_
+#### Bước 5: Kích hoạt GitHub Pages
 
-\- Mục Settings -> chọn Pages -> trang GitHub Pages xuất hiện.
+* Vào **Settings** của repository, sau đó chọn **Pages**.
+* Trong trang **GitHub Pages**, tìm đến mục **Source**, chọn **GitHub Actions**.
+* Tại mục **GitHub Pages Jekyll**, nhấn **Configure**, sau đó nhấn **Commit changes**.
+* Đợi quá trình hoàn tất cho đến khi xuất hiện dấu tick xanh.
 
 <figure><img src="../.gitbook/assets/image (388).png" alt=""><figcaption></figcaption></figure>
-
-\- Trong trang GitHub Pages -> phần Source chọn GitHub Actions -> phần GitHub Pages JekyII chọn Configure -> chọn Commt changes… -> Popup Commit changes xuất hiện -> chọn Commit changes -> đợi quá trình hoàn thành sẽ có dấu tick xanh lá.
 
 <figure><img src="../.gitbook/assets/image (389).png" alt=""><figcaption></figcaption></figure>
 
@@ -142,15 +257,23 @@ _**B5: Enable Github Page**_
 
 <figure><img src="../.gitbook/assets/image (391).png" alt=""><figcaption></figcaption></figure>
 
-_**B6: Truy cập trang nút nhấn vừa tạo**_
+#### Bước 6: Truy cập trang với nút điều khiển
 
-\- Mục Actions -> Click chọn Create jekyll-gh-pages.yml -> ở deploy click chọn đường link bên dưới -> Tab mới xuất hiện với đường link: [https://thao-eoh.github.io/ERa-Widget/](https://thao-eoh.github.io/ERa-Widget/) -> thêm tên công tắc switch.html đã thêm vào github như sau: [https://thao-eoh.github.io/ERa-Widget/switch.html](https://thao-eoh.github.io/ERa-Widget/switch.html) -> kết quả được một nút nhấn thay đổi trạng thái.
+* Vào mục **Actions**, chọn **Create jekyll-gh-pages.yml**.
+* Ở phần deploy, nhấn vào đường link được tạo dưới phần **deploy**. Một tab mới sẽ mở ra với đường dẫn dạng: `https://thao-eoh.github.io/ERa-Widget/`.
+* Thêm tên file `switch.html` vào sau đường dẫn: `https://thao-eoh.github.io/ERa-Widget/switch.html`.
+* Bạn sẽ thấy một trang chứa nút nhấn có thể thay đổi trạng thái.
 
 <figure><img src="../.gitbook/assets/image (392).png" alt=""><figcaption></figcaption></figure>
 
-_**B7: Cấu hình cập nhật trạng thái công tắc iFrame**_
+#### Bước 7: Cấu hình cập nhật trạng thái nút nhấn qua iFrame
 
-\-Dashboard Units -> Hướng dẫn sử dụng E-Ra -> Edit Dashboard -> menu Widget Box bên trái phía dưới cùng -> click kéo thả IFrame With ConFig ra trang Dashboard.
+* Truy cập vào **Dashboard Units** và chọn Unit của bạn.
+* Nhấn **Edit Dashboard**.
+* Ở phần **Widget Box** (nằm ở cuối cùng bên trái), kéo và thả widget **iFrame With Config** vào Dashboard.
+* Nhấn vào biểu tượng bánh răng ở góc phải trên của widget **iFrame With Config** để cấu hình theo yêu cầu.
+* Nhấn **OK** sau khi cấu hình xong.
+* Cuối cùng, nhấn **Done** và kiểm tra kết quả sau khi điều khiển nút nhấn.
 
 <figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
