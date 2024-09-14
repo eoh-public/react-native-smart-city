@@ -30,7 +30,6 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
 
 * Tạo một file HTML có tên là `switch.html` với nội dung sau:
 
-````html
 ```html
 <!DOCTYPE html>
 <html>
@@ -227,10 +226,8 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
         });
     </script>
 </body>
-
 </html>
 ```
-````
 
 
 
