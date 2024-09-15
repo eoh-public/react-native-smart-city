@@ -8,6 +8,20 @@ Tính năng iFrame trên Nền tảng IoT E-Ra sẽ mang đến cho bạn khả 
 
 ### Hướng dẫn tạo widget mới bằng tính năng iFrame with config
 
+#### Kết quả mong đợi
+
+Sau khi hoàn thành hướng dẫn này, bạn sẽ tạo thành công một giao diện nút nhấn mới cho phép bật/tắt đèn LED, và theo dõi trạng thái của nó theo thời gian thực.
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 17.22.18.png" alt=""><figcaption></figcaption></figure>
+
+#### Chuẩn bị trước
+
+* Bạn cần đảm bảo đã có sẵn **một unit** và đã **kích hoạt một gateway** hoạt động online.
+* Cấu hình **datastream** và **action** để điều khiển đèn LED.
+* Cấu hình **giao diện nút nhấn** để bật/tắt đèn LED, đảm bảo nút nhấn của bạn hoạt động ổn định và điều khiển chính xác.
+
+Khi mọi thứ đã sẵn sàng, chúng ta sẽ bắt đầu tạo widget mới.
+
 #### Bước 1: Đăng nhập vào tài khoản GitHub
 
 Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài khoản của bạn.
@@ -51,29 +65,38 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
 <figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 12.29.17.png" alt=""><figcaption></figcaption></figure>
 
 * Đợi quá trình hoàn tất cho đến khi xuất hiện dấu tick xanh.
-* Ở phần deploy, nhấn vào đường link được tạo dưới phần **deploy**. Một tab mới sẽ mở ra với widget switch mới của bạn.
+
+#### Bước 5: Lấy URL trang GitHub Pages
+
+*   Sau khi hoàn tất các bước trên, ở phần **Deploy**, bạn sẽ thấy một đường dẫn (URL). Hãy sao chép URL này, vì bạn sẽ cần sử dụng nó trong Bước 6.
+
+    Khi nhấn vào đường dẫn một tab mới sẽ mở ra và bạn sẽ thấy widget switch mới của bạn.&#x20;
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 12.38.28.png" alt=""><figcaption></figcaption></figure>
 
-#### Bước 5: Cấu hình iFrame with config
+#### Bước 6: Cấu hình iFrame with config
 
 * Truy cập vào **Dashboard Units** và chọn Unit của bạn.
 * Nhấn **Edit Dashboard**.
-* Ở phần **Widget Box** (nằm ở cuối cùng bên trái), kéo và thả widget **iFrame With Config** vào Dashboard.
-* Nhấn vào biểu tượng bánh răng ở góc phải trên của widget **iFrame With Config** để cấu hình theo yêu cầu.
-* Nhấn **OK** sau khi cấu hình xong.
+* Ở phần **Widget Box** (nằm ở cuối cùng bên trái), sau đó kéo và thả widget **iFrame With Config** vào Dashboard của bạn.
+* Nhấp vào biểu tượng bánh răng (⚙️) ở góc phải trên của widget để bắt đầu cấu hình widget **iFrame With Config**
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 20.16.22.png" alt=""><figcaption></figcaption></figure>
+
+#### Cấu hình widget **iFrame With Config**:
+
+1. Điền đầy đủ các thông tin **Khu vực, Thiết bị hiển thị**.
+2. **URL**: Dán URL bạn đã sao chép từ **Bước 5**.
+3. **Giá trị hiện thời (Realtime Configs)**: Tạo một giá trị mới và nhập datastream "Trạng thái LED" của bạn vào.
+4. **Hành động (Actions)**: Tạo hai  2 giá trị mới, đó là 2 hành động bật và tắt đèn LED của bạn.
+5. Sau khi hoàn tất cấu hình, nhấn **OK** để lưu lại.
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 17.37.33.png" alt=""><figcaption></figcaption></figure>
+
 * Cuối cùng, nhấn **Done** và kiểm tra kết quả sau khi điều khiển nút nhấn.
 
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 20.31.23.png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 20.35.03.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
-
-\- Click chọn biểu tượng bánh răng (setting widget) bên góc phải trên cùng widget iFrame With ConFig -> cấu hình như hình -> OK.
-
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
-
-\- Chọn Done -> Xem kết quả cập nhật trạng thái sau khi điều khiển nút nhấn.
-
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 20.36.43.png" alt=""><figcaption></figcaption></figure>
