@@ -26,6 +26,10 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
 
 * Tạo một file HTML có tên là `switch.html` với nội dung sau:
 
+```markdown
+[Download switch.html](https://raw.githubusercontent.com/eoh-jsc/era-widgets/main/switch.html){:target="_blank" download="switch.html"}
+```
+
 ```html
 <!DOCTYPE html>
 <html>
