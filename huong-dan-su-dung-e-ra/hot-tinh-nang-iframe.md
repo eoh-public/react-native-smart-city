@@ -4,7 +4,9 @@ description: New Update 07/2024
 
 # \*HOT\* Tính Năng iFrame
 
-### Hướng dẫn sử dụng tính năng iFrame
+Tính năng iFrame trên Nền tảng IoT E-Ra sẽ mang đến cho bạn khả năng tạo ra một phiên bản IoT Dashboard của riêng mình với sự tùy biến cao nhất! Bạn có thể tự xây dựng ý tưởng, giao diện mới, giải pháp mới cho các dự án của mình như Human Detection, Map Tracking, 2D, 3D Visualization...v.v.
+
+### Hướng dẫn tạo widget mới bằng tính năng iFrame with config
 
 #### Bước 1: Đăng nhập vào tài khoản GitHub
 
@@ -25,12 +27,12 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
 #### Bước 3: Đưa file HTML lên GitHub
 
 * Tải file`switch.html.zip`về máy của bạn [nhấp vào đây để tải](https://github.com/eoh-jsc/era-widget-switch/raw/main/switch.html.zip)
-* Giải nén ra bạn sẽ thấy file `switch.html`
-* Thêm file `switch.html` vào repository mà bạn vừa tạo ở bước 2.
+* Giải nén ra bạn sẽ thấy file `index.html`
+* Thêm file `index.html` này vào repository mà bạn vừa tạo ở bước 2.
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 11.59.37 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 11.59.37.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 12.03.01.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 13.04.52.png" alt=""><figcaption></figcaption></figure>
 
 #### Bước 4: Kích hoạt GitHub Pages
 
