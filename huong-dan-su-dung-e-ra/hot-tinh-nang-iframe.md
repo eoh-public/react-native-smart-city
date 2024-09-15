@@ -76,7 +76,7 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
 
 #### Bước 6: Cấu hình iFrame with config
 
-* Truy cập vào **Dashboard Units** và chọn Unit của bạn.
+* Truy cập vào [**Dashboard Units**](https://app.e-ra.io/) và chọn Unit của bạn.
 * Nhấn **Edit Dashboard**.
 * Ở phần **Widget Box** (nằm ở cuối cùng bên trái), sau đó kéo và thả widget **iFrame With Config** vào Dashboard của bạn.
 * Nhấp vào biểu tượng bánh răng (⚙️) ở góc phải trên của widget để bắt đầu cấu hình widget **iFrame With Config**
