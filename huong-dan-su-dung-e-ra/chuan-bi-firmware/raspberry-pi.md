@@ -19,7 +19,7 @@ Bước 4: Mở terminal trên Raspberry Pi.&#x20;
 
 Bước 5: Cài đặt thư viện Wiring Pi bằng terminal.&#x20;
 
-[https://github.com/WiringPi/WiringPi](https://github.com/WiringPi/WiringPi)
+[https://github.com/WiringPi/WiringPi.git](https://github.com/WiringPi/WiringPi.git)
 
 Bước 6: Tải thư viện ERa và build ERa bằng terminal.&#x20;
 
