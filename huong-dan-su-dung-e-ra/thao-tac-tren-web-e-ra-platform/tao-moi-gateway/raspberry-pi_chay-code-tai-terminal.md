@@ -8,19 +8,13 @@
 
 <figure><img src="../../../.gitbook/assets/image (243).png" alt=""><figcaption></figcaption></figure>
 
-**Bước 3:** Trên web, ấn thêm mới gateway và chọn loại board Raspberry Pi --> Tại bước install Library  mở link  [http://wiringpi.com/download-and-install/](http://wiringpi.com/download-and-install/)
+**Bước 3:** Trên web, ấn thêm mới gateway và chọn loại board Raspberry Pi --> Tại bước install Library  mở link  [https://github.com/WiringPi](https://github.com/WiringPi)
 
 <figure><img src="../../../.gitbook/assets/image (345).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
+**Bước 4:** Trong đường dẫn [https://github.com/WiringPi/WiringPi](https://github.com/WiringPi/WiringPi) kéo xuống phần "README" để đọc hướng dẫn cài đặt thư viện WiringPi.
 
-**Bước 4:** Trong Terminal của Raspberry chạy lệnh&#x20;
-
-```
-sudo apt-get install wiringpi
-```
-
-<figure><img src="../../../.gitbook/assets/image (101).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (398).png" alt=""><figcaption></figcaption></figure>
 
 **Bước 5:** Terminal của Raspberry chạy lệnh để kiểm tra xem wirePi được cài đặt chưa
 
