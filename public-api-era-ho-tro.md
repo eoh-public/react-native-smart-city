@@ -15,7 +15,7 @@
 
 **Bước 3:** Copy AUTHTOKEN&#x20;
 
-<mark style="color:red;">(Lưu ý thông tin AUTHTOKEN là thông tin quan trọng không được để lộ ra bên ngoài)</mark>
+<mark style="color:red;">Lưu ý thông tin</mark> <mark style="color:red;"></mark><mark style="color:red;">**AUTHTOKEN**</mark> <mark style="color:red;"></mark><mark style="color:red;">là thông tin quan trọng không được để lộ ra bên ngoài. Khi bạn chọn đăng xuất khỏi tất cả các thiết bị, mã</mark> <mark style="color:red;"></mark><mark style="color:red;">**AUTHTOKEN**</mark> <mark style="color:red;"></mark><mark style="color:red;">sẽ được khởi tạo lại.</mark>
 
 ![](<.gitbook/assets/image (68).png>)
 
@@ -103,4 +103,4 @@ Ví dụ chúng ta có:
 
 Xin lưu ý rằng một số action key có thể không cần trường data. Nếu action của bạn cần truyền data, bạn có thể điều chỉnh thêm nếu cần thiết.
 
-<figure><img src=".gitbook/assets/Screenshot 2024-07-26 at 11.23.58.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Screenshot 2024-09-21 at 12.34.18.png" alt=""><figcaption></figcaption></figure>
