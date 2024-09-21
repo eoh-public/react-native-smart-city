@@ -15,7 +15,9 @@
 
 **Bước 3:** Copy AUTHTOKEN&#x20;
 
-<mark style="color:red;">Lưu ý thông tin</mark> <mark style="color:red;"></mark><mark style="color:red;">**AUTHTOKEN**</mark> <mark style="color:red;"></mark><mark style="color:red;">là thông tin quan trọng không được để lộ ra bên ngoài. Khi bạn chọn đăng xuất khỏi tất cả các thiết bị, mã</mark> <mark style="color:red;"></mark><mark style="color:red;">**AUTHTOKEN**</mark> <mark style="color:red;"></mark><mark style="color:red;">sẽ được khởi tạo lại.</mark>
+<mark style="color:red;">**Lưu ý:**</mark> <mark style="color:red;"></mark><mark style="color:red;">Mã</mark> <mark style="color:red;"></mark><mark style="color:red;">**AUTHTOKEN**</mark> <mark style="color:red;"></mark><mark style="color:red;">là thông tin quan trọng, tuyệt đối không chia sẻ hoặc để lộ ra ngoài.</mark>
+
+<mark style="color:red;">Khi đăng xuất tài khoản, nếu bạn chọn</mark> <mark style="color:red;"></mark><mark style="color:red;">**Đăng xuất khỏi tất cả thiết bị**</mark><mark style="color:red;">, mã</mark> <mark style="color:red;"></mark><mark style="color:red;">**AUTHTOKEN**</mark> <mark style="color:red;"></mark><mark style="color:red;">sẽ được khởi tạo lại.</mark>
 
 ![](<.gitbook/assets/image (68).png>)
 
