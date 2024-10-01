@@ -100,3 +100,7 @@ Truy cập vào [GitHub](https://github.com/) và đăng nhập bằng tài kho�
 <figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 20.35.03.png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-09-15 at 20.36.43.png" alt=""><figcaption></figcaption></figure>
+
+## **Tài liệu tham khảo**
+
+* Customized Widget Dashboard Source Code [https://github.com/eoh-jsc/era-widget-dashboard](https://github.com/eoh-jsc/era-widget-dashboard)
