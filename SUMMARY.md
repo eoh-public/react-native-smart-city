@@ -74,7 +74,7 @@
         * [Add Zigbee Device](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/tao-moi-device/giai-doan-2-add-device-bang-cong-nghe-plug-and-play/add-zigbee-device.md)
     * [Tạo mới Member](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/tao-moi-member.md)
     * [Dashboard](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/dashboard.md)
-    * [Shared Unit](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/shared-unit.md)
+    * [Chia sẻ địa điểm của bạn với người khác.](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/chia-se-dia-diem-cua-ban-voi-nguoi-khac..md)
     * [Side Menu](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/side-menu.md)
   * [Tích hợp MQTT Server](huong-dan-su-dung-e-ra/tich-hop-mqtt-server.md)
   * [Tính năng Smart (Scenario - Automation)](huong-dan-su-dung-e-ra/tinh-nang-smart-scenario-automation.md)
