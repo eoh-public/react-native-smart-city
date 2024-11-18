@@ -10,3 +10,5 @@
 
 **Bước 3:** Màn hình sẽ hiển thị danh sách thành viên trong Unit. Bạn có thể nhấn vào từng thành viên để xem thông tin chi tiết, bao gồm các thiết bị được phân quyền cho thành viên đó.
 
+<figure><img src="../../.gitbook/assets/Screenshot_1731913133.png" alt="" width="188"><figcaption></figcaption></figure>
+
