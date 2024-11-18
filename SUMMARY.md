@@ -75,6 +75,7 @@
     * [Tạo mới Member](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/tao-moi-member.md)
     * [Dashboard](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/dashboard.md)
     * [Chia sẻ địa điểm của bạn với người khác.](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/chia-se-dia-diem-cua-ban-voi-nguoi-khac..md)
+    * [Hướng dẫn xem danh sách thành viên trong Unit](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/huong-dan-xem-danh-sach-thanh-vien-trong-unit.md)
     * [Side Menu](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/side-menu.md)
   * [Tích hợp MQTT Server](huong-dan-su-dung-e-ra/tich-hop-mqtt-server.md)
   * [Tính năng Smart (Scenario - Automation)](huong-dan-su-dung-e-ra/tinh-nang-smart-scenario-automation.md)
