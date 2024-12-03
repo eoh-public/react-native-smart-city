@@ -92,9 +92,9 @@ def era_write_v0_handler(pin, value):
 
 @era.register_handler('connect')
 def connect_handler(info):
-    info["ip"] = wifi.localIP()
-    info["rssi"] = wifi.RSSI()
-    print("Connected")
+    info['ip'] = wifi.localIP()
+    info['rssi'] = wifi.RSSI()
+    print('Connected')
 
 # Đăng ký timer tần suất 1s
 @era.register_timer(interval = 1)
