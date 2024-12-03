@@ -26,7 +26,7 @@ Sketch > Include Library > **Manage Libraries**
 
 Trong mục search, điền vào **dht20**
 
-Chọn install thư viện thứ 2 **DHT20 by **_**Rob**_** Tillaart**
+Chọn install thư viện thứ 2 **DHT20 by&#x20;**_**Rob**_**&#x20;Tillaart**
 
 ![](<../.gitbook/assets/image (350).png>)
 {% endtab %}

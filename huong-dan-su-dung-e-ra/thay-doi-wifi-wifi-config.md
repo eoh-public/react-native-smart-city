@@ -87,11 +87,11 @@ _<mark style="color:orange;">**Chú thích:**</mark>_
 
 &#x20;           <mark style="color:orange;">**- SSID:**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">Tên WiFi kết nối chính</mark>
 
-&#x20;           _<mark style="color:orange;">**-**</mark>_<mark style="color:orange;">** **</mark><mark style="color:orange;">**Password:**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">Mật khẩu của WiFi kết nối chính</mark>
+&#x20;           _<mark style="color:orange;">**-**</mark>_<mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**Password:**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">Mật khẩu của WiFi kết nối chính</mark>
 
 &#x20;           <mark style="color:orange;">**- SSID 2:**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">Tên WiFi backup</mark>
 
-&#x20;           _<mark style="color:orange;">**-**</mark>_<mark style="color:orange;">** **</mark><mark style="color:orange;">**Password 2:**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">Mật khẩu WiFi backup</mark>
+&#x20;           _<mark style="color:orange;">**-**</mark>_<mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**Password 2:**</mark> <mark style="color:orange;"></mark><mark style="color:orange;">Mật khẩu WiFi backup</mark>
 
 **Bước 6:** Đợi quá trình kết nối WiFi mới hoàn tất.
 

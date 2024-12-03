@@ -6,7 +6,7 @@
 Slide E-Ra Training Day 2
 {% endfile %}
 
-{% file src="../.gitbook/assets/Hướng dẫn lập trình với Yolo Uno.pdf" %}
+{% file src="../.gitbook/assets/Hướng dẫn lập trình với Yolo Uno.pdf" %}
 Slide Hướng dẫn lập trình với Yolo UNO
 {% endfile %}
 
@@ -25,9 +25,9 @@ Video E-Ra Training Day 2
 {% tabs %}
 {% tab title="1. Tìm IP và Token" %}
 **Tìm IP:** \
-_Khởi động <mark style="color:orange;">**Tinker**</mark>_\
-_Mở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>)_\
-_<mark style="color:orange;">**Copy / paste lệnh**</mark>_
+&#xNAN;_&#x4B;hởi động <mark style="color:orange;">**Tinker**</mark>_\
+&#xNAN;_&#x4D;ở <mark style="color:orange;">**LXTerminal**</mark> (<mark style="color:orange;">Start menu</mark> > <mark style="color:orange;">System Tools</mark> > <mark style="color:orange;">LXTerminal</mark>)_\
+&#xNAN;_<mark style="color:orange;">**Copy / paste lệnh**</mark>_
 
 ```
 sudo ifconfig wlan0
@@ -38,7 +38,7 @@ sudo ifconfig wlan0
 
 
 **Tìm Token:**\
-_Vào web_ [_**https://app.e-ra.io/dev-mode/gateways**_](https://app.e-ra.io/dev-mode/gateways) _>_ _<mark style="color:orange;">**Gateway của mình**</mark>_ _>_ _<mark style="color:orange;">**Copy authtoken**</mark>_
+&#xNAN;_&#x56;ào web_ [_**https://app.e-ra.io/dev-mode/gateways**_](https://app.e-ra.io/dev-mode/gateways) _>_ _<mark style="color:orange;">**Gateway của mình**</mark>_ _>_ _<mark style="color:orange;">**Copy authtoken**</mark>_
 
 <figure><img src="../.gitbook/assets/tinker-authtoken-off.png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
@@ -78,13 +78,13 @@ sudo ./era --token=111111-1111-1111-1111-11111111
 {% endtab %}
 
 {% tab title="3. Online Tinker với code mới" %}
-<mark style="color:orange;">**Offline**</mark>** Tinker:**
+<mark style="color:orange;">**Offline**</mark>**&#x20;Tinker:**
 
 Thoát lệnh đang chạy với <mark style="color:orange;">**Ctrl + C**</mark>
 
 
 
-<mark style="color:orange;">**Download**</mark>** và **<mark style="color:orange;">**Update**</mark>** code mới**
+<mark style="color:orange;">**Download**</mark>**&#x20;và&#x20;**<mark style="color:orange;">**Update**</mark>**&#x20;code mới**
 
 ```
 cd ~
@@ -98,7 +98,7 @@ cp ERaConsole.cpp ~/era-lib/linux/User/src
 
 
 
-<mark style="color:orange;">**Build**</mark>** code mới**
+<mark style="color:orange;">**Build**</mark>**&#x20;code mới**
 
 ```
 cd ~/era-lib/linux
@@ -107,7 +107,7 @@ make clean all target=tinker
 
 
 
-<mark style="color:orange;">**Online**</mark>** Tinker**
+<mark style="color:orange;">**Online**</mark>**&#x20;Tinker**
 
 ```
 sudo ./era --token=<token>
@@ -117,7 +117,7 @@ sudo ./era --token=<token>
 {% tab title="4. Tùy biến" %}
 1. **Với ASUS Tinker Board**
 
-<mark style="color:orange;">**Download**</mark>** và **<mark style="color:orange;">**Update**</mark>** code mới**
+<mark style="color:orange;">**Download**</mark>**&#x20;và&#x20;**<mark style="color:orange;">**Update**</mark>**&#x20;code mới**
 
 ```
 cd ~
