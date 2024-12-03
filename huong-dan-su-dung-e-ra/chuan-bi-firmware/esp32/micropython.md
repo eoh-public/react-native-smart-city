@@ -24,10 +24,10 @@ from era import WiFi
 
 * Khai báo thư viện ERa và WiFi
 
-<pre class="language-python"><code class="lang-python">ERA_AUTH = "ERA2706"
+<pre class="language-python"><code class="lang-python">ERA_AUTH = 'ERA2011'
 
-WIFI_SSID = "YOUR_SSID"
-WIFI_PASS = "YOUR_PASSWORD"
+WIFI_SSID = 'YOUR_SSID'
+WIFI_PASS = 'YOUR_PASSWORD'
 
 <strong># Khai báo thư viện ERa với Token ERA_AUTH
 </strong>era = ERa(ERA_AUTH)
@@ -39,7 +39,7 @@ wifi = WiFi(WIFI_SSID, WIFI_PASS)
 
 ```python
 # Đăng ký callback nhận lệnh điều khiển từ ERa với chân V0
-@era.register_handler("write v0")
+@era.register_handler('write v0')
 def era_write_v0_handler(pin, value):
     # Gửi giá trị V0 vừa nhận được lên ERa
     era.virtual_write(pin, state)
@@ -67,11 +67,11 @@ from era import ERa
 from era import WiFi
 
 # Mã Token ERa
-ERA_AUTH = "ERA2706"
+ERA_AUTH = 'ERA2011'
 
 # WiFi
-WIFI_SSID = "YOUR_SSID"
-WIFI_PASS = "YOUR_PASSWORD"
+WIFI_SSID = 'YOUR_SSID'
+WIFI_PASS = 'YOUR_PASSWORD'
 
 # Khai báo thư viện ERa với Token ERA_AUTH
 era = ERa(ERA_AUTH)
@@ -82,7 +82,7 @@ wifi = WiFi(WIFI_SSID, WIFI_PASS)
 led = Pin(2, Pin.OUT, value = 1)
 
 # Đăng ký callback nhận lệnh điều khiển từ ERa với chân V0
-@era.register_handler("write v0")
+@era.register_handler('write v0')
 def era_write_v0_handler(pin, value):
     # Điều khiển LED với giá trị V0 vừa nhận được
     led.value(value)
@@ -90,7 +90,7 @@ def era_write_v0_handler(pin, value):
     era.virtual_write(pin, value)
     print(f'Virtual pin {pin} value {value}')
 
-@era.register_handler("connect")
+@era.register_handler('connect')
 def connect_handler(info):
     info["ip"] = wifi.localIP()
     info["rssi"] = wifi.RSSI()
