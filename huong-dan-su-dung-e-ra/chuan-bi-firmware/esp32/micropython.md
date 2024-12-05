@@ -60,7 +60,6 @@ def write_to_era():
 **3 . Examples**
 
 ```python
-import random
 import utime as time
 from machine import Pin
 from era import ERa
