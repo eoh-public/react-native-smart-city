@@ -2,7 +2,7 @@
 
 **1 . Tải và cài đặt MicroPython lên ESP32**
 
-* Truy cập vào [Link github](../../../) và tiến hành tải firmware ERa MicroPython cho ESP32
+* Truy cập vào [Link github](https://github.com/eoh-jsc/era-lib/releases/latest) và tiến hành tải firmware ERa MicroPython cho ESP32
 
 <figure><img src="../../../.gitbook/assets/image (406).png" alt=""><figcaption><p>Download firmware MicroPython</p></figcaption></figure>
 
