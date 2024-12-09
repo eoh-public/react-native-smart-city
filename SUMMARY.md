@@ -118,3 +118,4 @@
   * [Hướng dẫn sử dụng HardwareSerial trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/huong-dan-su-dung-hardwareserial-tren-asus-tinker-board.md)
   * [Kích hoạt service chạy nền E-Ra trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/kich-hoat-service-chay-nen-e-ra-tren-asus-tinker-board.md)
   * [Một số lưu ý khi build code trên ASUS Tinker Board](e-ra-training-cuoc-thi-sang-tao-iot-nttu-2024/mot-so-luu-y-khi-build-code-tren-asus-tinker-board.md)
+* [File ẩn](file-an.md)
