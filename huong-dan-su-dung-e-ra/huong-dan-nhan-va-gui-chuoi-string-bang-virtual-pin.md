@@ -201,7 +201,7 @@ Bước 3: Chọn vào nút setup để bật chế độ Input/Output Pins trê
 
 Bước 4: Chọn nút Confirm để xác nhận việc khởi tạo tính năng Input/Output pins.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Vậy là quá trình khởi tạo Input/Output pins trên gateway đã thành công tiến đến bước cấu hình config read, write, action để điều khiển thiết bị.
 

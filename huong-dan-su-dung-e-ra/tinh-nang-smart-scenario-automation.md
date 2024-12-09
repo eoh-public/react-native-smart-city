@@ -76,7 +76,7 @@ Chọn vào tính năng muốn cấu hình
 
 \- Chọn tab automation sau đó bấm vào nút tạo, đặt tên chọn unit và chọn loại điều kiện mà bạn mong muốn sử dụng.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 \- Chọn Sub-unit và chọn Device để lấy điều kiện.
 

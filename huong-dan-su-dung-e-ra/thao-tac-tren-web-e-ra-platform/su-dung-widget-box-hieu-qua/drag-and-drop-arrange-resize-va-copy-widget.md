@@ -20,7 +20,7 @@ description: New update 07/2024
 
 \- Người dùng chỉ cần click giữ chuột trái một widget bất kỳ và di chuyển đến vị trí giữa các widget bất kỳ thì các widget khác sẽ được đẩy ra tự động - tiện lợi hơn trước đây rất nhiều (hình minh họa bên dưới).
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 3. Hướng dẫn tính năng Resize Widget
 
@@ -28,7 +28,7 @@ description: New update 07/2024
 
 \- Ở mỗi góc phải bên dưới mỗi widget sẽ có biểu tượng góc -> chúng ta chỉ cần click giữ chuột trái tại vị trí đó và di chuyển để thay đổi kích thước widget như mong muốn (hình minh họa bên dưới là trước và sau khi resize).
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 

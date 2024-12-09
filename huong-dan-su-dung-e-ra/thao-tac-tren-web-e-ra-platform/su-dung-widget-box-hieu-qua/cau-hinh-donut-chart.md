@@ -18,7 +18,7 @@ _**B1: Tạo Device**_
 
 \- Tạo Device: New Input/Output Pin -> tại ô Device name điền “Động cơ” -> Create.
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 \- Cấu hình Device: Click chọn device “Động cơ” vừa tạo -> chọn menu Virtual pin -> New virtual pin -> lần lượt tạo các config On\_Timer, Off\_Timer, Fail\_Timer tương ứng với các PIN V6, V7, V8 và Value type là Number.
 

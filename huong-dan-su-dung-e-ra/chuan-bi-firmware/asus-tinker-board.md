@@ -235,7 +235,7 @@ _<mark style="color:orange;background-color:blue;">source ./build.sh tinker</mar
 
 \- Copy dòng code ở mục “Run ERa with your token” và nhấn Next Step.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 

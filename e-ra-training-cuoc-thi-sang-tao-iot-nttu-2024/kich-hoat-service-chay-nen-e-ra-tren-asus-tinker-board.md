@@ -10,7 +10,7 @@ Truy cập vào E-Ra Dashboard:
 
 Vào mục "Tất cả gateways" và chọn gateway muốn lấy token:
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Vào gateway</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Vào gateway</p></figcaption></figure>
 
 Trong mục "Thông tin" của gateway tìm đến "Mã xác thực" rồi tiến hành copy mã token:
 

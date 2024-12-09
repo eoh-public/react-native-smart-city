@@ -80,6 +80,7 @@
     * [Side Menu](huong-dan-su-dung-e-ra/thao-tac-tren-mobile-e-ra-platform/side-menu.md)
   * [Tích hợp MQTT Server](huong-dan-su-dung-e-ra/tich-hop-mqtt-server.md)
   * [Tính năng Smart (Scenario - Automation)](huong-dan-su-dung-e-ra/tinh-nang-smart-scenario-automation.md)
+  * [Tính năng Voice Control](huong-dan-su-dung-e-ra/tinh-nang-voice-control.md)
 * [Public API ERa hỗ trợ](public-api-era-ho-tro.md)
 * [Ứng dụng thực tế](ung-dung-thuc-te/README.md)
   * [Giải pháp an toàn và bảo mật](ung-dung-thuc-te/giai-phap-an-toan-va-bao-mat.md)
