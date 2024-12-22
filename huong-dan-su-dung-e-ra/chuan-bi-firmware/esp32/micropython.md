@@ -40,8 +40,8 @@ wifi = WiFi(WIFI_SSID, WIFI_PASS)
 ```python
 # Đăng ký callback nhận lệnh điều khiển từ ERa với chân V0
 @era.register_handler('write v0')
-def era_write_v0_handler(pin, value):
-    state = value[0]
+def era_write_v0_handler(pin, values):
+    state = values[0]
     # Gửi giá trị V0 vừa nhận được lên ERa
     era.virtual_write(pin, state)
     print(f'Virtual pin {pin} value {state}')
@@ -83,8 +83,8 @@ led = Pin(2, Pin.OUT, value = 1)
 
 # Đăng ký callback nhận lệnh điều khiển từ ERa với chân V0
 @era.register_handler('write v0')
-def era_write_v0_handler(pin, value):
-    state = value[0]
+def era_write_v0_handler(pin, values):
+    state = values[0]
     # Điều khiển LED với giá trị V0 vừa nhận được
     led.value(state)
     # Gửi giá trị V0 vừa nhận được lên ERa
